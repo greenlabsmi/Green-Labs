@@ -154,14 +154,55 @@ h1,h2,h3,.stab{
 }
 #menuOverlay.menu-overlay{position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;z-index:3990;background:transparent}
 
-/* Drawer links */
-.menu-list{display:flex;flex-direction:column;gap:6px;padding:0;margin:0}
-.menu-list .drawer-link{
-  display:block;padding:12px 10px;border-radius:10px;background:#fff;border:1px solid var(--line);
-  font-family:var(--ui-font);font-weight:700;font-size:15px;color:var(--ink);
-  transition:background .15s ease, box-shadow .15s ease, transform .08s ease;
+/* Drawer links (updated: shimmer-on-text, readable hover box) */
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 0;
+  margin: 0;
 }
-.menu-list .drawer-link:hover{background:#f8f8f8;box-shadow:0 4px 10px rgba(0,0,0,.08);transform:translateY(-1px)}
+
+.menu-list .drawer-link {
+  display: block;
+  padding: 12px 10px;
+  border-radius: 10px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  font-family: var(--ui-font);
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--ink);
+  transition: background .15s ease, box-shadow .15s ease, transform .08s ease, color .25s ease;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+}
+
+.menu-list .drawer-link:hover {
+  background: var(--surface);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, .08);
+  transform: translateY(-1px);
+  border-color: var(--line);
+  background-image: linear-gradient(120deg, var(--brand-3) 10%, var(--brand-2), var(--brand-3) 90%);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 6s linear infinite;
+}
+
+/* Accessibility: reduce or disable animation for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .menu-list .drawer-link:hover,
+  .menu-list .drawer-link {
+    animation: none !important;
+    transition: none !important;
+  }
+  .menu-list .drawer-link {
+    color: var(--ink);
+    -webkit-text-fill-color: initial;
+  }
+}
 
 /* =========================
    Hero Carousel
@@ -421,7 +462,8 @@ body.agegate--lock{overflow:hidden}
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: shimmer 6s linear infinite;
-  background-color: var(--surface); /* <--- this fixes the white-out */
+  background-color: var(--surface); /* makes sure box is visible */
+  border: 1px solid var(--line); /* keep border intact */
 }
 
 /* ========== Buttons: shimmer on hover ========== */
