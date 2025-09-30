@@ -1,211 +1,126 @@
-<!doctype html> 
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="format-detection" content="address=no">
-  <title>Dutch Republic • Premium cannabis, powered by Dutch Touch Genetics</title>
-  <meta name="description" content="Dutch Republic in Douglas, MI — premium cannabis and the full Dutch Touch Genetics lineup." />
+
+  <title>Green Labs • Premium cannabis, powered by Dutch Touch Genetics</title>
+  <meta name="description" content="Green Labs — premium cannabis and the full Dutch Touch Genetics lineup." />
   <meta name="theme-color" content="#ffffff" />
-  <meta property="og:title" content="Dutch Republic • Premium Cannabis, powered by Dutch Touch Genetics">
-  <meta property="og:description" content="Visit Dutch Republic in Douglas, MI — premium cannabis and the full Dutch Touch Genetics lineup.">
-  <meta property="og:image" content="https://greenlabsmj.github.io/Green-labs-site/assets/hero-1.jpg">
+  <meta property="og:title" content="Green Labs • Premium Cannabis, powered by Dutch Touch Genetics">
+  <meta property="og:description" content="Visit Green Labs — premium cannabis and the full Dutch Touch Genetics lineup.">
+  <meta property="og:image" content="assets/img/greenlabs-logo.png">
   <meta property="og:type" content="website">
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
 
   <!-- Icons (for Instagram, Facebook, X, TikTok) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="assets/img/favicon.png">
+
   <!-- Cache-bust your CSS -->
-  <link rel="stylesheet" href="style.css?v=dr-037" />
+  <link rel="stylesheet" href="style.css?v=gl-001" />
 
-  <!-- Minimal helper styles for the icon row so it looks great out of the box -->
+  <!-- Minimal helper styles used in this file -->
   <style>
-    .icon-row {
-      display:flex; gap:16px; align-items:center; flex-wrap:wrap;
+    :root{
+      --ink:#111315; --line:#e7e8ec; --deal-hue:#F0FFF7;
+      --brand:#0B7D5A; /* Green Labs accent */
+      --nav-h:60px;
     }
-    .icon-row a {
-      font-size:1.4rem; line-height:1; color:inherit; 
-      display:inline-flex; align-items:center; justify-content:center;
-      transition:color .25s ease, transform .1s ease;
-    }
-    .icon-row a:hover { color: var(--gold, #D47B19); }
-    .icon-row a:active { transform: scale(.96); }
-    .icon-row .sep { opacity:.35; }
+    body{font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, Noto Sans; -webkit-font-smoothing:antialiased}
+    .section-title,h1,h2,h3,.stab{font-family:"Cinzel",serif;font-weight:900;letter-spacing:.02em}
+    .brand-banner{display:flex;align-items:center;justify-content:center;padding:18px 12px;background:#fff;border-bottom:1px solid var(--line)}
+    .brand-title{display:flex;align-items:center;gap:12px;color:var(--brand)}
+    .brand-title img{height:44px;width:auto;display:block}
+    .brand-title .word{font-size:clamp(22px,3.6vw,34px);font-weight:900;letter-spacing:.06em}
+
+    .icon-row{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+    .icon-row a{font-size:1.4rem;line-height:1;color:inherit;display:inline-flex;align-items:center;justify-content:center;transition:color .25s ease, transform .1s ease}
+    .icon-row a:hover{color:var(--brand)}
+    .icon-row a:active{transform:scale(.96)}
+    .icon-row .sep{opacity:.35}
+
+    .menu-embed{padding:24px 0}
+    .embed-shell{border:1px solid var(--line);border-radius:14px;box-shadow:0 6px 18px rgba(16,24,40,.08);overflow:hidden;position:relative;z-index:1;isolation:isolate}
+    .embed-shell iframe{display:block;width:100%;min-height:1200px;height:auto;border:0;border-radius:12px}
+
+    .sticky-nav{position:sticky;top:0;z-index:2000;background:#fff;border-bottom:1px solid var(--line)}
+    #leafly-embed-wrapper{position:relative;z-index:0}
+    #leafly-embed-wrapper iframe, iframe[src*="leafly.com"]{min-height:1200px!important}
+
+    /* Hash offset */
+    .hash-offset,.hash-anchor{scroll-margin-top:var(--nav-h)}
+    .hash-anchor{height:0;line-height:0}
   </style>
-
-<style>
-  .menu-embed { padding: 24px 0; }
-  /* Optional pretty wrapper */
-  .embed-shell {
-    border: 1px solid var(--line, #e7e8ec);
-    border-radius: 14px;
-    box-shadow: 0 6px 18px rgba(16,24,40,.08);
-    overflow: hidden;
-    position: relative;
-    z-index: 1;
-    isolation: isolate; /* keeps clicks clean */
-  }
-  .embed-shell iframe {
-  display: block;
-  width: 100%;
-  min-height: 1200px;  /* was 1600px */
-  height: auto;      /* allow shrinking when Leafly cart is shorter */
-  border: 0;
-  border-radius: 12px;
-}
-</style>
-<style>
-  /* Keep sticky nav above any iframes/embeds */
-  .sticky-nav { position: sticky; top: 0; z-index: 2000; }
-
-  /* Ensure the embed sits below the header and doesn’t eat clicks */
-  #leafly-embed-wrapper { position: relative; z-index: 0; }
-
-  /* Leafly-injected iframe: sits below header and can shrink on cart view */
-  #leafly-embed-wrapper iframe {
-    position: relative;
-    z-index: 0;
-    display: block;
-    width: 100%;
-    min-height: 1200px;
-    height: auto;
-    border: 0;
-    border-radius: 12px;
-  }
-
-  /* Global safety net: catch any Leafly iframe */
-  iframe[src*="leafly.com"] {
-    min-height: 1200px !important;
-  }
-</style>
-
 </head>
 <body>
 
-<!-- Brand banner (logo + big wordmark, no button) -->
+<!-- Brand banner (logo + wordmark) -->
 <header class="brand-banner" role="banner">
-  <h1 class="visually-hidden">Dutch Republic — Premium Cannabis powered by Dutch Touch Genetics</h1>
-  <a class="brand-title" href="#home" aria-label="Dutch Republic">
-    <!-- Foil SVG wordmark -->
-    <svg class="foil-svg-large" viewBox="0 0 1200 180" role="img" aria-label="Dutch Republic" preserveAspectRatio="xMidYMid meet" style="display:block; width:min(92vw, 980px); height:auto;">
-      <defs>
-        <linearGradient id="foilGradLarge" x1="-40%" y1="0%" x2="180%" y2="0%">
-          <stop offset="0%"   stop-color="#9C6B1A"/>
-          <stop offset="22%"  stop-color="#F2C14E"/>
-          <stop offset="45%"  stop-color="#FFE27A"/>
-          <stop offset="62%"  stop-color="#F2C14E"/>
-          <stop offset="100%" stop-color="#9C6B1A"/>
-          <animate attributeName="x1" values="-40%;0%;-40%" dur="12s" repeatCount="indefinite"/>
-          <animate attributeName="x2" values="180%;220%;180%" dur="12s" repeatCount="indefinite"/>
-        </linearGradient>
-      </defs>
-      <text x="50%" y="68%" text-anchor="middle"
-            font-family="Cinzel, 'UnifrakturCook', serif"
-            font-weight="900"
-            font-size="120"
-            fill="url(#foilGradLarge)"
-            stroke="none"
-            style="paint-order: stroke fill;">
-        DUTCH REPUBLIC
-      </text>
-    </svg>
+  <h1 class="visually-hidden">Green Labs — Premium Cannabis powered by Dutch Touch Genetics</h1>
+  <a class="brand-title" href="#home" aria-label="Green Labs">
+    <img src="assets/img/greenlabs-logo.png" alt="Green Labs logo">
+    <span class="word">GREEN LABS</span>
   </a>
 </header>
-  
-<!-- ===== Sticky compact nav (shows after you scroll past banner) ===== -->
+
+<!-- ===== Sticky compact nav ===== -->
 <header class="site-header sticky-nav">
-  <div class="container sticky-nav__inner">
-    
+  <div class="container sticky-nav__inner" style="display:flex;align-items:center;gap:14px;justify-content:space-between;padding:10px 12px">
     <!-- left: brand icon -->
-    <a class="sticky-logo" href="#home" aria-label="Home">
-      <img class="brand-lion" src="logo-dutch-republic.svg" alt="Dutch Republic crest" />
+    <a class="sticky-logo" href="#home" aria-label="Home" style="display:flex;align-items:center;gap:8px;color:var(--brand)">
+      <img src="assets/img/greenlabs-logo.png" alt="Green Labs" style="height:28px;width:auto">
+      <strong style="font-family:Cinzel,serif;font-weight:900;letter-spacing:.06em">Green Labs</strong>
     </a>
 
-    <!-- compact SVG brand name -->
-    <div class="sticky-brand-name" aria-hidden="false">
-      <svg class="foil-svg-small" viewBox="0 0 600 90" role="img" aria-label="Dutch Republic" preserveAspectRatio="xMidYMid meet">
-        <defs>
-          <linearGradient id="foilGradSmall" x1="-40%" y1="0%" x2="180%" y2="0%">
-            <stop offset="0%"   stop-color="#9C6B1A"/>
-            <stop offset="22%"  stop-color="#F2C14E"/>
-            <stop offset="45%"  stop-color="#FFE27A"/>
-            <stop offset="62%"  stop-color="#F2C14E"/>
-            <stop offset="100%" stop-color="#9C6B1A"/>
-            <animate attributeName="x1" values="-40%;0%;-40%" dur="12s" repeatCount="indefinite"/>
-            <animate attributeName="x2" values="180%;220%;180%" dur="12s" repeatCount="indefinite"/>
-          </linearGradient>
-        </defs>
-
-        <text x="50%" y="68%" text-anchor="middle"
-              font-family="Cinzel, 'UnifrakturCook', serif"
-              font-weight="900"
-              font-size="48"
-              fill="url(#foilGradSmall)"
-              stroke="#26231C"
-              stroke-width="2"
-              stroke-linejoin="round"
-              stroke-miterlimit="2"
-              style="paint-order: stroke fill;">
-          Dutch Republic
-        </text>
-      </svg>
-    </div>
-
-    <!-- center: tabs (mobile-fit via horizontal scroll) -->
-    <ul class="sticky-tabs site-nav nav-links" aria-label="Primary">
+    <!-- center: tabs -->
+    <ul class="sticky-tabs site-nav nav-links" aria-label="Primary" style="display:flex;gap:14px;align-items:center;list-style:none;margin:0;padding:0;overflow:auto">
       <li class="only-desktop"><a class="stab" href="#home">Home</a></li>
       <li><a class="stab" href="#deals">Deals</a></li>
-      <li>
-        <a class="stab" href="#dtg">
-          <span class="label-desktop">Dutch Touch Genetics</span>
-          <span class="label-mobile">Dutch Touch</span>
-        </a>
-      </li>
+      <li><a class="stab" href="#dtg"><span class="label-desktop">Dutch Touch Genetics</span><span class="label-mobile">Dutch Touch</span></a></li>
       <li><a class="stab" href="#contact">Contact</a></li>
     </ul>
 
     <!-- right: order → open pill → search → hamburger -->
-<div class="sticky-actions">
+    <div class="sticky-actions" style="display:flex;align-items:center;gap:10px">
+      <a class="btn btn-order" href="#menu" aria-label="Order online">
+        <span class="label-desktop">Order Online</span>
+        <span class="label-mobile">Order Online</span>
+      </a>
 
- <a class="btn btn-order" href="#menu" aria-label="Order online">
-  <span class="label-desktop">Order Online</span>
-  <span class="label-mobile">Order Online</span>
-</a>
+      <a class="icon-btn" href="#menu" aria-label="Search products" title="Search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"></circle>
+          <path d="M20 20l-3.2-3.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+        </svg>
+      </a>
 
- <!-- Search icon -->
-<a class="icon-btn" href="#menu" aria-label="Search products" title="Search">
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-    <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"></circle>
-    <path d="M20 20l-3.2-3.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
-  </svg>
-</a>
+      <button id="hoursBtn" class="pill" aria-expanded="false" type="button" title="Store hours">OPEN</button>
+      <span id="hoursTip" class="tooltip" hidden>Store hours</span>
 
-  <button id="hoursBtn" class="pill" aria-expanded="false" type="button" title="Store hours">OPEN</button>
-  <span id="hoursTip" class="tooltip" hidden>Store hours</span>
-
-  <!-- Hamburger icon -->
-  <button class="icon-btn" data-open-menu aria-label="Menu" title="Menu">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-    </svg>
-  </button>
-
-</div> <!-- closes .sticky-actions -->
+      <button class="icon-btn" data-open-menu aria-label="Menu" title="Menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
     </div>
+  </div>
 </header>
 
-<!-- MOBILE status strip (thin banner under the sticky nav) -->
+<!-- MOBILE status strip -->
 <div id="statusStrip" class="status-strip" role="button" aria-label="Store status">
   <span class="status-dot" aria-hidden="true"></span>
   <span class="status-text" id="statusText">Store status</span>
-  <span id="statusAddr" class="status-addr">
-  435&nbsp;Blue&nbsp;Star&nbsp;Hwy<span class="sep"></span>&nbsp;Douglas<span class="sep"></span>&nbsp;MI&nbsp;49406
-</span>
+  <span id="statusAddr" class="status-addr">Green Labs • Michigan</span>
 </div>
-  
+
 <!-- Hours popover -->
 <div id="hoursOverlay" class="hours-overlay" hidden></div>
 <div id="hoursPopover" class="hours-popover" role="dialog" aria-modal="false" hidden>
@@ -215,7 +130,6 @@
 
 <!-- Menu popover (like the Hours dialog) -->
 <div id="menuOverlay" class="menu-overlay" hidden></div>
-
 <aside id="navDrawer" class="menu-popover" role="dialog" aria-modal="false" hidden>
   <nav class="menu-list" aria-label="Site">
     <a class="drawer-link" href="#deals">Today’s Deals</a>
@@ -227,34 +141,34 @@
 </aside>
 
 <main id="home">
-  
- <!-- Hero (solid black background) -->
-<section class="hero" style="background:#000;">
-  <div id="hero-container" class="hero-container">
-    <div id="hero-slides" class="slides" data-carousel data-autoplay="6000" data-ignore-reduced-motion>
-      <button class="edge edge--prev" aria-label="Previous"></button>
-      <button class="edge edge--next" aria-label="Next"></button>
 
-      <div class="slide is-active"><img src="carousel-1.png" alt=""></div>
-      <div class="slide"><img src="carousel-2.png" alt=""></div>
-      <div class="slide"><img src="carousel-3.png" alt=""></div>
+  <!-- Hero -->
+  <section class="hero" style="background:#000;">
+    <div id="hero-container" class="hero-container">
+      <div id="hero-slides" class="slides" data-carousel data-autoplay="6000" data-ignore-reduced-motion>
+        <button class="edge edge--prev" aria-label="Previous"></button>
+        <button class="edge edge--next" aria-label="Next"></button>
 
-      <div class="dots" aria-label="Slide navigation"></div>
+        <div class="slide is-active"><img src="carousel-1.png" alt=""></div>
+        <div class="slide"><img src="carousel-2.png" alt=""></div>
+        <div class="slide"><img src="carousel-3.png" alt=""></div>
+
+        <div class="dots" aria-label="Slide navigation"></div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <!-- Today’s Deals -->
   <section id="deals" class="deals-section">
     <div class="container">
-      <div class="deal-card" role="button" tabindex="0" aria-expanded="false" aria-controls="dealBody" style="border:2px solid #000; border-radius:12px;">
+      <div class="deal-card" role="button" tabindex="0" aria-expanded="false" aria-controls="dealBody" style="border:2px solid #000;border-radius:12px;">
         <div class="deal-head">
           <div class="deal-title">Today’s Deals</div>
           <span class="chev" aria-hidden="true">▾</span>
         </div>
 
-        <div id="dealBody" class="deal-body collapsed" style="border-top:2px solid #000; border-bottom-left-radius:12px; border-bottom-right-radius:12px;">
-          <ul class="deal-list" id="dealList"><!-- JS renders here --></ul>
+        <div id="dealBody" class="deal-body collapsed" style="border-top:2px solid #000;border-bottom-left-radius:12px;border-bottom-right-radius:12px;">
+          <ul class="deal-list" id="dealList"></ul>
           <div class="deal-actions">
             <button id="closeDeals" class="btn outline">Close deals</button>
           </div>
@@ -262,316 +176,213 @@
       </div>
     </div>
   </section>
-  
-<!-- ===== Embedded Menu (Leafly) — OFFICIAL EMBED, lazy-loaded ===== -->
-<section id="menu" class="menu-embed" hidden>
-  <div class="container">
-    <h2 class="section-title">Shop Our Menu</h2>
-  </div>
 
-  <!-- Full-bleed wrapper (no fixed height; let Leafly auto-size) -->
-  <div id="leafly-embed-wrapper" style="width:100%;min-height:70vh;"></div>
-</section>
-<!-- ===== /Embedded Menu ===== -->
+  <!-- Embedded Menu (Leafly) -->
+  <section id="menu" class="menu-embed" hidden>
+    <div class="container">
+      <h2 class="section-title">Shop Our Menu</h2>
+    </div>
+    <div id="leafly-embed-wrapper" style="width:100%;min-height:70vh;"></div>
+  </section>
 
-  
   <!-- Giant Shop Online CTA -->
-<section id="shop" class="cta-shop">
-  <div class="container center">
-  <a class="btn btn-giant" href="#menu">
-    <span class="foil-hover">SHOP ONLINE</span>
-  </a>
-</div>
-</section>
-
- <!-- ===== Dutch Touch Genetics — Awards Rail (commented out / preserved) ===== -->
-<!-- 
-<section id="dtg" class="dtg-awards">
-  <div class="container">
-    <h2 class="section-title">Dutch Touch Genetics</h2>
-    <p class="dtgA-sub">Award-Winning Cannabis — Scroll to explore ⇢</p>
-
-    <div class="dtgA-rail" id="dtgAwardsRail" tabindex="0" aria-label="Dutch Touch Genetics awards">
-  
-      <article class="dtgA-card" role="group" aria-label="Mr. Clean — High Times Cannabis Cup Sativa, 1st Place">
-        <div class="dtgA-tag">🥇 1st</div>
-        <img src="img/awards-mrclean.jpg" alt="Mr. Clean strain" loading="lazy">
-        <div class="dtgA-body">
-          <h3 class="dtgA-title">Mr. Clean</h3>
-          <p class="dtgA-meta">High Times Cannabis Cup — Sativa</p>
-          <p class="dtgA-blurb">Crisp, energizing profile that took the top spot.</p>
-          <a class="dtgA-link" href="#" target="_blank" rel="noopener">Details</a>
-        </div>
-      </article>
-
-      <article class="dtgA-card" role="group" aria-label="Lilac Diesel — High Times Cannabis Cup Sativa, 3rd Place">
-        <div class="dtgA-tag">🥉 3rd</div>
-        <img src="img/awards-lilacdiesel.jpg" alt="Lilac Diesel strain" loading="lazy">
-        <div class="dtgA-body">
-          <h3 class="dtgA-title">Lilac Diesel</h3>
-          <p class="dtgA-meta">High Times Cannabis Cup — Sativa</p>
-          <p class="dtgA-blurb">Sweet floral diesel with a euphoric lift.</p>
-          <a class="dtgA-link" href="#" target="_blank" rel="noopener">Details</a>
-        </div>
-      </article>
-
-      <article class="dtgA-card" role="group" aria-label="Death By Funk — Best In Grass winner">
-        <div class="dtgA-tag">🏆 Winner</div>
-        <img src="img/awards-dbf.jpg" alt="Death By Funk strain" loading="lazy">
-        <div class="dtgA-body">
-          <h3 class="dtgA-title">Death By Funk</h3>
-          <p class="dtgA-meta">Best In Grass</p>
-          <p class="dtgA-blurb">Unmatched funk + gas terpene punch.</p>
-          <a class="dtgA-link" href="#" target="_blank" rel="noopener">Details</a>
-        </div>
-      </article>
-
-      <article class="dtgA-card" role="group" aria-label="Angelica — High Times winner for RSO syringe">
-        <div class="dtgA-tag">🏆 Winner</div>
-        <img src="img/awards-angelica.jpg" alt="Angelica RSO syringe" loading="lazy">
-        <div class="dtgA-body">
-          <h3 class="dtgA-title">Angelica</h3>
-          <p class="dtgA-meta">High Times — RSO Syringe</p>
-          <p class="dtgA-blurb">Recognized for potency and purity.</p>
-          <a class="dtgA-link" href="#" target="_blank" rel="noopener">Details</a>
-        </div>
-      </article>
-
-      <article class="dtgA-card" role="group" aria-label="Space Hippy — Cannabis Cup Disposables, 2nd Place">
-        <div class="dtgA-tag">🥈 2nd</div>
-        <img src="img/awards-spacehippy.jpg" alt="Space Hippy disposable" loading="lazy">
-        <div class="dtgA-body">
-          <h3 class="dtgA-title">Space Hippy</h3>
-          <p class="dtgA-meta">Cannabis Cup — Disposables</p>
-          <p class="dtgA-blurb">Innovative disposable format with a celebrated finish.</p>
-          <a class="dtgA-link" href="#" target="_blank" rel="noopener">Details</a>
-        </div>
-      </article>
-
-      <article class="dtgA-card" role="group" aria-label="More Dutch Touch winners coming soon">
-        <div class="dtgA-tag">…</div>
-        <img src="img/awards-placeholder.jpg" alt="Coming soon" loading="lazy">
-        <div class="dtgA-body">
-          <h3 class="dtgA-title">More Winners</h3>
-          <p class="dtgA-meta">Showcase updates incoming</p>
-          <p class="dtgA-blurb">We’ll add additional verified wins here.</p>
-          <a class="dtgA-link" href="#" aria-disabled="true">Coming Soon</a>
-        </div>
-      </article>
+  <section id="shop" class="cta-shop">
+    <div class="container center">
+      <a class="btn btn-giant" href="#menu"><span>SHOP ONLINE</span></a>
     </div>
+  </section>
 
-    <div class="dtgA-arrows">
-      <button class="dtgA-btn dtgA-left" type="button" aria-label="Scroll left">◂</button>
-      <button class="dtgA-btn dtgA-right" type="button" aria-label="Scroll right">▸</button>
-    </div>
-  </div>
+  <!-- ===== Dutch Touch Genetics — Awards Rail (Trophy Case) ===== -->
+  <div id="dtg" class="hash-anchor" aria-hidden="true"></div>
+  <section id="trophy" class="dtg-awards hash-offset" aria-labelledby="trophy-title">
+    <div class="container">
+      <h2 id="trophy-title" class="section-title">Trophy Case</h2>
+      <p class="dtgA-sub">Award-Winning Cannabis — Scroll to explore ⇢</p>
 
-  <style>
-    .dtg-awards{background:var(--deal-hue,#FFF9E6);border-top:1px solid var(--line,#e7e8ec);padding:28px 0}
-    .dtgA-sub{text-align:center;color:var(--muted,#667085);margin:0 0 12px;font-size:1.05rem;font-weight:500}
-    .dtgA-rail{display:flex;gap:14px;overflow-x:auto;padding:10px 6px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
-    .dtgA-rail::-webkit-scrollbar{display:none}
-    .dtgA-card{position:relative;flex:0 0 240px;max-width:240px;height:340px;display:flex;flex-direction:column;background:#FFFCF4;border:1px solid #eadfcb;border-radius:14px;overflow:hidden;scroll-snap-align:start;box-shadow:0 2px 6px rgba(0,0,0,.08);transition:transform .15s ease, box-shadow .15s ease}
-    .dtgA-card:hover{transform:translateY(-2px);box-shadow:0 6px 14px rgba(0,0,0,.12)}
-    .dtgA-card img{width:100%;height:140px;object-fit:cover}
-    .dtgA-tag{position:absolute;top:10px;left:10px;background:var(--gold,#D47B19);color:#111315;font-weight:800;padding:3px 8px;border-radius:10px;font-size:.8rem;box-shadow:0 2px 6px rgba(0,0,0,.18)}
-    .dtgA-body{display:flex;flex-direction:column;gap:6px;padding:10px 12px 12px;min-height:0}
-    .dtgA-title{font-weight:900;font-size:1rem;margin:0}
-    .dtgA-meta{margin:0;color:var(--muted,#667085);font-size:.85rem;font-weight:700}
-    .dtgA-blurb{margin:0;font-size:.9rem;line-height:1.35;color:var(--ink,#111315);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-    .dtgA-link{margin-top:auto;align-self:flex-start;font-weight:800;border-bottom:2px solid var(--gold,#D47B19);padding-bottom:1px}
-    .dtgA-arrows{display:flex;justify-content:flex-end;gap:8px;margin-top:10px}
-    .dtgA-btn{height:32px;width:32px;border-radius:10px;border:1px solid var(--line,#e7e8ec);background:#FFF6E9;font-weight:800;line-height:1;cursor:pointer}
-    .dtgA-btn:active{transform:translateY(1px)}
-    @media(max-width:420px){.dtgA-card{flex-basis:280px;max-width:280px}}
-  </style>
+      <div class="dtgA-rail" id="dtgAwardsRail" tabindex="0" aria-label="Dutch Touch Genetics awards">
+        <!-- Sample cards (keep your real images/links here) -->
+        <article class="dtgA-card" role="group" aria-label="Mr. Clean — High Times Cannabis Cup Sativa, 1st Place">
+          <div class="dtgA-tag">🥇 1st</div>
+          <img src="img/awards-mrclean.jpg" alt="Mr. Clean strain" loading="lazy">
+          <div class="dtgA-body">
+            <h3 class="dtgA-title">Mr. Clean</h3>
+            <p class="dtgA-meta">High Times Cannabis Cup — Sativa</p>
+            <p class="dtgA-blurb">Crisp, energizing profile that took the top spot.</p>
+            <a class="dtgA-link" href="#" target="_blank" rel="noopener">Details</a>
+          </div>
+        </article>
 
-  <script>
-    (function(){
-      const rail=document.getElementById('dtgAwardsRail');
-      const left=document.querySelector('.dtgA-left');
-      const right=document.querySelector('.dtgA-right');
-      if(!rail||!left||!right) return;
-      const gap=14;
-      const card=rail.querySelector('.dtgA-card');
-      const step=(card?card.getBoundingClientRect().width:240)+gap;
-      const scrollBy=(dir)=>rail.scrollBy({left:dir*step,behavior:'smooth'});
-      left.addEventListener('click',()=>scrollBy(-1));
-      right.addEventListener('click',()=>scrollBy(1));
-    })();
-  </script>
-</section>
--->
-<!-- ===== /Dutch Touch Genetics — Awards Rail ===== -->
+        <article class="dtgA-card" role="group" aria-label="Lilac Diesel — High Times Cannabis Cup Sativa, 3rd Place">
+          <div class="dtgA-tag">🥉 3rd</div>
+          <img src="img/awards-lilacdiesel.jpg" alt="Lilac Diesel strain" loading="lazy">
+          <div class="dtgA-body">
+            <h3 class="dtgA-title">Lilac Diesel</h3>
+            <p class="dtgA-meta">High Times Cannabis Cup — Sativa</p>
+            <p class="dtgA-blurb">Sweet floral diesel with a euphoric lift.</p>
+            <a class="dtgA-link" href="#" target="_blank" rel="noopener">Details</a>
+          </div>
+        </article>
 
+        <article class="dtgA-card" role="group" aria-label="Death By Funk — Best In Grass winner">
+          <div class="dtgA-tag">🏆 Winner</div>
+          <img src="img/awards-dbf.jpg" alt="Death By Funk strain" loading="lazy">
+          <div class="dtgA-body">
+            <h3 class="dtgA-title">Death By Funk</h3>
+            <p class="dtgA-meta">Best In Grass</p>
+            <p class="dtgA-blurb">Unmatched funk + gas terpene punch.</p>
+            <a class="dtgA-link" href="#" target="_blank" rel="noopener">Details</a>
+          </div>
+        </article>
 
-<!-- Invisible anchor so the existing nav link (#dtg) lands here -->
-<div id="dtg" class="hash-anchor" aria-hidden="true"></div>
+        <article class="dtgA-card" role="group" aria-label="Angelica — High Times winner for RSO syringe">
+          <div class="dtgA-tag">🏆 Winner</div>
+          <img src="img/awards-angelica.jpg" alt="Angelica RSO syringe" loading="lazy">
+          <div class="dtgA-body">
+            <h3 class="dtgA-title">Angelica</h3>
+            <p class="dtgA-meta">High Times — RSO Syringe</p>
+            <p class="dtgA-blurb">Recognized for potency and purity.</p>
+            <a class="dtgA-link" href="#" target="_blank" rel="noopener">Details</a>
+          </div>
+        </article>
 
-<!-- ===== About Us (Simple, Centered) ===== -->
-<section id="about" class="about-section hash-offset" aria-labelledby="about-title">
-  <div class="container">
-    <h2 id="about-title" class="section-title">Dutch Republic</h2>
-
-    <p>
-      Step into the world of <strong>Dutch Republic</strong>, the newest chapter in a journey more than 20 years in the making.
-      Powered by our award-winning brand <strong>Dutch Touch Genetics</strong>—celebrated for precision cultivation,
-      relentless pursuit of excellence, and major wins like <em>1st Place High Times Cannabis Cup with Mr. Clean</em>,
-      <em>2nd Place Best in Grass with Lemon Wookie</em>, and several additional awards across concentrates, RSO, and disposable vapes—
-      we’ve now expanded westward into Douglas, bringing our craft and community to Michigan’s lakeshore.
-    </p>
-
-    <p>
-      Dutch Republic is more than a dispensary; it’s the living expression of our passion, our people, and our plants.
-      From Luna Pier to Douglas, we’ve built a reputation for quality and innovation, offering a carefully curated lineup
-      that includes flower, concentrates, distillates, and a growing selection of edibles—all crafted with the same precision
-      and pride that made Dutch Touch a name recognized across the state.
-    </p>
-
-    <p>
-      Whether you’re discovering us for the first time or following our legacy from Green Labs Provisions,
-      Dutch Republic represents the next step in our story: a place where mastery meets community,
-      and where every product reflects our belief that Michigan deserves nothing less than the very best.
-    </p>
-
-    <!-- Brand video (from Green Labs / Dutch Touch Genetics) -->
-    <div class="video-embed" aria-label="Dutch Touch Genetics brand video">
-      <iframe
-        src="https://player.vimeo.com/video/910591207"
-        title="Dutch Touch Genetics / Green Labs"
-        allow="autoplay; fullscreen; picture-in-picture"
-        allowfullscreen
-        loading="lazy">
-      </iframe>
-    </div>
-    <p class="video-disclaimer">
-      <em>This video was produced by Green Labs, where our journey began, and highlights the award-winning Dutch Touch Genetics brand that now powers Dutch Republic.</em>
-    </p>
-    <!-- /Brand video -->
-  </div>
-</section>
-
-<!-- ===== Trophy Case (coming soon) ===== -->
-<section id="trophy" class="trophy-section hash-offset" aria-labelledby="trophy-title">
-  <div class="container">
-    <h2 id="trophy-title" class="section-title">Trophy Case</h2>
-    
-    <div class="comingsoon-card">
-      <p>We’re polishing the showcase — come back soon to explore our award winning strains and staff favorites.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ===== Hash anchor offset helper (safe, minimal) ===== -->
-<style>
-  /* Make hash-targets land nicely below your sticky nav; neutral lines only */
-  .hash-offset, .hash-anchor { scroll-margin-top: var(--nav-h, 60px); }
-  .hash-anchor { height: 0; line-height: 0; }
-</style>
-
-  
-<!-- ===== Dutch Republic Loyalty — Info + Signup with light section background ===== -->
-<section id="loyalty" class="loyalty-section" style="background:var(--deal-hue,#FFF9E6); padding:40px 0;">
-  <div class="container">
-    <h2 class="section-title">Dutch Republic Loyalty</h2>
-
-    <style>
-      .loy-flex {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 24px;
-        align-items: stretch;
-        justify-content: center;
-      }
-      .loy-info, .loy-embed-wrap {
-        flex: 1 1 380px;
-        max-width: 500px;
-      }
-
-      /* Info card (white) */
-      .loy-info {
-        font-size: 0.95rem;
-        line-height: 1.6;
-        color: var(--ink, #111);
-        background: #fff;                /* stays white */
-        border: 2px solid #000;
-        border-radius: 12px;
-        padding: 20px 24px;
-        box-shadow: 0 4px 12px rgba(0,0,0,.06);
-      }
-      .loy-info h3 {
-        margin-top: 0;
-        font-size: 1.25rem;
-        color: var(--gold, #D47B19);
-      }
-
-      /* Signup form card (white) */
-      .loy-embed-frame {
-        width: 100%;
-        height: 600px;
-        border: 2px solid #000;
-        border-radius: 12px;
-        background: #fff;               /* stays white */
-        box-shadow: 0 4px 12px rgba(0,0,0,.08);
-        display: block;
-      }
-
-      /* Responsive */
-      @media (max-width: 700px) {
-        .loy-info { font-size: 0.85rem; }
-        .loy-embed-frame { height: 680px; }
-      }
-    </style>
-
-    <div class="loy-flex">
-      <!-- Info card -->
-      <div class="loy-info">
-        <h3>Join Our Dutch Rewards Club</h3>
-        <p><strong>Earn Big, Save More:</strong> Get 5% back on every purchase at Dutch Republic.</p>
-        <p>Your loyalty is not just appreciated — it’s rewarded. For every dollar you spend, earn <strong>5% back in credits</strong>. Redeem your credits dollar for dollar on future purchases. That’s right, <strong>1 credit = $1</strong>.</p>
-        <p>As a Dutch Rewards Club member, you’ll also get first access to <em>exclusive deals, events, and product launches</em>. Signing up takes less than a minute — your perks last much longer.</p>
-        <p><em>Welcome to a loyalty program designed to give back.</em></p>
+        <article class="dtgA-card" role="group" aria-label="Space Hippy — Cannabis Cup Disposables, 2nd Place">
+          <div class="dtgA-tag">🥈 2nd</div>
+          <img src="img/awards-spacehippy.jpg" alt="Space Hippy disposable" loading="lazy">
+          <div class="dtgA-body">
+            <h3 class="dtgA-title">Space Hippy</h3>
+            <p class="dtgA-meta">Cannabis Cup — Disposables</p>
+            <p class="dtgA-blurb">Innovative disposable format with a celebrated finish.</p>
+            <a class="dtgA-link" href="#" target="_blank" rel="noopener">Details</a>
+          </div>
+        </article>
       </div>
 
-      <!-- Alpine embed -->
-      <div class="loy-embed-wrap">
+      <div class="dtgA-arrows">
+        <button class="dtgA-btn dtgA-left" type="button" aria-label="Scroll left">◂</button>
+        <button class="dtgA-btn dtgA-right" type="button" aria-label="Scroll right">▸</button>
+      </div>
+    </div>
+
+    <style>
+      .dtg-awards{background:var(--deal-hue,#F0FFF7);border-top:1px solid var(--line);padding:28px 0}
+      .dtgA-sub{text-align:center;color:#4a5568;margin:0 0 12px;font-size:1.05rem;font-weight:500}
+      .dtgA-rail{display:flex;gap:14px;overflow-x:auto;padding:10px 6px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+      .dtgA-rail::-webkit-scrollbar{display:none}
+      .dtgA-card{position:relative;flex:0 0 240px;max-width:240px;height:340px;display:flex;flex-direction:column;background:#fff;border:1px solid #e6f5ef;border-radius:14px;overflow:hidden;scroll-snap-align:start;box-shadow:0 2px 6px rgba(0,0,0,.08);transition:transform .15s ease, box-shadow .15s ease}
+      .dtgA-card:hover{transform:translateY(-2px);box-shadow:0 6px 14px rgba(0,0,0,.12)}
+      .dtgA-card img{width:100%;height:140px;object-fit:cover}
+      .dtgA-tag{position:absolute;top:10px;left:10px;background:var(--brand);color:#fff;font-weight:800;padding:3px 8px;border-radius:10px;font-size:.8rem;box-shadow:0 2px 6px rgba(0,0,0,.18)}
+      .dtgA-body{display:flex;flex-direction:column;gap:6px;padding:10px 12px 12px;min-height:0}
+      .dtgA-title{font-weight:900;font-size:1rem;margin:0}
+      .dtgA-meta{margin:0;color:#4a5568;font-size:.85rem;font-weight:700}
+      .dtgA-blurb{margin:0;font-size:.9rem;line-height:1.35;color:var(--ink);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+      .dtgA-link{margin-top:auto;align-self:flex-start;font-weight:800;border-bottom:2px solid var(--brand);padding-bottom:1px}
+      .dtgA-arrows{display:flex;justify-content:flex-end;gap:8px;margin-top:10px}
+      .dtgA-btn{height:32px;width:32px;border-radius:10px;border:1px solid var(--line);background:#eaffe9;font-weight:800;line-height:1;cursor:pointer}
+      .dtgA-btn:active{transform:translateY(1px)}
+      @media(max-width:420px){.dtgA-card{flex-basis:280px;max-width:280px}}
+    </style>
+
+    <script>
+      (function(){
+        const rail=document.getElementById('dtgAwardsRail');
+        const left=document.querySelector('.dtgA-left');
+        const right=document.querySelector('.dtgA-right');
+        if(!rail||!left||!right) return;
+        const gap=14;
+        const card=rail.querySelector('.dtgA-card');
+        const step=(card?card.getBoundingClientRect().width:240)+gap;
+        const scrollBy=(dir)=>rail.scrollBy({left:dir*step,behavior:'smooth'});
+        left.addEventListener('click',()=>scrollBy(-1));
+        right.addEventListener('click',()=>scrollBy(1));
+      })();
+    </script>
+  </section>
+  <!-- ===== /Trophy Case ===== -->
+
+  <!-- About -->
+  <section id="about" class="about-section hash-offset" aria-labelledby="about-title">
+    <div class="container">
+      <h2 id="about-title" class="section-title">Green Labs</h2>
+
+      <p>
+        Welcome to <strong>Green Labs</strong>, powered by the award-winning <strong>Dutch Touch Genetics</strong>.
+        From precision cultivation to top-shelf products, our team brings Michigan a curated lineup of flower, concentrates,
+        edibles, and more — including winners like <em>Mr. Clean (High Times 1st Place)</em> and other celebrated strains.
+      </p>
+
+      <div class="video-embed" aria-label="Dutch Touch Genetics brand video" style="margin:18px 0">
         <iframe
-          class="loy-embed-frame"
-          src="https://lab.alpineiq.com/join/c/3149/110369?storeID=-1"
-          title="Dutch Republic Loyalty"
+          src="https://player.vimeo.com/video/910591207"
+          title="Dutch Touch Genetics / Green Labs"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen
           loading="lazy"
-          allow="accelerometer; encrypted-media; gyroscope"
-          referrerpolicy="no-referrer-when-downgrade">
+          style="width:100%;aspect-ratio:16/9;border:0;border-radius:12px">
         </iframe>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
+  <!-- Loyalty (kept, rebranded in headings later if needed) -->
+  <section id="loyalty" class="loyalty-section" style="background:var(--deal-hue,#F0FFF7); padding:40px 0;">
+    <div class="container">
+      <h2 class="section-title">Green Labs Loyalty</h2>
+
+      <style>
+        .loy-flex{display:flex;flex-wrap:wrap;gap:24px;align-items:stretch;justify-content:center}
+        .loy-info,.loy-embed-wrap{flex:1 1 380px;max-width:500px}
+        .loy-info{font-size:.95rem;line-height:1.6;color:var(--ink);background:#fff;border:2px solid #000;border-radius:12px;padding:20px 24px;box-shadow:0 4px 12px rgba(0,0,0,.06)}
+        .loy-info h3{margin-top:0;font-size:1.25rem;color:var(--brand)}
+        .loy-embed-frame{width:100%;height:600px;border:2px solid #000;border-radius:12px;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.08);display:block}
+        @media (max-width:700px){.loy-info{font-size:.85rem}.loy-embed-frame{height:680px}}
+      </style>
+
+      <div class="loy-flex">
+        <div class="loy-info">
+          <h3>Join Our Rewards</h3>
+          <p><strong>Earn 5% back</strong> on every purchase. Credits redeem dollar-for-dollar on future orders.</p>
+          <p>Members get first access to exclusive deals, events, and releases.</p>
+        </div>
+
+        <div class="loy-embed-wrap">
+          <iframe
+            class="loy-embed-frame"
+            src="https://lab.alpineiq.com/join/c/3149/110369?storeID=-1"
+            title="Green Labs Loyalty"
+            loading="lazy"
+            allow="accelerometer; encrypted-media; gyroscope"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Visit Us -->
   <section id="contact" class="contact contact--gold">
     <div class="container contact-wrap">
       <div class="contact-col">
-        <h2 class="section-title">Visit Us — Dutch Republic</h2>
+        <h2 class="section-title">Visit Us — Green Labs</h2>
 
         <div class="map-card">
           <div class="map-link" aria-label="Map preview">
+            <!-- TODO: replace lat/long with Green Labs location when ready -->
             <iframe
-              title="Map — Dutch Republic"
+              title="Map — Green Labs"
               width="100%"
               height="220"
               style="border:0; display:block"
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
-              src="https://www.google.com/maps?q=42.63703,-86.21112&hl=en&z=15&output=embed">
+              src="https://www.google.com/maps?q=42.00000,-83.45000&hl=en&z=14&output=embed">
             </iframe>
             <span class="map-pin">📍</span>
           </div>
 
           <div class="map-actions">
             <div class="addr">
-              <strong>435 Blue Star Hwy</strong><br/>Douglas, MI, 49406
+              <strong>Green Labs</strong><br/>Michigan
             </div>
             <div class="map-buttons">
               <button id="openMapsSmart" class="btn small gold" type="button">Open in Maps</button>
@@ -579,21 +390,14 @@
           </div>
 
           <ul class="contact-list">
-            <li class="contact-item">
-              <strong>Phone</strong> <a href="tel:+12694404221">(269) 440-4221</a>
-            </li>
-            <li class="contact-item">
-              <strong>Email</strong> <a href="mailto:nick@dutchrepublic.org">Nick@dutchrepublic.org</a>
-            </li>
+            <li class="contact-item"><strong>Phone</strong> <a href="tel:+1">Update</a></li>
+            <li class="contact-item"><strong>Email</strong> <a href="mailto:info@greenlabsmi.com">info@greenlabsmi.com</a></li>
             <li class="socials">
               <div class="icon-row" aria-label="Social links">
-                <a href="https://instagram.com/DutchRepublic_" target="_blank" aria-label="Instagram" rel="noopener"><i class="fab fa-instagram"></i></a>
-                <a href="#" target="_blank" aria-label="Facebook (coming soon)" rel="noopener"><i class="fab fa-facebook"></i></a>
-                <a href="https://x.com/_DutchRepublic" target="_blank" aria-label="X (Twitter)" rel="noopener"><i class="fab fa-x-twitter"></i></a>
-                <a href="https://www.tiktok.com/@dutchrepublic.mi" target="_blank" aria-label="TikTok" rel="noopener"><i class="fab fa-tiktok"></i></a>
-               <a href="https://www.google.com/search?q=Dutch+Republic+Dispensary+Douglas" target="_blank" aria-label="Customer Reviews" rel="noopener">
-      <i class="fas fa-star"></i> <span>Customer Reviews</span>
-    </a>
+                <a href="https://instagram.com" target="_blank" aria-label="Instagram" rel="noopener"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank" aria-label="Facebook" rel="noopener"><i class="fab fa-facebook"></i></a>
+                <a href="https://x.com" target="_blank" aria-label="X (Twitter)" rel="noopener"><i class="fab fa-x-twitter"></i></a>
+                <a href="https://www.tiktok.com" target="_blank" aria-label="TikTok" rel="noopener"><i class="fab fa-tiktok"></i></a>
               </div>
             </li>
           </ul>
@@ -606,9 +410,7 @@
 <footer class="site-footer">
   <div class="container footer-row">
     <div class="footer-brand">
-      <!-- optional tiny logo; remove if you don’t want it -->
-      <!-- <img src="logo-small.png" alt="Dutch Republic" class="footer-logo"> -->
-      <div class="footer-copy">© <span id="year"></span> Dutch Republic. All rights reserved.</div>
+      <div class="footer-copy">© <span id="year"></span> Green Labs. All rights reserved.</div>
     </div>
 
     <nav class="footer-links" aria-label="Legal links">
@@ -620,14 +422,14 @@
 </footer>
 
 <!-- Your existing JS bundle -->
-<script src="script.js?v=dr-1002" defer></script>
+<script src="script.js?v=gl-1001" defer></script>
 
-  <!-- ========== AGE GATE (drop-in) ========== -->
+<!-- ========== AGE GATE ========== -->
 <div id="ageGate" class="agegate" aria-hidden="true" role="dialog" aria-modal="true">
   <div class="agegate__box" role="document">
-    <div class="agegate__crest" aria-hidden="true">🦁</div>
+    <div class="agegate__crest" aria-hidden="true">🌿</div>
     <h1 class="agegate__title">Are you 21 or older?</h1>
-    <p class="agegate__sub">You must be of legal age to enter Dutch Republic.</p>
+    <p class="agegate__sub">You must be of legal age to enter Green Labs.</p>
 
     <div class="agegate__actions">
       <button id="ageYes" class="btn gold agegate__btn">Yes — Enter</button>
@@ -665,10 +467,10 @@
     s.id = 'leafly-embed-script';
     s.src = 'https://web-embedded-menu.leafly.com/loader.js';
     s.dataset.origin = 'https://web-embedded-menu.leafly.com';
-    s.dataset.slug = 'dutch-republic';
-    s.dataset.primary = '#FFCD00';
-    s.dataset.secondary = '#2890DC';
-    s.dataset.deals = '#CE300A';
+    s.dataset.slug = 'green-labs-placeholder'; // TODO: replace with your exact Leafly slug
+    s.dataset.primary = '#0B7D5A';
+    s.dataset.secondary = '#1A9E75';
+    s.dataset.deals = '#056047';
     wrapper.appendChild(s);
     embedLoaded = true;
   }
@@ -687,33 +489,21 @@
     window.scrollTo({ top, behavior: 'smooth' });
   }
 
-  // only hook true shop entry points (not the hamburger)
-  const triggers = document.querySelectorAll(
-    'a[href="order.html"], a[href="#menu"], .btn-order, .cta-shop a'
-  );
+  const triggers = document.querySelectorAll('a[href="order.html"], a[href="#menu"], .btn-order, .cta-shop a');
+  triggers.forEach(el => el.addEventListener('click', (e) => { e.preventDefault(); openMenu(); }));
 
-  triggers.forEach(el => {
-    el.addEventListener('click', (e) => {
-      e.preventDefault();
-      openMenu();
-    });
-  });
-
-  // drawer “Shop Categories” → open Leafly
   document.querySelectorAll('#navDrawer a[href="#menu"]').forEach(el => {
-    el.addEventListener('click', (e) => {
-      e.preventDefault();
-      openMenu();
-    });
+    el.addEventListener('click', (e) => { e.preventDefault(); openMenu(); });
   });
 
-  // Deep link support
-  if (location.hash === '#menu') {
-    openMenu();
-  }
+  if (location.hash === '#menu') openMenu();
 })();
 </script>
 
+<script>
+  // Footer year
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 
 </body>
 </html>
