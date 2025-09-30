@@ -415,10 +415,7 @@ body.agegate--lock{overflow:hidden}
 
 /* ========== Drawer (hamburger menu): shimmer on hover ========== */
 .drawer-link:hover {
-  background: linear-gradient(120deg,
-    var(--brand-3) 10%,
-    var(--brand-2),
-    var(--brand-3) 90%);
+  background: linear-gradient(120deg, var(--brand-3) 10%, var(--brand-2), var(--brand-3) 90%);
   background-size: 300% 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
