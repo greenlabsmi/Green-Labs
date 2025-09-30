@@ -379,7 +379,7 @@ body.agegate--lock{overflow:hidden}
 /* ========== Brand Title: always shimmer ========== */
 .brand-title {
   font-family: var(--display-font);
-  font-size: clamp(32px, 5.4vw, 64px); /* match Dutch Republic size */
+  font-size: clamp(44px, 6.8vw, 80px);
   font-weight: 900;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -421,6 +421,7 @@ body.agegate--lock{overflow:hidden}
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: shimmer 6s linear infinite;
+  background-color: var(--surface); /* <--- this fixes the white-out */
 }
 
 /* ========== Buttons: shimmer on hover ========== */
