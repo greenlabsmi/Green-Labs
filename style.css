@@ -392,6 +392,7 @@ body.agegate--lock{overflow:hidden}
   -webkit-text-fill-color: transparent;
   animation: shimmer 6s linear infinite;
   display: inline-block;
+  background-color: transparent !important; /* ⬅ fixes white box issue */
 }
 
 /* ========== Sticky Nav Links: shimmer on hover ========== */
