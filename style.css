@@ -349,3 +349,89 @@ body.agegate--lock{overflow:hidden}
 /* Ensure header/menu always sit above embeds/iframes */
 .sticky-nav,.menu-popover,#menuOverlay{z-index:9999}
 #leafly-embed-wrapper, #leafly-embed-wrapper iframe{z-index:1}
+
+/* =========================
+   Green Labs – Foil Shimmer Effects
+   ========================= */
+
+/* Keyframes for shimmer animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200%;
+  }
+  100% {
+    background-position: 200%;
+  }
+}
+
+/* Generic shimmer utility class */
+.shimmer-effect {
+  background: linear-gradient(120deg,
+    var(--brand-3) 20%,
+    var(--brand-2),
+    var(--brand-3) 80%);
+  background-size: 400% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+}
+
+/* ========== Brand Title: shimmer on hover ========== */
+.brand-title {
+  font-family: var(--display-font);
+  font-size: clamp(28px, 3.6vw, 52px);
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--brand);
+  display: inline-block;
+}
+
+.brand-title:hover {
+  background: linear-gradient(120deg,
+    var(--brand-3) 10%,
+    var(--brand-2),
+    var(--brand-3) 90%);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+}
+
+/* ========== Sticky Nav Links: shimmer on hover ========== */
+.sticky-tabs .stab {
+  color: #475467;
+  position: relative;
+  font-weight: 800;
+  transition: all 0.3s ease;
+}
+
+.sticky-tabs .stab:hover {
+  background: linear-gradient(120deg,
+    var(--brand-3) 10%,
+    var(--brand-2),
+    var(--brand-3) 90%);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 2.5s linear infinite;
+}
+
+/* ========== Buttons: shimmer on hover ========== */
+.btn.brand {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: #fff;
+  font-weight: 800;
+}
+
+.btn.brand:hover {
+  background: linear-gradient(120deg,
+    var(--brand-3) 10%,
+    var(--brand-2),
+    var(--brand-3) 90%);
+  background-size: 300% 100%;
+  animation: shimmer 2.5s linear infinite;
+  color: #fff;
+  border-color: var(--brand-2);
+}
