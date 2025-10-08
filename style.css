@@ -2,37 +2,16 @@
    Green Labs – Base Theme
    ========================= */
 :root{
-  --bg:#ffffff;
-  --surface:#ffffff;
-  --line:#e7e8ec;
-  --ink:#111315;
-  --muted:#667085;
-
-  /* Brand */
-  --brand:#0B7D5A;          /* primary green */
-  --brand-2:#1A9E75;        /* lighter green accent */
-  --brand-3:#056047;        /* deep green for buttons/tags */
-  --deal-hue:#F0FFF7;       /* soft mint section tint */
-  --radius:14px;
-  --container:1080px;
-  --nav-h:60px;
-
-  /* Typography helpers */
-  --display-font:"Cinzel", Georgia, serif;
-  --ui-font:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", sans-serif;
+  --bg:#ffffff; --surface:#ffffff; --line:#e7e8ec; --ink:#111315; --muted:#667085;
+  --brand:#0B7D5A; --brand-2:#1A9E75; --brand-3:#056047; --deal-hue:#F0FFF7;
+  --radius:14px; --container:1080px; --nav-h:60px;
+  --display-font:"Cinzel", Georgia, serif; --ui-font:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", sans-serif;
 }
 
 /* Base */
 *{box-sizing:border-box}
-html,body{margin:0;padding:0}
-html,body{overflow-x:clip}
-body{
-  font-family:var(--ui-font);
-  color:var(--ink);
-  background:var(--bg);
-  line-height:1.5;
-  -webkit-font-smoothing:antialiased;
-}
+html,body{margin:0;padding:0;overflow-x:clip}
+body{font-family:var(--ui-font);color:var(--ink);background:var(--bg);line-height:1.5;-webkit-font-smoothing:antialiased}
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 .container{width:100%;max-width:var(--container);margin:0 auto;padding:0 16px}
@@ -41,89 +20,46 @@ a{color:inherit;text-decoration:none}
 /* =========================
    Typography
    ========================= */
-.section-title,
-h1,h2,h3,.stab{
-  font-family:var(--display-font);
-  font-weight:900;
-  letter-spacing:.02em;
-}
-.section-title{
-  font-size:clamp(22px,2.6vw,32px);
-  margin:0 0 12px;
-}
-.section-title::after{
-  content:"";display:block;width:64px;height:3px;margin:8px 0 0;border-radius:2px;
-  background:var(--brand);
-  opacity:.9;
-}
+.section-title,h1,h2,h3,.stab{font-family:var(--display-font);font-weight:900;letter-spacing:.02em}
+.section-title{font-size:clamp(22px,2.6vw,32px);margin:0 0 12px}
+.section-title::after{content:"";display:block;width:64px;height:3px;margin:8px 0 0;border-radius:2px;background:var(--brand);opacity:.9}
 
 /* =========================
    Buttons & Pills
    ========================= */
-.btn{
-  display:inline-block;padding:12px 16px;border-radius:12px;
-  border:1px solid var(--line);background:var(--surface);color:var(--ink);
-  font-weight:700;transition:transform .06s ease, box-shadow .15s ease;
-}
+.btn{display:inline-block;padding:12px 16px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-weight:700;transition:transform .06s ease, box-shadow .15s ease}
 .btn.small{padding:8px 12px;font-size:.9rem}
 .btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
 .btn.outline{background:#fff;border-color:var(--line)}
-.btn.brand{background:var(--brand);border-color:var(--brand);color:#fff}
-.pill{
-  padding:4px 10px;border-radius:999px;border:1px solid var(--line);
-  background:#fff;font-weight:800;min-width:72px;text-align:center;font-size:12px;line-height:1;
-}
-.pill.state-open{ color:#047857; background:#ECFDF3; border-color:#D1FADF }
-.pill.state-soon{ color:#B45309; background:#FFF7ED; border-color:#FED7AA }
-.pill.state-closed{ color:#B91C1C; background:#FEF2F2; border-color:#FECACA }
+.btn.brand{background:var(--brand);border-color:var(--brand);color:#fff;font-weight:800}
+.btn.brand:hover{background:linear-gradient(120deg,var(--brand-3)10%,var(--brand-2),var(--brand-3)90%);background-size:300% 100%;animation:shimmer 6s linear infinite;color:#fff;border-color:var(--brand-2)}
+
+.pill{padding:4px 10px;border-radius:999px;border:1px solid var(--line);background:#fff;font-weight:800;min-width:72px;text-align:center;font-size:12px;line-height:1;box-shadow:0 1px 4px rgba(0,0,0,.06)} /* + subtle outline/shadow */
+.pill.state-open{color:#047857;background:#ECFDF3;border-color:rgba(4,120,87,.3)}
+.pill.state-soon{color:#B45309;background:#FFF7ED;border-color:#FED7AA}
+.pill.state-closed{color:#B91C1C;background:#FEF2F2;border-color:#FECACA}
 
 /* =========================
    Header: Brand Banner
    ========================= */
-.brand-banner {
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 96px;
-  padding: 18px 20px;
-  background: transparent; /* ✅ removes black or white box */
-  border-bottom: 0;
-  box-shadow: none; /* optional: removes soft shadow below */
-}
+.brand-banner{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;min-height:96px;padding:18px 20px;background:transparent;border-bottom:0;box-shadow:none} /* removed gray line/shadow */
 .brand-title{display:inline-block;padding:2px 6px}
 
 /* =========================
    Sticky Nav
    ========================= */
-.site-header.sticky-nav,
-.sticky-nav{
-  position:sticky;top:0;z-index:3000;
-  background:#EDEFEA; /* light neutral so icons/text pop */
-  border-bottom:1px solid var(--line);
-  box-shadow:0 6px 18px rgba(16,24,40,.08);
-}
-.sticky-nav__inner{
-  display:flex;align-items:center;justify-content:space-between;
-  height:var(--nav-h);gap:12px;padding:0 16px;
-}
+.site-header.sticky-nav,.sticky-nav{position:sticky;top:0;z-index:3000;background:#EDEFEA;border-bottom:1px solid transparent; /* transparent to remove perceived line */ box-shadow:0 6px 18px rgba(16,24,40,.08)}
+.sticky-nav__inner{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h);gap:12px;padding:0 16px}
 .sticky-logo{display:flex;align-items:center;gap:8px;flex:0 0 auto}
 .sticky-logo img{height:48px;width:auto;max-height:calc(var(--nav-h) - 8px)}
-.sticky-brand-name{font-family:var(--display-font);font-weight:900;letter-spacing:.06em}
-.sticky-tabs{
-  flex:1;display:flex;align-items:center;justify-content:center;gap:20px;list-style:none;margin:0;padding:0;white-space:nowrap;
-}
-.sticky-tabs .stab{color:#475467;transition:color .15s ease}
-.sticky-tabs .stab:hover{color:var(--ink)}
+.sticky-brand-name{font-family:var(--display-font);font-weight:900;letter-spacing:.08em;font-size:1.4rem} /* bigger brand text */
+.sticky-tabs{flex:1;display:flex;align-items:center;justify-content:center;gap:20px;list-style:none;margin:0;padding:0;white-space:nowrap}
+.sticky-tabs .stab{color:#475467;transition:color .15s ease;font-size:1.05rem;font-weight:800} /* bigger tab text */
+.sticky-tabs .stab:hover{color:var(--ink);background:linear-gradient(120deg,var(--brand-3)10%,var(--brand-2),var(--brand-3)90%);background-size:300% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 6s linear infinite}
 .sticky-actions{flex:0 0 auto;display:flex;align-items:center;gap:12px}
 
 /* Icon buttons + Order button unified height */
-.icon-btn,
-.btn-order{
-  height:32px;display:inline-flex;align-items:center;justify-content:center;
-  border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);font-weight:800;line-height:1;
-}
+.icon-btn,.btn-order{height:32px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);font-weight:800;line-height:1}
 .btn-order{padding:0 12px;box-shadow:0 2px 6px rgba(0,0,0,.08)}
 .btn-order:hover{box-shadow:0 6px 14px rgba(0,0,0,.14)}
 .label-desktop{display:none}.label-mobile{display:inline}
@@ -137,11 +73,7 @@ h1,h2,h3,.stab{
 /* Mobile status strip */
 #statusStrip{display:none!important}
 @media (max-width:900px){
-  #statusStrip{
-    position:sticky;top:var(--nav-h);z-index:59;display:flex!important;align-items:center;gap:8px;
-    height:32px;padding:0 10px;background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-    box-shadow:0 4px 10px rgba(16,24,40,.06);color:#1f2937;font-weight:800;
-  }
+  #statusStrip{position:sticky;top:var(--nav-h);z-index:59;display:flex!important;align-items:center;gap:8px;height:32px;padding:0 10px;background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);box-shadow:0 4px 10px rgba(16,24,40,.06);color:#1f2937;font-weight:800}
   .status-dot{width:12px;height:12px;border-radius:999px;background:#a3a3a3;border:1px solid rgba(0,0,0,.18)}
   .status-dot.is-open{background:#16a34a;border-color:#0f622f}
   .status-dot.is-soon{background:#f59e0b;border-color:#b45309}
@@ -150,76 +82,29 @@ h1,h2,h3,.stab{
   .status-addr{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;user-select:none;pointer-events:none}
 }
 
-/* Tooltips & popovers anchored to actions */
+/* Tooltips & popovers */
 .tooltip{position:absolute;z-index:70;padding:6px 8px;font-size:12px;font-weight:700;color:#111315;background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:0 8px 24px rgba(16,24,40,.08)}
 .tooltip[hidden]{display:none}
 
 /* Drawer */
 #navDrawer[hidden]{display:none}
-.menu-popover{
-  position:absolute;top:calc(100% + 8px);right:0;width:min(92vw,320px);max-height:70vh;overflow:auto;
-  background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 18px 40px rgba(16,24,40,.12);padding:10px;z-index:4000;
-}
+.menu-popover{position:absolute;top:calc(100% + 8px);right:0;width:min(92vw,320px);max-height:70vh;overflow:auto;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 18px 40px rgba(16,24,40,.12);padding:10px;z-index:4000}
 #menuOverlay.menu-overlay{position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;z-index:3990;background:transparent}
 
-/* Drawer links (updated: shimmer-on-text, readable hover box) */
-.menu-list {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding: 0;
-  margin: 0;
-}
-
-.menu-list .drawer-link {
-  display: block;
-  padding: 12px 10px;
-  border-radius: 10px;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  font-family: var(--ui-font);
-  font-weight: 700;
-  font-size: 15px;
-  color: var(--ink);
-  transition: background .15s ease, box-shadow .15s ease, transform .08s ease, color .25s ease;
-  position: relative;
-  -webkit-font-smoothing: antialiased;
-  text-decoration: none;
-}
-
-.menu-list .drawer-link:hover {
-  background: var(--surface);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, .08);
-  transform: translateY(-1px);
-  border-color: var(--line);
-  background-image: linear-gradient(120deg, var(--brand-3) 10%, var(--brand-2), var(--brand-3) 90%);
-  background-size: 300% 100%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shimmer 6s linear infinite;
-}
-
-/* Accessibility: reduce or disable animation for users who prefer reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .menu-list .drawer-link:hover,
-  .menu-list .drawer-link {
-    animation: none !important;
-    transition: none !important;
-  }
-  .menu-list .drawer-link {
-    color: var(--ink);
-    -webkit-text-fill-color: initial;
-  }
+/* Drawer links (shimmer on text hover) */
+.menu-list{display:flex;flex-direction:column;gap:6px;padding:0;margin:0}
+.menu-list .drawer-link{display:block;padding:12px 10px;border-radius:10px;background:var(--surface);border:1px solid var(--line);font-family:var(--ui-font);font-weight:700;font-size:15px;color:var(--ink);transition:background .15s ease, box-shadow .15s ease, transform .08s ease, color .25s ease;position:relative;-webkit-font-smoothing:antialiased;text-decoration:none}
+.menu-list .drawer-link:hover{background:var(--surface);box-shadow:0 4px 10px rgba(0,0,0,.08);transform:translateY(-1px);border-color:var(--line);background-image:linear-gradient(120deg,var(--brand-3)10%,var(--brand-2),var(--brand-3)90%);background-size:300% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 6s linear infinite}
+@media (prefers-reduced-motion:reduce){
+  .menu-list .drawer-link,.menu-list .drawer-link:hover{animation:none!important;transition:none!important}
+  .menu-list .drawer-link{color:var(--ink);-webkit-text-fill-color:initial}
 }
 
 /* =========================
    Hero Carousel
    ========================= */
 .hero{position:relative;background:#000}
-.hero .slides{
-  position:relative;display:block;overflow:hidden;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.10);background:#000;
-  aspect-ratio:16/7;
-}
+.hero .slides{position:relative;display:block;overflow:hidden;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.10);background:#000;aspect-ratio:16/7}
 .hero .slide{position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .45s ease;will-change:opacity}
 .hero .slide.is-active{opacity:1;pointer-events:auto}
 .hero .slide img{width:100%;height:100%;object-fit:cover}
@@ -243,24 +128,17 @@ h1,h2,h3,.stab{
    Today’s Deals
    ========================= */
 .deals-section{margin:18px 0}
-.deal-card{
-  background:#fff;border:2px solid #000;border-radius:16px;overflow:hidden;cursor:pointer;
-  transition:box-shadow .22s ease, transform .22s ease;
-}
+.deal-card{background:#fff;border:2px solid #000;border-radius:16px;overflow:hidden;cursor:pointer;transition:box-shadow .22s ease, transform .22s ease}
 .deal-card[aria-expanded="true"]{position:relative;z-index:2;transform:translateY(-2px);box-shadow:0 14px 36px rgba(0,0,0,.35),0 4px 10px rgba(0,0,0,.18)}
 .deal-head{display:grid;grid-template-columns:1fr auto;align-items:center;padding:12px 16px;background:var(--deal-hue);border-bottom:1px solid var(--line)}
 .deal-title{justify-self:center;font-weight:900;color:#2B2F33;font-family:var(--display-font);letter-spacing:.5px}
 .chev{transition:transform .2s ease;color:#6b7280}
 .deal-card[aria-expanded="true"] .chev{transform:rotate(180deg)}
-.deal-body{
-  padding:12px 16px;background:var(--deal-hue);position:relative;border-top:2px solid #000;border-bottom-left-radius:16px;border-bottom-right-radius:16px;
-}
+.deal-body{padding:12px 16px;background:var(--deal-hue);position:relative;border-top:2px solid #000;border-bottom-left-radius:16px;border-bottom-right-radius:16px}
 .deal-body.collapsed{max-height:168px;overflow:hidden}
 .deal-body.collapsed::after{content:"";position:absolute;left:0;right:0;bottom:0;height:28px;background:linear-gradient(to bottom, rgba(255,255,255,0), var(--deal-hue))}
 .deal-cat{border-top:1px solid var(--line);padding-top:12px;margin-top:12px}
-.deal-cat-title{
-  font-family:var(--display-font);font-weight:700;letter-spacing:.5px;font-size:1.02rem;background:#fff;padding:8px 10px;border-radius:10px;margin-bottom:8px;color:var(--ink);border:1px solid var(--line)
-}
+.deal-cat-title{font-family:var(--display-font);font-weight:700;letter-spacing:.5px;font-size:1.02rem;background:#fff;padding:8px 10px;border-radius:10px;margin-bottom:8px;color:var(--ink);border:1px solid var(--line)}
 .deal-subgroup{margin:8px 0 12px}
 .deal-subtitle{font-weight:700;font-size:.96rem;color:var(--ink);margin:6px 0 4px}
 .deal-items{margin:0 0 0 1rem;padding-left:0}
@@ -269,28 +147,21 @@ h1,h2,h3,.stab{
 .deal-actions{text-align:center;margin-top:10px}
 
 /* =========================
-   Categories (optional cards)
+   Categories
    ========================= */
 .cat-grid{display:grid;gap:24px;grid-template-columns:repeat(2,minmax(0,1fr))}
 @media (min-width:900px){.cat-grid{grid-template-columns:repeat(3,1fr)}}
-.cat-card{
-  position:relative;display:block;border-radius:16px;overflow:hidden;border:2px solid #dcdfe6;
-  box-shadow:0 2px 8px rgba(0,0,0,.06);transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease;background:#f3f4f6;min-height:140px;
-}
+.cat-card{position:relative;display:block;border-radius:16px;overflow:hidden;border:2px solid #dcdfe6;box-shadow:0 2px 8px rgba(0,0,0,.06);transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease;background:#f3f4f6;min-height:140px}
 .cat-card:hover{transform:translateY(-1px);border-color:var(--brand);box-shadow:0 6px 16px rgba(0,0,0,.12)}
 .cat-card img{width:100%;height:100%;object-fit:cover;aspect-ratio:16/10}
-.cat-title{
-  position:absolute;left:12px;right:12px;bottom:12px;display:block;padding:8px 12px;border-radius:12px;font-weight:900;font-size:1.06rem;
-  background:rgba(255,255,255,.92);color:#111315;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;backdrop-filter:blur(2px);
-}
+.cat-title{position:absolute;left:12px;right:12px;bottom:12px;display:block;padding:8px 12px;border-radius:12px;font-weight:900;font-size:1.06rem;background:rgba(255,255,255,.92);color:#111315;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;backdrop-filter:blur(2px)}
 
 /* =========================
    Leafly Embed
    ========================= */
 #menu{padding:24px 0;scroll-margin-top:calc(var(--nav-h) + 8px)}
 #leafly-embed-wrapper{position:relative;z-index:1}
-#leafly-embed-wrapper iframe,
-iframe[src*="leafly.com"]{display:block;width:100%;min-height:1200px;height:auto;border:0;border-radius:12px}
+#leafly-embed-wrapper iframe,iframe[src*="leafly.com"]{display:block;width:100%;min-height:1200px;height:auto;border:0;border-radius:12px}
 
 /* =========================
    Trophy Case (Awards Rail)
@@ -359,15 +230,9 @@ iframe[src*="leafly.com"]{display:block;width:100%;min-height:1200px;height:auto
 .agegate{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;background:#000}
 .agegate[aria-hidden="false"]{display:flex}
 body.agegate--lock{overflow:hidden}
-.agegate__box{
-  width:min(92vw,640px);background:rgba(0,0,0,.55);border:2px solid var(--brand);border-radius:16px;padding:28px 22px;text-align:center;
-  box-shadow:0 18px 60px rgba(0,0,0,.6), inset 0 0 0 1px rgba(255,255,255,.04);color:#fff;
-}
+.agegate__box{width:min(92vw,640px);background:rgba(0,0,0,.55);border:2px solid var(--brand);border-radius:16px;padding:28px 22px;text-align:center;box-shadow:0 18px 60px rgba(0,0,0,.6), inset 0 0 0 1px rgba(255,255,255,.04);color:#fff}
 .agegate__crest{font-size:2rem;margin-bottom:10px;opacity:.9}
-.agegate__title{
-  margin:0 0 6px;font-family:var(--display-font);font-weight:900;font-size:clamp(28px,4.2vw,44px);letter-spacing:.3px;line-height:1.1;
-  color:#fff;
-}
+.agegate__title{margin:0 0 6px;font-family:var(--display-font);font-weight:900;font-size:clamp(28px,4.2vw,44px);letter-spacing:.3px;line-height:1.1;color:#fff}
 .agegate__sub{margin:0 0 16px;color:#EAEAEA;font-weight:600}
 .agegate__actions{display:flex;gap:10px;justify-content:center;margin:10px 0 8px}
 .agegate__btn{min-width:160px;font-weight:900}
@@ -384,6 +249,28 @@ body.agegate--lock{overflow:hidden}
 .hash-offset,.hash-anchor{scroll-margin-top:var(--nav-h)}
 .hash-anchor{height:0;line-height:0}
 
+/* Ensure header/menu above embeds */
+.sticky-nav,.menu-popover,#menuOverlay{z-index:9999}
+#leafly-embed-wrapper,#leafly-embed-wrapper iframe{z-index:1}
+
+/* =========================
+   Green Labs – Foil Shimmer Effects
+   ========================= */
+@keyframes shimmer{0%{background-position:-200%}100%{background-position:200%}}
+.shimmer-effect{background:linear-gradient(120deg,var(--brand-3)20%,var(--brand-2),var(--brand-3)80%);background-size:400% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 6s linear infinite}
+
+/* Brand Title: always shimmer + larger size */
+.brand-title{font-family:var(--display-font);font-size:clamp(52px,7vw,88px);font-weight:900;letter-spacing:.06em;text-transform:uppercase;background:linear-gradient(120deg,var(--brand-3)10%,var(--brand-2),var(--brand-3)90%);background-size:300% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 6s linear infinite;display:inline-block;background-color:transparent!important}
+
+/* Sticky Nav Links: shimmer on hover */
+.sticky-tabs .stab{color:#475467;position:relative;font-weight:800;transition:all .3s ease}
+.sticky-tabs .stab:hover{background:linear-gradient(120deg,var(--brand-3)10%,var(--brand-2),var(--brand-3)90%);background-size:300% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 6s linear infinite}
+
+/* Drawer (hamburger menu): shimmer on hover */
+.drawer-link:hover{background:linear-gradient(120deg,var(--brand-3)10%,var(--brand-2),var(--brand-3)90%);background-size:300% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 6s linear infinite;background-color:var(--surface);border:1px solid var(--line)}
+
+/* Buttons: shimmer on hover is defined above in .btn.brand:hover */
+
 /* =========================
    Responsive tweaks
    ========================= */
@@ -393,102 +280,4 @@ body.agegate--lock{overflow:hidden}
   .icon-btn{width:34px;height:28px}
   .pill{padding:3px 8px;min-width:64px;font-size:11px}
   .btn-order{padding:0 10px;font-size:13px;border-radius:10px}
-}
-
-/* Ensure header/menu always sit above embeds/iframes */
-.sticky-nav,.menu-popover,#menuOverlay{z-index:9999}
-#leafly-embed-wrapper, #leafly-embed-wrapper iframe{z-index:1}
-
-/* =========================
-   Green Labs – Foil Shimmer Effects
-   ========================= */
-
-/* Keyframes for shimmer animation */
-@keyframes shimmer {
-  0% {
-    background-position: -200%;
-  }
-  100% {
-    background-position: 200%;
-  }
-}
-
-/* Generic shimmer utility class */
-.shimmer-effect {
-  background: linear-gradient(120deg,
-    var(--brand-3) 20%,
-    var(--brand-2),
-    var(--brand-3) 80%);
-  background-size: 400% 100%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shimmer 6s linear infinite;
-}
-
-/* ========== Brand Title: always shimmer ========== */
-.brand-title {
-  font-family: var(--display-font);
-  font-size: clamp(44px, 6.8vw, 80px);
-  font-weight: 900;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  background: linear-gradient(120deg,
-    var(--brand-3) 10%,
-    var(--brand-2),
-    var(--brand-3) 90%);
-  background-size: 300% 100%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shimmer 6s linear infinite;
-  display: inline-block;
-  background-color: transparent !important; /* ⬅ fixes white box issue */
-}
-
-/* ========== Sticky Nav Links: shimmer on hover ========== */
-.sticky-tabs .stab {
-  color: #475467;
-  position: relative;
-  font-weight: 800;
-  transition: all 0.3s ease;
-}
-
-.sticky-tabs .stab:hover {
-  background: linear-gradient(120deg,
-    var(--brand-3) 10%,
-    var(--brand-2),
-    var(--brand-3) 90%);
-  background-size: 300% 100%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shimmer 6s linear infinite;
-}
-
-/* ========== Drawer (hamburger menu): shimmer on hover ========== */
-.drawer-link:hover {
-  background: linear-gradient(120deg, var(--brand-3) 10%, var(--brand-2), var(--brand-3) 90%);
-  background-size: 300% 100%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shimmer 6s linear infinite;
-  background-color: var(--surface); /* makes sure box is visible */
-  border: 1px solid var(--line); /* keep border intact */
-}
-
-/* ========== Buttons: shimmer on hover ========== */
-.btn.brand {
-  background: var(--brand);
-  border-color: var(--brand);
-  color: #fff;
-  font-weight: 800;
-}
-
-.btn.brand:hover {
-  background: linear-gradient(120deg,
-    var(--brand-3) 10%,
-    var(--brand-2),
-    var(--brand-3) 90%);
-  background-size: 300% 100%;
-  animation: shimmer 6s linear infinite;
-  color: #fff;
-  border-color: var(--brand-2);
 }
