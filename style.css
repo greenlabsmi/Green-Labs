@@ -281,3 +281,36 @@ body.agegate--lock{overflow:hidden}
   .pill{padding:3px 8px;min-width:64px;font-size:11px}
   .btn-order{padding:0 10px;font-size:13px;border-radius:10px}
 }
+
+/* ================================
+ 🎃 HALLOWEEN PROMO STYLES (TEMPORARY)
+ Add/remove this entire section easily.
+================================ */
+.deals-category[data-category="🎃 HALLOWEEN GRAND OPENING"] {
+  background: linear-gradient(135deg, #ff7b00 0%, #ffb733 100%);
+  color: #000;
+  border: 2px solid #000;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.deals-category[data-category="🎃 HALLOWEEN GRAND OPENING"] h2 {
+  font-family: "Cinzel", Georgia, serif;
+  color: #fff;
+  text-shadow: 2px 2px 4px #000;
+}
+
+.deals-category[data-category="🎃 HALLOWEEN GRAND OPENING"] li::before {
+  content: "🎃";
+  margin-right: 0.4rem;
+}
+
+/* 👻 Floating ghost animation */
+.ghost { ... }
+@keyframes floatGhost { ... }
+@keyframes fadeGhost { ... }
+/* ================================ */
+
