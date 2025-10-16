@@ -543,6 +543,18 @@
     })();
   });
 </script>
-  
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const halloweenSection = document.querySelector('[data-category="🎃 HALLOWEEN GRAND OPENING"]');
+    if (halloweenSection) {
+      for (let i = 0; i < 3; i++) {
+        const ghost = document.createElement('div');
+        ghost.classList.add('ghost');
+        halloweenSection.appendChild(ghost);
+      }
+    }
+  });
+</script>
+
 </body>
 </html>
