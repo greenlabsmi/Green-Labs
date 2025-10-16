@@ -1,62 +1,153 @@
 /* =========================
    Green Labs – Base Theme
    ========================= */
-:root{
-  --bg:#ffffff; --surface:#ffffff; --line:#e7e8ec; --ink:#111315; --muted:#667085;
-  --brand:#0B7D5A; --brand-2:#1A9E75; --brand-3:#056047; --deal-hue:#F0FFF7;
-  --radius:14px; --container:1080px; --nav-h:60px;
-  --display-font:"Cinzel", Georgia, serif; --ui-font:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", sans-serif;
+:root {
+  --ink: #111315;
+  --line: #e7e8ec;
+  --deal-hue: #F0FFF7;
+  --brand: #0B7D5A; /* Green Labs accent */
+  --nav-h: 60px;
 }
 
-/* Base */
-*{box-sizing:border-box}
-html,body{margin:0;padding:0;overflow-x:clip}
-body{font-family:var(--ui-font);color:var(--ink);background:var(--bg);line-height:1.5;-webkit-font-smoothing:antialiased}
-img{max-width:100%;display:block}
-a{color:inherit;text-decoration:none}
-.container{width:100%;max-width:var(--container);margin:0 auto;padding:0 16px}
-.center{text-align:center}
+body {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, Noto Sans;
+  -webkit-font-smoothing: antialiased;
+}
 
-/* =========================
-   Typography
-   ========================= */
-.section-title,h1,h2,h3,.stab{font-family:var(--display-font);font-weight:900;letter-spacing:.02em}
-.section-title{font-size:clamp(22px,2.6vw,32px);margin:0 0 12px}
-.section-title::after{content:"";display:block;width:64px;height:3px;margin:8px 0 0;border-radius:2px;background:var(--brand);opacity:.9}
+.section-title, h1, h2, h3, .stab {
+  font-family: "Cinzel", serif;
+  font-weight: 900;
+  letter-spacing: .02em;
+}
 
-/* =========================
-   Buttons & Pills
-   ========================= */
-.btn{display:inline-block;padding:12px 16px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-weight:700;transition:transform .06s ease, box-shadow .15s ease}
-.btn.small{padding:8px 12px;font-size:.9rem}
-.btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
-.btn.outline{background:#fff;border-color:var(--line)}
-.btn.brand{background:var(--brand);border-color:var(--brand);color:#fff;font-weight:800}
-.btn.brand:hover{background:linear-gradient(120deg,var(--brand-3)10%,var(--brand-2),var(--brand-3)90%);background-size:300% 100%;animation:shimmer 6s linear infinite;color:#fff;border-color:var(--brand-2)}
+/* === Brand Banner (Top) === */
+.brand-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 22px 12px;
+  background: #000; /* BLACK BACKGROUND */
+  border-bottom: none; /* Removes the gray line */
+}
 
-.pill{padding:4px 10px;border-radius:999px;border:1px solid var(--line);background:#fff;font-weight:800;min-width:72px;text-align:center;font-size:12px;line-height:1;box-shadow:0 1px 4px rgba(0,0,0,.06)} /* + subtle outline/shadow */
-.pill.state-open{color:#047857;background:#ECFDF3;border-color:rgba(4,120,87,.3)}
-.pill.state-soon{color:#B45309;background:#FFF7ED;border-color:#FED7AA}
-.pill.state-closed{color:#B91C1C;background:#FEF2F2;border-color:#FECACA}
+.brand-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--brand);
+  font-family: "Cinzel", serif;
+  font-weight: 900;
+  font-size: clamp(34px, 4.5vw, 52px); /* Larger logo text */
+  letter-spacing: .08em;
+}
 
-/* =========================
-   Header: Brand Banner
-   ========================= */
-.brand-banner{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;min-height:96px;padding:18px 20px;background:transparent;border-bottom:0;box-shadow:none} /* removed gray line/shadow */
-.brand-title{display:inline-block;padding:2px 6px}
+.brand-title img {
+  height: 56px;
+  width: auto;
+  display: block;
+}
 
-/* =========================
-   Sticky Nav
-   ========================= */
-.site-header.sticky-nav,.sticky-nav{position:sticky;top:0;z-index:3000;background:#EDEFEA;border-bottom:1px solid transparent; /* transparent to remove perceived line */ box-shadow:0 6px 18px rgba(16,24,40,.08)}
-.sticky-nav__inner{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h);gap:12px;padding:0 16px}
-.sticky-logo{display:flex;align-items:center;gap:8px;flex:0 0 auto}
-.sticky-logo img{height:48px;width:auto;max-height:calc(var(--nav-h) - 8px)}
-.sticky-brand-name{font-family:var(--display-font);font-weight:900;letter-spacing:.08em;font-size:1.4rem} /* bigger brand text */
-.sticky-tabs{flex:1;display:flex;align-items:center;justify-content:center;gap:20px;list-style:none;margin:0;padding:0;white-space:nowrap}
-.sticky-tabs .stab{color:#475467;transition:color .15s ease;font-size:1.05rem;font-weight:800} /* bigger tab text */
-.sticky-tabs .stab:hover{color:var(--ink);background:linear-gradient(120deg,var(--brand-3)10%,var(--brand-2),var(--brand-3)90%);background-size:300% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 6s linear infinite}
-.sticky-actions{flex:0 0 auto;display:flex;align-items:center;gap:12px}
+.brand-title .word {
+  font-size: clamp(34px, 4.5vw, 52px);
+  font-weight: 900;
+  letter-spacing: .08em;
+}
+
+/* === Sticky Navigation === */
+.sticky-nav {
+  position: sticky;
+  top: 0;
+  z-index: 2000;
+  background: #000; /* Black background behind nav as well */
+  border-bottom: none;
+}
+
+.sticky-nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+}
+
+/* Brand Logo in Nav */
+.sticky-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--brand);
+  text-decoration: none;
+}
+
+.sticky-logo img {
+  height: 38px; /* Larger logo image */
+  width: auto;
+}
+
+.sticky-logo strong {
+  font-size: 1.75rem; /* Bigger nav logo text */
+  letter-spacing: .05em;
+}
+
+/* Nav Links */
+.sticky-tabs {
+  display: flex;
+  gap: 36px; /* Increased spacing between nav links */
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sticky-tabs a {
+  font-size: 1.25rem; /* Larger font for nav links */
+  color: #fff; /* White text for contrast on black */
+  text-decoration: none;
+  font-weight: 600;
+  transition: opacity 0.25s ease;
+}
+
+.sticky-tabs a:hover {
+  opacity: 0.7;
+}
+
+/* Order button */
+.btn-order {
+  background: var(--brand);
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.btn-order:hover {
+  background: #1A9E75;
+}
+
+/* Icon buttons next to Order */
+.icon-btn svg {
+  stroke: white;
+}
+
+/* Responsive Nav */
+@media (max-width: 768px) {
+  .sticky-tabs {
+    gap: 20px;
+  }
+
+  .sticky-tabs a {
+    font-size: 1rem;
+  }
+
+  .sticky-logo strong {
+    font-size: 1.4rem;
+  }
+
+  .brand-title {
+    font-size: 2rem;
+  }
+}
 
 /* Icon buttons + Order button unified height */
 .icon-btn,.btn-order{height:32px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);font-weight:800;line-height:1}
