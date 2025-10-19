@@ -30,17 +30,6 @@ body {
   border-bottom: none; /* Removes the gray line */
 }
 
-.brand-title {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: var(--brand);
-  font-family: "Cinzel", serif;
-  font-weight: 900;
-  font-size: clamp(34px, 4.5vw, 52px); /* Larger logo text */
-  letter-spacing: .08em;
-}
-
 .brand-title img {
   height: 56px;
   width: auto;
