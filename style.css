@@ -458,3 +458,8 @@ body.agegate--lock{overflow:hidden}
   0%   { background-position: 0% 50%; }
   100% { background-position: 100% 50%; }
 }
+
+.brand-banner {
+  height: auto !important;
+  min-height: unset;
+}
