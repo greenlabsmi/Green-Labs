@@ -57,57 +57,62 @@ a{color:inherit;text-decoration:none}
    Header / Brand Banner
 ========================= */
 /* =========================
-   Brand Banner — Green Labs (Final Styled)
-========================= */
+   BRAND BANNER — Green Labs
+   ========================= */
 .brand-banner {
   display: flex;
-  align-items: center;
   justify-content: center;
-  padding: 0.4em 0;
+  align-items: center;
+  padding: 0.3em 0;
   background: #000;
-  border-bottom: none;
   position: relative;
   overflow: hidden;
+  z-index: 1000;
 }
 
-/* Soft ambient glow behind text */
+/* Soft ambient green glow */
 .brand-banner::before {
   content: "";
   position: absolute;
   inset: 0;
   background: radial-gradient(circle at center, #00a56f44 0%, transparent 70%);
   filter: blur(40px);
-  opacity: 0.5;
+  opacity: 0.6;
   animation: glowPulse 6s ease-in-out infinite;
   z-index: 0;
 }
 
+/* Animated gradient shimmer text */
 .brand-title {
   position: relative;
+  z-index: 1;
   font-family: "Cinzel", serif;
   font-weight: 900;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  line-height: 1.05;
   text-align: center;
+  line-height: 1;
+  font-size: clamp(48px, 10vw, 120px);
 
-  font-size: clamp(48px, 10vw, 120px);   /* ✅ sweet spot */
-  background: linear-gradient(
-    90deg,
-    #00a56f 0%,
-    #2ef8bb 50%,
-    #00a56f 100%
-  );
+  background: linear-gradient(90deg, #00a56f 0%, #2ef8bb 50%, #00a56f 100%);
   background-size: 300% 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
-  animation:
-    shimmerBanner 8s linear infinite,
-    fadeInUp 1.2s ease-out both;
+  animation: shimmerBanner 8s linear infinite, fadeInUp 1.2s ease-out both;
+  transition: filter .3s ease, letter-spacing .3s ease;
 }
 
-/* shimmer + entrance */
+/* Hover makes the shimmer faster & brighter */
+.brand-banner:hover .brand-title {
+  animation-duration: 4s;
+  filter: brightness(1.3);
+  letter-spacing: 0.1em;
+}
+
+/* =========================
+   Keyframes
+========================= */
 @keyframes shimmerBanner {
   0% { background-position: 0% 50%; }
   100% { background-position: 100% 50%; }
@@ -119,16 +124,20 @@ a{color:inherit;text-decoration:none}
 }
 
 @keyframes glowPulse {
-  0%, 100% { opacity: 0.5 }
-  50% { opacity: 0.8 }
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.9; }
 }
 
-/* Optional hover boost */
-.brand-banner:hover .brand-title {
-  animation-duration: 3s;
-  filter: brightness(1.2);
-  letter-spacing: 0.1em;
+/* =========================
+   Responsive Adjustments
+========================= */
+@media (max-width: 400px) {
+  .brand-title {
+    font-size: clamp(36px, 8vw, 80px);
+    letter-spacing: 0.05em;
+  }
 }
+
 
 /* =========================
    Sticky Navigation
