@@ -53,38 +53,6 @@
       letter-spacing:.02em;
     }
 
-    /* ===== Brand banner (solid black) ===== */
-    .brand-banner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.2em 0;
-  background: #000;
-  border-bottom: 0;
-}
-
-.brand-title {
-  font-family: "Cinzel", serif;
-  font-weight: 900;
-  letter-spacing: .08em;
-  font-size: clamp(80px, 16vw, 200px);  /* 👈 BIGGER */
-  line-height: 1;
-  text-transform: uppercase;
-  background: linear-gradient(90deg, #00a56f 0%, #2ef8bb 50%, #00a56f 100%);
-  background-size: 300% 100%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shimmerBanner 8s linear infinite;
-  margin: 0;
-  padding: 0;
-}
-
-@keyframes shimmerBanner {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
-}
-
-
     /* ===== Sticky nav ===== */
     .sticky-nav{position:sticky;top:0;z-index:3000;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 6px 18px rgba(16,24,40,.08)}
     .sticky-nav__inner{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h);gap:12px}
