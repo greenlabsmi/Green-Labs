@@ -416,38 +416,3 @@ body.agegate--lock{overflow:hidden}
   0%, 100% { opacity: 0; }
   20%, 80% { opacity: 0.8; }
 }
-
-/* =========================
-   Brand Banner (Green Labs)
-   ========================= */
-.brand-banner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #000; /* solid black background */
-  padding: 22px 12px;
-  border-bottom: none;
-}
-
-.brand-title {
-  font-family: "Cinzel", serif;
-  font-weight: 900;
-  font-size: clamp(48px, 8vw, 72px);
-  letter-spacing: 0.02em;
-  background: linear-gradient(
-    90deg,
-    #00a56f,
-    #2ef8bb,
-    #00a56f,
-    #2ef8bb
-  );
-  background-size: 300% 100%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shimmer 8s linear infinite;
-}
-
-@keyframes shimmer {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
-}
