@@ -57,46 +57,77 @@ a{color:inherit;text-decoration:none}
    Header / Brand Banner
 ========================= */
 /* =========================
-   Brand Banner (Green Labs)
+   Brand Banner — Green Labs (Final Styled)
 ========================= */
 .brand-banner {
   display: flex;
-  justify-content: center;
   align-items: center;
-  background: #000;                /* solid black background */
-  padding: 0.4em 0;               /* scales with font size */
+  justify-content: center;
+  padding: 0.4em 0;
+  background: #000;
   border-bottom: none;
-  min-height: auto;               /* removes extra reserved height */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Soft ambient glow behind text */
+.brand-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, #00a56f44 0%, transparent 70%);
+  filter: blur(40px);
+  opacity: 0.5;
+  animation: glowPulse 6s ease-in-out infinite;
+  z-index: 0;
 }
 
 .brand-title {
+  position: relative;
   font-family: "Cinzel", serif;
   font-weight: 900;
-  font-size: clamp(64px, 12vw, 120px);  /* grows bigger on large screens */
-  line-height: 1;                        /* tight vertical spacing */
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  line-height: 1.05;
+  text-align: center;
 
+  font-size: clamp(48px, 10vw, 120px);   /* ✅ sweet spot */
   background: linear-gradient(
     90deg,
     #00a56f 0%,
-    #2ef8bb 25%,
-    #00a56f 50%,
-    #2ef8bb 75%,
+    #2ef8bb 50%,
     #00a56f 100%
   );
   background-size: 300% 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: shimmer 8s linear infinite;
 
-  margin: 0;       /* ensures no default h1 spacing */
-  padding: 0;      /* keeps banner tight */
+  animation:
+    shimmerBanner 8s linear infinite,
+    fadeInUp 1.2s ease-out both;
 }
 
-@keyframes shimmer {
-  0%   { background-position: 0% 50%; }
+/* shimmer + entrance */
+@keyframes shimmerBanner {
+  0% { background-position: 0% 50%; }
   100% { background-position: 100% 50%; }
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(25px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.5 }
+  50% { opacity: 0.8 }
+}
+
+/* Optional hover boost */
+.brand-banner:hover .brand-title {
+  animation-duration: 3s;
+  filter: brightness(1.2);
+  letter-spacing: 0.1em;
 }
 
 /* =========================
