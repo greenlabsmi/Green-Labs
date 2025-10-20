@@ -56,27 +56,31 @@ a{color:inherit;text-decoration:none}
 /* =========================
    Header / Brand Banner
 ========================= */
-/* ===== Brand Banner ===== */
+/* =========================
+   Brand Banner (Green Labs)
+========================= */
 .brand-banner {
   display: flex;
-  align-items: center;
   justify-content: center;
-  background: #000;
-  padding: 22px 12px;
+  align-items: center;
+  background: #000;              /* solid black background */
+  padding: 26px 12px;
   border-bottom: none;
 }
 
 .brand-title {
   font-family: "Cinzel", serif;
   font-weight: 900;
-  font-size: clamp(52px, 7vw, 90px); /* Big like Dutch Republic */
+  font-size: clamp(58px, 9vw, 90px); /* large like Dutch Republic */
   letter-spacing: 0.08em;
+  text-transform: uppercase;
   background: linear-gradient(
     90deg,
-    #00a56f,
-    #2ef8bb,
-    #00a56f,
-    #2ef8bb
+    #00a56f 0%,
+    #2ef8bb 25%,
+    #00a56f 50%,
+    #2ef8bb 75%,
+    #00a56f 100%
   );
   background-size: 300% 100%;
   -webkit-background-clip: text;
@@ -85,10 +89,9 @@ a{color:inherit;text-decoration:none}
 }
 
 @keyframes shimmer {
-  0% { background-position: 0% 50%; }
+  0%   { background-position: 0% 50%; }
   100% { background-position: 100% 50%; }
 }
-
 
 /* =========================
    Sticky Navigation
