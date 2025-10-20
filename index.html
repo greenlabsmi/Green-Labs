@@ -4,8 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="format-detection" content="address=no">
-
-  <title>Green Labs • Premium Cannabis, powered by Dutch Touch Genetics</title>
+  <title>Green Labs • Premium cannabis, powered by Dutch Touch Genetics</title>
   <meta name="description" content="Green Labs — premium cannabis and the full Dutch Touch Genetics lineup." />
   <meta name="theme-color" content="#0B7D5A" />
   <meta property="og:title" content="Green Labs • Premium Cannabis, powered by Dutch Touch Genetics">
@@ -13,58 +12,251 @@
   <meta property="og:image" content="assets/img/greenlabs-logo.png">
   <meta property="og:type" content="website">
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-
-  <!-- Icons (social) -->
+  <!-- Fonts + Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <!-- Favicons -->
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon.png">
-  <link rel="apple-touch-icon" href="assets/img/favicon.png">
+  <style>
+    /* =========================
+       Green Labs — Dutch Republic structure
+       (self-contained CSS so the page renders consistently)
+       ========================= */
+    :root{
+      --bg:#ffffff;
+      --surface:#ffffff;
+      --line:#e7e8ec;
+      --ink:#111315;
+      --muted:#667085;
+      --brand:#0B7D5A;          /* Green Labs green */
+      --brand-2:#1A9E75;
+      --deal-hue:#F0FFF7;       /* pale green panels */
+      --gold:#D47B19;           /* accent used in small bits */
+      --container:1080px;
+      --radius:14px;
+      --nav-h:60px;
+      --strip-h:0px;
+    }
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="style.css?v=gl-003" />
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", sans-serif;
+      color:var(--ink); background:var(--bg); line-height:1.5; -webkit-font-smoothing:antialiased;
+    }
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    .container{width:100%;max-width:var(--container);margin:0 auto;padding:0 16px}
+
+    .section-title, h1, h2, h3, .stab{
+      font-family:"Cinzel", serif;
+      font-weight:900;
+      letter-spacing:.02em;
+    }
+
+    /* ===== Brand banner (solid black) ===== */
+    .brand-banner{display:flex;align-items:center;justify-content:center;padding:22px 12px;background:#000;border-bottom:0}
+    .brand-title{font-weight:900;letter-spacing:.08em;color:#00c48a}
+    .brand-title{font-size:clamp(34px,4.5vw,52px)}
+    .brand-title::selection{background:#00c48a33}
+
+    /* ===== Sticky nav ===== */
+    .sticky-nav{position:sticky;top:0;z-index:3000;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 6px 18px rgba(16,24,40,.08)}
+    .sticky-nav__inner{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h);gap:12px}
+    .sticky-logo{display:inline-flex;align-items:center;gap:10px;color:var(--brand)}
+    .sticky-logo img{height:40px;width:auto}
+    .sticky-brand-name{font-family:"Cinzel",serif;font-size:1.1rem;letter-spacing:.3px}
+
+    .sticky-tabs{display:flex;align-items:center;justify-content:center;gap:24px;flex:0 0 auto;white-space:nowrap;list-style:none;margin:0;padding:0}
+    .sticky-tabs .stab{font-weight:800;letter-spacing:.02em;color:#475467}
+    .sticky-tabs .stab:hover{color:var(--ink)}
+    .sticky-tabs,.sticky-tabs li,.sticky-tabs .stab{list-style:none}
+    .sticky-tabs .stab::before,.sticky-tabs .stab::after{content:none}
+
+    .sticky-actions{display:flex;align-items:center;gap:10px}
+    .icon-btn,.btn-order{height:32px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);font-weight:800;line-height:1}
+    .icon-btn{width:38px}
+    .btn-order{padding:0 12px;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+    .btn-order:hover{box-shadow:0 6px 14px rgba(0,0,0,.14)}
+    .label-desktop{display:none}.label-mobile{display:inline}
+    @media(min-width:901px){.label-desktop{display:inline}.label-mobile{display:none}}
+
+    /* Mobile nav trims */
+    @media(max-width:900px){
+      .sticky-brand-name{display:none}
+      .sticky-tabs{display:none !important}
+      :root{ --strip-h: 32px; }
+    }
+
+    /* ===== Mobile status strip ===== */
+    #statusStrip{display:none}
+    @media(max-width:900px){
+      #statusStrip{position:sticky;top:var(--nav-h);z-index:59;display:flex;align-items:center;gap:8px;height:32px;padding:0 10px;background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);box-shadow:0 4px 10px rgba(16,24,40,.06);color:#1f2937;font-weight:800}
+      .status-dot{width:12px;height:12px;border-radius:999px;background:#a3a3a3;border:1px solid rgba(0,0,0,.18)}
+      .status-dot.is-open{background:#16a34a;border-color:#0f622f}
+      .status-dot.is-soon{background:#f59e0b;border-color:#b45309}
+      .status-dot.is-closed{background:#ef4444;border-color:#991b1b}
+      .status-text{font-size:13px}
+      .status-addr{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;user-select:none;pointer-events:none;font-size:13px}
+    }
+
+    /* ===== Tooltips & popovers ===== */
+    .tooltip{position:absolute;z-index:70;padding:6px 8px;font-size:12px;font-weight:700;color:#111315;background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:0 8px 24px rgba(16,24,40,.08)}
+    .tooltip[hidden]{display:none}
+    .hours-overlay{position:fixed;inset:0;z-index:60;background:transparent}
+    .hours-popover{position:fixed;z-index:61;right:16px;width:320px;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 18px 40px rgba(16,24,40,.12);padding:12px}
+    .hours-list{list-style:none;margin:0;padding:0}
+    .hours-list li{display:flex;justify-content:space-between;padding:6px 2px;font-weight:600}
+    .hours-list li.is-today{color:#111315}
+    .hours-note{color:var(--muted);font-size:.9rem;margin-top:6px}
+    .note-address{display:inline-block;font-weight:600;font-size:.82rem;color:#2563eb;text-decoration:underline}
+    .note-address:hover{color:#1e40af}
+
+    /* ===== Hero (carousel) ===== */
+    .hero{position:relative;background:#000}
+    .hero .slides{position:relative;display:block;overflow:hidden;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.10);background:#000;aspect-ratio:16/7}
+    .hero .slide{position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .45s ease;will-change:opacity}
+    .hero .slide.is-active{opacity:1;pointer-events:auto}
+    .hero .slide img{width:100%;height:100%;object-fit:cover}
+    .hero .dots{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);display:flex;gap:10px;z-index:5;margin:0}
+    .hero .dots button{width:10px;height:10px;border-radius:50%;border:1px solid rgba(255,255,255,.6);background:rgba(255,255,255,.35);opacity:.75}
+    .hero .dots button[aria-current="true"]{background:#fff;border-color:#fff;opacity:1}
+    .hero .edge{position:absolute;top:0;bottom:0;width:12%;border:0;background:transparent;cursor:pointer;z-index:6;opacity:0}
+    @media(hover:hover){
+      .hero .slides:hover .edge.edge--prev{opacity:.08;background:linear-gradient(to right, rgba(0,0,0,.25), rgba(0,0,0,0))}
+      .hero .slides:hover .edge.edge--next{opacity:.08;background:linear-gradient(to left, rgba(0,0,0,.25), rgba(0,0,0,0))}
+    }
+    @media(min-width:900px){
+      .hero{padding:24px 0;background:transparent}
+      .hero-container{max-width:1200px;margin:0 auto;padding:20px;border-radius:18px}
+      #hero-slides{border-radius:14px;overflow:hidden;background:#000;aspect-ratio:16/6;max-height:560px;width:100%}
+      .hero .dots{bottom:18px}
+      .hero .edge{width:8%;border-radius:14px}
+    }
+
+    /* ===== Deals ===== */
+    .deals-section{margin:18px 0}
+    .deal-card{background:#fff;border:2px solid #000;border-radius:16px;overflow:hidden;cursor:pointer;transition:box-shadow .22s ease, transform .22s ease}
+    .deal-card[aria-expanded="true"]{position:relative;z-index:2;transform:translateY(-2px);box-shadow:0 14px 36px rgba(0,0,0,.35),0 4px 10px rgba(0,0,0,.18)}
+    .deal-head{display:grid;grid-template-columns:1fr auto;align-items:center;padding:12px 16px;background:var(--deal-hue);border-bottom:1px solid var(--line)}
+    .deal-title{justify-self:center;font-weight:900;color:#2B2F33}
+    .chev{transition:transform .2s ease;color:#6b7280}
+    .deal-card[aria-expanded="true"] .chev{transform:rotate(180deg)}
+    .deal-body{padding:12px 16px;background:var(--deal-hue);position:relative;border-top:2px solid #000;border-bottom-left-radius:16px;border-bottom-right-radius:16px}
+    .deal-body.collapsed{max-height:168px;overflow:hidden}
+    .deal-body.collapsed::after{content:"";position:absolute;left:0;right:0;bottom:0;height:28px;background:linear-gradient(to bottom, rgba(255,255,255,0), var(--deal-hue))}
+    .deal-cat{border-top:1px solid var(--line);padding-top:12px;margin-top:12px}
+    .deal-cat-title{font-family:"Cinzel",serif;font-weight:700;letter-spacing:.5px;font-size:1.02rem;background:#fff;padding:8px 10px;border-radius:10px;margin-bottom:8px;color:var(--ink);border:1px solid var(--line)}
+    .deal-subgroup{margin:8px 0 12px}
+    .deal-subtitle{font-weight:700;font-size:.96rem;color:var(--ink);margin:6px 0 4px}
+    .deal-items{margin:0 0 0 1rem;padding-left:0}
+    .deal-items li{margin:4px 0;line-height:1.45}
+    .deal-note{margin-top:10px;font-size:.85rem;color:var(--muted)}
+    .deal-actions{text-align:center;margin-top:10px}
+
+    /* ===== Menu embed + CTA ===== */
+    #menu{padding:24px 0;scroll-margin-top:calc(var(--nav-h) + 8px)}
+    #leafly-embed-wrapper{position:relative;z-index:1}
+    .cta-shop{padding:24px 0 10px;background:#fff;text-align:center}
+    .btn-giant{display:inline-block;padding:22px 44px;font-size:clamp(1.25rem,2.5vw,2rem);font-weight:900;letter-spacing:.02em;border-radius:16px;background:#fff;color:#111315;border:3px solid #000;box-shadow:0 10px 26px rgba(0,0,0,.18);transition:transform .12s, box-shadow .12s, color .12s}
+    .btn-giant:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(0,0,0,.22);color:var(--brand)}
+
+    /* ===== Awards rail ===== */
+    .dtg-awards{background:var(--deal-hue);border-top:1px solid var(--line);padding:28px 0}
+    .dtgA-sub{text-align:center;color:var(--muted);margin:0 0 12px;font-size:1.05rem;font-weight:500}
+    .dtgA-rail{display:flex;gap:14px;overflow-x:auto;padding:10px 6px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+    .dtgA-rail::-webkit-scrollbar{display:none}
+    .dtgA-card{position:relative;flex:0 0 240px;max-width:240px;height:340px;display:flex;flex-direction:column;background:#fff;border:1px solid #e6f5ef;border-radius:14px;overflow:hidden;scroll-snap-align:start;box-shadow:0 2px 6px rgba(0,0,0,.08);transition:transform .15s ease, box-shadow .15s ease}
+    .dtgA-card:hover{transform:translateY(-2px);box-shadow:0 6px 14px rgba(0,0,0,.12)}
+    .dtgA-card img{width:100%;height:140px;object-fit:cover}
+    .dtgA-tag{position:absolute;top:10px;left:10px;background:var(--brand);color:#fff;font-weight:800;padding:3px 8px;border-radius:10px;font-size:.8rem;box-shadow:0 2px 6px rgba(0,0,0,.18)}
+    .dtgA-body{display:flex;flex-direction:column;gap:6px;padding:10px 12px 12px;min-height:0}
+    .dtgA-title{font-weight:900;font-size:1rem;margin:0}
+    .dtgA-meta{margin:0;color:var(--muted);font-size:.85rem;font-weight:700}
+    .dtgA-blurb{margin:0;font-size:.9rem;line-height:1.35;color:var(--ink);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+    .dtgA-link{margin-top:auto;align-self:flex-start;font-weight:800;border-bottom:2px solid var(--brand);padding-bottom:1px}
+    .dtgA-arrows{display:flex;justify-content:flex-end;gap:8px;margin-top:10px}
+    .dtgA-btn{height:32px;width:32px;border-radius:10px;border:1px solid var(--line);background:#eaffe9;font-weight:800;line-height:1;cursor:pointer}
+    .dtgA-btn:active{transform:translateY(1px)}
+    @media(max-width:420px){.dtgA-card{flex-basis:280px;max-width:280px}}
+
+    /* ===== About (simple centered) ===== */
+    .about-section{padding:56px 0;background:#fff;border-top:1px solid var(--line)}
+    .about-section p{max-width:72ch;margin:0 auto 14px;line-height:1.6}
+
+    /* ===== Loyalty ===== */
+    .loyalty-section{background:var(--deal-hue);padding:40px 0}
+    .loy-flex{display:flex;flex-wrap:wrap;gap:24px;align-items:stretch;justify-content:center}
+    .loy-info,.loy-embed-wrap{flex:1 1 380px;max-width:500px}
+    .loy-info{font-size:.95rem;line-height:1.6;color:var(--ink);background:#fff;border:2px solid #000;border-radius:12px;padding:20px 24px;box-shadow:0 4px 12px rgba(0,0,0,.06)}
+    .loy-info h3{margin-top:0;font-size:1.25rem;color:var(--brand)}
+    .loy-embed-frame{width:100%;height:600px;border:2px solid #000;border-radius:12px;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.08);display:block}
+    @media (max-width:700px){.loy-info{font-size:.85rem}.loy-embed-frame{height:680px}}
+
+    /* ===== Contact ===== */
+    .contact{padding:28px 0;border-top:1px solid var(--line);background:#fff}
+    .contact-wrap{display:grid;gap:20px;grid-template-columns:1fr}
+    @media(min-width:900px){.contact-wrap{grid-template-columns:1fr 1fr}}
+    .map-card{background:var(--deal-hue);border:1px solid #e6e6d9;border-radius:16px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,.06);padding:10px}
+    .map-link{position:relative;display:block;line-height:0;border-radius:12px;overflow:hidden}
+    .map-pin{position:absolute;right:10px;bottom:10px;background:#111315;color:#fff;padding:6px 8px;border-radius:999px;font-weight:800}
+    .map-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px;background:#fff;border:1px solid var(--line);border-radius:12px;margin-top:10px}
+    .contact-list{list-style:none;padding:10px 12px;margin:10px 0 0;background:#fff;border:1px solid var(--line);border-radius:12px}
+    .contact-item{margin:6px 0}
+    .icon-row{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+    .icon-row a{font-size:1.4rem;line-height:1;display:inline-flex;align-items:center;gap:6px;transition:color .25s ease, transform .1s ease}
+    .icon-row a:hover{color:var(--brand)}
+    .icon-row a:active{transform:scale(.96)}
+
+    /* ===== Footer ===== */
+    .site-footer{border-top:1px solid var(--line);background:#fff;margin-top:40px}
+    .footer-row{max-width:var(--container);margin:0 auto;padding:24px 16px 40px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+    .footer-copy{color:var(--muted);font-size:.95rem}
+
+    /* Hash offset */
+    .hash-offset,.hash-anchor{scroll-margin-top:calc(var(--nav-h) + var(--strip-h))}
+    .hash-anchor{height:0;line-height:0}
+  </style>
 </head>
 <body>
 
-<!-- =========================
-     Top Banner
-========================= -->
-<header class="brand-banner" id="home">
-  <h1 class="brand-title">🌿 GREEN LABS</h1>
+<!-- ===== Brand banner ===== -->
+<header class="brand-banner" role="banner">
+  <h1 class="visually-hidden">Green Labs — Premium Cannabis powered by Dutch Touch Genetics</h1>
+  <div class="brand-title">GREEN LABS</div>
 </header>
 
-<!-- =========================
-     Sticky Navigation
-========================= -->
+<!-- ===== Sticky nav ===== -->
 <header class="site-header sticky-nav">
   <div class="container sticky-nav__inner">
-    <!-- Logo -->
-    <a class="sticky-logo" href="#home" aria-label="Green Labs">
-      <img class="brand-lion" src="assets/img/greenlabs-logo.png" alt="Green Labs Logo">
+    <a class="sticky-logo" href="#home" aria-label="Home">
+      <img src="assets/img/greenlabs-logo.png" alt="Green Labs" />
       <strong class="sticky-brand-name">Green Labs</strong>
     </a>
 
-    <!-- Tabs -->
-    <ul class="sticky-tabs site-nav nav-links" aria-label="Primary">
+    <ul class="sticky-tabs" aria-label="Primary">
       <li><a class="stab" href="#home">Home</a></li>
       <li><a class="stab" href="#deals">Deals</a></li>
-      <li><a class="stab" href="#dtg"><span class="label-desktop">Dutch Touch Genetics</span><span class="label-mobile">DTG</span></a></li>
+      <li><a class="stab" href="#dtg"><span class="label-desktop">Dutch Touch Genetics</span><span class="label-mobile">Dutch Touch</span></a></li>
       <li><a class="stab" href="#contact">Contact</a></li>
     </ul>
 
-    <!-- Actions -->
     <div class="sticky-actions">
-      <a class="btn btn-order" href="#menu">Order Online</a>
-      <a class="icon-btn" href="#menu" aria-label="Search products">
+      <a class="btn-order" href="#menu" aria-label="Order online">
+        <span class="label-desktop">Order Online</span>
+        <span class="label-mobile">Order</span>
+      </a>
+
+      <a class="icon-btn" href="#menu" aria-label="Search products" title="Search">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"></circle>
           <path d="M20 20l-3.2-3.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
         </svg>
       </a>
+
       <button id="hoursBtn" class="pill" aria-expanded="false" type="button" title="Store hours">OPEN</button>
-      <button class="icon-btn" data-open-menu aria-label="Menu">
+      <span id="hoursTip" class="tooltip" hidden>Store hours</span>
+
+      <button class="icon-btn" data-open-menu aria-label="Menu" title="Menu">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
         </svg>
@@ -73,11 +265,11 @@
   </div>
 </header>
 
-<!-- MOBILE status strip -->
+<!-- Mobile status strip -->
 <div id="statusStrip" class="status-strip" role="button" aria-label="Store status">
   <span class="status-dot" aria-hidden="true"></span>
   <span class="status-text" id="statusText">Store status</span>
-  <span id="statusAddr" class="status-addr">Green Labs • Michigan</span>
+  <span id="statusAddr" class="status-addr">10701 Madison St, Luna Pier, MI 48157</span>
 </div>
 
 <!-- Hours popover -->
@@ -87,7 +279,7 @@
   <div class="hours-note" id="hoursNote"></div>
 </div>
 
-<!-- Mobile Drawer Menu -->
+<!-- Menu popover -->
 <div id="menuOverlay" class="menu-overlay" hidden></div>
 <aside id="navDrawer" class="menu-popover" role="dialog" aria-modal="false" hidden>
   <nav class="menu-list" aria-label="Site">
@@ -99,184 +291,222 @@
   </nav>
 </aside>
 
-<main>
+<main id="home">
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-container">
+      <div id="hero-slides" class="slides" data-carousel data-autoplay="6000">
+        <button class="edge edge--prev" aria-label="Previous"></button>
+        <button class="edge edge--next" aria-label="Next"></button>
 
-<!-- =========================
-     Hero
-========================= -->
-<section class="hero">
-  <div class="hero-container">
-    <div id="hero-slides" class="slides" data-carousel data-autoplay="6000">
-      <button class="edge edge--prev" aria-label="Previous"></button>
-      <button class="edge edge--next" aria-label="Next"></button>
+        <!-- Replace these with your actual images -->
+        <div class="slide is-active"><img src="carousel-1.png" alt=""></div>
+        <div class="slide"><img src="carousel-2.png" alt=""></div>
+        <div class="slide"><img src="carousel-3.png" alt=""></div>
 
-      <div class="slide is-active"><img src="carousel-1.png" alt="Green Labs hero 1"></div>
-      <div class="slide"><img src="carousel-2.png" alt="Green Labs hero 2"></div>
-      <div class="slide"><img src="carousel-3.png" alt="Green Labs hero 3"></div>
-
-      <div class="dots" aria-label="Slide navigation"></div>
-    </div>
-  </div>
-</section>
-
-<!-- =========================
-     Today’s Deals
-========================= -->
-<section id="deals" class="deals-section">
-  <div class="container">
-    <div class="deal-card" role="button" tabindex="0" aria-expanded="false" aria-controls="dealBody">
-      <div class="deal-head">
-        <div class="deal-title">Today’s Deals</div>
-        <span class="chev" aria-hidden="true">▾</span>
+        <div class="dots" aria-label="Slide navigation"></div>
       </div>
+    </div>
+  </section>
 
-      <div id="dealBody" class="deal-body collapsed">
-        <ul class="deal-list" id="dealList"></ul>
-        <div class="deal-actions">
-          <button id="closeDeals" class="btn outline">Close deals</button>
+  <!-- Today’s Deals -->
+  <section id="deals" class="deals-section">
+    <div class="container">
+      <div class="deal-card" role="button" tabindex="0" aria-expanded="false" aria-controls="dealBody">
+        <div class="deal-head">
+          <div class="deal-title">Today’s Deals</div>
+          <span class="chev" aria-hidden="true">▾</span>
+        </div>
+        <div id="dealBody" class="deal-body collapsed">
+          <ul class="deal-list" id="dealList"></ul>
+          <div class="deal-actions">
+            <button id="closeDeals" class="btn outline">Close deals</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- =========================
-     Leafly Embed
-========================= -->
-<section id="menu" class="menu-embed" hidden>
-  <div class="container">
-    <h2 class="section-title">Shop Our Menu</h2>
-  </div>
-  <div id="leafly-embed-wrapper"></div>
-</section>
-
-<!-- =========================
-     Trophy Case
-========================= -->
-<div id="dtg" class="hash-anchor" aria-hidden="true"></div>
-<section id="trophy" class="dtg-awards">
-  <div class="container">
-    <h2 class="section-title">Trophy Case</h2>
-    <p class="dtgA-sub">Award-Winning Cannabis — Scroll to explore ⇢</p>
-    <div class="dtgA-rail" id="dtgAwardsRail" tabindex="0">
-      <!-- Example Award Card -->
-      <article class="dtgA-card">
-        <div class="dtgA-tag">🥇 1st</div>
-        <img src="img/awards-mrclean.jpg" alt="Mr. Clean">
-        <div class="dtgA-body">
-          <h3 class="dtgA-title">Mr. Clean</h3>
-          <p class="dtgA-meta">High Times — Sativa</p>
-          <p class="dtgA-blurb">Award-winning energizing strain.</p>
-          <a class="dtgA-link" href="#" target="_blank">Details</a>
-        </div>
-      </article>
-      <!-- Add more awards here -->
+  <!-- Embedded Menu (Leafly) -->
+  <section id="menu" class="menu-embed" hidden>
+    <div class="container">
+      <h2 class="section-title">Shop Our Menu</h2>
     </div>
-    <div class="dtgA-arrows">
-      <button class="dtgA-btn dtgA-left" type="button" aria-label="Scroll left">◂</button>
-      <button class="dtgA-btn dtgA-right" type="button" aria-label="Scroll right">▸</button>
-    </div>
-  </div>
-</section>
+    <div id="leafly-embed-wrapper" style="width:100%;min-height:70vh;"></div>
+  </section>
 
-<!-- =========================
-     About
-========================= -->
-<section id="about" class="about-section hash-offset">
-  <div class="container">
-    <h2 class="section-title">Green Labs</h2>
-    <p>
-      Welcome to <strong>Green Labs</strong>, powered by the award-winning <strong>Dutch Touch Genetics</strong>.
-      From precision cultivation to top-shelf products, our team brings Michigan a curated lineup of flower, concentrates,
-      edibles, and more — including winners like <em>Mr. Clean (High Times 1st Place)</em>.
-    </p>
-    <div class="video-embed">
-      <iframe
-        src="https://player.vimeo.com/video/910591207"
-        title="Dutch Touch Genetics / Green Labs"
-        allow="autoplay; fullscreen; picture-in-picture"
-        allowfullscreen
-        loading="lazy"
-        style="width:100%;aspect-ratio:16/9;border:0;border-radius:12px">
-      </iframe>
+  <!-- Giant Shop Online CTA -->
+  <section id="shop" class="cta-shop">
+    <div class="container">
+      <a class="btn-giant" href="#menu"><span>SHOP ONLINE</span></a>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- =========================
-     Loyalty
-========================= -->
-<section id="loyalty" class="loyalty-section">
-  <div class="container">
-    <h2 class="section-title">Green Labs Loyalty</h2>
-    <div class="loy-flex">
-      <div class="loy-info">
-        <h3>Join Our Rewards</h3>
-        <p><strong>Earn 5% back</strong> on every purchase. Credits redeem dollar-for-dollar on future orders.</p>
-        <p>Members get first access to exclusive deals, events, and releases.</p>
+  <!-- Trophy Case (DTG) -->
+  <div id="dtg" class="hash-anchor" aria-hidden="true"></div>
+  <section id="trophy" class="dtg-awards hash-offset" aria-labelledby="trophy-title">
+    <div class="container">
+      <h2 id="trophy-title" class="section-title">Trophy Case</h2>
+      <p class="dtgA-sub">Award-Winning Cannabis — Scroll to explore ⇢</p>
+
+      <div class="dtgA-rail" id="dtgAwardsRail" tabindex="0" aria-label="Dutch Touch Genetics awards">
+        <article class="dtgA-card" role="group" aria-label="Mr. Clean — High Times Cannabis Cup Sativa, 1st Place">
+          <div class="dtgA-tag">🥇 1st</div>
+          <img src="img/awards-mrclean.jpg" alt="Mr. Clean strain" loading="lazy">
+          <div class="dtgA-body">
+            <h3 class="dtgA-title">Mr. Clean</h3>
+            <p class="dtgA-meta">High Times Cannabis Cup — Sativa</p>
+            <p class="dtgA-blurb">Crisp, energizing profile that took the top spot.</p>
+            <a class="dtgA-link" href="#" target="_blank" rel="noopener">Details</a>
+          </div>
+        </article>
+
+        <article class="dtgA-card" role="group" aria-label="Lilac Diesel — High Times Cannabis Cup Sativa, 3rd Place">
+          <div class="dtgA-tag">🥉 3rd</div>
+          <img src="img/awards-lilacdiesel.jpg" alt="Lilac Diesel strain" loading="lazy">
+          <div class="dtgA-body">
+            <h3 class="dtgA-title">Lilac Diesel</h3>
+            <p class="dtgA-meta">High Times Cannabis Cup — Sativa</p>
+            <p class="dtgA-blurb">Sweet floral diesel with a euphoric lift.</p>
+            <a class="dtgA-link" href="#" target="_blank" rel="noopener">Details</a>
+          </div>
+        </article>
+
+        <article class="dtgA-card" role="group" aria-label="Death By Funk — Best In Grass winner">
+          <div class="dtgA-tag">🏆 Winner</div>
+          <img src="img/awards-dbf.jpg" alt="Death By Funk strain" loading="lazy">
+          <div class="dtgA-body">
+            <h3 class="dtgA-title">Death By Funk</h3>
+            <p class="dtgA-meta">Best In Grass</p>
+            <p class="dtgA-blurb">Unmatched funk + gas terpene punch.</p>
+            <a class="dtgA-link" href="#" target="_blank" rel="noopener">Details</a>
+          </div>
+        </article>
+
+        <article class="dtgA-card" role="group" aria-label="Angelica — High Times winner for RSO syringe">
+          <div class="dtgA-tag">🏆 Winner</div>
+          <img src="img/awards-angelica.jpg" alt="Angelica RSO syringe" loading="lazy">
+          <div class="dtgA-body">
+            <h3 class="dtgA-title">Angelica</h3>
+            <p class="dtgA-meta">High Times — RSO Syringe</p>
+            <p class="dtgA-blurb">Recognized for potency and purity.</p>
+            <a class="dtgA-link" href="#" target="_blank" rel="noopener">Details</a>
+          </div>
+        </article>
+
+        <article class="dtgA-card" role="group" aria-label="Space Hippy — Cannabis Cup Disposables, 2nd Place">
+          <div class="dtgA-tag">🥈 2nd</div>
+          <img src="img/awards-spacehippy.jpg" alt="Space Hippy disposable" loading="lazy">
+          <div class="dtgA-body">
+            <h3 class="dtgA-title">Space Hippy</h3>
+            <p class="dtgA-meta">Cannabis Cup — Disposables</p>
+            <p class="dtgA-blurb">Innovative disposable format with a celebrated finish.</p>
+            <a class="dtgA-link" href="#" target="_blank" rel="noopener">Details</a>
+          </div>
+        </article>
       </div>
-      <div class="loy-embed-wrap">
+
+      <div class="dtgA-arrows">
+        <button class="dtgA-btn dtgA-left" type="button" aria-label="Scroll left">◂</button>
+        <button class="dtgA-btn dtgA-right" type="button" aria-label="Scroll right">▸</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="about-section hash-offset" aria-labelledby="about-title">
+    <div class="container">
+      <h2 id="about-title" class="section-title">Green Labs</h2>
+      <p>
+        Welcome to <strong>Green Labs</strong>, powered by the award-winning <strong>Dutch Touch Genetics</strong>.
+        From precision cultivation to top-shelf products, our team brings Michigan a curated lineup of flower, concentrates,
+        edibles, and more — including winners like <em>Mr. Clean (High Times 1st Place)</em> and other celebrated strains.
+      </p>
+      <div class="video-embed" aria-label="Dutch Touch Genetics brand video" style="margin:18px 0">
         <iframe
-          class="loy-embed-frame"
-          src="https://lab.alpineiq.com/join/c/3149/110369?storeID=-1"
-          title="Green Labs Loyalty"
+          src="https://player.vimeo.com/video/910591207"
+          title="Dutch Touch Genetics / Green Labs"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen
           loading="lazy"
-          allow="accelerometer; encrypted-media; gyroscope"
-          referrerpolicy="no-referrer-when-downgrade">
+          style="width:100%;aspect-ratio:16/9;border:0;border-radius:12px">
         </iframe>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- =========================
-     Contact
-========================= -->
-<section id="contact" class="contact">
-  <div class="container contact-wrap">
-    <div class="contact-col">
-      <h2 class="section-title">Visit Us — Green Labs</h2>
-      <div class="map-card">
-        <div class="map-link">
+  <!-- Loyalty -->
+  <section id="loyalty" class="loyalty-section">
+    <div class="container">
+      <h2 class="section-title">Green Labs Loyalty</h2>
+      <div class="loy-flex">
+        <div class="loy-info">
+          <h3>Join Our Rewards</h3>
+          <p><strong>Earn 5% back</strong> on every purchase. Credits redeem dollar-for-dollar on future orders.</p>
+          <p>Members get first access to exclusive deals, events, and releases.</p>
+        </div>
+        <div class="loy-embed-wrap">
           <iframe
-            title="Map — Green Labs"
-            width="100%" height="220"
-            style="border:0; display:block"
+            class="loy-embed-frame"
+            src="https://lab.alpineiq.com/join/c/3149/110369?storeID=-1"
+            title="Green Labs Loyalty"
             loading="lazy"
-            src="https://www.google.com/maps?q=42.00000,-83.45000&hl=en&z=14&output=embed">
+            allow="accelerometer; encrypted-media; gyroscope"
+            referrerpolicy="no-referrer-when-downgrade">
           </iframe>
-          <span class="map-pin">📍</span>
         </div>
-        <div class="map-actions">
-          <div class="addr"><strong>Green Labs</strong><br/>Michigan</div>
-          <button id="openMapsSmart" class="btn small">Open in Maps</button>
-        </div>
-        <ul class="contact-list">
-          <li class="contact-item"><strong>Phone</strong> <a href="tel:+1">Update</a></li>
-          <li class="contact-item"><strong>Email</strong> <a href="mailto:info@greenlabsmi.com">info@greenlabsmi.com</a></li>
-          <li>
-            <div class="icon-row">
-              <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-              <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
-              <a href="https://x.com" target="_blank"><i class="fab fa-x-twitter"></i></a>
-              <a href="https://www.tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
-            </div>
-          </li>
-        </ul>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
+  <!-- Visit Us -->
+  <section id="contact" class="contact">
+    <div class="container contact-wrap">
+      <div class="contact-col">
+        <h2 class="section-title">Visit Us — Green Labs</h2>
+        <div class="map-card">
+          <div class="map-link" aria-label="Map preview">
+            <iframe
+              title="Map — Green Labs"
+              width="100%"
+              height="220"
+              style="border:0; display:block"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=10701%20Madison%20St,%20Luna%20Pier,%20MI%2048157&hl=en&z=14&output=embed">
+            </iframe>
+            <span class="map-pin">📍</span>
+          </div>
+          <div class="map-actions">
+            <div class="addr">
+              <strong>Green Labs</strong><br/>10701 Madison St, Luna Pier, MI 48157
+            </div>
+            <div class="map-buttons">
+              <button id="openMapsSmart" class="btn small gold" type="button" style="padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:#fff;font-weight:800">Open in Maps</button>
+            </div>
+          </div>
+          <ul class="contact-list">
+            <li class="contact-item"><strong>Phone</strong> <a href="tel:+1">Update</a></li>
+            <li class="contact-item"><strong>Email</strong> <a href="mailto:info@greenlabsmi.com">info@greenlabsmi.com</a></li>
+            <li class="socials">
+              <div class="icon-row" aria-label="Social links">
+                <a href="https://instagram.com" target="_blank" aria-label="Instagram" rel="noopener"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank" aria-label="Facebook" rel="noopener"><i class="fab fa-facebook"></i></a>
+                <a href="https://x.com" target="_blank" aria-label="X (Twitter)" rel="noopener"><i class="fab fa-x-twitter"></i></a>
+                <a href="https://www.tiktok.com" target="_blank" aria-label="TikTok" rel="noopener"><i class="fab fa-tiktok"></i></a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
 
-<!-- =========================
-     Footer
-========================= -->
 <footer class="site-footer">
   <div class="container footer-row">
     <div class="footer-copy">© <span id="year"></span> Green Labs. All rights reserved.</div>
-    <nav class="footer-links">
+    <nav class="footer-links" aria-label="Legal links">
       <a href="terms.html">Terms of Service</a>
       <span class="dot">•</span>
       <a href="privacy.html">Privacy Policy</a>
@@ -284,90 +514,354 @@
   </div>
 </footer>
 
-<!-- =========================
-     Scripts
-========================= -->
-<script src="script.js?v=gl-1002" defer></script>
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-</script>
-
-<!-- Leafly Embed Loader -->
-<script>
-(function(){
-  const wrapper = document.getElementById('leafly-embed-wrapper');
-  let loaded = false;
-  function injectLeafly(){
-    if (loaded || !wrapper) return;
-    const s = document.createElement('script');
-    s.src = 'https://web-embedded-menu.leafly.com/loader.js';
-    s.dataset.slug = 'green-labs-placeholder'; // TODO: update slug
-    s.dataset.primary = '#0B7D5A';
-    s.dataset.secondary = '#1A9E75';
-    s.dataset.deals = '#056047';
-    wrapper.appendChild(s);
-    loaded = true;
-  }
-  function openMenu(){
-    const section = document.getElementById('menu');
-    if(!section)return;
-    section.hidden=false;
-    injectLeafly();
-    window.scrollTo({top:section.offsetTop-72,behavior:'smooth'});
-  }
-  document.querySelectorAll('a[href="#menu"],.btn-order').forEach(el=>{
-    el.addEventListener('click',e=>{e.preventDefault();openMenu();});
-  });
-})();
-</script>
-
-<!-- Trophy rail scroll -->
-<script>
-(function(){
-  const rail=document.getElementById('dtgAwardsRail');
-  const left=document.querySelector('.dtgA-left');
-  const right=document.querySelector('.dtgA-right');
-  if(!rail||!left||!right) return;
-  const gap=14;
-  const card=rail.querySelector('.dtgA-card');
-  const step=(card?card.getBoundingClientRect().width:240)+gap;
-  const scrollBy=(dir)=>rail.scrollBy({left:dir*step,behavior:'smooth'});
-  left.addEventListener('click',()=>scrollBy(-1));
-  right.addEventListener('click',()=>scrollBy(1));
-})();
-</script>
-
-<!-- Age Gate -->
-<div id="ageGate" class="agegate" aria-hidden="true" role="dialog">
-  <div class="agegate__box">
-    <div class="agegate__crest">🌿</div>
-    <h1 class="agegate__title">Are you 21 or older?</h1>
-    <p class="agegate__sub">You must be of legal age to enter Green Labs.</p>
-    <div class="agegate__actions">
-      <button id="ageYes" class="btn brand agegate__btn">Yes — Enter</button>
-      <button id="ageNo" class="btn outline agegate__btn">No</button>
+<!-- ===== Age Gate ===== -->
+<div id="ageGate" class="agegate" aria-hidden="true" role="dialog" aria-modal="true" style="position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;background:#000">
+  <div class="agegate__box" role="document" style="width:min(92vw,640px);background:rgba(0,0,0,.55);border:2px solid var(--brand);border-radius:16px;padding:28px 22px;text-align:center;box-shadow:0 18px 60px rgba(0,0,0,.6), inset 0 0 0 1px rgba(255,255,255,.04);color:#fff">
+    <div class="agegate__crest" aria-hidden="true" style="font-size:2rem;margin-bottom:10px;opacity:.9">🌿</div>
+    <h1 class="agegate__title" style="margin:0 0 6px;font-family:Cinzel,serif;font-weight:900;font-size:clamp(28px,4.2vw,44px);letter-spacing:.3px;line-height:1.1">Are you 21 or older?</h1>
+    <p class="agegate__sub" style="margin:0 0 16px;color:#EAEAEA;font-weight:600">You must be of legal age to enter Green Labs.</p>
+    <div class="agegate__actions" style="display:flex;gap:10px;justify-content:center;margin:10px 0 8px">
+      <button id="ageYes" class="btn gold agegate__btn" style="min-width:160px;font-weight:900;background:var(--brand);color:#fff;border:1px solid var(--brand)">Yes — Enter</button>
+      <button id="ageNo" class="btn outline agegate__btn" style="min-width:160px;font-weight:900;background:transparent;border:2px solid #fff;color:#fff">No</button>
     </div>
-    <label class="agegate__remember">
+    <label class="agegate__remember" style="display:inline-flex;gap:8px;align-items:center;margin:6px 0 6px;color:#d7d7d7;font-weight:600;user-select:none">
       <input id="ageRemember" type="checkbox" checked>
       <span>Remember me for 30 days</span>
     </label>
-    <p class="agegate__legal">By entering, you agree to our Terms & Privacy.</p>
+    <p class="agegate__legal" style="margin:6px 0 0;color:#bcbcbc;font-size:.9rem">By entering, you agree to our Terms & Privacy.</p>
   </div>
+  <noscript>
+    <style>#ageGate{display:flex}</style>
+    <div class="agegate__box">
+      <h1 class="agegate__title">JavaScript required</h1>
+      <p class="agegate__sub">Please enable JavaScript to verify you are 21+.</p>
+    </div>
+  </noscript>
 </div>
 
-<!-- Floating Ghosts Seasonal -->
 <script>
+/* =========================================================
+   Green Labs — compact client script (no ghost overlay)
+   ========================================================= */
 document.addEventListener('DOMContentLoaded', () => {
-  const halloweenSection = document.querySelector('[data-category="🎃 HALLOWEEN GRAND OPENING"]');
-  if (halloweenSection) {
-    for (let i = 0; i < 3; i++) {
-      const ghost = document.createElement('div');
-      ghost.classList.add('ghost');
-      halloweenSection.appendChild(ghost);
-    }
+  // Footer year
+  const y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
+
+  /* ===== Age Gate ===== */
+  (function () {
+    const KEY = 'dr_age_until';
+    const gate = document.getElementById('ageGate');
+    if (!gate) return;
+
+    const sp = new URL(location.href).searchParams;
+    if (sp.get('agegate') === 'clear') localStorage.removeItem(KEY);
+    const forceShow = sp.get('agegate') === 'show';
+
+    const okUntil = Number(localStorage.getItem(KEY) || 0);
+    const sessionOK = sessionStorage.getItem(KEY) === '1';
+    const isOK = (okUntil > Date.now()) || sessionOK;
+
+    function show() { gate.setAttribute('aria-hidden','false'); gate.style.display='flex'; document.body.classList.add('agegate--lock'); }
+    function hide() { gate.setAttribute('aria-hidden','true'); gate.style.display='none'; document.body.classList.remove('agegate--lock'); }
+
+    const yes = document.getElementById('ageYes');
+    const no  = document.getElementById('ageNo');
+    const remember = document.getElementById('ageRemember');
+
+    if (yes) yes.addEventListener('click', () => {
+      if (remember && remember.checked) {
+        const THIRTY = 30*24*60*60*1000; localStorage.setItem(KEY, String(Date.now()+THIRTY));
+      } else { sessionStorage.setItem(KEY, '1'); }
+      hide();
+    });
+    if (no) no.addEventListener('click', () => { location.href='https://www.google.com'; });
+
+    if (forceShow) show(); else if (isOK) hide(); else show();
+  })();
+
+  /* ===== Align helper ===== */
+  function alignFloating(trigger, panel, opts = {}) {
+    if (!trigger || !panel) return;
+    const r = trigger.getBoundingClientRect();
+    const gap = opts.gap ?? 8;
+    const align = opts.align ?? 'end';
+    panel.style.position = 'fixed';
+    panel.style.right = '';
+    let left;
+    if (align === 'start') left = r.left;
+    if (align === 'center') left = r.left + r.width/2 - panel.offsetWidth/2;
+    if (align === 'end') left = r.left + r.width - panel.offsetWidth;
+    const pad = 8;
+    left = Math.max(pad, Math.min(left, window.innerWidth - panel.offsetWidth - pad));
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top  = Math.round(r.bottom + gap) + 'px';
   }
+
+  /* ===== Sticky header tiny shadow toggle ===== */
+  (function stickyHeader() {
+    const hdr = document.querySelector('.site-header'); if (!hdr) return;
+    const onScroll = () => hdr.classList.toggle('is-scrolled', window.scrollY > 8);
+    onScroll(); document.addEventListener('scroll', onScroll, { passive: true });
+  })();
+
+  /* ===== Menu popover ===== */
+  (function menuPopover(){
+    const openBtn = document.querySelector('[data-open-menu]');
+    const pop = document.getElementById('navDrawer');
+    const ovl = document.getElementById('menuOverlay');
+    if (!openBtn || !pop || !ovl) return;
+
+    const open = () => { pop.hidden=false; ovl.hidden=false; openBtn.setAttribute('aria-expanded','true'); alignFloating(openBtn,pop,{align:'end',gap:8}); };
+    const close = () => { pop.hidden=true; ovl.hidden=true; openBtn.setAttribute('aria-expanded','false'); };
+
+    openBtn.addEventListener('click', (e)=>{ e.preventDefault(); e.stopPropagation(); (pop.hidden?open():close()); });
+    ovl.addEventListener('click', close);
+    pop.addEventListener('click', (e)=>{ if (e.target.closest('a')) close(); });
+    document.addEventListener('keydown', (e)=>{ if (e.key==='Escape') close(); });
+
+    const keepAligned = () => { if (!pop.hidden) alignFloating(openBtn,pop,{align:'end',gap:8}); };
+    window.addEventListener('resize', keepAligned, { passive:true });
+    window.addEventListener('scroll',  keepAligned, { passive:true });
+  })();
+
+  /* ===== Today’s Deals (deals.json) ===== */
+  (function deals() {
+    const body = document.getElementById('dealBody');
+    const list = document.getElementById('dealList');
+    const card = document.querySelector('.deal-card');
+    if (!body || !list || !card) return;
+
+    fetch('deals.json', { cache: 'no-store' })
+      .then(r => r.ok ? r.json() : Promise.reject(r.status))
+      .then(data => renderDeals(list, data))
+      .catch(() => { list.innerHTML = '<li>Deals unavailable right now.</li>'; });
+
+    const esc = s => String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    function renderDeals(target, data){
+      const html = data.map(cat=>{
+        if (Array.isArray(cat.groups)) {
+          const groups = cat.groups.map(g=>`
+            <div class="deal-subgroup">
+              <div class="deal-subtitle">${esc(g.title)}</div>
+              <ul class="deal-items">${(g.items||[]).map(it=>`<li>${esc(it)}</li>`).join('')}</ul>
+            </div>`).join('');
+          return `<li class="deal-cat"><div class="deal-cat-title">${esc(cat.category)}</div>${groups}</li>`;
+        } else {
+          return `<li class="deal-cat"><div class="deal-cat-title">${esc(cat.category)}</div>
+            <ul class="deal-items">${(cat.items||[]).map(it=>`<li>${esc(it)}</li>`).join('')}</ul></li>`;
+        }
+      }).join('');
+      target.innerHTML = html + `<div class="deal-note">All prices include tax.</div>`;
+    }
+
+    const expand = () => { card.setAttribute('aria-expanded','true'); body.classList.remove('collapsed'); };
+    const collapse = () => { card.setAttribute('aria-expanded','false'); body.classList.add('collapsed'); };
+    const toggle = () => { (card.getAttribute('aria-expanded') === 'true') ? collapse() : expand(); };
+
+    card.addEventListener('click', (e)=>{ if (e.target.closest('button,a,input,label,select,textarea')) return; toggle(); });
+    card.addEventListener('keydown', (e)=>{ if (e.key==='Enter'||e.key===' '){ e.preventDefault(); toggle(); } });
+    const closeBtn = document.getElementById('closeDeals'); if (closeBtn) closeBtn.addEventListener('click', (e)=>{ e.stopPropagation(); collapse(); });
+  })();
+
+  /* ===== Hours pill + popover ===== */
+  function isIOS(){ return /iPad|iPhone|iPod/.test(navigator.userAgent||''); }
+  function isAndroid(){ return /Android/.test(navigator.userAgent||''); }
+  function smartMapHref(address){
+    const q = encodeURIComponent(address);
+    if (isIOS()) return `maps://?q=${q}`;
+    if (isAndroid()) return `geo:0,0?q=${q}`;
+    return `https://www.google.com/maps?q=${q}`;
+  }
+
+  (function hours() {
+    const btn = document.getElementById('hoursBtn');
+    const pop = document.getElementById('hoursPopover');
+    const ovl = document.getElementById('hoursOverlay');
+    const list = document.getElementById('hoursList');
+    const note = document.getElementById('hoursNote');
+    if (!btn || !pop || !ovl || !list || !note) return;
+
+    const HOURS = [
+      { d: 'Sunday',    open: 9, close: 20 },
+      { d: 'Monday',    open: 9, close: 20 },
+      { d: 'Tuesday',   open: 9, close: 20 },
+      { d: 'Wednesday', open: 9, close: 20 },
+      { d: 'Thursday',  open: 9, close: 20 },
+      { d: 'Friday',    open: 9, close: 21 },
+      { d: 'Saturday',  open: 9, close: 21 },
+    ];
+    const fmt = h => `${((h+11)%12)+1}${h>=12?'PM':'AM'}`;
+    function statusNow(){
+      const now=new Date(); const idx=now.getDay(); const hour=now.getHours()+now.getMinutes()/60;
+      const {open,close}=HOURS[idx];
+      const openSoon = hour >= open-0.5 && hour < open;
+      const closingSoon = hour >= close-0.5 && hour < close;
+      const isOpen = hour >= open && hour < close;
+      return {isOpen,openSoon,closingSoon,open,close,idx};
+    }
+    function paintPill(){
+      const s=statusNow(); btn.classList.remove('state-open','state-soon','state-closed');
+      if (s.isOpen && s.closingSoon){ btn.textContent='CLOSING SOON'; btn.classList.add('state-soon'); btn.dataset.tip=`Closes at ${fmt(s.close)} today`; }
+      else if (!s.isOpen && s.openSoon){ btn.textContent='OPENING SOON'; btn.classList.add('state-soon'); btn.dataset.tip=`Opens at ${fmt(s.open)} today`; }
+      else if (s.isOpen){ btn.textContent='OPEN'; btn.classList.add('state-open'); btn.dataset.tip=`Open until ${fmt(s.close)} today`; }
+      else { btn.textContent='CLOSED'; btn.classList.add('state-closed'); const next=(s.idx+1)%7; btn.dataset.tip=`Opens ${HOURS[next].d} at ${fmt(HOURS[next].open)}`; }
+    }
+    function renderHours(){
+      const today=new Date().getDay();
+      list.innerHTML=HOURS.map((h,i)=>`<li class="${i===today?'is-today':''}"><span>${h.d}</span><span>${fmt(h.open)} – ${fmt(h.close)}</span></li>`).join('');
+      const addr="10701 Madison St, Luna Pier, MI 48157";
+      const href=smartMapHref(addr);
+      const safe = /^https?:/i.test(href);
+      note.innerHTML = `<a class="note-address" href="${href}" ${safe? 'target="_blank" rel="noopener"':''}>${addr}</a>`;
+    }
+    function alignHoursPopover(){
+      const strip=document.getElementById('statusStrip');
+      const stripVisible = strip && getComputedStyle(strip).display!=='none';
+      const anchor=(stripVisible&&strip)||document.querySelector('.sticky-nav');
+      if (!anchor) return;
+      const rect=anchor.getBoundingClientRect();
+      pop.style.top = `${rect.bottom}px`;
+      pop.style.right = '16px';
+    }
+    function openPop(){ pop.hidden=false; ovl.hidden=false; btn.setAttribute('aria-expanded','true'); alignHoursPopover(); }
+    function closePop(){ pop.hidden=true; ovl.hidden=true; btn.setAttribute('aria-expanded','false'); }
+
+    paintPill(); renderHours();
+    btn.addEventListener('click', ()=> (pop.hidden?openPop():closePop()));
+    ovl.addEventListener('click', closePop);
+    window.addEventListener('scroll', ()=>{ if (!pop.hidden) alignHoursPopover(); }, { passive:true });
+    window.addEventListener('resize', ()=>{ if (!pop.hidden) alignHoursPopover(); });
+    setInterval(paintPill, 60*1000);
+
+    // Tooltip sync
+    const tip=document.getElementById('hoursTip');
+    if (tip){
+      const syncTip=()=>{ tip.textContent = btn.dataset.tip || 'Store hours'; };
+      const show = ()=>{ syncTip(); tip.hidden=false; };
+      const hide = ()=>{ tip.hidden=true; };
+      btn.addEventListener('mouseenter', show);
+      btn.addEventListener('mouseleave', hide);
+      btn.addEventListener('focus', show);
+      btn.addEventListener('blur', hide);
+      setInterval(syncTip, 60*1000);
+      syncTip();
+    }
+  })();
+
+  /* ===== Status strip mirrors pill ===== */
+  (function statusStripSync(){
+    const strip=document.getElementById('statusStrip');
+    const dot = strip ? strip.querySelector('.status-dot') : null;
+    const textEl=document.getElementById('statusText');
+    const pillBtn=document.getElementById('hoursBtn');
+    const addrEl=document.getElementById('statusAddr');
+    if (!strip || !pillBtn || !dot || !textEl) return;
+
+    if (addrEl){ addrEl.textContent = "10701 Madison St, Luna Pier, MI 48157"; addrEl.addEventListener('click',(e)=>e.stopPropagation()); }
+
+    const setText=(label,klass)=>{ textEl.className='status-text'; if (klass) textEl.classList.add(klass); textEl.textContent=label; };
+    const syncState=()=>{
+      dot.classList.remove('is-open','is-soon','is-closed');
+      if (pillBtn.classList.contains('state-open')){ dot.classList.add('is-open'); setText('Open','open'); }
+      else if (pillBtn.classList.contains('state-soon')){ dot.classList.add('is-soon'); setText('Closing Soon','soon'); }
+      else if (pillBtn.classList.contains('state-closed')){ dot.classList.add('is-closed'); setText('Closed','closed'); }
+      else setText('Store status','');
+    };
+    strip.addEventListener('click', ()=>pillBtn.click());
+    setTimeout(syncState,0);
+    const mo = new MutationObserver(syncState); mo.observe(pillBtn,{attributes:true,attributeFilter:['class']});
+    setInterval(syncState, 30*1000);
+  })();
+
+  /* ===== In-page smooth scroll (internal anchors only) ===== */
+  document.addEventListener('click', (e) => {
+    if (e.defaultPrevented) return;
+    const a=e.target.closest('a'); if (!a) return;
+    const href=a.getAttribute('href')||'';
+    if (a.target==='_blank' || /^https?:\/\//i.test(href) || a.closest('#navDrawer') || a.closest('#leafly-embed-wrapper')) return;
+    if (href.startsWith('#')) {
+      const t=document.querySelector(href);
+      if (t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth', block:'start'}); }
+    }
+  });
+
+  /* ===== Simple carousel ===== */
+  (function(){
+    const root=document.getElementById('hero-slides'); if (!root) return;
+    const slides=[...root.querySelectorAll('.slide')].filter(s=>{ const img=s.querySelector('img'); return img && img.getAttribute('src'); });
+    const N=slides.length; if (!N) return;
+    let i = slides.findIndex(s=>s.classList.contains('is-active')); if (i<0) i=0; slides.forEach((s,idx)=>s.classList.toggle('is-active', idx===i));
+    let dotsBar=root.querySelector('.dots'); if (!dotsBar){ dotsBar=document.createElement('div'); dotsBar.className='dots'; root.appendChild(dotsBar); }
+    dotsBar.innerHTML=''; const dots=slides.map((_,k)=>{ const b=document.createElement('button'); b.type='button'; b.setAttribute('aria-label',`Go to slide ${k+1}`); if (k===i) b.setAttribute('aria-current','true'); b.addEventListener('click',()=>go(k,true)); dotsBar.appendChild(b); return b; });
+    let prevEdge=root.querySelector('.edge--prev'); let nextEdge=root.querySelector('.edge--next');
+    prevEdge.addEventListener('click',()=>go(i-1,true)); nextEdge.addEventListener('click',()=>go(i+1,true));
+    root.setAttribute('tabindex','0');
+    root.addEventListener('keydown', (e)=>{ if (e.key==='ArrowLeft'){ e.preventDefault(); go(i-1,true); } if (e.key==='ArrowRight'){ e.preventDefault(); go(i+1,true); } });
+    let startX=null;
+    root.addEventListener('touchstart', e=>{ startX=e.touches[0].clientX; stop(); }, {passive:true});
+    root.addEventListener('touchend', e=>{ if (startX==null) return; const dx=e.changedTouches[0].clientX-startX; if (Math.abs(dx)>40) go(dx<0?i+1:i-1,true); startX=null; start(); }, {passive:true});
+    const delay=parseInt(root.dataset.autoplay||'7000',10);
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let timer=null; function start(){ if (!prefersReduced){ stop(); timer=setInterval(()=>go(i+1,false), delay); } }
+    function stop(){ if (timer){ clearInterval(timer); timer=null; } }
+    function go(n,user=false){ const prev=i; i=((n%N)+N)%N; if (i===prev) return; slides[prev].classList.remove('is-active'); slides[i].classList.add('is-active'); if (dots[prev]) dots[prev].removeAttribute('aria-current'); if (dots[i]) dots[i].setAttribute('aria-current','true'); if (user){ stop(); start(); } }
+    go(i,false); start();
+  })();
+
+  /* ===== Maps: “Open in Maps” ===== */
+  (function(){
+    const btn=document.getElementById('openMapsSmart'); if (!btn) return;
+    const ADDRESS='10701 Madison St, Luna Pier, MI 48157';
+    btn.addEventListener('click', ()=>{ const href = (function(address){ const q=encodeURIComponent(address); if (/iPad|iPhone|iPod/.test(navigator.userAgent||'')) return `maps://?q=${q}`; if (/Android/.test(navigator.userAgent||'')) return `geo:0,0?q=${q}`; return `https://www.google.com/maps?q=${q}`; })(ADDRESS); if (/^https?:/i.test(href)) window.open(href,'_blank','noopener'); else location.href=href; });
+    const mapLink=document.querySelector('.map-link'); if (mapLink){ mapLink.addEventListener('click',(e)=>{ if (e.target && e.target.tagName.toLowerCase()==='iframe') return; const webUrl='https://www.google.com/maps?q='+encodeURIComponent(ADDRESS); window.open(webUrl,'_blank','noopener'); }); }
+  })();
+
+  /* ===== Leafly embed opener (lazy) ===== */
+  (function(){
+    const menuSection=document.getElementById('menu');
+    const wrapper=document.getElementById('leafly-embed-wrapper');
+    let embedLoaded=false;
+    function injectLeaflyEmbed(){
+      if (embedLoaded || !wrapper) return;
+      const s=document.createElement('script');
+      s.id='leafly-embed-script';
+      s.src='https://web-embedded-menu.leafly.com/loader.js';
+      s.dataset.origin='https://web-embedded-menu.leafly.com';
+      s.dataset.slug='green-labs-placeholder'; // TODO: set your real Leafly slug
+      s.dataset.primary='#0B7D5A';
+      s.dataset.secondary='#1A9E75';
+      s.dataset.deals='#056047';
+      wrapper.appendChild(s);
+      embedLoaded=true;
+    }
+    function openMenu(){
+      if (!menuSection) return;
+      menuSection.hidden=false; injectLeaflyEmbed();
+      const drawer=document.getElementById('navDrawer'); const overlay=document.getElementById('menuOverlay');
+      if (drawer && !drawer.hidden) drawer.hidden=true; if (overlay && !overlay.hidden) overlay.hidden=true;
+      const top = menuSection.getBoundingClientRect().top + window.pageYOffset - 72;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+    const triggers = document.querySelectorAll('a[href="order.html"], a[href="#menu"], .btn-order, .cta-shop a');
+    triggers.forEach(el => el.addEventListener('click', (e) => { e.preventDefault(); openMenu(); }));
+    document.querySelectorAll('#navDrawer a[href="#menu"]').forEach(el => el.addEventListener('click',(e)=>{ e.preventDefault(); openMenu(); }));
+    if (location.hash === '#menu') openMenu();
+  })();
+
+  /* ===== Awards rail arrows ===== */
+  (function(){
+    const rail=document.getElementById('dtgAwardsRail');
+    const left=document.querySelector('.dtgA-left');
+    const right=document.querySelector('.dtgA-right');
+    if (!rail || !left || !right) return;
+    const gap=14;
+    const card=rail.querySelector('.dtgA-card');
+    const step=(card?card.getBoundingClientRect().width:240)+gap;
+    const scrollBy=(dir)=>rail.scrollBy({left:dir*step,behavior:'smooth'});
+    left.addEventListener('click',()=>scrollBy(-1));
+    right.addEventListener('click',()=>scrollBy(1));
+  })();
 });
 </script>
-
 </body>
 </html>
