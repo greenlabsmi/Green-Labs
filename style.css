@@ -416,3 +416,45 @@ body.agegate--lock{overflow:hidden}
   0%, 100% { opacity: 0; }
   20%, 80% { opacity: 0.8; }
 }
+
+/* =========================
+   Brand Banner (Green Labs) — Final Override
+========================= */
+.brand-banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+  padding: 0.2em 0;
+  border-bottom: none;
+}
+
+.brand-title {
+  font-family: "Cinzel", serif;
+  font-weight: 900;
+  font-size: clamp(80px, 16vw, 200px); /* Much bigger scale */
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  background: linear-gradient(
+    90deg,
+    #00a56f 0%,
+    #2ef8bb 25%,
+    #00a56f 50%,
+    #2ef8bb 75%,
+    #00a56f 100%
+  );
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmerBanner 8s linear infinite;
+
+  margin: 0;
+  padding: 0;
+}
+
+@keyframes shimmerBanner {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
