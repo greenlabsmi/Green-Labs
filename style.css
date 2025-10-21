@@ -140,84 +140,195 @@ a{color:inherit;text-decoration:none}
 
 
 /* =========================
-   Sticky Navigation
+   Sticky Navigation (Enhanced)
 ========================= */
-.sticky-nav{
-  position:sticky;top:0;z-index:9999;
-  background:#000;
-  border-bottom:1px solid #000;
-  box-shadow:0 6px 18px rgba(0,0,0,.35);
-}
-.sticky-nav__inner{
-  display:flex;align-items:center;justify-content:space-between;
-  height:var(--nav-h);
-  gap:12px;
-  padding:0 24px;
-}
-.sticky-logo{
-  display:inline-flex;align-items:center;gap:10px;
-}
-.sticky-logo .brand-lion{
-  display:block;
-  height:48px;width:auto;
-}
-.sticky-brand-name{
-  font-family:"Cinzel",serif;
-  font-size:1.05rem;
-  letter-spacing:.3px;
-  color:#fff;
+.sticky-nav {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  background: linear-gradient(to bottom, #000000, #0b0b0b);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6), inset 0 -1px 0 rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(6px);
+  transition: background .3s ease, box-shadow .3s ease;
 }
 
-/* Nav Tabs */
-.sticky-tabs{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex:1;
-  gap:32px;
+.sticky-nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--nav-h);
+  gap: 12px;
+  padding: 0 24px;
 }
-.sticky-tabs .stab{
-  font-family:"Cinzel",serif;
-  font-weight:700;
-  letter-spacing:0.5px;
-  color:#fff;
-  white-space:nowrap;
-  transition:all .25s ease;
+
+.sticky-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
 }
-.sticky-tabs .stab:hover{
-  background:linear-gradient(120deg,var(--brand-3)10%,var(--brand-2),var(--brand-3)90%);
-  background-size:300% 100%;
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  animation:shimmer 6s linear infinite;
+
+.sticky-logo .brand-lion {
+  display: block;
+  height: 48px;
+  width: auto;
 }
+
+.sticky-brand-name {
+  font-family: "Cinzel", serif;
+  font-size: 1.05rem;
+  letter-spacing: .3px;
+  color: #fff;
+}
+
+/* =========================
+   Nav Tabs — Enhanced
+========================= */
+.sticky-tabs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  gap: 32px;
+}
+
 .sticky-tabs,
 .sticky-tabs li,
-.sticky-tabs .stab{list-style:none!important}
+.sticky-tabs .stab {
+  list-style: none !important;
+}
 
-/* Actions */
-.sticky-actions{
-  display:flex;align-items:center;gap:12px;margin-left:40px;
+.sticky-tabs .stab {
+  font-family: "Cinzel", serif;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  color: #fff;
+  white-space: nowrap;
+  font-size: 1.15rem;
+  padding: 6px 10px;
+  position: relative;
+  transition: 
+    color .25s ease,
+    transform .25s ease,
+    letter-spacing .25s ease;
 }
-.icon-btn{
-  width:38px;height:32px;border-radius:10px;border:1px solid var(--line);
-  background:#fff;font-weight:700;color:var(--ink)
+
+.sticky-tabs .stab::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 80%;
+  height: 2px;
+  background: var(--brand-2);
+  transition: transform .25s ease;
+  transform-origin: center;
 }
-.btn-order{
-  height:32px;display:inline-flex;align-items:center;justify-content:center;
-  padding:0 12px;border-radius:10px;border:1px solid var(--line);
-  background:#fff;color:var(--ink);font-weight:800;box-shadow:none;
+
+.sticky-tabs .stab:hover::after {
+  transform: translateX(-50%) scaleX(1);
 }
-.btn-order:hover{box-shadow:0 6px 14px rgba(0,0,0,.14)}
+
+.sticky-tabs .stab:hover {
+  transform: translateY(-3px) scale(1.05);
+  letter-spacing: 1px;
+  background: linear-gradient(120deg, var(--brand-3) 0%, var(--brand-2) 50%, var(--brand-3) 100%);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 5s linear infinite;
+}
+
+/* =========================
+   OPEN Pill — Status Indicator
+========================= */
+.open-pill {
+  padding: 6px 12px;
+  border-radius: 14px;
+  font-weight: 800;
+  font-size: 0.9rem;
+  color: #fff;
+  text-transform: uppercase;
+  transition: background .25s ease, transform .15s ease, box-shadow .25s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .25);
+}
+
+.open-pill.open {
+  background: #00a56f; /* Green */
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+.open-pill.closed {
+  background: #d62828; /* Red */
+}
+
+.open-pill.soon {
+  background: #ffb703; /* Yellow */
+  color: #000;
+}
+
+.open-pill:hover {
+  transform: translateY(-2px);
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 8px #00a56f66; }
+  50% { box-shadow: 0 0 16px #00a56faa; }
+}
+
+/* =========================
+   Actions
+========================= */
+.sticky-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: 40px;
+}
+
+.icon-btn {
+  width: 38px;
+  height: 32px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: #fff;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.btn-order {
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  font-weight: 800;
+  box-shadow: none;
+  transition: transform .15s ease, box-shadow .25s ease;
+}
+
+.btn-order:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, .14);
+}
 
 /* =========================
    Responsive Nav
 ========================= */
 @media (max-width:900px){
-  .sticky-brand-name{display:none!important}
-  .sticky-tabs{display:none!important}
-  .sticky-actions>*{box-shadow:0 2px 8px rgba(0,0,0,.12)}
-  .sticky-actions>*:active{transform:translateY(1px);box-shadow:0 1px 5px rgba(0,0,0,.18)}
+  .sticky-brand-name { display:none!important }
+  .sticky-tabs { display:none!important }
+  .sticky-actions > * {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .12);
+  }
+  .sticky-actions > *:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, .18);
+  }
 }
 
 /* =========================
