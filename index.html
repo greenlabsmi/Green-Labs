@@ -119,33 +119,6 @@
   50% { opacity: 0.9; }
 }
 
-    /* ===== Sticky nav ===== */
-    .sticky-nav{position:sticky;top:0;z-index:3000;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 6px 18px rgba(16,24,40,.08)}
-    .sticky-nav__inner{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h);gap:12px}
-    .sticky-logo{display:inline-flex;align-items:center;gap:10px;color:var(--brand)}
-    .sticky-logo img{height:40px;width:auto}
-    .sticky-brand-name{font-family:"Cinzel",serif;font-size:1.1rem;letter-spacing:.3px}
-
-    .sticky-tabs{display:flex;align-items:center;justify-content:center;gap:24px;flex:0 0 auto;white-space:nowrap;list-style:none;margin:0;padding:0}
-    .sticky-tabs .stab{font-weight:800;letter-spacing:.02em;color:#475467}
-    .sticky-tabs .stab:hover{color:var(--ink)}
-    .sticky-tabs,.sticky-tabs li,.sticky-tabs .stab{list-style:none}
-    .sticky-tabs .stab::before,.sticky-tabs .stab::after{content:none}
-
-    .sticky-actions{display:flex;align-items:center;gap:10px}
-    .icon-btn,.btn-order{height:32px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);font-weight:800;line-height:1}
-    .icon-btn{width:38px}
-    .btn-order{padding:0 12px;box-shadow:0 2px 6px rgba(0,0,0,.08)}
-    .btn-order:hover{box-shadow:0 6px 14px rgba(0,0,0,.14)}
-    .label-desktop{display:none}.label-mobile{display:inline}
-    @media(min-width:901px){.label-desktop{display:inline}.label-mobile{display:none}}
-
-    /* Mobile nav trims */
-    @media(max-width:900px){
-      .sticky-brand-name{display:none}
-      .sticky-tabs{display:none !important}
-      :root{ --strip-h: 32px; }
-    }
 
     /* ===== Mobile status strip ===== */
     #statusStrip{display:none}
