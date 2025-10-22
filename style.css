@@ -183,45 +183,6 @@ a{color:inherit;text-decoration:none}
   letter-spacing: 0.04em;
 }
 
-/* === Nav Links === */
-.sticky-tabs {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.sticky-tabs .stab {
-  font-family: "Cinzel", serif;
-  font-weight: 700;
-  font-size: 1rem;
-  color: #fff;
-  position: relative;
-  padding-bottom: 4px;
-  transition: color 0.25s ease;
-}
-
-.sticky-tabs .stab::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0%;
-  height: 2px;
-  background: #2ef8bb;
-  transition: width 0.3s ease;
-}
-
-.sticky-tabs .stab:hover {
-  color: #2ef8bb;
-}
-
-.sticky-tabs .stab:hover::after {
-  width: 100%;
-}
-
 /* === Right side actions === */
 .sticky-actions {
   display: flex;
