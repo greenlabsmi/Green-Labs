@@ -145,6 +145,28 @@
     .note-address{display:inline-block;font-weight:600;font-size:.82rem;color:#2563eb;text-decoration:underline}
     .note-address:hover{color:#1e40af}
 
+    /* === Desktop Address Bar === */
+.desktop-address-bar {
+  background: #0b0b0b;
+  color: #fff;
+  text-align: center;
+  font-weight: 600;
+  padding: 6px 12px;
+  font-size: 0.95rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.desktop-address-bar .status {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-weight: 800;
+  margin-right: 10px;
+}
+
+.status.open { background: #00a56f; color: #fff; }
+.status.soon { background: #ffb703; color: #000; }
+.status.closed { background: #d62828; color: #fff; }
+
     /* ===== Hero (carousel) ===== */
     .hero{position:relative;background:#000}
     .hero .slides{position:relative;display:block;overflow:hidden;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.10);background:#000;aspect-ratio:16/7}
@@ -296,6 +318,12 @@
     </div>
   </div>
 </header>
+
+  <!-- Desktop address/status bar -->
+<div class="desktop-address-bar">
+  <span class="status open">Open</span>
+  10701 Madison St, Luna Pier, MI 48157
+</div>
 
 <!-- Mobile status strip -->
 <div id="statusStrip" class="status-strip" role="button" aria-label="Store status">
