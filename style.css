@@ -274,6 +274,42 @@ box-shadow: 0 0 14px rgba(46, 248, 187, 0.35);
 }
 
 /* =========================
+   Desktop Address Bar
+========================= */
+.desktop-address-bar {
+  background: #0b0b0b;
+  color: #fff;
+  text-align: center;
+  font-weight: 600;
+  padding: 6px 12px;
+  font-size: 0.95rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  animation: fadeDown 0.6s ease both;
+}
+
+.desktop-address-bar .status {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-weight: 800;
+  margin-right: 10px;
+}
+
+.status.open  { background: #00a56f; color: #fff; }
+.status.soon  { background: #ffb703; color: #000; }
+.status.closed { background: #d62828; color: #fff; }
+
+/* Optional: hide on mobile */
+@media (max-width: 900px) {
+  .desktop-address-bar { display: none; }
+}
+
+/* Fade-in animation */
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================
    Mobile Drawer Navigation
 ========================= */
 
