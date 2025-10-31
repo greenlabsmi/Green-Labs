@@ -552,3 +552,203 @@ body.agegate--lock{overflow:hidden}
   0%{background-position:-200%}
   100%{background-position:200%}
 }
+
+/* =========================
+   Sticky Nav — Final Green Labs Build
+========================= */
+
+.site-header.sticky-nav {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.98);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(6px);
+  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease;
+}
+
+.site-header.sticky-nav.is-scrolled {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+  transform: translateY(0);
+}
+
+/* Inner layout, logo, tabs, buttons ... */
+.sticky-nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--nav-h);
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 18px;
+}
+
+.sticky-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sticky-logo img {
+  height: 36px;
+  width: auto;
+}
+
+.sticky-brand-name {
+  font-family: "Cinzel", serif;
+  font-weight: 900;
+  color: #fff;
+  font-size: 1.2rem;
+  letter-spacing: 0.04em;
+}
+
+.sticky-tabs {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+}
+
+.sticky-tabs .stab {
+  font-family: "Cinzel", serif;
+  font-weight: 800;
+  color: #fff;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.sticky-tabs .stab::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: center;
+  width: 80%;
+  height: 2px;
+  background: var(--brand-2);
+  transition: transform 0.25s ease;
+}
+.sticky-tabs .stab:hover::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+.sticky-tabs .stab:hover {
+  background: linear-gradient(120deg, var(--brand-3), var(--brand-2), var(--brand-3));
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 5s linear infinite;
+  letter-spacing: 0.08em;
+}
+
+/* Actions */
+.sticky-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-order {
+  background: var(--brand);
+  color: #fff;
+  font-weight: 800;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: none;
+  transition: background 0.25s ease, transform 0.1s ease;
+}
+.btn-order:hover {
+  background: var(--brand-2);
+  transform: translateY(-1px);
+}
+
+.icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease;
+}
+.icon-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--brand-2);
+  transform: scale(1.1);
+  box-shadow: 0 0 14px rgba(46, 248, 187, 0.35);
+}
+
+/* Mobile drawer */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 998;
+  backdrop-filter: blur(3px);
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.menu-popover {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: min(90vw, 320px);
+  height: 100vh;
+  background: #111;
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.4);
+  z-index: 999;
+  padding: 32px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transform: translateX(100%);
+  animation: slideInRight 0.35s ease forwards;
+}
+
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.drawer-link {
+  font-family: "Cinzel", serif;
+  font-weight: 800;
+  color: #fff;
+  font-size: 1.1rem;
+  padding: 8px 4px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: color 0.25s ease, transform 0.2s ease;
+}
+.drawer-link:hover {
+  color: var(--brand-2);
+  transform: translateX(4px);
+}
+
+.menu-overlay[hidden],
+.menu-popover[hidden] {
+  display: none;
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeInDown { from { opacity: 0; transform: translateY(-15px); } to { opacity: 1; transform: translateY(0); } }
+.site-header.sticky-nav { animation: fadeInDown 0.6s ease-out both; }
+
+@media (max-width: 900px) { .sticky-tabs { display: none; } }
+@media (max-width: 480px) { .btn-order span.label-desktop { display: none; } }
