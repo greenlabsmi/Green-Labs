@@ -1,24 +1,16 @@
-// Green Labs — New Build
-// - Mobile condensed: fewer elements before Deals
-// - Deals button: scroll to Deals + auto-open
-// - Shop Now: reveals menu placeholder + scroll
-// - Hours pill: popover + status strip sync
-// - Carousel: simple autoplay
-
 document.addEventListener('DOMContentLoaded', () => {
   // Footer year
   const y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();
 
   const ADDRESS = '10701 Madison St, Luna Pier, MI 48157';
-  const PHONE = '+17348000024';
 
-  // --- Helpers
   const $ = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
 
   function isIOS(){ return /iPad|iPhone|iPod/.test(navigator.userAgent || ''); }
   function isAndroid(){ return /Android/.test(navigator.userAgent || ''); }
+
   function smartMapHref(address){
     const q = encodeURIComponent(address);
     if (isIOS()) return `maps://?q=${q}`;
@@ -34,7 +26,17 @@ document.addEventListener('DOMContentLoaded', () => {
     window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
   }
 
-  // --- Drawer
+  // ===== Generic scroll buttons =====
+  $$('[data-scroll]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = btn.getAttribute('data-scroll');
+      const el = target ? $(target) : null;
+      if (el) smoothTo(el);
+    });
+  });
+
+  // ===== Drawer (FORCED CLOSED on load; fixes stuck open) =====
   (function drawer(){
     const openBtn = $('[data-open-menu]');
     const closeBtn = $('[data-close-menu]');
@@ -42,23 +44,35 @@ document.addEventListener('DOMContentLoaded', () => {
     const ovl = $('#menuOverlay');
     if (!openBtn || !drawer || !ovl) return;
 
+    // Force closed on load
+    drawer.hidden = true;
+    ovl.hidden = true;
+    openBtn.setAttribute('aria-expanded','false');
+    document.body.style.overflow = '';
+
     const open = () => {
       drawer.hidden = false;
       ovl.hidden = false;
       openBtn.setAttribute('aria-expanded','true');
+      document.body.style.overflow = 'hidden';
     };
     const close = () => {
       drawer.hidden = true;
       ovl.hidden = true;
       openBtn.setAttribute('aria-expanded','false');
+      document.body.style.overflow = '';
     };
 
-    openBtn.addEventListener('click', (e) => { e.preventDefault(); drawer.hidden ? open() : close(); });
-    if (closeBtn) closeBtn.addEventListener('click', close);
+    openBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      drawer.hidden ? open() : close();
+    });
+
+    if (closeBtn) closeBtn.addEventListener('click', (e)=>{ e.preventDefault(); close(); });
     ovl.addEventListener('click', close);
     document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape') close(); });
 
-    // drawer buttons
+    // Let drawer buttons trigger actions then close
     drawer.addEventListener('click', (e) => {
       const btn = e.target.closest('button');
       if (!btn) return;
@@ -75,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   })();
 
-  // --- Deals (load + expand/collapse)
+  // ===== Deals (scroll + auto-open) =====
   const dealCard = $('#dealCard');
   const dealBody = $('#dealBody');
   const dealList = $('#dealList');
@@ -86,11 +100,13 @@ document.addEventListener('DOMContentLoaded', () => {
     dealCard.setAttribute('aria-expanded','true');
     dealBody.classList.remove('collapsed');
   }
+
   function collapseDeals(){
     if (!dealCard || !dealBody) return;
     dealCard.setAttribute('aria-expanded','false');
     dealBody.classList.add('collapsed');
   }
+
   function toggleDeals(){
     const isOpen = dealCard?.getAttribute('aria-expanded') === 'true';
     isOpen ? collapseDeals() : expandDeals();
@@ -99,10 +115,14 @@ document.addEventListener('DOMContentLoaded', () => {
   function openDeals(scrollAlso){
     const dealsSection = $('#deals');
     if (scrollAlso && dealsSection) smoothTo(dealsSection);
-    // open after scroll starts so it "arrives open"
-    setTimeout(expandDeals, 200);
+    // Delay so scroll starts first, then the accordion opens
+    setTimeout(expandDeals, 220);
   }
 
+  // Bind all triggers
+  $$('[data-open-deals]').forEach(el => el.addEventListener('click', (e)=>{ e.preventDefault(); openDeals(true); }));
+
+  // Card interactions
   if (dealCard && dealBody){
     dealCard.addEventListener('click', (e)=> {
       if (e.target.closest('button,a,input,textarea,select,label')) return;
@@ -112,11 +132,13 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleDeals(); }
     });
   }
+
   if (closeDealsBtn) closeDealsBtn.addEventListener('click', (e)=> { e.stopPropagation(); collapseDeals(); });
 
   // deals.json render
   (function loadDeals(){
     if (!dealList) return;
+
     fetch('deals.json', { cache: 'no-store' })
       .then(r => r.ok ? r.json() : Promise.reject(r.status))
       .then(data => renderDeals(data))
@@ -127,7 +149,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }[c]));
 
     function renderDeals(data){
-      // supports your existing DR-style deals.json structure
       const html = data.map(cat => {
         if (Array.isArray(cat.groups)) {
           const groups = cat.groups.map(g => `
@@ -143,6 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ${groups}
           </li>`;
         }
+
         return `<li style="margin:12px 0;">
           <div style="font-weight:900;letter-spacing:.06em;">${esc(cat.category)}</div>
           <ul style="margin:8px 0 0;padding-left:18px;">
@@ -150,35 +172,23 @@ document.addEventListener('DOMContentLoaded', () => {
           </ul>
         </li>`;
       }).join('');
+
       dealList.innerHTML = html + `<div style="margin-top:10px;font-weight:900;opacity:.72;">All prices include tax.</div>`;
     }
   })();
 
-  // --- Shop (Leafly placeholder reveal)
+  // ===== Shop reveal =====
   const menuWrap = $('#menuWrap');
+
   function openShop(scrollAlso){
     if (menuWrap) menuWrap.hidden = false;
     const shop = $('#shop');
     if (scrollAlso && shop) smoothTo(shop);
   }
 
-  // wire triggers
-  $$('[data-open-deals]').forEach(el => el.addEventListener('click', (e)=>{ e.preventDefault(); openDeals(true); }));
   $$('[data-open-shop]').forEach(el => el.addEventListener('click', (e)=>{ e.preventDefault(); openShop(true); }));
 
-  // optional generic scroll
-  $$('[data-scroll]').forEach(el => {
-    el.addEventListener('click', (e)=> {
-      const href = el.getAttribute('href');
-      if (href && href.startsWith('#')) {
-        e.preventDefault();
-        const t = $(href);
-        if (t) smoothTo(t);
-      }
-    });
-  });
-
-  // --- Hours pill + popover
+  // ===== Hours pill =====
   (function hours(){
     const btn = $('#hoursBtn');
     const pop = $('#hoursPopover');
@@ -218,28 +228,24 @@ document.addEventListener('DOMContentLoaded', () => {
       const openSoon = hour >= open - 0.5 && hour < open;
       const closingSoon = hour >= close - 0.5 && hour < close;
       const isOpen = hour >= open && hour < close;
-      return { idx, open, close, isOpen, openSoon, closingSoon };
+      return { open, close, isOpen, openSoon, closingSoon };
     }
 
     function paint(){
       if (!btn) return;
       const s = statusNow();
-      btn.classList.remove('state-open','state-soon','state-closed');
-
       let label = 'OPEN';
       let dot = 'open';
-      if (s.isOpen && s.closingSoon){
-        label = 'CLOSING SOON'; dot = 'soon'; btn.classList.add('state-soon');
-      } else if (!s.isOpen && s.openSoon){
-        label = 'OPENING SOON'; dot = 'soon'; btn.classList.add('state-soon');
-      } else if (s.isOpen){
-        label = 'OPEN'; dot = 'open'; btn.classList.add('state-open');
-      } else {
-        label = 'CLOSED'; dot = 'closed'; btn.classList.add('state-closed');
-      }
+
+      if (s.isOpen && s.closingSoon){ label = 'CLOSING SOON'; dot = 'soon'; }
+      else if (!s.isOpen && s.openSoon){ label = 'OPENING SOON'; dot = 'soon'; }
+      else if (s.isOpen){ label = 'OPEN'; dot = 'open'; }
+      else { label = 'CLOSED'; dot = 'closed'; }
+
       btn.textContent = label;
 
       if (statusText) statusText.textContent = 'Open daily 9am–9pm';
+
       if (statusDot){
         statusDot.style.background = dot === 'open' ? '#16a34a' : (dot === 'soon' ? '#f59e0b' : '#ef4444');
         statusDot.style.boxShadow = dot === 'open'
@@ -272,70 +278,45 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.setAttribute('aria-expanded','false');
     }
 
-    paint(); renderHours();
+    paint();
+    renderHours();
     setInterval(paint, 60*1000);
 
-    if (btn){
-      btn.addEventListener('click', () => (pop?.hidden ? openPop() : closePop()));
-    }
+    if (btn) btn.addEventListener('click', () => (pop?.hidden ? openPop() : closePop()));
     if (ovl) ovl.addEventListener('click', closePop);
+
+    // Tapping status strip opens hours
     if (strip && btn) strip.addEventListener('click', () => btn.click());
   })();
 
-  // --- Carousel
+  // ===== Carousel (simple) =====
   (function carousel(){
-    const root = $('[data-carousel]');
+    const root = document.querySelector('[data-carousel]');
     if (!root) return;
-    const slides = $$('.slide', root);
-    if (!slides.length) return;
+    const slides = [...root.querySelectorAll('.slide')];
+    const dots = root.querySelector('.dots');
+    const delay = parseInt(root.getAttribute('data-autoplay') || '6500', 10);
+
+    if (!slides.length || !dots) return;
 
     let i = slides.findIndex(s => s.classList.contains('is-active'));
     if (i < 0) i = 0;
 
-    let dotsBar = $('.dots', root);
-    if (!dotsBar){
-      dotsBar = document.createElement('div');
-      dotsBar.className = 'dots';
-      root.appendChild(dotsBar);
-    }
+    dots.innerHTML = slides.map((_, idx) => `<button class="dotbtn ${idx===i?'is-active':''}" type="button" aria-label="Go to slide ${idx+1}"></button>`).join('');
+    const dotBtns = [...dots.querySelectorAll('.dotbtn')];
 
-    const dots = slides.map((_,k)=>{
-      const b = document.createElement('button');
-      b.type = 'button';
-      b.setAttribute('aria-label', `Go to slide ${k+1}`);
-      if (k === i) b.setAttribute('aria-current','true');
-      b.addEventListener('click', () => go(k, true));
-      dotsBar.appendChild(b);
-      return b;
-    });
-
-    const delay = parseInt(root.dataset.autoplay || '6500', 10);
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    let t = null;
-
-    function go(n, user){
-      const prev = i;
-      i = ((n % slides.length) + slides.length) % slides.length;
-      if (prev === i) return;
-      slides[prev].classList.remove('is-active');
+    function go(n){
+      slides[i].classList.remove('is-active');
+      dotBtns[i].classList.remove('is-active');
+      i = (n + slides.length) % slides.length;
       slides[i].classList.add('is-active');
-      dots[prev]?.removeAttribute('aria-current');
-      dots[i]?.setAttribute('aria-current','true');
-      if (user) restart();
+      dotBtns[i].classList.add('is-active');
     }
-    function start(){
-      if (reduced) return;
-      stop();
-      t = setInterval(()=>go(i+1, false), delay);
-    }
-    function stop(){
-      if (t) { clearInterval(t); t = null; }
-    }
-    function restart(){ stop(); start(); }
 
-    root.addEventListener('mouseenter', stop);
-    root.addEventListener('mouseleave', start);
+    dotBtns.forEach((b, idx) => b.addEventListener('click', () => go(idx)));
 
-    start();
+    let t = setInterval(() => go(i+1), delay);
+    root.addEventListener('mouseenter', () => clearInterval(t));
+    root.addEventListener('mouseleave', () => { clearInterval(t); t = setInterval(() => go(i+1), delay); });
   })();
 });
