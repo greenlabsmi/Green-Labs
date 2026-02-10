@@ -1,12 +1,23 @@
-// ------------------------------------------------------------
-// Green Labs – main client script (Dutch Republic structure)
-// ------------------------------------------------------------
+// =========================================================
+// Green Labs — New Vision Script
+// - Age gate
+// - Sticky status (Open / Soon / Closed)
+// - Hours popover + status strip sync
+// - Drawer menu
+// - Deals loader (deals.json)
+// - Shop Now opens in-page menu section
+// - Simple hero carousel
+// =========================================================
 
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('[greenlabs] script booted');
+  const ADDRESS = '10701 Madison St, Luna Pier, MI 48157';
 
-  // ===== AGE GATE ======================================================
-  (function () {
+  // Footer year
+  const y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  // ===== Age Gate ======================================================
+  (function ageGate(){
     const KEY = 'gl_age_until';
     const gate = document.getElementById('ageGate');
     if (!gate) return;
@@ -19,137 +30,84 @@ document.addEventListener('DOMContentLoaded', () => {
     const sessionOK = sessionStorage.getItem(KEY) === '1';
     const isOK = (okUntil > Date.now()) || sessionOK;
 
-    function show() {
-      gate.setAttribute('aria-hidden', 'false');
-      gate.style.display = 'flex';
-      document.body.classList.add('agegate--lock');
-    }
-    function hide() {
-      gate.setAttribute('aria-hidden', 'true');
-      gate.style.display = 'none';
-      document.body.classList.remove('agegate--lock');
-    }
+    function show(){ gate.setAttribute('aria-hidden','false'); gate.style.display='flex'; document.body.classList.add('agegate--lock'); }
+    function hide(){ gate.setAttribute('aria-hidden','true'); gate.style.display='none'; document.body.classList.remove('agegate--lock'); }
 
     const yes = document.getElementById('ageYes');
-    const no = document.getElementById('ageNo');
+    const no  = document.getElementById('ageNo');
     const remember = document.getElementById('ageRemember');
 
-    if (yes) {
-      yes.addEventListener('click', () => {
-        if (remember && remember.checked) {
-          const THIRTY_DAYS = 30 * 24 * 60 * 60 * 1000;
-          localStorage.setItem(KEY, String(Date.now() + THIRTY_DAYS));
-        } else {
-          sessionStorage.setItem(KEY, '1');
-        }
-        hide();
-      });
-    }
-    if (no) {
-      no.addEventListener('click', () => {
-        location.href = 'https://www.google.com';
-      });
-    }
+    if (yes) yes.addEventListener('click', () => {
+      if (remember && remember.checked) {
+        const THIRTY = 30*24*60*60*1000;
+        localStorage.setItem(KEY, String(Date.now()+THIRTY));
+      } else {
+        sessionStorage.setItem(KEY, '1');
+      }
+      hide();
+    });
+    if (no) no.addEventListener('click', () => { location.href = 'https://www.google.com'; });
 
     if (forceShow) show();
     else if (isOK) hide();
     else show();
   })();
 
-  // ===== ALIGN FLOATING POPOVERS ======================================
-  function alignFloating(trigger, panel, opts = {}) {
-    if (!trigger || !panel) return;
-    const r = trigger.getBoundingClientRect();
-    const gap = opts.gap ?? 8;
-    const align = opts.align ?? 'end';
-
-    panel.style.position = 'fixed';
-    panel.style.right = '';
-
-    let left;
-    if (align === 'start') left = r.left;
-    if (align === 'center') left = r.left + r.width / 2 - panel.offsetWidth / 2;
-    if (align === 'end') left = r.left + r.width - panel.offsetWidth;
-
-    const pad = 8;
-    left = Math.max(pad, Math.min(left, window.innerWidth - panel.offsetWidth - pad));
-    panel.style.left = Math.round(left) + 'px';
-    panel.style.top = Math.round(r.bottom + gap) + 'px';
+  // ===== Helpers =======================================================
+  function isIOS(){ return /iPad|iPhone|iPod/.test(navigator.userAgent||''); }
+  function isAndroid(){ return /Android/.test(navigator.userAgent||''); }
+  function smartMapHref(address){
+    const q = encodeURIComponent(address);
+    if (isIOS()) return `maps://?q=${q}`;
+    if (isAndroid()) return `geo:0,0?q=${q}`;
+    return `https://www.google.com/maps?q=${q}`;
   }
 
-  // ===== STICKY HEADER SWAP ===========================================
-  (function stickyHeader() {
-    const hdr = document.querySelector('.site-header');
-    if (!hdr) return;
-    const onScroll = () => hdr.classList.toggle('is-scrolled', window.scrollY > 8);
-    onScroll();
-    document.addEventListener('scroll', onScroll, { passive: true });
-  })();
+  function clamp(n, min, max){ return Math.max(min, Math.min(max, n)); }
 
-  (function stickySwap() {
-    const banner = document.querySelector('.brand-banner');
-    if (!banner) return;
-    const activate = (on) => document.body.classList.toggle('show-sticky', on);
-    if ('IntersectionObserver' in window) {
-      const io = new IntersectionObserver(
-        (entries) => activate(!entries[0].isIntersecting),
-        { rootMargin: '-1px 0px 0px 0px', threshold: 0 }
-      );
-      io.observe(banner);
-    } else {
-      const check = () => activate(window.scrollY > banner.offsetHeight - 1);
-      check();
-      window.addEventListener('scroll', check, { passive: true });
-      window.addEventListener('resize', check);
-    }
-  })();
+  // ===== Shop Now opens menu ==========================================
+  const menuSection = document.getElementById('menu');
+  function openMenu(){
+    if (!menuSection) return;
+    menuSection.hidden = false;
 
-  // ===== FOOTER YEAR ==================================================
-  const y = document.getElementById('year');
-  if (y) y.textContent = new Date().getFullYear();
+    // close drawer if open
+    const drawer = document.getElementById('navDrawer');
+    const overlay = document.getElementById('menuOverlay');
+    if (drawer && !drawer.hidden) drawer.hidden = true;
+    if (overlay && !overlay.hidden) overlay.hidden = true;
 
-  // ===== EXTERNAL LINKS ===============================================
-  document.querySelectorAll('[data-ext]').forEach(a => {
-    a.setAttribute('rel', 'noopener');
-    a.setAttribute('target', '_blank');
+    const top = menuSection.getBoundingClientRect().top + window.pageYOffset - 84;
+    window.scrollTo({ top, behavior: 'smooth' });
+  }
+
+  [
+    'shopNowTop','shopNowNav','shopNowHero','shopNowMid','shopNowDeals','shopNowDTG','shopNowVisit','shopNowDrawer','quickShop'
+  ].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('click', (e) => { e.preventDefault(); openMenu(); });
   });
 
-  // ===== MOBILE MENU POPOVER ==========================================
-  (function menuPopover() {
+  // ===== Drawer menu ===================================================
+  (function drawer(){
     const openBtn = document.querySelector('[data-open-menu]');
     const pop = document.getElementById('navDrawer');
     const ovl = document.getElementById('menuOverlay');
+    const closeBtn = document.getElementById('closeDrawer');
     if (!openBtn || !pop || !ovl) return;
 
-    const open = () => {
-      pop.hidden = false;
-      ovl.hidden = false;
-      openBtn.setAttribute('aria-expanded', 'true');
-      alignFloating(openBtn, pop, { align: 'end', gap: 8 });
-    };
-    const close = () => {
-      pop.hidden = true;
-      ovl.hidden = true;
-      openBtn.setAttribute('aria-expanded', 'false');
-    };
+    const open = () => { pop.hidden = false; ovl.hidden = false; openBtn.setAttribute('aria-expanded','true'); };
+    const close = () => { pop.hidden = true; ovl.hidden = true; openBtn.setAttribute('aria-expanded','false'); };
 
-    openBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      (pop.hidden ? open() : close());
-    });
+    openBtn.addEventListener('click', (e)=>{ e.preventDefault(); e.stopPropagation(); (pop.hidden ? open() : close()); });
+    if (closeBtn) closeBtn.addEventListener('click', close);
     ovl.addEventListener('click', close);
-    pop.addEventListener('click', (e) => { if (e.target.closest('a')) close(); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
-
-    const keepAligned = () => { if (!pop.hidden) alignFloating(openBtn, pop, { align: 'end', gap: 8 }); };
-    window.addEventListener('resize', keepAligned, { passive: true });
-    window.addEventListener('scroll', keepAligned, { passive: true });
-    window.addEventListener('scroll', close, { passive: true });
+    pop.addEventListener('click', (e)=>{ if (e.target.closest('a')) close(); });
+    document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape') close(); });
   })();
 
-  // ===== DEALS LOADER =================================================
-  (function deals() {
+  // ===== Deals loader ==================================================
+  (function deals(){
     const body = document.getElementById('dealBody');
     const list = document.getElementById('dealList');
     const card = document.querySelector('.deal-card');
@@ -160,338 +118,258 @@ document.addEventListener('DOMContentLoaded', () => {
       .then(data => renderDeals(list, data))
       .catch(() => { list.innerHTML = '<li>Deals unavailable right now.</li>'; });
 
-    function esc(s) {
-      return String(s).replace(/[&<>"']/g, c => ({
-        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-      }[c]));
-    }
+    const esc = s => String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
-    function renderDeals(target, data) {
-      const html = data.map(cat => {
-        if (cat.groups && Array.isArray(cat.groups)) {
-          const groups = cat.groups.map(g => `
+    function renderDeals(target, data){
+      const html = data.map(cat=>{
+        if (Array.isArray(cat.groups)) {
+          const groups = cat.groups.map(g=>`
             <div class="deal-subgroup">
               <div class="deal-subtitle">${esc(g.title)}</div>
-              <ul class="deal-items">
-                ${(g.items || []).map(it => `<li>${esc(it)}</li>`).join('')}
-              </ul>
+              <ul class="deal-items">${(g.items||[]).map(it=>`<li>${esc(it)}</li>`).join('')}</ul>
             </div>`).join('');
           return `<li class="deal-cat"><div class="deal-cat-title">${esc(cat.category)}</div>${groups}</li>`;
-        } else {
-          return `<li class="deal-cat">
-            <div class="deal-cat-title">${esc(cat.category)}</div>
-            <ul class="deal-items">
-              ${(cat.items || []).map(it => `<li>${esc(it)}</li>`).join('')}
-            </ul>
-          </li>`;
         }
+        return `<li class="deal-cat">
+          <div class="deal-cat-title">${esc(cat.category)}</div>
+          <ul class="deal-items">${(cat.items||[]).map(it=>`<li>${esc(it)}</li>`).join('')}</ul>
+        </li>`;
       }).join('');
       target.innerHTML = html + `<div class="deal-note">All prices include tax.</div>`;
     }
 
-    const expand = () => { card.setAttribute('aria-expanded', 'true'); body.classList.remove('collapsed'); };
-    const collapse = () => { card.setAttribute('aria-expanded', 'false'); body.classList.add('collapsed'); };
+    const expand = () => { card.setAttribute('aria-expanded','true'); body.classList.remove('collapsed'); };
+    const collapse = () => { card.setAttribute('aria-expanded','false'); body.classList.add('collapsed'); };
     const toggle = () => (card.getAttribute('aria-expanded') === 'true') ? collapse() : expand();
 
-    card.addEventListener('click', (e) => {
-      if (e.target.closest('button, a, input, label, select, textarea')) return;
-      toggle();
-    });
-    card.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
-    });
+    card.addEventListener('click', (e)=>{ if (e.target.closest('button,a,input,label,select,textarea')) return; toggle(); });
+    card.addEventListener('keydown', (e)=>{ if (e.key==='Enter'||e.key===' '){ e.preventDefault(); toggle(); } });
 
     const closeBtn = document.getElementById('closeDeals');
-    if (closeBtn) closeBtn.addEventListener('click', (e) => { e.stopPropagation(); collapse(); });
+    if (closeBtn) closeBtn.addEventListener('click', (e)=>{ e.stopPropagation(); collapse(); });
   })();
 
-  // ===== SMART MAPS HELPER ============================================
-  function isIOS() { return /iPad|iPhone|iPod/.test(navigator.userAgent || ''); }
-  function isAndroid() { return /Android/.test(navigator.userAgent || ''); }
-  function smartMapHref(address) {
-    const q = encodeURIComponent(address);
-    if (isIOS()) return `maps://?q=${q}`;
-    if (isAndroid()) return `geo:0,0?q=${q}`;
-    return `https://www.google.com/maps?q=${q}`;
-  }
-
-  // ===== HOURS POPOVER ================================================
-  (function hours() {
+  // ===== Hours + Status ===============================================
+  (function hours(){
     const btn = document.getElementById('hoursBtn');
     const pop = document.getElementById('hoursPopover');
     const ovl = document.getElementById('hoursOverlay');
     const list = document.getElementById('hoursList');
     const note = document.getElementById('hoursNote');
-    const statusDot = document.getElementById('hoursStatusDot');
+    const closeBtn = document.getElementById('closeHours');
+    const deskPill = document.getElementById('deskStatusPill');
+
     if (!btn || !pop || !ovl || !list || !note) return;
 
+    // 9–9 every day
     const HOURS = [
-      { d: 'Sunday', open: 9, close: 21 },
-      { d: 'Monday', open: 9, close: 21 },
-      { d: 'Tuesday', open: 9, close: 21 },
-      { d: 'Wednesday', open: 9, close: 21 },
-      { d: 'Thursday', open: 9, close: 21 },
-      { d: 'Friday', open: 9, close: 21 },
-      { d: 'Saturday', open: 9, close: 21 },
+      { d:'Sunday', open:9, close:21 },
+      { d:'Monday', open:9, close:21 },
+      { d:'Tuesday', open:9, close:21 },
+      { d:'Wednesday', open:9, close:21 },
+      { d:'Thursday', open:9, close:21 },
+      { d:'Friday', open:9, close:21 },
+      { d:'Saturday', open:9, close:21 },
     ];
 
-    const ADDRESS = '10701 Madison St, Luna Pier, MI 48157';
+    const fmt = h => `${((h+11)%12)+1}${h>=12?'PM':'AM'}`;
 
-    function fmt(h) {
-      const ampm = h >= 12 ? 'PM' : 'AM';
-      const hr = ((h + 11) % 12) + 1;
-      return `${hr}${ampm}`;
-    }
-
-    function statusNow() {
+    function statusNow(){
       const now = new Date();
       const idx = now.getDay();
-      const hour = now.getHours() + now.getMinutes() / 60;
-      const { open, close } = HOURS[idx];
-      const openSoon = hour >= open - 0.5 && hour < open;
-      const closingSoon = hour >= close - 0.5 && hour < close;
+      const hour = now.getHours() + now.getMinutes()/60;
+      const {open, close} = HOURS[idx];
+      const openSoon = hour >= open-0.5 && hour < open;
+      const closingSoon = hour >= close-0.5 && hour < close;
       const isOpen = hour >= open && hour < close;
-      return { isOpen, openSoon, closingSoon, open, close, idx };
+      return {idx, open, close, isOpen, openSoon, closingSoon};
     }
 
-    function paintPill() {
+    function paint(){
       const s = statusNow();
-      btn.classList.remove('state-open', 'state-soon', 'state-closed');
-      let tip = '';
+      btn.classList.remove('state-open','state-soon','state-closed');
+      let label = 'CLOSED';
+      let deskClass = 'status-pill--closed';
 
-      if (s.isOpen && s.closingSoon) {
-        btn.textContent = 'CLOSING SOON';
+      if (s.isOpen && s.closingSoon){
+        label = 'CLOSING SOON';
         btn.classList.add('state-soon');
-        tip = `Closes at ${fmt(s.close)} today`;
-      } else if (!s.isOpen && s.openSoon) {
-        btn.textContent = 'OPENING SOON';
+        deskClass = 'status-pill--soon';
+      } else if (!s.isOpen && s.openSoon){
+        label = 'OPENING SOON';
         btn.classList.add('state-soon');
-        tip = `Opens at ${fmt(s.open)} today`;
-      } else if (s.isOpen) {
-        btn.textContent = 'OPEN';
+        deskClass = 'status-pill--soon';
+      } else if (s.isOpen){
+        label = 'OPEN';
         btn.classList.add('state-open');
-        tip = `Open until ${fmt(s.close)} today`;
+        deskClass = 'status-pill--open';
       } else {
-        btn.textContent = 'CLOSED';
         btn.classList.add('state-closed');
-        tip = `Opens tomorrow at ${fmt(HOURS[(s.idx + 1) % 7].open)}`;
       }
-      btn.dataset.tip = tip;
 
-      if (statusDot) {
-        statusDot.className = 'status-dot ' + (s.isOpen ? 'is-open' : (s.openSoon || s.closingSoon ? 'is-soon' : 'is-closed'));
+      btn.textContent = label;
+
+      if (deskPill){
+        deskPill.className = `status-pill ${deskClass}`;
+        deskPill.textContent = (label === 'OPEN') ? 'Open' : (label.includes('SOON') ? 'Soon' : 'Closed');
       }
     }
 
-    function renderHours() {
+    function renderHours(){
       const today = new Date().getDay();
-      list.innerHTML = HOURS.map((h, i) => `
-        <li class="${i === today ? 'is-today' : ''}">
+      list.innerHTML = HOURS.map((h,i)=>`
+        <li class="${i===today?'is-today':''}">
           <span>${h.d}</span>
           <span>${fmt(h.open)} – ${fmt(h.close)}</span>
-        </li>`).join('');
+        </li>
+      `).join('');
 
       const href = smartMapHref(ADDRESS);
-      note.innerHTML = `<a class="note-address" href="${href}">${ADDRESS}</a>`;
-      const a = note.querySelector('.note-address');
-      if (a && /^https?:/i.test(a.href)) { a.target = '_blank'; a.rel = 'noopener'; }
+      const safe = /^https?:/i.test(href);
+      note.innerHTML = `<a class="note-address" href="${href}" ${safe ? 'target="_blank" rel="noopener"' : ''}>${ADDRESS}</a>`;
     }
 
-    function alignHoursPopover() {
+    function alignPopover(){
       const strip = document.getElementById('statusStrip');
       const stripVisible = strip && getComputedStyle(strip).display !== 'none';
-      const anchor = (stripVisible && strip) || document.querySelector('.sticky-nav') || document.querySelector('.site-header');
+      const anchor = (stripVisible && strip) || document.querySelector('.site-header');
       if (!anchor) return;
       const rect = anchor.getBoundingClientRect();
-      const top = rect.bottom;
-      pop.style.top = `${top}px`;
+      pop.style.top = `${Math.round(rect.bottom)}px`;
       pop.style.right = '16px';
     }
 
-    function openPop() { pop.hidden = false; ovl.hidden = false; btn.setAttribute('aria-expanded', 'true'); alignHoursPopover(); }
-    function closePop() { pop.hidden = true; ovl.hidden = true; btn.setAttribute('aria-expanded', 'false'); }
+    function openPop(){ pop.hidden=false; ovl.hidden=false; btn.setAttribute('aria-expanded','true'); alignPopover(); }
+    function closePop(){ pop.hidden=true; ovl.hidden=true; btn.setAttribute('aria-expanded','false'); }
 
-    paintPill();
+    paint();
     renderHours();
-    btn.addEventListener('click', () => (pop.hidden ? openPop() : closePop()));
+
+    btn.addEventListener('click', ()=> (pop.hidden ? openPop() : closePop()));
     ovl.addEventListener('click', closePop);
-    window.addEventListener('scroll', closePop, { passive: true });
-    window.addEventListener('scroll', () => { if (!pop.hidden) alignHoursPopover(); }, { passive: true });
-    window.addEventListener('resize', () => { if (!pop.hidden) alignHoursPopover(); });
-    setInterval(paintPill, 60000);
-  })();
+    if (closeBtn) closeBtn.addEventListener('click', closePop);
 
-  // ===== MAPS BUTTON ===================================================
-  (function maps() {
-    const btn = document.getElementById('openMapsSmart');
-    if (!btn) return;
-    const ADDRESS = '10701 Madison St, Luna Pier, MI 48157';
-    btn.addEventListener('click', () => {
-      const href = smartMapHref(ADDRESS);
-      if (/^https?:/i.test(href)) window.open(href, '_blank', 'noopener');
-      else window.location.href = href;
-    });
+    window.addEventListener('resize', ()=>{ if (!pop.hidden) alignPopover(); });
+    window.addEventListener('scroll', ()=>{ if (!pop.hidden) alignPopover(); }, {passive:true});
+    setInterval(paint, 60*1000);
 
-    const mapLink = document.querySelector('.map-link');
-    if (mapLink) {
-      mapLink.addEventListener('click', (e) => {
-        if (e.target.tagName.toLowerCase() === 'iframe') return;
-        const webUrl = 'https://www.google.com/maps?q=' + encodeURIComponent(ADDRESS);
-        window.open(webUrl, '_blank', 'noopener');
-      });
-    }
-  })();
-
-  // ===== STATUS STRIP SYNC ============================================
-  (function statusStripSync() {
+    // Mobile status strip sync
     const strip = document.getElementById('statusStrip');
     const dot = strip ? strip.querySelector('.status-dot') : null;
     const textEl = document.getElementById('statusText');
-    const pillBtn = document.getElementById('hoursBtn');
     const addrEl = document.getElementById('statusAddr');
+    if (strip && dot && textEl){
+      if (addrEl) addrEl.textContent = ADDRESS;
 
-    if (!strip || !pillBtn || !dot || !textEl) return;
-    if (addrEl) addrEl.addEventListener('click', (e) => e.stopPropagation());
+      const sync = ()=>{
+        dot.classList.remove('is-open','is-soon','is-closed');
+        if (btn.classList.contains('state-open')){ dot.classList.add('is-open'); textEl.textContent = 'Open'; }
+        else if (btn.classList.contains('state-soon')){ dot.classList.add('is-soon'); textEl.textContent = 'Soon'; }
+        else { dot.classList.add('is-closed'); textEl.textContent = 'Closed'; }
+      };
 
-    const ADDRESS = '10701 Madison St, Luna Pier, MI 48157';
-    if (addrEl) addrEl.textContent = ADDRESS;
-
-    const setText = (label, klass) => {
-      textEl.className = 'status-text';
-      if (klass) textEl.classList.add(klass);
-      textEl.textContent = label;
-    };
-
-    const syncState = () => {
-      dot.classList.remove('is-open', 'is-soon', 'is-closed');
-      if (pillBtn.classList.contains('state-open')) {
-        dot.classList.add('is-open'); setText('Open', 'open');
-      } else if (pillBtn.classList.contains('state-soon')) {
-        dot.classList.add('is-soon'); setText('Closing Soon', 'soon');
-      } else if (pillBtn.classList.contains('state-closed')) {
-        dot.classList.add('is-closed'); setText('Closed', 'closed');
-      } else {
-        setText('Store status', '');
-      }
-    };
-
-    strip.addEventListener('click', () => pillBtn.click());
-    setTimeout(syncState, 0);
-    new MutationObserver(syncState).observe(pillBtn, { attributes: true, attributeFilter: ['class'] });
-    setInterval(syncState, 30000);
+      strip.addEventListener('click', ()=> btn.click());
+      sync();
+      new MutationObserver(sync).observe(btn, {attributes:true, attributeFilter:['class']});
+      setInterval(sync, 30*1000);
+    }
   })();
 
-  // ===== SMOOTH SCROLL ================================================
-  document.addEventListener('click', (e) => {
-    if (e.defaultPrevented) return;
+  // ===== Open in Maps ==================================================
+  (function maps(){
+    const btn = document.getElementById('openMapsSmart');
+    if (!btn) return;
+    btn.addEventListener('click', ()=>{
+      const href = smartMapHref(ADDRESS);
+      if (/^https?:/i.test(href)) window.open(href,'_blank','noopener');
+      else location.href = href;
+    });
+  })();
+
+  // ===== Smooth scroll for internal anchors ============================
+  document.addEventListener('click', (e)=>{
     const a = e.target.closest('a');
     if (!a) return;
     const href = a.getAttribute('href') || '';
+    if (a.target === '_blank' || /^https?:\/\//i.test(href)) return;
+    if (!href.startsWith('#')) return;
 
-    if (
-      a.hasAttribute('data-ext') ||
-      a.target === '_blank' ||
-      /^https?:\/\//i.test(href) ||
-      a.closest('#navDrawer') ||
-      a.closest('.menu-popover') ||
-      a.closest('#leafly-embed-wrapper')
-    ) return;
-
-    if (href.startsWith('#')) {
-      const target = document.querySelector(href);
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+    const target = document.querySelector(href);
+    if (target){
+      e.preventDefault();
+      target.scrollIntoView({behavior:'smooth', block:'start'});
     }
   });
 
-  // ===== HERO CAROUSEL ===============================================
-  (function () {
+  // ===== Simple carousel ===============================================
+  (function carousel(){
     const root = document.getElementById('hero-slides');
     if (!root) return;
-    const slides = [...root.querySelectorAll('.slide')].filter(s => {
+
+    const slides = [...root.querySelectorAll('.slide')].filter(s=>{
       const img = s.querySelector('img');
       return img && img.getAttribute('src');
     });
     const N = slides.length;
     if (!N) return;
 
-    let i = slides.findIndex(s => s.classList.contains('is-active'));
+    let i = slides.findIndex(s=>s.classList.contains('is-active'));
     if (i < 0) i = 0;
-    slides.forEach((s, idx) => s.classList.toggle('is-active', idx === i));
 
-    let dotsBar = root.querySelector('.dots');
-    if (!dotsBar) { dotsBar = document.createElement('div'); dotsBar.className = 'dots'; root.appendChild(dotsBar); }
+    const dotsBar = root.querySelector('.dots');
     dotsBar.innerHTML = '';
-    const dots = slides.map((_, k) => {
+    const dots = slides.map((_,k)=>{
       const b = document.createElement('button');
       b.type = 'button';
-      b.setAttribute('aria-label', `Go to slide ${k + 1}`);
-      if (k === i) b.setAttribute('aria-current', 'true');
-      b.addEventListener('click', () => go(k, true));
+      b.setAttribute('aria-label', `Go to slide ${k+1}`);
+      if (k === i) b.setAttribute('aria-current','true');
+      b.addEventListener('click', ()=>go(k,true));
       dotsBar.appendChild(b);
       return b;
     });
 
-    let prevEdge = root.querySelector('.edge--prev');
-    let nextEdge = root.querySelector('.edge--next');
-    if (!prevEdge) {
-      prevEdge = document.createElement('button');
-      prevEdge.className = 'edge edge--prev';
-      prevEdge.type = 'button';
-      prevEdge.setAttribute('aria-label', 'Previous');
-      root.appendChild(prevEdge);
-    }
-    if (!nextEdge) {
-      nextEdge = document.createElement('button');
-      nextEdge.className = 'edge edge--next';
-      nextEdge.type = 'button';
-      nextEdge.setAttribute('aria-label', 'Next');
-      root.appendChild(nextEdge);
-    }
-    prevEdge.addEventListener('click', () => go(i - 1, true));
-    nextEdge.addEventListener('click', () => go(i + 1, true));
+    const prev = root.querySelector('.edge--prev');
+    const next = root.querySelector('.edge--next');
+    if (prev) prev.addEventListener('click', ()=>go(i-1,true));
+    if (next) next.addEventListener('click', ()=>go(i+1,true));
 
-    root.setAttribute('tabindex', '0');
-    root.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft') { e.preventDefault(); go(i - 1, true); }
-      if (e.key === 'ArrowRight') { e.preventDefault(); go(i + 1, true); }
-    });
+    const delay = parseInt(root.dataset.autoplay || '6500', 10);
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let timer = null;
 
+    function start(){ if (!prefersReduced){ stop(); timer = setInterval(()=>go(i+1,false), delay); } }
+    function stop(){ if (timer){ clearInterval(timer); timer = null; } }
+
+    function go(n, user){
+      const prevIdx = i;
+      i = ((n % N) + N) % N;
+      if (i === prevIdx) return;
+
+      slides[prevIdx].classList.remove('is-active');
+      slides[i].classList.add('is-active');
+
+      if (dots[prevIdx]) dots[prevIdx].removeAttribute('aria-current');
+      if (dots[i]) dots[i].setAttribute('aria-current','true');
+
+      if (user){ stop(); start(); }
+    }
+
+    // Touch swipe
     let startX = null;
-    root.addEventListener('touchstart', e => { startX = e.touches[0].clientX; stop(); }, { passive: true });
-    root.addEventListener('touchend', e => {
+    root.addEventListener('touchstart', e=>{ startX = e.touches[0].clientX; stop(); }, {passive:true});
+    root.addEventListener('touchend', e=>{
       if (startX == null) return;
       const dx = e.changedTouches[0].clientX - startX;
-      if (Math.abs(dx) > 40) go(dx < 0 ? i + 1 : i - 1, true);
+      if (Math.abs(dx) > 40) go(dx < 0 ? i+1 : i-1, true);
       startX = null; start();
-    }, { passive: true });
+    }, {passive:true});
 
-    const delay = parseInt(root.dataset.autoplay || '7000', 10);
-    const prefersReduced = root.hasAttribute('data-ignore-reduced-motion')
-      ? false
-      : window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    let timer = null;
-    function start() { if (!prefersReduced) { stop(); timer = setInterval(() => go(i + 1, false), delay); } }
-    function stop() { if (timer) { clearInterval(timer); timer = null; } }
-
+    // Pause on hover
     root.addEventListener('mouseenter', stop);
     root.addEventListener('mouseleave', start);
 
-    go(i, false);
+    // Initialize
+    slides.forEach((s,idx)=>s.classList.toggle('is-active', idx===i));
     start();
-
-    function go(n, user = false) {
-      const prev = i;
-      i = ((n % N) + N) % N;
-      if (i === prev) return;
-      slides[prev].classList.remove('is-active');
-      slides[i].classList.add('is-active');
-      if (dots[prev]) dots[prev].removeAttribute('aria-current');
-      if (dots[i]) dots[i].setAttribute('aria-current', 'true');
-      if (user) { stop(); start(); }
-    }
   })();
 });
