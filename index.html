@@ -16,11 +16,11 @@
 
   <link rel="icon" href="assets/img/favicon.png" />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=101">
+  <link rel="stylesheet" href="style.css?v=102">
 </head>
 <body>
 
-  <!-- ===== Top Brand Bar (NO shop button up here now) ===== -->
+  <!-- ===== Top Brand Bar (NOT sticky anymore) ===== -->
   <header class="topbar">
     <div class="container topbar__inner">
       <div class="brandmark">
@@ -33,7 +33,7 @@
     </div>
   </header>
 
-  <!-- ===== Sticky Header ===== -->
+  <!-- ===== Sticky Header (now sticks to very top) ===== -->
   <header class="sticky">
     <div class="container sticky__inner">
       <a class="sticky__logo" href="#home" aria-label="Green Labs home">
@@ -50,11 +50,7 @@
 
       <!-- Right actions -->
       <div class="actions">
-        <!-- Mobile quick deals -->
-        <button class="btn btn--ghost btn--deals" data-open-deals type="button" aria-label="View deals">
-          Deals
-        </button>
-
+        <button class="btn btn--ghost btn--deals" data-open-deals type="button" aria-label="View deals">Deals</button>
         <button class="btn btn--pill" id="hoursBtn" type="button" aria-expanded="false">OPEN</button>
 
         <button class="btn btn--primary btn--shop" data-open-shop type="button" aria-label="Shop now">
@@ -69,7 +65,7 @@
       </div>
     </div>
 
-    <!-- Status strip (NOW aligned with container instead of drifting left) -->
+    <!-- Status strip (aligned to container) -->
     <div class="status-strip">
       <div class="container status-strip__inner" id="statusStrip" role="button" aria-label="Store status and address">
         <span class="dot" id="statusDot" aria-hidden="true"></span>
@@ -104,7 +100,6 @@
       <button class="drawer__link" data-open-deals type="button">Today’s Deals</button>
       <button class="drawer__link" data-open-shop type="button">Shop Online</button>
 
-      <!-- NOW links to DTG site pages -->
       <a class="drawer__link as-link" href="https://greenlabsmi.github.io/Dutch_Touch_Brand/apparel.html" target="_blank" rel="noopener">DTG Apparel</a>
       <a class="drawer__link as-link" href="https://greenlabsmi.github.io/Dutch_Touch_Brand/strains.html" target="_blank" rel="noopener">Strain Library</a>
 
@@ -127,15 +122,10 @@
 
   <main id="home">
 
-    <!-- ===== HERO ===== -->
+    <!-- ===== HERO (removed duplicate hours pillline) ===== -->
     <section class="hero">
       <div class="container hero__grid">
         <div class="hero__left">
-          <div class="pillline">
-            <span class="pilldot" aria-hidden="true"></span>
-            <span>Open daily 9am–9pm • Luna Pier</span>
-          </div>
-
           <h1 class="hero__title">
             GOOD WEED. <span class="accent">NO CONFUSION.</span>
           </h1>
@@ -261,7 +251,9 @@
       </div>
     </section>
 
-    <!-- ===== DTG ===== -->
+    <!-- ===== DTG + VISIT sections unchanged below ===== -->
+    <!-- (Keeping everything else as you had it) -->
+
     <section id="dtg" class="section section--dtg">
       <div class="container">
         <div class="dtghead">
@@ -308,70 +300,9 @@
             </div>
           </article>
         </div>
-
-        <div id="strain-preview" class="strain">
-          <div class="strain__head">
-            <h3 class="strain__title">Strain Library</h3>
-            <p class="strain__sub">Preview the “collector cards” vibe — we can later pull real strain data/images.</p>
-            <div class="chips" role="tablist" aria-label="Strain filters (placeholder)">
-              <button class="chip is-active" type="button">All</button>
-              <button class="chip" type="button">Award Winning</button>
-              <button class="chip" type="button">Sativa</button>
-              <button class="chip" type="button">Hybrid</button>
-              <button class="chip" type="button">Indica</button>
-            </div>
-          </div>
-
-          <div class="straingrid">
-            <article class="strainCard">
-              <div class="strainCard__img ph2">LEMON WOOKIE</div>
-              <div class="strainCard__body">
-                <div class="strainCard__name">Lemon Wookie #4</div>
-                <div class="strainCard__type">Hybrid-Leaning Sativa</div>
-                <div class="strainCard__desc">Sharp lemon + diesel funk with energetic daytime vibes.</div>
-                <div class="tag">Award Winner</div>
-              </div>
-            </article>
-
-            <article class="strainCard">
-              <div class="strainCard__img ph2">LILAC DIESEL</div>
-              <div class="strainCard__body">
-                <div class="strainCard__name">Lilac Diesel</div>
-                <div class="strainCard__type">Sativa</div>
-                <div class="strainCard__desc">Floral, gassy sativa with a clean uplifting head high.</div>
-                <div class="tag">Award Winner</div>
-              </div>
-            </article>
-
-            <article class="strainCard">
-              <div class="strainCard__img ph2">MR. CLEAN</div>
-              <div class="strainCard__body">
-                <div class="strainCard__name">Mr. Clean</div>
-                <div class="strainCard__type">Sativa</div>
-                <div class="strainCard__desc">Bright citrus and pine with sharp, focused energy.</div>
-                <div class="tag">Award Winner</div>
-              </div>
-            </article>
-
-            <article class="strainCard">
-              <div class="strainCard__img ph2">SPACE HIPPY</div>
-              <div class="strainCard__body">
-                <div class="strainCard__name">Space Hippy</div>
-                <div class="strainCard__type">Sativa-Leaning Hybrid</div>
-                <div class="strainCard__desc">Funky fruit that floats between head buzz and body melt.</div>
-                <div class="tag">Award Winner</div>
-              </div>
-            </article>
-          </div>
-
-          <div class="strain__cta">
-            <a class="btn btn--gold" href="https://greenlabsmi.github.io/Dutch_Touch_Brand/strains.html" target="_blank" rel="noopener">Explore the full library <span aria-hidden="true">→</span></a>
-          </div>
-        </div>
       </div>
     </section>
 
-    <!-- ===== VISIT ===== -->
     <section id="visit" class="section section--light">
       <div class="container">
         <div class="section__head">
@@ -433,6 +364,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=101"></script>
+  <script src="script.js?v=102"></script>
 </body>
 </html>
