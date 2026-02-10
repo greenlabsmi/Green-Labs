@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Footer year
   const y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();
 
@@ -18,15 +17,14 @@ document.addEventListener('DOMContentLoaded', () => {
     return `https://www.google.com/maps?q=${q}`;
   }
 
+  // Smooth scroll with ONLY sticky height offset (topbar is not sticky anymore)
   function smoothTo(el){
     if (!el) return;
-    const topbarH = $('.topbar')?.getBoundingClientRect().height || 56;
     const stickyH = $('.sticky')?.getBoundingClientRect().height || 64;
-    const y = el.getBoundingClientRect().top + window.pageYOffset - (topbarH + stickyH + 8);
+    const y = el.getBoundingClientRect().top + window.pageYOffset - (stickyH + 8);
     window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
   }
 
-  // ===== Generic scroll buttons =====
   $$('[data-scroll]').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
@@ -36,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ===== Drawer (FORCED CLOSED on load; fixes stuck open) =====
+  // ===== Drawer =====
   (function drawer(){
     const openBtn = $('[data-open-menu]');
     const closeBtn = $('[data-close-menu]');
@@ -44,7 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const ovl = $('#menuOverlay');
     if (!openBtn || !drawer || !ovl) return;
 
-    // Force closed on load
     drawer.hidden = true;
     ovl.hidden = true;
     openBtn.setAttribute('aria-expanded','false');
@@ -72,7 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
     ovl.addEventListener('click', close);
     document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape') close(); });
 
-    // Let drawer buttons trigger actions then close
     drawer.addEventListener('click', (e) => {
       const btn = e.target.closest('button');
       if (!btn) return;
@@ -89,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   })();
 
-  // ===== Deals (scroll + auto-open) =====
+  // ===== Deals =====
   const dealCard = $('#dealCard');
   const dealBody = $('#dealBody');
   const dealList = $('#dealList');
@@ -100,29 +96,23 @@ document.addEventListener('DOMContentLoaded', () => {
     dealCard.setAttribute('aria-expanded','true');
     dealBody.classList.remove('collapsed');
   }
-
   function collapseDeals(){
     if (!dealCard || !dealBody) return;
     dealCard.setAttribute('aria-expanded','false');
     dealBody.classList.add('collapsed');
   }
-
   function toggleDeals(){
     const isOpen = dealCard?.getAttribute('aria-expanded') === 'true';
     isOpen ? collapseDeals() : expandDeals();
   }
-
   function openDeals(scrollAlso){
     const dealsSection = $('#deals');
     if (scrollAlso && dealsSection) smoothTo(dealsSection);
-    // Delay so scroll starts first, then the accordion opens
     setTimeout(expandDeals, 220);
   }
 
-  // Bind all triggers
   $$('[data-open-deals]').forEach(el => el.addEventListener('click', (e)=>{ e.preventDefault(); openDeals(true); }));
 
-  // Card interactions
   if (dealCard && dealBody){
     dealCard.addEventListener('click', (e)=> {
       if (e.target.closest('button,a,input,textarea,select,label')) return;
@@ -132,7 +122,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleDeals(); }
     });
   }
-
   if (closeDealsBtn) closeDealsBtn.addEventListener('click', (e)=> { e.stopPropagation(); collapseDeals(); });
 
   // deals.json render
@@ -243,7 +232,6 @@ document.addEventListener('DOMContentLoaded', () => {
       else { label = 'CLOSED'; dot = 'closed'; }
 
       btn.textContent = label;
-
       if (statusText) statusText.textContent = 'Open daily 9am–9pm';
 
       if (statusDot){
@@ -284,12 +272,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (btn) btn.addEventListener('click', () => (pop?.hidden ? openPop() : closePop()));
     if (ovl) ovl.addEventListener('click', closePop);
-
-    // Tapping status strip opens hours
     if (strip && btn) strip.addEventListener('click', () => btn.click());
   })();
 
-  // ===== Carousel (simple) =====
+  // ===== Carousel =====
   (function carousel(){
     const root = document.querySelector('[data-carousel]');
     if (!root) return;
