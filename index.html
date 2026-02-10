@@ -16,12 +16,11 @@
 
   <link rel="icon" href="assets/img/favicon.png" />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=100">
-
+  <link rel="stylesheet" href="style.css?v=101">
 </head>
 <body>
 
-  <!-- ===== Top Brand Bar (desktop vibe, compact mobile) ===== -->
+  <!-- ===== Top Brand Bar (NO shop button up here now) ===== -->
   <header class="topbar">
     <div class="container topbar__inner">
       <div class="brandmark">
@@ -30,13 +29,6 @@
           <div class="brandmark__name">GREEN LABS</div>
           <div class="brandmark__sub">Premium cannabis • Powered by Dutch Touch Genetics</div>
         </div>
-      </div>
-
-      <div class="topbar__cta">
-        <button class="btn btn--primary" data-open-shop type="button">
-          <span>SHOP NOW</span>
-          <span class="arrow" aria-hidden="true">→</span>
-        </button>
       </div>
     </div>
   </header>
@@ -56,9 +48,9 @@
         <a class="tab" href="#visit" data-scroll>Visit</a>
       </nav>
 
-      <!-- Right actions (works on all sizes) -->
+      <!-- Right actions -->
       <div class="actions">
-        <!-- Mobile quick deals (keeps scrolling short) -->
+        <!-- Mobile quick deals -->
         <button class="btn btn--ghost btn--deals" data-open-deals type="button" aria-label="View deals">
           Deals
         </button>
@@ -77,12 +69,14 @@
       </div>
     </div>
 
-    <!-- Compact status strip (mobile only) -->
-    <div class="status-strip" id="statusStrip" role="button" aria-label="Store status and address">
-      <span class="dot" id="statusDot" aria-hidden="true"></span>
-      <span class="status-text" id="statusText">Open daily 9am–9pm</span>
-      <span class="status-sep" aria-hidden="true">•</span>
-      <span class="status-addr" id="statusAddr">10701 Madison St, Luna Pier</span>
+    <!-- Status strip (NOW aligned with container instead of drifting left) -->
+    <div class="status-strip">
+      <div class="container status-strip__inner" id="statusStrip" role="button" aria-label="Store status and address">
+        <span class="dot" id="statusDot" aria-hidden="true"></span>
+        <span class="status-text" id="statusText">Open daily 9am–9pm</span>
+        <span class="status-sep" aria-hidden="true">•</span>
+        <span class="status-addr" id="statusAddr">10701 Madison St, Luna Pier</span>
+      </div>
     </div>
   </header>
 
@@ -109,8 +103,11 @@
     <nav class="drawer__nav" aria-label="Site">
       <button class="drawer__link" data-open-deals type="button">Today’s Deals</button>
       <button class="drawer__link" data-open-shop type="button">Shop Online</button>
-      <button class="drawer__link" data-scroll="#dtg" type="button">DTG Apparel</button>
-      <button class="drawer__link" data-scroll="#strain-preview" type="button">Strain Library</button>
+
+      <!-- NOW links to DTG site pages -->
+      <a class="drawer__link as-link" href="https://greenlabsmi.github.io/Dutch_Touch_Brand/apparel.html" target="_blank" rel="noopener">DTG Apparel</a>
+      <a class="drawer__link as-link" href="https://greenlabsmi.github.io/Dutch_Touch_Brand/strains.html" target="_blank" rel="noopener">Strain Library</a>
+
       <button class="drawer__link" data-scroll="#visit" type="button">Visit / Contact</button>
     </nav>
 
@@ -130,7 +127,7 @@
 
   <main id="home">
 
-    <!-- ===== HERO (mobile condensed: minimal items before deals) ===== -->
+    <!-- ===== HERO ===== -->
     <section class="hero">
       <div class="container hero__grid">
         <div class="hero__left">
@@ -153,7 +150,6 @@
             <button class="btn btn--ghost" data-open-deals type="button">See today’s deals</button>
           </div>
 
-          <!-- Desktop-only value props (keeps mobile short) -->
           <div class="hero__props">
             <div class="prop">
               <div class="prop__t">Powered by DTG</div>
@@ -174,17 +170,16 @@
             <div class="dots" aria-label="Carousel dots"></div>
           </div>
 
-          <!-- Desktop quick actions (not shown on mobile) -->
           <div class="quick">
             <button class="quick__card" data-open-shop type="button">
               <div class="quick__k">Shop Online</div>
               <div class="quick__v">Menu opens right here</div>
             </button>
 
-            <button class="quick__card" data-scroll="#dtg" type="button">
+            <a class="quick__card as-link" href="https://greenlabsmi.github.io/Dutch_Touch_Brand/apparel.html" target="_blank" rel="noopener">
               <div class="quick__k">DTG Apparel</div>
               <div class="quick__v">Exclusive drops + uniforms</div>
-            </button>
+            </a>
 
             <button class="quick__card" data-scroll="#visit" type="button">
               <div class="quick__k">Visit Us</div>
@@ -195,7 +190,7 @@
       </div>
     </section>
 
-    <!-- ===== DEALS (scroll + auto-open supported) ===== -->
+    <!-- ===== DEALS ===== -->
     <section id="deals" class="section section--light">
       <div class="container">
         <div class="section__head">
@@ -234,7 +229,7 @@
       </div>
     </section>
 
-    <!-- ===== SHOP (Leafly placeholder area, wired like DR) ===== -->
+    <!-- ===== SHOP ===== -->
     <section id="shop" class="section section--dark">
       <div class="container">
         <div class="shophead">
@@ -256,7 +251,7 @@
             <div class="menuplaceholder__t">Menu embed placeholder</div>
             <div class="menuplaceholder__s">We’ll plug in Leafly later. Your “Shop Now” flow is already wired.</div>
             <div class="menuplaceholder__cta">
-              <button class="btn btn--ghost" data-scroll="#dtg" type="button">See DTG apparel</button>
+              <a class="btn btn--ghost" href="https://greenlabsmi.github.io/Dutch_Touch_Brand/apparel.html" target="_blank" rel="noopener">See DTG apparel</a>
               <button class="btn btn--ghost" data-scroll="#visit" type="button">Visit / Contact</button>
             </div>
           </div>
@@ -266,7 +261,7 @@
       </div>
     </section>
 
-    <!-- ===== DTG (Apparel focus + strain library preview) ===== -->
+    <!-- ===== DTG ===== -->
     <section id="dtg" class="section section--dtg">
       <div class="container">
         <div class="dtghead">
@@ -278,12 +273,11 @@
           </p>
 
           <div class="dtgcta">
-            <a class="btn btn--gold" href="#" target="_blank" rel="noopener">Shop DTG Apparel <span aria-hidden="true">→</span></a>
+            <a class="btn btn--gold" href="https://greenlabsmi.github.io/Dutch_Touch_Brand/apparel.html" target="_blank" rel="noopener">Shop DTG Apparel <span aria-hidden="true">→</span></a>
             <button class="btn btn--ghost inv" data-open-deals type="button">Check deals</button>
           </div>
         </div>
 
-        <!-- Product rail (placeholders; swap in real product images/links later) -->
         <div class="rail" aria-label="DTG apparel highlights">
           <article class="railcard">
             <div class="railcard__img ph">DTG Hoodie</div>
@@ -315,7 +309,6 @@
           </article>
         </div>
 
-        <!-- Strain library preview (style match now; real data later) -->
         <div id="strain-preview" class="strain">
           <div class="strain__head">
             <h3 class="strain__title">Strain Library</h3>
@@ -372,7 +365,7 @@
           </div>
 
           <div class="strain__cta">
-            <a class="btn btn--gold" href="#" target="_blank" rel="noopener">Explore the full library <span aria-hidden="true">→</span></a>
+            <a class="btn btn--gold" href="https://greenlabsmi.github.io/Dutch_Touch_Brand/strains.html" target="_blank" rel="noopener">Explore the full library <span aria-hidden="true">→</span></a>
           </div>
         </div>
       </div>
@@ -440,6 +433,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=100"></script>
+  <script src="script.js?v=101"></script>
 </body>
 </html>
