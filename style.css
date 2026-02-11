@@ -1,8 +1,14 @@
 /* =========================================================
    Green Labs — style.css (FULL REPLACEMENT)
-   Version: v102
-   Includes: topbar non-sticky, sticky header at top,
-   container-aligned status strip, full site styling.
+   Version: v103
+   Fixes:
+   - Topbar is NOT sticky
+   - Topbar CTA hidden (per request)
+   - Sticky header stays at top
+   - Status strip aligned to container WITHOUT needing an inner wrapper
+   - Hero duplicate hours pill hidden
+   - Mobile: hide OPEN pill (hoursBtn)
+   - Buttons uppercase (Deals matches others)
 ========================================================= */
 
 [hidden] { display: none !important; }
@@ -125,12 +131,15 @@ code{
   100%{ background-position:100% 50%; }
 }
 
+/* Hide topbar CTA (per request: too much SHOP NOW up top) */
+.topbar__cta{ display:none !important; }
+
 /* =========================================================
    Sticky header (sticks to top of viewport)
 ========================================================= */
 .sticky{
   position: sticky;
-  top: 0; /* important */
+  top: 0;
   z-index: 110;
   background: rgba(9,11,10,.88);
   backdrop-filter: blur(10px);
@@ -195,6 +204,7 @@ code{
   cursor: pointer;
   transition: transform .12s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease, opacity .18s ease;
   user-select: none;
+  text-transform: uppercase; /* Deals matches other buttons */
 }
 .btn:hover{
   transform: translateY(-1px);
@@ -257,18 +267,21 @@ code{
 }
 
 /* =========================================================
-   Status strip (container-aligned)
+   Status strip (container-aligned WITHOUT needing inner wrapper)
 ========================================================= */
 .status-strip{
   height: var(--stripH);
   background: rgba(0,0,0,.10);
   border-top: 1px solid rgba(255,255,255,.06);
-}
-.status-strip__inner{
-  height: var(--stripH);
+
   display:flex;
   align-items:center;
   gap: 10px;
+
+  /* Align content with .container on any screen size */
+  padding-left: clamp(18px, calc((100vw - var(--container))/2 + 18px), 999px);
+  padding-right: clamp(18px, calc((100vw - var(--container))/2 + 18px), 999px);
+
   font-weight: 800;
   font-size: 13px;
   cursor: pointer;
@@ -304,7 +317,7 @@ code{
 .popover{
   position: fixed;
   right: 18px;
-  top: calc(var(--stickyH) + 10px); /* since topbar isn't sticky */
+  top: calc(var(--stickyH) + 10px);
   width: min(360px, calc(100vw - 36px));
   background: rgba(15,18,17,.96);
   border: 1px solid rgba(255,255,255,.10);
@@ -399,6 +412,7 @@ code{
   color: rgba(233,236,235,.94);
   font-weight: 900;
   cursor: pointer;
+  text-transform: uppercase;
 }
 .drawer__link:hover{
   border-color: rgba(46,248,187,.22);
@@ -521,6 +535,9 @@ code{
   flex-wrap: wrap;
 }
 
+/* Hide the hero "Open daily..." pillline (duplicate of status strip) */
+.pillline{ display:none !important; }
+
 .hero__props{
   margin-top: 16px;
   display: none; /* desktop only */
@@ -626,6 +643,7 @@ code{
   letter-spacing: .08em;
   font-family:"Cinzel", serif;
   color: #121413;
+  text-transform: uppercase;
 }
 .dealcard__chev{
   font-size: 18px;
@@ -636,9 +654,7 @@ code{
   color: #141615;
   background: rgba(255,255,255,.92);
 }
-.dealcard__body.collapsed{
-  display:none;
-}
+.dealcard__body.collapsed{ display:none; }
 .dealList{
   margin: 0;
   padding-left: 18px;
@@ -702,6 +718,7 @@ code{
   letter-spacing: .08em;
   font-family:"Cinzel", serif;
   color: rgba(233,236,235,.92);
+  text-transform: uppercase;
 }
 .menuwrap__sub{
   color: rgba(233,236,235,.72);
@@ -730,6 +747,7 @@ code{
   font-weight: 900;
   letter-spacing: .08em;
   margin-bottom: 4px;
+  text-transform: uppercase;
 }
 .menuplaceholder__s{
   color: rgba(233,236,235,.75);
@@ -785,6 +803,7 @@ code{
   font-family:"Cinzel", serif;
   color: rgba(255,255,255,.92);
   width: fit-content;
+  text-transform: uppercase;
 }
 .dtgtitle{
   font-family:"Cinzel", serif;
@@ -858,12 +877,8 @@ code{
 .railcard__price{ font-weight: 900; color: rgba(214,163,74,.95); }
 
 /* Placeholder helpers */
-.ph{
-  color: rgba(233,236,235,.78);
-}
-.ph2{
-  color: rgba(233,236,235,.82);
-}
+.ph{ color: rgba(233,236,235,.78); }
+.ph2{ color: rgba(233,236,235,.82); }
 
 /* =========================================================
    Strain preview block
@@ -915,6 +930,7 @@ code{
   font-weight: 900;
   cursor: pointer;
   color: rgba(233,236,235,.88);
+  text-transform: uppercase;
 }
 .chip:hover{ border-color: rgba(46,248,187,.20); }
 .chip.is-active{
@@ -982,6 +998,7 @@ code{
   font-weight: 900;
   font-size: 12px;
   letter-spacing: .06em;
+  text-transform: uppercase;
 }
 
 .strain__cta{
@@ -1101,6 +1118,11 @@ code{
   .hero__title{ font-size: 38px; }
 }
 
+/* Mobile: remove OPEN pill (redundant vs status strip) */
+@media (max-width: 759px){
+  #hoursBtn{ display:none !important; }
+}
+
 /* =========================================================
    Tablet / Desktop layouts
 ========================================================= */
@@ -1139,7 +1161,7 @@ code{
 }
 
 /* =========================================================
-   Accessibility helper (optional)
+   Accessibility helper
 ========================================================= */
 @media (prefers-reduced-motion: reduce){
   *{ animation: none !important; transition: none !important; scroll-behavior: auto !important; }
