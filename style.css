@@ -1,8 +1,9 @@
 /* =========================================================
    Green Labs — style.css (FULL REPLACEMENT)
-   Version: v102
+   Version: v104
    Includes: topbar non-sticky, sticky header at top,
-   container-aligned status strip, full site styling.
+   container-aligned status strip, DR-style deals dropdown,
+   full-bleed carousel, Keep It Dutch text shimmer.
 ========================================================= */
 
 [hidden] { display: none !important; }
@@ -67,11 +68,20 @@ code{
   padding: 0 18px;
 }
 
+/* Full-bleed helper (for carousel like DR) */
+.container--bleed{
+  max-width: 100%;
+  padding: 0 8px; /* tighter sides */
+}
+@media (max-width: 520px){
+  .container--bleed{ padding: 0 0px; } /* true edge-to-edge on small */
+}
+
 /* =========================================================
    Topbar (NOT sticky)
 ========================================================= */
 .topbar{
-  position: relative; /* non-sticky */
+  position: relative;
   z-index: 1;
   background:
     radial-gradient(1200px 320px at 30% 0%,
@@ -126,11 +136,11 @@ code{
 }
 
 /* =========================================================
-   Sticky header (sticks to top of viewport)
+   Sticky header
 ========================================================= */
 .sticky{
   position: sticky;
-  top: 0; /* important */
+  top: 0;
   z-index: 110;
   background: rgba(9,11,10,.88);
   backdrop-filter: blur(10px);
@@ -143,13 +153,15 @@ code{
   justify-content:space-between;
   gap: 14px;
 }
+
+/* Bigger logo to match button row height */
 .sticky__logo{
   display:flex;
   align-items:center;
   gap: 10px;
 }
 .sticky__logo img{
-  height: 34px;
+  height: 46px; /* matches icon/button height */
   width: auto;
   filter: drop-shadow(0 6px 20px rgba(0,0,0,.35));
 }
@@ -216,20 +228,43 @@ code{
   border-color: rgba(255,255,255,.10);
   color: rgba(233,236,235,.92);
 }
-.btn--pill{
-  padding: 10px 12px;
-  min-width: 120px;
-  text-align: center;
-}
+
 .btn--deals{
   display: inline-flex;
   align-items:center;
   justify-content:center;
 }
 
-.btn--shop .arrow{ margin-left: 8px; }
-.label-mobile{ display: inline; }
-.label-desktop{ display: none; }
+/* Keep It Dutch: shimmer SLOW, text-only */
+.btn--kid{ }
+.kidLabel{
+  display:inline-block;
+  font-family:"Cinzel", serif;
+  letter-spacing: .08em;
+  font-weight: 900;
+
+  /* Mostly white with a thin gold pass */
+  background: linear-gradient(
+    110deg,
+    rgba(233,236,235,.95) 0%,
+    rgba(233,236,235,.95) 42%,
+    rgba(214,163,74,.95) 50%,
+    rgba(233,236,235,.95) 58%,
+    rgba(233,236,235,.95) 100%
+  );
+  background-size: 420% 100%;
+  background-position: 0% 50%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* slow + subtle */
+  animation: kidTextWink 12s ease-in-out infinite;
+}
+@keyframes kidTextWink{
+  0%, 72% { background-position: 0% 50%; }
+  84% { background-position: 100% 50%; }
+  100% { background-position: 100% 50%; }
+}
 
 .icon{
   width: 46px;
@@ -301,53 +336,6 @@ code{
   z-index: 200;
 }
 
-.popover{
-  position: fixed;
-  right: 18px;
-  top: calc(var(--stickyH) + 10px); /* since topbar isn't sticky */
-  width: min(360px, calc(100vw - 36px));
-  background: rgba(15,18,17,.96);
-  border: 1px solid rgba(255,255,255,.10);
-  border-radius: var(--radius);
-  padding: 14px;
-  z-index: 210;
-  box-shadow: 0 28px 80px rgba(0,0,0,.55);
-}
-
-.popover__title{
-  font-family:"Cinzel", serif;
-  font-weight: 900;
-  letter-spacing: .08em;
-  margin-bottom: 10px;
-}
-
-.hours{
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display:flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.hours li{
-  display:flex;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 8px 10px;
-  border: 1px solid rgba(255,255,255,.08);
-  border-radius: 14px;
-  background: rgba(255,255,255,.03);
-  font-weight: 800;
-}
-.hours li.is-today{
-  border-color: rgba(46,248,187,.22);
-  box-shadow: 0 0 0 1px rgba(46,248,187,.06) inset;
-}
-.popover__note{
-  margin-top: 10px;
-  opacity: .92;
-  font-weight: 800;
-}
 .link{
   color: #bff7e7;
   text-decoration: underline;
@@ -404,7 +392,6 @@ code{
   border-color: rgba(46,248,187,.22);
   box-shadow: 0 0 0 1px rgba(46,248,187,.07) inset;
 }
-.drawer__link.as-link{ display:block; }
 
 .drawer__footer{
   margin-top: auto;
@@ -476,85 +463,38 @@ code{
 }
 
 /* =========================================================
-   Hero
+   Promo / Carousel (full-bleed)
 ========================================================= */
-.hero{
-  padding: 28px 0 44px;
-}
-.hero__grid{
-  display:grid;
-  gap: 18px;
+.promo{
+  padding: 14px 0 10px;
 }
 
-.hero__left{
-  border: 1px solid rgba(255,255,255,.08);
-  border-radius: var(--radius2);
-  padding: 22px;
-  background:
-    radial-gradient(1000px 420px at 10% 0%,
-      rgba(11,125,90,.22),
-      rgba(255,255,255,.02) 55%),
-    rgba(255,255,255,.02);
-  box-shadow: var(--shadow);
-}
-
-.hero__title{
-  margin: 0 0 10px;
-  font-family:"Cinzel", serif;
-  letter-spacing:.08em;
-  font-weight: 900;
-  font-size: 46px;
-  line-height: 1.05;
-}
-.accent{ color: var(--brand2); }
-
-.hero__sub{
-  margin: 0 0 16px;
-  color: rgba(233,236,235,.80);
-  font-weight: 700;
-  font-size: 16px;
-}
-
-.hero__cta{
-  display:flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.hero__props{
-  margin-top: 16px;
-  display: none; /* desktop only */
-  gap: 12px;
-}
-
-.prop{
-  flex: 1;
-  border-radius: var(--radius);
-  border: 1px solid rgba(255,255,255,.08);
-  background: rgba(255,255,255,.02);
-  padding: 12px 12px;
-}
-.prop__t{ font-weight: 900; }
-.prop__s{ opacity: .78; font-weight: 700; }
-
-/* Right side */
-.hero__right{
-  display:grid;
-  gap: 12px;
-}
-
-/* Carousel */
 .carousel{
   border-radius: var(--radius2);
   overflow: hidden;
   border: 1px solid rgba(255,255,255,.08);
   background: rgba(255,255,255,.02);
   position: relative;
-  min-height: 220px;
 }
+.carousel--tall{ min-height: 220px; }
+
 .slide{ display:none; }
 .slide.is-active{ display:block; }
-.slide img{ width:100%; height:auto; display:block; }
+
+.carousel--tall .slide img{
+  width: 100%;
+  height: 240px;     /* keep your GL height preference */
+  object-fit: cover; /* makes uploads “uniform” */
+  object-position: center;
+  display:block;
+}
+
+@media (min-width: 760px){
+  .carousel--tall .slide img{ height: 320px; }
+}
+@media (min-width: 980px){
+  .carousel--tall .slide img{ height: 360px; }
+}
 
 .dots{
   position:absolute;
@@ -577,98 +517,87 @@ code{
   border-color: rgba(46,248,187,.75);
 }
 
-/* Desktop quick cards */
-.quick{
-  display:none; /* desktop only */
-  gap: 10px;
-}
-.quick__card{
-  width: 100%;
-  border-radius: var(--radius);
-  border: 1px solid rgba(255,255,255,.08);
-  background: rgba(255,255,255,.02);
-  padding: 14px 14px;
-  cursor: pointer;
-  text-align: left;
-  display:flex;
-  flex-direction: column;
-  gap: 2px;
-}
-.quick__card:hover{
-  border-color: rgba(46,248,187,.22);
-  box-shadow: 0 0 0 1px rgba(46,248,187,.06) inset;
-}
-.quick__k{ font-weight: 900; }
-.quick__v{ opacity: .78; font-weight: 700; }
-.quick__card.as-link{ display:block; }
-
 /* =========================================================
-   Deals
+   DR-style Deals Dropdown + Shop Online button
 ========================================================= */
-.dealcard{
-  border-radius: var(--radius2);
-  border: 1px solid rgba(0,0,0,.12);
-  background: rgba(255,255,255,.75);
-  box-shadow: 0 18px 50px rgba(0,0,0,.10);
+.drDrop{
+  border: 3px solid rgba(0,0,0,.80);
+  border-radius: 18px;
+  background: #f6efe0;
+  box-shadow: 0 16px 46px rgba(0,0,0,.12);
   overflow: hidden;
-  user-select: none;
 }
-.dealcard__head{
+.drDrop__summary{
+  list-style: none;
+  cursor: pointer;
+  padding: 14px 16px;
   display:flex;
   align-items:center;
   justify-content: space-between;
-  padding: 14px 16px;
-  background: rgba(255,255,255,.95);
-  border-bottom: 1px solid rgba(0,0,0,.08);
+  border-bottom: 2px solid rgba(0,0,0,.20);
+  background: #f6efe0;
 }
-.dealcard__label{
+.drDrop__summary::-webkit-details-marker{ display:none; }
+.drDrop__title{
+  font-family:"Cinzel", serif;
   font-weight: 900;
   letter-spacing: .08em;
-  font-family:"Cinzel", serif;
-  color: #121413;
+  font-size: 22px;
+  color:#141615;
 }
-.dealcard__chev{
+.drDrop__chev{
   font-size: 18px;
-  opacity: .7;
+  opacity: .75;
+  transition: transform .18s ease;
 }
-.dealcard__body{
-  padding: 14px 16px;
-  color: #141615;
-  background: rgba(255,255,255,.92);
+.drDrop[open] .drDrop__chev{ transform: rotate(180deg); }
+
+.drDrop__body{
+  padding: 16px;
+  color:#141615;
 }
-.dealcard__body.collapsed{
-  display:none;
+
+.drDeals{
+  display:block;
 }
-.dealList{
-  margin: 0;
+.drDeals .cat{
+  margin: 12px 0 16px;
+}
+.drDeals .catTitle{
+  font-weight: 900;
+  font-size: 18px;
+  margin: 0 0 10px;
+}
+.drDeals .groupTitle{
+  font-weight: 900;
+  margin: 10px 0 6px;
+}
+.drDeals ul{
+  margin: 0 0 10px;
   padding-left: 18px;
-  font-weight: 800;
 }
-.dealList li{ margin: 10px 0; }
-
-.dealcard__foot{
-  display:flex;
-  justify-content: flex-end;
-  align-items:center;
-  gap: 10px;
-  padding-top: 10px;
-  border-top: 1px solid rgba(0,0,0,.08);
+.drDeals li{
+  margin: 8px 0;
+  font-weight: 700;
 }
 
-.microgrid{
-  margin-top: 14px;
-  display:grid;
-  gap: 10px;
+.drShopBtn{
+  margin-top: 18px;
+  width: 100%;
+  border-radius: 18px;
+  padding: 18px 14px;
+  border: 3px solid rgba(0,0,0,.85);
+  background: #ffffff;
+  font-family:"Cinzel", serif;
+  font-weight: 900;
+  letter-spacing: .08em;
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: 0 18px 50px rgba(0,0,0,.12);
 }
-.micro{
-  border-radius: var(--radius);
-  background: #fff;
-  border: 1px solid rgba(0,0,0,.10);
-  padding: 12px 14px;
-  box-shadow: 0 10px 26px rgba(0,0,0,.06);
+.drShopBtn:hover{
+  box-shadow: 0 22px 60px rgba(0,0,0,.16);
 }
-.micro__t{ font-weight: 900; color:#141615; }
-.micro__s{ opacity: .72; font-weight: 700; color:#141615; }
 
 /* =========================================================
    Shop section
@@ -857,13 +786,8 @@ code{
 .railcard__name{ font-weight: 900; }
 .railcard__price{ font-weight: 900; color: rgba(214,163,74,.95); }
 
-/* Placeholder helpers */
-.ph{
-  color: rgba(233,236,235,.78);
-}
-.ph2{
-  color: rgba(233,236,235,.82);
-}
+.ph{ color: rgba(233,236,235,.78); }
+.ph2{ color: rgba(233,236,235,.82); }
 
 /* =========================================================
    Strain preview block
@@ -900,30 +824,6 @@ code{
   max-width: 72ch;
 }
 
-/* Chips */
-.chips{
-  display:flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 4px;
-}
-.chip{
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,.12);
-  background: rgba(255,255,255,.03);
-  padding: 8px 12px;
-  font-weight: 900;
-  cursor: pointer;
-  color: rgba(233,236,235,.88);
-}
-.chip:hover{ border-color: rgba(46,248,187,.20); }
-.chip.is-active{
-  background: rgba(214,163,74,.92);
-  border-color: rgba(214,163,74,.35);
-  color: #121413;
-}
-
-/* Grid of strain cards */
 .straingrid{
   display:grid;
   gap: 12px;
@@ -1096,26 +996,21 @@ code{
 ========================================================= */
 @media (max-width: 420px){
   .brandmark__sub{ display:none; }
-  .btn--pill{ min-width: 102px; padding: 10px 10px; }
   .section__title{ font-size: 30px; }
-  .hero__title{ font-size: 38px; }
+
+  /* Make nav buttons feel balanced */
+  .btn{ padding: 10px 12px; }
+  .btn--kid .kidLabel{ font-size: 12px; }
 }
 
 /* =========================================================
    Tablet / Desktop layouts
 ========================================================= */
 @media (min-width: 760px){
-  .hero__grid{
-    grid-template-columns: 1.1fr .9fr;
+  .visitgrid{
+    grid-template-columns: 1.2fr .8fr;
     align-items: start;
   }
-  .hero__props{ display:flex; }
-  .quick{ display:grid; }
-
-  .microgrid{
-    grid-template-columns: repeat(3, 1fr);
-  }
-
   .rail{
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1123,23 +1018,16 @@ code{
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .visitgrid{
-    grid-template-columns: 1.2fr .8fr;
-    align-items: start;
-  }
-
-  .label-mobile{ display:none; }
-  .label-desktop{ display:inline; }
+  .tabs{ display:flex; }
 }
 
 @media (min-width: 980px){
-  .tabs{ display:flex; }
   .rail{ grid-template-columns: repeat(4, 1fr); }
   .straingrid{ grid-template-columns: repeat(4, 1fr); }
 }
 
 /* =========================================================
-   Accessibility helper (optional)
+   Accessibility helper
 ========================================================= */
 @media (prefers-reduced-motion: reduce){
   *{ animation: none !important; transition: none !important; scroll-behavior: auto !important; }
