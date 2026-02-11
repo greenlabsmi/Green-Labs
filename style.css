@@ -1,9 +1,11 @@
 /* =========================================================
    Green Labs — style.css (FULL REPLACEMENT)
-   Version: v104
+   Version: v105
    Includes: topbar non-sticky, sticky header at top,
    container-aligned status strip, DR-style deals dropdown,
-   full-bleed carousel, Keep It Dutch text shimmer.
+   true edge-to-edge carousel on mobile, Keep It Dutch text
+   wave shimmer (slow/smooth), premium SHOP button color,
+   equal-height nav pills on iPhone.
 ========================================================= */
 
 [hidden] { display: none !important; }
@@ -39,6 +41,14 @@
   --stickyH: 64px;
   --stripH: 34px;
 
+  /* Mobile nav pills sizing (keeps all buttons equal height) */
+  --navBtnH: 44px;
+  --navBtnPadX: 14px;
+
+  /* Premium shop gradient (less “app green”, more luxe) */
+  --shopA: #0c5f47;
+  --shopB: #118f6a;
+
   --shadow: 0 28px 80px rgba(0,0,0,.35);
   --shadow2: 0 16px 46px rgba(0,0,0,.35);
 }
@@ -71,10 +81,7 @@ code{
 /* Full-bleed helper (for carousel like DR) */
 .container--bleed{
   max-width: 100%;
-  padding: 0 8px; /* tighter sides */
-}
-@media (max-width: 520px){
-  .container--bleed{ padding: 0 0px; } /* true edge-to-edge on small */
+  padding: 0; /* true edge-to-edge */
 }
 
 /* =========================================================
@@ -161,9 +168,12 @@ code{
   gap: 10px;
 }
 .sticky__logo img{
-  height: 46px; /* matches icon/button height */
+  height: 50px; /* increased */
   width: auto;
   filter: drop-shadow(0 6px 20px rgba(0,0,0,.35));
+}
+@media (max-width: 420px){
+  .sticky__logo img{ height: 48px; }
 }
 
 /* Desktop tabs */
@@ -197,16 +207,24 @@ code{
    Buttons / Icons
 ========================================================= */
 .btn{
+  height: var(--navBtnH);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
   border: 1px solid var(--line2);
   background: rgba(255,255,255,.04);
   color: var(--ink);
   border-radius: 999px;
-  padding: 10px 14px;
+
+  padding: 0 var(--navBtnPadX);
   font-weight: 900;
   letter-spacing: .02em;
   cursor: pointer;
+
   transition: transform .12s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease, opacity .18s ease;
   user-select: none;
+  white-space: nowrap;
 }
 .btn:hover{
   transform: translateY(-1px);
@@ -219,7 +237,7 @@ code{
 }
 
 .btn--primary{
-  background: linear-gradient(180deg, rgba(11,125,90,.95), rgba(6,96,71,.95));
+  background: linear-gradient(135deg, var(--shopA), var(--shopB));
   border-color: rgba(46,248,187,.18);
   box-shadow: 0 10px 28px rgba(0,0,0,.30), 0 0 0 1px rgba(46,248,187,.06) inset;
 }
@@ -235,35 +253,37 @@ code{
   justify-content:center;
 }
 
-/* Keep It Dutch: shimmer SLOW, text-only */
-.btn--kid{ }
+/* Keep It Dutch: lock pill sizing to match others */
+.btn--kid{
+  padding: 0 var(--navBtnPadX);
+}
+
+/* Keep It Dutch: smooth slow gold wave shimmer on TEXT only */
 .kidLabel{
   display:inline-block;
   font-family:"Cinzel", serif;
-  letter-spacing: .08em;
   font-weight: 900;
+  letter-spacing: .06em;
+  line-height: 1;
+  font-size: 12px;
 
-  /* Mostly white with a thin gold pass */
   background: linear-gradient(
-    110deg,
-    rgba(233,236,235,.95) 0%,
-    rgba(233,236,235,.95) 42%,
+    90deg,
+    rgba(233,236,235,.92) 0%,
+    rgba(233,236,235,.92) 40%,
     rgba(214,163,74,.95) 50%,
-    rgba(233,236,235,.95) 58%,
-    rgba(233,236,235,.95) 100%
+    rgba(233,236,235,.92) 60%,
+    rgba(233,236,235,.92) 100%
   );
-  background-size: 420% 100%;
-  background-position: 0% 50%;
+  background-size: 220% 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-
-  /* slow + subtle */
-  animation: kidTextWink 12s ease-in-out infinite;
+  animation: kidWave 7.5s ease-in-out infinite;
 }
-@keyframes kidTextWink{
-  0%, 72% { background-position: 0% 50%; }
-  84% { background-position: 100% 50%; }
-  100% { background-position: 100% 50%; }
+@keyframes kidWave{
+  0%   { background-position: 200% 50%; }
+  50%  { background-position: 0% 50%; }
+  100% { background-position: -200% 50%; }
 }
 
 .icon{
@@ -517,6 +537,15 @@ code{
   border-color: rgba(46,248,187,.75);
 }
 
+/* Mobile: true edge-to-edge like DR */
+@media (max-width: 520px){
+  .carousel{
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+  }
+}
+
 /* =========================================================
    DR-style Deals Dropdown + Shop Online button
 ========================================================= */
@@ -557,12 +586,8 @@ code{
   color:#141615;
 }
 
-.drDeals{
-  display:block;
-}
-.drDeals .cat{
-  margin: 12px 0 16px;
-}
+.drDeals{ display:block; }
+.drDeals .cat{ margin: 12px 0 16px; }
 .drDeals .catTitle{
   font-weight: 900;
   font-size: 18px;
@@ -998,9 +1023,12 @@ code{
   .brandmark__sub{ display:none; }
   .section__title{ font-size: 30px; }
 
-  /* Make nav buttons feel balanced */
-  .btn{ padding: 10px 12px; }
-  .btn--kid .kidLabel{ font-size: 12px; }
+  /* slightly tighter action row */
+  .actions{ gap: 8px; }
+
+  /* slightly slimmer on very small screens */
+  .btn{ height: 42px; }
+  .icon{ width: 44px; height: 44px; }
 }
 
 /* =========================================================
