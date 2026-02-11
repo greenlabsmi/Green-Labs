@@ -16,7 +16,7 @@
 
   <link rel="icon" href="assets/img/favicon.png" />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=103">
+  <link rel="stylesheet" href="style.css?v=104">
 </head>
 
 <body>
@@ -31,8 +31,6 @@
           <div class="brandmark__sub">Premium cannabis • Powered by Dutch Touch Genetics</div>
         </div>
       </div>
-
-      <!-- Removed the top "SHOP NOW" button (too much) -->
     </div>
   </header>
 
@@ -53,30 +51,25 @@
 
       <!-- Mobile-first actions -->
       <div class="actions">
-        <!-- KEEP IT DUTCH (new primary attention grab) -->
         <button class="btn btn--ghost btn--kid" data-scroll="#dtg" type="button" aria-label="Keep It Dutch">
-          KEEP IT DUTCH
+          <span class="kidLabel">KEEP IT DUTCH</span>
         </button>
 
-        <!-- DEALS -->
         <button class="btn btn--ghost btn--deals" data-open-deals type="button" aria-label="View deals">
           DEALS
         </button>
 
-        <!-- SHOP (no arrow to balance) -->
         <button class="btn btn--primary btn--shop" data-open-shop type="button" aria-label="Shop now">
-          <span class="label-desktop">SHOP</span>
-          <span class="label-mobile">SHOP</span>
+          SHOP
         </button>
 
-        <!-- Hamburger -->
         <button class="icon" data-open-menu aria-label="Open menu" type="button">
           <span aria-hidden="true">☰</span>
         </button>
       </div>
     </div>
 
-    <!-- Status strip (single source of truth; no duplicate hero hours bar) -->
+    <!-- Status strip (single source of truth) -->
     <div class="status-strip" id="statusStrip" role="button" aria-label="Store status and address">
       <div class="container status-strip__inner">
         <span class="dot" id="statusDot" aria-hidden="true"></span>
@@ -121,11 +114,9 @@
 
   <main id="home">
 
-    <!-- =======================================================
-         PROMO CAROUSEL (moved up under nav; DR-style)
-         ======================================================= -->
+    <!-- ===== Promo Carousel (full-bleed like DR) ===== -->
     <section class="promo">
-      <div class="container">
+      <div class="container container--bleed">
         <div class="carousel carousel--tall" data-carousel data-autoplay="6500" aria-label="Promotions">
           <div class="slide is-active"><img src="carousel-1.png" alt="Promotion 1" loading="eager"></div>
           <div class="slide"><img src="carousel-2.png" alt="Promotion 2" loading="lazy"></div>
@@ -135,42 +126,21 @@
       </div>
     </section>
 
-    <!-- ===== DEALS (scroll + auto-open supported) ===== -->
+    <!-- ===== DEALS (DR-style dropdown + SHOP ONLINE button) ===== -->
     <section id="deals" class="section section--light">
       <div class="container">
-        <div class="section__head">
-          <h2 class="section__title">Today’s Deals</h2>
-          <p class="section__sub">Fast glance deals — tap to expand. (Pulled from <code>deals.json</code>)</p>
-        </div>
+        <details class="drDrop" id="dealsDrop">
+          <summary class="drDrop__summary">
+            <span class="drDrop__title">TODAY’S DEALS</span>
+            <span class="drDrop__chev" aria-hidden="true">▾</span>
+          </summary>
 
-        <div class="dealcard" id="dealCard" role="button" tabindex="0" aria-expanded="false" aria-controls="dealBody">
-          <div class="dealcard__head">
-            <div class="dealcard__label">VIEW DEALS</div>
-            <div class="dealcard__chev" aria-hidden="true">▾</div>
+          <div class="drDrop__body">
+            <div id="dealList" class="drDeals"></div>
           </div>
-          <div id="dealBody" class="dealcard__body collapsed">
-            <ul id="dealList" class="dealList"></ul>
-            <div class="dealcard__foot">
-              <button class="btn btn--ghost" id="closeDeals" type="button">Close deals</button>
-              <button class="btn btn--primary" data-open-shop type="button">SHOP</button>
-            </div>
-          </div>
-        </div>
+        </details>
 
-        <div class="microgrid">
-          <div class="micro">
-            <div class="micro__t">Award-winning genetics</div>
-            <div class="micro__s">Built for consistency.</div>
-          </div>
-          <div class="micro">
-            <div class="micro__t">Easy shopping</div>
-            <div class="micro__s">Fast menu → clean checkout.</div>
-          </div>
-          <div class="micro">
-            <div class="micro__t">Ask for DTG</div>
-            <div class="micro__s">If you want top-shelf every time.</div>
-          </div>
-        </div>
+        <button class="drShopBtn" data-open-shop type="button">SHOP ONLINE</button>
       </div>
     </section>
 
@@ -180,7 +150,7 @@
         <div class="shophead">
           <div>
             <h2 class="section__title section__title--invert">Shop Green Labs</h2>
-            <p class="section__sub section__sub--invert">Tap “SHOP” to open the menu area below (Leafly embed placeholder for now).</p>
+            <p class="section__sub section__sub--invert">Tap “SHOP ONLINE” to open the menu area below (Leafly embed placeholder for now).</p>
           </div>
           <button class="btn btn--primary" data-open-shop type="button">SHOP</button>
         </div>
@@ -194,7 +164,7 @@
           <div class="menuplaceholder">
             <div class="menuplaceholder__logo" aria-hidden="true">⟡</div>
             <div class="menuplaceholder__t">Menu embed placeholder</div>
-            <div class="menuplaceholder__s">We’ll plug in Leafly later. Your “Shop” flow is already wired.</div>
+            <div class="menuplaceholder__s">We’ll plug in Leafly later. Your “Shop Online” flow is already wired.</div>
             <div class="menuplaceholder__cta">
               <button class="btn btn--ghost" data-scroll="#dtg" type="button">Keep It Dutch</button>
               <button class="btn btn--ghost" data-scroll="#visit" type="button">Visit / Contact</button>
@@ -225,7 +195,6 @@
           </div>
         </div>
 
-        <!-- Apparel rail (placeholders for now) -->
         <div class="rail" aria-label="DTG apparel highlights">
           <article class="railcard">
             <div class="railcard__img ph">DTG Lion Hoodie</div>
@@ -257,7 +226,6 @@
           </article>
         </div>
 
-        <!-- Strain preview -->
         <div id="strain-preview" class="strain">
           <div class="strain__head">
             <h3 class="strain__title">Strain Library</h3>
@@ -378,56 +346,6 @@
     </div>
   </footer>
 
-  <!-- Small page-specific CSS overrides (keeps your style.css intact) -->
-  <style>
-    /* Bring carousel tight under nav */
-    .promo{ padding: 16px 0 10px; }
-    .carousel--tall{ min-height: 220px; }
-
-    /* Force consistent carousel image sizing for easy uploading */
-    .carousel--tall .slide img{
-      width: 100%;
-      height: 240px;            /* MOBILE baseline */
-      object-fit: cover;        /* Makes different images look uniform */
-      object-position: center;
-    }
-    @media (min-width: 760px){
-      .carousel--tall .slide img{ height: 320px; }
-    }
-    @media (min-width: 980px){
-      .carousel--tall .slide img{ height: 360px; }
-    }
-
-    /* KEEP IT DUTCH gold wink shimmer */
-    .btn--kid{
-      position: relative;
-      overflow: hidden;
-    }
-    .btn--kid::after{
-      content:"";
-      position:absolute;
-      inset:-40% -120%;
-      background: linear-gradient(
-        110deg,
-        transparent 0%,
-        rgba(214,163,74,.0) 35%,
-        rgba(214,163,74,.55) 50%,
-        rgba(214,163,74,.0) 65%,
-        transparent 100%
-      );
-      transform: translateX(-60%);
-      opacity: 0;
-      pointer-events:none;
-      animation: kidWink 4.8s ease-in-out infinite;
-    }
-    @keyframes kidWink{
-      0%, 68% { opacity:0; transform: translateX(-70%); }
-      72% { opacity:.9; }
-      82% { opacity:.9; transform: translateX(70%); }
-      86%, 100% { opacity:0; transform: translateX(80%); }
-    }
-  </style>
-
-  <script src="script.js?v=103"></script>
+  <script src="script.js?v=104"></script>
 </body>
 </html>
