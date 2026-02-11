@@ -1,369 +1,349 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="format-detection" content="telephone=no,address=no">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
-  <title>Green Labs • Good weed. No confusion.</title>
-  <meta name="description" content="Shop premium cannabis at Green Labs — powered by Dutch Touch Genetics. Clean menus, fast ordering, and a smooth experience from start to checkout." />
-  <meta name="theme-color" content="#0B7D5A" />
+<title>Green Labs • Powered by DTG</title>
 
-  <meta property="og:title" content="Green Labs • Good weed. No confusion.">
-  <meta property="og:description" content="Premium cannabis in Luna Pier — powered by Dutch Touch Genetics.">
-  <meta property="og:image" content="assets/img/greenlabs-logo.png">
-  <meta property="og:type" content="website">
+<link rel="icon" href="assets/img/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="icon" href="assets/img/favicon.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=102">
+<link rel="stylesheet" href="style.css">
+
 </head>
 <body>
 
-  <!-- ===== Top Brand Bar (NOT sticky anymore) ===== -->
-  <header class="topbar">
-    <div class="container topbar__inner">
-      <div class="brandmark">
-        <span class="sprig" aria-hidden="true">✦</span>
-        <div class="brandmark__stack">
-          <div class="brandmark__name">GREEN LABS</div>
-          <div class="brandmark__sub">Premium cannabis • Powered by Dutch Touch Genetics</div>
-        </div>
-      </div>
-    </div>
-  </header>
+<!-- ================= TOP BAR (NOT STICKY) ================= -->
+<header class="topbar">
+  <div class="container topbar__inner">
 
-  <!-- ===== Sticky Header (now sticks to very top) ===== -->
-  <header class="sticky">
-    <div class="container sticky__inner">
-      <a class="sticky__logo" href="#home" aria-label="Green Labs home">
-        <img src="assets/img/greenlabs-logo.png" alt="Green Labs logo" />
-      </a>
-
-      <!-- Desktop tabs -->
-      <nav class="tabs" aria-label="Primary navigation">
-        <a class="tab" href="#deals" data-open-deals>Deals</a>
-        <a class="tab" href="#shop" data-open-shop>Shop</a>
-        <a class="tab" href="#dtg" data-scroll>DTG</a>
-        <a class="tab" href="#visit" data-scroll>Visit</a>
-      </nav>
-
-      <!-- Right actions -->
-      <div class="actions">
-        <button class="btn btn--ghost btn--deals" data-open-deals type="button" aria-label="View deals">Deals</button>
-        <button class="btn btn--pill" id="hoursBtn" type="button" aria-expanded="false">OPEN</button>
-
-        <button class="btn btn--primary btn--shop" data-open-shop type="button" aria-label="Shop now">
-          <span class="label-desktop">SHOP NOW</span>
-          <span class="label-mobile">SHOP</span>
-          <span class="arrow" aria-hidden="true">→</span>
-        </button>
-
-        <button class="icon" data-open-menu aria-label="Open menu" type="button">
-          <span aria-hidden="true">☰</span>
-        </button>
+    <div class="brandmark">
+      <div class="brandmark__name">GREEN LABS</div>
+      <div class="brandmark__sub">
+        Premium cannabis • Powered by Dutch Touch Genetics
       </div>
     </div>
 
-    <!-- Status strip (aligned to container) -->
-    <div class="status-strip">
-      <div class="container status-strip__inner" id="statusStrip" role="button" aria-label="Store status and address">
-        <span class="dot" id="statusDot" aria-hidden="true"></span>
-        <span class="status-text" id="statusText">Open daily 9am–9pm</span>
-        <span class="status-sep" aria-hidden="true">•</span>
-        <span class="status-addr" id="statusAddr">10701 Madison St, Luna Pier</span>
-      </div>
-    </div>
-  </header>
+  </div>
+</header>
 
-  <!-- Hours popover -->
-  <div id="hoursOverlay" class="overlay" hidden></div>
-  <div id="hoursPopover" class="popover" role="dialog" aria-modal="false" hidden>
-    <div class="popover__title">Store Hours</div>
-    <ul class="hours" id="hoursList"></ul>
-    <div class="popover__note">
-      <a class="link" id="mapsLink" href="#" rel="noopener">Open in Maps</a>
-      <span class="sep" aria-hidden="true">•</span>
-      <a class="link" href="tel:+17348000024">(734) 800-0024</a>
+
+<!-- ================= STICKY HEADER ================= -->
+<header class="sticky">
+
+  <div class="container sticky__inner">
+
+    <a class="logo" href="#home">
+      <img src="assets/img/greenlabs-logo.png">
+    </a>
+
+    <nav class="tabs">
+      <a href="#deals">DEALS</a>
+      <a href="#shop">SHOP</a>
+      <a href="#dutch">KEEP IT DUTCH</a>
+      <a href="#visit">VISIT</a>
+    </nav>
+
+    <div class="actions">
+
+      <!-- Mobile priority buttons -->
+      <button class="btn ghost" id="btnDutch">KEEP IT DUTCH</button>
+      <button class="btn ghost" id="btnDeals">DEALS</button>
+      <button class="btn primary" id="btnShop">SHOP</button>
+
+      <button class="menuBtn" id="menuBtn">☰</button>
+
+    </div>
+
+  </div>
+
+  <!-- Status bar -->
+  <div class="status">
+    <div class="container status__inner" id="statusBtn">
+      <span class="dot"></span>
+      <span>Open Daily 9am–9pm</span>
+      <span class="sep">•</span>
+      <span>10701 Madison St, Luna Pier</span>
     </div>
   </div>
 
-  <!-- Drawer -->
-  <div id="menuOverlay" class="overlay" hidden></div>
-  <aside id="navDrawer" class="drawer" role="dialog" aria-modal="false" hidden>
-    <div class="drawer__head">
-      <div class="drawer__title">Green Labs</div>
-      <button class="icon icon--close" data-close-menu type="button" aria-label="Close menu">×</button>
+</header>
+
+
+<!-- ================= DRAWER ================= -->
+<div class="overlay" id="overlay"></div>
+
+<aside class="drawer" id="drawer">
+
+  <div class="drawer__head">
+    <strong>Green Labs</strong>
+    <button id="closeMenu">×</button>
+  </div>
+
+  <nav class="drawer__nav">
+
+    <button data-go="deals">Today’s Deals</button>
+    <button data-go="shop">Shop Online</button>
+    <button data-go="dutch">Keep It Dutch</button>
+    <button data-go="visit">Visit / Contact</button>
+
+  </nav>
+
+  <div class="drawer__foot">
+
+    <div>
+      Open Daily 9am–9pm<br>
+      <a href="tel:17348000024">(734) 800-0024</a>
     </div>
 
-    <nav class="drawer__nav" aria-label="Site">
-      <button class="drawer__link" data-open-deals type="button">Today’s Deals</button>
-      <button class="drawer__link" data-open-shop type="button">Shop Online</button>
+  </div>
 
-      <a class="drawer__link as-link" href="https://greenlabsmi.github.io/Dutch_Touch_Brand/apparel.html" target="_blank" rel="noopener">DTG Apparel</a>
-      <a class="drawer__link as-link" href="https://greenlabsmi.github.io/Dutch_Touch_Brand/strains.html" target="_blank" rel="noopener">Strain Library</a>
+</aside>
 
-      <button class="drawer__link" data-scroll="#visit" type="button">Visit / Contact</button>
-    </nav>
 
-    <div class="drawer__footer">
-      <div class="drawer__meta">
-        <div><strong>Open daily</strong> 9am–9pm</div>
-        <div><a class="link" href="tel:+17348000024">(734) 800-0024</a></div>
-      </div>
-      <div class="drawer__social">
-        <a class="soc" href="#" aria-label="Instagram">IG</a>
-        <a class="soc" href="#" aria-label="Facebook">FB</a>
-        <a class="soc" href="#" aria-label="X">X</a>
-        <a class="soc" href="#" aria-label="TikTok">TT</a>
-      </div>
+<!-- ================= MAIN ================= -->
+<main id="home">
+
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+
+  <div class="container hero__box">
+
+    <h1>
+      GREEN LABS<br>
+      <span>Powered by DTG</span>
+    </h1>
+
+    <p class="heroMain">
+      Premium cannabis in Luna Pier — powered by Dutch Touch Genetics.
+    </p>
+
+    <p class="heroSub">
+      Award-winning genetics.<br>
+      Consistent quality. Easy shopping.
+    </p>
+
+    <div class="heroBtns">
+      <button class="btn primary" id="heroShop">SHOP NOW</button>
+      <button class="btn ghost" id="heroDeals">DEALS</button>
     </div>
-  </aside>
 
-  <main id="home">
+  </div>
 
-    <!-- ===== HERO (removed duplicate hours pillline) ===== -->
-    <section class="hero">
-      <div class="container hero__grid">
-        <div class="hero__left">
-          <h1 class="hero__title">
-            GOOD WEED. <span class="accent">NO CONFUSION.</span>
-          </h1>
+</section>
 
-          <p class="hero__sub">
-            Shop premium cannabis at Green Labs — and discover the award-winning lineup from Dutch Touch Genetics.
-            Clean menus, fast ordering, and a smooth experience from start to checkout.
-          </p>
 
-          <div class="hero__cta">
-            <button class="btn btn--primary" data-open-shop type="button">SHOP NOW <span aria-hidden="true">→</span></button>
-            <button class="btn btn--ghost" data-open-deals type="button">See today’s deals</button>
-          </div>
+<!-- ================= CAROUSEL ================= -->
+<section class="carousel">
 
-          <div class="hero__props">
-            <div class="prop">
-              <div class="prop__t">Powered by DTG</div>
-              <div class="prop__s">Award-winning Michigan cannabis</div>
-            </div>
-            <div class="prop">
-              <div class="prop__t">Fast & easy</div>
-              <div class="prop__s">Tap “Shop Now” anytime</div>
-            </div>
-          </div>
-        </div>
+  <div class="carouselTrack">
 
-        <div class="hero__right">
-          <div class="carousel" data-carousel data-autoplay="6500" aria-label="Promotions">
-            <div class="slide is-active"><img src="carousel-1.png" alt="Promotion 1" loading="eager"></div>
-            <div class="slide"><img src="carousel-2.png" alt="Promotion 2" loading="lazy"></div>
-            <div class="slide"><img src="carousel-3.png" alt="Promotion 3" loading="lazy"></div>
-            <div class="dots" aria-label="Carousel dots"></div>
-          </div>
+    <img src="carousel-1.png">
+    <img src="carousel-2.png">
+    <img src="carousel-3.png">
 
-          <div class="quick">
-            <button class="quick__card" data-open-shop type="button">
-              <div class="quick__k">Shop Online</div>
-              <div class="quick__v">Menu opens right here</div>
-            </button>
+  </div>
 
-            <a class="quick__card as-link" href="https://greenlabsmi.github.io/Dutch_Touch_Brand/apparel.html" target="_blank" rel="noopener">
-              <div class="quick__k">DTG Apparel</div>
-              <div class="quick__v">Exclusive drops + uniforms</div>
-            </a>
+</section>
 
-            <button class="quick__card" data-scroll="#visit" type="button">
-              <div class="quick__k">Visit Us</div>
-              <div class="quick__v">Maps + contact</div>
-            </button>
-          </div>
-        </div>
+
+<!-- ================= DEALS ================= -->
+<section id="deals" class="section light">
+
+  <div class="container">
+
+    <h2>Today’s Deals</h2>
+
+    <div class="dealCard" id="dealCard">
+
+      <div class="dealHead">
+        VIEW DEALS
+        <span>▾</span>
       </div>
-    </section>
 
-    <!-- ===== DEALS ===== -->
-    <section id="deals" class="section section--light">
-      <div class="container">
-        <div class="section__head">
-          <h2 class="section__title">Today’s Deals</h2>
-          <p class="section__sub">Fast glance deals — tap to expand. (Pulled from <code>deals.json</code>)</p>
-        </div>
+      <div class="dealBody">
 
-        <div class="dealcard" id="dealCard" role="button" tabindex="0" aria-expanded="false" aria-controls="dealBody">
-          <div class="dealcard__head">
-            <div class="dealcard__label">VIEW DEALS</div>
-            <div class="dealcard__chev" aria-hidden="true">▾</div>
-          </div>
-          <div id="dealBody" class="dealcard__body collapsed">
-            <ul id="dealList" class="dealList"></ul>
-            <div class="dealcard__foot">
-              <button class="btn btn--ghost" id="closeDeals" type="button">Close deals</button>
-              <button class="btn btn--primary" data-open-shop type="button">Shop now <span aria-hidden="true">→</span></button>
-            </div>
-          </div>
-        </div>
+        <ul id="dealList">
+          <li>Example Deal 1</li>
+          <li>Example Deal 2</li>
+          <li>Example Deal 3</li>
+        </ul>
 
-        <div class="microgrid">
-          <div class="micro">
-            <div class="micro__t">Ask for DTG</div>
-            <div class="micro__s">If you want top-shelf consistency.</div>
-          </div>
-          <div class="micro">
-            <div class="micro__t">Browse by vibe</div>
-            <div class="micro__s">Uplifting • balanced • nightcap.</div>
-          </div>
-          <div class="micro">
-            <div class="micro__t">Smooth checkout</div>
-            <div class="micro__s">Clean menus, less decision fatigue.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== SHOP ===== -->
-    <section id="shop" class="section section--dark">
-      <div class="container">
-        <div class="shophead">
-          <div>
-            <h2 class="section__title section__title--invert">Shop Green Labs</h2>
-            <p class="section__sub section__sub--invert">Tap “Shop Now” to open the menu area below (Leafly embed placeholder for now).</p>
-          </div>
-          <button class="btn btn--primary" data-open-shop type="button">SHOP NOW <span aria-hidden="true">→</span></button>
-        </div>
-
-        <div class="menuwrap" id="menuWrap" hidden>
-          <div class="menuwrap__top">
-            <div class="menuwrap__tag">MENU LOADING AREA</div>
-            <div class="menuwrap__sub">Leafly embed will live here. For now, this is a clean placeholder.</div>
-          </div>
-
-          <div class="menuplaceholder">
-            <div class="menuplaceholder__logo" aria-hidden="true">⟡</div>
-            <div class="menuplaceholder__t">Menu embed placeholder</div>
-            <div class="menuplaceholder__s">We’ll plug in Leafly later. Your “Shop Now” flow is already wired.</div>
-            <div class="menuplaceholder__cta">
-              <a class="btn btn--ghost" href="https://greenlabsmi.github.io/Dutch_Touch_Brand/apparel.html" target="_blank" rel="noopener">See DTG apparel</a>
-              <button class="btn btn--ghost" data-scroll="#visit" type="button">Visit / Contact</button>
-            </div>
-          </div>
-
-          <div class="menuwrap__hint">Pro tip: once we add Leafly, we’ll theme it to match your emerald accents.</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== DTG + VISIT sections unchanged below ===== -->
-    <!-- (Keeping everything else as you had it) -->
-
-    <section id="dtg" class="section section--dtg">
-      <div class="container">
-        <div class="dtghead">
-          <div class="dtgbadge">DUTCH TOUCH GENETICS</div>
-          <h2 class="dtgtitle">Exclusive Apparel + Collector Energy</h2>
-          <p class="dtgsub">
-            Green Labs is the everyday go-to — DTG is the “I found my brand” moment.
-            Use this to convert curiosity into a deliberate ask: <strong>“Show me DTG.”</strong>
-          </p>
-
-          <div class="dtgcta">
-            <a class="btn btn--gold" href="https://greenlabsmi.github.io/Dutch_Touch_Brand/apparel.html" target="_blank" rel="noopener">Shop DTG Apparel <span aria-hidden="true">→</span></a>
-            <button class="btn btn--ghost inv" data-open-deals type="button">Check deals</button>
-          </div>
-        </div>
-
-        <div class="rail" aria-label="DTG apparel highlights">
-          <article class="railcard">
-            <div class="railcard__img ph">DTG Hoodie</div>
-            <div class="railcard__meta">
-              <div class="railcard__name">DTG Lion Hoodie — Black</div>
-              <div class="railcard__price">$70</div>
-            </div>
-          </article>
-          <article class="railcard">
-            <div class="railcard__img ph">DTG Sweats</div>
-            <div class="railcard__meta">
-              <div class="railcard__name">DTG Sweatpants — Black</div>
-              <div class="railcard__price">$65</div>
-            </div>
-          </article>
-          <article class="railcard">
-            <div class="railcard__img ph">DTG Tee</div>
-            <div class="railcard__meta">
-              <div class="railcard__name">DTG Lion Tee — White</div>
-              <div class="railcard__price">$35</div>
-            </div>
-          </article>
-          <article class="railcard">
-            <div class="railcard__img ph">Keep It Dutch</div>
-            <div class="railcard__meta">
-              <div class="railcard__name">Keep It Dutch Hoodie — Sand</div>
-              <div class="railcard__price">$70</div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="visit" class="section section--light">
-      <div class="container">
-        <div class="section__head">
-          <h2 class="section__title">Visit Green Labs</h2>
-          <p class="section__sub">10701 Madison St, Luna Pier • Open 9am–9pm daily</p>
-        </div>
-
-        <div class="visitgrid">
-          <div class="mapcard">
-            <iframe
-              title="Map — Green Labs"
-              width="100%"
-              height="320"
-              style="border:0;display:block"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              src="https://www.google.com/maps?q=10701%20Madison%20St,%20Luna%20Pier,%20MI%2048157&hl=en&z=14&output=embed">
-            </iframe>
-          </div>
-
-          <div class="infocol">
-            <div class="infobox">
-              <div class="infobox__t">Contact</div>
-              <div class="infobox__row"><strong>Phone:</strong> <a class="link" href="tel:+17348000024">(734) 800-0024</a></div>
-              <div class="infobox__row"><strong>Email:</strong> <a class="link" href="mailto:info@greenlabsmi.com">info@greenlabsmi.com</a></div>
-              <div class="infobox__row"><strong>Hours:</strong> Open daily 9am–9pm</div>
-              <div class="infobox__row"><strong>Address:</strong> 10701 Madison St, Luna Pier, MI 48157</div>
-              <div class="infobox__cta">
-                <a class="btn btn--primary" href="https://www.google.com/maps?q=10701%20Madison%20St,%20Luna%20Pier,%20MI%2048157" target="_blank" rel="noopener">Open in Maps</a>
-              </div>
-            </div>
-
-            <div class="infobox">
-              <div class="infobox__t">Social</div>
-              <div class="socialrow">
-                <a class="soc2" href="#" aria-label="Instagram">Instagram</a>
-                <a class="soc2" href="#" aria-label="Facebook">Facebook</a>
-                <a class="soc2" href="#" aria-label="X">X</a>
-                <a class="soc2" href="#" aria-label="TikTok">TikTok</a>
-              </div>
-              <div class="muted">Placeholders for now — we’ll wire these to your real pages.</div>
-            </div>
-          </div>
+        <div class="dealBtns">
+          <button class="btn ghost" id="closeDeals">Close</button>
+          <button class="btn primary" id="dealShop">Shop</button>
         </div>
 
       </div>
-    </section>
 
-  </main>
-
-  <footer class="footer">
-    <div class="container footer__inner">
-      <div class="footer__copy">© <span id="year"></span> Green Labs. All rights reserved.</div>
-      <div class="footer__links">
-        <a class="link" href="terms.html">Terms</a>
-        <span class="sep" aria-hidden="true">•</span>
-        <a class="link" href="privacy.html">Privacy</a>
-      </div>
     </div>
-  </footer>
 
-  <script src="script.js?v=102"></script>
+  </div>
+
+</section>
+
+
+<!-- ================= SHOP ================= -->
+<section id="shop" class="section dark">
+
+  <div class="container">
+
+    <div class="shopHead">
+
+      <div>
+        <h2>Shop Green Labs</h2>
+        <p>Menu embed placeholder (Leafly later)</p>
+      </div>
+
+      <button class="btn primary" id="openMenu">SHOP NOW</button>
+
+    </div>
+
+    <div class="menuWrap" id="menuWrap">
+
+      <div class="menuBox">
+
+        <strong>MENU AREA</strong>
+        <p>Leafly embed goes here later.</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= KEEP IT DUTCH ================= -->
+<section id="dutch" class="section dutch">
+
+  <div class="container">
+
+    <div class="dutchHead">
+
+      <h2>KEEP IT DUTCH</h2>
+
+      <p class="dutchSub">
+        Our standard. From genetics to checkout.<br>
+        Powered by Dutch Touch Genetics.
+      </p>
+
+    </div>
+
+
+    <div class="dutchGrid">
+
+      <div class="dutchCard">
+
+        <h3>Proven Genetics</h3>
+
+        <p>
+          Award-winning, in-house strains.<br>
+          Built for consistency.
+        </p>
+
+        <button class="btn gold">Explore DTG Strains</button>
+
+      </div>
+
+
+      <div class="dutchCard">
+
+        <h3>The Uniform</h3>
+
+        <p>
+          Limited apparel.<br>
+          Store-exclusive drops.
+        </p>
+
+        <button class="btn gold">Shop Apparel</button>
+
+      </div>
+
+
+      <div class="dutchCard">
+
+        <h3>Dutch Deli Picks</h3>
+
+        <p>
+          Staff-selected DTG flower.
+        </p>
+
+        <button class="btn gold">View Deli Picks</button>
+
+      </div>
+
+
+      <div class="dutchCard">
+
+        <h3>Why Regulars Stay</h3>
+
+        <ul>
+          <li>First-time specials</li>
+          <li>DTG bundles</li>
+          <li>Merch drops</li>
+          <li>Priority releases</li>
+        </ul>
+
+        <button class="btn gold">View Offers</button>
+
+      </div>
+
+    </div>
+
+
+    <div class="dutchCTA">
+
+      <h3>Ask for DTG. Keep it simple.</h3>
+
+      <div>
+        <button class="btn primary">Shop DTG Flower</button>
+        <button class="btn ghost">Visit In-Store</button>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= VISIT ================= -->
+<section id="visit" class="section light">
+
+  <div class="container">
+
+    <h2>Visit Green Labs</h2>
+
+    <p>10701 Madison St, Luna Pier, MI 48157</p>
+
+    <iframe
+      src="https://www.google.com/maps?q=10701%20Madison%20St%20Luna%20Pier&output=embed">
+    </iframe>
+
+  </div>
+
+</section>
+
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+<footer>
+
+  <div class="container footerInner">
+
+    © <span id="year"></span> Green Labs
+
+  </div>
+
+</footer>
+
+
+<script src="script.js"></script>
 </body>
 </html>
