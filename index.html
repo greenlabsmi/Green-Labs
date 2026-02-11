@@ -5,23 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="format-detection" content="telephone=no,address=no">
 
-  <title>Green Labs • Good weed. No confusion.</title>
+  <title>Green Labs • Premium cannabis</title>
   <meta name="description" content="Premium cannabis in Luna Pier — powered by Dutch Touch Genetics. Award-winning genetics. Consistent quality. Easy shopping." />
   <meta name="theme-color" content="#0B7D5A" />
 
-  <meta property="og:title" content="Green Labs • Good weed. No confusion.">
+  <meta property="og:title" content="Green Labs • Premium cannabis">
   <meta property="og:description" content="Premium cannabis in Luna Pier — powered by Dutch Touch Genetics.">
   <meta property="og:image" content="assets/img/greenlabs-logo.png">
   <meta property="og:type" content="website">
 
   <link rel="icon" href="assets/img/favicon.png" />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=102">
+  <link rel="stylesheet" href="style.css?v=103">
 </head>
 
 <body>
 
-  <!-- ===== Top Brand Bar (NOT sticky; scrolls away) ===== -->
+  <!-- ===== Top Brand Bar (NOT sticky) ===== -->
   <header class="topbar">
     <div class="container topbar__inner">
       <div class="brandmark">
@@ -31,10 +31,12 @@
           <div class="brandmark__sub">Premium cannabis • Powered by Dutch Touch Genetics</div>
         </div>
       </div>
+
+      <!-- Removed the top "SHOP NOW" button (too much) -->
     </div>
   </header>
 
-  <!-- ===== Sticky Header (ONLY sticky header) ===== -->
+  <!-- ===== Sticky Header (stays) ===== -->
   <header class="sticky">
     <div class="container sticky__inner">
       <a class="sticky__logo" href="#home" aria-label="Green Labs home">
@@ -45,34 +47,36 @@
       <nav class="tabs" aria-label="Primary navigation">
         <a class="tab" href="#deals" data-open-deals>Deals</a>
         <a class="tab" href="#shop" data-open-shop>Shop</a>
-        <a class="tab" href="#keepitdutch" data-scroll="#keepitdutch">Keep It Dutch</a>
+        <a class="tab" href="#dtg" data-scroll="#dtg">Keep It Dutch</a>
         <a class="tab" href="#visit" data-scroll="#visit">Visit</a>
       </nav>
 
-      <!-- Right actions -->
+      <!-- Mobile-first actions -->
       <div class="actions">
-        <!-- Mobile: 3-pill row (new first, then DEALS, then SHOP) -->
-        <button class="btn btn--ghost btn--deals" data-scroll="#keepitdutch" type="button" aria-label="Keep It Dutch">
+        <!-- KEEP IT DUTCH (new primary attention grab) -->
+        <button class="btn btn--ghost btn--kid" data-scroll="#dtg" type="button" aria-label="Keep It Dutch">
           KEEP IT DUTCH
         </button>
 
+        <!-- DEALS -->
         <button class="btn btn--ghost btn--deals" data-open-deals type="button" aria-label="View deals">
           DEALS
         </button>
 
+        <!-- SHOP (no arrow to balance) -->
         <button class="btn btn--primary btn--shop" data-open-shop type="button" aria-label="Shop now">
-          <span class="label-desktop">SHOP NOW</span>
+          <span class="label-desktop">SHOP</span>
           <span class="label-mobile">SHOP</span>
-          <span class="arrow" aria-hidden="true">→</span>
         </button>
 
+        <!-- Hamburger -->
         <button class="icon" data-open-menu aria-label="Open menu" type="button">
           <span aria-hidden="true">☰</span>
         </button>
       </div>
     </div>
 
-    <!-- Status strip (ONLY hours/address bar; container-aligned) -->
+    <!-- Status strip (single source of truth; no duplicate hero hours bar) -->
     <div class="status-strip" id="statusStrip" role="button" aria-label="Store status and address">
       <div class="container status-strip__inner">
         <span class="dot" id="statusDot" aria-hidden="true"></span>
@@ -83,20 +87,10 @@
     </div>
   </header>
 
-  <!-- Hours popover (kept, opened by status strip tap/click) -->
-  <div id="hoursOverlay" class="overlay" hidden></div>
-  <div id="hoursPopover" class="popover" role="dialog" aria-modal="false" hidden>
-    <div class="popover__title">Store Hours</div>
-    <ul class="hours" id="hoursList"></ul>
-    <div class="popover__note">
-      <a class="link" id="mapsLink" href="#" rel="noopener">Open in Maps</a>
-      <span class="sep" aria-hidden="true">•</span>
-      <a class="link" href="tel:+17348000024">(734) 800-0024</a>
-    </div>
-  </div>
+  <!-- Drawer overlay -->
+  <div id="menuOverlay" class="overlay" hidden></div>
 
   <!-- Drawer -->
-  <div id="menuOverlay" class="overlay" hidden></div>
   <aside id="navDrawer" class="drawer" role="dialog" aria-modal="false" hidden>
     <div class="drawer__head">
       <div class="drawer__title">Green Labs</div>
@@ -106,7 +100,8 @@
     <nav class="drawer__nav" aria-label="Site">
       <button class="drawer__link" data-open-deals type="button">Today’s Deals</button>
       <button class="drawer__link" data-open-shop type="button">Shop Online</button>
-      <button class="drawer__link" data-scroll="#keepitdutch" type="button">Keep It Dutch</button>
+      <button class="drawer__link" data-scroll="#dtg" type="button">Keep It Dutch</button>
+      <button class="drawer__link" data-scroll="#strain-preview" type="button">Strain Library</button>
       <button class="drawer__link" data-scroll="#visit" type="button">Visit / Contact</button>
     </nav>
 
@@ -126,67 +121,16 @@
 
   <main id="home">
 
-    <!-- ===== HERO (no duplicate hours bar inside) ===== -->
-    <section class="hero" aria-label="Green Labs hero">
-      <div class="container hero__grid">
-        <div class="hero__left">
-          <h1 class="hero__title">
-            GREEN LABS<br />
-            <span class="accent">Powered by DTG</span>
-          </h1>
-
-          <p class="hero__sub">
-            Premium cannabis in Luna Pier — powered by Dutch Touch Genetics.
-          </p>
-
-          <p class="hero__sub" style="margin-top:-6px;">
-            <strong>Award-winning genetics.</strong><br />
-            <strong>Consistent quality. Easy shopping.</strong>
-          </p>
-
-          <div class="hero__cta">
-            <button class="btn btn--primary" data-open-shop type="button">SHOP NOW <span aria-hidden="true">→</span></button>
-            <button class="btn btn--ghost" data-open-deals type="button">DEALS</button>
-          </div>
-
-          <!-- Desktop-only value props -->
-          <div class="hero__props">
-            <div class="prop">
-              <div class="prop__t">Award-winning genetics</div>
-              <div class="prop__s">Winners + consistent quality.</div>
-            </div>
-            <div class="prop">
-              <div class="prop__t">Easy shopping</div>
-              <div class="prop__s">Menu opens in one tap.</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="hero__right">
-          <div class="carousel" data-carousel data-autoplay="6500" aria-label="Promotions">
-            <div class="slide is-active"><img src="carousel-1.png" alt="Promotion 1" loading="eager"></div>
-            <div class="slide"><img src="carousel-2.png" alt="Promotion 2" loading="lazy"></div>
-            <div class="slide"><img src="carousel-3.png" alt="Promotion 3" loading="lazy"></div>
-            <div class="dots" aria-label="Carousel dots"></div>
-          </div>
-
-          <!-- Desktop quick actions -->
-          <div class="quick">
-            <button class="quick__card" data-open-shop type="button">
-              <div class="quick__k">Shop Online</div>
-              <div class="quick__v">Menu opens right here</div>
-            </button>
-
-            <button class="quick__card" data-scroll="#keepitdutch" type="button">
-              <div class="quick__k">Keep It Dutch</div>
-              <div class="quick__v">DTG apparel + culture</div>
-            </button>
-
-            <button class="quick__card" data-scroll="#visit" type="button">
-              <div class="quick__k">Visit Us</div>
-              <div class="quick__v">Maps + contact</div>
-            </button>
-          </div>
+    <!-- =======================================================
+         PROMO CAROUSEL (moved up under nav; DR-style)
+         ======================================================= -->
+    <section class="promo">
+      <div class="container">
+        <div class="carousel carousel--tall" data-carousel data-autoplay="6500" aria-label="Promotions">
+          <div class="slide is-active"><img src="carousel-1.png" alt="Promotion 1" loading="eager"></div>
+          <div class="slide"><img src="carousel-2.png" alt="Promotion 2" loading="lazy"></div>
+          <div class="slide"><img src="carousel-3.png" alt="Promotion 3" loading="lazy"></div>
+          <div class="dots" aria-label="Carousel dots"></div>
         </div>
       </div>
     </section>
@@ -208,23 +152,23 @@
             <ul id="dealList" class="dealList"></ul>
             <div class="dealcard__foot">
               <button class="btn btn--ghost" id="closeDeals" type="button">Close deals</button>
-              <button class="btn btn--primary" data-open-shop type="button">Shop now <span aria-hidden="true">→</span></button>
+              <button class="btn btn--primary" data-open-shop type="button">SHOP</button>
             </div>
           </div>
         </div>
 
         <div class="microgrid">
           <div class="micro">
-            <div class="micro__t">Quick grab</div>
-            <div class="micro__s">Most people just want “good” + “easy”.</div>
+            <div class="micro__t">Award-winning genetics</div>
+            <div class="micro__s">Built for consistency.</div>
+          </div>
+          <div class="micro">
+            <div class="micro__t">Easy shopping</div>
+            <div class="micro__s">Fast menu → clean checkout.</div>
           </div>
           <div class="micro">
             <div class="micro__t">Ask for DTG</div>
-            <div class="micro__s">If you want top-shelf consistency.</div>
-          </div>
-          <div class="micro">
-            <div class="micro__t">Smooth checkout</div>
-            <div class="micro__s">Clean menus, less decision fatigue.</div>
+            <div class="micro__s">If you want top-shelf every time.</div>
           </div>
         </div>
       </div>
@@ -236,9 +180,9 @@
         <div class="shophead">
           <div>
             <h2 class="section__title section__title--invert">Shop Green Labs</h2>
-            <p class="section__sub section__sub--invert">Tap “Shop Now” to open the menu area below (Leafly embed placeholder for now).</p>
+            <p class="section__sub section__sub--invert">Tap “SHOP” to open the menu area below (Leafly embed placeholder for now).</p>
           </div>
-          <button class="btn btn--primary" data-open-shop type="button">SHOP NOW <span aria-hidden="true">→</span></button>
+          <button class="btn btn--primary" data-open-shop type="button">SHOP</button>
         </div>
 
         <div class="menuwrap" id="menuWrap" hidden>
@@ -250,55 +194,55 @@
           <div class="menuplaceholder">
             <div class="menuplaceholder__logo" aria-hidden="true">⟡</div>
             <div class="menuplaceholder__t">Menu embed placeholder</div>
-            <div class="menuplaceholder__s">We’ll plug in Leafly later. Your “Shop Now” flow is already wired.</div>
+            <div class="menuplaceholder__s">We’ll plug in Leafly later. Your “Shop” flow is already wired.</div>
             <div class="menuplaceholder__cta">
-              <button class="btn btn--ghost" data-scroll="#keepitdutch" type="button">Keep It Dutch</button>
+              <button class="btn btn--ghost" data-scroll="#dtg" type="button">Keep It Dutch</button>
               <button class="btn btn--ghost" data-scroll="#visit" type="button">Visit / Contact</button>
             </div>
           </div>
 
-          <div class="menuwrap__hint">Pro tip: once we add Leafly, we’ll theme it to match your emerald accents.</div>
+          <div class="menuwrap__hint">Once Leafly is live, we’ll theme it to match your emerald accents.</div>
         </div>
       </div>
     </section>
 
-    <!-- ===== KEEP IT DUTCH (below Deals + Shop, as requested) ===== -->
-    <section id="keepitdutch" class="section section--dtg">
+    <!-- ===== KEEP IT DUTCH (DTG section) ===== -->
+    <section id="dtg" class="section section--dtg">
       <div class="container">
         <div class="dtghead">
           <div class="dtgbadge">KEEP IT DUTCH</div>
-          <h2 class="dtgtitle">DTG Apparel • Limited • Real</h2>
+          <h2 class="dtgtitle">Dutch Touch is the standard.</h2>
           <p class="dtgsub">
-            If Green Labs is the home, Dutch Touch is the standard.
-            <strong>Keep It Dutch</strong> is where the culture lives — limited apparel you can’t get anywhere else.
+            The genetics. The consistency. The culture.
+            If you like what you find at Green Labs, the next step is DTG — limited drops, uniforms, and collector energy.
           </p>
 
           <div class="dtgcta">
-            <a class="btn btn--gold" href="https://greenlabsmi.github.io/Dutch_Touch_Brand/apparel.html" target="_blank" rel="noopener">
-              Shop DTG Apparel <span aria-hidden="true">→</span>
+            <a class="btn btn--gold" href="https://greenlabsmi.github.io/Dutch_Touch_Brand/" target="_blank" rel="noopener">
+              Explore DTG <span aria-hidden="true">→</span>
             </a>
-            <button class="btn btn--ghost inv" data-open-deals type="button">Check deals</button>
+            <button class="btn btn--ghost inv" data-open-deals type="button">DEALS</button>
           </div>
         </div>
 
-        <!-- Product rail (placeholders; swap later) -->
+        <!-- Apparel rail (placeholders for now) -->
         <div class="rail" aria-label="DTG apparel highlights">
           <article class="railcard">
-            <div class="railcard__img ph">DTG Hoodie</div>
+            <div class="railcard__img ph">DTG Lion Hoodie</div>
             <div class="railcard__meta">
               <div class="railcard__name">DTG Lion Hoodie — Black</div>
               <div class="railcard__price">$70</div>
             </div>
           </article>
           <article class="railcard">
-            <div class="railcard__img ph">DTG Sweats</div>
+            <div class="railcard__img ph">DTG Sweatpants</div>
             <div class="railcard__meta">
               <div class="railcard__name">DTG Sweatpants — Black</div>
               <div class="railcard__price">$65</div>
             </div>
           </article>
           <article class="railcard">
-            <div class="railcard__img ph">DTG Tee</div>
+            <div class="railcard__img ph">DTG Lion Tee</div>
             <div class="railcard__meta">
               <div class="railcard__name">DTG Lion Tee — White</div>
               <div class="railcard__price">$35</div>
@@ -313,12 +257,62 @@
           </article>
         </div>
 
-        <!-- Optional: link out to strain library (DTG site) -->
-        <div class="strain__cta" style="margin-top:16px;">
-          <a class="btn btn--gold" href="https://greenlabsmi.github.io/Dutch_Touch_Brand/strains.html" target="_blank" rel="noopener">
-            Explore the strain library <span aria-hidden="true">→</span>
-          </a>
+        <!-- Strain preview -->
+        <div id="strain-preview" class="strain">
+          <div class="strain__head">
+            <h3 class="strain__title">Strain Library</h3>
+            <p class="strain__sub">Collector-card preview — we can later wire this to the DTG strain library.</p>
+          </div>
+
+          <div class="straingrid">
+            <article class="strainCard">
+              <div class="strainCard__img ph2">LEMON WOOKIE</div>
+              <div class="strainCard__body">
+                <div class="strainCard__name">Lemon Wookie #4</div>
+                <div class="strainCard__type">Hybrid-Leaning Sativa</div>
+                <div class="strainCard__desc">Sharp lemon + diesel funk with energetic daytime vibes.</div>
+                <div class="tag">Award Winner</div>
+              </div>
+            </article>
+
+            <article class="strainCard">
+              <div class="strainCard__img ph2">LILAC DIESEL</div>
+              <div class="strainCard__body">
+                <div class="strainCard__name">Lilac Diesel</div>
+                <div class="strainCard__type">Sativa</div>
+                <div class="strainCard__desc">Floral, gassy sativa with a clean uplifting head high.</div>
+                <div class="tag">Award Winner</div>
+              </div>
+            </article>
+
+            <article class="strainCard">
+              <div class="strainCard__img ph2">MR. CLEAN</div>
+              <div class="strainCard__body">
+                <div class="strainCard__name">Mr. Clean</div>
+                <div class="strainCard__type">Sativa</div>
+                <div class="strainCard__desc">Bright citrus and pine with sharp, focused energy.</div>
+                <div class="tag">Award Winner</div>
+              </div>
+            </article>
+
+            <article class="strainCard">
+              <div class="strainCard__img ph2">SPACE HIPPY</div>
+              <div class="strainCard__body">
+                <div class="strainCard__name">Space Hippy</div>
+                <div class="strainCard__type">Sativa-Leaning Hybrid</div>
+                <div class="strainCard__desc">Funky fruit that floats between head buzz and body melt.</div>
+                <div class="tag">Award Winner</div>
+              </div>
+            </article>
+          </div>
+
+          <div class="strain__cta">
+            <a class="btn btn--gold" href="https://greenlabsmi.github.io/Dutch_Touch_Brand/strains.html" target="_blank" rel="noopener">
+              Explore the full library <span aria-hidden="true">→</span>
+            </a>
+          </div>
         </div>
+
       </div>
     </section>
 
@@ -384,6 +378,56 @@
     </div>
   </footer>
 
-  <script src="script.js?v=102"></script>
+  <!-- Small page-specific CSS overrides (keeps your style.css intact) -->
+  <style>
+    /* Bring carousel tight under nav */
+    .promo{ padding: 16px 0 10px; }
+    .carousel--tall{ min-height: 220px; }
+
+    /* Force consistent carousel image sizing for easy uploading */
+    .carousel--tall .slide img{
+      width: 100%;
+      height: 240px;            /* MOBILE baseline */
+      object-fit: cover;        /* Makes different images look uniform */
+      object-position: center;
+    }
+    @media (min-width: 760px){
+      .carousel--tall .slide img{ height: 320px; }
+    }
+    @media (min-width: 980px){
+      .carousel--tall .slide img{ height: 360px; }
+    }
+
+    /* KEEP IT DUTCH gold wink shimmer */
+    .btn--kid{
+      position: relative;
+      overflow: hidden;
+    }
+    .btn--kid::after{
+      content:"";
+      position:absolute;
+      inset:-40% -120%;
+      background: linear-gradient(
+        110deg,
+        transparent 0%,
+        rgba(214,163,74,.0) 35%,
+        rgba(214,163,74,.55) 50%,
+        rgba(214,163,74,.0) 65%,
+        transparent 100%
+      );
+      transform: translateX(-60%);
+      opacity: 0;
+      pointer-events:none;
+      animation: kidWink 4.8s ease-in-out infinite;
+    }
+    @keyframes kidWink{
+      0%, 68% { opacity:0; transform: translateX(-70%); }
+      72% { opacity:.9; }
+      82% { opacity:.9; transform: translateX(70%); }
+      86%, 100% { opacity:0; transform: translateX(80%); }
+    }
+  </style>
+
+  <script src="script.js?v=103"></script>
 </body>
 </html>
