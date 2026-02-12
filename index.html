@@ -42,32 +42,35 @@
       </a>
 
       <!-- Desktop tabs -->
-      <nav class="tabs" aria-label="Primary navigation">
-        <a class="tab" href="#deals" data-open-deals>Deals</a>
-        <a class="tab" href="#shop" data-open-shop>Shop</a>
-        <a class="tab" href="#dtg" data-scroll="#dtg">Keep It Dutch</a>
-        <a class="tab" href="#visit" data-scroll="#visit">Visit</a>
-      </nav>
+     <nav class="tabs" aria-label="Primary navigation">
+  <a class="tab tab--cta" href="#shop" data-open-shop>Shop Online</a>
+  <a class="tab" href="#deals" data-open-deals>Deals</a>
+  <a class="tab" href="#visit" data-scroll="#visit">Visit</a>
+  <a class="tab" href="#dtg" data-scroll="#dtg">Keep It Dutch</a>
+</nav>
 
       <!-- Mobile-first actions -->
       <div class="actions">
-        <button class="btn btn--ghost btn--kid" data-scroll="#dtg" type="button" aria-label="Keep It Dutch">
-          <span class="kidLabel">KEEP IT DUTCH</span>
-        </button>
+  <!-- 1) SHOP first (ghost like deals) -->
+  <button class="btn btn--ghost btn--shop" data-open-shop type="button" aria-label="Shop now">
+    <span class="glowLabel glowLabel--green">SHOP</span>
+  </button>
 
-        <button class="btn btn--ghost btn--deals" data-open-deals type="button" aria-label="View deals">
-          DEALS
-        </button>
+  <!-- 2) DEALS second -->
+  <button class="btn btn--ghost btn--deals" data-open-deals type="button" aria-label="View deals">
+    <span class="glowLabel glowLabel--green">DEALS</span>
+  </button>
 
-        <button class="btn btn--primary btn--shop" data-open-shop type="button" aria-label="Shop now">
-          SHOP
-        </button>
+  <!-- 3) KEEP IT DUTCH third (gold shimmer) -->
+  <button class="btn btn--ghost btn--kid" data-scroll="#dtg" type="button" aria-label="Keep It Dutch">
+    <span class="kidLabel">KEEP IT DUTCH</span>
+  </button>
 
-        <button class="icon" data-open-menu aria-label="Open menu" type="button">
-          <span aria-hidden="true">☰</span>
-        </button>
-      </div>
-    </div>
+  <!-- 4) Hamburger -->
+  <button class="icon" data-open-menu aria-label="Open menu" type="button">
+    <span aria-hidden="true">☰</span>
+  </button>
+</div>
 
     <!-- Status strip (single source of truth) -->
     <div class="status-strip" id="statusStrip" role="button" aria-label="Store status and address">
