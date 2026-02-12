@@ -1,0 +1,58 @@
+{
+  "tiers": [
+    {
+      "id": "gold",
+      "title": "Top Shelf",
+      "price_oz": "$225",
+      "breakdown": "$15/g • $45/3.5g",
+      "color_theme": "gold",
+      "strains": [
+        {
+          "name": "Mr. Clean",
+          "tag": "🏆 Cup Winner",
+          "tag_class": "tag--winner",
+          "type": "Sativa"
+        },
+        {
+          "name": "Death by Funk",
+          "tag": "🏆 Cup Winner",
+          "tag_class": "tag--winner",
+          "type": "Indica"
+        },
+        {
+          "name": "Lilac Diesel",
+          "tag": "🔥 High Terps",
+          "tag_class": "tag--hot",
+          "type": "Sativa"
+        }
+      ]
+    },
+    {
+      "id": "green",
+      "title": "Daily Drivers",
+      "price_oz": "$150",
+      "breakdown": "$10/g • $30/3.5g",
+      "color_theme": "green",
+      "strains": [
+        {
+          "name": "Fruit Brute",
+          "tag": "Hybrid",
+          "tag_class": "",
+          "type": "Hybrid"
+        },
+        {
+          "name": "Clusterfunk",
+          "tag": "Classic Gas",
+          "tag_class": "",
+          "type": "Indica"
+        },
+        {
+          "name": "Old Widow",
+          "tag": "Relaxing",
+          "tag_class": "",
+          "type": "Indica"
+        }
+      ]
+    }
+  ]
+}
