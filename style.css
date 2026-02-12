@@ -874,3 +874,143 @@ img{ max-width:100%; display:block; }
 @media (prefers-reduced-motion: reduce){
   *{ animation:none !important; transition:none !important; scroll-behavior:auto !important; }
 }
+
+/* =========================================
+   THE DUTCH DELI (Menu Board Styles)
+   ========================================= */
+
+/* Dark Section Background */
+.section--deli {
+  background-color: #111; /* Deep Black */
+  background-image: radial-gradient(circle at top right, #2a2a2a 0%, #111 60%);
+  color: #fff;
+  padding: 4rem 0;
+  border-top: 1px solid #333;
+}
+
+/* Header Styling */
+.deli-head {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.deli-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #d4af37; /* DTG Gold */
+  border: 1px solid #d4af37;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.deli-title {
+  font-family: 'Cinzel', serif; /* Matching your header font */
+  font-size: 2.5rem;
+  margin: 0 0 0.5rem 0;
+  color: #fff;
+}
+
+.deli-sub {
+  color: #aaa;
+  font-size: 1.1rem;
+}
+
+/* The Grid (2 Columns) */
+.deli-board {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .deli-board {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* The Tier Cards */
+.deli-tier {
+  background: rgba(255, 255, 255, 0.05); /* Glass effect */
+  border-radius: 12px;
+  border: 1px solid #333;
+  padding: 2rem;
+  transition: transform 0.2s ease;
+}
+
+.deli-tier:hover {
+  transform: translateY(-5px);
+  border-color: #555;
+}
+
+/* Tier Gold vs Green Accents */
+.tier--gold { border-top: 4px solid #d4af37; }
+.tier--green { border-top: 4px solid #0B7D5A; }
+
+.tier-head {
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.tier-name {
+  font-family: 'Cinzel', serif;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.p-big {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.p-unit {
+  font-size: 1rem;
+  color: #888;
+  margin-left: 4px;
+}
+
+.tier-breakdown {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #aaa;
+  font-family: monospace;
+}
+
+/* Strain List inside the card */
+.strain-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px dashed rgba(255,255,255,0.1);
+}
+
+.strain-row:last-child { border-bottom: none; }
+
+.s-name {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.s-tag {
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: #333;
+  color: #ccc;
+}
+
+.tag--winner { background: rgba(212, 175, 55, 0.2); color: #d4af37; }
+.tag--hot { background: rgba(255, 87, 34, 0.2); color: #ff5722; }
+
+/* Footer */
+.deli-footer { text-align: center; }
+.deli-note { margin-top: 1rem; font-size: 0.85rem; color: #666; font-style: italic; }
