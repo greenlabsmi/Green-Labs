@@ -171,32 +171,48 @@ code{
 }
 
 .sticky__logo img{
-  height: 50px;
+  height: 54px; /* desktop: slightly bolder */
   width: auto;
-  flex-shrink: 0; /* key */
+  flex-shrink: 0;
   object-fit: contain;
   filter: drop-shadow(0 6px 20px rgba(0,0,0,.35));
 }
 
 /* Desktop tabs */
 .tabs{
-  display:none;
+  display:none; /* stays hidden on mobile */
   align-items:center;
-  gap: 26px;
-  margin-left: 10px;
+  gap: 24px;
+  margin-left: 14px;
 }
+
 .tab{
   font-family:"Cinzel", serif;
-  letter-spacing:.08em;
   font-weight: 900;
+  letter-spacing: .08em;
   font-size: 13px;
-  opacity: .88;
-  transition: opacity .15s ease, transform .15s ease;
+  text-transform: uppercase;
+  opacity: .86;
+  padding: 10px 8px;
+  border-radius: 10px;
+  transition: opacity .15s ease, transform .15s ease, background .15s ease;
 }
+
 .tab:hover{
   opacity: 1;
   transform: translateY(-1px);
+  background: rgba(255,255,255,.03);
 }
+
+/* CTA styling only for "Shop Online" tab */
+.tab--cta{
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(46,248,187,.18);
+  background: rgba(255,255,255,.03);
+  opacity: 1;
+}
+
 
 /* Header actions */
 .actions{
@@ -208,10 +224,15 @@ code{
   justify-content: flex-end;
   min-width: 0;
 }
+/* Desktop nav behavior: show tabs, hide mobile pills (prevents duplicate nav) */
+@media (min-width: 760px){
+  .tabs{ display:flex; }
+  .actions{ display:none; }
+}
 
 @media (max-width: 420px){
-  .sticky__logo img{ height: 48px; }
-  :root{ --stickyH: 68px; }
+  .sticky__logo img{ height: 56px; } /* mobile: make it stand out */
+  :root{ --stickyH: 72px; }         /* prevents header crush */
 }
 
 /* Desktop tabs */
@@ -319,6 +340,37 @@ code{
   animation: kidWave 7.5s ease-in-out infinite;
 }
 @keyframes kidWave{
+  0%   { background-position: 200% 50%; }
+  50%  { background-position: 0% 50%; }
+  100% { background-position: -200% 50%; }
+}
+
+/* Green Labs shimmer for SHOP + DEALS text (same speed as KID) */
+.glowLabel{
+  display:inline-block;
+  font-family:"Cinzel", serif;
+  font-weight: 900;
+  letter-spacing: .06em;
+  line-height: 1;
+  font-size: 12px;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 220% 100%;
+  animation: glWave 7.5s ease-in-out infinite;
+}
+
+.glowLabel--green{
+  background-image: linear-gradient(
+    90deg,
+    rgba(233,236,235,.92) 0%,
+    rgba(233,236,235,.92) 38%,
+    rgba(46,248,187,.95) 50%,
+    rgba(233,236,235,.92) 62%,
+    rgba(233,236,235,.92) 100%
+  );
+}
+
+@keyframes glWave{
   0%   { background-position: 200% 50%; }
   50%  { background-position: 0% 50%; }
   100% { background-position: -200% 50%; }
