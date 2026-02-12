@@ -42,8 +42,8 @@
   --stripH: 34px;
 
   /* Mobile nav pills sizing (keeps all buttons equal height) */
-  --navBtnH: 44px;
-  --navBtnPadX: 14px;
+  --navBtnH: 42px;
+  --navBtnPadX: 12px;
 
   /* Premium shop gradient (less “app green”, more luxe) */
   --shopA: #0c5f47;
@@ -153,6 +153,7 @@ code{
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line2);
 }
+
 .sticky__inner{
   height: var(--stickyH);
   display:flex;
@@ -161,19 +162,56 @@ code{
   gap: 14px;
 }
 
-/* Bigger logo to match button row height */
+/* Prevent logo from shrinking/squishing on tight mobile widths */
 .sticky__logo{
   display:flex;
   align-items:center;
   gap: 10px;
+  flex: 0 0 auto; /* keep logo stable */
 }
+
 .sticky__logo img{
-  height: 50px; /* increased */
+  height: 50px;
   width: auto;
+  flex-shrink: 0; /* key */
+  object-fit: contain;
   filter: drop-shadow(0 6px 20px rgba(0,0,0,.35));
 }
+
+/* Desktop tabs */
+.tabs{
+  display:none;
+  align-items:center;
+  gap: 26px;
+  margin-left: 10px;
+}
+.tab{
+  font-family:"Cinzel", serif;
+  letter-spacing:.08em;
+  font-weight: 900;
+  font-size: 13px;
+  opacity: .88;
+  transition: opacity .15s ease, transform .15s ease;
+}
+.tab:hover{
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+/* Header actions */
+.actions{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+
+  flex: 1 1 auto;          /* actions can shrink if needed */
+  justify-content: flex-end;
+  min-width: 0;
+}
+
 @media (max-width: 420px){
   .sticky__logo img{ height: 48px; }
+  :root{ --stickyH: 68px; }
 }
 
 /* Desktop tabs */
@@ -287,17 +325,17 @@ code{
 }
 
 .icon{
-  width: 46px;
-  height: 46px;
+  width: 44px;
+  height: 44px;
   display:grid;
   place-items:center;
-  border-radius: 14px;
+  border-radius: 12px;
   border: 1px solid var(--line2);
   background: rgba(255,255,255,.03);
   color: #fff;
   cursor: pointer;
   transition: transform .12s ease, box-shadow .18s ease, border-color .18s ease;
-  font-size: 20px;
+  font-size: 22px;
   line-height: 1;
 }
 .icon:hover{
