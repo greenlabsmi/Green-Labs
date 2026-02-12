@@ -16,7 +16,7 @@
 
   <link rel="icon" href="assets/img/favicon.png" />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=104">
+  <link rel="stylesheet" href="style.css?v=106">
 </head>
 
 <body>
@@ -41,36 +41,33 @@
         <img src="assets/img/greenlabs-logo.png" alt="Green Labs logo" />
       </a>
 
-      <!-- Desktop tabs -->
-     <nav class="tabs" aria-label="Primary navigation">
-  <a class="tab tab--cta" href="#shop" data-open-shop>Shop Online</a>
-  <a class="tab" href="#deals" data-open-deals>Deals</a>
-  <a class="tab" href="#visit" data-scroll="#visit">Visit</a>
-  <a class="tab" href="#dtg" data-scroll="#dtg">Keep It Dutch</a>
-</nav>
+      <!-- Desktop tabs (only shown on desktop via CSS) -->
+      <nav class="tabs" aria-label="Primary navigation">
+        <a class="tab tab--cta" href="#shop" data-open-shop>Shop Online</a>
+        <a class="tab" href="#deals" data-open-deals>Deals</a>
+        <a class="tab" href="#visit" data-scroll="#visit">Visit</a>
+        <a class="tab" href="#dtg" data-scroll="#dtg">Keep It Dutch</a>
+      </nav>
 
-      <!-- Mobile-first actions -->
+      <!-- Mobile actions (only shown on mobile via CSS) -->
       <div class="actions">
-  <!-- 1) SHOP first (ghost like deals) -->
-  <button class="btn btn--ghost btn--shop" data-open-shop type="button" aria-label="Shop now">
-    <span class="glowLabel glowLabel--green">SHOP</span>
-  </button>
+        <button class="btn btn--ghost btn--shop" data-open-shop type="button" aria-label="Shop now">
+          <span class="glowLabel glowLabel--green">SHOP</span>
+        </button>
 
-  <!-- 2) DEALS second -->
-  <button class="btn btn--ghost btn--deals" data-open-deals type="button" aria-label="View deals">
-    <span class="glowLabel glowLabel--green">DEALS</span>
-  </button>
+        <button class="btn btn--ghost btn--deals" data-open-deals type="button" aria-label="View deals">
+          <span class="glowLabel glowLabel--green">DEALS</span>
+        </button>
 
-  <!-- 3) KEEP IT DUTCH third (gold shimmer) -->
-  <button class="btn btn--ghost btn--kid" data-scroll="#dtg" type="button" aria-label="Keep It Dutch">
-    <span class="kidLabel">KEEP IT DUTCH</span>
-  </button>
+        <button class="btn btn--ghost btn--kid" data-scroll="#dtg" type="button" aria-label="Keep It Dutch">
+          <span class="kidLabel">KEEP IT DUTCH</span>
+        </button>
 
-  <!-- 4) Hamburger -->
-  <button class="icon" data-open-menu aria-label="Open menu" type="button">
-    <span aria-hidden="true">☰</span>
-  </button>
-</div>
+        <button class="icon" data-open-menu aria-label="Open menu" type="button">
+          <span aria-hidden="true">☰</span>
+        </button>
+      </div>
+    </div> <!-- ✅ IMPORTANT: closes .sticky__inner -->
 
     <!-- Status strip (single source of truth) -->
     <div class="status-strip" id="statusStrip" role="button" aria-label="Store status and address">
@@ -94,11 +91,11 @@
     </div>
 
     <nav class="drawer__nav" aria-label="Site">
-      <button class="drawer__link" data-open-deals type="button">Today’s Deals</button>
       <button class="drawer__link" data-open-shop type="button">Shop Online</button>
+      <button class="drawer__link" data-open-deals type="button">Today’s Deals</button>
+      <button class="drawer__link" data-scroll="#visit" type="button">Visit / Contact</button>
       <button class="drawer__link" data-scroll="#dtg" type="button">Keep It Dutch</button>
       <button class="drawer__link" data-scroll="#strain-preview" type="button">Strain Library</button>
-      <button class="drawer__link" data-scroll="#visit" type="button">Visit / Contact</button>
     </nav>
 
     <div class="drawer__footer">
