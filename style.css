@@ -146,9 +146,13 @@ img{ max-width:100%; display:block; }
   height: var(--stickyH);
   display:flex;
   align-items:center;
-  justify-content: space-between;
+  justify-content:flex-start; /* logo stays hard-left */
   gap: 14px;
 }
+
+/* push nav/actions to the right */
+.tabs{ margin-left:auto; }
+.actions{ margin-left:auto; }
 
 /* Logo never squishes */
 .sticky__logo{
@@ -206,10 +210,10 @@ img{ max-width:100%; display:block; }
   min-width:0;
 }
 
-/* Desktop behavior: tabs only (no duplicate nav) */
+/* Desktop nav behavior: show tabs (with hamburger inside tabs), hide mobile actions */
 @media (min-width: 760px){
   .tabs{ display:flex; }
-  .actions{ display:none; }
+  .actions{ display:none; } /* ok now because hamburger exists in .tabs */
 }
 
 /* Mobile sizing */
