@@ -946,207 +946,136 @@ img{ max-width:100%; display:block; }
 /* Footer */
 .deli-footer { text-align: center; }
 .deli-note { margin-top: 1rem; font-size: 0.85rem; color: #666; font-style: italic; }
+/* ======================================================
+   FINAL HEADER MASTER CONTROLLER
+   (Paste at the very bottom of style.css)
+   ====================================================== */
 
-/* ===== HEADER LAYOUT UPDATES (Lean & Mean) ===== */
-
-/* 1. The Container (Tightest possible fit) */
+/* --- 1. THE CONTAINER (Slim & Tight) --- */
 .sticky__inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  
-  /* CRITICAL FIX: Override the master 64px height */
+  /* Force the bar to shrink-wrap the content */
   height: auto !important; 
-  min-height: 0 !important;
-  
-  /* ZERO padding: Now the bar will shrink to exactly the logo's size */
-  padding-top: 0;   
-  padding-bottom: 0;
-}
-
-/* 2. The Logo (Zoomed & Hugging Left) */
-.sticky__logo img {
-  height: 60px;          /* Keeps the black bar skinny */
-  width: auto;
-  display: block; 
-  
-  /* Zoom it up */
-  transform: scale(1.4);
-  transform-origin: left center; 
-  
-  /* PULL LEFT: This moves it 20px closer to the edge */
-  margin-left: -20px;  
-  
-  position: relative;
-  z-index: 1000;
-}
-
-/* 3. Space out the Right-Side Links */
-.tabs {
-  display: none; 
-  align-items: center;
-  gap: 2.5rem;
-}
-
-@media (min-width: 760px) {
-  .tabs {
-    display: flex; 
-  }
-}
-
-/* ===== NAVIGATION LINK STYLING ===== */
-
-/* The Text Links (Deals, Visit, etc.) */
-.tab:not(.tab--cta) {
-  position: relative;
-  text-decoration: none;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  color: #fff; 
-  padding: 0.5rem 0;
-}
-
-/* The Green Underline (Replaced Gold) */
-.tab:not(.tab--cta)::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0%; /* Starts invisible */
-  height: 2px;
-  background-color: var(--brand2); /* Bright Green Labs Green */
-  transition: width 0.3s ease; 
-}
-
-/* The Hover Trigger */
-.tab:not(.tab--cta):hover::after {
-  width: 100%; 
-}
-
-/* The "SHOP ONLINE" Button - Green Labs Brand */
-.tab--cta {
-  border: 1px solid var(--brand2); /* Green Border */
-  background: transparent;
-  color: var(--brand2);
-  padding: 0.6rem 1.5rem;
-  border-radius: 50px; 
-  transition: all 0.3s ease;
-}
-
-.tab--cta:hover {
-  background: var(--brand2); /* Fills with Green */
-  color: #0b0d0c; /* Text turns dark */
-  box-shadow: 0 0 15px rgba(46, 248, 187, 0.4); /* Green Glow */
-}
-
-/* ===== MOBILE RESCUE (Fixes the "Gap" & Logo Size) ===== */
-@media (max-width: 760px) {
-  
-  /* 1. Shrink Logo to fit iPhone Header */
-  .sticky__logo img {
-    height: 52px; /* Perfect mobile size */
-    margin-left: 0; /* Reset the "pull" */
-  }
-
-  /* 2. Restore padding so the bar isn't razor-thin */
-  .sticky__inner {
-    padding-top: 8px;
-    padding-bottom: 8px;
-  }
-  
-  /* 3. Tighten the button gap so they don't fall off screen */
-  .actions {
-    gap: 6px; 
-  }
-  
-  /* 4. Fix the Shop/Deals buttons on small screens */
-  .btn {
-    padding: 0 10px; /* Slimmer buttons */
-    height: 38px;    /* Slightly shorter */
-    font-size: 11px;
-  }
-}
-
-/* ===== FINAL LOGO FIX ===== */
-.sticky__inner {
-  height: auto !important;
   min-height: 0 !important;
   padding-top: 0 !important;
   padding-bottom: 0 !important;
 }
 
+/* --- 2. THE LOGO (DESKTOP: BIG & ZOOMED) --- */
 .sticky__logo img {
-  height: 60px !important;  
+  /* Base height */
+  height: 65px !important; 
   width: auto;
   display: block;
   
-  /* Zoom & Pull Left */
-  transform: scale(1.4); 
+  /* The Zoom: Makes it look 85px tall without stretching the bar */
+  transform: scale(1.35); 
   transform-origin: left center;
-  margin-left: -25px !important; /* Pulls it hard left */
   
+  /* Pull it left to hug the edge */
+  margin-left: -15px !important; 
+  
+  /* Layering */
   position: relative;
   z-index: 1000;
 }
 
-/* =========================================
-   MASTER SHIMMER SYSTEM (Fixed & Smooth)
-   - Base: White Text
-   - Animation: Slide (1.5s) -> Pause (3.5s)
-   ========================================= */
-
-/* 1. The Animation Engine (Move + Pause) */
-@keyframes shimmerLoop {
-  0% { background-position: -200% center; }
-  30% { background-position: 200% center; } /* The Wave passes */
-  100% { background-position: 200% center; } /* It waits here */
+/* --- 3. DESKTOP NAVIGATION LINKS --- */
+.tabs {
+  display: none; /* Hidden on mobile by default */
+  align-items: center;
+  gap: 2.5rem;
 }
 
-/* 2. The Base Setup (Applies to all shimmering text) */
+/* Show tabs only on Desktop (760px+) */
+@media (min-width: 760px) {
+  .tabs { display: flex; }
+}
+
+/* --- 4. MOBILE LAYOUT (PHONE FIXES) --- */
+@media (max-width: 760px) {
+  /* Reset the logo to normal size for phones */
+  .sticky__logo img {
+    height: 52px !important;
+    transform: none !important; /* No zoom on phone */
+    margin-left: 0 !important;
+  }
+  
+  /* Add padding so the bar isn't too thin on phone */
+  .sticky__inner {
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+  }
+  
+  /* Adjust button gap */
+  .actions { gap: 6px; }
+  
+  /* Make buttons smaller to fit iPhone screen */
+  .btn { 
+    padding: 0 10px; 
+    height: 38px; 
+    font-size: 11px; 
+  }
+}
+
+/* ======================================================
+   SMOOTH WAVE SHIMMER ENGINE
+   - Left-to-Right wash
+   - Full pause between waves
+   ====================================================== */
+
+/* The Physics: -150% (off-left) to 250% (off-right) */
+@keyframes smoothWave {
+  0% { background-position: -150% 0; }
+  40% { background-position: 250% 0; }    /* The Wave Finishes crossing */
+  100% { background-position: 250% 0; }   /* The Pause */
+}
+
+/* The Setup: Applies to Desktop Links & Mobile Buttons */
 .shimmer-text, 
-.glowLabel, 
-.kidLabel {
+.kidLabel,
+.glowLabel--green {
   font-family: 'Cinzel', serif;
   font-weight: 800;
   text-transform: uppercase;
   text-decoration: none;
   display: inline-block;
+  color: #ffffff; /* Default White Text */
   
-  /* Make text transparent so background shows through */
-  background-size: 200% auto;
+  /* The Background: White -> Stripe -> White */
+  /* We use a wide background (300%) so the stripe can leave completely */
+  background-size: 300% 100%;
+  
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: #fff; /* Fallback */
   
-  /* 5 second loop: 1.5s wave + 3.5s pause */
-  animation: shimmerLoop 5s linear infinite;
+  /* The Loop: 5 seconds total (Smooth glide + long wait) */
+  animation: smoothWave 5s linear infinite;
 }
 
-/* 3. GOLD MODE (For "Keep It Dutch") */
-/* Applies to desktop (.shimmer-text) and mobile (.kidLabel) */
+/* GOLD WAVE (Keep It Dutch) */
 .shimmer-text, 
 .kidLabel {
   background-image: linear-gradient(
     110deg,
-    #ffffff 0%,
-    #ffffff 45%,
-    #d4af37 50%,   /* GOLD WAVE */
-    #ffffff 55%,
-    #ffffff 100%
+    #ffffff 30%,      /* White start */
+    #d4af37 45%,      /* Gold Center */
+    #d4af37 55%,      /* Gold Center */
+    #ffffff 70%       /* White end */
   );
 }
 
-/* 4. GREEN MODE (For "Shop" & "Deals") */
-/* Applies to mobile labels (.glowLabel--green) */
+/* GREEN WAVE (Shop / Deals) */
 .glowLabel--green {
   background-image: linear-gradient(
     110deg,
-    #ffffff 0%,
-    #ffffff 45%,
-    #2ef8bb 50%,   /* GREEN WAVE */
-    #ffffff 55%,
-    #ffffff 100%
+    #ffffff 30%,      /* White start */
+    #2ef8bb 45%,      /* Green Center */
+    #2ef8bb 55%,      /* Green Center */
+    #ffffff 70%       /* White end */
   );
 }
