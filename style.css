@@ -1015,51 +1015,42 @@ img{ max-width:100%; display:block; }
 .deli-footer { text-align: center; }
 .deli-note { margin-top: 1rem; font-size: 0.85rem; color: #666; font-style: italic; }
 
-/* ===== HEADER LAYOUT UPDATES (Tight Version) ===== */
+/* ===== HEADER LAYOUT UPDATES (Lean & Mean) ===== */
 
-/* 1. Push Logo Left and Nav Right */
+/* 1. The Container (Tightest possible fit) */
 .sticky__inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   
-  /* CRITICAL CHANGE: Reduce padding to squeeze the logo in */
-  padding-top: 5px;   
-  padding-bottom: 5px;
-  /* Remove the min-height: 80px line entirely */
-}
-
-/* 2. Make the Logo Bigger (Fill the space) */
-.sticky__logo img {
-  height: 65px; /* Big, but fits within a standard header */
-  width: auto;
-  max-width: 200px; 
-  object-fit: contain;
-  transition: transform 0.3s ease;
+  /* ZERO padding: The logo height defines the bar height */
+  padding-top: 0;   
+  padding-bottom: 0;
   
-  /* Removes any default browser spacing around the image */
+  /* REMOVED min-height. This was forcing it to be fat. */
+}
+
+/* 2. The Logo (Maximized) */
+.sticky__logo img {
+  /* Increased to 72px (The bar will be exactly this tall) */
+  height: 72px; 
+  width: auto;
+  max-width: 250px; 
+  object-fit: contain;
   display: block; 
-}
-
-/* Ensure the bar grows with the logo */
-.sticky__inner {
-  min-height: 80px; /* Forces the bar to be at least this tall */
-}
-
-/* Optional: Slight zoom on hover for the logo */
-.sticky__logo:hover img {
-  transform: scale(1.05);
+  
+  /* Slight push to ensure it doesn't look crowded on the left */
+  margin-left: -5px; 
 }
 
 /* 3. Space out the Right-Side Links */
 .tabs {
-  display: none; /* HIDDEN by default on mobile */
+  display: none; 
   align-items: center;
   gap: 2.5rem;
 }
 
-/* Only show them on Desktop */
 @media (min-width: 760px) {
   .tabs {
     display: flex; 
