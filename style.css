@@ -948,10 +948,10 @@ img{ max-width:100%; display:block; }
 .deli-note { margin-top: 1rem; font-size: 0.85rem; color: #666; font-style: italic; }
 
 /* ======================================================
-   FINAL HEADER: MOBILE POLISH & GLOW EFFECTS
-   - Desktop: Clean Text + Underlines
-   - Mobile: Clean Text (Deals/KiD) + Green Pill (Shop)
-   - Interaction: tactile "Press & Glow" on click
+   FINAL HEADER: POLISH v3 (Perfect Alignment + Glow)
+   - Layout: Hamburger matches Shop button size (36px)
+   - Shop Button: Neon Green Glow on Desktop Hover
+   - Mobile: Clean Text (Deals/KiD), Green Pill (Shop)
    ====================================================== */
 
 /* --- 1. LAYOUT & SIZING --- */
@@ -987,22 +987,20 @@ img{ max-width:100%; display:block; }
   color: #ffffff !important;
   background: none !important;
   -webkit-text-fill-color: #ffffff !important;
-  transition: all 0.2s ease; /* Faster transition for mobile feel */
+  transition: all 0.2s ease;
 }
 
 /* --- 3. MOBILE BUTTON CLEANUP --- */
-/* Remove borders from Deals & KiD on mobile to match Desktop */
 @media (max-width: 760px) {
+  /* Clean text for Deals/KiD */
   .btn--deals,
   .btn--kid {
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
-    padding: 0 8px !important; /* Closer spacing */
+    padding: 0 8px !important; 
     height: auto !important;
   }
-  
-  /* Make the text labels slightly larger for readability */
   .btn--deals .glowLabel,
   .btn--kid .kidLabel {
     font-size: 11px !important; 
@@ -1011,7 +1009,7 @@ img{ max-width:100%; display:block; }
 }
 
 /* --- 4. "SHOP ONLINE" BUTTON (Primary Action) --- */
-/* Keeps the button shape on both Mobile & Desktop */
+/* The Green Pill */
 .btn--shop,
 .tab--cta {
   background: rgba(46,248,187,0.15) !important;
@@ -1020,7 +1018,18 @@ img{ max-width:100%; display:block; }
   box-shadow: 0 0 15px rgba(46,248,187,0.1);
   color: #fff !important;
 }
-/* Mobile specific tweak for Shop button */
+
+/* DESKTOP HOVER GLOW (The Fix) */
+.tab--cta:hover,
+.btn--shop:hover {
+  background: rgba(46,248,187,0.25) !important;
+  border-color: #2ef8bb !important;
+  box-shadow: 0 0 25px rgba(46,248,187,0.6) !important; /* The Glow */
+  transform: translateY(-1px);
+  text-shadow: 0 0 8px rgba(46,248,187,0.5);
+}
+
+/* Mobile size match */
 @media (max-width: 760px) {
   .btn--shop {
     height: 36px !important;
@@ -1028,31 +1037,26 @@ img{ max-width:100%; display:block; }
   }
 }
 
-/* --- 5. THE "TACTILE GLOW" CLICK EFFECT --- */
-/* This makes it feel like a real button press */
+/* --- 5. CLICK EFFECTS (Tactile) --- */
 .btn:active,
-.tab:active {
-  transform: scale(0.95); /* Shrink slightly on press */
-}
+.tab:active { transform: scale(0.95); }
 
-/* Green Glow on Press (Shop / Deals) */
+/* Green Press */
 .btn--shop:active,
 .btn--deals:active .glowLabel,
 .tab:not([href="#dtg"]):active {
   color: #2ef8bb !important;
   text-shadow: 0 0 20px rgba(46,248,187,0.8);
-  border-color: #2ef8bb !important; /* Lights up border if present */
-  box-shadow: 0 0 30px rgba(46,248,187,0.4) !important;
 }
 
-/* Gold Glow on Press (Keep It Dutch) */
+/* Gold Press */
 .btn--kid:active .kidLabel,
 .tab[href="#dtg"]:active {
   color: #d4af37 !important;
   text-shadow: 0 0 20px rgba(212,175,55,0.8);
 }
 
-/* --- 6. DESKTOP HOVER LINES (Your preferred style) --- */
+/* --- 6. HOVER UNDERLINES --- */
 .shimmer-text::after,
 .kidLabel::after,
 .glowLabel::after,
@@ -1063,20 +1067,18 @@ img{ max-width:100%; display:block; }
   bottom: -4px;
   width: 100%;
   height: 2px;
-  background-color: #2ef8bb; /* Default Green */
+  background-color: #2ef8bb;
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.3s ease;
 }
 
-/* Hover Triggers */
 .btn:hover .glowLabel::after,
 .tab:hover::after {
   transform: scaleX(1);
   transform-origin: left;
 }
 
-/* Gold Hover Override */
 .tab[href="#dtg"]::after,
 .btn:hover .kidLabel::after {
   background-color: #d4af37 !important;
@@ -1086,23 +1088,29 @@ img{ max-width:100%; display:block; }
   color: #d4af37 !important;
 }
 
-/* --- 7. HAMBURGER & ICONS --- */
+/* --- 7. HAMBURGER (Perfect Alignment Fix) --- */
 .icon.icon--menu, 
 .actions .icon {
-  width: 42px !important;
-  height: 42px !important;
+  /* MATCHES SHOP BUTTON HEIGHT EXACTLY */
+  width: 36px !important;  
+  height: 36px !important; 
+  
   border-radius: 50%;
   border: 1px solid rgba(255,255,255,0.1);
   background: rgba(255,255,255,0.05);
   display: grid;
   place-items: center;
-  font-size: 20px;
+  font-size: 18px; /* Slightly smaller icon to fit */
 }
 
 /* --- 8. DESKTOP ADJUSTMENTS --- */
 @media (min-width: 760px) {
   .sticky__logo img { height: 62px !important; }
   .tabs { display: flex; align-items: center; gap: 2.5rem; }
-  /* Ensure Desktop buttons don't get the mobile text-only treatment */
+  
+  /* Reset Hamburger size on Desktop if needed */
+  .icon.icon--menu { width: 42px !important; height: 42px !important; font-size: 20px; }
+  
+  /* Desktop border adjustments */
   .btn--deals, .btn--kid { border: 1px solid var(--line2) !important; } 
 }
