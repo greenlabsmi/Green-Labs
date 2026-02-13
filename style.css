@@ -1033,17 +1033,20 @@ img{ max-width:100%; display:block; }
   padding-bottom: 0;
 }
 
-/* 2. The Logo (Maximized) */
+/* 2. The Logo (The "Zoom" Trick) */
 .sticky__logo img {
-  /* Increased to 72px (The bar will be exactly this tall) */
+  /* 1. Keep the "Layout Size" small so the bar stays skinny */
   height: 60px; 
   width: auto;
-  max-width: 250px; 
-  object-fit: contain;
   display: block; 
   
-  /* Slight push to ensure it doesn't look crowded on the left */
-  margin-left: -5px; 
+  /* 2. Visually blow it up without stretching the bar */
+  transform: scale(1.4);  /* 1.4 = 140% size. Adjust this number to taste! */
+  transform-origin: left center; /* Anchors it to the left side */
+  
+  /* 3. Ensure it sits on top of everything */
+  position: relative;
+  z-index: 1000;
 }
 
 /* 3. Space out the Right-Side Links */
