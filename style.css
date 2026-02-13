@@ -1014,3 +1014,77 @@ img{ max-width:100%; display:block; }
 /* Footer */
 .deli-footer { text-align: center; }
 .deli-note { margin-top: 1rem; font-size: 0.85rem; color: #666; font-style: italic; }
+
+/* ===== HEADER LAYOUT UPDATES ===== */
+
+/* 1. Push Logo Left and Nav Right */
+.sticky__inner {
+  display: flex;
+  justify-content: space-between; /* This creates the gap in the middle */
+  align-items: center;
+  width: 100%;
+}
+
+/* 2. Make the Logo Bigger */
+.sticky__logo img {
+  height: 50px; /* Increased from default ~35-40px */
+  width: auto;  /* Maintains aspect ratio so it doesn't squish */
+  transition: transform 0.3s ease;
+}
+
+/* Optional: Slight zoom on hover for the logo */
+.sticky__logo:hover img {
+  transform: scale(1.05);
+}
+
+/* 3. Space out the Right-Side Links */
+.tabs {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem; /* Increases space between SHOP, DEALS, VISIT, etc. */
+}
+
+/* ===== NAVIGATION LINK STYLING ===== */
+
+/* The Text Links (Deals, Visit, etc.) */
+.tab:not(.tab--cta) {
+  position: relative;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #fff; /* or your variable var(--ink-inverse) */
+  padding: 0.5rem 0;
+}
+
+/* The Gold Line (Hidden by default) */
+.tab:not(.tab--cta)::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%; /* Starts invisible */
+  height: 2px;
+  background-color: #d4af37; /* Dutch Gold */
+  transition: width 0.3s ease; /* Smooth animation */
+}
+
+/* The Hover Trigger */
+.tab:not(.tab--cta):hover::after {
+  width: 100%; /* Sweeps across on hover */
+}
+
+/* The "SHOP ONLINE" Button - Making it pop more */
+.tab--cta {
+  border: 1px solid #d4af37; /* Gold Border */
+  background: transparent;
+  color: #d4af37;
+  padding: 0.6rem 1.5rem;
+  border-radius: 50px; /* Pill shape */
+  transition: all 0.3s ease;
+}
+
+.tab--cta:hover {
+  background: #d4af37; /* Fills with Gold */
+  color: #000; /* Text turns black */
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.4); /* Gold Glow */
+}
