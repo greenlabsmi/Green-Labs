@@ -1101,3 +1101,31 @@ img{ max-width:100%; display:block; }
   color: #0b0d0c; /* Text turns dark */
   box-shadow: 0 0 15px rgba(46, 248, 187, 0.4); /* Green Glow */
 }
+
+/* ===== MOBILE RESCUE (Fixes the "Gap" & Logo Size) ===== */
+@media (max-width: 760px) {
+  
+  /* 1. Shrink Logo to fit iPhone Header */
+  .sticky__logo img {
+    height: 52px; /* Perfect mobile size */
+    margin-left: 0; /* Reset the "pull" */
+  }
+
+  /* 2. Restore padding so the bar isn't razor-thin */
+  .sticky__inner {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  
+  /* 3. Tighten the button gap so they don't fall off screen */
+  .actions {
+    gap: 6px; 
+  }
+  
+  /* 4. Fix the Shop/Deals buttons on small screens */
+  .btn {
+    padding: 0 10px; /* Slimmer buttons */
+    height: 38px;    /* Slightly shorter */
+    font-size: 11px;
+  }
+}
