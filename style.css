@@ -324,21 +324,52 @@ img{ max-width:100%; display:block; }
   );
 }
 
-/* The wave (Corrected Wrapper with Pause) */
-@keyframes wave {
-  /* 0% to 20%: The Shimmer moves (takes about 1.5s) */
+/* ===== SHIMMER ANIMATION ENGINE ===== */
+@keyframes goldWave {
+  /* 0% to 30%: The Gold Wave slides across (Smoothly) */
   0% {
-    background-position: 200% 50%;
+    background-position: -200% center;
   }
-  20% {
-    background-position: -200% 50%;
+  30% {
+    background-position: 200% center;
   }
-  /* 20% to 100%: It sits silent (the pause) */
+  
+  /* 30% to 100%: It waits (The Pause) */
   100% {
-    background-position: -200% 50%;
+    background-position: 200% center;
   }
 }
 
+/* ===== "KEEP IT DUTCH" TEXT STYLE ===== */
+/* Add the class "shimmer-text" to your HTML link for Keep It Dutch */
+.shimmer-text {
+  font-weight: 800;  /* Thicker text makes the gold pop */
+  text-transform: uppercase;
+  text-decoration: none;
+  
+  /* 1. The Magic Gradient: Green -> Gold Stripe -> Green */
+  background: linear-gradient(
+    110deg,
+    #2ef8bb 0%,       /* Green Labs Green */
+    #2ef8bb 45%,      /* Green */
+    #d4af37 50%,      /* THE GOLD WAVE (Thin stripe) */
+    #2ef8bb 55%,      /* Green */
+    #2ef8bb 100%      /* Green */
+  );
+  
+  /* 2. Size the background so the Gold starts off-screen */
+  background-size: 250% auto;
+  
+  /* 3. Clip the background to the text shape */
+  background-clip: text;
+  -webkit-background-clip: text;
+  
+  /* 4. Make the text itself transparent so the background shows through */
+  color: transparent; 
+  
+  /* 5. The Animation: 6 seconds total (Slide + Pause) */
+  animation: goldWave 6s linear infinite;
+}
 .icon{
   width:44px;
   height:44px;
