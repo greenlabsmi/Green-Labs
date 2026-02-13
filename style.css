@@ -1052,11 +1052,11 @@ img{ max-width:100%; display:block; }
   text-decoration: none;
   font-weight: 600;
   letter-spacing: 0.05em;
-  color: #fff; /* or your variable var(--ink-inverse) */
+  color: #fff; 
   padding: 0.5rem 0;
 }
 
-/* The Gold Line (Hidden by default) */
+/* The Green Underline (Replaced Gold) */
 .tab:not(.tab--cta)::after {
   content: '';
   position: absolute;
@@ -1064,27 +1064,27 @@ img{ max-width:100%; display:block; }
   left: 0;
   width: 0%; /* Starts invisible */
   height: 2px;
-  background-color: #d4af37; /* Dutch Gold */
-  transition: width 0.3s ease; /* Smooth animation */
+  background-color: var(--brand2); /* Bright Green Labs Green */
+  transition: width 0.3s ease; 
 }
 
 /* The Hover Trigger */
 .tab:not(.tab--cta):hover::after {
-  width: 100%; /* Sweeps across on hover */
+  width: 100%; 
 }
 
-/* The "SHOP ONLINE" Button - Making it pop more */
+/* The "SHOP ONLINE" Button - Green Labs Brand */
 .tab--cta {
-  border: 1px solid #d4af37; /* Gold Border */
+  border: 1px solid var(--brand2); /* Green Border */
   background: transparent;
-  color: #d4af37;
+  color: var(--brand2);
   padding: 0.6rem 1.5rem;
-  border-radius: 50px; /* Pill shape */
+  border-radius: 50px; 
   transition: all 0.3s ease;
 }
 
 .tab--cta:hover {
-  background: #d4af37; /* Fills with Gold */
-  color: #000; /* Text turns black */
-  box-shadow: 0 0 15px rgba(212, 175, 55, 0.4); /* Gold Glow */
+  background: var(--brand2); /* Fills with Green */
+  color: #0b0d0c; /* Text turns dark */
+  box-shadow: 0 0 15px rgba(46, 248, 187, 0.4); /* Green Glow */
 }
