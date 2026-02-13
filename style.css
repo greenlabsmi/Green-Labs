@@ -1142,3 +1142,25 @@ img{ max-width:100%; display:block; }
     font-size: 11px;
   }
 }
+
+/* ===== FINAL LOGO FIX ===== */
+.sticky__inner {
+  height: auto !important;
+  min-height: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.sticky__logo img {
+  height: 60px !important;  
+  width: auto;
+  display: block;
+  
+  /* Zoom & Pull Left */
+  transform: scale(1.4); 
+  transform-origin: left center;
+  margin-left: -25px !important; /* Pulls it hard left */
+  
+  position: relative;
+  z-index: 1000;
+}
