@@ -1024,11 +1024,13 @@ img{ max-width:100%; display:block; }
   align-items: center;
   width: 100%;
   
-  /* ZERO padding: The logo height defines the bar height */
+  /* CRITICAL FIX: Override the master 64px height */
+  height: auto !important; 
+  min-height: 0 !important;
+  
+  /* ZERO padding: Now the bar will shrink to exactly the logo's size */
   padding-top: 0;   
   padding-bottom: 0;
-  
-  /* REMOVED min-height. This was forcing it to be fat. */
 }
 
 /* 2. The Logo (Maximized) */
