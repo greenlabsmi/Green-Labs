@@ -948,10 +948,13 @@ img{ max-width:100%; display:block; }
 .deli-note { margin-top: 1rem; font-size: 0.85rem; color: #666; font-style: italic; }
 
 /* ======================================================
-   FINAL STABLE HEADER (No Shimmer, Perfect Alignment)
+   FINAL HEADER: MOBILE POLISH & GLOW EFFECTS
+   - Desktop: Clean Text + Underlines
+   - Mobile: Clean Text (Deals/KiD) + Green Pill (Shop)
+   - Interaction: tactile "Press & Glow" on click
    ====================================================== */
 
-/* 1. CONTAINER: Equal cushion on both sides */
+/* --- 1. LAYOUT & SIZING --- */
 .sticky__inner {
   display: flex;
   justify-content: space-between;
@@ -959,75 +962,147 @@ img{ max-width:100%; display:block; }
   width: 100%;
   height: auto !important;
   min-height: 0 !important;
-  
-  /* EQUAL CUSHION: 12px spacing from the screen edge on both sides */
   padding: 8px 12px !important;
 }
 
-/* 2. LOGO: Fixed size, stable position */
 .sticky__logo img {
-  /* 52px is the sweet spot for mobile headers */
-  height: 52px !important; 
+  height: 52px !important;
   width: auto;
   display: block;
-  transform: none !important; /* No zooming */
-  margin: 0 !important;       /* No negative margins */
+  transform: none !important;
+  margin: 0 !important;
 }
 
-/* 3. HAMBURGER & ICONS: Perfectly matching the buttons */
-.icon.icon--menu, 
-.actions .icon {
-  /* Matches the height of your "SHOP" buttons (42px) */
-  width: 42px !important;  
-  height: 42px !important; 
-  
-  /* Circle shape to match the premium feel */
-  border-radius: 50%;      
-  border: 1px solid rgba(255,255,255,0.1);
-  background: rgba(255,255,255,0.05);
-  
-  display: grid;
-  place-items: center;
-  font-size: 20px;
-}
-
-/* 4. TEXT LABELS: Clean, Static White (No Shimmer) */
+/* --- 2. TEXT BASE STYLES (Clean White) --- */
 .shimmer-text, 
 .kidLabel, 
 .glowLabel, 
-.glowLabel--green {
+.tab {
+  position: relative;
   font-family: 'Cinzel', serif;
   font-weight: 800;
   text-transform: uppercase;
   text-decoration: none;
   display: inline-block;
-  
-  /* FORCE SOLID WHITE */
   color: #ffffff !important;
   background: none !important;
   -webkit-text-fill-color: #ffffff !important;
-  background-clip: border-box !important;
-  -webkit-background-clip: border-box !important;
+  transition: all 0.2s ease; /* Faster transition for mobile feel */
+}
+
+/* --- 3. MOBILE BUTTON CLEANUP --- */
+/* Remove borders from Deals & KiD on mobile to match Desktop */
+@media (max-width: 760px) {
+  .btn--deals,
+  .btn--kid {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 8px !important; /* Closer spacing */
+    height: auto !important;
+  }
   
-  /* KILL THE ANIMATION */
-  animation: none !important;
-  transition: color 0.3s ease;
+  /* Make the text labels slightly larger for readability */
+  .btn--deals .glowLabel,
+  .btn--kid .kidLabel {
+    font-size: 11px !important; 
+    letter-spacing: 0.05em;
+  }
 }
 
-/* 5. INTERACTION: Simple Green Glow on Hover/Touch */
-.btn:hover .glowLabel,
-.btn:hover .kidLabel,
-.tab:hover,
-.shimmer-text:hover {
-  color: #2ef8bb !important; /* Green Labs Green */
-  text-shadow: 0 0 10px rgba(46,248,187,0.4);
+/* --- 4. "SHOP ONLINE" BUTTON (Primary Action) --- */
+/* Keeps the button shape on both Mobile & Desktop */
+.btn--shop,
+.tab--cta {
+  background: rgba(46,248,187,0.15) !important;
+  border: 1px solid rgba(46,248,187,0.5) !important;
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(46,248,187,0.1);
+  color: #fff !important;
+}
+/* Mobile specific tweak for Shop button */
+@media (max-width: 760px) {
+  .btn--shop {
+    height: 36px !important;
+    padding: 0 14px !important;
+  }
 }
 
-/* 6. DESKTOP ADJUSTMENTS */
+/* --- 5. THE "TACTILE GLOW" CLICK EFFECT --- */
+/* This makes it feel like a real button press */
+.btn:active,
+.tab:active {
+  transform: scale(0.95); /* Shrink slightly on press */
+}
+
+/* Green Glow on Press (Shop / Deals) */
+.btn--shop:active,
+.btn--deals:active .glowLabel,
+.tab:not([href="#dtg"]):active {
+  color: #2ef8bb !important;
+  text-shadow: 0 0 20px rgba(46,248,187,0.8);
+  border-color: #2ef8bb !important; /* Lights up border if present */
+  box-shadow: 0 0 30px rgba(46,248,187,0.4) !important;
+}
+
+/* Gold Glow on Press (Keep It Dutch) */
+.btn--kid:active .kidLabel,
+.tab[href="#dtg"]:active {
+  color: #d4af37 !important;
+  text-shadow: 0 0 20px rgba(212,175,55,0.8);
+}
+
+/* --- 6. DESKTOP HOVER LINES (Your preferred style) --- */
+.shimmer-text::after,
+.kidLabel::after,
+.glowLabel::after,
+.tab:not(.tab--cta)::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background-color: #2ef8bb; /* Default Green */
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+/* Hover Triggers */
+.btn:hover .glowLabel::after,
+.tab:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Gold Hover Override */
+.tab[href="#dtg"]::after,
+.btn:hover .kidLabel::after {
+  background-color: #d4af37 !important;
+}
+.tab[href="#dtg"]:hover,
+.btn:hover .kidLabel {
+  color: #d4af37 !important;
+}
+
+/* --- 7. HAMBURGER & ICONS --- */
+.icon.icon--menu, 
+.actions .icon {
+  width: 42px !important;
+  height: 42px !important;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.05);
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+}
+
+/* --- 8. DESKTOP ADJUSTMENTS --- */
 @media (min-width: 760px) {
-  /* Slightly bigger logo for big screens */
   .sticky__logo img { height: 62px !important; }
-  
-  /* Desktop Tabs */
   .tabs { display: flex; align-items: center; gap: 2.5rem; }
+  /* Ensure Desktop buttons don't get the mobile text-only treatment */
+  .btn--deals, .btn--kid { border: 1px solid var(--line2) !important; } 
 }
