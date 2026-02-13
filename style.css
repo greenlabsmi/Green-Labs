@@ -1015,21 +1015,36 @@ img{ max-width:100%; display:block; }
 .deli-footer { text-align: center; }
 .deli-note { margin-top: 1rem; font-size: 0.85rem; color: #666; font-style: italic; }
 
-/* ===== HEADER LAYOUT UPDATES ===== */
+/* ===== HEADER LAYOUT UPDATES (Tight Version) ===== */
 
 /* 1. Push Logo Left and Nav Right */
 .sticky__inner {
   display: flex;
-  justify-content: space-between; /* This creates the gap in the middle */
+  justify-content: space-between;
   align-items: center;
   width: 100%;
+  
+  /* CRITICAL CHANGE: Reduce padding to squeeze the logo in */
+  padding-top: 5px;   
+  padding-bottom: 5px;
+  /* Remove the min-height: 80px line entirely */
 }
 
-/* 2. Make the Logo Bigger */
+/* 2. Make the Logo Bigger (Fill the space) */
 .sticky__logo img {
-  height: 50px; /* Increased from default ~35-40px */
-  width: auto;  /* Maintains aspect ratio so it doesn't squish */
+  height: 65px; /* Big, but fits within a standard header */
+  width: auto;
+  max-width: 200px; 
+  object-fit: contain;
   transition: transform 0.3s ease;
+  
+  /* Removes any default browser spacing around the image */
+  display: block; 
+}
+
+/* Ensure the bar grows with the logo */
+.sticky__inner {
+  min-height: 80px; /* Forces the bar to be at least this tall */
 }
 
 /* Optional: Slight zoom on hover for the logo */
