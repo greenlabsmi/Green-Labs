@@ -1039,9 +1039,16 @@ img{ max-width:100%; display:block; }
 
 /* 3. Space out the Right-Side Links */
 .tabs {
-  display: flex;
+  display: none; /* HIDDEN by default on mobile */
   align-items: center;
-  gap: 2.5rem; /* Increases space between SHOP, DEALS, VISIT, etc. */
+  gap: 2.5rem;
+}
+
+/* Only show them on Desktop */
+@media (min-width: 760px) {
+  .tabs {
+    display: flex; 
+  }
 }
 
 /* ===== NAVIGATION LINK STYLING ===== */
