@@ -1036,7 +1036,7 @@ img{ max-width:100%; display:block; }
 /* 2. The Logo (Maximized) */
 .sticky__logo img {
   /* Increased to 72px (The bar will be exactly this tall) */
-  height: 72px; 
+  height: 60px; 
   width: auto;
   max-width: 250px; 
   object-fit: contain;
