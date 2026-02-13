@@ -946,136 +946,110 @@ img{ max-width:100%; display:block; }
 /* Footer */
 .deli-footer { text-align: center; }
 .deli-note { margin-top: 1rem; font-size: 0.85rem; color: #666; font-style: italic; }
+
 /* ======================================================
-   FINAL HEADER MASTER CONTROLLER
-   (Paste at the very bottom of style.css)
+   FINAL HEADER & SHIMMER CONTROLLER (v2.0)
+   - Layout: Logo Cushion (Left) | Hamburger Hug (Right)
+   - Shimmer: Shop -> Deals -> Keep It Dutch (Sequential)
    ====================================================== */
 
-/* --- 1. THE CONTAINER (Slim & Tight) --- */
+/* --- 1. THE CONTAINER (Spacing Control) --- */
 .sticky__inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  /* Force the bar to shrink-wrap the content */
   height: auto !important; 
   min-height: 0 !important;
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
+  
+  /* CUSHION CONTROLS: */
+  padding-top: 6px !important;
+  padding-bottom: 6px !important;
+  padding-left: 12px !important; /* Logo Cushion (Not too close to edge) */
+  padding-right: 6px !important; /* Hamburger Hug (Pushed far right) */
 }
 
-/* --- 2. THE LOGO (DESKTOP: BIG & ZOOMED) --- */
+/* --- 2. THE LOGO (Perfectly Sized) --- */
 .sticky__logo img {
-  /* Base height */
-  height: 65px !important; 
+  height: 52px !important; /* Standard mobile size */
   width: auto;
   display: block;
-  
-  /* The Zoom: Makes it look 85px tall without stretching the bar */
-  transform: scale(1.35); 
-  transform-origin: left center;
-  
-  /* Pull it left to hug the edge */
-  margin-left: -15px !important; 
-  
-  /* Layering */
-  position: relative;
-  z-index: 1000;
+  transform: none !important; /* No zoom needed if sizing is correct */
+  margin-left: 0 !important;  /* The padding-left above handles the cushion */
 }
 
-/* --- 3. DESKTOP NAVIGATION LINKS --- */
-.tabs {
-  display: none; /* Hidden on mobile by default */
-  align-items: center;
-  gap: 2.5rem;
+/* --- 3. THE HAMBURGER (Square Fix) --- */
+/* Fixes "Bigger Box" issue by matching button height */
+.icon.icon--menu, 
+.actions .icon {
+  height: 40px !important; 
+  width: 40px !important;
+  border-radius: 50%; /* Circle shape (optional, remove for square) */
+  border: 1px solid rgba(255,255,255,0.1);
+  display: grid;
+  place-items: center;
+  font-size: 20px;
 }
 
-/* Show tabs only on Desktop (760px+) */
+/* --- 4. DESKTOP TABS (Hidden on Mobile) --- */
+.tabs { display: none; }
 @media (min-width: 760px) {
-  .tabs { display: flex; }
-}
-
-/* --- 4. MOBILE LAYOUT (PHONE FIXES) --- */
-@media (max-width: 760px) {
-  /* Reset the logo to normal size for phones */
-  .sticky__logo img {
-    height: 52px !important;
-    transform: none !important; /* No zoom on phone */
-    margin-left: 0 !important;
-  }
-  
-  /* Add padding so the bar isn't too thin on phone */
-  .sticky__inner {
-    padding-top: 8px !important;
-    padding-bottom: 8px !important;
-  }
-  
-  /* Adjust button gap */
-  .actions { gap: 6px; }
-  
-  /* Make buttons smaller to fit iPhone screen */
-  .btn { 
-    padding: 0 10px; 
-    height: 38px; 
-    font-size: 11px; 
-  }
+  .tabs { display: flex; align-items: center; gap: 2.5rem; }
+  .sticky__logo img { height: 60px !important; } /* Bigger on Desktop */
 }
 
 /* ======================================================
-   SMOOTH WAVE SHIMMER ENGINE
-   - Left-to-Right wash
-   - Full pause between waves
+   SEQUENTIAL SHIMMER ENGINE
+   Flow: Shop (0s) -> Deals (3s) -> KiD (6s) -> Repeat
    ====================================================== */
 
-/* The Physics: -150% (off-left) to 250% (off-right) */
-@keyframes smoothWave {
-  0% { background-position: -150% 0; }
-  40% { background-position: 250% 0; }    /* The Wave Finishes crossing */
-  100% { background-position: 250% 0; }   /* The Pause */
+/* The Move: Fast wipe (1.5s), then wait */
+@keyframes sequenceWave {
+  0% { background-position: -200% center; }
+  15% { background-position: 200% center; } /* The wipe happens here */
+  100% { background-position: 200% center; } /* Stay waiting */
 }
 
-/* The Setup: Applies to Desktop Links & Mobile Buttons */
+/* Base Style for Shimmer Text */
 .shimmer-text, 
-.kidLabel,
+.kidLabel, 
+.glowLabel, 
 .glowLabel--green {
   font-family: 'Cinzel', serif;
   font-weight: 800;
   text-transform: uppercase;
   text-decoration: none;
   display: inline-block;
-  color: #ffffff; /* Default White Text */
+  color: #ffffff; /* Start White */
   
-  /* The Background: White -> Stripe -> White */
-  /* We use a wide background (300%) so the stripe can leave completely */
-  background-size: 300% 100%;
-  
+  background-size: 200% auto;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   
-  /* The Loop: 5 seconds total (Smooth glide + long wait) */
-  animation: smoothWave 5s linear infinite;
+  /* 9 Second Cycle (3 items x 3 seconds each) */
+  animation: sequenceWave 9s linear infinite;
 }
 
-/* GOLD WAVE (Keep It Dutch) */
-.shimmer-text, 
-.kidLabel {
-  background-image: linear-gradient(
-    110deg,
-    #ffffff 30%,      /* White start */
-    #d4af37 45%,      /* Gold Center */
-    #d4af37 55%,      /* Gold Center */
-    #ffffff 70%       /* White end */
-  );
+/* --- TIMING CONTROLS (The Relay Race) --- */
+
+/* 1. SHOP (Starts immediately) */
+.btn--shop .glowLabel,
+.tab--cta {
+  animation-delay: 0s;
+  background-image: linear-gradient(110deg, #fff 40%, #2ef8bb 50%, #fff 60%);
 }
 
-/* GREEN WAVE (Shop / Deals) */
-.glowLabel--green {
-  background-image: linear-gradient(
-    110deg,
-    #ffffff 30%,      /* White start */
-    #2ef8bb 45%,      /* Green Center */
-    #2ef8bb 55%,      /* Green Center */
-    #ffffff 70%       /* White end */
-  );
+/* 2. DEALS (Starts at 3s) */
+.btn--deals .glowLabel,
+.tab[href="#deals"] {
+  animation-delay: 3s;
+  background-image: linear-gradient(110deg, #fff 40%, #2ef8bb 50%, #fff 60%);
+}
+
+/* 3. KEEP IT DUTCH (Starts at 6s) */
+.btn--kid .kidLabel,
+.tab[href="#dtg"] {
+  animation-delay: 6s;
+  background-image: linear-gradient(110deg, #fff 40%, #d4af37 50%, #fff 60%);
 }
