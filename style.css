@@ -1040,18 +1040,19 @@ img{ max-width:100%; display:block; }
   padding-bottom: 0;
 }
 
-/* 2. The Logo (The "Zoom" Trick) */
+/* 2. The Logo (Zoomed & Hugging Left) */
 .sticky__logo img {
-  /* 1. Keep the "Layout Size" small so the bar stays skinny */
-  height: 60px; 
+  height: 60px;          /* Keeps the black bar skinny */
   width: auto;
   display: block; 
   
-  /* 2. Visually blow it up without stretching the bar */
-  transform: scale(1.4);  /* 1.4 = 140% size. Adjust this number to taste! */
-  transform-origin: left center; /* Anchors it to the left side */
+  /* Zoom it up */
+  transform: scale(1.4);
+  transform-origin: left center; 
   
-  /* 3. Ensure it sits on top of everything */
+  /* PULL LEFT: This moves it 20px closer to the edge */
+  margin-left: -20px;  
+  
   position: relative;
   z-index: 1000;
 }
