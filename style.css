@@ -324,20 +324,20 @@ img{ max-width:100%; display:block; }
   );
 }
 
-/* The wave */
-/* 0% to 20%: The Shimmer moves (takes about 1.5s) */
+/* The wave (Corrected Wrapper with Pause) */
+@keyframes wave {
+  /* 0% to 20%: The Shimmer moves (takes about 1.5s) */
   0% {
     background-position: 200% 50%;
   }
   20% {
     background-position: -200% 50%;
   }
-  
   /* 20% to 100%: It sits silent (the pause) */
   100% {
     background-position: -200% 50%;
   }
-
+}
 
 .icon{
   width:44px;
