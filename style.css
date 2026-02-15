@@ -1092,23 +1092,21 @@ img{ max-width:100%; display:block; }
 }
 
 /* --- 7. HAMBURGER (Perfect Alignment Fix) --- */
-.icon.icon--menu, 
-.actions .icon {
-  /* MATCHES SHOP BUTTON HEIGHT EXACTLY */
-  width: 36px !important;  
-  height: 36px !important; 
-  
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.1);
-  background: rgba(255,255,255,0.05);
-  display: grid;
-  place-items: center;
-  font-size: 18px; /* Slightly smaller icon to fit */
+.icon.icon--menu {
+    width: 44px !important;
+    height: 44px !important;
+    background: none !important;
+    border: none !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px !important;
+    color: white !important;
 }
 
 /* --- 8. DESKTOP ADJUSTMENTS --- */
 @media (min-width: 760px) {
-  .sticky__logo img { height: 80px !important; }
+  .sticky__logo img { height: 48px !important; width: auto; }
   .tabs { display: flex; align-items: center; gap: 2.5rem; }
   
   /* Reset Hamburger size on Desktop if needed */
