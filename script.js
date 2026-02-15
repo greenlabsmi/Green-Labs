@@ -48,22 +48,32 @@ document.addEventListener('DOMContentLoaded', () => {
     openBtn.setAttribute('aria-expanded','false');
     document.body.style.overflow = '';
 
+/* Force Open Function */
 const open = () => {
+    // 1. Force the CSS to visible
     drawer.style.display = 'flex';
     ovl.style.display = 'block';
-    // We remove the .hidden attribute because CSS display: flex overrides it
-    drawer.hidden = false; 
-    ovl.hidden = false;
-    openBtn.setAttribute('aria-expanded','true');
+    
+    // 2. Remove any hidden attributes
+    drawer.removeAttribute('hidden');
+    ovl.removeAttribute('hidden');
+    
+    // 3. Add active classes just in case
+    drawer.classList.add('is-active');
+    ovl.classList.add('is-active');
+
+    // 4. Lock background scrolling
     document.body.style.overflow = 'hidden';
 };
 
+/* Force Close Function */
 const close = () => {
     drawer.style.display = 'none';
     ovl.style.display = 'none';
-    drawer.hidden = true;
-    ovl.hidden = true;
-    openBtn.setAttribute('aria-expanded','false');
+    drawer.setAttribute('hidden', '');
+    ovl.setAttribute('hidden', '');
+    drawer.classList.remove('is-active');
+    ovl.classList.remove('is-active');
     document.body.style.overflow = '';
 };
 
