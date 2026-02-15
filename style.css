@@ -1096,23 +1096,35 @@ img{ max-width:100%; display:block; }
 .icon.icon--menu {
     width: 44px !important;
     height: 44px !important;
-    background: none !important; /* Removes the circle bubble */
-    border: none !important;     /* Removes the border */
+    background: none !important;
+    border: none !important;
     display: flex !important;
     align-items: center;
     justify-content: center;
-    font-size: 38px !important;   /* Significantly larger ☰ icon */
+    font-size: 32px !important;  /* Reduced from 38px so it fits better */
     color: white !important;
     padding: 0 !important;
     cursor: pointer;
+    margin-top: -4px !important; /* LIFTS the icon so the middle line hits center */
 }
 
 /* --- 8. DESKTOP ADJUSTMENTS --- */
 @media (min-width: 760px) {
-.sticky__logo img { 
+  /* Desktop Logo Reset */
+  .sticky__logo img { 
       height: 55px !important; 
       width: auto; 
       transform: none !important; /* This turns off the 1.4x mobile zoom */
       margin-left: 0 !important;   /* Resets the position for desktop */
       display: block !important;
   }
+
+  /* Desktop Hamburger Tweak - Smaller & Cleaner */
+  .icon.icon--menu {
+      width: 36px !important;
+      height: 36px !important;
+      font-size: 24px !important;
+      margin-left: 10px;
+      margin-top: 0 !important; /* Resets the lift for desktop */
+  }
+}
