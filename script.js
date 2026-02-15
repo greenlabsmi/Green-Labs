@@ -48,18 +48,19 @@ document.addEventListener('DOMContentLoaded', () => {
     openBtn.setAttribute('aria-expanded','false');
     document.body.style.overflow = '';
 
-    const open = () => {
-      drawer.hidden = false;
-      ovl.hidden = false;
-      openBtn.setAttribute('aria-expanded','true');
-      document.body.style.overflow = 'hidden';
-    };
-    const close = () => {
-      drawer.hidden = true;
-      ovl.hidden = true;
-      openBtn.setAttribute('aria-expanded','false');
-      document.body.style.overflow = '';
-    };
+   const open = () => {
+    drawer.style.display = 'block';
+    ovl.style.display = 'block';
+    openBtn.setAttribute('aria-expanded','true');
+    document.body.style.overflow = 'hidden';
+};
+
+const close = () => {
+    drawer.style.display = 'none';
+    ovl.style.display = 'none';
+    openBtn.setAttribute('aria-expanded','false');
+    document.body.style.overflow = '';
+};
 
     openBtn.addEventListener('click', (e) => {
       e.preventDefault();
