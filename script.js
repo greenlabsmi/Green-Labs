@@ -48,9 +48,12 @@ document.addEventListener('DOMContentLoaded', () => {
     openBtn.setAttribute('aria-expanded','false');
     document.body.style.overflow = '';
 
-   const open = () => {
-    drawer.style.display = 'block';
+const open = () => {
+    drawer.style.display = 'flex';
     ovl.style.display = 'block';
+    // We remove the .hidden attribute because CSS display: flex overrides it
+    drawer.hidden = false; 
+    ovl.hidden = false;
     openBtn.setAttribute('aria-expanded','true');
     document.body.style.overflow = 'hidden';
 };
@@ -58,6 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
 const close = () => {
     drawer.style.display = 'none';
     ovl.style.display = 'none';
+    drawer.hidden = true;
+    ovl.hidden = true;
     openBtn.setAttribute('aria-expanded','false');
     document.body.style.overflow = '';
 };
