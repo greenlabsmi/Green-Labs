@@ -1108,7 +1108,7 @@ img{ max-width:100%; display:block; }
 
 /* --- 8. DESKTOP ADJUSTMENTS --- */
 @media (min-width: 760px) {
-  .sticky__logo img { height: 62px !important; }
+  .sticky__logo img { height: 80px !important; }
   .tabs { display: flex; align-items: center; gap: 2.5rem; }
   
   /* Reset Hamburger size on Desktop if needed */
