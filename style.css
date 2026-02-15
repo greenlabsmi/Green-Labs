@@ -957,18 +957,21 @@ img{ max-width:100%; display:block; }
 /* --- 1. LAYOUT & SIZING --- */
 .sticky__inner {
     display: flex;
-    justify-content: space-between;
+    /* space-between forces logo to the left and nav items to the right */
+    justify-content: space-between; 
     align-items: center;
-    padding: 0 15px !important;
+    padding: 0 10px !important; /* Smaller padding gives more room at the edges */
     height: 72px !important;
 }
 
 .sticky__logo img {
-    height: 65px !important; /* Increase the 'container' height */
+    height: 65px !important; 
     width: auto;
-    transform: scale(1.4);   /* Zoom in on the image to cut out the empty space */
+    transform: scale(1.4); 
     transform-origin: left center;
-    margin-left: 5px;        /* Push it slightly away from the edge */
+    /* Negative margin-left pulls the 'zoomed' image toward the screen edge */
+    margin-left: -12px !important; 
+    display: block;
 }
 
 /* --- 2. TEXT BASE STYLES (Clean White) --- */
@@ -1106,12 +1109,10 @@ img{ max-width:100%; display:block; }
 
 /* --- 8. DESKTOP ADJUSTMENTS --- */
 @media (min-width: 760px) {
-  .sticky__logo img { height: 48px !important; width: auto; }
-  .tabs { display: flex; align-items: center; gap: 2.5rem; }
-  
-  /* Reset Hamburger size on Desktop if needed */
-  .icon.icon--menu { width: 42px !important; height: 42px !important; font-size: 20px; }
-  
-  /* Desktop border adjustments */
-  .btn--deals, .btn--kid { border: 1px solid var(--line2) !important; } 
-}
+.sticky__logo img { 
+      height: 55px !important; 
+      width: auto; 
+      transform: none !important; /* This turns off the 1.4x mobile zoom */
+      margin-left: 0 !important;   /* Resets the position for desktop */
+      display: block !important;
+  }
