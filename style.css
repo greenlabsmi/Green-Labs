@@ -956,21 +956,18 @@ img{ max-width:100%; display:block; }
 
 /* --- 1. LAYOUT & SIZING --- */
 .sticky__inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: auto !important;
-  min-height: 0 !important;
-  padding: 8px 12px !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px !important;
+    height: 72px !important;
 }
 
 .sticky__logo img {
-  height: 52px !important;
-  width: auto;
-  display: block;
-  transform: none !important;
-  margin: 0 !important;
+    height: 52px !important; /* This fills the vertical space without 'cramming' */
+    width: auto;
+    display: block;
+    margin: 0;
 }
 
 /* --- 2. TEXT BASE STYLES (Clean White) --- */
@@ -1095,13 +1092,15 @@ img{ max-width:100%; display:block; }
 .icon.icon--menu {
     width: 44px !important;
     height: 44px !important;
-    background: none !important;
-    border: none !important;
+    background: none !important; /* Removes the circle bubble */
+    border: none !important;     /* Removes the border */
     display: flex !important;
     align-items: center;
     justify-content: center;
-    font-size: 32px !important;
+    font-size: 38px !important;   /* Significantly larger ☰ icon */
     color: white !important;
+    padding: 0 !important;
+    cursor: pointer;
 }
 
 /* --- 8. DESKTOP ADJUSTMENTS --- */
