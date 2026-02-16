@@ -32,7 +32,7 @@
 
   --container: 1180px;
 
-  --stickyH: 64px;
+  --stickyH: 80px;
   --stripH: 34px;
 
   /* Mobile nav pills */
@@ -118,7 +118,7 @@ img{ max-width:100%; display:block; }
 }
 .brandmark__sub{
   color: rgba(233,236,235,.82);
-  font-size:13px;
+  font-size:16px;
   font-weight:700;
   margin-top:2px;
   white-space:nowrap;
@@ -1111,11 +1111,11 @@ img{ max-width:100%; display:block; }
 /* --- 8. DESKTOP ADJUSTMENTS --- */
 @media (min-width: 760px) {
   /* Desktop Logo Reset */
-  .sticky__logo img { 
-      height: 55px !important; 
+.sticky__logo img { 
+      height: 70px !important; /* Increased to fill the new 80px header */
       width: auto; 
-      transform: none !important; /* This turns off the 1.4x mobile zoom */
-      margin-left: 0 !important;   /* Resets the position for desktop */
+      transform: none !important; 
+      margin-left: 0 !important;   
       display: block !important;
   }
 
