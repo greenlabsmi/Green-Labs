@@ -1119,6 +1119,24 @@ img{ max-width:100%; display:block; }
       display: block !important;
   }
 
+/* --- DESKTOP LAYOUT FIX (Full Width) --- */
+/* Forces the bar to touch screen edges and pushes items apart */
+.sticky__inner {
+    max-width: 100% !important;  
+    width: 100% !important;
+    padding: 0 40px !important;  /* Adds breathing room on sides */
+    justify-content: space-between !important; 
+}
+
+/* Maximize Desktop Logo (60px + Slight Zoom) */
+.sticky__logo img { 
+    height: 60px !important; 
+    width: auto; 
+    transform: scale(1.15) !important; /* Gentle zoom for desktop */
+    margin-left: 0 !important;   
+    display: block !important;
+}
+   
   /* Desktop Hamburger Tweak - Smaller & Cleaner */
   .icon.icon--menu {
       width: 36px !important;
