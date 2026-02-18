@@ -180,10 +180,10 @@ img{ max-width:100%; display:block; }
   font-family:"Cinzel", serif;
   font-weight:900;
   letter-spacing:.08em;
-  font-size:13px;
+  font-size:16px;
   text-transform:uppercase;
   opacity:.86;
-  padding:10px 8px;
+  padding:10px 12px;
   border-radius:10px;
   transition: opacity .15s ease, transform .15s ease, background .15s ease;
 }
@@ -1112,10 +1112,10 @@ img{ max-width:100%; display:block; }
 @media (min-width: 760px) {
   /* Desktop Logo Reset */
 .sticky__logo img { 
-      height: 70px !important; /* Increased to fill the new 80px header */
+      height: 60px !important;      /* Taller: Almost touches top/bottom of the 64px bar */
       width: auto; 
-      transform: none !important; 
-      margin-left: 0 !important;   
+      transform: scale(1.15) !important; /* Slight zoom to make it look "bigger" than the bar */
+      margin-left: 5px !important;   /* Small push to not hit the edge */
       display: block !important;
   }
 
