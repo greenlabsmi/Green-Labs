@@ -397,30 +397,49 @@ img{ max-width:100%; display:block; }
   opacity: 1;
   transform: translateX(0);
 }
-.drawer__footer{
-  margin-top:auto;
-  padding:14px;
+.drawer__footer {
+  margin-top: auto;
+  padding: 20px 14px 40px; /* 40px bottom padding lifts it away from the screen edge */
   border-top: 1px solid rgba(255,255,255,.08);
-  display:flex;
-  flex-direction:column;
-  gap:12px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
-.drawer__meta{ opacity:.92; font-weight:800; }
-.drawer__social{ display:flex; gap:10px; flex-wrap:wrap; }
-.soc{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  height:34px;
-  min-width:44px;
-  padding:0 10px;
-  border-radius:999px;
+
+.drawer__meta {
+  opacity: .92;
+  font-weight: 800;
+  line-height: 1.6;
+}
+
+.drawer__social {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Perfect circles for the new SVG icons */
+.soc {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  width: 42px; 
+  padding: 0;
+  border-radius: 999px;
   border: 1px solid rgba(255,255,255,.10);
   background: rgba(255,255,255,.03);
-  font-weight:900;
-  opacity:.9;
+  color: #ffffff; /* Sets icon color */
+  opacity: .9;
+  transition: all 0.2s ease;
 }
-.soc:hover{ opacity:1; border-color: rgba(46,248,187,.22); }
+
+.soc:hover {
+  opacity: 1;
+  border-color: rgba(46,248,187,.22);
+  color: #2ef8bb; /* Neon green hover color for the icons */
+  transform: translateY(-2px); /* Slight lift on hover */
+}
 
 .link{
   color:#bff7e7;
