@@ -1146,3 +1146,80 @@ img{ max-width:100%; display:block; }
       margin-top: 0 !important; /* Resets the lift for desktop */
   }
 }
+/* =========================================================
+   DRAWER OVERHAUL (Dutch Touch Style Animations & Layout)
+   ========================================================= */
+
+/* Smooth Overlay Fade */
+.overlay {
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  display: block; /* Overrides inline display toggle */
+  pointer-events: none;
+}
+.overlay.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Smooth Drawer Slide */
+.drawer {
+  transform: translateX(100%);
+  transition: transform 0.45s cubic-bezier(0.25, 0.8, 0.25, 1);
+  display: flex !important; /* Overrides inline display block */
+}
+.drawer.is-active {
+  transform: translateX(0);
+}
+
+/* Drawer Logo & X Layout */
+.drawer__head {
+  position: relative;
+  display: flex;
+  justify-content: center; /* Centers the logo */
+  align-items: center;
+  border-bottom: none;
+  height: 72px; /* Matches mobile header height */
+  padding: 0 10px; /* Matches mobile header padding */
+}
+.drawer__logo {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,.25));
+}
+
+/* X Button Alignment - Mobile Default */
+.drawer__head .icon--close {
+  position: absolute;
+  right: 10px; /* Matches sticky__inner right padding */
+  margin-top: -4px; /* Matches hamburger margin-top */
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Desktop X Button Alignment */
+@media (min-width: 760px) {
+  .drawer__head {
+    height: 72px; 
+    padding: 0 40px; /* Matches desktop header padding */
+  }
+  .drawer__head .icon--close {
+    right: 40px; 
+    margin-top: 0; /* Resets lift, matching desktop hamburger */
+    width: 36px;
+    height: 36px;
+    font-size: 24px;
+  }
+}
+
+/* Staggered Link Animation */
+.drawer__link {
+  opacity: 0;
+  transform: translateX(22px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.drawer__link.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
