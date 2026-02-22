@@ -351,26 +351,51 @@ img{ max-width:100%; display:block; }
   font-weight:900;
   letter-spacing:.08em;
 }
-.drawer__nav{
-  padding:14px;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
+/* =========================================================
+   DRAWER NAVIGATION LINKS (Dutch Touch Text-Only Style)
+   ========================================================= */
+.drawer__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 18px; /* DTG-style spacing between links */
+  padding: 20px 10px; /* 10px right padding aligns perfectly with the mobile X */
 }
-.drawer__link{
-  width:100%;
-  text-align:left;
-  border-radius:14px;
-  padding:12px;
-  border: 1px solid rgba(255,255,255,.10);
-  background: rgba(255,255,255,.03);
-  color: rgba(233,236,235,.94);
-  font-weight:900;
-  cursor:pointer;
+
+/* Match the desktop X padding */
+@media (min-width: 760px) {
+  .drawer__nav {
+    padding: 30px 40px; 
+  }
 }
-.drawer__link:hover{
-  border-color: rgba(46,248,187,.22);
-  box-shadow: 0 0 0 1px rgba(46,248,187,.07) inset;
+
+.drawer__link {
+  width: 100%;
+  text-align: right; /* Flush right alignment */
+  background: transparent !important; /* Kills the button background */
+  border: none !important; /* Kills the button border */
+  padding: 0; /* Kills the inner button spacing */
+  color: #ffffff;
+  font-family: "Cinzel", serif; /* The elegant DTG font */
+  font-size: 30px; /* Matching DTG size */
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: none !important; /* Kills any hover outlines */
+  
+  /* Staggered Animation Setup */
+  opacity: 0;
+  transform: translateX(22px);
+  transition: opacity 0.4s ease, transform 0.4s ease, color 0.2s ease;
+}
+
+/* Elegant color shift on hover instead of a button outline */
+.drawer__link:hover {
+  color: #2ef8bb; /* Green Labs neon green hover */
+}
+
+/* The active state triggered by Javascript */
+.drawer__link.revealed {
+  opacity: 1;
+  transform: translateX(0);
 }
 .drawer__footer{
   margin-top:auto;
