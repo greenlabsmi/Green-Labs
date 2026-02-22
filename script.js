@@ -64,9 +64,8 @@ document.addEventListener('DOMContentLoaded', () => {
     links.forEach((link, index) => {
       setTimeout(() => {
         link.classList.add('revealed');
-      }, 100 * (index + 1)); // 100ms delay per link
+      }, 150 * (index + 1)); // Increased to 150ms for a slightly slower, smoother rollout
     });
-  };
 
   /* Force Close Function */
   const close = () => {
