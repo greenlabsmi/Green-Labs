@@ -35,72 +35,93 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ===== Drawer =====
-  (function drawer(){
-    const openBtn = $('[data-open-menu]');
-    const closeBtn = $('[data-close-menu]');
-    const drawer = $('#navDrawer');
-    const ovl = $('#menuOverlay');
-    if (!openBtn || !drawer || !ovl) return;
+ // ===== Drawer =====
+(function drawer(){
+  // FIX: Using $$ to select BOTH mobile and desktop hamburger menus
+  const openBtns = $$('[data-open-menu]'); 
+  const closeBtn = $('[data-close-menu]');
+  const drawer = $('#navDrawer');
+  const ovl = $('#menuOverlay');
+  const links = $$('.drawer__link', drawer);
 
-    drawer.hidden = true;
-    ovl.hidden = true;
-    openBtn.setAttribute('aria-expanded','false');
-    document.body.style.overflow = '';
+  if (!openBtns.length || !drawer || !ovl) return;
 
-/* Force Open Function */
-const open = () => {
-    // 1. Force the CSS to visible
-    drawer.style.display = 'flex';
-    ovl.style.display = 'block';
-    
-    // 2. Remove any hidden attributes
-    drawer.removeAttribute('hidden');
-    ovl.removeAttribute('hidden');
-    
-    // 3. Add active classes just in case
+  // Initialize
+  drawer.hidden = false; // We use CSS transform instead of display:none now
+  ovl.hidden = false;
+  openBtns.forEach(btn => btn.setAttribute('aria-expanded','false'));
+
+  /* Force Open Function */
+  const open = () => {
+    // 1. Add active classes to trigger CSS transform/opacity
     drawer.classList.add('is-active');
     ovl.classList.add('is-active');
-
-    // 4. Lock background scrolling
+    
+    // 2. Lock background scrolling
     document.body.style.overflow = 'hidden';
-};
 
-/* Force Close Function */
-const close = () => {
-    drawer.style.display = 'none';
-    ovl.style.display = 'none';
-    drawer.setAttribute('hidden', '');
-    ovl.setAttribute('hidden', '');
+    // 3. Stagger the links sliding in (The Dutch Touch effect)
+    links.forEach((link, index) => {
+      setTimeout(() => {
+        link.classList.add('revealed');
+      }, 100 * (index + 1)); // 100ms delay per link
+    });
+  };
+
+  /* Force Close Function */
+  const close = () => {
+    // 1. Remove active classes
     drawer.classList.remove('is-active');
     ovl.classList.remove('is-active');
+    
+    // 2. Hide links immediately so they are reset for next open
+    links.forEach(link => link.classList.remove('revealed'));
+    
+    // 3. Unlock scrolling
     document.body.style.overflow = '';
-};
+  };
 
-    openBtn.addEventListener('click', (e) => {
+  // Add listener to ALL hamburger buttons
+  openBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
       e.preventDefault();
-      drawer.hidden ? open() : close();
+      drawer.classList.contains('is-active') ? close() : open();
     });
+  });
 
-    if (closeBtn) closeBtn.addEventListener('click', (e)=>{ e.preventDefault(); close(); });
-    ovl.addEventListener('click', close);
-    document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape') close(); });
+  if (closeBtn) closeBtn.addEventListener('click', (e)=>{
+    e.preventDefault();
+    close();
+  });
 
-    drawer.addEventListener('click', (e) => {
-      const btn = e.target.closest('button');
-      if (!btn) return;
+  ovl.addEventListener('click', close);
 
-      if (btn.hasAttribute('data-open-deals')) { close(); openDeals(true); return; }
-      if (btn.hasAttribute('data-open-shop')) { close(); openShop(true); return; }
+  document.addEventListener('keydown', (e)=>{
+    if (e.key === 'Escape') close();
+  });
 
-      const hash = btn.getAttribute('data-scroll');
-      if (hash) {
-        close();
-        const el = $(hash);
-        if (el) smoothTo(el);
-      }
-    });
-  })();
+  drawer.addEventListener('click', (e) => {
+    const btn = e.target.closest('button');
+    if (!btn || btn.classList.contains('icon--close')) return;
+
+    if (btn.hasAttribute('data-open-deals')) {
+      close();
+      openDeals(true);
+      return;
+    }
+    if (btn.hasAttribute('data-open-shop')) {
+      close();
+      openShop(true);
+      return;
+    }
+    const hash = btn.getAttribute('data-scroll');
+    if (hash) {
+      close();
+      const el = $(hash);
+      if (el) smoothTo(el);
+    }
+  });
+})();
 
   // ===== Deals (DR-style details dropdown) =====
   const dealsDrop = $('#dealsDrop');
