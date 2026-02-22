@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
- // ===== Drawer =====
+// ===== Drawer =====
 (function drawer(){
   // FIX: Using $$ to select BOTH mobile and desktop hamburger menus
   const openBtns = $$('[data-open-menu]'); 
@@ -66,6 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
         link.classList.add('revealed');
       }, 150 * (index + 1)); // Increased to 150ms for a slightly slower, smoother rollout
     });
+  }; // <--- THIS IS THE BRACKET THAT WENT MISSING!
 
   /* Force Close Function */
   const close = () => {
