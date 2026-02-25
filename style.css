@@ -591,7 +591,7 @@ img{ max-width:100%; display:block; }
     radial-gradient(1000px 420px at 20% 0%, rgba(46,248,187,.18), rgba(0,0,0,0) 55%),
     url("assets/img/hero.jpg");
   background-size: cover;
-  background-position: center;
+  background-position: left center;
 }
 .hero__mediaNote{
   position:absolute;
