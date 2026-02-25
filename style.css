@@ -1399,3 +1399,117 @@ img{ max-width:100%; display:block; }
 @media (prefers-reduced-motion: reduce){
   .pillar{ transition:none !important; }
 }
+
+/* =========================================================
+   DEAL TILES (MOBILE-FIRST, CLICK → OPENS DROPDOWN)
+   Paste at END of style.css
+========================================================= */
+
+.dealsHead{ margin-bottom:14px; }
+
+.dealTiles{
+  display:grid;
+  gap:12px;
+  margin: 14px 0 18px;
+}
+
+/* Mobile: 1 column (clean + readable) */
+.dealTile{
+  display:grid;
+  grid-template-columns: 1fr auto;
+  gap:10px;
+  align-items:center;
+
+  padding:14px 14px;
+  border-radius:16px;
+  background:#ffffff;
+  border: 1px solid rgba(0,0,0,.10);
+  box-shadow: 0 14px 40px rgba(0,0,0,.08);
+
+  text-decoration:none;
+  color:#141615;
+
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+
+.dealTile:active{
+  transform: scale(.99);
+  border-color: rgba(11,125,90,.35);
+  box-shadow: 0 18px 55px rgba(0,0,0,.12);
+}
+
+/* Left content */
+.dealTile__top{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:8px;
+}
+
+.dealTile__icon{
+  width:38px;
+  height:38px;
+  border-radius:12px;
+  display:grid;
+  place-items:center;
+  font-size:18px;
+
+  border:1px solid rgba(0,0,0,.10);
+  background: rgba(11,125,90,.06);
+}
+
+.dealTile__cat{
+  font-family:"Cinzel",serif;
+  font-weight:900;
+  letter-spacing:.06em;
+  font-size:14px;
+}
+
+.dealTile__badge{
+  margin-left:auto;
+  font-family:"Cinzel",serif;
+  font-weight:900;
+  letter-spacing:.06em;
+  font-size:12px;
+  padding:6px 10px;
+  border-radius:999px;
+
+  border:1px solid rgba(11,125,90,.20);
+  background: rgba(11,125,90,.08);
+  color:#0b5f47;
+}
+
+.dealTile__title{
+  font-weight:900;
+  font-size:15px;
+  line-height:1.2;
+  margin:0 0 4px;
+}
+
+.dealTile__hint{
+  margin:0;
+  font-weight:800;
+  font-size:13px;
+  opacity:.65;
+}
+
+/* Arrow */
+.dealTile__arrow{
+  font-size:18px;
+  opacity:.55;
+}
+
+/* Desktop: 3 columns */
+@media (min-width: 860px){
+  .dealTiles{ grid-template-columns: repeat(3, 1fr); gap:16px; }
+  .dealTile:hover{
+    transform: translateY(-5px);
+    border-color: rgba(11,125,90,.25);
+    box-shadow: 0 22px 60px rgba(0,0,0,.12);
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .dealTile{ transition:none !important; }
+}
