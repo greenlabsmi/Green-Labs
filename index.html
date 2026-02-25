@@ -16,7 +16,7 @@
 
   <link rel="icon" href="assets/img/favicon.png" />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=109">
+  <link rel="stylesheet" href="style.css?v=200">
 </head>
 
 <body>
@@ -35,48 +35,45 @@
   </header>
 
   <!-- ===== Sticky Header (stays) ===== -->
- <header class="sticky">
-  <div class="container sticky__inner">
-    <a class="sticky__logo" href="#home" aria-label="Green Labs home">
-      <img src="assets/img/greenlabs-logo.png" alt="Green Labs logo" />
-    </a>
+  <header class="sticky">
+    <div class="container sticky__inner">
+      <a class="sticky__logo" href="#home" aria-label="Green Labs home">
+        <img src="assets/img/greenlabs-logo.png" alt="Green Labs logo" />
+      </a>
 
-    <!-- Desktop tabs (right aligned) + Desktop hamburger -->
-    <nav class="tabs" aria-label="Primary navigation">
-      <a class="tab tab--cta" href="#shop" data-open-shop>Shop Online</a>
-      <a class="tab" href="#deals" data-open-deals>Deals</a>
-      <a class="tab" href="#visit" data-scroll="#visit">Visit</a>
-      <a class="tab shimmer-text" href="#dtg" data-scroll="#dtg">Keep It Dutch</a>
+      <!-- Desktop tabs + Desktop hamburger -->
+      <nav class="tabs" aria-label="Primary navigation">
+        <a class="tab tab--cta" href="#shop" data-open-shop>Shop Online</a>
+        <a class="tab" href="#deals" data-open-deals>Deals</a>
+        <a class="tab" href="#visit" data-scroll="#visit">Visit</a>
+        <a class="tab shimmer-text" href="#dtg" data-scroll="#dtg">Keep It Dutch</a>
 
-      <!-- Desktop hamburger (restored) -->
-      <button class="icon icon--menu" data-open-menu aria-label="Open menu" type="button">
-        <span aria-hidden="true">☰</span>
-      </button>
-    </nav>
+        <button class="icon icon--menu" data-open-menu aria-label="Open menu" type="button">
+          <span aria-hidden="true">☰</span>
+        </button>
+      </nav>
 
-    <!-- Mobile actions (right aligned) -->
-    <div class="actions">
-  
-  <button class="btn btn--ghost btn--shop" data-open-shop type="button" aria-label="Shop now">
-    <span class="glowLabel">SHOP</span>
-  </button>
+      <!-- Mobile actions -->
+      <div class="actions">
+        <button class="btn btn--ghost btn--shop" data-open-shop type="button" aria-label="Shop now">
+          <span class="glowLabel">SHOP</span>
+        </button>
 
-  <button class="btn btn--ghost btn--deals" data-open-deals type="button" aria-label="View deals">
-    <span class="glowLabel">DEALS</span>
-  </button>
+        <button class="btn btn--ghost btn--deals" data-open-deals type="button" aria-label="View deals">
+          <span class="glowLabel">DEALS</span>
+        </button>
 
-  <button class="btn btn--ghost btn--kid" data-scroll="#dtg" type="button" aria-label="Keep It Dutch">
-    <span class="kidLabel">KEEP IT DUTCH</span>
-  </button>
+        <button class="btn btn--ghost btn--kid" data-scroll="#dtg" type="button" aria-label="Keep It Dutch">
+          <span class="kidLabel">KEEP IT DUTCH</span>
+        </button>
 
-  <button class="icon icon--menu" data-open-menu aria-label="Open menu" type="button">
-    <span aria-hidden="true">☰</span>
-  </button>
-  
-</div>
-  </div>
+        <button class="icon icon--menu" data-open-menu aria-label="Open menu" type="button">
+          <span aria-hidden="true">☰</span>
+        </button>
+      </div>
+    </div>
 
-    <!-- Status strip (single source of truth) -->
+    <!-- Status strip -->
     <div class="status-strip" id="statusStrip" role="button" aria-label="Store status and address">
       <div class="container status-strip__inner">
         <span class="dot" id="statusDot" aria-hidden="true"></span>
@@ -91,61 +88,139 @@
   <div id="menuOverlay" class="overlay" hidden></div>
 
   <!-- Drawer -->
-<aside id="navDrawer" class="drawer" role="dialog" aria-modal="false" hidden>
-  <div class="drawer__head">
-    <img src="assets/img/greenlabs-logo.png" alt="Green Labs" class="drawer__logo" />
-    <button class="icon icon--close" data-close-menu type="button" aria-label="Close menu">×</button>
-  </div>
-
-  <nav class="drawer__nav" aria-label="Site">
-    <button class="drawer__link" data-open-shop type="button">Shop Online</button>
-    <button class="drawer__link" data-open-deals type="button">Today’s Deals</button>
-    <button class="drawer__link" data-scroll="#visit" type="button">Visit / Contact</button>
-    <button class="drawer__link" data-scroll="#dtg" type="button">Keep It Dutch</button>
-    <a class="drawer__link" href="YOUR_SHOPIFY_LINK_HERE" target="_blank" rel="noopener">DTG Apparel</a>
-    <button class="drawer__link" data-scroll="#strain-preview" type="button">Strain Library</button>
-  </nav>
-
-  <div class="drawer__footer">
-    <div class="drawer__meta">
-      <div><strong>Open daily</strong> 9am–9pm</div>
-      <div><a class="link" href="tel:+17348000024">(734) 800-0024</a></div>
-      <div style="margin-top: 4px; opacity: 0.8; font-size: 14px;">10701 Madison St, Luna Pier, MI</div>
+  <aside id="navDrawer" class="drawer" role="dialog" aria-modal="false" hidden>
+    <div class="drawer__head">
+      <img src="assets/img/greenlabs-logo.png" alt="Green Labs" class="drawer__logo" />
+      <button class="icon icon--close" data-close-menu type="button" aria-label="Close menu">×</button>
     </div>
-    <div class="drawer__social">
-      <a class="soc" href="#" aria-label="Instagram">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-      </a>
-      <a class="soc" href="#" aria-label="Facebook">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-      </a>
-      <a class="soc" href="#" aria-label="X">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg>
-      </a>
-      <a class="soc" href="#" aria-label="TikTok">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
-      </a>
+
+    <nav class="drawer__nav" aria-label="Site">
+      <button class="drawer__link" data-open-shop type="button">Shop Online</button>
+      <button class="drawer__link" data-open-deals type="button">Today’s Deals</button>
+      <button class="drawer__link" data-scroll="#deli" type="button">The Dutch Deli</button>
+      <button class="drawer__link" data-scroll="#education" type="button">Learn</button>
+      <button class="drawer__link" data-scroll="#visit" type="button">Visit / Contact</button>
+      <button class="drawer__link" data-scroll="#dtg" type="button">Keep It Dutch</button>
+      <a class="drawer__link" href="YOUR_SHOPIFY_LINK_HERE" target="_blank" rel="noopener">DTG Apparel</a>
+      <button class="drawer__link" data-scroll="#strain-preview" type="button">Strain Library</button>
+    </nav>
+
+    <div class="drawer__footer">
+      <div class="drawer__meta">
+        <div><strong>Open daily</strong> 9am–9pm</div>
+        <div><a class="link" href="tel:+17348000024">(734) 800-0024</a></div>
+        <div class="drawer__addr">10701 Madison St, Luna Pier, MI</div>
+      </div>
+
+      <div class="drawer__social">
+        <a class="soc" href="#" aria-label="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+        </a>
+        <a class="soc" href="#" aria-label="Facebook">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+        </a>
+        <a class="soc" href="#" aria-label="X">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg>
+        </a>
+        <a class="soc" href="#" aria-label="TikTok">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
+        </a>
+      </div>
     </div>
-  </div>
-</aside>
+  </aside>
 
   <main id="home">
 
-    <!-- ===== Promo Carousel (full-bleed like DR) ===== -->
-    <section class="promo">
-      <div class="container container--bleed">
-        <div class="carousel carousel--tall" data-carousel data-autoplay="6500" aria-label="Promotions">
-          <div class="slide is-active"><img src="carousel-1.png" alt="Promotion 1" loading="eager"></div>
-          <div class="slide"><img src="carousel-2.png" alt="Promotion 2" loading="lazy"></div>
-          <div class="slide"><img src="carousel-3.png" alt="Promotion 3" loading="lazy"></div>
-          <div class="dots" aria-label="Carousel dots"></div>
+    <!-- =====================================================
+      HERO (Brand-first, no carousel)
+      Replace hero image by dropping an image at:
+      assets/img/hero.jpg  (recommended: deli jar / weighed flower / warm light)
+    ====================================================== -->
+    <section class="hero section section--hero">
+      <div class="container">
+        <div class="hero__grid reveal">
+          <div class="hero__copy">
+            <div class="hero__badge">POWERED BY DUTCH TOUCH GENETICS</div>
+            <h1 class="hero__title">Cultivate Quality.</h1>
+            <p class="hero__sub">
+              Premium deli flower. Curated brands. Education first.
+              Built for customers who care what they’re buying.
+            </p>
+
+            <div class="hero__cta">
+              <button class="btn btn--primary hero__btn" data-open-shop type="button">Shop Online</button>
+              <button class="btn btn--ghost hero__btn" data-scroll="#deli" type="button">Explore The Deli</button>
+            </div>
+
+            <div class="trust">
+              <div class="trust__chip">
+                <span class="trust__dot" aria-hidden="true"></span>
+                Open daily 9am–9pm
+              </div>
+              <div class="trust__chip">
+                <span class="trust__ico" aria-hidden="true">📍</span>
+                Luna Pier, MI
+              </div>
+              <div class="trust__chip">
+                <span class="trust__ico" aria-hidden="true">⚖️</span>
+                Weighed fresh in-store
+              </div>
+            </div>
+          </div>
+
+          <div class="hero__media" aria-label="Green Labs hero image">
+            <!-- If assets/img/hero.jpg doesn't exist yet, this still looks premium due to gradients -->
+            <div class="hero__img" role="img" aria-label="Deli flower experience image"></div>
+            <div class="hero__mediaNote">Replace with: <span>assets/img/hero.jpg</span></div>
+          </div>
+        </div>
+
+        <!-- Difference row -->
+        <div class="diff reveal">
+          <article class="diff__card">
+            <div class="diff__ico" aria-hidden="true">🧪</div>
+            <div class="diff__t">Education first</div>
+            <div class="diff__s">We guide. We don’t pressure. Learn what works for you.</div>
+          </article>
+          <article class="diff__card">
+            <div class="diff__ico" aria-hidden="true">🌿</div>
+            <div class="diff__t">The Dutch Deli</div>
+            <div class="diff__s">See it. Smell it. Choose your exact weight—fresh.</div>
+          </article>
+          <article class="diff__card">
+            <div class="diff__ico" aria-hidden="true">🏆</div>
+            <div class="diff__t">DTG standard</div>
+            <div class="diff__s">Award-winning genetics and consistency you can trust.</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+      DEAL TILES (controlled value)
+      - Auto-fed from deals.json (first 6 items).
+      - If deals.json changes, these update automatically.
+      - Click -> opens Deals dropdown.
+    ====================================================== -->
+    <section class="section section--light" aria-label="Highlights">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2 class="section__title">Today’s Highlights</h2>
+          <p class="section__sub">Premium first. Deals always available.</p>
+        </div>
+
+        <div id="dealTiles" class="dealtileGrid reveal" aria-label="Deal tiles"></div>
+
+        <div class="miniCtaRow reveal">
+          <button class="btn btn--primary" data-open-deals type="button">View All Deals</button>
+          <button class="btn btn--ghost" data-open-shop type="button">Shop Online</button>
         </div>
       </div>
     </section>
 
     <!-- ===== DEALS (DR-style dropdown + SHOP ONLINE button) ===== -->
     <section id="deals" class="section section--light">
-      <div class="container">
+      <div class="container reveal">
         <details class="drDrop" id="dealsDrop">
           <summary class="drDrop__summary">
             <span class="drDrop__title">TODAY’S DEALS</span>
@@ -161,94 +236,237 @@
       </div>
     </section>
 
+    <!-- ===== DELI ===== -->
     <section id="deli" class="section section--deli">
-  <div class="container">
-    
-    <div class="deli-head">
-      <div class="deli-badge">POWERED BY DUTCH TOUCH GENETICS</div>
-      <h2 class="deli-title">The Dutch Deli</h2>
-      <p class="deli-sub">Fresh from the farm. Weighed right in front of you.</p>
-    </div>
+      <div class="container">
 
-    <div class="deli-board">
-      
-      <article class="deli-tier tier--gold">
-        <div class="tier-head">
-          <h3 class="tier-name">Top Shelf</h3>
-          <div class="tier-price">
-            <span class="p-big">$225</span><span class="p-unit">/oz</span>
-          </div>
-          <div class="tier-breakdown">$15/g • $45/3.5g</div>
+        <div class="deli-head reveal">
+          <div class="deli-badge">POWERED BY DUTCH TOUCH GENETICS</div>
+          <h2 class="deli-title">The Dutch Deli</h2>
+          <p class="deli-sub">Fresh from the farm. Weighed right in front of you.</p>
         </div>
-        <div class="tier-strains">
-          <div class="strain-row">
-            <span class="s-name">Mr. Clean</span>
-            <span class="s-tag tag--winner">🏆 Cup Winner</span>
-          </div>
-          <div class="strain-row">
-            <span class="s-name">Lilac Diesel</span>
-            <span class="s-tag tag--hot">🔥 High Terps</span>
-          </div>
+
+        <div class="deli-board reveal">
+          <article class="deli-tier tier--gold">
+            <div class="tier-head">
+              <h3 class="tier-name">Top Shelf</h3>
+              <div class="tier-price">
+                <span class="p-big">$225</span><span class="p-unit">/oz</span>
+              </div>
+              <div class="tier-breakdown">$15/g • $45/3.5g</div>
+            </div>
+            <div class="tier-strains">
+              <div class="strain-row">
+                <span class="s-name">Mr. Clean</span>
+                <span class="s-tag tag--winner">🏆 Cup Winner</span>
+              </div>
+              <div class="strain-row">
+                <span class="s-name">Lilac Diesel</span>
+                <span class="s-tag tag--hot">🔥 High Terps</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="deli-tier tier--green">
+            <div class="tier-head">
+              <h3 class="tier-name">Daily Drivers</h3>
+              <div class="tier-price">
+                <span class="p-big">$150</span><span class="p-unit">/oz</span>
+              </div>
+              <div class="tier-breakdown">$10/g • $30/3.5g</div>
+            </div>
+            <div class="tier-strains">
+              <div class="strain-row">
+                <span class="s-name">Glue Bert</span>
+                <span class="s-tag">Indica</span>
+              </div>
+              <div class="strain-row">
+                <span class="s-name">Fruit Brute</span>
+                <span class="s-tag">Hybrid</span>
+              </div>
+            </div>
+          </article>
         </div>
-      </article>
 
-      <article class="deli-tier tier--green">
-        <div class="tier-head">
-          <h3 class="tier-name">Daily Drivers</h3>
-          <div class="tier-price">
-            <span class="p-big">$150</span><span class="p-unit">/oz</span>
-          </div>
-          <div class="tier-breakdown">$10/g • $30/3.5g</div>
+        <div class="deli-footer reveal">
+          <button class="btn btn--gold" data-open-shop type="button">Order for Pickup</button>
+          <p class="deli-note">*Strains rotate daily. Visit in-store to see the full menu.</p>
         </div>
-        <div class="tier-strains">
-          <div class="strain-row">
-            <span class="s-name">Glue Bert</span>
-            <span class="s-tag">Indica</span>
-          </div>
-          <div class="strain-row">
-            <span class="s-name">Fruit Brute</span>
-            <span class="s-tag">Hybrid</span>
-          </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+      SHOP BY CATEGORY (future-proof for Leafly)
+      - Today: opens Shop + sets "Selected category" UI state
+      - Later: wire to Leafly embed filters / deep links
+    ====================================================== -->
+    <section class="section section--dark" aria-label="Shop by Category">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2 class="section__title section__title--invert">Shop by Category</h2>
+          <p class="section__sub section__sub--invert">Fast navigation. Clean choices. No overwhelm.</p>
         </div>
-      </article>
 
-    </div>
+        <div class="catGrid reveal" role="list">
+          <button class="catCard" role="listitem" data-scroll="#deli" type="button">
+            <div class="catCard__ico" aria-hidden="true">⚖️</div>
+            <div class="catCard__t">Deli Flower</div>
+            <div class="catCard__s">Weighed fresh</div>
+          </button>
 
-    <div class="deli-footer">
-      <button class="btn btn--gold" data-open-shop type="button">Order for Pickup</button>
-      <p class="deli-note">*Strains rotate daily. Visit in-store to see the full menu.</p>
-    </div>
+          <button class="catCard" role="listitem" data-open-shop data-shop-category="Flower" type="button">
+            <div class="catCard__ico" aria-hidden="true">🌿</div>
+            <div class="catCard__t">Flower</div>
+            <div class="catCard__s">Curated strains</div>
+          </button>
 
-  </div>
-</section>
+          <button class="catCard" role="listitem" data-open-shop data-shop-category="Pre-Rolls" type="button">
+            <div class="catCard__ico" aria-hidden="true">🥇</div>
+            <div class="catCard__t">Pre-Rolls</div>
+            <div class="catCard__s">Easy grab</div>
+          </button>
+
+          <button class="catCard" role="listitem" data-open-shop data-shop-category="Vapes" type="button">
+            <div class="catCard__ico" aria-hidden="true">💨</div>
+            <div class="catCard__t">Vapes</div>
+            <div class="catCard__s">Clean hits</div>
+          </button>
+
+          <button class="catCard" role="listitem" data-open-shop data-shop-category="Edibles" type="button">
+            <div class="catCard__ico" aria-hidden="true">🍬</div>
+            <div class="catCard__t">Edibles</div>
+            <div class="catCard__s">Dose smart</div>
+          </button>
+
+          <button class="catCard" role="listitem" data-open-shop data-shop-category="Concentrates" type="button">
+            <div class="catCard__ico" aria-hidden="true">🧊</div>
+            <div class="catCard__t">Concentrates</div>
+            <div class="catCard__s">Terp lovers</div>
+          </button>
+
+          <button class="catCard" role="listitem" data-open-shop data-shop-category="Accessories" type="button">
+            <div class="catCard__ico" aria-hidden="true">🧰</div>
+            <div class="catCard__t">Accessories</div>
+            <div class="catCard__s">Tools + gear</div>
+          </button>
+
+          <button class="catCard catCard--gold" role="listitem" data-scroll="#dtg" type="button">
+            <div class="catCard__ico" aria-hidden="true">🏆</div>
+            <div class="catCard__t">DTG Exclusives</div>
+            <div class="catCard__s">Keep it Dutch</div>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== EDUCATION ===== -->
+    <section id="education" class="section section--light">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2 class="section__title">Learn Before You Buy</h2>
+          <p class="section__sub">Quick answers. Better purchases. Less regret.</p>
+        </div>
+
+        <div class="eduGrid reveal">
+          <article class="eduCard">
+            <div class="eduCard__k">Terpenes 101</div>
+            <div class="eduCard__t">Why your strain feels the way it feels.</div>
+            <div class="eduCard__s">A fast breakdown of aroma, effect, and what to look for.</div>
+            <button class="btn btn--ghost eduCard__btn" type="button" data-scroll="#shop">Shop with terps in mind</button>
+          </article>
+
+          <article class="eduCard">
+            <div class="eduCard__k">THC vs CBD + Dosing</div>
+            <div class="eduCard__t">The cleanest path to a good time.</div>
+            <div class="eduCard__s">Start low, go slow. Build a plan that fits your tolerance.</div>
+            <button class="btn btn--ghost eduCard__btn" type="button" data-scroll="#shop">Shop edibles safely</button>
+          </article>
+
+          <article class="eduCard">
+            <div class="eduCard__k">Indica / Sativa / Hybrid</div>
+            <div class="eduCard__t">Labels aren’t effects — profiles are.</div>
+            <div class="eduCard__s">Use terp + genetics info to predict your experience.</div>
+            <button class="btn btn--ghost eduCard__btn" type="button" data-scroll="#deli">Ask us in deli</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <!-- ===== SHOP (Leafly placeholder area) ===== -->
     <section id="shop" class="section section--dark">
       <div class="container">
-        <div class="shophead">
+        <div class="shophead reveal">
           <div>
             <h2 class="section__title section__title--invert">Shop Green Labs</h2>
-            <p class="section__sub section__sub--invert">Tap “SHOP ONLINE” to open the menu area below (Leafly embed placeholder for now).</p>
+            <p class="section__sub section__sub--invert">Your menu embed goes here. The experience stays premium.</p>
           </div>
           <button class="btn btn--primary" data-open-shop type="button">SHOP</button>
         </div>
 
-        <div class="menuwrap" id="menuWrap" hidden>
+        <div class="menuwrap reveal" id="menuWrap" hidden>
           <div class="menuwrap__top">
-            <div class="menuwrap__tag">MENU LOADING AREA</div>
-            <div class="menuwrap__sub">Leafly embed will live here. For now, this is a clean placeholder.</div>
+            <div class="menuwrap__tag">
+              MENU AREA
+              <span id="menuCategoryPill" class="pill" hidden>Category: <strong>—</strong></span>
+            </div>
+            <div class="menuwrap__sub">
+              <!-- WHERE YOU INSERT LEAFLY EMBED LATER -->
+              Leafly embed will live here. For now, this placeholder is styled to match your brand.
+            </div>
           </div>
 
           <div class="menuplaceholder">
             <div class="menuplaceholder__logo" aria-hidden="true">⟡</div>
             <div class="menuplaceholder__t">Menu embed placeholder</div>
-            <div class="menuplaceholder__s">We’ll plug in Leafly later. Your “Shop Online” flow is already wired.</div>
+            <div class="menuplaceholder__s" id="menuPlaceholderSub">
+              When Leafly is live, category tiles will route shoppers into the right section.
+            </div>
             <div class="menuplaceholder__cta">
-              <button class="btn btn--ghost" data-scroll="#dtg" type="button">Keep It Dutch</button>
+              <button class="btn btn--ghost" data-open-deals type="button">View Deals</button>
               <button class="btn btn--ghost" data-scroll="#visit" type="button">Visit / Contact</button>
             </div>
           </div>
 
-          <div class="menuwrap__hint">Once Leafly is live, we’ll theme it to match your emerald accents.</div>
+          <div class="menuwrap__hint">Later: we’ll theme the Leafly embed or deep-link category tiles for perfect flow.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== LOYALTY ===== -->
+    <section class="section section--light">
+      <div class="container">
+        <div class="loyalty reveal">
+          <div class="loyalty__copy">
+            <div class="loyalty__k">LOYALTY + COMMUNITY</div>
+            <h2 class="loyalty__t">Built for repeat customers.</h2>
+            <p class="loyalty__s">
+              Earn points on every purchase. Get early access to DTG drops.
+              Stay in the loop on deli rotations and limited runs.
+            </p>
+            <div class="loyalty__cta">
+              <button class="btn btn--primary" type="button" data-scroll="#visit">Ask in-store</button>
+              <button class="btn btn--ghost" type="button" data-scroll="#dtg">Explore DTG</button>
+            </div>
+          </div>
+
+          <div class="loyalty__panel" aria-label="Loyalty features">
+            <div class="lp">
+              <div class="lp__t">Points</div>
+              <div class="lp__s">Earn on every order</div>
+            </div>
+            <div class="lp">
+              <div class="lp__t">Drops</div>
+              <div class="lp__s">Early access + exclusives</div>
+            </div>
+            <div class="lp">
+              <div class="lp__t">Deli</div>
+              <div class="lp__s">Rotation alerts</div>
+            </div>
+            <div class="lp">
+              <div class="lp__t">Perks</div>
+              <div class="lp__s">Member-only offers</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -256,7 +474,7 @@
     <!-- ===== KEEP IT DUTCH (DTG section) ===== -->
     <section id="dtg" class="section section--dtg">
       <div class="container">
-        <div class="dtghead">
+        <div class="dtghead reveal">
           <div class="dtgbadge">KEEP IT DUTCH</div>
           <h2 class="dtgtitle">Dutch Touch is the standard.</h2>
           <p class="dtgsub">
@@ -272,7 +490,7 @@
           </div>
         </div>
 
-        <div class="rail" aria-label="DTG apparel highlights">
+        <div class="rail reveal" aria-label="DTG apparel highlights">
           <article class="railcard">
             <div class="railcard__img ph">DTG Lion Hoodie</div>
             <div class="railcard__meta">
@@ -303,7 +521,7 @@
           </article>
         </div>
 
-        <div id="strain-preview" class="strain">
+        <div id="strain-preview" class="strain reveal">
           <div class="strain__head">
             <h3 class="strain__title">Strain Library</h3>
             <p class="strain__sub">Collector-card preview — we can later wire this to the DTG strain library.</p>
@@ -364,12 +582,12 @@
     <!-- ===== VISIT ===== -->
     <section id="visit" class="section section--light">
       <div class="container">
-        <div class="section__head">
+        <div class="section__head reveal">
           <h2 class="section__title">Visit Green Labs</h2>
           <p class="section__sub">10701 Madison St, Luna Pier • Open 9am–9pm daily</p>
         </div>
 
-        <div class="visitgrid">
+        <div class="visitgrid reveal">
           <div class="mapcard">
             <iframe
               title="Map — Green Labs"
@@ -424,6 +642,6 @@
   </footer>
 
   <script src="deli-board.js"></script>
-  <script src="script.js?v=104"></script>
+  <script src="script.js?v=200"></script>
 </body>
 </html>
