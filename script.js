@@ -311,96 +311,105 @@ document.addEventListener('DOMContentLoaded', () => {
       return pickBest(cat.items);
     }
 
-    function renderDealTiles(data) {
-      if (!tilesWrap) return;
+ function renderDealTiles(data){
+  if (!tilesWrap) return;
 
-      const cats = (data || [])
-        .map(cat => ({ cat, line: pickBestLineFromCategory(cat) }))
-        .filter(x => x.line && x.line.trim().length > 0)
-        .slice(0, 6);
+  // Flatten deal lines with category context
+  const lines = [];
+  (data || []).forEach(cat => {
+    const catNameRaw = String(cat.category || 'Deals');
+    const catName = catNameRaw.replace(/^[^\w]+/,'').trim();
 
-      tilesWrap.innerHTML = cats.map(x => {
-        const label = cleanCategoryLabel(x.cat.category);
-        const icon = emojiForCategory(label);
+    const pushItems = (arr) => (arr || []).forEach(it => {
+      const text = String(it || '').trim();
+      if (text) lines.push({ cat: catName, rawCat: catNameRaw, text });
+    });
 
-        return `
-          <a class="dealTile" href="#deals" data-open-deals>
-            <div>
-              <div class="dealTile__top">
-                <div class="dealTile__icon" aria-hidden="true">${esc(icon)}</div>
-                <div class="dealTile__cat">${esc(label)}</div>
-                <div class="dealTile__badge">DEAL</div>
-              </div>
-              <p class="dealTile__title">${esc(x.line)}</p>
-              <p class="dealTile__hint">Tap to view full list</p>
-            </div>
-            <div class="dealTile__arrow" aria-hidden="true">→</div>
-          </a>
-        `;
-      }).join('');
+    if (Array.isArray(cat.groups)){
+      cat.groups.forEach(g => pushItems(g.items));
+    } else {
+      pushItems(cat.items);
     }
-  })();
+  });
 
-  // ===== Status strip dot + label =====
-  (function status() {
-    const strip = $('#statusStrip');
-    const statusText = $('#statusText');
-    const statusDot = $('#statusDot');
-    const statusAddr = $('#statusAddr');
+  const score = (s) => {
+    let sc = 0;
+    if (/\$/.test(s)) sc += 4;
+    if (/(ounce|oz|eighth|half|quarter|g\b|gram|2\/|3\/|5\/|10\/|15\/|buy|for)/i.test(s)) sc += 3;
+    if (/(deli|live resin|rosin|hash|limited|new|active)/i.test(s)) sc += 2;
+    if (/\b\d{1,3}\b/.test(s)) sc += 1;
+    return sc;
+  };
 
-    if (statusAddr) statusAddr.textContent = '10701 Madison St, Luna Pier';
+  const best = [...lines].sort((a,b)=> score(b.text) - score(a.text))[0];
 
-    const HOURS = [
-      { d: 'Sunday', open: 9, close: 21 },
-      { d: 'Monday', open: 9, close: 21 },
-      { d: 'Tuesday', open: 9, close: 21 },
-      { d: 'Wednesday', open: 9, close: 21 },
-      { d: 'Thursday', open: 9, close: 21 },
-      { d: 'Friday', open: 9, close: 21 },
-      { d: 'Saturday', open: 9, close: 21 },
-    ];
-
-    function statusNow() {
-      const now = new Date();
-      const idx = now.getDay();
-      const hour = now.getHours() + now.getMinutes() / 60;
-      const { open, close } = HOURS[idx];
-      const openSoon = hour >= open - 0.5 && hour < open;
-      const closingSoon = hour >= close - 0.5 && hour < close;
-      const isOpen = hour >= open && hour < close;
-      return { open, close, isOpen, openSoon, closingSoon };
+  // Quick hits: prefer different categories
+  const pickedCats = new Set();
+  const quick = [];
+  for (const item of [...lines].sort((a,b)=> score(b.text) - score(a.text))){
+    if (!item) continue;
+    if (quick.length >= 4) break;
+    if (!pickedCats.has(item.cat)){
+      quick.push(item);
+      pickedCats.add(item.cat);
     }
-
-    function paint() {
-      const s = statusNow();
-      let dot = 'open';
-      if (s.isOpen && s.closingSoon) dot = 'soon';
-      else if (!s.isOpen && s.openSoon) dot = 'soon';
-      else if (!s.isOpen) dot = 'closed';
-
-      if (statusText) statusText.textContent = 'Open daily 9am–9pm';
-
-      if (statusDot) {
-        statusDot.style.background =
-          dot === 'open' ? '#16a34a' : (dot === 'soon' ? '#f59e0b' : '#ef4444');
-
-        statusDot.style.boxShadow =
-          dot === 'open'
-            ? '0 0 0 3px rgba(22,163,74,.18)'
-            : (dot === 'soon'
-              ? '0 0 0 3px rgba(245,158,11,.20)'
-              : '0 0 0 3px rgba(239,68,68,.18)');
-      }
+  }
+  // fallback
+  if (quick.length < 4){
+    for (const item of [...lines].sort((a,b)=> score(b.text) - score(a.text))){
+      if (quick.length >= 4) break;
+      if (!quick.includes(item)) quick.push(item);
     }
+  }
 
-    paint();
-    setInterval(paint, 60 * 1000);
+  const emojiFor = (name) => {
+    const s = (name || '').toLowerCase();
+    if (s.includes('flower')) return '🌿';
+    if (s.includes('vape')) return '💨';
+    if (s.includes('pre-roll')) return '🪄';
+    if (s.includes('infused')) return '💥';
+    if (s.includes('edible') || s.includes('gummi') || s.includes('gummy')) return '🍬';
+    if (s.includes('concentrate')) return '🍯';
+    if (s.includes('tincture')) return '🧪';
+    if (s.includes('topical')) return '🧴';
+    if (s.includes('beverage')) return '🥤';
+    return '✦';
+  };
 
-    if (strip) {
-      strip.addEventListener('click', () => {
-        const href = smartMapHref(ADDRESS);
-        window.open(href, /^https?:/i.test(href) ? '_blank' : '_self');
-      });
-    }
-  })();
-});
+  const extractBigPrice = (text) => {
+    const m = String(text || '').match(/\$\s*\d+/);
+    return m ? m[0].replace(/\s+/g,'') : 'DEAL';
+  };
+
+  // Uses esc() from your existing loadDeals scope
+  tilesWrap.innerHTML = `
+    <a class="dealFeature" href="#deals" data-open-deals>
+      <div class="dealFeature__row">
+        <div class="dealFeature__k">
+          <div class="dealFeature__icon" aria-hidden="true">${esc(emojiFor(best?.cat || 'Deals'))}</div>
+          <div class="dealFeature__label">${esc(best?.cat || 'Today’s Featured Deal')}</div>
+        </div>
+        <div class="dealPill">FEATURED</div>
+      </div>
+
+      <div class="dealFeature__hook">${esc(best?.text || 'Deals loading…')}</div>
+
+      <div class="dealFeature__sub">
+        <span>Tap for full deal sheet</span>
+        <span class="dealFeature__cta">View all deals →</span>
+      </div>
+    </a>
+
+    <div class="dealQuickGrid">
+      ${quick.map(q => `
+        <a class="dealQuick" href="#deals" data-open-deals>
+          <div class="dealQuick__left">
+            <div class="dealQuick__price">${esc(extractBigPrice(q.text))}</div>
+            <div class="dealQuick__text">${esc(q.cat)} — ${esc(q.text)}</div>
+          </div>
+          <div class="dealQuick__arrow" aria-hidden="true">→</div>
+        </a>
+      `).join('')}
+    </div>
+  `;
+}
