@@ -242,18 +242,133 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  (function loadDeals(){
-    fetch('deals.json', { cache: 'no-store' })
-      .then(r => r.ok ? r.json() : Promise.reject(r.status))
-      .then(data => {
-        renderDealsList(data);
-        renderDealTiles(data);
-      })
-      .catch(() => {
-        if (dealList) dealList.innerHTML = '<div class="cat"><div class="catTitle">Deals unavailable right now.</div></div>';
-        renderDealTiles([]);
-      });
-  })();
+(function loadDeals(){
+  const dealList = document.getElementById('dealList');
+  const tilesWrap = document.getElementById('dealTiles');
+
+  // If your HTML IDs changed, THIS is why deals don't render.
+  if (!dealList) {
+    console.warn('Missing #dealList in HTML. Deals dropdown cannot render.');
+    return;
+  }
+
+  // Cache-bust for GitHub Pages + make failures visible
+  const url = `deals.json?v=${Date.now()}`;
+
+  fetch(url, { cache: 'no-store' })
+    .then(async (r) => {
+      if (!r.ok) {
+        const text = await r.text().catch(()=>'');
+        throw new Error(`Failed to load deals.json (${r.status}) ${text.slice(0,120)}`);
+      }
+      return r.json();
+    })
+    .then(data => {
+      renderDealsDropdown(data);
+      renderDealTiles(data);
+    })
+    .catch((err) => {
+      console.error(err);
+      dealList.innerHTML = `
+        <div class="cat">
+          <div class="catTitle">Deals unavailable right now.</div>
+          <div style="font-weight:800;opacity:.75;margin-top:8px;">
+            Check that <code>deals.json</code> exists at site root and is valid JSON.
+          </div>
+        </div>
+      `;
+      if (tilesWrap) tilesWrap.innerHTML = '';
+    });
+
+  const esc = (s) => String(s ?? '').replace(/[&<>"']/g, c => ({
+    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+  }[c]));
+
+  function renderDealsDropdown(data){
+    const html = (data || []).map(cat => {
+      const catTitle = `<div class="catTitle">${esc(cat.category || '')}</div>`;
+
+      if (Array.isArray(cat.groups)) {
+        const groups = cat.groups.map(g => {
+          const items = (g.items || []).map(it => `<li>${esc(it)}</li>`).join('');
+          return `
+            <div class="group">
+              <div class="groupTitle">${esc(g.title || '')}</div>
+              <ul>${items}</ul>
+            </div>
+          `;
+        }).join('');
+        return `<div class="cat">${catTitle}${groups}</div>`;
+      }
+
+      const items = (cat.items || []).map(it => `<li>${esc(it)}</li>`).join('');
+      return `<div class="cat">${catTitle}<ul>${items}</ul></div>`;
+    }).join('');
+
+    dealList.innerHTML = html + `<div style="margin-top:10px;font-weight:800;opacity:.70;">All prices include tax.</div>`;
+  }
+
+  function firstLineFromCategory(cat){
+    // Pick the strongest first item we can find
+    if (Array.isArray(cat.groups) && cat.groups.length){
+      for (const g of cat.groups){
+        if (Array.isArray(g.items) && g.items.length) return g.items[0];
+      }
+    }
+    if (Array.isArray(cat.items) && cat.items.length) return cat.items[0];
+    return '';
+  }
+
+  function emojiForCategory(name){
+    const s = (name || '').toLowerCase();
+    if (s.includes('flower')) return '🌿';
+    if (s.includes('vape')) return '💨';
+    if (s.includes('pre-roll')) return '🪄';
+    if (s.includes('infused')) return '💥';
+    if (s.includes('edible') || s.includes('gummi') || s.includes('gummy')) return '🍬';
+    if (s.includes('concentrate')) return '🍯';
+    if (s.includes('tincture')) return '🧪';
+    if (s.includes('topical')) return '🧴';
+    if (s.includes('beverage')) return '🥤';
+    return '✦';
+  }
+
+  function cleanCategoryLabel(name){
+    return String(name || '')
+      .replace(/^[^\w]+/,'')     // drop emoji
+      .trim();
+  }
+
+  function renderDealTiles(data){
+    if (!tilesWrap) return;
+
+    // Pick up to 6 categories that actually have items
+    const cats = (data || [])
+      .map(cat => ({ cat, line: firstLineFromCategory(cat) }))
+      .filter(x => x.line && x.line.trim().length > 0)
+      .slice(0, 6);
+
+    tilesWrap.innerHTML = cats.map(x => {
+      const label = cleanCategoryLabel(x.cat.category);
+      const icon = emojiForCategory(label);
+
+      return `
+        <a class="dealTile" href="#deals" data-open-deals>
+          <div>
+            <div class="dealTile__top">
+              <div class="dealTile__icon" aria-hidden="true">${esc(icon)}</div>
+              <div class="dealTile__cat">${esc(label)}</div>
+              <div class="dealTile__badge">DEAL</div>
+            </div>
+            <p class="dealTile__title">${esc(x.line)}</p>
+            <p class="dealTile__hint">Tap to view full list</p>
+          </div>
+          <div class="dealTile__arrow" aria-hidden="true">→</div>
+        </a>
+      `;
+    }).join('');
+  }
+})();
 
   // ===== Shop reveal + category state (Leafly-ready) =====
   const menuWrap = $('#menuWrap');
