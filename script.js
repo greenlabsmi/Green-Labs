@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function smoothTo(el){
     if (!el) return;
     const stickyH = $('.sticky')?.getBoundingClientRect().height || 64;
-    const y = el.getBoundingClientRect().top + window.pageYOffset - (stickyH + 8);
+    const y = el.getBoundingClientRect().top + window.pageYOffset - (stickyH + 10);
     window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
   }
 
@@ -35,102 +35,110 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-// ===== Drawer =====
-(function drawer(){
-  // FIX: Using $$ to select BOTH mobile and desktop hamburger menus
-  const openBtns = $$('[data-open-menu]'); 
-  const closeBtn = $('[data-close-menu]');
-  const drawer = $('#navDrawer');
-  const ovl = $('#menuOverlay');
-  const links = $$('.drawer__link', drawer);
+  // ===== Reveal on scroll (subtle, premium) =====
+  (function reveal(){
+    const prefersReduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const items = $$('.reveal');
+    if (!items.length) return;
 
-  if (!openBtns.length || !drawer || !ovl) return;
+    if (prefersReduce){
+      items.forEach(el => el.classList.add('is-in'));
+      return;
+    }
 
-  // Initialize
-  drawer.hidden = false; // We use CSS transform instead of display:none now
-  ovl.hidden = false;
-  openBtns.forEach(btn => btn.setAttribute('aria-expanded','false'));
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(ent => {
+        if (ent.isIntersecting){
+          ent.target.classList.add('is-in');
+          io.unobserve(ent.target);
+        }
+      });
+    }, { threshold: 0.12 });
 
-  /* Force Open Function */
-  const open = () => {
-    // 1. Add active classes to trigger CSS transform/opacity
-    drawer.classList.add('is-active');
-    ovl.classList.add('is-active');
-    
-    // 2. Lock background scrolling
-    document.body.style.overflow = 'hidden';
+    items.forEach(el => io.observe(el));
+  })();
 
-    // 3. Stagger the links sliding in (The Dutch Touch effect)
-    links.forEach((link, index) => {
-      setTimeout(() => {
-        link.classList.add('revealed');
-      }, 150 * (index + 1)); // Increased to 150ms for a slightly slower, smoother rollout
+  // ===== Drawer =====
+  (function drawer(){
+    const openBtns = $$('[data-open-menu]');
+    const closeBtn = $('[data-close-menu]');
+    const drawer = $('#navDrawer');
+    const ovl = $('#menuOverlay');
+    const links = $$('.drawer__link', drawer);
+
+    if (!openBtns.length || !drawer || !ovl) return;
+
+    // Initialize: we control visibility via classes now
+    drawer.hidden = false;
+    ovl.hidden = false;
+    openBtns.forEach(btn => btn.setAttribute('aria-expanded','false'));
+
+    const open = () => {
+      drawer.classList.add('is-active');
+      ovl.classList.add('is-active');
+      document.body.style.overflow = 'hidden';
+
+      // stagger links
+      links.forEach((link, index) => {
+        setTimeout(() => link.classList.add('revealed'), 140 * (index + 1));
+      });
+    };
+
+    const close = () => {
+      drawer.classList.remove('is-active');
+      ovl.classList.remove('is-active');
+      links.forEach(link => link.classList.remove('revealed'));
+      document.body.style.overflow = '';
+    };
+
+    openBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        drawer.classList.contains('is-active') ? close() : open();
+      });
     });
-  }; // <--- THIS IS THE BRACKET THAT WENT MISSING!
 
-  /* Force Close Function */
-  const close = () => {
-    // 1. Remove active classes
-    drawer.classList.remove('is-active');
-    ovl.classList.remove('is-active');
-    
-    // 2. Hide links immediately so they are reset for next open
-    links.forEach(link => link.classList.remove('revealed'));
-    
-    // 3. Unlock scrolling
-    document.body.style.overflow = '';
-  };
-
-  // Add listener to ALL hamburger buttons
-  openBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
+    if (closeBtn) closeBtn.addEventListener('click', (e)=>{
       e.preventDefault();
-      drawer.classList.contains('is-active') ? close() : open();
+      close();
     });
-  });
 
-  if (closeBtn) closeBtn.addEventListener('click', (e)=>{
-    e.preventDefault();
-    close();
-  });
+    ovl.addEventListener('click', close);
 
-  ovl.addEventListener('click', close);
+    document.addEventListener('keydown', (e)=>{
+      if (e.key === 'Escape') close();
+    });
 
-  document.addEventListener('keydown', (e)=>{
-    if (e.key === 'Escape') close();
-  });
+    drawer.addEventListener('click', (e) => {
+      const btn = e.target.closest('button');
+      if (!btn || btn.classList.contains('icon--close')) return;
 
-  drawer.addEventListener('click', (e) => {
-    const btn = e.target.closest('button');
-    if (!btn || btn.classList.contains('icon--close')) return;
+      if (btn.hasAttribute('data-open-deals')) {
+        close();
+        openDeals(true);
+        return;
+      }
+      if (btn.hasAttribute('data-open-shop')) {
+        close();
+        openShop(true);
+        return;
+      }
+      const hash = btn.getAttribute('data-scroll');
+      if (hash) {
+        close();
+        const el = $(hash);
+        if (el) smoothTo(el);
+      }
+    });
+  })();
 
-    if (btn.hasAttribute('data-open-deals')) {
-      close();
-      openDeals(true);
-      return;
-    }
-    if (btn.hasAttribute('data-open-shop')) {
-      close();
-      openShop(true);
-      return;
-    }
-    const hash = btn.getAttribute('data-scroll');
-    if (hash) {
-      close();
-      const el = $(hash);
-      if (el) smoothTo(el);
-    }
-  });
-})();
-
-  // ===== Deals (DR-style details dropdown) =====
+  // ===== Deals =====
   const dealsDrop = $('#dealsDrop');
   const dealList = $('#dealList');
 
   function openDeals(scrollAlso){
     const dealsSection = $('#deals');
     if (scrollAlso && dealsSection) smoothTo(dealsSection);
-    // open after scroll starts so it feels intentional
     setTimeout(() => {
       if (dealsDrop) dealsDrop.open = true;
     }, 220);
@@ -139,45 +147,132 @@ document.addEventListener('DOMContentLoaded', () => {
   $$('[data-open-deals]').forEach(el => el.addEventListener('click', (e)=>{ e.preventDefault(); openDeals(true); }));
 
   // deals.json render into DR-style markup
-  (function loadDeals(){
-    if (!dealList) return;
-
-    fetch('deals.json', { cache: 'no-store' })
-      .then(r => r.ok ? r.json() : Promise.reject(r.status))
-      .then(data => renderDeals(data))
-      .catch(() => { dealList.innerHTML = '<div class="cat"><div class="catTitle">Deals unavailable right now.</div></div>'; });
-
-    const esc = (s) => String(s).replace(/[&<>"']/g, c => ({
+  function esc(s){
+    return String(s).replace(/[&<>"']/g, c => ({
       '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
     }[c]));
+  }
 
-    function renderDeals(data){
-      const html = (data || []).map(cat => {
-        const catTitle = `<div class="catTitle">${esc(cat.category || '')}</div>`;
+  function flattenDealsForTiles(data, limit = 6){
+    // Normalize to a list of {cat, text}
+    const out = [];
+    (data || []).forEach(cat => {
+      const catName = cat.category || 'Deals';
+      if (Array.isArray(cat.groups)){
+        cat.groups.forEach(g => {
+          (g.items || []).forEach(it => out.push({ cat: catName, text: String(it) }));
+        });
+      } else {
+        (cat.items || []).forEach(it => out.push({ cat: catName, text: String(it) }));
+      }
+    });
 
-        if (Array.isArray(cat.groups)) {
-          const groups = cat.groups.map(g => {
-            const items = (g.items || []).map(it => `<li>${esc(it)}</li>`).join('');
-            return `
-              <div class="group">
-                <div class="groupTitle">${esc(g.title || '')}</div>
-                <ul>${items}</ul>
-              </div>
-            `;
-          }).join('');
-          return `<div class="cat">${catTitle}${groups}</div>`;
-        }
+    // Use first N (simple + stable)
+    return out.slice(0, limit);
+  }
 
-        const items = (cat.items || []).map(it => `<li>${esc(it)}</li>`).join('');
-        return `<div class="cat">${catTitle}<ul>${items}</ul></div>`;
-      }).join('');
+  function renderDealsList(data){
+    if (!dealList) return;
+    const html = (data || []).map(cat => {
+      const catTitle = `<div class="catTitle">${esc(cat.category || '')}</div>`;
 
-      dealList.innerHTML = html + `<div style="margin-top:10px;font-weight:800;opacity:.70;">All prices include tax.</div>`;
+      if (Array.isArray(cat.groups)) {
+        const groups = cat.groups.map(g => {
+          const items = (g.items || []).map(it => `<li>${esc(it)}</li>`).join('');
+          return `
+            <div class="group">
+              <div class="groupTitle">${esc(g.title || '')}</div>
+              <ul>${items}</ul>
+            </div>
+          `;
+        }).join('');
+        return `<div class="cat">${catTitle}${groups}</div>`;
+      }
+
+      const items = (cat.items || []).map(it => `<li>${esc(it)}</li>`).join('');
+      return `<div class="cat">${catTitle}<ul>${items}</ul></div>`;
+    }).join('');
+
+    dealList.innerHTML = html + `<div style="margin-top:10px;font-weight:800;opacity:.70;">All prices include tax.</div>`;
+  }
+
+  // Deal Tiles
+  function renderDealTiles(data){
+    const grid = document.getElementById('dealTiles');
+    if (!grid) return;
+
+    const tiles = flattenDealsForTiles(data, 6);
+    if (!tiles.length){
+      grid.innerHTML = `
+        <div class="dealTile" role="button" tabindex="0">
+          <div class="dealTile__k">
+            <span>Highlights</span>
+            <span class="dealTile__tag">Today</span>
+          </div>
+          <div class="dealTile__t">Deals loading…</div>
+          <div class="dealTile__s">If this persists, check deals.json.</div>
+        </div>
+      `;
+      return;
     }
+
+    grid.innerHTML = tiles.map(t => `
+      <div class="dealTile" role="button" tabindex="0" data-open-deals>
+        <div class="dealTile__k">
+          <span>${esc(t.cat)}</span>
+          <span class="dealTile__tag">Deal</span>
+        </div>
+        <div class="dealTile__t">${esc(t.text)}</div>
+        <div class="dealTile__s">Tap to view full list</div>
+      </div>
+    `).join('');
+
+    // Make tile clickable (delegated)
+    grid.addEventListener('click', (e) => {
+      const tile = e.target.closest('[data-open-deals]');
+      if (tile) openDeals(true);
+    });
+    grid.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      const tile = e.target.closest('[data-open-deals]');
+      if (tile) {
+        e.preventDefault();
+        openDeals(true);
+      }
+    });
+  }
+
+  (function loadDeals(){
+    fetch('deals.json', { cache: 'no-store' })
+      .then(r => r.ok ? r.json() : Promise.reject(r.status))
+      .then(data => {
+        renderDealsList(data);
+        renderDealTiles(data);
+      })
+      .catch(() => {
+        if (dealList) dealList.innerHTML = '<div class="cat"><div class="catTitle">Deals unavailable right now.</div></div>';
+        renderDealTiles([]);
+      });
   })();
 
-  // ===== Shop reveal =====
+  // ===== Shop reveal + category state (Leafly-ready) =====
   const menuWrap = $('#menuWrap');
+  const menuPill = $('#menuCategoryPill');
+  const menuPillStrong = $('#menuCategoryPill strong');
+  const menuPlaceholderSub = $('#menuPlaceholderSub');
+
+  function setMenuCategory(cat){
+    if (!cat) return;
+    if (menuPill && menuPillStrong){
+      menuPill.hidden = false;
+      menuPillStrong.textContent = cat;
+    }
+    if (menuPlaceholderSub){
+      menuPlaceholderSub.textContent = `Selected category: ${cat}. When Leafly is live, this will route into the right section automatically.`;
+    }
+    // Save for later Leafly wiring
+    try { localStorage.setItem('gl_selected_category', cat); } catch {}
+  }
 
   function openShop(scrollAlso){
     if (menuWrap) menuWrap.hidden = false;
@@ -185,7 +280,27 @@ document.addEventListener('DOMContentLoaded', () => {
     if (scrollAlso && shop) smoothTo(shop);
   }
 
+  // Default open shop
   $$('[data-open-shop]').forEach(el => el.addEventListener('click', (e)=>{ e.preventDefault(); openShop(true); }));
+
+  // Category buttons: open shop + set category
+  $$('[data-shop-category]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      // This button also has data-open-shop, so prevent double behavior.
+      e.preventDefault();
+      const cat = btn.getAttribute('data-shop-category');
+      if (cat) setMenuCategory(cat);
+      openShop(true);
+    });
+  });
+
+  // Restore last selected category (nice polish)
+  (function restoreCategory(){
+    try {
+      const cat = localStorage.getItem('gl_selected_category');
+      if (cat) setMenuCategory(cat);
+    } catch {}
+  })();
 
   // ===== Status strip dot + label =====
   (function status(){
@@ -237,43 +352,12 @@ document.addEventListener('DOMContentLoaded', () => {
     paint();
     setInterval(paint, 60*1000);
 
-    // Optional: tap strip opens maps
+    // Tap strip opens maps
     if (strip) {
       strip.addEventListener('click', () => {
         const href = smartMapHref(ADDRESS);
         window.open(href, /^https?:/i.test(href) ? '_blank' : '_self');
       });
     }
-  })();
-
-  // ===== Carousel =====
-  (function carousel(){
-    const root = document.querySelector('[data-carousel]');
-    if (!root) return;
-    const slides = [...root.querySelectorAll('.slide')];
-    const dots = root.querySelector('.dots');
-    const delay = parseInt(root.getAttribute('data-autoplay') || '6500', 10);
-
-    if (!slides.length || !dots) return;
-
-    let i = slides.findIndex(s => s.classList.contains('is-active'));
-    if (i < 0) i = 0;
-
-    dots.innerHTML = slides.map((_, idx) => `<button class="dotbtn ${idx===i?'is-active':''}" type="button" aria-label="Go to slide ${idx+1}"></button>`).join('');
-    const dotBtns = [...dots.querySelectorAll('.dotbtn')];
-
-    function go(n){
-      slides[i].classList.remove('is-active');
-      dotBtns[i].classList.remove('is-active');
-      i = (n + slides.length) % slides.length;
-      slides[i].classList.add('is-active');
-      dotBtns[i].classList.add('is-active');
-    }
-
-    dotBtns.forEach((b, idx) => b.addEventListener('click', () => go(idx)));
-
-    let t = setInterval(() => go(i+1), delay);
-    root.addEventListener('mouseenter', () => clearInterval(t));
-    root.addEventListener('mouseleave', () => { clearInterval(t); t = setInterval(() => go(i+1), delay); });
   })();
 });
