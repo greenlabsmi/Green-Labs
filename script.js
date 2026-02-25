@@ -413,3 +413,5 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
   `;
 }
+})();
+});
