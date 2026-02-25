@@ -1,58 +1,144 @@
-{
-  "tiers": [
-    {
-      "id": "gold",
-      "title": "Top Shelf",
-      "price_oz": "$225",
-      "breakdown": "$15/g • $45/3.5g",
-      "color_theme": "gold",
-      "strains": [
-        {
-          "name": "Mr. Clean",
-          "tag": "🏆 Cup Winner",
-          "tag_class": "tag--winner",
-          "type": "Sativa"
-        },
-        {
-          "name": "Death by Funk",
-          "tag": "🏆 Cup Winner",
-          "tag_class": "tag--winner",
-          "type": "Indica"
-        },
-        {
-          "name": "Lilac Diesel",
-          "tag": "🔥 High Terps",
-          "tag_class": "tag--hot",
-          "type": "Sativa"
-        }
-      ]
-    },
-    {
-      "id": "green",
-      "title": "Daily Drivers",
-      "price_oz": "$150",
-      "breakdown": "$10/g • $30/3.5g",
-      "color_theme": "green",
-      "strains": [
-        {
-          "name": "Fruit Brute",
-          "tag": "Hybrid",
-          "tag_class": "",
-          "type": "Hybrid"
-        },
-        {
-          "name": "Clusterfunk",
-          "tag": "Classic Gas",
-          "tag_class": "",
-          "type": "Indica"
-        },
-        {
-          "name": "Old Widow",
-          "tag": "Relaxing",
-          "tag_class": "",
-          "type": "Indica"
-        }
-      ]
-    }
-  ]
-}
+[
+  {
+    "category": "🌿 Flower",
+    "promo": false,
+    "groups": [
+      {
+        "title": "Ounces",
+        "items": [
+          "$35 OUNCES - Grip Pre-Packaged Ounce OR Buy 2 for $50",
+          "$60 OUNCES - Headbanger OG, Pina Rita, and Shisk - Dutch Daylight",
+          "$75 OUNCES - DUTCH DAYLIGHT - Excludes Mr. Clean",
+          "$75 OUNCES - Secret Chief",
+          "$80 OUNCES - Dragon's Blood Hashplant - Sativa Hybrid",
+          "$120 OUNCES - DELI FLOWER! - NOW ACTIVE!",
+          "$130 OUNCES - Dutch Breath",
+          "$135 OUNCES - Big Smooth",
+          "$135 OUNCES - Select Dutch Touch Genetics Ounces!",
+          "$135 OUNCES - Hash D and Double Bubble - New Strains!"
+        ]
+      },
+      {
+        "title": "Half Ounces",
+        "items": [
+          "$40 HALF OUNCE - Secret Chief, Angelica and Crunchberries",
+          "$75 HALF OUNCE - Double Bubble & Hash D",
+          "$80 HALF OUNCE - Querkle (8ths)"
+        ]
+      },
+      {
+        "title": "Quarters",
+        "items": [
+          "$45 Quarter - Bubblegum and Hash D - Hybrid Strains",
+          "$45 Quarter - Death Z (Death Star x Zkittles), Gorilla 88, and Double Bubble"
+        ]
+      },
+      {
+        "title": "Eighths",
+        "items": [
+          "$10 EIGHTHS - Dutch Daylight",
+          "Dutch Daylight Strains: Bubblegum, Clusterfunk, Death Star, Death Star x Zkittles Death By, Pina Rita, & Shiska",
+          "$20 EIGHTHS - Death By Funk - Limited Time Sale!",
+          "$25 EIGHTHS - Orange Kush Cake, Querkle and Dragonsblood Hashplant",
+          "$30 EIGHTHS - Bubblegum and Hash D",
+          "$40 EIGHTHS - Lilac Diesel Award Winning Tier"
+        ]
+      },
+      {
+        "title": "Kief & Hash Promotions",
+        "items": [
+          "Dutch Touch Genetics 14g Kief - $175ea"
+        ]
+      }
+    ]
+  },
+  {
+    "category": "🪄 Pre-Rolls",
+    "promo": false,
+    "items": [
+      "Mr Clean and Death By Funk 1g Pre-Rolls - $5ea or 10/$35 (Limited Time Sale!)",
+      "Franklin Fields 1g Pre-Rolls - $5ea",
+      "TreeTown 1g Pre-Rolls - $7ea or 10/$55",
+      "Dutch Touch Full Bud 1g Pre-Rolls - $10ea",
+      "Thunder Canna 14pk Pre-Rolls - $25ea",
+      "High Supply 14pk Pre-Rolls - $60 or 2/$100"
+    ]
+  },
+  {
+    "category": "💥 Infused Pre-Rolls",
+    "promo": false,
+    "items": [
+      "Superfire 1.2g Infused Pre-Rolls - $5ea or 10/$45",
+      "Fire Styxx 1g Infused Pre-Rolls - $7ea or 3/$20 or 10/$65",
+      "Lightsky Farms 1g Bubble Hash Joints - $20ea or 3/$50",
+      "Dutch Touch 1.25g Rosin Donuts - $25ea or 2/$40",
+      "Dutch Touch Genetics 5pk Infused Pre-Rolls - $35ea (10k x Mr. Clean In Stock Right Now!)",
+      "HashHits 5pk Pure Hash Pre-Roll Hitters - $35ea or 2/$55 (7 to 10 hits per “Pre-Roll”)"
+    ]
+  },
+  {
+    "category": "💨 Vapes & Disposables",
+    "promo": false,
+    "items": [
+      "Platinum Vapes - $10 or 5/$40 or 15/$100",
+      "Daily Dose 1g Cartridges - $10 or 5/$45",
+      "Superfire 1g Cartridges - $10 or 15/$100",
+      "Platinum Vapes 1g Live Resin Carts - $15",
+      "True North Fusion 1g Full Spectrum Cartridges - $18ea or 2/$35 or 4/$60",
+      "Lightsky Farms Live Resin Cartridges - $25ea or 6/$100",
+      "Redbud Roots Hash Rosin Cartridges - $25ea",
+      "Five Star Nug Run Sugar Sauce Cartridges - $30ea or 2/$55 or 4/$100",
+      "Superfire 1g Disposables - $20ea",
+      "Dutch Touch Genetics 1g Disposables - $25ea or 3/$55 (Excludes Mr. Clean)",
+      "Batch 2g Disposables - $35ea"
+    ]
+  },
+  {
+    "category": "🍬 Edibles",
+    "promo": false,
+    "items": [
+      "Dutch Touch Nerd Gummies - $10ea or 5/$35",
+      "Dutch Touch 200mg Distillate Gummies - $10ea or 5/$35",
+      "Dutch Touch 200mg Gummy Bars - $12ea or 3/$35",
+      "Platinum Vapes 200mg Gummies - $5ea",
+      "Choice 200mg Gummies - $5ea",
+      "Play 200mg Gummies - $5ea or 10/$40",
+      "Thunder Canna 200mg Gummies - $5ea",
+      "True North 200mg Gummies - $5ea (One Hitters Back in Stock!)",
+      "Play HASH ROSIN 200mg Gummies - $10ea or 5/$35",
+      "Hey Captain 200mg Freeze Dried Ice Cream & Candies - $15ea or 3/$40"
+    ]
+  },
+  {
+    "category": "🥤 THC Beverages",
+    "promo": false,
+    "items": [
+      "(Add current beverage deals here when ready)"
+    ]
+  },
+  {
+    "category": "🍯 Concentrates",
+    "promo": false,
+    "items": [
+      "$12 Sour Gorilla 1g Live Resin - DTG",
+      "$60 Sour Gorilla 14g Live Resin - DTG (Limited Time Sale!)",
+      "Waxtracts 3.5g Sugar - $50ea or 2/$70",
+      "Dutch Touch Genetics Baller Jars - $50ea",
+      "Dutch Touch Genetics Big Baller Jars 14g - $165ea",
+      "Dutch Touch Genetics 14g ROSIN Jar - $225ea",
+      "Peak 1g Live Rosin - $25ea",
+      "Death By Funk 3.5g Rosin - $70ea",
+      "Strait Fire 3.5g Rosin - $90ea",
+      "Redbud Roots 3.5g Rosin - $105ea"
+    ]
+  },
+  {
+    "category": "🧪 Tinctures & RSO",
+    "promo": false,
+    "items": [
+      "Dutch Touch Strain Specific RSO - $30ea",
+      "Dutch Touch Non Strain Specific RSO - $25ea",
+      "Ratio'd TreeTown Tinctures - $20ea (Back in Stock)"
+    ]
+  }
+]
