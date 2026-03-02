@@ -1,13 +1,15 @@
 /* ===========================
    script.js (FULL REPLACEMENT)
-   Green Labs — clean + launch-ready
+   Green Labs — project-page safe + launch-ready
+   Fixes:
+   - GitHub Pages project pathing (/Green-Labs/)
+   - highlights + deals render from deals.json
+   - safe image paths (no leading slash)
 =========================== */
 
 document.addEventListener('DOMContentLoaded', () => {
   const y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();
-
-  const ADDRESS = '10701 Madison St, Luna Pier, MI 48157';
 
   const $ = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
@@ -24,14 +26,13 @@ document.addEventListener('DOMContentLoaded', () => {
       "'": '&#39;',
     }[c]));
 
-  function isIOS() { return /iPad|iPhone|iPod/.test(navigator.userAgent || ''); }
-  function isAndroid() { return /Android/.test(navigator.userAgent || ''); }
-
-  function smartMapHref(address) {
-    const q = encodeURIComponent(address);
-    if (isIOS()) return `maps://?q=${q}`;
-    if (isAndroid()) return `geo:0,0?q=${q}`;
-    return `https://www.google.com/maps?q=${q}`;
+  // Convert "/assets/..." to "./assets/..." so it works on project pages
+  function fixAssetPath(p) {
+    const s = String(p || '').trim();
+    if (!s) return '';
+    if (s.startsWith('/assets/')) return `.${s}`;   // "/assets/x" -> "./assets/x"
+    if (s.startsWith('assets/')) return `./${s}`;  // "assets/x"  -> "./assets/x"
+    return s; // keep full URLs or relative custom paths
   }
 
   // Smooth scroll with sticky height offset
@@ -74,14 +75,13 @@ document.addEventListener('DOMContentLoaded', () => {
     items.forEach(el => io.observe(el));
   })();
 
-  // ===== Today’s Highlights behavior (fade-in + hero parallax) =====
+  // ===== Today’s Highlights FX =====
   function initTodaysHighlightsFX() {
     const root = document.getElementById('todays-highlights');
     if (!root) return;
 
     const revealEls = Array.from(root.querySelectorAll('.thReveal'));
 
-    // Fade-in on scroll (stagger)
     if (!prefersReduce && revealEls.length) {
       const io = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -101,7 +101,6 @@ document.addEventListener('DOMContentLoaded', () => {
       revealEls.forEach(el => el.classList.add('is-in'));
     }
 
-    // Parallax on hero background (subtle, performance-safe)
     if (prefersReduce) return;
 
     const heroParallax = root.querySelector('.thHero .thParallax');
@@ -143,15 +142,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 220);
   }
 
-  // Delegated click handler (covers dynamically injected highlights too)
+  // Delegated click handler for any element with [data-open-deals]
   document.addEventListener('click', (e) => {
-    const a = e.target.closest('[data-open-deals]');
-    if (!a) return;
+    const hit = e.target.closest('[data-open-deals]');
+    if (!hit) return;
     e.preventDefault();
     openDeals(true);
   });
 
-  // ===== Shop reveal + category state (Leafly-ready) =====
+  // ===== Shop reveal + category state =====
   const menuWrap = $('#menuWrap');
   const menuPill = $('#menuCategoryPill');
   const menuPillStrong = $('#menuCategoryPill strong');
@@ -263,18 +262,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   })();
 
-  // ===== Deals + Highlights render (from merged deals.json) =====
+  // ===== Deals + Highlights render (from deals.json) =====
   (function loadDeals() {
     const dealList = $('#dealList');
-    const tilesWrap = $('#dealTiles');       // existing "feature + quick" area (optional)
-    const highlightsMount = $('#highlightsMount'); // new highlights mount
+    const tilesWrap = $('#dealTiles');
+    const highlightsMount = $('#highlightsMount');
 
     if (!dealList) {
       console.warn('Missing #dealList in HTML. Deals dropdown cannot render.');
       return;
     }
 
-    const url = `deals.json?v=${Date.now()}`; // cache bust for GH Pages
+    // IMPORTANT: project-page safe path
+    const url = `./deals.json?v=${Date.now()}`;
+    console.log('[GreenLabs] Fetching:', url, 'from', location.href);
 
     fetch(url, { cache: 'no-store' })
       .then(async (r) => {
@@ -289,15 +290,13 @@ document.addEventListener('DOMContentLoaded', () => {
         renderDealsDropdown(dealsData);
         renderDealTiles(dealsData);
 
-        // NEW: highlights from merged deals.json
         if (highlightsMount && data && data.highlights) {
           renderHighlightsFromConfig(data.highlights, highlightsMount);
-          // FX needs to run AFTER we inject the tiles
-          initTodaysHighlightsFX();
-        } else {
-          // still init header FX if section exists
-          initTodaysHighlightsFX();
+        } else if (highlightsMount) {
+          highlightsMount.innerHTML = '';
         }
+
+        initTodaysHighlightsFX();
       })
       .catch((err) => {
         console.error(err);
@@ -306,7 +305,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="cat">
             <div class="catTitle">Deals unavailable right now.</div>
             <div style="font-weight:800;opacity:.75;margin-top:8px;">
-              Check that <code>deals.json</code> exists at site root and is valid JSON.
+              Check that <code>deals.json</code> exists at the published site path and is valid JSON.
             </div>
           </div>
         `;
@@ -352,7 +351,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderDealTiles(data) {
       if (!tilesWrap) return;
 
-      // Flatten deal lines with category context
       const lines = [];
       (data || []).forEach(cat => {
         const catNameRaw = String(cat.category || 'Deals');
@@ -379,26 +377,19 @@ document.addEventListener('DOMContentLoaded', () => {
         return sc;
       };
 
-      const best = [...lines].sort((a, b) => score(b.text) - score(a.text))[0];
+      const sorted = [...lines].sort((a, b) => score(b.text) - score(a.text));
+      const best = sorted[0];
 
-      // Quick hits: prefer different categories
       const pickedCats = new Set();
       const quick = [];
-      for (const item of [...lines].sort((a, b) => score(b.text) - score(a.text))) {
-        if (!item) continue;
+      for (const item of sorted) {
         if (quick.length >= 4) break;
         if (!pickedCats.has(item.cat)) {
           quick.push(item);
           pickedCats.add(item.cat);
         }
       }
-      // fallback
-      if (quick.length < 4) {
-        for (const item of [...lines].sort((a, b) => score(b.text) - score(a.text))) {
-          if (quick.length >= 4) break;
-          if (!quick.includes(item)) quick.push(item);
-        }
-      }
+      while (quick.length < 4 && sorted[quick.length]) quick.push(sorted[quick.length]);
 
       const emojiFor = (name) => {
         const s = (name || '').toLowerCase();
@@ -468,7 +459,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const details = item.details || '';
         const cta = item.cta || (kind === 'mini' ? '' : 'View deal');
         const href = item.href || '#deals';
-        const img = item.image || '';
+        const img = fixAssetPath(item.image || '');
 
         const isMini = kind === 'mini';
         const cardClass =
