@@ -74,7 +74,7 @@
       },
       "sour_gorilla_1g_12": {
         "pill": "CONCENTRATES",
-        "pillClass": "thPill--flower",
+        "pillClass": "thPill--concentrates",
         "title": "1G Sour Gorilla $12",
         "price": "",
         "details": "",
@@ -84,7 +84,6 @@
       }
     }
   },
-
   "deals": [
     {
       "category": "🌿 Flower",
