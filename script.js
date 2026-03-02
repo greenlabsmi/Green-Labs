@@ -150,6 +150,86 @@ document.addEventListener('DOMContentLoaded', () => {
     el.addEventListener('click', (e) => { e.preventDefault(); openDeals(true); })
   );
 
+  // ===== Highlights render (slot-based) =====
+  (function loadHighlights() {
+    const mount = document.getElementById('highlightsMount');
+    if (!mount) return;
+
+    const url = `highlights.json?v=${Date.now()}`;
+
+    fetch(url, { cache: 'no-store' })
+      .then(r => {
+        if (!r.ok) throw new Error(`Failed to load highlights.json (${r.status})`);
+        return r.json();
+      })
+      .then(cfg => renderHighlights(cfg))
+      .catch(err => {
+        console.error(err);
+        mount.innerHTML = `<div style="padding:14px;font-weight:800;opacity:.7;color:#121614;">
+          Highlights unavailable.
+        </div>`;
+      });
+
+    function cardHTML(item, kind) {
+      const pill = item.pill || '';
+      const pillClass = item.pillClass || 'thPill--vapes';
+      const title = item.title || '';
+      const price = item.price || '';
+      const details = item.details || '';
+      const cta = item.cta || (kind === 'mini' ? '' : 'View deal');
+      const href = item.href || '#deals';
+      const img = item.image || '';
+
+      const isMini = kind === 'mini';
+      const cardClass = isMini ? 'thCard thMini' : (kind === 'hero' ? 'thCard thHero thReveal' : 'thCard thMid thReveal');
+      const overlayClass = kind === 'hero' ? 'thOverlay' : 'thOverlay thOverlay--light';
+      const contentClass = isMini ? 'thContent thContent--mini' : 'thContent';
+
+      return `
+        <a class="${cardClass} thReveal" href="${href}" data-open-deals>
+          <div class="thMedia ${kind === 'hero' ? 'thParallax' : ''}" style="background-image:url('${img}');"></div>
+          <div class="${overlayClass}"></div>
+          <div class="${contentClass}">
+            ${pill ? `<span class="thPill ${pillClass}">${pill}</span>` : ''}
+            ${!isMini ? `<h3 class="thH3">${title}</h3>` : `<div class="thMiniTitle">${title}</div>`}
+            ${!isMini && price ? `<div class="thPrice">${price}</div>` : ''}
+            ${!isMini && details ? `<div class="thDetails">${details}</div>` : ''}
+            ${!isMini && cta ? `<div class="thCta">${cta} <span aria-hidden="true">→</span></div>` : ''}
+          </div>
+        </a>
+      `;
+    }
+
+    function renderHighlights(cfg) {
+      const slots = cfg?.slots || {};
+      const items = cfg?.items || {};
+
+      const hero = items[slots.hero];
+      const midL = items[slots.mid_left];
+      const midR = items[slots.mid_right];
+      const scrollIds = Array.isArray(slots.scroll) ? slots.scroll : [];
+
+      const heroHTML = hero ? cardHTML(hero, 'hero') : '';
+      const midHTML = `
+        <div class="thGrid2">
+          ${midL ? cardHTML(midL, 'mid') : ''}
+          ${midR ? cardHTML(midR, 'mid') : ''}
+        </div>
+      `;
+
+      const scrollHTML = `
+        <div class="thRowWrap thReveal">
+          <div class="thRowTitle">More deals</div>
+          <div class="thRow" role="list" aria-label="More deals">
+            ${scrollIds.map(id => items[id]).filter(Boolean).map(it => cardHTML(it, 'mini')).join('')}
+          </div>
+        </div>
+      `;
+
+      mount.innerHTML = `${heroHTML}${midHTML}${scrollHTML}`;
+    }
+  })();
+   
   // ===== Shop reveal + category state (Leafly-ready) =====
   const menuWrap = $('#menuWrap');
   const menuPill = $('#menuCategoryPill');
@@ -282,10 +362,79 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         return r.json();
       })
-      .then((data) => {
-        renderDealsDropdown(data);
-        renderDealTiles(data);
-      })
+     .then((data) => {
+  const dealsData = Array.isArray(data) ? data : (data.deals || []);
+  renderDealsDropdown(dealsData);
+  renderDealTiles(dealsData);
+
+function renderHighlightsFromConfig(cfg) {
+  const mount = document.getElementById('highlightsMount');
+  if (!mount) return;
+
+  const slots = cfg?.slots || {};
+  const items = cfg?.items || {};
+
+  const hero = items[slots.hero];
+  const midL = items[slots.mid_left];
+  const midR = items[slots.mid_right];
+  const scrollIds = Array.isArray(slots.scroll) ? slots.scroll : [];
+
+  const cardHTML = (item, kind) => {
+    const pill = item.pill || '';
+    const pillClass = item.pillClass || 'thPill--vapes';
+    const title = item.title || '';
+    const price = item.price || '';
+    const details = item.details || '';
+    const cta = item.cta || (kind === 'mini' ? '' : 'View deal');
+    const href = item.href || '#deals';
+    const img = item.image || '';
+
+    const isMini = kind === 'mini';
+    const cardClass =
+      kind === 'hero' ? 'thCard thHero thReveal' :
+      isMini ? 'thCard thMini' :
+      'thCard thMid thReveal';
+
+    const overlayClass = kind === 'hero' ? 'thOverlay' : 'thOverlay thOverlay--light';
+    const contentClass = isMini ? 'thContent thContent--mini' : 'thContent';
+
+    return `
+      <a class="${cardClass} thReveal" href="${esc(href)}" data-open-deals>
+        <div class="thMedia ${kind === 'hero' ? 'thParallax' : ''}" style="background-image:url('${esc(img)}');"></div>
+        <div class="${overlayClass}"></div>
+        <div class="${contentClass}">
+          ${pill ? `<span class="thPill ${esc(pillClass)}">${esc(pill)}</span>` : ''}
+          ${isMini ? `<div class="thMiniTitle">${esc(title)}</div>` : `<h3 class="thH3">${esc(title)}</h3>`}
+          ${!isMini && price ? `<div class="thPrice">${esc(price)}</div>` : ''}
+          ${!isMini && details ? `<div class="thDetails">${esc(details)}</div>` : ''}
+          ${!isMini && cta ? `<div class="thCta">${esc(cta)} <span aria-hidden="true">→</span></div>` : ''}
+        </div>
+      </a>
+    `;
+  };
+
+  mount.innerHTML = `
+    ${hero ? cardHTML(hero, 'hero') : ''}
+
+    <div class="thGrid2">
+      ${midL ? cardHTML(midL, 'mid') : ''}
+      ${midR ? cardHTML(midR, 'mid') : ''}
+    </div>
+
+    <div class="thRowWrap thReveal">
+      <div class="thRowTitle">More deals</div>
+      <div class="thRow" role="list" aria-label="More deals">
+        ${scrollIds.map(id => items[id]).filter(Boolean).map(it => cardHTML(it, 'mini')).join('')}
+      </div>
+    </div>
+  `;
+}
+
+  // NEW: also render highlights if present
+  if (data && data.highlights) {
+    renderHighlightsFromConfig(data.highlights);
+  }
+})
       .catch((err) => {
         console.error(err);
         dealList.innerHTML = `
