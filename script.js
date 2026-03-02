@@ -74,6 +74,68 @@ document.addEventListener('DOMContentLoaded', () => {
     items.forEach(el => io.observe(el));
   })();
 
+  // ===== Today’s Highlights (fade-in + hero parallax) =====
+  (function todaysHighlights() {
+    const root = document.getElementById('todays-highlights');
+    if (!root) return;
+
+    // Fade-in on scroll (stagger)
+    const revealEls = Array.from(root.querySelectorAll('.thReveal'));
+
+    if (!prefersReduce && revealEls.length) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target;
+
+          // stagger based on section order
+          const idx = revealEls.indexOf(el);
+          el.style.transitionDelay = (idx >= 0 ? Math.min(idx * 80, 320) : 0) + 'ms';
+
+          el.classList.add('is-in');
+          io.unobserve(el);
+        });
+      }, { threshold: 0.12 });
+
+      revealEls.forEach(el => io.observe(el));
+    } else {
+      // reduced motion: just show
+      revealEls.forEach(el => el.classList.add('is-in'));
+    }
+
+    // Parallax on hero background (subtle, performance-safe)
+    if (prefersReduce) return;
+
+    const heroParallax = root.querySelector('.thHero .thParallax');
+    if (!heroParallax) return;
+
+    let ticking = false;
+
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+
+      requestAnimationFrame(() => {
+        const rect = root.getBoundingClientRect();
+        const vh = window.innerHeight || 800;
+
+        // only when section is near viewport
+        const inRange = rect.top < vh * 1.2 && rect.bottom > -vh * 0.2;
+        if (inRange) {
+          const progress = (vh - rect.top) / (vh + rect.height);
+          const offset = (progress - 0.5) * 18; // total ~18px travel
+          heroParallax.style.transform = `translateY(${offset.toFixed(2)}px)`;
+        }
+
+        ticking = false;
+      });
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    onScroll();
+  })();
+   
   // ===== Deals open helper =====
   const dealsDrop = $('#dealsDrop');
   function openDeals(scrollAlso) {
