@@ -1854,10 +1854,6 @@ header, nav, section, .container, .wrap, .row {
   .dealTile, .dealTile::before, .dealTile__arrow{ transition:none !important; }
 }
 
-/* ✅ ALSO REQUIRED:
-   PASTE this at END of style.css (if you haven’t yet)
-   This is what makes the featured + quick hits actually look premium.
-*/
 
 .dealTilesWrap{display:grid;gap:12px;margin:14px 0 18px;}
 .dealFeature{position:relative;border-radius:22px;padding:18px 16px;background:radial-gradient(1000px 420px at 15% 0%,rgba(11,125,90,.22) 0%,rgba(214,163,74,.10) 35%,rgba(255,255,255,0) 60%),#fff;border:1px solid rgba(0,0,0,.10);box-shadow:0 26px 70px rgba(0,0,0,.14),0 1px 0 rgba(255,255,255,.75) inset;overflow:hidden;color:#141615;text-decoration:none;}
@@ -1886,4 +1882,17 @@ header, nav, section, .container, .wrap, .row {
 }
 @media (prefers-reduced-motion:reduce){
   .dealFeature,.dealQuick,.dealFeature::after{transition:none !important;}
+}
+
+@media (max-width: 768px) {
+  /* Target the container specifically inside your header/nav */
+  header .container { 
+    padding-left: 8px !important;  /* Reduces the left gap */
+    padding-right: 8px !important; /* Reduces the right gap */
+  }
+
+  /* Optional: If it's still slightly too wide, shrink the text gaps */
+  .header-nav { /* Replace with your actual flex container class */
+    gap: 8px !important; 
+  }
 }
