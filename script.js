@@ -349,98 +349,141 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderDealTiles(data) {
-      if (!tilesWrap) return;
+  if (!tilesWrap) return;
 
-      const lines = [];
-      (data || []).forEach(cat => {
-        const catNameRaw = String(cat.category || 'Deals');
-        const catName = catNameRaw.replace(/^[^\w]+/, '').trim();
+  // Flatten deals.json into simple "lines"
+  const lines = [];
+  (data || []).forEach(cat => {
+    const catNameRaw = String(cat.category || 'Deals');
+    const catName = catNameRaw.replace(/^[^\w]+/, '').trim();
 
-        const pushItems = (arr) => (arr || []).forEach(it => {
-          const text = String(it || '').trim();
-          if (text) lines.push({ cat: catName, rawCat: catNameRaw, text });
-        });
+    const pushItems = (arr) => (arr || []).forEach(it => {
+      const text = String(it || '').trim();
+      if (text) lines.push({ cat: catName, rawCat: catNameRaw, text });
+    });
 
-        if (Array.isArray(cat.groups)) {
-          cat.groups.forEach(g => pushItems(g.items));
-        } else {
-          pushItems(cat.items);
-        }
-      });
-
-      const score = (s) => {
-        let sc = 0;
-        if (/\$/.test(s)) sc += 4;
-        if (/(ounce|oz|eighth|half|quarter|g\b|gram|2\/|3\/|5\/|10\/|15\/|buy|for)/i.test(s)) sc += 3;
-        if (/(deli|live resin|rosin|hash|limited|new|active)/i.test(s)) sc += 2;
-        if (/\b\d{1,3}\b/.test(s)) sc += 1;
-        return sc;
-      };
-
-      const sorted = [...lines].sort((a, b) => score(b.text) - score(a.text));
-      const best = sorted[0];
-
-      const pickedCats = new Set();
-      const quick = [];
-      for (const item of sorted) {
-        if (quick.length >= 4) break;
-        if (!pickedCats.has(item.cat)) {
-          quick.push(item);
-          pickedCats.add(item.cat);
-        }
-      }
-      while (quick.length < 4 && sorted[quick.length]) quick.push(sorted[quick.length]);
-
-      const emojiFor = (name) => {
-        const s = (name || '').toLowerCase();
-        if (s.includes('flower')) return '🌿';
-        if (s.includes('vape')) return '💨';
-        if (s.includes('pre-roll')) return '🪄';
-        if (s.includes('infused')) return '💥';
-        if (s.includes('edible') || s.includes('gummi') || s.includes('gummy')) return '🍬';
-        if (s.includes('concentrate')) return '🍯';
-        if (s.includes('tincture')) return '🧪';
-        if (s.includes('topical')) return '🧴';
-        if (s.includes('beverage')) return '🥤';
-        return '✦';
-      };
-
-      const extractBigPrice = (text) => {
-        const m = String(text || '').match(/\$\s*\d+/);
-        return m ? m[0].replace(/\s+/g, '') : 'DEAL';
-      };
-
-      tilesWrap.innerHTML = `
-        <a class="dealFeature" href="#deals" data-open-deals>
-          <div class="dealFeature__row">
-            <div class="dealFeature__k">
-              <div class="dealFeature__icon" aria-hidden="true">${esc(emojiFor(best?.cat || 'Deals'))}</div>
-              <div class="dealFeature__label">${esc(best?.cat || 'Today’s Featured Deal')}</div>
-            </div>
-            <div class="dealPill">FEATURED</div>
-          </div>
-
-          <div class="dealFeature__hook">${esc(best?.text || 'Deals loading…')}</div>
-
-          <div class="dealFeature__sub">
-            <span>Tap for full deal sheet</span>
-            <span class="dealFeature__cta">View all deals →</span>
-          </div>
-        </a>
-
-        <div class="dealQuickGrid">
-          ${quick.map(q => `
-            <a class="dealQuick" href="#deals" data-open-deals>
-              <div class="dealQuick__left">
-                <div class="dealQuick__price">${esc(extractBigPrice(q.text))}</div>
-                <div class="dealQuick__text">${esc(q.cat)} — ${esc(q.text)}</div>
-              </div>
-              <div class="dealQuick__arrow" aria-hidden="true">→</div>
-            </a>
-          `).join('')}
-        </div>
-      `;
+    if (Array.isArray(cat.groups)) {
+      cat.groups.forEach(g => pushItems(g.items));
+    } else {
+      pushItems(cat.items);
     }
+  });
+
+  // Scoring: prefer deal-y lines
+  const score = (s) => {
+    let sc = 0;
+    if (/\$/.test(s)) sc += 4;
+    if (/(ounce|oz|eighth|half|quarter|g\b|gram|2\/|3\/|5\/|10\/|15\/|buy|for)/i.test(s)) sc += 3;
+    if (/(deli|live resin|rosin|hash|limited|new|active)/i.test(s)) sc += 2;
+    if (/\b\d{1,3}\b/.test(s)) sc += 1;
+    return sc;
+  };
+
+  const sorted = [...lines].sort((a, b) => score(b.text) - score(a.text));
+
+  // Pick featured + some variety
+  const pickedCats = new Set();
+  const picks = [];
+
+  for (const item of sorted) {
+    if (picks.length >= 7) break; // 1 lg + 2 md + 4 sm
+    // first: always take best
+    if (picks.length === 0) { picks.push(item); pickedCats.add(item.cat); continue; }
+    // then prefer different categories
+    if (!pickedCats.has(item.cat) || picks.length < 3) {
+      picks.push(item);
+      pickedCats.add(item.cat);
+    }
+  }
+  while (picks.length < 7 && sorted[picks.length]) picks.push(sorted[picks.length]);
+
+  // Optional: default image per category (so you can start uploading NOW)
+  // Put images in: /assets/img/deals/...
+  const defaultImgByCat = {
+    flower: "./assets/img/deals/flower.jpg",
+    vapes: "./assets/img/deals/vapes.jpg",
+    edibles: "./assets/img/deals/edibles.jpg",
+    prerolls: "./assets/img/deals/prerolls.jpg",
+    concentrates: "./assets/img/deals/concentrates.jpg",
+    beverages: "./assets/img/deals/beverages.jpg",
+    tinctures: "./assets/img/deals/tinctures.jpg",
+    topicals: "./assets/img/deals/topicals.jpg",
+    deli: "./assets/img/deals/deli.jpg",
+  };
+
+  const normCatKey = (catName) => {
+    const s = String(catName || '').toLowerCase();
+    if (s.includes('pre-roll')) return 'prerolls';
+    if (s.includes('pre roll')) return 'prerolls';
+    if (s.includes('vape')) return 'vapes';
+    if (s.includes('edible') || s.includes('gummi') || s.includes('gummy')) return 'edibles';
+    if (s.includes('concentrate')) return 'concentrates';
+    if (s.includes('beverage')) return 'beverages';
+    if (s.includes('tincture')) return 'tinctures';
+    if (s.includes('topical')) return 'topicals';
+    if (s.includes('deli')) return 'deli';
+    if (s.includes('flower')) return 'flower';
+    return '';
+  };
+
+  const extractBigPrice = (text) => {
+    const m = String(text || '').match(/\$\s*\d+/);
+    return m ? m[0].replace(/\s+/g, '') : 'DEAL';
+  };
+
+  const tileHTML = (item, i) => {
+    const sizeClass = (i === 0) ? "dealTile--lg" : (i < 3 ? "dealTile--md" : "dealTile--sm");
+
+    const cat = item?.cat || "Deals";
+    const line = item?.text || "Deals loading…";
+    const price = extractBigPrice(line);
+
+    const key = normCatKey(cat);
+    const img = fixAssetPath(defaultImgByCat[key] || "");
+
+    return `
+      <a class="dealTile ${sizeClass}" href="#deals" data-open-deals>
+        <div class="dealTile__inner">
+          <div class="dealTile__media">
+            ${img ? `<img src="${esc(img)}" alt="">` : ``}
+          </div>
+
+          <div class="dealTile__content">
+            <div class="dealTile__k">
+              <span class="dealTile__tag">${esc(cat)}</span>
+              <span style="font-weight:950;opacity:.85;">${esc(price)}</span>
+            </div>
+
+            <div class="dealTile__t">${esc(line)}</div>
+            <div class="dealTile__s">Tap to view full deal sheet</div>
+
+            <div class="miniCtaRow">
+              <span class="dealTile__cta">View deal →</span>
+            </div>
+          </div>
+        </div>
+      </a>
+    `;
+  };
+
+  // Build layout:
+  // - Feature grid: 1 LG + 2 MD
+  // - Small grid: 4 SM in 2 columns
+  const feature = picks.slice(0, 3);
+  const small = picks.slice(3, 7);
+
+  tilesWrap.innerHTML = `
+    <div class="dealTileGrid dealTileGrid--feature">
+      ${feature.map((it, idx) => tileHTML(it, idx)).join('')}
+    </div>
+
+    <div style="height:12px;"></div>
+
+    <div class="dealTileGrid dealTileGrid--2">
+      ${small.map((it, idx) => tileHTML(it, idx + 3)).join('')}
+    </div>
+  `;
+}
 
     function renderHighlightsFromConfig(cfg, mount) {
       const slots = cfg?.slots || {};
