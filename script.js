@@ -288,7 +288,7 @@ document.addEventListener('DOMContentLoaded', () => {
       .then((data) => {
         const dealsData = Array.isArray(data) ? data : (data.deals || []);
         renderDealsDropdown(dealsData);
-        renderDealTiles(dealsData);
+// renderDealTiles(dealsData); // disabled — using Today's Highlights cards only
 
         if (highlightsMount && data && data.highlights) {
           renderHighlightsFromConfig(data.highlights, highlightsMount);
