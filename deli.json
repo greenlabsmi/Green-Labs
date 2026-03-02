@@ -20,7 +20,7 @@
         "details": "Crude Boys · Drip · Super Fire",
         "cta": "Shop now",
         "href": "#deals",
-        "image": "/assets/img/deals/mixmatch-carts.jpg"
+        "image": "assets/img/deals/mixmatch-carts.jpg"
       },
       "dt_disposables": {
         "pill": "DUTCH TOUCH",
@@ -30,7 +30,7 @@
         "details": "",
         "cta": "View deal",
         "href": "#deals",
-        "image": "/assets/img/deals/dt-disposables.jpg"
+        "image": "assets/img/deals/dt-disposables.jpg"
       },
       "deli_orange_kush_cake": {
         "pill": "FLOWER",
@@ -40,7 +40,7 @@
         "details": "Deli special",
         "cta": "View deal",
         "href": "#deals",
-        "image": "/assets/img/deals/orange-kush-cake.jpg"
+        "image": "assets/img/deals/orange-kush-cake.jpg"
       },
       "edibles_10_40": {
         "pill": "EDIBLES",
@@ -50,7 +50,7 @@
         "details": "",
         "cta": "",
         "href": "#deals",
-        "image": "/assets/img/deals/edibles.jpg"
+        "image": "assets/img/deals/edibles.jpg"
       },
       "infused_prerolls_3_20": {
         "pill": "INFUSED",
@@ -60,7 +60,7 @@
         "details": "",
         "cta": "",
         "href": "#deals",
-        "image": "/assets/img/deals/infused-prerolls.jpg"
+        "image": "assets/img/deals/infused-prerolls.jpg"
       },
       "grip_oz_2_50": {
         "pill": "FLOWER",
@@ -70,7 +70,7 @@
         "details": "",
         "cta": "",
         "href": "#deals",
-        "image": "/assets/img/deals/grip-oz.jpg"
+        "image": "assets/img/deals/grip-oz.jpg"
       },
       "sour_gorilla_1g_12": {
         "pill": "CONCENTRATES",
@@ -80,7 +80,7 @@
         "details": "",
         "cta": "",
         "href": "#deals",
-        "image": "/assets/img/deals/sour-gorilla-1g.jpg"
+        "image": "assets/img/deals/sour-gorilla-1g.jpg"
       }
     }
   },
