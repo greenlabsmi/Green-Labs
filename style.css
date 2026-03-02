@@ -1383,6 +1383,7 @@ img{ max-width:100%; display:block; }
 #todays-highlights .thPill--edibles{ background:rgba(230,122,0,.12); color:#B25A00; }
 #todays-highlights .thPill--prerolls{ background:rgba(11,125,90,.10); color:#0B7D5A; }
 #todays-highlights .thPill--dtg{ background:rgba(214,163,74,.16); color:#8A5B10; }
+#todays-highlights .thPill--concentrates{ background: rgba(230,162,60,.12); color: #B87400; }
 
 #todays-highlights .thH3{
   margin:0 0 6px;
