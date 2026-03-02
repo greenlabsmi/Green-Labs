@@ -1880,6 +1880,7 @@ header, nav, section, .container, .wrap, .row {
   .dealFeature:hover::after{opacity:1;transform:translateX(10%);}
   .dealQuick:hover{transform:translateY(-3px);box-shadow:0 24px 65px rgba(0,0,0,.14);}
 }
+
 @media (max-width: 768px) {
   /* 1. Tighten the edges of the phone screen slightly */
   header .container { 
@@ -1887,9 +1888,9 @@ header, nav, section, .container, .wrap, .row {
     padding-right: 10px !important; 
   }
 
-  /* 2. Shrink the logo to make more room */
+  /* 2. Keep the logo prominent but balanced */
   .sticky__logo img {
-    max-height: 32px !important; /* Change this number to make the logo bigger/smaller */
+    max-height: 34px !important; /* Bumped up slightly so it stays the biggest element */
     width: auto !important;
   }
 
@@ -1898,24 +1899,24 @@ header, nav, section, .container, .wrap, .row {
     justify-content: space-between !important;
   }
 
-  /* 4. Group the buttons & hamburger, and space them evenly */
+  /* 4. Squeeze the buttons closer together to make room for bigger text */
   .actions {
     flex: 0 1 auto;
     justify-content: flex-end !important;
-    gap: 8px !important; /* This creates the EXACT even spacing between Shop, Deals, KID, and Hamburger */
+    gap: 4px !important; /* Squeezed down from 8px to buy more space */
     margin-left: auto !important; /* Ensures the maximum gap is between the Logo and SHOP */
   }
 
-  /* 5. Undo the old hamburger "spring" rule so it spaces evenly with the buttons */
+  /* 5. Undo the old hamburger "spring" rule */
   .actions > :last-child {
     margin-left: 0 !important;
   }
 
-  /* 6. Keep the text small enough to fit on one line */
+  /* 6. Increase the text size! */
   .btn--deals .glowLabel, 
   .btn--kid .kidLabel,
   .btn--shop {
-    font-size: 11px !important; 
-    padding: 0 6px !important;
+    font-size: 13px !important; /* Bumped up from 11px for better readability */
+    padding: 0 4px !important; /* Shrunk the invisible box around the words so they still fit */
   }
 }
