@@ -1881,35 +1881,41 @@ header, nav, section, .container, .wrap, .row {
   .dealQuick:hover{transform:translateY(-3px);box-shadow:0 24px 65px rgba(0,0,0,.14);}
 }
 @media (max-width: 768px) {
-  /* Target the container specifically inside your header/nav */
+  /* 1. Tighten the edges of the phone screen slightly */
   header .container { 
-    padding-left: 8px !important;  
-    padding-right: 8px !important; 
+    padding-left: 10px !important;  
+    padding-right: 10px !important; 
   }
 
-  /* 1. Make the main header pack items to the left instead of spreading them evenly */
+  /* 2. Shrink the logo to make more room */
+  .sticky__logo img {
+    max-height: 32px !important; /* Change this number to make the logo bigger/smaller */
+    width: auto !important;
+  }
+
+  /* 3. Push the logo to the far left and the buttons to the far right */
   .sticky__inner {
-    justify-content: flex-start !important;
+    justify-content: space-between !important;
   }
 
-  /* 2. Control the group holding the buttons & hamburger */
+  /* 4. Group the buttons & hamburger, and space them evenly */
   .actions {
-    flex: 1; /* Tells this group to take up all remaining width */
-    justify-content: flex-start !important; /* Scoots Shop/Deals/KID to the left */
-    gap: 4px !important; /* Squeezes the buttons tighter together so they fit */
-    margin-left: 18px !important; /* Creates extra space between the Logo and SHOP */
+    flex: 0 1 auto;
+    justify-content: flex-end !important;
+    gap: 8px !important; /* This creates the EXACT even spacing between Shop, Deals, KID, and Hamburger */
+    margin-left: auto !important; /* Ensures the maximum gap is between the Logo and SHOP */
   }
 
-  /* 3. Push the hamburger menu (which is the last item) to the absolute right edge */
+  /* 5. Undo the old hamburger "spring" rule so it spaces evenly with the buttons */
   .actions > :last-child {
-    margin-left: auto !important;
+    margin-left: 0 !important;
   }
 
-  /* 4. Optional but recommended: Shrink the text slightly to guarantee they fit on small phones */
+  /* 6. Keep the text small enough to fit on one line */
   .btn--deals .glowLabel, 
   .btn--kid .kidLabel,
   .btn--shop {
-    font-size: 12px !important; 
-    padding: 0 8px !important;
+    font-size: 11px !important; 
+    padding: 0 6px !important;
   }
 }
