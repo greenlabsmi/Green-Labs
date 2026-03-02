@@ -204,7 +204,7 @@
 </div>
     </section>
 
-<!-- ===== Today’s Highlights (Replacement) ===== -->
+<!-- ===== Today’s Highlights (AUTO FROM deals.json) ===== -->
 <section id="todays-highlights" class="thSection" aria-label="Today’s Highlights">
   <div class="thWrap">
     <header class="thHeader thReveal">
@@ -212,125 +212,33 @@
       <p class="thSub">Top picks right now — quick, clean, and easy to shop.</p>
     </header>
 
+    <!-- JS injects HERO + MID + SCROLL here -->
     <div id="highlightsMount"></div>
-  </div>
-</section>
-
-    <!-- HERO -->
-    <a class="thCard thHero thReveal" href="#deals" data-open-deals>
-      <div class="thMedia thParallax" style="background-image:url('/assets/img/deals/mixmatch-carts.jpg');"></div>
-      <div class="thOverlay"></div>
-
-      <div class="thContent">
-        <span class="thPill thPill--vapes">VAPES</span>
-
-        <h3 class="thH3">Mix &amp; Match 1G Carts</h3>
-        <div class="thPrice">10 for $70</div>
-        <div class="thDetails">Crude Boys · Drip · Super Fire</div>
-
-        <div class="thCta">Shop now <span aria-hidden="true"></span></div>
-      </div>
-    </a>
-
-    <!-- MID GRID -->
-    <div class="thGrid2">
-      <!-- Mid Left: Brand spotlight -->
-      <a class="thCard thMid thReveal" href="#deals" data-open-deals>
-        <div class="thMedia" style="background-image:url('/assets/img/deals/dt-disposables.jpg');"></div>
-        <div class="thOverlay thOverlay--light"></div>
-
-        <div class="thContent">
-          <span class="thPill thPill--dtg">DUTCH TOUCH</span>
-          <h3 class="thH3">Disposables</h3>
-          <div class="thPrice">3 for $55</div>
-          <div class="thCta">View deal <span aria-hidden="true"></span></div>
-        </div>
-      </a>
-
-      <!-- Mid Right: Strain spotlight -->
-      <a class="thCard thMid thReveal" href="#deals" data-open-deals>
-        <div class="thMedia" style="background-image:url('/assets/img/deals/orange-kush-cake.jpg');"></div>
-        <div class="thOverlay thOverlay--light"></div>
-
-        <div class="thContent">
-          <span class="thPill thPill--flower">FLOWER</span>
-          <h3 class="thH3">Orange Kush Cake</h3>
-          <div class="thPrice">$100 oz</div>
-          <div class="thDetails">Deli special</div>
-          <div class="thCta">View deal <span aria-hidden="true"></span></div>
-        </div>
-      </a>
-    </div>
-
-    <!-- SCROLL ROW -->
-    <div class="thRowWrap thReveal">
-      <div class="thRowTitle">More deals</div>
-
-      <div class="thRow" role="list" aria-label="More deals">
-        <a class="thCard thMini" role="listitem" href="#deals" data-open-deals>
-          <div class="thMedia" style="background-image:url('/assets/img/deals/edibles.jpg');"></div>
-          <div class="thOverlay thOverlay--light"></div>
-          <div class="thContent thContent--mini">
-            <span class="thPill thPill--edibles">EDIBLES</span>
-            <div class="thMiniTitle">10 for $40</div>
-          </div>
-        </a>
-
-        <a class="thCard thMini" role="listitem" href="#deals" data-open-deals>
-          <div class="thMedia" style="background-image:url('/assets/img/deals/infused-prerolls.jpg');"></div>
-          <div class="thOverlay thOverlay--light"></div>
-          <div class="thContent thContent--mini">
-            <span class="thPill thPill--prerolls">INFUSED</span>
-            <div class="thMiniTitle">Mix &amp; Match 3 for $20</div>
-          </div>
-        </a>
-
-        <a class="thCard thMini" role="listitem" href="#deals" data-open-deals>
-          <div class="thMedia" style="background-image:url('/assets/img/deals/grip-oz.jpg');"></div>
-          <div class="thOverlay thOverlay--light"></div>
-          <div class="thContent thContent--mini">
-            <span class="thPill thPill--flower">FLOWER</span>
-            <div class="thMiniTitle">Grip oz 2 for $50</div>
-          </div>
-        </a>
-
-        <a class="thCard thMini" role="listitem" href="#deals" data-open-deals>
-          <div class="thMedia" style="background-image:url('/assets/img/deals/sour-gorilla-1g.jpg');"></div>
-          <div class="thOverlay thOverlay--light"></div>
-          <div class="thContent thContent--mini">
-            <span class="thPill thPill--vapes">VAPES</span>
-            <div class="thMiniTitle">1G Sour Gorilla $12</div>
-          </div>
-        </a>
-      </div>
-    </div>
   </div>
 </section>
 <!-- ===== /Today’s Highlights ===== -->
 
-    <!-- ===== DEALS (DR-style dropdown + SHOP ONLINE button) ===== -->
-    <section id="deals" class="section section--light">
-      <div class="container reveal">
-        <!-- ===== TODAY'S HIGHLIGHTS (AUTO FROM deals.json) ===== -->
-<div class="dealsHead">
-  <h2 class="section__title">Today’s Highlights</h2>
-  <p class="section__sub">Premium first. Deals always available.</p>
-</div>
-<div class="dealTilesWrap" id="dealTilesWrap" aria-label="Today's highlight deals"></div>
-        <details class="drDrop" id="dealsDrop">
-          <summary class="drDrop__summary">
-            <span class="drDrop__title">TODAY’S DEALS</span>
-            <span class="drDrop__chev" aria-hidden="true">▾</span>
-          </summary>
+<!-- ===== DEALS (DR-style dropdown + SHOP ONLINE button) ===== -->
+<section id="deals" class="section section--light">
+  <div class="container reveal">
 
-          <div class="drDrop__body">
-            <div id="dealList" class="drDeals"></div>
-          </div>
-        </details>
+    <!-- OPTIONAL: Deal tiles feature + quick hits (auto-picked from deals list) -->
+    <div class="dealTilesWrap" id="dealTiles" aria-label="Featured deals tiles"></div>
 
-        <button class="drShopBtn" data-open-shop type="button">SHOP ONLINE</button>
+    <details class="drDrop" id="dealsDrop">
+      <summary class="drDrop__summary">
+        <span class="drDrop__title">TODAY’S DEALS</span>
+        <span class="drDrop__chev" aria-hidden="true">▾</span>
+      </summary>
+
+      <div class="drDrop__body">
+        <div id="dealList" class="drDeals"></div>
       </div>
-    </section>
+    </details>
+
+    <button class="drShopBtn" data-open-shop type="button">SHOP ONLINE</button>
+  </div>
+</section>
 
     <!-- ===== DELI ===== -->
     <section id="deli" class="section section--deli">
