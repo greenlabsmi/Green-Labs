@@ -119,6 +119,25 @@ img{ max-width:100%; display:block; }
   100%{ background-position:100% 50%; }
 }
 
+/* ===== Hard stop for mobile horizontal overflow ===== */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;   /* better than hidden on iOS */
+}
+
+/* common overflow culprits */
+img, svg, video, canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+/* if any section uses 100vw, it can cause iOS “push right” */
+header, nav, section, .container, .wrap, .row {
+  max-width: 100%;
+}
 /* =========================================================
    Sticky header
 ========================================================= */
