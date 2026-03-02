@@ -1880,19 +1880,36 @@ header, nav, section, .container, .wrap, .row {
   .dealFeature:hover::after{opacity:1;transform:translateX(10%);}
   .dealQuick:hover{transform:translateY(-3px);box-shadow:0 24px 65px rgba(0,0,0,.14);}
 }
-@media (prefers-reduced-motion:reduce){
-  .dealFeature,.dealQuick,.dealFeature::after{transition:none !important;}
-}
-
 @media (max-width: 768px) {
   /* Target the container specifically inside your header/nav */
   header .container { 
-    padding-left: 8px !important;  /* Reduces the left gap */
-    padding-right: 8px !important; /* Reduces the right gap */
+    padding-left: 8px !important;  
+    padding-right: 8px !important; 
   }
 
-  /* Optional: If it's still slightly too wide, shrink the text gaps */
-  .header-nav { /* Replace with your actual flex container class */
-    gap: 8px !important; 
+  /* 1. Make the main header pack items to the left instead of spreading them evenly */
+  .sticky__inner {
+    justify-content: flex-start !important;
+  }
+
+  /* 2. Control the group holding the buttons & hamburger */
+  .actions {
+    flex: 1; /* Tells this group to take up all remaining width */
+    justify-content: flex-start !important; /* Scoots Shop/Deals/KID to the left */
+    gap: 4px !important; /* Squeezes the buttons tighter together so they fit */
+    margin-left: 18px !important; /* Creates extra space between the Logo and SHOP */
+  }
+
+  /* 3. Push the hamburger menu (which is the last item) to the absolute right edge */
+  .actions > :last-child {
+    margin-left: auto !important;
+  }
+
+  /* 4. Optional but recommended: Shrink the text slightly to guarantee they fit on small phones */
+  .btn--deals .glowLabel, 
+  .btn--kid .kidLabel,
+  .btn--shop {
+    font-size: 12px !important; 
+    padding: 0 8px !important;
   }
 }
