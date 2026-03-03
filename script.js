@@ -522,7 +522,7 @@ document.addEventListener('DOMContentLoaded', () => {
               ${isMini ? `<div class="thMiniTitle">${esc(title)}</div>` : `<h3 class="thH3">${esc(title)}</h3>`}
               ${!isMini && price ? `<div class="thPrice">${esc(price)}</div>` : ''}
               ${!isMini && details ? `<div class="thDetails">${esc(details)}</div>` : ''}
-              ${!isMini && cta ? `<div class="thCta">${esc(cta)} <span aria-hidden="true">→</span></div>` : ''}
+              ${!isMini && cta ? `<div class="thCta">${esc(cta)}</div>` : ''}
             </div>
           </a>
         `;
