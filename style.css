@@ -1566,7 +1566,7 @@ header, nav, section, .container, .wrap, .row {
   font-size:26px;
   line-height:1.08;
   letter-spacing:-0.02em;
-  color:#121614;
+  color:#0f1412;
 }
 
 #todays-highlights .thPrice{
@@ -1579,13 +1579,13 @@ header, nav, section, .container, .wrap, .row {
 
 #todays-highlights .thDetails{
   font-size:13px;
-  color:rgba(18,22,20,.72);
+  color: rgba(15,20,18,.72);
 }
 
 #todays-highlights .thCta{
   margin-top:12px;
   font-size:15px;
-  font-weight:800;
+  font-weight:900;
   color:#0B7D5A;
   display:inline-flex;
   align-items:center;
@@ -1645,6 +1645,30 @@ header, nav, section, .container, .wrap, .row {
   font-weight:900;
   line-height:1.1;
   color:#121614;
+}
+
+/* HERO text panel so readability is consistent on mobile + desktop */
+#todays-highlights .thHero .thContent{
+  display:inline-block;
+  max-width: 520px;
+  margin: 18px;
+  padding: 18px 18px 16px;
+
+  background: rgba(255,255,255,.78);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 18px;
+  box-shadow: 0 14px 34px rgba(0,0,0,.10);
+}
+
+/* tighten on small screens */
+@media (max-width:420px){
+  #todays-highlights .thHero .thContent{
+    max-width: calc(100% - 24px);
+    margin: 12px;
+  }
 }
 
 /* reveal animation base */
