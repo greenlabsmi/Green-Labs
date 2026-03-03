@@ -1470,7 +1470,7 @@ header, nav, section, .container, .wrap, .row {
 /* Price: new Green Labs pop green + faint glow */
 #todays-highlights .thHero .thPrice{
   margin: 12px 0 0;
-  font-size: clamp(44px, 8vw, 74px);
+  font-size: clamp(54px, 10vw, 90px);
   font-weight: 950;
   color: #19d6a3; /* lighter GL green */
   text-shadow:
