@@ -1696,7 +1696,7 @@ header, nav, section, .container, .wrap, .row {
 .dealQuick__left{display:flex;flex-direction:column;gap:6px;min-width:0;}
 .dealQuick__price{font-family:"Cinzel",serif;font-weight:900;letter-spacing:.06em;font-size:18px;}
 .dealQuick__text{font-weight:900;opacity:.78;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:62vw;}
-.dealQuick__arrow{width:34px;height:34px;border-radius:12px;display:grid;place-items:center;border:1px solid rgba(0,0,0,.10);background:rgba(11,125,90,.06);color:#0b5f47;font-size:18px;}
+.dealQuick__arrow{width:34px;height:34px;border-radius:12px;display:none;place-items:center;border:1px solid rgba(0,0,0,.10);background:rgba(11,125,90,.06);color:#0b5f47;font-size:18px;}
 @media (min-width:860px){
   .dealTilesWrap{grid-template-columns:1.2fr .8fr;align-items:stretch;}
   .dealQuickGrid{grid-template-columns:1fr 1fr;}
