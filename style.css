@@ -571,12 +571,18 @@ header, nav, section, .container, .wrap, .row {
 .hero__title {
   font-family: "Cinzel", serif;
   font-weight: 900;
-  /* This scales from 40px on phones up to 72px on big desktop screens */
   font-size: clamp(40px, 5.5vw, 72px); 
   line-height: 1.05;
   letter-spacing: 0.02em;
   margin: 16px 0;
   color: #ffffff;
+}
+
+/* Elegant typographic rhythm for connector words */
+.title-small {
+  font-size: 0.55em; /* Keeps them perfectly scaled relative to the big text */
+  font-weight: 700; /* Slightly less heavy */
+  color: rgba(255, 255, 255, 0.75); /* Softens them so the main words pop */
 }
 
 .hero__sub {
