@@ -560,23 +560,35 @@ header, nav, section, .container, .wrap, .row {
 /* =========================================================
    HERO
 ========================================================= */
-.hero__grid{
-  display:grid;
-  gap:18px;
-  grid-template-columns: 1fr;
-  align-items:center;
+.hero__grid {
+  display: grid; 
+  gap: 18px; 
+  grid-template-columns: 1fr; 
+  align-items: center; 
 }
+
+/* Hero Typography */
+.hero__title {
+  font-family: "Cinzel", serif;
+  font-weight: 900;
+  /* This scales from 40px on phones up to 72px on big desktop screens */
+  font-size: clamp(40px, 5.5vw, 72px); 
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  margin: 16px 0;
+  color: #ffffff;
+}
+
+.hero__sub {
+  /* Scales slightly from 16px to 20px */
+  font-size: clamp(16px, 1.5vw, 20px);
+  line-height: 1.5;
+  color: rgba(233, 236, 235, 0.85);
+  margin-bottom: 28px;
+  max-width: 90%;
+}
+
 /* Container for the badge */
-.hero__badge {
-  display: inline-flex;
-  align-items: center;
-  width: fit-content;
-  padding: 6px 12px;
-  border-radius: 999px;
-  border: 1px solid rgba(214,163,74,.30);
-  background: rgba(214,163,74,.12);
-  margin-bottom: 10px;
-}
 
 /* The text inside with the single-line fix and glisten effect */
 .hero__badge-text {
