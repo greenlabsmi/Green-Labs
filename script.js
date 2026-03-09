@@ -528,6 +528,90 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
       };
 
+       <script>
+  // Main education card open/close
+  document.querySelectorAll('.eduCard').forEach(card => {
+    const btn = card.querySelector('.eduCard__toggle');
+
+    btn.addEventListener('click', () => {
+      const isOpen = card.classList.contains('is-open');
+
+      document.querySelectorAll('.eduCard').forEach(other => {
+        other.classList.remove('is-open');
+        const otherBtn = other.querySelector('.eduCard__toggle');
+        if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+      });
+
+      if (!isOpen) {
+        card.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  // Feel quiz data
+  const feelMap = {
+    relaxed: {
+      title: 'Go for calm, body-friendly, stress-down options.',
+      copy: 'You may want terpene-forward flower or products that lean grounding and mellow rather than racey or sharp.',
+      chips: ['Myrcene', 'Caryophyllene', 'Linalool', 'Evening vibe'],
+      note: 'Ask the Green Labs team for relaxing flower, smooth indicas/hybrids, or low-dose edibles for a softer landing.'
+    },
+    creative: {
+      title: 'Look for bright, clear, idea-friendly profiles.',
+      copy: 'You may enjoy products that feel mentally active, upbeat, and less couch-heavy.',
+      chips: ['Limonene', 'Pinene', 'Balanced hybrid', 'Daytime vibe'],
+      note: 'Ask for something uplifting without feeling too jittery. A flavorful deli flower rec is perfect here.'
+    },
+    social: {
+      title: 'Aim for upbeat, happy, conversation-friendly picks.',
+      copy: 'The goal here is feeling present, open, and easygoing without getting too stuck or too heavy.',
+      chips: ['Limonene', 'Caryophyllene', 'Hybrid', 'Mood-forward'],
+      note: 'Ask your budtender for a strain that feels fun and smooth, not too sleepy and not too intense.'
+    },
+    sleep: {
+      title: 'Go heavier, softer, and more end-of-day.',
+      copy: 'For nighttime, many people prefer relaxing, body-heavy products that help them settle down.',
+      chips: ['Myrcene', 'Linalool', 'Heavy hybrid', 'Night use'],
+      note: 'Ask the Green Labs team for sleepy-time options and start low, especially with edibles.'
+    },
+    balanced: {
+      title: 'A smooth middle lane is probably your best move.',
+      copy: 'Balanced shoppers usually want a comfortable experience that stays functional and doesn’t overdo any one direction.',
+      chips: ['Hybrid', 'Moderate THC', 'Functional', 'Steady vibe'],
+      note: 'This is a great lane for newer shoppers or anyone wanting something versatile.'
+    }
+  };
+
+  const feelButtons = document.querySelectorAll('.feelBtn');
+  const feelResult = document.getElementById('feelResult');
+  const feelTitle = document.getElementById('feelTitle');
+  const feelCopy = document.getElementById('feelCopy');
+  const feelChips = document.getElementById('feelChips');
+  const feelNote = document.getElementById('feelNote');
+
+  feelButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const key = btn.dataset.feel;
+      const data = feelMap[key];
+      if (!data) return;
+
+      feelTitle.textContent = data.title;
+      feelCopy.textContent = data.copy;
+      feelNote.textContent = data.note;
+
+      feelChips.innerHTML = data.chips
+        .map(chip => `<span class="feelChip">${chip}</span>`)
+        .join('');
+
+      feelResult.hidden = false;
+
+      feelButtons.forEach(b => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+    });
+  });
+</script>
+
       mount.innerHTML = `
         ${hero ? cardHTML(hero, 'hero') : ''}
 
