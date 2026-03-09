@@ -566,6 +566,7 @@ header, nav, section, .container, .wrap, .row {
   grid-template-columns: 1fr;
   align-items:center;
 }
+/* Container for the badge */
 .hero__badge {
   display: inline-flex;
   align-items: center;
@@ -574,63 +575,40 @@ header, nav, section, .container, .wrap, .row {
   border-radius: 999px;
   border: 1px solid rgba(214,163,74,.30);
   background: rgba(214,163,74,.12);
+  margin-bottom: 10px;
+}
+
+/* The text inside with the single-line fix and glisten effect */
+.hero__badge-text {
   font-weight: 900;
   letter-spacing: .08em;
   font-family: "Cinzel", serif;
-  color: rgba(228, 184, 105, 0.95);
-  margin-bottom: 10px;
   
   /* Force single line and smart scaling for mobile */
   white-space: nowrap;
   font-size: clamp(9px, 2.5vw, 12px);
 
-  /* Setup for the shimmer wink */
-  position: relative;
-  overflow: hidden;
-}
-
-/* The 'Wink' Light Sweep */
-.hero__badge::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 60%;
-  height: 100%;
+  /* The text-only gold glisten */
   background: linear-gradient(
     120deg,
-    transparent,
-    rgba(255, 255, 255, 0.5),
-    transparent
+    rgba(228, 184, 105, 0.95) 0%,
+    rgba(228, 184, 105, 0.95) 45%,
+    #ffffff 50%,
+    rgba(228, 184, 105, 0.95) 55%,
+    rgba(228, 184, 105, 0.95) 100%
   );
-  animation: goldWink 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textGlisten 6s linear infinite;
 }
 
-@keyframes goldWink {
-  0% { left: -100%; }
-  15% { left: 200%; } 
-  100% { left: 200%; }
+/* The animation timing */
+@keyframes textGlisten {
+  0% { background-position: 100% 50%; }
+  15% { background-position: 0% 50%; } /* Smooth glisten across */
+  100% { background-position: 0% 50%; } /* Long pause before next glisten */
 }
-.hero__title{
-  font-family:"Cinzel", serif;
-  font-weight:900;
-  letter-spacing:.08em;
-  font-size: clamp(38px, 6vw, 58px);
-  margin: 0 0 10px;
-}
-.hero__sub{
-  margin:0;
-  color: rgba(233,236,235,.78);
-  font-weight:700;
-  max-width: 62ch;
-}
-.hero__cta{
-  margin-top:16px;
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-}
-.hero__btn{ height: 46px; padding: 0 18px; }
 
 /* Update the existing hero__media class to act as a block link */
 .hero__media {
