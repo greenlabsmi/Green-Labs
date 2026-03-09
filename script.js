@@ -485,60 +485,22 @@ document.addEventListener('DOMContentLoaded', () => {
   `;
 }
 
-    function renderHighlightsFromConfig(cfg, mount) {
-      const slots = cfg?.slots || {};
-      const items = cfg?.items || {};
+/* =========================================================
+   GREEN LABS — BUY GUIDE
+========================================================= */
+(function () {
+  const cards = document.querySelectorAll('[data-guide-card]');
 
-      const hero = items[slots.hero];
-      const midL = items[slots.mid_left];
-      const midR = items[slots.mid_right];
-      const scrollIds = Array.isArray(slots.scroll) ? slots.scroll : [];
-
-      const cardHTML = (item, kind) => {
-        const pill = item.pill || '';
-        const pillClass = item.pillClass || 'thPill--vapes';
-        const title = item.title || '';
-        const price = item.price || '';
-        const details = item.details || '';
-        const cta = item.cta || (kind === 'mini' ? '' : 'View deal');
-        const href = item.href || '#deals';
-        const img = fixAssetPath(item.image || '');
-
-        const isMini = kind === 'mini';
-        const cardClass =
-          kind === 'hero' ? 'thCard thHero thReveal' :
-          isMini ? 'thCard thMini thReveal' :
-          'thCard thMid thReveal';
-
-        const overlayClass = kind === 'hero' ? 'thOverlay' : 'thOverlay thOverlay--light';
-        const contentClass = isMini ? 'thContent thContent--mini' : 'thContent';
-
-        return `
-          <a class="${cardClass}" href="${esc(href)}" data-open-deals>
-            <div class="thMedia ${kind === 'hero' ? 'thParallax' : ''}" style="background-image:url('${esc(img)}');"></div>
-            <div class="${overlayClass}"></div>
-            <div class="${contentClass}">
-              ${pill ? `<span class="thPill ${esc(pillClass)}">${esc(pill)}</span>` : ''}
-              ${isMini ? `<div class="thMiniTitle">${esc(title)}</div>` : `<h3 class="thH3">${esc(title)}</h3>`}
-              ${!isMini && price ? `<div class="thPrice">${esc(price)}</div>` : ''}
-              ${!isMini && details ? `<div class="thDetails">${esc(details)}</div>` : ''}
-              ${!isMini && cta ? `<div class="thCta">${esc(cta)}</div>` : ''}
-            </div>
-          </a>
-        `;
-      };
-
-       <script>
-  // Main education card open/close
-  document.querySelectorAll('.eduCard').forEach(card => {
-    const btn = card.querySelector('.eduCard__toggle');
+  cards.forEach((card) => {
+    const btn = card.querySelector('.guideCard__toggle');
+    if (!btn) return;
 
     btn.addEventListener('click', () => {
       const isOpen = card.classList.contains('is-open');
 
-      document.querySelectorAll('.eduCard').forEach(other => {
-        other.classList.remove('is-open');
-        const otherBtn = other.querySelector('.eduCard__toggle');
+      cards.forEach((otherCard) => {
+        otherCard.classList.remove('is-open');
+        const otherBtn = otherCard.querySelector('.guideCard__toggle');
         if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
       });
 
@@ -549,68 +511,66 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Feel quiz data
-  const feelMap = {
+  const vibeData = {
     relaxed: {
-      title: 'Go for calm, body-friendly, stress-down options.',
-      copy: 'You may want terpene-forward flower or products that lean grounding and mellow rather than racey or sharp.',
-      chips: ['Myrcene', 'Caryophyllene', 'Linalool', 'Evening vibe'],
-      note: 'Ask the Green Labs team for relaxing flower, smooth indicas/hybrids, or low-dose edibles for a softer landing.'
+      title: 'You may want something calm, body-friendly, and terpene-forward.',
+      text: 'Look for flower or products that lean mellow, grounding, and less racey. This is a great lane for people trying to unwind, settle in, or slow the day down.',
+      chips: ['Myrcene', 'Caryophyllene', 'Evening vibe', 'Relaxing flower'],
+      note: 'Ask the team about relaxing Dutch Deli flower or softer, balanced options if you want a smoother ride.'
     },
     creative: {
-      title: 'Look for bright, clear, idea-friendly profiles.',
-      copy: 'You may enjoy products that feel mentally active, upbeat, and less couch-heavy.',
-      chips: ['Limonene', 'Pinene', 'Balanced hybrid', 'Daytime vibe'],
-      note: 'Ask for something uplifting without feeling too jittery. A flavorful deli flower rec is perfect here.'
+      title: 'You may want something bright, clear, and idea-friendly.',
+      text: 'Look for profiles that feel uplifting, flavorful, and mentally active without being too sharp or overwhelming.',
+      chips: ['Limonene', 'Pinene', 'Daytime vibe', 'Uplifting'],
+      note: 'A terpene-forward Dutch Touch Genetics recommendation could be a great place to start here.'
     },
     social: {
-      title: 'Aim for upbeat, happy, conversation-friendly picks.',
-      copy: 'The goal here is feeling present, open, and easygoing without getting too stuck or too heavy.',
-      chips: ['Limonene', 'Caryophyllene', 'Hybrid', 'Mood-forward'],
-      note: 'Ask your budtender for a strain that feels fun and smooth, not too sleepy and not too intense.'
+      title: 'You may want something upbeat, happy, and conversation-friendly.',
+      text: 'This lane is great for feeling open, present, and engaged without going too sleepy or too heavy.',
+      chips: ['Hybrid', 'Mood-forward', 'Limonene', 'Balanced energy'],
+      note: 'Tell your budtender you want something fun and smooth, not too sleepy and not too intense.'
     },
-    sleep: {
-      title: 'Go heavier, softer, and more end-of-day.',
-      copy: 'For nighttime, many people prefer relaxing, body-heavy products that help them settle down.',
-      chips: ['Myrcene', 'Linalool', 'Heavy hybrid', 'Night use'],
-      note: 'Ask the Green Labs team for sleepy-time options and start low, especially with edibles.'
+    sleepy: {
+      title: 'You may want something heavier, softer, and more end-of-day.',
+      text: 'For nighttime, many people prefer body-forward products that help them settle down and quiet the pace a little.',
+      chips: ['Myrcene', 'Linalool', 'Night use', 'Heavy hybrid'],
+      note: 'Ask about evening flower, mellow edibles, or relaxing Dutch Deli options — and always start low.'
     },
     balanced: {
-      title: 'A smooth middle lane is probably your best move.',
-      copy: 'Balanced shoppers usually want a comfortable experience that stays functional and doesn’t overdo any one direction.',
+      title: 'You may want a smooth middle lane that stays comfortable and functional.',
+      text: 'Balanced shoppers usually want something steady, enjoyable, and versatile without going too far in any one direction.',
       chips: ['Hybrid', 'Moderate THC', 'Functional', 'Steady vibe'],
-      note: 'This is a great lane for newer shoppers or anyone wanting something versatile.'
+      note: 'This is a strong choice for newer shoppers or anyone wanting something flexible and easygoing.'
     }
   };
 
-  const feelButtons = document.querySelectorAll('.feelBtn');
-  const feelResult = document.getElementById('feelResult');
-  const feelTitle = document.getElementById('feelTitle');
-  const feelCopy = document.getElementById('feelCopy');
-  const feelChips = document.getElementById('feelChips');
-  const feelNote = document.getElementById('feelNote');
+  const vibeButtons = document.querySelectorAll('.vibeBtn');
+  const vibeResult = document.getElementById('vibeResult');
+  const vibeResultTitle = document.getElementById('vibeResultTitle');
+  const vibeResultText = document.getElementById('vibeResultText');
+  const vibeResultChips = document.getElementById('vibeResultChips');
+  const vibeResultNote = document.getElementById('vibeResultNote');
 
-  feelButtons.forEach(btn => {
+  vibeButtons.forEach((btn) => {
     btn.addEventListener('click', () => {
-      const key = btn.dataset.feel;
-      const data = feelMap[key];
+      const key = btn.dataset.vibe;
+      const data = vibeData[key];
       if (!data) return;
 
-      feelTitle.textContent = data.title;
-      feelCopy.textContent = data.copy;
-      feelNote.textContent = data.note;
+      vibeButtons.forEach((b) => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
 
-      feelChips.innerHTML = data.chips
-        .map(chip => `<span class="feelChip">${chip}</span>`)
+      vibeResultTitle.textContent = data.title;
+      vibeResultText.textContent = data.text;
+      vibeResultNote.textContent = data.note;
+      vibeResultChips.innerHTML = data.chips
+        .map((chip) => `<span class="vibeResult__chip">${chip}</span>`)
         .join('');
 
-      feelResult.hidden = false;
-
-      feelButtons.forEach(b => b.classList.remove('is-active'));
-      btn.classList.add('is-active');
+      vibeResult.hidden = false;
     });
   });
-</script>
+})();
 
       mount.innerHTML = `
         ${hero ? cardHTML(hero, 'hero') : ''}
