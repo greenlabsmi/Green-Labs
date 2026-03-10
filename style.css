@@ -898,10 +898,12 @@ header, nav, section, .container, .wrap, .row {
   font-weight:700;
 }
 
-.buyGuide__cards{
-  display:grid;
-  gap: 22px;
-  margin-top: 34px;
+.buyGuide__cards {
+  max-width: 900px; /* Prevents them from stretching too wide */
+  margin: 0 auto; /* Centers the whole column perfectly */
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .guideCard{
