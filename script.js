@@ -572,9 +572,68 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 })();
 
-    // Safety fallback for highlights
+   // ===== Today's Highlights Render Function =====
   function renderHighlightsFromConfig(data, mount) {
-    mount.innerHTML = `<div style="padding:14px; opacity:.7; text-align:center;">Highlights temporarily disabled while updating layout.</div>`;
+    if (!data || !data.items || !data.layout) return;
+    const { items, layout } = data;
+
+    const hero = items[layout.hero];
+    const midL = layout.mid ? items[layout.mid[0]] : null;
+    const midR = layout.mid ? items[layout.mid[1]] : null;
+    const scrollIds = layout.scroll || [];
+
+    const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+    const cardHTML = (it, type) => {
+      if (!it) return '';
+      let sizeClass = type === 'hero' ? 'thHero thReveal' : type === 'mid' ? 'thMid thReveal' : 'thMini';
+      const pillClass = it.tag ? `thPill--${it.tag.toLowerCase().replace(/[^a-z]/g, '')}` : '';
+      
+      // Fix image paths for GitHub Pages
+      let img = it.image || '';
+      if (img && img.startsWith('/assets/')) img = `.${img}`;
+
+      if (type === 'mini') {
+        return `
+          <a href="#deals" class="thCard ${sizeClass}" data-open-deals>
+            <div class="thMedia" style="background-image:url('${esc(img)}')"></div>
+            <div class="thOverlay"></div>
+            <div class="thContent thContent--mini" style="position:absolute; bottom:0; width:100%;">
+              ${it.tag ? `<div class="thPill ${pillClass}">${esc(it.tag)}</div>` : ''}
+              <div class="thMiniTitle" style="color:#fff;">${esc(it.title)}</div>
+            </div>
+          </a>
+        `;
+      }
+
+      return `
+        <a href="#deals" class="thCard ${sizeClass}" data-open-deals>
+          <div class="thMedia" style="background-image:url('${esc(img)}')"></div>
+          <div class="thOverlay"></div>
+          <div class="thContent">
+            ${it.tag ? `<div class="thPill ${pillClass}">${esc(it.tag)}</div>` : ''}
+            <h3 class="thH3">${esc(it.title)}</h3>
+            ${it.price ? `<div class="thPrice">${esc(it.price)}</div>` : ''}
+            ${it.details ? `<div class="thDetails">${esc(it.details)}</div>` : ''}
+            <div class="thCta">Shop Deal →</div>
+          </div>
+        </a>
+      `;
+    };
+
+    mount.innerHTML = `
+      ${hero ? cardHTML(hero, 'hero') : ''}
+      <div class="thGrid2">
+        ${midL ? cardHTML(midL, 'mid') : ''}
+        ${midR ? cardHTML(midR, 'mid') : ''}
+      </div>
+      <div class="thRowWrap thReveal">
+        <div class="thRowTitle">More deals</div>
+        <div class="thRow" role="list" aria-label="More deals">
+          ${scrollIds.map(id => items[id]).filter(Boolean).map(it => cardHTML(it, 'mini')).join('')}
+        </div>
+      </div>
+    `;
   }
   })();
 });
