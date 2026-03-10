@@ -572,21 +572,9 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 })();
 
-      mount.innerHTML = `
-        ${hero ? cardHTML(hero, 'hero') : ''}
-
-        <div class="thGrid2">
-          ${midL ? cardHTML(midL, 'mid') : ''}
-          ${midR ? cardHTML(midR, 'mid') : ''}
-        </div>
-
-        <div class="thRowWrap thReveal">
-          <div class="thRowTitle">More deals</div>
-          <div class="thRow" role="list" aria-label="More deals">
-            ${scrollIds.map(id => items[id]).filter(Boolean).map(it => cardHTML(it, 'mini')).join('')}
-          </div>
-        </div>
-      `;
-    }
+    // Safety fallback for highlights
+  function renderHighlightsFromConfig(data, mount) {
+    mount.innerHTML = `<div style="padding:14px; opacity:.7; text-align:center;">Highlights temporarily disabled while updating layout.</div>`;
+  }
   })();
 });
