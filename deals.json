@@ -1,9 +1,11 @@
 {
   "highlights": {
-    "slots": {
+    "layout": {
       "hero": "mixmatch_carts",
-      "mid_left": "dt_disposables",
-      "mid_right": "deli_orange_kush_cake",
+      "mid": [
+        "dt_disposables",
+        "deli_orange_kush_cake"
+      ],
       "scroll": [
         "edibles_10_40",
         "infused_prerolls_3_20",
@@ -11,6 +13,7 @@
         "sour_gorilla_1g_12"
       ]
     },
+    
     "items": {
       "mixmatch_carts": {
         "pill": "VAPES",
