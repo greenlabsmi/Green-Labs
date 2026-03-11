@@ -1187,7 +1187,7 @@ header, nav, section, .container, .wrap, .row {
 @media (max-width: 900px){
 
   .guideCard__main{
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 120px;
     gap: 14px;
   }
 
