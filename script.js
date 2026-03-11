@@ -323,31 +323,237 @@ document.addEventListener('DOMContentLoaded', () => {
         initTodaysHighlightsFX();
       });
 
-    function renderDealsDropdown(data) {
-      const html = (data || []).map(cat => {
-        const catTitle = `<div class="catTitle">${esc(cat.category || '')}</div>`;
+   function slugifyDealCategory(str = '') {
+  return String(str)
+    .toLowerCase()
+    .trim()
+    .replace(/&/g, 'and')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
+}
 
-        if (Array.isArray(cat.groups)) {
-          const groups = cat.groups.map(g => {
-            const items = (g.items || []).map(it => `<li>${esc(it)}</li>`).join('');
-            return `
-              <div class="group">
-                <div class="groupTitle">${esc(g.title || '')}</div>
-                <ul>${items}</ul>
-              </div>
-            `;
-          }).join('');
-          return `<div class="cat">${catTitle}${groups}</div>`;
-        }
+function emojiForDealCategory(label = '') {
+  const k = String(label).toLowerCase();
+  if (k.includes('flower')) return '🌿';
+  if (k.includes('vape')) return '💨';
+  if (k.includes('edible')) return '🍬';
+  if (k.includes('concentrate')) return '🧊';
+  if (k.includes('pre-roll') || k.includes('preroll')) return '🥇';
+  if (k.includes('accessor')) return '🧰';
+  if (k.includes('dtg') || k.includes('dutch')) return '🏆';
+  if (k.includes('topical')) return '🧴';
+  if (k.includes('tincture')) return '💧';
+  return '•';
+}
 
-        const items = (cat.items || []).map(it => `<li>${esc(it)}</li>`).join('');
-        return `<div class="cat">${catTitle}<ul>${items}</ul></div>`;
-      }).join('');
+function highlightDealMatch(text, query) {
+  if (!query) return esc(text);
+  const safe = esc(text);
+  const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  try {
+    return safe.replace(new RegExp(`(${escapedQuery})`, 'ig'), '<mark>$1</mark>');
+  } catch {
+    return safe;
+  }
+}
 
-      dealList.innerHTML =
-        html + `<div style="margin-top:10px;font-weight:800;opacity:.70;">All prices include tax.</div>`;
+function normalizeDealsData(data) {
+  if (!Array.isArray(data)) return [];
+
+  return data.map((cat) => {
+    const category = cat.category || 'Deals';
+    const id = slugifyDealCategory(category);
+
+    let groups = [];
+
+    if (Array.isArray(cat.groups) && cat.groups.length) {
+      groups = cat.groups.map((g) => ({
+        title: g.title || '',
+        lines: Array.isArray(g.items) ? g.items.filter(Boolean) : []
+      }));
+    } else if (Array.isArray(cat.items) && cat.items.length) {
+      groups = [{
+        title: '',
+        lines: cat.items.filter(Boolean)
+      }];
     }
 
+    return { category, id, groups };
+  }).filter(cat => cat.groups.some(g => g.lines.length));
+}
+
+function bindDealJumpChips() {
+  const wrap = document.getElementById('dealJumpWrap');
+  if (!wrap) return;
+
+  wrap.querySelectorAll('[data-jump]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetSel = btn.getAttribute('data-jump');
+      const target = document.querySelector(targetSel);
+      if (!target) return;
+
+      wrap.querySelectorAll('.drJumpChip').forEach(chip => chip.classList.remove('is-active'));
+      btn.classList.add('is-active');
+
+      target.scrollIntoView({ behavior: prefersReduce ? 'auto' : 'smooth', block: 'start' });
+    });
+  });
+}
+
+function bindDealSearch() {
+  const input = document.getElementById('dealSearch');
+  const meta = document.getElementById('dealSearchMeta');
+  const cats = document.querySelectorAll('[data-category-block]');
+  const lines = document.querySelectorAll('[data-line]');
+  if (!input || !cats.length) return;
+
+  const run = () => {
+    const q = input.value.trim().toLowerCase();
+
+    let visibleCategories = 0;
+    let visibleLines = 0;
+
+    lines.forEach(line => {
+      const hay = line.getAttribute('data-search') || '';
+      const textEl = line.querySelector('[data-line-text]');
+      const originalText = textEl ? textEl.textContent : '';
+
+      const match = !q || hay.includes(q);
+      line.classList.toggle('is-hidden', !match);
+
+      if (textEl) {
+        textEl.innerHTML = match ? highlightDealMatch(originalText, q) : esc(originalText);
+      }
+
+      if (match) visibleLines++;
+    });
+
+    cats.forEach(cat => {
+      const catLines = cat.querySelectorAll('[data-line]');
+      const visibleCatLines = [...catLines].filter(line => !line.classList.contains('is-hidden'));
+
+      const groups = cat.querySelectorAll('[data-group]');
+      groups.forEach(group => {
+        const groupLines = group.querySelectorAll('[data-line]');
+        const hasVisible = [...groupLines].some(line => !line.classList.contains('is-hidden'));
+        group.style.display = hasVisible ? '' : 'none';
+      });
+
+      const hasVisibleCategory = visibleCatLines.length > 0;
+      cat.classList.toggle('is-hidden', !hasVisibleCategory);
+
+      if (hasVisibleCategory) visibleCategories++;
+    });
+
+    if (meta) {
+      if (q) {
+        meta.hidden = false;
+        meta.textContent = visibleLines
+          ? `Showing ${visibleLines} matching deal${visibleLines === 1 ? '' : 's'} across ${visibleCategories} categor${visibleCategories === 1 ? 'y' : 'ies'}.`
+          : `No deals matched “${input.value.trim()}”. Try another keyword like flower, ounce, deli, carts, or edible.`;
+      } else {
+        meta.hidden = true;
+        meta.textContent = '';
+      }
+    }
+  };
+
+  input.addEventListener('input', run);
+}
+
+function bindDealBackTop() {
+  const details = document.getElementById('dealsDrop');
+  const backTop = document.getElementById('drBackTop');
+  if (!details || !backTop) return;
+
+  const toggleVisibility = () => {
+    backTop.hidden = !details.open;
+  };
+
+  details.addEventListener('toggle', toggleVisibility);
+
+  backTop.addEventListener('click', () => {
+    const summary = details.querySelector('summary');
+    if (summary) {
+      summary.scrollIntoView({ behavior: prefersReduce ? 'auto' : 'smooth', block: 'start' });
+    } else {
+      details.scrollIntoView({ behavior: prefersReduce ? 'auto' : 'smooth', block: 'start' });
+    }
+  });
+
+  toggleVisibility();
+}
+
+function renderDealsDropdown(data) {
+  const jumpWrap = document.getElementById('dealJumpWrap');
+  const searchMeta = document.getElementById('dealSearchMeta');
+
+  const cats = normalizeDealsData(data);
+
+  if (!cats.length) {
+    dealList.innerHTML = '<div class="drEmpty">No deals available right now.</div>';
+    if (jumpWrap) jumpWrap.innerHTML = '';
+    if (searchMeta) {
+      searchMeta.hidden = true;
+      searchMeta.textContent = '';
+    }
+    return;
+  }
+
+  dealList.innerHTML = cats.map(cat => {
+    const lineCount = cat.groups.reduce((sum, g) => sum + g.lines.length, 0);
+
+    const groupsHtml = cat.groups.map(group => {
+      const linesHtml = group.lines.map(line => `
+        <div class="drLine" data-line data-search="${esc(
+          `${cat.category} ${group.title || ''} ${line}`.toLowerCase()
+        )}">
+          <div class="drLine__dot" aria-hidden="true">•</div>
+          <div class="drLine__text" data-line-text>${esc(line)}</div>
+        </div>
+      `).join('');
+
+      return `
+        <div class="drGroup" data-group>
+          ${group.title ? `<div class="drGroup__title">${esc(group.title)}</div>` : ''}
+          <div class="drLines">
+            ${linesHtml}
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    return `
+      <section class="drCat" id="deal-cat-${cat.id}" data-category-block data-category-name="${esc(cat.category.toLowerCase())}">
+        <div class="drCat__head">
+          <div class="drCat__titleWrap">
+            <div class="drCat__icon" aria-hidden="true">${emojiForDealCategory(cat.category)}</div>
+            <h3 class="drCat__title">${esc(cat.category)}</h3>
+          </div>
+          <div class="drCat__count">${lineCount} deal${lineCount === 1 ? '' : 's'}</div>
+        </div>
+        ${groupsHtml}
+      </section>
+    `;
+  }).join('') + `<div style="margin-top:10px;font-weight:800;opacity:.70;">All prices include tax.</div>`;
+
+  if (jumpWrap) {
+    jumpWrap.innerHTML = cats.map(cat => `
+      <button class="drJumpChip" type="button" data-jump="#deal-cat-${cat.id}">
+        ${esc(cat.category)}
+      </button>
+    `).join('');
+  }
+
+  if (searchMeta) {
+    searchMeta.hidden = true;
+    searchMeta.textContent = '';
+  }
+
+  bindDealJumpChips();
+  bindDealSearch();
+  bindDealBackTop();
+}
     function renderDealTiles(data) {
   if (!tilesWrap) return;
 
