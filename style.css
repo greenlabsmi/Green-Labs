@@ -792,29 +792,45 @@ header, nav, section, .container, .wrap, .row {
     transform: rotate(180deg);
 }
 
+/* Smoothly animates from the peek state to full height */
 .drDrop__body {
     position: relative;
     padding: 20px 20px 40px;
     background: #ffffff;
-}
-
-/* Constrain the height to show just the search, chips, and Flower header */
-.drDrop:not(.is-fully-open) .drDrop__body {
-    max-height: 260px; /* Tweak this number up or down to reveal exactly what you want */
+    max-height: 4000px; /* Big enough to fit all deals when open */
     overflow: hidden;
+    transition: max-height 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-/* The sexy frosted fade-out over the hidden content */
-.drDrop:not(.is-fully-open) .drDrop__body::after {
+/* Constrain the height for the "Peek" state */
+.drDrop:not(.is-fully-open) .drDrop__body {
+    max-height: 260px; 
+}
+
+/* Hide the 'Back to Top' button while peeking */
+.drDrop:not(.is-fully-open) .drBackTop {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* The Frosted Glass Blur Element */
+.drDrop__body::after {
     content: "";
     position: absolute;
     bottom: 0; left: 0; right: 0;
     height: 120px;
-    background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.85) 50%, #ffffff 100%);
+    background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.9) 60%, #ffffff 100%);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
-    pointer-events: none; /* Allows clicking things underneath if needed */
+    pointer-events: none;
     z-index: 5;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+/* Make the blur visible ONLY when in the peek state */
+.drDrop:not(.is-fully-open) .drDrop__body::after {
+    opacity: 1;
 }
 
 .drBackTop{
