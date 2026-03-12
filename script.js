@@ -484,6 +484,167 @@ function bindDealBackTop() {
   toggleVisibility();
 }
 
+function slugifyDealCategory(str = '') {
+  return String(str)
+    .toLowerCase()
+    .trim()
+    .replace(/&/g, 'and')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
+}
+
+function emojiForDealCategory(label = '') {
+  const k = String(label).toLowerCase();
+  if (k.includes('flower')) return '🌿';
+  if (k.includes('vape')) return '💨';
+  if (k.includes('edible')) return '🍬';
+  if (k.includes('concentrate')) return '🧊';
+  if (k.includes('pre-roll') || k.includes('preroll')) return '🥇';
+  if (k.includes('accessor')) return '🧰';
+  if (k.includes('dtg') || k.includes('dutch')) return '🏆';
+  if (k.includes('topical')) return '🧴';
+  if (k.includes('tincture')) return '💧';
+  return '•';
+}
+
+function highlightDealMatch(text, query) {
+  if (!query) return esc(text);
+  const safe = esc(text);
+  const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  try {
+    return safe.replace(new RegExp(`(${escapedQuery})`, 'ig'), '<mark>$1</mark>');
+  } catch {
+    return safe;
+  }
+}
+
+function normalizeDealsData(data) {
+  if (!Array.isArray(data)) return [];
+
+  return data.map((cat) => {
+    const category = cat.category || 'Deals';
+    const id = slugifyDealCategory(category);
+
+    let groups = [];
+
+    if (Array.isArray(cat.groups) && cat.groups.length) {
+      groups = cat.groups.map((g) => ({
+        title: g.title || '',
+        lines: Array.isArray(g.items) ? g.items.filter(Boolean) : []
+      }));
+    } else if (Array.isArray(cat.items) && cat.items.length) {
+      groups = [{
+        title: '',
+        lines: cat.items.filter(Boolean)
+      }];
+    }
+
+    return { category, id, groups };
+  }).filter(cat => cat.groups.some(g => g.lines.length));
+}
+
+function bindDealJumpChips() {
+  const wrap = document.getElementById('dealJumpWrap');
+  if (!wrap) return;
+
+  wrap.querySelectorAll('[data-jump]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetSel = btn.getAttribute('data-jump');
+      const target = document.querySelector(targetSel);
+      if (!target) return;
+
+      wrap.querySelectorAll('.drJumpChip').forEach(chip => chip.classList.remove('is-active'));
+      btn.classList.add('is-active');
+
+      target.scrollIntoView({ behavior: prefersReduce ? 'auto' : 'smooth', block: 'start' });
+    });
+  });
+}
+
+function bindDealSearch() {
+  const input = document.getElementById('dealSearch');
+  const meta = document.getElementById('dealSearchMeta');
+  const cats = document.querySelectorAll('[data-category-block]');
+  const lines = document.querySelectorAll('[data-line]');
+  if (!input || !cats.length) return;
+
+  const run = () => {
+    const q = input.value.trim().toLowerCase();
+
+    let visibleCategories = 0;
+    let visibleLines = 0;
+
+    lines.forEach(line => {
+      const hay = line.getAttribute('data-search') || '';
+      const textEl = line.querySelector('[data-line-text]');
+      const originalText = textEl ? textEl.textContent : '';
+
+      const match = !q || hay.includes(q);
+      line.classList.toggle('is-hidden', !match);
+
+      if (textEl) {
+        textEl.innerHTML = match ? highlightDealMatch(originalText, q) : esc(originalText);
+      }
+
+      if (match) visibleLines++;
+    });
+
+    cats.forEach(cat => {
+      const catLines = cat.querySelectorAll('[data-line]');
+      const visibleCatLines = [...catLines].filter(line => !line.classList.contains('is-hidden'));
+
+      const groups = cat.querySelectorAll('[data-group]');
+      groups.forEach(group => {
+        const groupLines = group.querySelectorAll('[data-line]');
+        const hasVisible = [...groupLines].some(line => !line.classList.contains('is-hidden'));
+        group.style.display = hasVisible ? '' : 'none';
+      });
+
+      const hasVisibleCategory = visibleCatLines.length > 0;
+      cat.classList.toggle('is-hidden', !hasVisibleCategory);
+
+      if (hasVisibleCategory) visibleCategories++;
+    });
+
+    if (meta) {
+      if (q) {
+        meta.hidden = false;
+        meta.textContent = visibleLines
+          ? `Showing ${visibleLines} matching deal${visibleLines === 1 ? '' : 's'} across ${visibleCategories} categor${visibleCategories === 1 ? 'y' : 'ies'}.`
+          : `No deals matched “${input.value.trim()}”. Try another keyword like flower, ounce, deli, carts, or edible.`;
+      } else {
+        meta.hidden = true;
+        meta.textContent = '';
+      }
+    }
+  };
+
+  input.addEventListener('input', run);
+}
+
+function bindDealBackTop() {
+  const details = document.getElementById('dealsDrop');
+  const backTop = document.getElementById('drBackTop');
+  if (!details || !backTop) return;
+
+  const toggleVisibility = () => {
+    backTop.hidden = !details.open;
+  };
+
+  details.addEventListener('toggle', toggleVisibility);
+
+  backTop.addEventListener('click', () => {
+    const summary = details.querySelector('summary');
+    if (summary) {
+      summary.scrollIntoView({ behavior: prefersReduce ? 'auto' : 'smooth', block: 'start' });
+    } else {
+      details.scrollIntoView({ behavior: prefersReduce ? 'auto' : 'smooth', block: 'start' });
+    }
+  });
+
+  toggleVisibility();
+}
+
 function renderDealsDropdown(data) {
   const jumpWrap = document.getElementById('dealJumpWrap');
   const searchMeta = document.getElementById('dealSearchMeta');
@@ -540,7 +701,7 @@ function renderDealsDropdown(data) {
   if (jumpWrap) {
     jumpWrap.innerHTML = cats.map(cat => `
       <button class="drJumpChip" type="button" data-jump="#deal-cat-${cat.id}">
-        ${esc(cat.category)}
+        ${esc(cat.category.replace(/^[^\w]+/, '').trim())}
       </button>
     `).join('');
   }
