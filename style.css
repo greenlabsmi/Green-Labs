@@ -743,15 +743,16 @@ header, nav, section, .container, .wrap, .row {
 }
 
 /* =========================================================
-   Deals dropdown
+   Deals dropdown — upgraded searchable version
 ========================================================= */
 .drDrop{
   border: 3px solid rgba(0,0,0,.80);
   border-radius: 18px;
   background: #f6efe0;
   box-shadow: 0 16px 46px rgba(0,0,0,.12);
-  overflow:hidden;
+  overflow: hidden;
 }
+
 .drDrop__summary{
   list-style:none;
   cursor:pointer;
@@ -762,7 +763,9 @@ header, nav, section, .container, .wrap, .row {
   border-bottom: 2px solid rgba(0,0,0,.20);
   background:#f6efe0;
 }
+
 .drDrop__summary::-webkit-details-marker{ display:none; }
+
 .drDrop__title{
   font-family:"Cinzel", serif;
   font-weight:900;
@@ -770,19 +773,269 @@ header, nav, section, .container, .wrap, .row {
   font-size:22px;
   color:#141615;
 }
+
 .drDrop__chev{
   font-size:18px;
   opacity:.75;
   transition: transform .18s ease;
 }
-.drDrop[open] .drDrop__chev{ transform: rotate(180deg); }
-.drDrop__body{ padding:16px; color:#141615; }
 
-.drDeals .cat{ margin:12px 0 16px; }
-.drDeals .catTitle{ font-weight:900; font-size:18px; margin:0 0 10px; }
-.drDeals .groupTitle{ font-weight:900; margin:10px 0 6px; }
-.drDeals ul{ margin:0 0 10px; padding-left:18px; }
-.drDeals li{ margin:8px 0; font-weight:700; }
+.drDrop[open] .drDrop__chev{ transform: rotate(180deg); }
+
+.drDrop__body{
+  padding:16px;
+  color:#141615;
+  position:relative;
+}
+
+/* Top utility area */
+.drTools{
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  background: linear-gradient(180deg, #f6efe0 0%, #f6efe0 85%, rgba(246,239,224,0) 100%);
+  padding-bottom: 10px;
+  margin-bottom: 6px;
+}
+
+.drSearchWrap{
+  margin-bottom: 10px;
+}
+
+.drSearch{
+  width:100%;
+  height: 48px;
+  border-radius: 14px;
+  border: 2px solid rgba(0,0,0,.12);
+  background: rgba(255,255,255,.78);
+  color:#141615;
+  padding: 0 14px;
+  font-size: 16px;
+  font-weight: 700;
+  outline: none;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.65);
+}
+
+.drSearch::placeholder{
+  color: rgba(20,22,21,.48);
+  font-weight: 700;
+}
+
+.drSearch:focus{
+  border-color: rgba(11,125,90,.45);
+  box-shadow: 0 0 0 3px rgba(11,125,90,.10);
+}
+
+/* Jump chips */
+.drJumpWrap{
+  display:flex;
+  gap:8px;
+  overflow:auto;
+  padding-bottom:4px;
+  -webkit-overflow-scrolling:touch;
+  scroll-snap-type:x proximity;
+}
+
+.drJumpChip{
+  flex:0 0 auto;
+  scroll-snap-align:start;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height: 36px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,.12);
+  background: rgba(255,255,255,.72);
+  color:#141615;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: .02em;
+  cursor:pointer;
+  transition: transform .12s ease, border-color .18s ease, background .18s ease;
+  white-space: nowrap;
+}
+
+.drJumpChip:hover{
+  transform: translateY(-1px);
+  border-color: rgba(11,125,90,.28);
+  background: rgba(255,255,255,.95);
+}
+
+.drJumpChip.is-active{
+  background: rgba(11,125,90,.10);
+  border-color: rgba(11,125,90,.28);
+  color:#0B7D5A;
+}
+
+/* Search result meta */
+.drSearchMeta{
+  margin: 0 0 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(11,125,90,.08);
+  border: 1px solid rgba(11,125,90,.12);
+  color:#0B7D5A;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+/* Deals list */
+.drDeals{
+  display:grid;
+  gap:14px;
+}
+
+.drCat{
+  border-radius: 18px;
+  border: 1px solid rgba(0,0,0,.10);
+  background: rgba(255,255,255,.42);
+  padding: 14px 14px 12px;
+  box-shadow: 0 8px 22px rgba(0,0,0,.05);
+  scroll-margin-top: 112px;
+}
+
+.drCat.is-hidden{
+  display:none;
+}
+
+.drCat__head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(0,0,0,.10);
+}
+
+.drCat__titleWrap{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-width:0;
+}
+
+.drCat__icon{
+  font-size: 20px;
+  line-height:1;
+}
+
+.drCat__title{
+  margin:0;
+  font-size: 18px;
+  line-height:1.1;
+  font-weight: 900;
+  color:#141615;
+}
+
+.drCat__count{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height: 28px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(0,0,0,.05);
+  color: rgba(20,22,21,.72);
+  font-size: 12px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+/* subgroup */
+.drGroup{
+  margin: 0 0 12px;
+}
+
+.drGroup:last-child{
+  margin-bottom: 0;
+}
+
+.drGroup__title{
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(20,22,21,.62);
+}
+
+.drLines{
+  display:grid;
+  gap:8px;
+}
+
+.drLine{
+  display:grid;
+  grid-template-columns: auto 1fr;
+  gap:10px;
+  align-items:flex-start;
+  padding: 10px 10px;
+  border-radius: 12px;
+  background: rgba(255,255,255,.52);
+  border: 1px solid rgba(0,0,0,.06);
+}
+
+.drLine.is-hidden{
+  display:none;
+}
+
+.drLine__dot{
+  font-size: 16px;
+  line-height: 1.2;
+  color:#141615;
+  opacity:.72;
+}
+
+.drLine__text{
+  font-size: 15px;
+  line-height: 1.45;
+  font-weight: 800;
+  color:#141615;
+}
+
+.drLine mark{
+  background: rgba(11,125,90,.16);
+  color: inherit;
+  padding: 0 .08em;
+  border-radius: 3px;
+}
+
+/* Back to top */
+.drBackTop{
+  position: sticky;
+  bottom: 10px;
+  margin: 16px 0 0 auto;
+  display: flex;
+  align-items:center;
+  justify-content:center;
+  min-height: 40px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,.12);
+  background: rgba(255,255,255,.92);
+  color:#141615;
+  font-size: 13px;
+  font-weight: 900;
+  cursor:pointer;
+  box-shadow: 0 10px 24px rgba(0,0,0,.08);
+}
+
+.drBackTop:hover{
+  border-color: rgba(11,125,90,.30);
+}
+
+.drEmpty{
+  padding: 18px 14px;
+  border-radius: 14px;
+  background: rgba(255,255,255,.52);
+  border: 1px dashed rgba(0,0,0,.12);
+  font-size: 15px;
+  font-weight: 800;
+  color: rgba(20,22,21,.66);
+  text-align:center;
+}
 
 .drShopBtn{
   margin-top:18px;
@@ -798,8 +1051,53 @@ header, nav, section, .container, .wrap, .row {
   cursor:pointer;
   box-shadow: 0 18px 50px rgba(0,0,0,.12);
 }
-.drShopBtn:hover{ box-shadow: 0 22px 60px rgba(0,0,0,.16); }
 
+.drShopBtn:hover{
+  box-shadow: 0 22px 60px rgba(0,0,0,.16);
+}
+
+@media (max-width: 640px){
+  .drDrop__summary{
+    padding: 14px 14px;
+  }
+
+  .drDrop__title{
+    font-size: 20px;
+  }
+
+  .drDrop__body{
+    padding: 12px;
+  }
+
+  .drSearch{
+    height: 44px;
+    font-size: 15px;
+  }
+
+  .drJumpChip{
+    min-height: 34px;
+    padding: 7px 11px;
+    font-size: 12px;
+  }
+
+  .drCat{
+    padding: 12px 12px 10px;
+    border-radius: 16px;
+  }
+
+  .drCat__title{
+    font-size: 17px;
+  }
+
+  .drLine__text{
+    font-size: 14px;
+  }
+
+  .drShopBtn{
+    font-size:20px;
+    padding:16px 12px;
+  }
+}
 /* =========================================================
    Category Grid
 ========================================================= */
