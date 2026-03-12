@@ -907,7 +907,6 @@ header, nav, section, .container, .wrap, .row {
   outline: none;
 }
 
-/* Jump chips */
 .drJumpWrap {
   display: flex;
   gap: 8px;
@@ -915,8 +914,15 @@ header, nav, section, .container, .wrap, .row {
   padding-bottom: 4px;
   -webkit-overflow-scrolling: touch;
   scroll-snap-type: x proximity;
+  /* ADD THESE TWO LINES */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
 }
 
+/* ADD THIS NEW BLOCK RIGHT BELOW IT */
+.drJumpWrap::-webkit-scrollbar {
+  display: none; /* Chrome/Safari/Edge */
+}
 .drJumpChip {
   flex: 0 0 auto;
   scroll-snap-align: start;
