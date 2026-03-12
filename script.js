@@ -988,6 +988,20 @@ function renderDealsDropdown(data) {
       `;
     };
 
+     document.addEventListener('DOMContentLoaded', () => {
+    const dealSummary = document.querySelector('.drDrop__summary');
+    const dealDrop = document.querySelector('.drDrop');
+
+    if (dealSummary && dealDrop) {
+        dealSummary.addEventListener('click', (e) => {
+            // Stop the native details tag from completely closing
+            e.preventDefault(); 
+            // Toggle the smooth expansion class we created in CSS
+            dealDrop.classList.toggle('is-fully-open');
+        });
+    }
+});
+
     mount.innerHTML = `
       ${hero ? cardHTML(hero, 'hero') : ''}
       <div class="thGrid2">
