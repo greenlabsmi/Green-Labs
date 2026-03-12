@@ -783,9 +783,43 @@ header, nav, section, .container, .wrap, .row {
 .drDrop[open] .drDrop__chev{ transform: rotate(180deg); }
 
 .drDrop__body{
-  padding:16px;
+  position: relative;
+  padding: 14px 14px 84px;
+}
+
+/* Back to Top button — always visible bottom center */
+.drBackTop{
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  min-height:42px;
+  padding:0 16px;
+
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.12);
+
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(8px);
+
   color:#141615;
-  position:relative;
+  font-size:13px;
+  font-weight:900;
+
+  cursor:pointer;
+
+  box-shadow:0 10px 24px rgba(0,0,0,.10);
+  width:fit-content;
+  z-index:10;
+}
+
+.drBackTop:hover{
+  border-color: rgba(11,125,90,.30);
 }
 
 /* Top utility area */
@@ -1002,44 +1036,6 @@ header, nav, section, .container, .wrap, .row {
   border-radius: 3px;
 }
 
-/* Back to Top button — sticky bottom center */
-.drBackTop{
-  position: sticky;
-  bottom: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  margin: 18px auto 0;
-   margin-top: 40px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  min-height: 42px;
-  padding: 0 16px;
-
-  border-radius: 999px;
-  border: 1px solid rgba(0,0,0,.12);
-
-  background: rgba(255,255,255,.94);
-  backdrop-filter: blur(8px);
-
-  color: #141615;
-  font-size: 13px;
-  font-weight: 900;
-
-  cursor: pointer;
-
-  box-shadow: 0 10px 24px rgba(0,0,0,.10);
-  width: fit-content;
-  z-index: 5;
-}
-
-/* Hover state (avoid transform conflict) */
-.drBackTop:hover{
-  border-color: rgba(11,125,90,.30);
-}
-
 .drEmpty{
   padding: 18px 14px;
   border-radius: 14px;
@@ -1080,7 +1076,7 @@ header, nav, section, .container, .wrap, .row {
   }
 
   .drDrop__body{
-    padding: 12px;
+    padding: 12px 12px 84px;
   }
 
   .drSearch{
