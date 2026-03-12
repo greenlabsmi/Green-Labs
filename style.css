@@ -2323,15 +2323,11 @@ header, nav, section, .container, .wrap, .row {
 }
 
 /* Cinematic overlay: readable bottom, no white wash */
-#todays-highlights .thOverlay{
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(180deg,
-      rgba(0,0,0,.55) 0%,
-      rgba(0,0,0,.20) 40%,
-      rgba(0,0,0,.08) 62%,
-      rgba(0,0,0,.55) 100%);
+#todays-highlights .thOverlay {
+    position: absolute;
+    inset: 0;
+    /* Increase the first and last rgba values to make the dark gradient stronger */
+    background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0.2) 62%, rgba(0,0,0,0.7) 100%);
 }
 
 #todays-highlights .thContent{
@@ -2371,7 +2367,8 @@ header, nav, section, .container, .wrap, .row {
   font-size:26px;
   line-height:1.08;
   letter-spacing:-0.02em;
-  color:#0f1412;
+  color: #ffffff; /* Changed from #0f1412 to white */
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5); /* Added for readability */
 }
 
 #todays-highlights .thPrice{
@@ -2382,9 +2379,10 @@ header, nav, section, .container, .wrap, .row {
   margin:0 0 6px;
 }
 
-#todays-highlights .thDetails{
-  font-size:13px;
-  color: rgba(15,20,18,.72);
+#todays-highlights .thDetails {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.9); /* Changed from dark rgba to light */
+    text-shadow: 0 1px 5px rgba(0,0,0,0.5);
 }
 
 #todays-highlights .thCta{
