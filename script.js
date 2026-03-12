@@ -988,15 +988,15 @@ function renderDealsDropdown(data) {
       `;
     };
 
-     document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     const dealSummary = document.querySelector('.drDrop__summary');
     const dealDrop = document.querySelector('.drDrop');
 
     if (dealSummary && dealDrop) {
         dealSummary.addEventListener('click', (e) => {
-            // Stop the native details tag from completely closing
+            // Stop the browser from hiding the deals instantly
             e.preventDefault(); 
-            // Toggle the smooth expansion class we created in CSS
+            // Smoothly expand the height instead
             dealDrop.classList.toggle('is-fully-open');
         });
     }
