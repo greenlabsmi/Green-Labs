@@ -214,12 +214,9 @@
 </section>
 <!-- ===== /Today’s Highlights ===== -->
 
-<!-- ===== DEALS (DR-style dropdown + SHOP ONLINE button) ===== -->
+<!-- ===== DEALS (Upgraded searchable dropdown) ===== -->
 <section id="deals" class="section section--light">
   <div class="container reveal">
-
-   <!-- Featured deal tiles removed — using Today's Highlights as the card experience -->
-<!-- <div class="dealTilesWrap" id="dealTiles" aria-label="Featured deals tiles"></div> -->
 
     <details class="drDrop" id="dealsDrop">
       <summary class="drDrop__summary">
@@ -228,7 +225,32 @@
       </summary>
 
       <div class="drDrop__body">
+
+        <!-- Utility bar -->
+        <div class="drTools">
+          <div class="drSearchWrap">
+            <input
+              id="dealSearch"
+              class="drSearch"
+              type="search"
+              placeholder="Search deals, categories, ounce, deli, carts..."
+              aria-label="Search deals"
+            />
+          </div>
+
+          <div class="drJumpWrap" id="dealJumpWrap" aria-label="Deal category shortcuts"></div>
+        </div>
+
+        <!-- Search feedback -->
+        <div class="drSearchMeta" id="dealSearchMeta" hidden></div>
+
+        <!-- Deals mount -->
         <div id="dealList" class="drDeals"></div>
+
+        <!-- Back to top -->
+        <button class="drBackTop" id="drBackTop" type="button" hidden>
+          Back to top ↑
+        </button>
       </div>
     </details>
 
