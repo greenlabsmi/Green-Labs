@@ -1002,26 +1002,39 @@ header, nav, section, .container, .wrap, .row {
   border-radius: 3px;
 }
 
-/* Back to top */
+/* Back to Top button — sticky bottom center */
 .drBackTop{
   position: sticky;
-  bottom: 10px;
-  margin: 16px 0 0 auto;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 18px auto 0;
+
   display: flex;
-  align-items:center;
-  justify-content:center;
-  min-height: 40px;
-  padding: 0 14px;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 42px;
+  padding: 0 16px;
+
   border-radius: 999px;
   border: 1px solid rgba(0,0,0,.12);
-  background: rgba(255,255,255,.92);
-  color:#141615;
+
+  background: rgba(255,255,255,.94);
+  backdrop-filter: blur(8px);
+
+  color: #141615;
   font-size: 13px;
   font-weight: 900;
-  cursor:pointer;
-  box-shadow: 0 10px 24px rgba(0,0,0,.08);
+
+  cursor: pointer;
+
+  box-shadow: 0 10px 24px rgba(0,0,0,.10);
+  width: fit-content;
+  z-index: 5;
 }
 
+/* Hover state (avoid transform conflict) */
 .drBackTop:hover{
   border-color: rgba(11,125,90,.30);
 }
