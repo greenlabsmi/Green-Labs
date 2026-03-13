@@ -960,7 +960,7 @@ header, nav, section, .container, .wrap, .row {
 
 /* The Arrow Buttons */
 .drArrowBtn {
-  display: none; /* Hidden by default (for mobile) */
+  display: flex; /* To hide on mobile write none */
   position: absolute;
   top: calc(50% - 6px); /* Centers it, offsetting the bottom padding */
   transform: translateY(-50%);
