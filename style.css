@@ -743,72 +743,15 @@ header, nav, section, .container, .wrap, .row {
 }
 
 /* =========================================================
-   Deals dropdown — upgraded searchable version
-========================================================= */
-/* Soft, borderless wrapper with a subtle brand shadow */
-.drDrop {
-    border: 1px solid rgba(11, 125, 90, 0.15); /* Delicate green border */
-    border-radius: 24px; /* Smoother, sexier curves */
-    background: #ffffff;
-    box-shadow: 0 24px 60px rgba(11, 125, 90, 0.08); /* Soft ambient green glow */
-    overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-/* Centered header */
-.drDrop__summary {
-    position: relative;
-    padding: 20px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center; /* Centers the title naturally */
-    border-bottom: 1px solid rgba(11, 125, 90, 0.08);
-    background: #ffffff;
-    cursor: pointer;
-    z-index: 10;
-}
-
-.drDrop__summary::-webkit-details-marker { display: none; }
-
-.drDrop__title {
-    font-family: "Cinzel", serif;
-    font-weight: 900;
-    letter-spacing: .08em;
-    font-size: 22px;
-    color: #0B7D5A; /* Brand green instead of harsh black */
-}
-
-/* Push the chevron strictly to the right edge */
-.drDrop__chev {
-    position: absolute;
-    right: 24px;
-    font-size: 20px;
-    color: #0B7D5A;
-    opacity: 0.7;
-    transition: transform 0.3s ease;
-}
-
-.drDrop[open] .drDrop__chev {
-    transform: rotate(180deg);
-}
-
-/* Smoothly animates from the peek state to full height */
-drDrop__body
-
-/* Hide the 'Back to Top' button while peeking */
-.drDrop:not(.is-fully-open) .drBackTop {
-    opacity: 0;
-    pointer-events: none;
-}/* =========================================================
    Deals dropdown — Peek State & Pop
 ========================================================= */
 
 /* Darker border and lifted shadow to make it pop */
 .drDrop {
-    border: 2px solid rgba(11, 125, 90, 0.4); /* Darkened and thickened border */
+    border: 2px solid rgba(11, 125, 90, 0.4); 
     border-radius: 24px;
     background: #ffffff;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.12), 0 10px 25px rgba(11, 125, 90, 0.2); /* Stronger shadow lift */
+    box-shadow: 0 20px 50px rgba(0,0,0,0.12), 0 10px 25px rgba(11, 125, 90, 0.2); 
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
@@ -854,14 +797,14 @@ drDrop__body
     position: relative;
     padding: 20px 20px 40px;
     background: #ffffff;
-    max-height: 4000px; /* Fits everything when fully open */
+    max-height: 4000px; 
     overflow: hidden;
     transition: max-height 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 /* THE PEEK STATE: Shows search, categories, and top of first deal */
 .drDrop:not(.is-fully-open) .drDrop__body {
-    max-height: 350px; /* Adjust this number if you want more/less to show! */
+    max-height: 350px; 
 }
 
 /* Hide the 'Back to Top' button while peeking */
@@ -888,64 +831,46 @@ drDrop__body
     opacity: 1;
 }
 
-/* (Keep all the .drBackTop, .drTools, etc. styles below this exactly as they are!) */
-
 .drBackTop{
   position: absolute;
   left: 50%;
   bottom: 16px;
   transform: translateX(-50%);
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-
   min-height: 44px;
   padding: 0 18px;
-
   border-radius: 999px;
   border: 1px solid rgba(0,0,0,.10);
-
   background: rgba(255,255,255,.82);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-
   color: #141615;
   font-size: 13px;
   font-weight: 900;
   letter-spacing: .02em;
-
   cursor: pointer;
   width: fit-content;
   white-space: nowrap;
-
-  box-shadow:
-    0 10px 30px rgba(0,0,0,.10),
-    0 2px 10px rgba(0,0,0,.05);
-
+  box-shadow: 0 10px 30px rgba(0,0,0,.10), 0 2px 10px rgba(0,0,0,.05);
   z-index: 10;
-  transition:
-    border-color .18s ease,
-    background .18s ease,
-    box-shadow .18s ease,
-    opacity .18s ease;
+  transition: border-color .18s ease, background .18s ease, box-shadow .18s ease, opacity .18s ease;
 }
 
 .drBackTop:hover{
   border-color: rgba(11,125,90,.28);
   background: rgba(255,255,255,.92);
-  box-shadow:
-    0 14px 34px rgba(0,0,0,.13),
-    0 4px 14px rgba(0,0,0,.06);
+  box-shadow: 0 14px 34px rgba(0,0,0,.13), 0 4px 14px rgba(0,0,0,.06);
 }
 
-/* Top utility area */
+/* Top utility area (Updated to match white box) */
 .drTools{
   position: sticky;
   top: 0;
   z-index: 4;
-  background: linear-gradient(180deg, #f6efe0 0%, #f6efe0 85%, rgba(246,239,224,0) 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #ffffff 85%, rgba(255,255,255,0) 100%);
   padding-bottom: 10px;
   margin-bottom: 6px;
 }
@@ -987,13 +912,12 @@ drDrop__body
   padding-bottom: 4px;
   -webkit-overflow-scrolling: touch;
   scroll-snap-type: x proximity;
-  /* ADD THESE TWO LINES */
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE/Edge */
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
 }
 
 .drJumpWrap::-webkit-scrollbar {
-  display: none; /* Chrome/Safari/Edge */
+  display: none; 
 }
 .drJumpChip {
   flex: 0 0 auto;
@@ -1195,39 +1119,31 @@ drDrop__body
   .drDrop__summary{
     padding: 14px 14px;
   }
-
   .drDrop__title{
     font-size: 20px;
   }
-
   .drDrop__body{
     padding: 12px 12px 84px;
   }
-
   .drSearch{
     height: 44px;
     font-size: 15px;
   }
-
   .drJumpChip{
     min-height: 34px;
     padding: 7px 11px;
     font-size: 12px;
   }
-
   .drCat{
     padding: 12px 12px 10px;
     border-radius: 16px;
   }
-
   .drCat__title{
     font-size: 17px;
   }
-
   .drLine__text{
     font-size: 14px;
   }
-
   .drShopBtn{
     font-size:20px;
     padding:16px 12px;
