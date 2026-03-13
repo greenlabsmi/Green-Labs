@@ -1062,12 +1062,30 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
 
-      // Smooth scroll the carousel back to the start when filtered
+     // Smooth scroll the carousel back to the start when filtered
       if (deliCarousel) {
         deliCarousel.scrollTo({ left: 0, behavior: 'smooth' });
       }
     });
-  });
+  }); // <--- THIS closes the filter buttons loop!
+
+  // 3. Carousel Scroll Arrows
+  const deliLeft = document.getElementById('deliArrowLeft');
+  const deliRight = document.getElementById('deliArrowRight');
+
+  if (deliCarousel && deliLeft && deliRight) {
+    deliLeft.addEventListener('click', (e) => {
+      e.preventDefault();
+      // Scrolls backward by roughly the width of one card
+      deliCarousel.scrollBy({ left: -260, behavior: 'smooth' });
+    });
+    
+    deliRight.addEventListener('click', (e) => {
+      e.preventDefault();
+      // Scrolls forward by roughly the width of one card
+      deliCarousel.scrollBy({ left: 260, behavior: 'smooth' });
+    });
+  }
 });
 
 document.addEventListener('DOMContentLoaded', () => {
