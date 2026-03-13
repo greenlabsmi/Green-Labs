@@ -911,16 +911,17 @@ header, nav, section, .container, .wrap, .row {
   display: flex;
   gap: 8px;
   overflow: auto;
-  padding-bottom: 4px;
+  padding-bottom: 12px; /* Increased from 4px to prevent cutoff */
+  margin-bottom: -8px; /* Offsets the added padding so it doesn't push deals down */
   -webkit-overflow-scrolling: touch;
   scroll-snap-type: x proximity;
   scrollbar-width: none; 
   -ms-overflow-style: none; 
 }
-
 .drJumpWrap::-webkit-scrollbar {
   display: none; 
 }
+
 .drJumpChip {
   flex: 0 0 auto;
   scroll-snap-align: start;
@@ -940,17 +941,16 @@ header, nav, section, .container, .wrap, .row {
   transition: all 0.2s ease;
   white-space: nowrap;
 }
-
 .drJumpChip:hover {
   transform: translateY(-2px);
   background: rgba(11, 125, 90, 0.1);
   color: #0B7D5A;
 }
-
 .drJumpChip.is-active {
   background: #0B7D5A;
   color: #ffffff;
-  box-shadow: 0 6px 16px rgba(11, 125, 90, 0.3);
+  /* Matched to the soft Deli glow */
+  box-shadow: 0 4px 10px rgba(11, 125, 90, 0.25); 
 }
 
 /* Search result meta */
@@ -2229,18 +2229,15 @@ header, nav, section, .container, .wrap, .row {
 
 /* --- 2. NEW DUTCH DELI INTERACTIVE CARDS --- */
 
-/* Quick Filters */
 /* Quick Filters (Now Edge-to-Edge) */
 .deli-filters { 
   display: flex; 
   gap: 10px; 
   overflow-x: auto; 
-  padding-bottom: 12px; 
-  margin-bottom: 20px; 
+  padding-bottom: 18px; /* Increased from 12px to give shadow room to fade */
+  margin-bottom: 14px;  /* Reduced to keep overall spacing exactly the same */
   scroll-snap-type: x mandatory; 
   scrollbar-width: none; 
-  
-  /* Break out of container to fill screen */
   width: 100vw;
   margin-left: calc(50% - 50vw);
   padding-left: 5vw; 
@@ -2265,7 +2262,8 @@ header, nav, section, .container, .wrap, .row {
 .deli-filter.is-active { 
   background: #0B7D5A; 
   border-color: #0B7D5A; 
-  box-shadow: 0 4px 15px rgba(11, 125, 90, 0.4); 
+  /* Softer green glow that doesn't get boxed out */
+  box-shadow: 0 4px 10px rgba(11, 125, 90, 0.25); 
 }
 
 /* Snap Carousel (Now Edge-to-Edge) */
