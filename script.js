@@ -1018,3 +1018,52 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   })();
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  // ===== DUTCH DELI INTERACTIVITY =====
+  
+  // 1. Haptic Feedback function for flips and snaps
+  window.triggerHaptic = function() {
+    if (navigator.vibrate) {
+      navigator.vibrate(30); // A short, premium-feeling physical tap on mobile
+    }
+  };
+
+  // 2. Sticky Quick Filters Logic
+  const filterBtns = document.querySelectorAll('.deli-filter');
+  const deliCards = document.querySelectorAll('.deli-card-wrapper');
+  const deliCarousel = document.getElementById('deliCarousel');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Trigger haptic on filter tap
+      triggerHaptic();
+
+      // Update active state on buttons
+      filterBtns.forEach(b => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+
+      const filterVal = btn.getAttribute('data-filter');
+
+      // Filter the cards
+      deliCards.forEach(card => {
+        // Handle multiple categories separated by spaces
+        const categories = card.getAttribute('data-category').split(' ');
+        
+        if (filterVal === 'all' || categories.includes(filterVal)) {
+          card.classList.remove('is-hidden');
+          // Add a tiny animation reset for a clean reveal
+          card.style.opacity = '0';
+          setTimeout(() => card.style.opacity = '1', 50);
+        } else {
+          card.classList.add('is-hidden');
+        }
+      });
+
+      // Smooth scroll the carousel back to the start when filtered
+      if (deliCarousel) {
+        deliCarousel.scrollTo({ left: 0, behavior: 'smooth' });
+      }
+    });
+  });
+});
