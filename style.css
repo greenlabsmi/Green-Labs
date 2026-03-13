@@ -935,7 +935,6 @@ header, nav, section, .container, .wrap, .row {
   -ms-overflow-style: none; /* IE/Edge */
 }
 
-/* ADD THIS NEW BLOCK RIGHT BELOW IT */
 .drJumpWrap::-webkit-scrollbar {
   display: none; /* Chrome/Safari/Edge */
 }
@@ -2211,8 +2210,10 @@ header, nav, section, .container, .wrap, .row {
 }
 
 /* =========================================================
-   DELI section (your existing board styles kept, refined)
+   DELI section (UPDATED: 3D Cards + Filters)
 ========================================================= */
+
+/* --- 1. SECTION, HEADER & FOOTER (KEPT FROM OLD CODE) --- */
 .section--deli {
   background-color: #111;
   background-image: radial-gradient(circle at top right, #2a2a2a 0%, #111 60%);
@@ -2239,66 +2240,153 @@ header, nav, section, .container, .wrap, .row {
   color: #fff;
 }
 .deli-sub { color: #aaa; font-size: 1.1rem; }
-.deli-board {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-  margin-bottom: 3rem;
-}
-@media (min-width: 768px) {
-  .deli-board { grid-template-columns: 1fr 1fr; }
-}
-.deli-tier {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
-  border: 1px solid #333;
-  padding: 2rem;
-  transition: transform 0.2s ease;
-}
-.deli-tier:hover { transform: translateY(-5px); border-color: #555; }
-.tier--gold { border-top: 4px solid #d4af37; }
-.tier--green { border-top: 4px solid #0B7D5A; }
-.tier-head {
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-  padding-bottom: 1.5rem;
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-.tier-name {
-  font-family: 'Cinzel', serif;
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-  color: #fff;
-}
-.p-big { font-size: 2.5rem; font-weight: 700; color: #fff; }
-.p-unit { font-size: 1rem; color: #888; margin-left: 4px; }
-.tier-breakdown {
-  display: block;
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
-  color: #aaa;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-}
-.strain-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.75rem 0;
-  border-bottom: 1px dashed rgba(255,255,255,0.1);
-}
-.strain-row:last-child { border-bottom: none; }
-.s-name { font-weight: 600; font-size: 1.1rem; }
-.s-tag {
-  font-size: 0.75rem;
-  padding: 2px 6px;
-  border-radius: 4px;
-  background: #333;
-  color: #ccc;
-}
-.tag--winner { background: rgba(212, 175, 55, 0.2); color: #d4af37; }
-.tag--hot { background: rgba(255, 87, 34, 0.2); color: #ff5722; }
 .deli-footer { text-align: center; }
 .deli-note { margin-top: 1rem; font-size: 0.85rem; color: #666; font-style: italic; }
+
+
+/* --- 2. NEW DUTCH DELI INTERACTIVE CARDS --- */
+
+/* Quick Filters */
+.deli-filters { 
+  display: flex; 
+  gap: 10px; 
+  overflow-x: auto; 
+  padding-bottom: 12px; 
+  margin-bottom: 20px; 
+  scroll-snap-type: x mandatory; 
+  scrollbar-width: none; 
+}
+.deli-filters::-webkit-scrollbar { display: none; }
+
+.deli-filter { 
+  flex: 0 0 auto; 
+  scroll-snap-align: start; 
+  background: rgba(255,255,255,0.05); 
+  border: 1px solid rgba(255,255,255,0.15); 
+  color: #fff; 
+  padding: 10px 18px; 
+  border-radius: 999px; 
+  font-weight: 800; 
+  font-size: 14px; 
+  cursor: pointer; 
+  transition: all 0.3s ease; 
+}
+.deli-filter.is-active { 
+  background: #0B7D5A; 
+  border-color: #0B7D5A; 
+  box-shadow: 0 4px 15px rgba(11, 125, 90, 0.4); 
+}
+
+/* Snap Carousel */
+.deli-carousel { 
+  display: flex; 
+  gap: 20px; 
+  overflow-x: auto; 
+  padding: 10px 0 40px; 
+  scroll-snap-type: x mandatory; 
+  scrollbar-width: none; 
+  scroll-behavior: smooth; 
+}
+.deli-carousel::-webkit-scrollbar { display: none; }
+
+.deli-card-wrapper { 
+  flex: 0 0 75%; 
+  max-width: 320px; 
+  scroll-snap-align: center; 
+  display: flex; 
+  flex-direction: column; 
+  gap: 16px; 
+  transition: opacity 0.4s ease, transform 0.4s ease; 
+}
+.deli-card-wrapper.is-hidden { display: none; }
+
+/* 3D Tap-to-Flip Card */
+.deli-card { 
+  position: relative; 
+  width: 100%; 
+  aspect-ratio: 2 / 3; 
+  perspective: 1000px; 
+  cursor: pointer; 
+}
+.deli-card__front, .deli-card__back { 
+  position: absolute; 
+  inset: 0; 
+  border-radius: 20px; 
+  background-size: cover; 
+  background-position: center; 
+  backface-visibility: hidden; 
+  transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1); 
+  box-shadow: 0 16px 40px rgba(0,0,0,0.4); 
+  border: 1px solid rgba(255,255,255,0.1); 
+}
+.deli-card__back { transform: rotateY(180deg); }
+.deli-card.is-flipped .deli-card__front { transform: rotateY(180deg); }
+.deli-card.is-flipped .deli-card__back { transform: rotateY(360deg); }
+
+/* Hint & Badges */
+.deli-card__hint { 
+  position: absolute; 
+  bottom: 12px; 
+  right: 12px; 
+  background: rgba(0,0,0,0.6); 
+  backdrop-filter: blur(4px); 
+  color: #fff; 
+  font-size: 11px; 
+  font-weight: 800; 
+  padding: 6px 10px; 
+  border-radius: 999px; 
+  border: 1px solid rgba(255,255,255,0.2); 
+  pointer-events: none; 
+}
+.deli-badge-corner { 
+  position: absolute; 
+  top: -10px; 
+  left: -10px; 
+  z-index: 10; 
+  font-family: "Cinzel", serif; 
+  font-weight: 900; 
+  font-size: 12px; 
+  padding: 8px 14px; 
+  border-radius: 12px; 
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3); 
+}
+.badge--mega { background: linear-gradient(135deg, #FFD700, #FFA500); color: #000; border: 1px solid #FFF; }
+.badge--fresh { background: linear-gradient(135deg, #0B7D5A, #19d6a3); color: #000; border: 1px solid #FFF; }
+.badge--low { background: linear-gradient(135deg, #e63946, #800000); color: #FFF; border: 1px solid #FFF; }
+
+/* Card Labels (Below Image) */
+.deli-card__label { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: flex-start; 
+  gap: 10px; 
+  padding: 0 4px; 
+}
+.deli-card__label h3 { 
+  font-family: "Cinzel", serif; 
+  font-size: 20px; 
+  margin: 0 0 4px; 
+  color: #fff; 
+}
+.deli-card__genetics { 
+  font-size: 13px; 
+  color: #aaa; 
+  margin: 0; 
+  font-weight: 600; 
+}
+.deli-card__price { 
+  font-size: 18px; 
+  font-weight: 900; 
+  color: #d4af37; 
+  background: rgba(212, 175, 55, 0.1); 
+  padding: 6px 12px; 
+  border-radius: 8px; 
+  border: 1px solid rgba(212, 175, 55, 0.3); 
+}
+
+@media (min-width: 768px) { 
+  .deli-card-wrapper { flex: 0 0 300px; } 
+}
 
 /* =========================================================
    Today’s Highlights (NEW SECTION — scoped)
