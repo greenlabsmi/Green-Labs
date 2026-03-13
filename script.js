@@ -1067,3 +1067,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Deals Dropdown Peek State Logic
+  const dealsDrop = document.getElementById('dealsDrop');
+  const dealsSummary = document.querySelector('.drDrop__summary');
+
+  if (dealsDrop && dealsSummary) {
+    dealsSummary.addEventListener('click', (e) => {
+      // Stop the native HTML from closing the box completely
+      e.preventDefault(); 
+      // Toggle our smooth CSS expansion instead
+      dealsDrop.classList.toggle('is-fully-open'); 
+    });
+  }
+});
