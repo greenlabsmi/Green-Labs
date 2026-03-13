@@ -2260,7 +2260,7 @@ header, nav, section, .container, .wrap, .row {
 }
 .deli-filters::-webkit-scrollbar { display: none; }
 
-/* Keep Button Styles */
+/* --- Keep Button Styles --- */
 .deli-filter { 
   flex: 0 0 auto; 
   scroll-snap-align: start; 
@@ -2274,11 +2274,13 @@ header, nav, section, .container, .wrap, .row {
   cursor: pointer; 
   transition: all 0.3s ease; 
 }
+
+/* CHANGED: Premium DTG Gold Active State */
 .deli-filter.is-active { 
-  background: #0B7D5A; 
-  border-color: #0B7D5A; 
-  /* Softer green glow that doesn't get boxed out */
-  box-shadow: 0 4px 10px rgba(11, 125, 90, 0.25); 
+  background: linear-gradient(180deg, rgba(214,163,74,.95), rgba(185,135,47,.95)); 
+  border-color: rgba(214,163,74,.35); 
+  color: #121413; /* Dark text makes the gold pop and look like a real physical badge */
+  box-shadow: 0 4px 15px rgba(214, 163, 74, 0.25); 
 }
 
 /* Carousel Wrapper for Arrows */
@@ -2286,17 +2288,17 @@ header, nav, section, .container, .wrap, .row {
   position: relative;
 }
 
-/* The Arrow Buttons */
+/* CHANGED: Premium Gold Arrow Buttons */
 .deli-arrow {
   position: absolute;
-  top: calc(50% - 15px); /* Centers vertically, offsetting the 40px bottom padding */
+  top: calc(50% - 15px); 
   transform: translateY(-50%);
   width: 44px;
   height: 44px;
   border-radius: 50%;
   background: #ffffff;
-  border: 1px solid rgba(11, 125, 90, 0.15);
-  color: #0B7D5A;
+  border: 1px solid rgba(214, 163, 74, 0.3); /* Gold border */
+  color: #D6A34A; /* Gold arrow */
   box-shadow: 0 4px 15px rgba(0,0,0,0.3);
   z-index: 10;
   cursor: pointer;
@@ -2309,16 +2311,16 @@ header, nav, section, .container, .wrap, .row {
 }
 
 .deli-arrow:hover {
-  background: #f4f9f7;
-  box-shadow: 0 6px 20px rgba(11, 125, 90, 0.4);
-  transform: translateY(-50%) scale(1.05); /* Slight pop effect on hover */
+  background: #fffdf9; /* Ultra-faint warm tint on hover */
+  box-shadow: 0 6px 20px rgba(214, 163, 74, 0.3); /* Gold glowing shadow */
+  transform: translateY(-50%) scale(1.05); 
 }
 
 /* Position slightly outside the container for a clean frame */
 .deli-arrow--left { left: -20px; }
 .deli-arrow--right { right: -20px; }
 
-/* Hide arrows on mobile (so users just use their thumbs to swipe) */
+/* Hide arrows on mobile */
 @media (max-width: 768px) {
   .deli-arrow { display: none; }
 }
