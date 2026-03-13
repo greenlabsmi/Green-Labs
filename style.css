@@ -775,7 +775,7 @@ header, nav, section, .container, .wrap, .row {
     font-family: "Cinzel", serif;
     font-weight: 900;
     letter-spacing: .08em;
-    font-size: 22px;
+    font-size: 34px;
     color: #0B7D5A;
 }
 
@@ -783,7 +783,7 @@ header, nav, section, .container, .wrap, .row {
 .drDrop__chev {
     position: absolute;
     right: 24px;
-    font-size: 20px;
+    font-size: 28px;
     color: #0B7D5A;
     opacity: 0.8;
     transition: transform 0.3s ease;
@@ -1117,10 +1117,10 @@ header, nav, section, .container, .wrap, .row {
 
 @media (max-width: 640px){
   .drDrop__summary{
-    padding: 14px 14px;
+    padding: 16px 14px;
   }
   .drDrop__title{
-    font-size: 20px;
+    font-size: 26px;
   }
   .drDrop__body{
     padding: 12px 12px 84px;
