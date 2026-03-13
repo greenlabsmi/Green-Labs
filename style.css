@@ -162,7 +162,7 @@ header, nav, section, .container, .wrap, .row {
   flex: 0 0 auto;
 }
 .sticky__logo img{
-  height: 60px;
+  height: 50px;
   width:auto;
   object-fit:contain;
   filter: drop-shadow(0 6px 20px rgba(0,0,0,.35));
