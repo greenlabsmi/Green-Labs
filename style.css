@@ -797,7 +797,7 @@ header, nav, section, .container, .wrap, .row {
     position: relative;
     padding: 20px 20px 40px;
     background: #ffffff;
-    max-height: 3000px; /* Lowered slightly to calculate faster */
+    max-height: 8000px; /* Lowered slightly to calculate faster */
     overflow: hidden;
     /* FIX: Faster, smoother curve + hardware acceleration */
     transition: max-height 0.4s ease-in-out; 
