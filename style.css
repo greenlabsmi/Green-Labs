@@ -2290,8 +2290,8 @@ header, nav, section, .container, .wrap, .row {
 .deli-carousel::-webkit-scrollbar { display: none; }
 
 .deli-card-wrapper { 
-  flex: 0 0 75%; 
-  max-width: 320px; 
+  flex: 0 0 65%; /* Dropped from 75% for a smaller footprint */
+  max-width: 250px; /* Shrunk down from 320px */
   scroll-snap-align: center; 
   display: flex; 
   flex-direction: column; 
@@ -2314,10 +2314,12 @@ header, nav, section, .container, .wrap, .row {
   border-radius: 20px; 
   background-size: cover; 
   background-position: center; 
+  background-color: #111; /* Fills in any sub-pixel gaps */
   backface-visibility: hidden; 
   transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1); 
   box-shadow: 0 16px 40px rgba(0,0,0,0.4); 
-  border: 1px solid rgba(255,255,255,0.1); 
+  border: none; /* Removed the white border */
+  overflow: hidden; /* Tightens the box */
 }
 .deli-card__back { transform: rotateY(180deg); }
 .deli-card.is-flipped .deli-card__front { transform: rotateY(180deg); }
@@ -2385,7 +2387,7 @@ header, nav, section, .container, .wrap, .row {
 }
 
 @media (min-width: 768px) { 
-  .deli-card-wrapper { flex: 0 0 300px; } 
+  .deli-card-wrapper { flex: 0 0 240px; } /* Shrunk down from 300px */
 }
 
 /* =========================================================
