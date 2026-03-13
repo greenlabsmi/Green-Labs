@@ -2247,6 +2247,7 @@ header, nav, section, .container, .wrap, .row {
 /* --- 2. NEW DUTCH DELI INTERACTIVE CARDS --- */
 
 /* Quick Filters */
+/* Quick Filters (Now Edge-to-Edge) */
 .deli-filters { 
   display: flex; 
   gap: 10px; 
@@ -2255,9 +2256,16 @@ header, nav, section, .container, .wrap, .row {
   margin-bottom: 20px; 
   scroll-snap-type: x mandatory; 
   scrollbar-width: none; 
+  
+  /* Break out of container to fill screen */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  padding-left: 5vw; 
+  padding-right: 5vw;
 }
 .deli-filters::-webkit-scrollbar { display: none; }
 
+/* Keep Button Styles */
 .deli-filter { 
   flex: 0 0 auto; 
   scroll-snap-align: start; 
@@ -2277,7 +2285,7 @@ header, nav, section, .container, .wrap, .row {
   box-shadow: 0 4px 15px rgba(11, 125, 90, 0.4); 
 }
 
-/* Snap Carousel */
+/* Snap Carousel (Now Edge-to-Edge) */
 .deli-carousel { 
   display: flex; 
   gap: 20px; 
@@ -2286,6 +2294,12 @@ header, nav, section, .container, .wrap, .row {
   scroll-snap-type: x mandatory; 
   scrollbar-width: none; 
   scroll-behavior: smooth; 
+  
+  /* Break out of container to fill screen */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  padding-left: 5vw; 
+  padding-right: 5vw;
 }
 .deli-carousel::-webkit-scrollbar { display: none; }
 
