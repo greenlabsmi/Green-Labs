@@ -1072,13 +1072,27 @@ document.addEventListener('DOMContentLoaded', () => {
   // Deals Dropdown Peek State Logic
   const dealsDrop = document.getElementById('dealsDrop');
   const dealsSummary = document.querySelector('.drDrop__summary');
+  const dealsBody = document.querySelector('.drDrop__body');
 
-  if (dealsDrop && dealsSummary) {
+  if (dealsDrop && dealsSummary && dealsBody) {
+    // 1. Toggle when clicking the main header
     dealsSummary.addEventListener('click', (e) => {
-      // Stop the native HTML from closing the box completely
       e.preventDefault(); 
-      // Toggle our smooth CSS expansion instead
       dealsDrop.classList.toggle('is-fully-open'); 
+    });
+
+    // 2. Auto-open if ANY click happens inside the body while it's peeking (e.g. clicking a category)
+    dealsBody.addEventListener('click', () => {
+      if (!dealsDrop.classList.contains('is-fully-open')) {
+        dealsDrop.classList.add('is-fully-open');
+      }
+    });
+
+    // 3. Auto-open if they tap into the search bar
+    dealsBody.addEventListener('focusin', () => {
+      if (!dealsDrop.classList.contains('is-fully-open')) {
+        dealsDrop.classList.add('is-fully-open');
+      }
     });
   }
 });
