@@ -2474,7 +2474,7 @@ header, nav, section, .container, .wrap, .row {
   position:absolute;
   inset:0;
   background-size:cover;
-  background-position:center;
+  background-position:right center;
   transform:translateZ(0);
 }
 
