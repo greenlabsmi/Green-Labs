@@ -2196,7 +2196,7 @@ header, nav, section, .container, .wrap, .row {
   color: #fff;
   padding: 2.5rem 0; /* Reduced from 4rem to shrink top/bottom empty space */
   border-top: 1px solid #333;
-  scroll-margin-top: 25px; 
+  scroll-margin-top: 15px; 
 }
 .deli-head { 
   text-align: center; 
