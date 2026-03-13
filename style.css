@@ -793,19 +793,7 @@ header, nav, section, .container, .wrap, .row {
 }
 
 /* Smoothly animates from the peek state to full height */
-.drDrop__body {
-    position: relative;
-    padding: 20px 20px 40px;
-    background: #ffffff;
-    max-height: 4000px; /* Big enough to fit all deals when open */
-    overflow: hidden;
-    transition: max-height 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-/* Constrain the height for the "Peek" state */
-.drDrop:not(.is-fully-open) .drDrop__body {
-    max-height: 260px; 
-}
+drDrop__body
 
 /* Hide the 'Back to Top' button while peeking */
 .drDrop:not(.is-fully-open) .drBackTop {
