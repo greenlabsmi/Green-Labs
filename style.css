@@ -2407,7 +2407,11 @@ header, nav, section, .container, .wrap, .row {
   box-shadow: 0 8px 20px rgba(0,0,0,0.3); 
 }
 .badge--mega { background: linear-gradient(135deg, #FFD700, #FFA500); color: #000; border: 1px solid #FFF; }
-.badge--fresh { background: linear-gradient(135deg, #0B7D5A, #19d6a3); color: #000; border: 1px solid #FFF; }
+.badge--fresh {
+    background: #121413; /* Deep premium black/charcoal */
+    color: #D6A34A; /* DTG Gold text */
+    border: 1px solid rgba(214, 163, 74, 0.3); /* Subtle gold border */
+}
 .badge--low { background: linear-gradient(135deg, #e63946, #800000); color: #FFF; border: 1px solid #FFF; }
 
 /* Card Labels (Below Image) */
