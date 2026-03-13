@@ -229,6 +229,28 @@
         "Dutch Touch Non Strain Specific RSO - $25ea",
         "Ratio'd TreeTown Tinctures - $20ea (Back in Stock)"
       ]
-    }
-  ]
-}
+    },
+    {
+    "category": "🧰 Merch & Accessories",
+    "groups": [
+      {
+        "title": "Apparel & Gear",
+        "lines": [
+          "Green Labs or Dutch Touch Genetics Hoodies - $45",
+          "#KeepItDutch Beanie - $30",
+          "Green Labs or Dutch Touch Genetics T-Shirt - $25",
+          "Green Labs Beanie - $20"
+        ]
+      },
+      {
+        "title": "Accessories",
+        "lines": [
+          "Dutch Touch Genetics Bowl - $10",
+          "Dutch Touch Genetics 4pc Metal Grinder - $10",
+          "Dutch Touch Genetics Rolling Tray - $5",
+          "Dutch Touch Genetics Ashtray - $3",
+          "Dutch Touch Genetics Rolling Papers & Tips - $3"
+        ]
+      }
+    ]
+  }
