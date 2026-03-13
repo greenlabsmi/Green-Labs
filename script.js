@@ -286,18 +286,21 @@ document.addEventListener('DOMContentLoaded', () => {
         return r.json();
       })
       .then((data) => {
-        const dealsData = Array.isArray(data) ? data : (data.deals || []);
-        renderDealsDropdown(dealsData);
-// renderDealTiles(dealsData); // disabled — using Today's Highlights cards only
+      const dealsData = Array.isArray(data) ? data : (data.deals || []);
+      
+      // Let the JSON file do all the work
+      renderDealsDropdown(dealsData);
 
-        if (highlightsMount && data && data.highlights) {
-          renderHighlightsFromConfig(data.highlights, highlightsMount);
-        } else if (highlightsMount) {
-          highlightsMount.innerHTML = '';
-        }
-
-        initTodaysHighlightsFX();
-      })
+      // renderDealTiles(dealsData); // disabled — using Today's Highlights cards only
+      
+      if (highlightsMount && data && data.highlights) {
+        renderHighlightsFromConfig(data.highlights, highlightsMount);
+      } else if (highlightsMount) {
+        highlightsMount.innerHTML = '';
+      }
+      initTodaysHighlightsFX();
+    })
+       
       .catch((err) => {
         console.error(err);
 
@@ -646,75 +649,74 @@ function bindDealBackTop() {
 }
 
 function renderDealsDropdown(data) {
-  const jumpWrap = document.getElementById('dealJumpWrap');
-  const searchMeta = document.getElementById('dealSearchMeta');
+    const jumpWrap = document.getElementById('dealJumpWrap');
+    const searchMeta = document.getElementById('dealSearchMeta');
+    const cats = normalizeDealsData(data);
 
-  const cats = normalizeDealsData(data);
+    if (!cats.length) {
+      dealList.innerHTML = '<div class="drEmpty">No deals available right now.</div>';
+      if (jumpWrap) jumpWrap.innerHTML = '';
+      if (searchMeta) {
+        searchMeta.hidden = true;
+        searchMeta.textContent = '';
+      }
+      return;
+    }
 
-  if (!cats.length) {
-    dealList.innerHTML = '<div class="drEmpty">No deals available right now.</div>';
-    if (jumpWrap) jumpWrap.innerHTML = '';
+    dealList.innerHTML = cats.map(cat => {
+      const lineCount = cat.groups.reduce((sum, g) => sum + g.lines.length, 0);
+      const groupsHtml = cat.groups.map(group => {
+        const linesHtml = group.lines.map(line => `
+          <div class="drLine" data-line data-search="${esc(`${cat.category} ${group.title || ''} ${line}`.toLowerCase())}">
+            <div class="drLine__dot" aria-hidden="true">•</div>
+            <div class="drLine__text" data-line-text>${esc(line)}</div>
+          </div>
+        `).join('');
+        return `
+          <div class="drGroup" data-group>
+            ${group.title ? `<div class="drGroup__title">${esc(group.title)}</div>` : ''}
+            <div class="drLines">
+              ${linesHtml}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      return `
+        <section class="drCat" id="deal-cat-${cat.id}" data-category-block data-category-name="${esc(cat.category.toLowerCase())}">
+          <div class="drCat__head">
+            <div class="drCat__titleWrap">
+              <h3 class="drCat__title">${esc(cat.category)}</h3>
+            </div>
+            <div class="drCat__count">${lineCount} deal${lineCount === 1 ? '' : 's'}</div>
+          </div>
+          ${groupsHtml}
+        </section>
+      `;
+    }).join('') + `<div style="margin-top:10px;font-weight:800;opacity:.70;">All prices include tax.</div>`;
+
+    if (jumpWrap) {
+      // Prepend an "All Deals" button that jumps to the top of the deals container
+      jumpWrap.innerHTML = `
+        <button class="drJumpChip" type="button" data-jump="#dealsDrop">
+          All Deals
+        </button>
+      ` + cats.map(cat => `
+        <button class="drJumpChip" type="button" data-jump="#deal-cat-${cat.id}">
+          ${esc(cat.category.replace(/^[^\w]+/, '').trim())}
+        </button>
+      `).join('');
+    }
+
     if (searchMeta) {
       searchMeta.hidden = true;
       searchMeta.textContent = '';
     }
-    return;
+
+    bindDealJumpChips();
+    bindDealSearch();
+    bindDealBackTop();
   }
-
-  dealList.innerHTML = cats.map(cat => {
-    const lineCount = cat.groups.reduce((sum, g) => sum + g.lines.length, 0);
-
-    const groupsHtml = cat.groups.map(group => {
-      const linesHtml = group.lines.map(line => `
-        <div class="drLine" data-line data-search="${esc(
-          `${cat.category} ${group.title || ''} ${line}`.toLowerCase()
-        )}">
-          <div class="drLine__dot" aria-hidden="true">•</div>
-          <div class="drLine__text" data-line-text>${esc(line)}</div>
-        </div>
-      `).join('');
-
-      return `
-        <div class="drGroup" data-group>
-          ${group.title ? `<div class="drGroup__title">${esc(group.title)}</div>` : ''}
-          <div class="drLines">
-            ${linesHtml}
-          </div>
-        </div>
-      `;
-    }).join('');
-
-    return `
-      <section class="drCat" id="deal-cat-${cat.id}" data-category-block data-category-name="${esc(cat.category.toLowerCase())}">
-        <div class="drCat__head">
-          <div class="drCat__titleWrap">
-            <div class="drCat__icon" aria-hidden="true">${emojiForDealCategory(cat.category)}</div>
-            <h3 class="drCat__title">${esc(cat.category)}</h3>
-          </div>
-          <div class="drCat__count">${lineCount} deal${lineCount === 1 ? '' : 's'}</div>
-        </div>
-        ${groupsHtml}
-      </section>
-    `;
-  }).join('') + `<div style="margin-top:10px;font-weight:800;opacity:.70;">All prices include tax.</div>`;
-
-  if (jumpWrap) {
-    jumpWrap.innerHTML = cats.map(cat => `
-      <button class="drJumpChip" type="button" data-jump="#deal-cat-${cat.id}">
-        ${esc(cat.category.replace(/^[^\w]+/, '').trim())}
-      </button>
-    `).join('');
-  }
-
-  if (searchMeta) {
-    searchMeta.hidden = true;
-    searchMeta.textContent = '';
-  }
-
-  bindDealJumpChips();
-  bindDealSearch();
-  bindDealBackTop();
-}
     function renderDealTiles(data) {
   if (!tilesWrap) return;
 
