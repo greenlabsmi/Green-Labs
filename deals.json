@@ -235,7 +235,7 @@
     "groups": [
       {
         "title": "Apparel & Gear",
-        "lines": [
+        "items": [
           "Green Labs or Dutch Touch Genetics Hoodies - $45",
           "#KeepItDutch Beanie - $30",
           "Green Labs or Dutch Touch Genetics T-Shirt - $25",
@@ -244,7 +244,7 @@
       },
       {
         "title": "Accessories",
-        "lines": [
+        "items": [
           "Dutch Touch Genetics Bowl - $10",
           "Dutch Touch Genetics 4pc Metal Grinder - $10",
           "Dutch Touch Genetics Rolling Tray - $5",
