@@ -1096,5 +1096,24 @@ document.addEventListener('DOMContentLoaded', () => {
         dealsDrop.classList.add('is-fully-open');
       }
     });
+     
+     // Scroll Category Arrows
+    const dealJumpWrap = document.getElementById('dealJumpWrap');
+    const leftArrow = document.getElementById('jumpArrowLeft');
+    const rightArrow = document.getElementById('jumpArrowRight');
+
+    if (dealJumpWrap && leftArrow && rightArrow) {
+      leftArrow.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation(); // Stops dropdown from misbehaving
+        dealJumpWrap.scrollBy({ left: -250, behavior: 'smooth' });
+      });
+      
+      rightArrow.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dealJumpWrap.scrollBy({ left: 250, behavior: 'smooth' });
+      });
+    }
   }
 });
