@@ -2196,6 +2196,7 @@ header, nav, section, .container, .wrap, .row {
   color: #fff;
   padding: 4rem 0;
   border-top: 1px solid #333;
+  scroll-margin-top: 80px;
 }
 .deli-head { text-align: center; margin-bottom: 3rem; }
 .deli-badge {
