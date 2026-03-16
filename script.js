@@ -67,20 +67,22 @@ document.addEventListener('click', (e) => {
 
 // ===== SMART NATIVE MAPS ROUTER =====
 document.addEventListener('DOMContentLoaded', () => {
-  const mapLinks = document.querySelectorAll('a[href*="google.com/maps"], a[href*="maps.apple.com"]');
+  // 1. Rock-solid Apple device detection (catches iPhones, iPads, and touch Macs)
+  const isApple = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
+                  (navigator.userAgent.includes("Mac") && "ontouchend" in document);
+
+  // 2. Grab every map link on the page
+  const mapLinks = document.querySelectorAll('a[href*="google.com/maps"]');
+
   mapLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
+    if (isApple) {
+      // 3. Rewrite the HTML link permanently to Apple Maps directions
       const address = "10701 Madison St, Luna Pier, MI 48157";
-      // Detect if the user is on an Apple device
-      const isApple = /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent) && 'ontouchend' in document;
+      link.href = `https://maps.apple.com/?daddr=${encodeURIComponent(address)}`;
       
-      if (isApple) {
-        window.location.href = `http://maps.apple.com/?q=${encodeURIComponent(address)}`;
-      } else {
-        window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`, '_blank');
-      }
-    });
+      // 4. Remove target="_blank" so it launches the app natively without opening a dead Safari tab
+      link.removeAttribute('target');
+    }
   });
 });
 
