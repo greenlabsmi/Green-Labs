@@ -1589,92 +1589,65 @@ header, nav, section, .container, .wrap, .row {
 }
 
 @media (max-width: 640px){
-  .buyGuide{
-    padding-left: 14px;
-    padding-right: 14px;
+  .buyGuide { padding-left: 14px; padding-right: 14px; }
+  .guideCard__shell { border-radius: 24px; }
+
+  /* NEW MOBILE ACCORDION TRICK FOR THE IMAGE */
+  .guideCard__main {
+    display: flex;
+    flex-direction: column;
   }
-  .guideCard__shell{
-    border-radius: 24px;
+  
+  .guideCard__copy {
+    order: 2; /* Text sits on the bottom */
+    padding: 24px 20px 20px;
+    min-height: auto;
   }
-  .guideCard__main{
-    /* CHANGED: Stacks text on top, image on bottom for mobile */
-    grid-template-columns: 1fr; 
-    align-items: stretch;
+  
+  .guideCard__media {
+    order: 1; /* Puts the image at the very top */
+    padding: 0 20px; 
+    max-height: 0; /* Hidden by default */
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, opacity 0.5s ease, padding 0.5s ease;
   }
-  .guideCard__copy{
-    min-height: auto; /* Removed fixed height */
-    padding: 24px 20px 12px; /* Adjusted padding for top-stacking */
+  
+  /* What happens when the card opens */
+  .guideCard.is-open .guideCard__media {
+    max-height: 400px; 
+    opacity: 1;
+    padding: 24px 20px 0; /* Adds top spacing when open */
   }
-  .guideCard__eyebrow{
-    margin-bottom: 8px;
-    font-size: 10px;
-    letter-spacing: .14em;
+  
+  .guideCard__imageWrap {
+    min-height: 220px; 
+    border-radius: 18px; 
+    width: 100%; 
   }
-  .guideCard__title{
-    margin: 0 0 10px;
-    font-size: clamp(24px, 7vw, 36px);
-    line-height: .96;
-  }
-  .guideCard__lead{
-    font-size: 14px;
-    line-height: 1.5;
-    -webkit-line-clamp: unset; /* Let the text flow naturally */
-  }
-  .guideCard__toggle{
-    margin-top: 14px;
-    gap: 10px;
-    font-size: 11px;
-    letter-spacing: .10em;
-  }
-  .guideCard__toggleIcon{
-    width: 30px;
-    height: 30px;
-    font-size: 20px;
-  }
-  .guideCard__media{
-    /* CHANGED: Adjusted padding to look good on the bottom */
-    padding: 0 20px 24px; 
-  }
-  .guideCard__imageWrap{
-    min-height: 240px; /* Gives the image plenty of room to breathe */
-    border-radius: 18px;
-    width: 100%;
-  }
-  .guideCard__expandInner{
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-  .guideCard.is-open .guideCard__expandInner{
-    padding-bottom: 20px;
-  }
-  .vibeFinder{
-    border-radius: 24px;
-    padding: 22px 18px;
-  }
+  
+  .guideCard__expandInner { padding-left: 20px; padding-right: 20px; }
+  .guideCard.is-open .guideCard__expandInner { padding-bottom: 20px; }
+
+  /* Keep your existing typography rules */
+  .guideCard__eyebrow { margin-bottom: 8px; font-size: 10px; letter-spacing: .14em; }
+  .guideCard__title { margin: 0 0 10px; font-size: clamp(24px, 7vw, 36px); line-height: .96; }
+  .guideCard__lead { font-size: 14px; line-height: 1.5; -webkit-line-clamp: unset; }
+  .guideCard__toggle { margin-top: 14px; gap: 10px; font-size: 11px; letter-spacing: .10em; }
+  .guideCard__toggleIcon { width: 30px; height: 30px; font-size: 20px; }
+  .vibeFinder { border-radius: 24px; padding: 22px 18px; }
 }
 
 @media (max-width: 420px){
-  .guideCard__main{
-    grid-template-columns: 1fr; /* Stack vertically */
-  }
-  .guideCard__copy{
-    min-height: auto;
-    padding: 20px 16px 10px;
-  }
-  .guideCard__title{
-    font-size: clamp(22px, 7.5vw, 32px);
-  }
-  .guideCard__lead{
-    font-size: 14px; 
-    line-height: 1.5;
-    -webkit-line-clamp: unset;
-  }
-  .guideCard__media{
-    padding: 0 16px 20px; /* Pad sides and bottom */
-  }
-  .guideCard__imageWrap{
-    min-height: 200px;
-  }
+  .guideCard__main { grid-template-columns: 1fr; }
+  .guideCard__copy { min-height: auto; padding: 20px 16px 10px; }
+  .guideCard__title { font-size: clamp(22px, 7.5vw, 32px); }
+  .guideCard__lead { font-size: 14px; line-height: 1.5; -webkit-line-clamp: unset; }
+  
+  /* Tiny phone adjustments for the new animation */
+  .guideCard__media { padding: 0 16px; }
+  .guideCard.is-open .guideCard__media { padding: 20px 16px 0; }
+  .guideCard__imageWrap { min-height: 200px; }
 }
 
 @media (prefers-reduced-motion: reduce){
@@ -3037,6 +3010,11 @@ header, nav, section, .container, .wrap, .row {
 }
 
 /* Shrink the overall card size but keep it premium */
+.strain-card, .strain-card * {
+  cursor: pointer; 
+}
+
+/* Keep your existing card styling below it */
 .strain-card {
   flex: 0 0 260px; 
   scroll-snap-align: center;
@@ -3045,7 +3023,6 @@ header, nav, section, .container, .wrap, .row {
   border: 1px solid rgba(255, 255, 255, 0.08);
   overflow: hidden;
   position: relative;
-  cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
