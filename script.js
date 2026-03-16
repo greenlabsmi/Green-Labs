@@ -1135,3 +1135,96 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 });
+
+// =========================================================
+// DTG STRAIN MODAL (Green Labs Version)
+// =========================================================
+document.addEventListener('DOMContentLoaded', async () => {
+  let strains = [];
+  try {
+    // Fetch the master database from DTG
+    const response = await fetch('https://greenlabsmi.github.io/Dutch_Touch_Brand/strains.json');
+    strains = await response.json();
+  } catch (error) {
+    console.error('Failed to load strains for modal:', error);
+  }
+
+  // 1. Build the invisible Modal HTML and attach it to the page
+  const modalHTML = `
+    <div class="strain-modal" id="glStrainModal">
+      <div class="strain-modal-dialog">
+        <button class="strain-modal-close" id="glCloseModal">&times;</button>
+        <div class="strain-modal-layout">
+          <div class="strain-modal-media">
+            <img id="glModalImage" src="" alt="" class="strain-modal-image">
+          </div>
+          <div class="strain-modal-body">
+            <div class="strain-modal-badge" id="glModalBreeder"></div>
+            <h3 class="strain-modal-title" id="glModalName"></h3>
+            <div class="strain-modal-info">
+              <p><span>TYPE</span> <strong id="glModalType" style="color:#fff;"></strong></p>
+              <p><span>LINEAGE</span> <strong id="glModalLineage" style="color:#fff;"></strong></p>
+              <p><span>THC</span> <strong id="glModalThc" style="color:#fff;"></strong></p>
+            </div>
+            <p class="strain-modal-desc" id="glModalDesc"></p>
+            <div class="strain-modal-cta">
+              <a href="https://greenlabsmi.github.io/Dutch_Touch_Brand/strains.html" class="btn btn--gold" style="width: 100%;">
+                Explore DTG Vault &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+  document.body.insertAdjacentHTML('beforeend', modalHTML);
+
+  const modal = document.getElementById('glStrainModal');
+  const closeBtn = document.getElementById('glCloseModal');
+
+  // 2. Listen for clicks on the carousel cards
+  document.body.addEventListener('click', (e) => {
+    // Only trigger if they clicked a card inside the Featured Genetics carousel
+    const card = e.target.closest('#current-strains .strain-card');
+    if (card) {
+      const strainName = card.querySelector('.strain-name').innerText;
+      // Find the exact strain in our database
+      const strainData = strains.find(s => s.name === strainName);
+      
+      if (strainData) {
+        // Inject the text
+        document.getElementById('glModalName').innerText = strainData.name;
+        document.getElementById('glModalBreeder').innerText = "Genetics by " + strainData.breeder;
+        document.getElementById('glModalType').innerText = strainData.type.toUpperCase();
+        document.getElementById('glModalLineage').innerText = strainData.lineage;
+        document.getElementById('glModalThc').innerText = strainData.thc || "N/A";
+        document.getElementById('glModalDesc').innerText = strainData.description;
+
+        // Inject the image (or fallback logo)
+        const imgEl = document.getElementById('glModalImage');
+        if (strainData.image) {
+            imgEl.src = 'https://greenlabsmi.github.io/Dutch_Touch_Brand/' + strainData.image;
+            imgEl.classList.remove('fallback-logo');
+        } else {
+            imgEl.src = 'https://greenlabsmi.github.io/Dutch_Touch_Brand/assets/img/logo/dtg-logo-orange.png';
+            imgEl.classList.add('fallback-logo');
+        }
+
+        // Pop it open and lock the background from scrolling
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+  });
+
+  // 3. Close Modal Logic
+  const closeDialog = () => {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  };
+  closeBtn.addEventListener('click', closeDialog);
+  // Close if they click the dark background outside the modal
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeDialog();
+  });
+});
