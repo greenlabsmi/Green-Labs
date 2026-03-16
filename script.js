@@ -859,23 +859,37 @@ function renderDealsDropdown(data) {
 ========================================================= */
 (function () {
   const cards = document.querySelectorAll('[data-guide-card]');
-
+  
   cards.forEach((card) => {
     const btn = card.querySelector('.guideCard__toggle');
     if (!btn) return;
-
+    
     btn.addEventListener('click', () => {
       const isOpen = card.classList.contains('is-open');
-
+      
+      // Close all other cards first
       cards.forEach((otherCard) => {
         otherCard.classList.remove('is-open');
         const otherBtn = otherCard.querySelector('.guideCard__toggle');
         if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
       });
-
+      
+      // If it wasn't open, open it and scroll to it smoothly!
       if (!isOpen) {
         card.classList.add('is-open');
         btn.setAttribute('aria-expanded', 'true');
+        
+        // Wait just a split second for the CSS animation to start expanding
+        setTimeout(() => {
+          // Find the height of your sticky header so it doesn't hide behind the logo
+          const stickyH = document.querySelector('.sticky')?.getBoundingClientRect().height || 70;
+          
+          // Calculate the exact position of the card + a 20px visual breathing room
+          const yPos = card.getBoundingClientRect().top + window.pageYOffset - stickyH - 20;
+          
+          // Smoothly scroll the user to the top of the card
+          window.scrollTo({ top: Math.max(0, yPos), behavior: 'smooth' });
+        }, 350); 
       }
     });
   });
