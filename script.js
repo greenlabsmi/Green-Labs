@@ -35,13 +35,32 @@ document.addEventListener('DOMContentLoaded', () => {
     return s; // keep full URLs or relative custom paths
   }
 
- function smoothTo(el) {
+function smoothTo(el) {
   if (!el) return;
   const stickyH = $('.sticky')?.getBoundingClientRect().height || 70;
-  // Increased offset to 40px so section headers clear the sticky nav perfectly!
-  const yPos = el.getBoundingClientRect().top + window.pageYOffset - (stickyH + 40);
+  // Increased the offset from 40 to 80 so it stops higher up the page!
+  const yPos = el.getBoundingClientRect().top + window.pageYOffset - (stickyH + 80);
   window.scrollTo({ top: Math.max(0, yPos), behavior: prefersReduce ? 'auto' : 'smooth' });
 }
+
+// ===== SMART NATIVE MAPS ROUTER =====
+document.addEventListener('DOMContentLoaded', () => {
+  const mapLinks = document.querySelectorAll('a[href*="google.com/maps"], a[href*="maps.apple.com"]');
+  mapLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const address = "10701 Madison St, Luna Pier, MI 48157";
+      // Detect if the user is on an Apple device
+      const isApple = /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent) && 'ontouchend' in document;
+      
+      if (isApple) {
+        window.location.href = `http://maps.apple.com/?q=${encodeURIComponent(address)}`;
+      } else {
+        window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`, '_blank');
+      }
+    });
+  });
+});
 
   // data-scroll buttons/links
   $$('[data-scroll]').forEach(btn => {
