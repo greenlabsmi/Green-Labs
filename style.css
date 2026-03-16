@@ -3046,3 +3046,87 @@ header, nav, section, .container, .wrap, .row {
     padding: 0 4px !important; /* Shrunk the invisible box around the words so they still fit */
   }
 }
+
+/* =========================================================
+   DYNAMIC DTG STRAIN LIBRARY (Injected via JS)
+========================================================= */
+.strain-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.7rem;
+}
+
+.strain-card {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: var(--radius2);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.strain-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  border-color: rgba(214, 163, 74, 0.4); /* DTG Gold glow on hover */
+}
+
+.strain-card-inner {
+  padding: 1.2rem;
+}
+
+.strain-image {
+  height: 200px;
+  border-radius: 14px;
+  margin-bottom: 1rem;
+  background-color: #070907;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.strain-image.fallback-logo {
+  background-size: 40%;
+  background-color: #0b0b0b;
+}
+
+.strain-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 4px;
+}
+
+.strain-name {
+  color: #fff;
+  font-family: "Cinzel", serif;
+  font-size: 1.3rem;
+  margin: 0;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+}
+
+.strain-badge {
+  background: linear-gradient(180deg, rgba(214,163,74,.95), rgba(185,135,47,.95));
+  color: #121413;
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.strain-meta {
+  color: rgba(233, 236, 235, 0.72);
+  font-size: 0.9rem;
+  margin: 0.4rem 0;
+  font-weight: 600;
+}
+
+.strain-notes {
+  color: rgba(233, 236, 235, 0.55);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin: 0;
+}
