@@ -1399,8 +1399,7 @@ header, nav, section, .container, .wrap, .row {
 .guideCard__imageWrap {
   position: relative;
   width: 100%;
-  height: auto; /* Let the image's natural height push the box open */
-  min-height: 100%; /* If text is taller, match the text height */
+  height: auto; 
   border-radius: 24px;
   overflow: hidden;
   background: linear-gradient(135deg, rgba(11,125,90,.14), rgba(11,125,90,.03)), #ddd7cf;
@@ -1409,11 +1408,10 @@ header, nav, section, .container, .wrap, .row {
 
 .guideCard__image {
   width: 100%;
-  height: auto; /* Scale perfectly with no cropping */
-  min-height: 100%; /* Cover empty space if the text column is super tall */
+  height: auto; 
   display: block;
-  object-fit: cover; 
-  object-position: top; /* Keep the top of the graphic perfectly anchored */
+  object-fit: contain; 
+  object-position: top; 
 }
 
 .guideCard__expand{
