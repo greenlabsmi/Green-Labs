@@ -35,13 +35,13 @@ document.addEventListener('DOMContentLoaded', () => {
     return s; // keep full URLs or relative custom paths
   }
 
-  // Smooth scroll with sticky height offset
-  function smoothTo(el) {
-    if (!el) return;
-    const stickyH = $('.sticky')?.getBoundingClientRect().height || 64;
-    const yPos = el.getBoundingClientRect().top + window.pageYOffset - (stickyH + 10);
-    window.scrollTo({ top: Math.max(0, yPos), behavior: prefersReduce ? 'auto' : 'smooth' });
-  }
+ function smoothTo(el) {
+  if (!el) return;
+  const stickyH = $('.sticky')?.getBoundingClientRect().height || 70;
+  // Increased offset to 40px so section headers clear the sticky nav perfectly!
+  const yPos = el.getBoundingClientRect().top + window.pageYOffset - (stickyH + 40);
+  window.scrollTo({ top: Math.max(0, yPos), behavior: prefersReduce ? 'auto' : 'smooth' });
+}
 
   // data-scroll buttons/links
   $$('[data-scroll]').forEach(btn => {
@@ -879,15 +879,11 @@ function renderDealsDropdown(data) {
         card.classList.add('is-open');
         btn.setAttribute('aria-expanded', 'true');
         
-        // Wait just a split second for the CSS animation to start expanding
+// Wait just a split second for the CSS animation to start expanding
         setTimeout(() => {
-          // Find the height of your sticky header so it doesn't hide behind the logo
           const stickyH = document.querySelector('.sticky')?.getBoundingClientRect().height || 70;
-          
-          // Calculate the exact position of the card + a 20px visual breathing room
-          const yPos = card.getBoundingClientRect().top + window.pageYOffset - stickyH - 20;
-          
-          // Smoothly scroll the user to the top of the card
+          // Match the 40px offset here as well!
+          const yPos = card.getBoundingClientRect().top + window.pageYOffset - (stickyH + 40);
           window.scrollTo({ top: Math.max(0, yPos), behavior: 'smooth' });
         }, 350); 
       }
