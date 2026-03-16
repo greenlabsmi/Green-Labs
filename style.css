@@ -3147,3 +3147,169 @@ header, nav, section, .container, .wrap, .row {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+/* =========================================================
+   DTG STRAIN MODAL (Green Labs Version)
+========================================================= */
+.strain-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.strain-modal.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.strain-modal-dialog {
+  background: #0b0d0c;
+  border: 1px solid rgba(214, 163, 74, 0.3); /* Subtle gold border */
+  border-radius: 24px;
+  width: 100%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8);
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+}
+
+.strain-modal.open .strain-modal-dialog {
+  transform: translateY(0);
+}
+
+.strain-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  font-size: 22px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.strain-modal-close:hover {
+  background: rgba(214, 163, 74, 0.9);
+  border-color: rgba(214, 163, 74, 1);
+  color: #000;
+  transform: scale(1.05);
+}
+
+.strain-modal-layout {
+  display: flex;
+  flex-direction: row;
+}
+
+.strain-modal-media {
+  width: 45%;
+  background: #070907;
+  position: relative;
+}
+
+.strain-modal-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  min-height: 300px;
+}
+
+.strain-modal-image.fallback-logo {
+  object-fit: contain;
+  padding: 3rem;
+}
+
+.strain-modal-body {
+  width: 55%;
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.strain-modal-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  color: #d4af37;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.strain-modal-title {
+  font-family: "Cinzel", serif;
+  font-size: 32px;
+  font-weight: 900;
+  margin: 0 0 20px;
+  line-height: 1.05;
+  color: #fff;
+}
+
+.strain-modal-info {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.strain-modal-info p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.strain-modal-info span {
+  color: #d4af37;
+  font-weight: 900;
+  display: inline-block;
+  width: 85px;
+}
+
+.strain-modal-desc {
+  font-size: 15px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 32px;
+  font-weight: 600;
+}
+
+.strain-modal-cta {
+  margin-top: auto;
+}
+
+@media (max-width: 768px) {
+  .strain-modal-layout {
+    flex-direction: column;
+  }
+  .strain-modal-media {
+    width: 100%;
+    height: 250px;
+  }
+  .strain-modal-body {
+    width: 100%;
+    padding: 24px;
+  }
+}
