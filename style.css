@@ -1411,11 +1411,12 @@ header, nav, section, .container, .wrap, .row {
     0 12px 30px rgba(0,0,0,.10);
 }
 
-.guideCard__image{
-  width:100%;
-  height:100%;
-  display:block;
-  object-fit:cover;
+.guideCard__image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain; /* Prevents the image from EVER getting cropped */
+  object-position: top; /* Anchors it nicely to the top of the frame */
 }
 
 .guideCard__expand{
