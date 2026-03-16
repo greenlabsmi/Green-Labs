@@ -736,8 +736,12 @@ function renderDealsDropdown(data) {
           ${groupsHtml}
         </section>
       `;
-    }).join('') + `<div style="margin-top:10px;font-weight:800;opacity:.70;">All prices include tax.</div>`;
-
+    }).join('') + `
+<div class="drTaxBanner">
+  <strong>Pricing Update:</strong> All prices are now shown <strong>Pre-Tax</strong> for cleaner math. 
+  (e.g., A clean $50 deal + 16% tax = $58.00 Out-The-Door).
+</div>`;
+   
     if (jumpWrap) {
       // Prepend an "All Deals" button that jumps to the top of the deals container
       jumpWrap.innerHTML = `
@@ -1035,7 +1039,7 @@ function renderDealsDropdown(data) {
           <div class="thContent">
             ${it.tag ? `<div class="thPill ${pillClass}">${esc(it.tag)}</div>` : ''}
             <h3 class="thH3">${esc(it.title)}</h3>
-            ${it.price ? `<div class="thPrice">${esc(it.price)}</div>` : ''}
+            ${it.price ? `<div class="thPrice">${esc(it.price)} <span class="thTaxTag">+ TAX</span></div>` : ''}
             ${it.details ? `<div class="thDetails">${esc(it.details)}</div>` : ''}
             <div class="thCta">Shop Deal →</div>
           </div>
