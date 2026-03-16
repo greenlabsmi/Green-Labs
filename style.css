@@ -2161,6 +2161,27 @@ header, nav, section, .container, .wrap, .row {
 .muted{ opacity:.75; font-weight: 700; }
 
 /* =========================================================
+   VISIT SECTION - LIGHT MODE FIXES
+========================================================= */
+.infobox .link {
+  color: #0B7D5A; /* Dark green for readability */
+  font-weight: 800;
+}
+.infobox .link:hover {
+  color: #141615;
+}
+.infobox .btn--primary {
+  background: #0B7D5A; /* Solid green to remove the glare */
+  color: #fff;
+  border: none;
+  box-shadow: 0 8px 20px rgba(11, 125, 90, 0.25);
+}
+.infobox .btn--primary:hover {
+  background: #086045;
+  box-shadow: 0 12px 25px rgba(11, 125, 90, 0.35);
+}
+
+/* =========================================================
    FOOTER (Multi-Column + Compliance)
 ========================================================= */
 .footer { 
