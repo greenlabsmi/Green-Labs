@@ -1980,14 +1980,12 @@ header, nav, section, .container, .wrap, .row {
 /* =========================================================
    DTG / Strain / Visit / Footer (kept style)
 ========================================================= */
-.section--dtg{
-  background:
-    radial-gradient(1000px 520px at 10% 0%, rgba(214,163,74,.12), rgba(0,0,0,0) 55%),
-    radial-gradient(1200px 520px at 70% 0%, rgba(11,125,90,.16), rgba(0,0,0,0) 60%),
-    #070907;
+.section--dtg {
+  background: radial-gradient(1000px 520px at 10% 0%, rgba(214,163,74,.12), rgba(0,0,0,0) 55%), radial-gradient(1200px 520px at 70% 0%, rgba(11,125,90,.16), rgba(0,0,0,0) 60%), #070907;
   color: var(--ink);
   border-top: 1px solid rgba(255,255,255,.06);
   border-bottom: 1px solid rgba(255,255,255,.06);
+  padding-top: 16px; /* Shrinks the giant empty gap at the top */
 }
 
 .dtghead{ display:flex; flex-direction:column; gap:10px; margin-bottom:16px; }
@@ -3213,13 +3211,14 @@ header, nav, section, .container, .wrap, .row {
   width: 45%;
   background: #070907;
   position: relative;
+  min-height: 300px; /* Moved this up to the container */
 }
 
 .strain-modal-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  min-height: 300px;
+  display: block; /* Removed the 300px minimum from the image itself */
 }
 
 .strain-modal-image.fallback-logo {
@@ -3293,7 +3292,8 @@ header, nav, section, .container, .wrap, .row {
   }
   .strain-modal-media {
     width: 100%;
-    height: 250px;
+    height: 240px;
+    min-height: auto; /* Allows it to shrink perfectly on phones */
   }
   .strain-modal-body {
     width: 100%;
