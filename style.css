@@ -1789,39 +1789,24 @@ header, nav, section, .container, .wrap, .row {
 
 /* RESPONSIVE */
 @media (max-width: 980px){
-  .guideCard__main{
-    grid-template-columns: 1fr 140px;
-    min-height: unset;
-  }
-  .guideCard__media{
-    padding: 18px 18px 18px 0;
-    min-height: unset;
-  }
-  .guideCard__imageWrap{
-    min-height: 100%;
-  }
-  .guideInfoGrid{
+  /* 1. Fix the layout to single column */
+  .guideInfoGrid {
     grid-template-columns: 1fr;
   }
-}
 
-@media (max-width: 640px){
-  .buyGuide{ padding-left: 14px; padding-right: 14px; }
-  .guideCard__shell{ border-radius: 24px; }
-  
-  /* NEW MOBILE ACCORDION TRICK FOR THE IMAGE */
+  /* 2. THE ACCORDION TRICK (Now triggers on iPads and narrow desktops) */
   .guideCard__main {
     display: flex;
     flex-direction: column;
   }
   .guideCard__copy {
     order: 2; /* Text sits on the bottom */
-    padding: 24px 20px 20px;
+    padding: 30px 24px 24px;
     min-height: auto;
   }
   .guideCard__media {
     order: 1; /* Puts the image at the very top */
-    padding: 0 20px; 
+    padding: 0 24px; 
     max-height: 0; /* Hidden by default */
     opacity: 0;
     overflow: hidden;
@@ -1830,26 +1815,46 @@ header, nav, section, .container, .wrap, .row {
   
   /* What happens when the card opens */
   .guideCard.is-open .guideCard__media {
-    max-height: 400px; 
+    max-height: 500px; 
     opacity: 1;
-    padding: 24px 20px 0; /* Adds top spacing when open */
+    padding: 24px 24px 0; /* Adds top spacing when open */
   }
   
   .guideCard__imageWrap {
-    min-height: 220px; 
-    border-radius: 18px; 
+    min-height: 260px; 
+    border-radius: 20px; 
     width: 100%; 
   }
+  .guideCard__expandInner { padding-left: 24px; padding-right: 24px; }
+  .guideCard.is-open .guideCard__expandInner { padding-bottom: 24px; }
+}
+
+@media (max-width: 640px){
+  .buyGuide{ padding-left: 14px; padding-right: 14px; }
+  .guideCard__shell{ border-radius: 24px; }
+  
+  /* Scale down padding for mobile screens */
+  .guideCard__copy { padding: 24px 20px 20px; }
+  .guideCard__media { padding: 0 20px; }
+  .guideCard.is-open .guideCard__media { padding: 24px 20px 0; }
+  .guideCard__imageWrap { min-height: 220px; border-radius: 18px; }
   .guideCard__expandInner { padding-left: 20px; padding-right: 20px; }
   .guideCard.is-open .guideCard__expandInner { padding-bottom: 20px; }
   .vibeFinder { border-radius: 24px; padding: 22px 18px; }
+  
+  /* Scale down typography for mobile */
+  .guideCard__eyebrow { margin-bottom: 8px; font-size: 10px; letter-spacing: .14em; }
+  .guideCard__title { margin: 0 0 10px; font-size: clamp(24px, 7vw, 36px); line-height: .96; }
+  .guideCard__lead { font-size: 14px; line-height: 1.5; -webkit-line-clamp: unset; }
+  .guideCard__toggle { margin-top: 14px; gap: 10px; font-size: 11px; letter-spacing: .10em; }
+  .guideCard__toggleIcon { width: 30px; height: 30px; font-size: 20px; }
 }
 
 @media (max-width: 420px){
-  .guideCard__main { grid-template-columns: 1fr; }
-  .guideCard__copy { min-height: auto; padding: 20px 16px 10px; }
+  .guideCard__copy { padding: 20px 16px 10px; }
+  .guideCard__title { font-size: clamp(22px, 7.5vw, 32px); }
   
-  /* Tiny phone adjustments for the new animation */
+  /* Tiny phone adjustments */
   .guideCard__media { padding: 0 16px; }
   .guideCard.is-open .guideCard__media { padding: 20px 16px 0; }
   .guideCard__imageWrap { min-height: 200px; }
