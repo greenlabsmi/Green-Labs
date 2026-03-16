@@ -2160,20 +2160,81 @@ header, nav, section, .container, .wrap, .row {
 }
 .muted{ opacity:.75; font-weight: 700; }
 
-.footer{
-  border-top: 1px solid rgba(255,255,255,.08);
-  background: rgba(0,0,0,.25);
-  padding:18px 0;
+/* =========================================================
+   FOOTER (Multi-Column + Compliance)
+========================================================= */
+.footer { 
+  padding: 50px 0 20px; 
+  background: #070907; 
+  border-top: 1px solid rgba(255,255,255,.08); 
+  color: rgba(233,236,235,.78); 
 }
-.footer__inner{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:14px;
-  flex-wrap:wrap;
+.footer__grid { 
+  display: grid; 
+  gap: 34px; 
+  grid-template-columns: 1fr; 
+  margin-bottom: 40px; 
 }
-.footer__copy,
-.footer__links{ font-weight:800; color: rgba(233,236,235,.78); }
+@media(min-width: 768px) { 
+  .footer__grid { 
+    grid-template-columns: 2fr 1fr 1fr 1fr; /* Brand column is wider */
+  } 
+}
+.footer__col { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 12px; 
+}
+.footer__logo { 
+  height: 44px; 
+  width: auto; 
+  object-fit: contain; 
+  margin-bottom: 4px; 
+  filter: grayscale(1) brightness(2); /* Makes logo white/silver */
+  opacity: .9; 
+}
+.footer__warning { 
+  font-size: 11px; 
+  line-height: 1.6; 
+  opacity: .55; 
+  max-width: 380px; 
+  margin: 0;
+}
+.footer__h { 
+  color: #fff; 
+  font-family: "Cinzel", serif; 
+  font-size: 16px; 
+  font-weight: 900; 
+  letter-spacing: .06em; 
+  margin: 0 0 4px; 
+}
+.footer__link { 
+  color: inherit; 
+  font-size: 14px; 
+  font-weight: 600; 
+  transition: color .2s ease, transform .2s ease; 
+  width: fit-content; 
+}
+.footer__link:hover { 
+  color: #2ef8bb; 
+  transform: translateX(4px);
+}
+.footer__link--highlight { 
+  color: #D6A34A; /* DTG Gold */
+}
+.footer__link--highlight:hover {
+  color: #fff;
+}
+.footer__bottom { 
+  padding-top: 20px; 
+  border-top: 1px solid rgba(255,255,255,.08); 
+  display: flex; 
+  justify-content: center;
+  text-align: center;
+  font-size: 13px; 
+  font-weight: 700;
+  opacity: .7;
+}
 
 @media (max-width: 420px){
   .section__title{ font-size:30px; }
