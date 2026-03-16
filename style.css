@@ -1390,10 +1390,11 @@ header, nav, section, .container, .wrap, .row {
   background: rgba(11,125,90,.16);
 }
 
-.guideCard__media{
-  position:relative;
+.guideCard__media {
+  position: relative;
   padding: 18px 18px 18px 0;
-  display:flex;
+  display: flex;
+  align-items: flex-start; /* THIS PREVENTS THE BOX FROM STRETCHING AND CROPPING! */
 }
 
 .guideCard__imageWrap {
@@ -1410,8 +1411,6 @@ header, nav, section, .container, .wrap, .row {
   width: 100%;
   height: auto; 
   display: block;
-  object-fit: contain; 
-  object-position: top; 
 }
 
 .guideCard__expand{
@@ -3299,5 +3298,21 @@ header, nav, section, .container, .wrap, .row {
   .strain-modal-body {
     width: 100%;
     padding: 24px;
+  }
+}
+
+/* =========================================================
+   MOBILE FOOTER ALIGNMENT
+========================================================= */
+@media (max-width: 767px) {
+  .footer__grid {
+    text-align: center;
+    gap: 40px; /* Gives the sections room to breathe */
+  }
+  .footer__col {
+    align-items: center; /* Centers the links and logo */
+  }
+  .footer__warning {
+    margin: 0 auto;
   }
 }
