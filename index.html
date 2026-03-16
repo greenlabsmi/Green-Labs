@@ -16,7 +16,7 @@
 
   <link rel="icon" href="assets/img/favicon.png" />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=301">
+  <link rel="stylesheet" href="style.css?v=302">
 </head>
 
 <body>
@@ -74,14 +74,14 @@
     </div>
 
     <!-- Status strip -->
-    <div class="status-strip" id="statusStrip" role="button" aria-label="Store status and address">
-      <div class="container status-strip__inner">
-        <span class="dot" id="statusDot" aria-hidden="true"></span>
-        <span class="status-text" id="statusText">Open daily 9am–9pm</span>
-        <span class="status-sep" aria-hidden="true">•</span>
-        <span class="status-addr" id="statusAddr">10701 Madison St, Luna Pier</span>
-      </div>
+    <a href="https://www.google.com/maps/dir/?api=1&destination=10701+Madison+St,+Luna+Pier,+MI+48157" target="_blank" rel="noopener" class="status-strip" id="statusStrip" aria-label="Get directions to Green Labs">
+    <div class="container status-strip__inner">
+      <span class="dot" id="statusDot" aria-hidden="true"></span>
+      <span class="status-text" id="statusText">Open daily 9am–9pm</span>
+      <span class="status-sep" aria-hidden="true">•</span>
+      <span class="status-addr" id="statusAddr" style="text-decoration: underline; text-underline-offset: 3px;">10701 Madison St, Luna Pier</span>
     </div>
+  </a>
   </header>
 
   <!-- Drawer overlay -->
@@ -101,15 +101,16 @@
       <button class="drawer__link" data-scroll="#learn-before-you-buy" type="button">Learn</button>
       <button class="drawer__link" data-scroll="#visit" type="button">Visit / Contact</button>
       <button class="drawer__link" data-scroll="#dtg" type="button">Keep It Dutch</button>
-      <a class="drawer__link" href="YOUR_SHOPIFY_LINK_HERE" target="_blank" rel="noopener">DTG Apparel</a>
-      <button class="drawer__link" data-scroll="#strain-preview" type="button">Strain Library</button>
+      <button class="drawer__link" data-scroll="#dtg" type="button">DTG Apparel</button>
+      <button class="drawer__link" data-scroll="#current-strains" type="button">Strain Library</button>
     </nav>
-
     <div class="drawer__footer">
       <div class="drawer__meta">
         <div><strong>Open daily</strong> 9am–9pm</div>
         <div><a class="link" href="tel:+17348000024">(734) 800-0024</a></div>
-        <div class="drawer__addr">10701 Madison St, Luna Pier, MI</div>
+        <div class="drawer__addr">
+          <a href="https://www.google.com/maps/dir/?api=1&destination=10701+Madison+St,+Luna+Pier,+MI+48157" target="_blank" rel="noopener" style="color:inherit; text-decoration:underline; text-underline-offset:2px;">10701 Madison St, Luna Pier, MI</a>
+        </div>
       </div>
 
       <div class="drawer__social">
@@ -155,10 +156,9 @@
                 <span class="trust__dot" aria-hidden="true"></span>
                 Open daily 9am–9pm
               </div>
-              <div class="trust__chip">
-                <span class="trust__ico" aria-hidden="true">📍</span>
-                Luna Pier, MI
-              </div>
+              <a href="https://www.google.com/maps/dir/?api=1&destination=10701+Madison+St,+Luna+Pier,+MI+48157" target="_blank" rel="noopener" class="trust__chip" style="text-decoration: underline; text-underline-offset: 2px;">
+            <span class="trust__ico" aria-hidden="true">📍</span> Luna Pier, MI
+          </a>
             </div>
           </div>
 
@@ -784,46 +784,6 @@
   </div>
 </section>
 
-    <!-- ===== SHOP (Leafly placeholder area) ===== -->
-    <section id="shop" class="section section--dark">
-      <div class="container">
-        <div class="shophead reveal">
-          <div>
-            <h2 class="section__title section__title--invert">Shop Green Labs</h2>
-            <p class="section__sub section__sub--invert">Your menu embed goes here. The experience stays premium.</p>
-          </div>
-          <button class="btn btn--primary" data-open-shop type="button">SHOP</button>
-        </div>
-
-        <div class="menuwrap reveal" id="menuWrap" hidden>
-          <div class="menuwrap__top">
-            <div class="menuwrap__tag">
-              MENU AREA
-              <span id="menuCategoryPill" class="pill" hidden>Category: <strong>—</strong></span>
-            </div>
-            <div class="menuwrap__sub">
-              <!-- WHERE YOU INSERT LEAFLY EMBED LATER -->
-              Leafly embed will live here. For now, this placeholder is styled to match your brand.
-            </div>
-          </div>
-
-          <div class="menuplaceholder">
-            <div class="menuplaceholder__logo" aria-hidden="true">⟡</div>
-            <div class="menuplaceholder__t">Menu embed placeholder</div>
-            <div class="menuplaceholder__s" id="menuPlaceholderSub">
-              When Leafly is live, category tiles will route shoppers into the right section.
-            </div>
-            <div class="menuplaceholder__cta">
-              <button class="btn btn--ghost" data-open-deals type="button">View Deals</button>
-              <button class="btn btn--ghost" data-scroll="#visit" type="button">Visit / Contact</button>
-            </div>
-          </div>
-
-          <div class="menuwrap__hint">Later: we’ll theme the Leafly embed or deep-link category tiles for perfect flow.</div>
-        </div>
-      </div>
-    </section>
-
     <!-- ===== LOYALTY ===== -->
     <section class="section section--light">
       <div class="container">
@@ -960,24 +920,31 @@
 
         <div class="infobox">
           <div class="infobox__t">Social</div>
-          <div class="socialrow">
-            <a class="soc2" href="#" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
-            <a class="soc2" href="#" target="_blank" rel="noopener" aria-label="Facebook">Facebook</a>
-            <a class="soc2" href="#" target="_blank" rel="noopener" aria-label="X">X</a>
-            <a class="soc2" href="#" target="_blank" rel="noopener" aria-label="TikTok">TikTok</a>
+            <div class="socialrow">
+              <a class="soc2" href="#" target="_blank" rel="noopener" aria-label="Instagram">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+              </a>
+              <a class="soc2" href="#" target="_blank" rel="noopener" aria-label="Facebook">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+              </a>
+              <a class="soc2" href="#" target="_blank" rel="noopener" aria-label="X">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg>
+              </a>
+              <a class="soc2" href="#" target="_blank" rel="noopener" aria-label="TikTok">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
+              </a>
+            </div>
+            <div class="muted" style="margin-top: 10px; font-size: 14px;">Follow us for special drops, promos, giveaways and more.</div>
           </div>
-          <div class="muted" style="margin-top: 10px; font-size: 14px;">Follow us for drop alerts and behind-the-scenes deli action.</div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 </main>
 
 <footer class="footer">
   <div class="container">
     <div class="footer__grid">
-      
       <div class="footer__col footer__col--brand">
         <img src="assets/img/greenlabs-logo.png" alt="Green Labs" class="footer__logo" />
         <p class="footer__warning">
@@ -985,7 +952,6 @@
           For use by individuals 21 years of age or older or registered qualifying patients only. Keep out of reach of children. It is illegal to drive a motor vehicle while under the influence of marihuana. National Poison Control Center 1-800-222-1222.
         </p>
       </div>
-
       <div class="footer__col">
         <h4 class="footer__h">Explore</h4>
         <a href="#shop" class="footer__link" data-open-shop>Shop Online</a>
@@ -993,30 +959,26 @@
         <a href="#deli" class="footer__link" data-scroll="#deli">The Dutch Deli</a>
         <a href="https://greenlabsmi.github.io/Dutch_Touch_Brand/" class="footer__link" target="_blank" rel="noopener">Dutch Touch Genetics</a>
       </div>
-
       <div class="footer__col">
         <h4 class="footer__h">Support</h4>
-        <a href="mailto:info@greenlabsmi.com" class="footer__link">Contact Us</a>
-        <a href="#" class="footer__link">FAQ</a>
+        <a href="mailto:chris@greenlabs.com" class="footer__link">Contact Us</a>
+        <a href="#learn-before-you-buy" data-scroll="#learn-before-you-buy" class="footer__link">FAQ</a>
         <a href="#" class="footer__link">Careers</a>
-        <a href="#" class="footer__link footer__link--highlight">Leave a Review</a> </div>
-
+        <a href="https://search.google.com/local/writereview?placeid=ChIJh_aNkS95O4gRHbw50iEhz7M" target="_blank" rel="noopener" class="footer__link footer__link--highlight">Leave a Review</a>
+      </div>
       <div class="footer__col">
         <h4 class="footer__h">Legal</h4>
         <a href="terms.html" class="footer__link">Terms of Service</a>
         <a href="privacy.html" class="footer__link">Privacy Policy</a>
-        <a href="#" class="footer__link">Return Policy</a>
       </div>
-
     </div>
-
     <div class="footer__bottom">
       <div class="footer__copy">© <span id="year"></span> Green Labs Provisions. All rights reserved.</div>
     </div>
   </div>
 </footer>
 
-  <script src="deli-board.js"></script>
-  <script src="script.js?v=200"></script>
+<script src="deli-board.js"></script>
+<script src="script.js?v=302"></script>
 </body>
 </html>
