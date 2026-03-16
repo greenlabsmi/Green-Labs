@@ -3010,16 +3010,35 @@ header, nav, section, .container, .wrap, .row {
   display: flex;
   gap: 1.5rem;
   overflow-x: auto;
-  padding: 10px 5vw 40px; /* Gives shadow room to breathe and edge padding */
+  padding: 10px 5vw 40px; 
   margin-left: calc(50% - 50vw);
   width: 100vw;
   scroll-snap-type: x mandatory;
-  scrollbar-width: none;
   scroll-behavior: smooth;
+  /* ↓ NEW SCROLLBAR RULES FOR FIREFOX ↓ */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(214, 163, 74, 0.6) rgba(255, 255, 255, 0.02); 
 }
 
+/* ↓ NEW SCROLLBAR STYLING FOR CHROME/SAFARI ↓ */
 .strain-grid::-webkit-scrollbar {
-  display: none;
+  height: 8px; /* Thickness of the horizontal scrollbar */
+  display: block; 
+}
+
+.strain-grid::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02); /* Very faint dark track */
+  border-radius: 10px;
+  margin: 0 5vw; /* Keeps the scrollbar from hitting the exact edge of the screen */
+}
+
+.strain-grid::-webkit-scrollbar-thumb {
+  background: rgba(214, 163, 74, 0.5); /* DTG Gold, slightly transparent */
+  border-radius: 10px;
+}
+
+.strain-grid::-webkit-scrollbar-thumb:hover {
+  background: rgba(214, 163, 74, 0.9); /* Brightens when hovered over */
 }
 
 .strain-card {
