@@ -913,63 +913,70 @@
           </article>
         </div>
 
-        <div id="strain-preview" class="strain reveal">
-          <div class="strain__head">
-            <h3 class="strain__title">Strain Library</h3>
-            <p class="strain__sub">Collector-card preview — we can later wire this to the DTG strain library.</p>
-          </div>
+<section id="dtg" class="section section--dtg">
+      <div class="container">
+        <div class="dtghead reveal">
+          <div class="dtgbadge">KEEP IT DUTCH</div>
+          <h2 class="dtgtitle">Dutch Touch is the standard.</h2>
+          <p class="dtgsub">
+            The genetics. The consistency. The culture.
+            If you like what you find at Green Labs, the next step is DTG — limited drops, uniforms, and collector energy.
+          </p>
 
-          <div class="straingrid">
-            <article class="strainCard">
-              <div class="strainCard__img ph2">LEMON WOOKIE</div>
-              <div class="strainCard__body">
-                <div class="strainCard__name">Lemon Wookie #4</div>
-                <div class="strainCard__type">Hybrid-Leaning Sativa</div>
-                <div class="strainCard__desc">Sharp lemon + diesel funk with energetic daytime vibes.</div>
-                <div class="tag">Award Winner</div>
-              </div>
-            </article>
-
-            <article class="strainCard">
-              <div class="strainCard__img ph2">LILAC DIESEL</div>
-              <div class="strainCard__body">
-                <div class="strainCard__name">Lilac Diesel</div>
-                <div class="strainCard__type">Sativa</div>
-                <div class="strainCard__desc">Floral, gassy sativa with a clean uplifting head high.</div>
-                <div class="tag">Award Winner</div>
-              </div>
-            </article>
-
-            <article class="strainCard">
-              <div class="strainCard__img ph2">MR. CLEAN</div>
-              <div class="strainCard__body">
-                <div class="strainCard__name">Mr. Clean</div>
-                <div class="strainCard__type">Sativa</div>
-                <div class="strainCard__desc">Bright citrus and pine with sharp, focused energy.</div>
-                <div class="tag">Award Winner</div>
-              </div>
-            </article>
-
-            <article class="strainCard">
-              <div class="strainCard__img ph2">SPACE HIPPY</div>
-              <div class="strainCard__body">
-                <div class="strainCard__name">Space Hippy</div>
-                <div class="strainCard__type">Sativa-Leaning Hybrid</div>
-                <div class="strainCard__desc">Funky fruit that floats between head buzz and body melt.</div>
-                <div class="tag">Award Winner</div>
-              </div>
-            </article>
-          </div>
-
-          <div class="strain__cta">
-            <a class="btn btn--gold" href="https://greenlabsmi.github.io/Dutch_Touch_Brand/strains.html" target="_blank" rel="noopener">
-              Explore the full library <span aria-hidden="true">→</span>
+          <div class="dtgcta">
+            <a class="btn btn--gold" href="https://greenlabsmi.github.io/Dutch_Touch_Brand/" target="_blank" rel="noopener">
+              Explore DTG <span aria-hidden="true">→</span>
             </a>
+            <button class="btn btn--ghost inv" data-open-deals type="button">DEALS</button>
           </div>
         </div>
 
-      </div>
+        <div class="rail reveal" aria-label="DTG apparel highlights">
+          <article class="railcard">
+            <div class="railcard__img ph">DTG Lion Hoodie</div>
+            <div class="railcard__meta">
+              <div class="railcard__name">DTG Lion Hoodie — Black</div>
+              <div class="railcard__price">$70</div>
+            </div>
+          </article>
+          <article class="railcard">
+            <div class="railcard__img ph">DTG Sweatpants</div>
+            <div class="railcard__meta">
+              <div class="railcard__name">DTG Sweatpants — Black</div>
+              <div class="railcard__price">$65</div>
+            </div>
+          </article>
+          <article class="railcard">
+            <div class="railcard__img ph">DTG Lion Tee</div>
+            <div class="railcard__meta">
+              <div class="railcard__name">DTG Lion Tee — White</div>
+              <div class="railcard__price">$35</div>
+            </div>
+          </article>
+          <article class="railcard">
+            <div class="railcard__img ph">Keep It Dutch</div>
+            <div class="railcard__meta">
+              <div class="railcard__name">Keep It Dutch Hoodie — Sand</div>
+              <div class="railcard__price">$70</div>
+            </div>
+          </article>
+        </div>
+
+        <div class="gl-strains-section" style="margin-top: 4rem;">
+          <h2 style="font-family: 'Cinzel', serif; margin-bottom: 2rem;">Featured Dutch Touch Genetics</h2>
+          
+          <div class="strain-grid" id="current-strains"></div>
+          
+          <div style="text-align: center; margin-top: 3rem;">
+            <a href="https://greenlabsmi.github.io/Dutch_Touch_Brand/strains.html" class="gl-button">
+              Unlock The Full Genetics Vault
+            </a>
+          </div>
+        </div>
+        <script src="https://greenlabsmi.github.io/Dutch_Touch_Brand/js/strains-loader.js"></script>
+        </div>
     </section>
+   
 
     <!-- ===== VISIT ===== -->
     <section id="visit" class="section section--light">
