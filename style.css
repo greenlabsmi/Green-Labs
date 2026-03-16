@@ -3365,3 +3365,43 @@ header, nav, section, .container, .wrap, .row {
     padding-right: 20px;
   }
 }
+
+/* =========================================================
+   PRE-TAX PRICING STYLES
+========================================================= */
+.drTaxBanner {
+  margin-top: 16px;
+  padding: 14px 18px;
+  border-radius: 16px;
+  background: rgba(214, 163, 74, 0.12); /* Faint gold tint */
+  border: 1px solid rgba(214, 163, 74, 0.25);
+  color: #8A5B10;
+  font-size: 13px;
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+.drTaxBanner strong {
+  color: #523504;
+  font-weight: 900;
+}
+
+.thTaxTag {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: .06em;
+  padding: 4px 8px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  vertical-align: middle;
+  margin-left: 8px;
+  margin-bottom: 6px;
+}
+
+/* Make the tax tag match the green theme on the smaller white cards */
+#todays-highlights .thCard:not(.thHero) .thTaxTag {
+  background: rgba(11, 125, 90, 0.1);
+  color: #0B7D5A;
+}
