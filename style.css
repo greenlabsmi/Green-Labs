@@ -3001,9 +3001,6 @@ header, nav, section, .container, .wrap, .row {
 }
 
 /* =========================================================
-   DYNAMIC DTG STRAIN LIBRARY (Injected via JS)
-========================================================= */
-/* =========================================================
    DYNAMIC DTG STRAIN LIBRARY (Injected via JS) - CAROUSEL
 ========================================================= */
 .strain-grid {
@@ -3015,37 +3012,35 @@ header, nav, section, .container, .wrap, .row {
   width: 100vw;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  /* ↓ NEW SCROLLBAR RULES FOR FIREFOX ↓ */
   scrollbar-width: thin;
   scrollbar-color: rgba(214, 163, 74, 0.6) rgba(255, 255, 255, 0.02); 
 }
 
-/* ↓ NEW SCROLLBAR STYLING FOR CHROME/SAFARI ↓ */
 .strain-grid::-webkit-scrollbar {
-  height: 8px; /* Thickness of the horizontal scrollbar */
+  height: 8px; 
   display: block; 
 }
 
 .strain-grid::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.02); /* Very faint dark track */
+  background: rgba(255, 255, 255, 0.02); 
   border-radius: 10px;
-  margin: 0 5vw; /* Keeps the scrollbar from hitting the exact edge of the screen */
+  margin: 0 5vw; 
 }
 
 .strain-grid::-webkit-scrollbar-thumb {
-  background: rgba(214, 163, 74, 0.5); /* DTG Gold, slightly transparent */
+  background: rgba(214, 163, 74, 0.5); 
   border-radius: 10px;
 }
 
 .strain-grid::-webkit-scrollbar-thumb:hover {
-  background: rgba(214, 163, 74, 0.9); /* Brightens when hovered over */
+  background: rgba(214, 163, 74, 0.9); 
 }
 
-/* Shrink the overall card size */
+/* Shrink the overall card size but keep it premium */
 .strain-card {
-  flex: 0 0 240px; /* Shrunk down from 280px */
+  flex: 0 0 260px; 
   scroll-snap-align: center;
-  background: #0b0d0c; /* Solid dark background makes the blur look clean */
+  background: #0b0d0c; 
   border-radius: var(--radius2);
   border: 1px solid rgba(255, 255, 255, 0.08);
   overflow: hidden;
@@ -3056,7 +3051,7 @@ header, nav, section, .container, .wrap, .row {
 
 @media (min-width: 768px) {
   .strain-card {
-    flex: 0 0 260px; /* Shrunk down from 320px */
+    flex: 0 0 280px; 
     scroll-snap-align: start;
   }
 }
@@ -3064,17 +3059,69 @@ header, nav, section, .container, .wrap, .row {
 .strain-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
-  border-color: rgba(214, 163, 74, 0.4); 
+  border-color: rgba(214, 163, 74, 0.4); /* Premium DTG Gold Glow */
 }
 
 .strain-card-inner {
   padding: 1.2rem;
 }
 
+/* RESTORED: Image styling */
+.strain-image {
+  height: 200px;
+  border-radius: 14px;
+  margin-bottom: 1rem;
+  background-color: #070907;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.strain-image.fallback-logo {
+  background-size: 40%;
+  background-color: #0b0b0b;
+}
+
+/* RESTORED: Typography styling */
+.strain-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 4px;
+}
+
+.strain-name {
+  color: #fff;
+  font-family: "Cinzel", serif;
+  font-size: 1.3rem;
+  margin: 0;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+}
+
+.strain-badge {
+  background: linear-gradient(180deg, rgba(214,163,74,.95), rgba(185,135,47,.95));
+  color: #121413;
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.strain-meta {
+  color: rgba(233, 236, 235, 0.72);
+  font-size: 0.9rem;
+  margin: 0.4rem 0;
+  font-weight: 600;
+}
+
 /* Constrain the text area and add the fade-out blur */
 .strain-content {
   position: relative;
-  max-height: 130px; /* Forces the box to be short */
+  max-height: 130px; 
   overflow: hidden;
 }
 
@@ -3084,9 +3131,9 @@ header, nav, section, .container, .wrap, .row {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 50px; /* Height of the fade */
+  height: 50px; 
   background: linear-gradient(to bottom, rgba(11, 13, 12, 0), rgba(11, 13, 12, 1));
-  pointer-events: none; /* Lets clicks pass through the blur */
+  pointer-events: none; 
 }
 
 /* Neatly truncate the text */
@@ -3094,9 +3141,9 @@ header, nav, section, .container, .wrap, .row {
   color: rgba(233, 236, 235, 0.55);
   font-size: 0.85rem;
   line-height: 1.5;
-  margin: 0 0 20px 0; /* Extra bottom margin to sit under the fade */
+  margin: 0 0 20px 0; 
   display: -webkit-box;
-  -webkit-line-clamp: 3; /* Cuts the text off after 3 lines */
+  -webkit-line-clamp: 3; 
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
