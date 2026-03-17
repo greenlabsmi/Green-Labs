@@ -228,36 +228,21 @@
       </summary>
 
       <div class="drDrop__body">
+            <div class="drTools">
+              <div class="drSearchWrap">
+                <input id="dealSearch" class="drSearch" type="search" placeholder="Search deals, categories, ounce, deli, carts..." aria-label="Search deals" />
+              </div>
+              <div class="drJumpContainer">
+                <button class="drArrowBtn drArrowBtn--left" id="jumpArrowLeft">❮</button>
+                <div class="drJumpWrap" id="dealJumpWrap"></div>
+                <button class="drArrowBtn drArrowBtn--right" id="jumpArrowRight">❯</button>
+              </div>
+            </div> <div class="drSearchMeta" id="dealSearchMeta" hidden></div>
 
-        <!-- Utility bar -->
-        <div class="drTools">
-          <div class="drSearchWrap">
-            <input
-              id="dealSearch"
-              class="drSearch"
-              type="search"
-              placeholder="Search deals, categories, ounce, deli, carts..."
-              aria-label="Search deals"
-            />
+            <div id="dealList" class="drDeals"></div>
+
+            <button class="drBackTop" id="drBackTop" type="button"> Back to top ↑ </button>
           </div>
-
-          <div class="drJumpContainer">
-  <button class="drArrowBtn drArrowBtn--left" id="jumpArrowLeft">❮</button>
-  <div class="drJumpWrap" id="dealJumpWrap"></div>
-  <button class="drArrowBtn drArrowBtn--right" id="jumpArrowRight">❯</button>
-</div>
-
-        <!-- Search feedback -->
-        <div class="drSearchMeta" id="dealSearchMeta" hidden></div>
-
-        <!-- Deals mount -->
-        <div id="dealList" class="drDeals"></div>
-
-        <!-- Back to top -->
-        <button class="drBackTop" id="drBackTop" type="button">
-          Back to top ↑
-        </button>
-      </div>
     </details>
 
     <button class="drShopBtn" data-open-shop type="button">SHOP ONLINE</button>
