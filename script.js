@@ -247,24 +247,26 @@ document.addEventListener('DOMContentLoaded', () => {
     try { localStorage.setItem('gl_selected_category', cat); } catch {}
   }
 
-  function openShop(scrollAlso) {
+ function openShop(scrollAlso, shopType = 'rec') {
     if (menuWrap) menuWrap.hidden = false;
+    
+    // Silently saves their choice (rec or med) to browser memory for Leafly to use later!
+    try {
+        localStorage.setItem('gl_shopping_mode', shopType);
+    } catch {}
+
     const shop = $('#shop');
     if (scrollAlso && shop) smoothTo(shop);
-  }
+}
 
-  $$('[data-open-shop]').forEach(el =>
-    el.addEventListener('click', (e) => { e.preventDefault(); openShop(true); })
-  );
-
-  $$('[data-shop-category]').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const cat = btn.getAttribute('data-shop-category');
-      if (cat) setMenuCategory(cat);
-      openShop(true);
-    });
-  });
+$$('[data-open-shop]').forEach(el => 
+    el.addEventListener('click', (e) => {
+        e.preventDefault();
+        // Grabs 'rec' or 'med' from the specific button they clicked
+        const type = el.getAttribute('data-open-shop') || 'rec';
+        openShop(true, type);
+    })
+);
 
   (function restoreCategory() {
     try {
