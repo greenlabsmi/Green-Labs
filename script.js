@@ -548,16 +548,16 @@ function bindDealBackTop() {
     
     if (!drop || !backTop) return;
 
-    // 1. Make the button safely close the dropdown AND scroll up
+    // A simple, bulletproof click to close and jump to the top!
     backTop.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation(); 
         drop.classList.remove('is-fully-open');
         
-        // Targets the dropdown directly so the title sits perfectly under the nav
         const dealsDropTarget = document.getElementById('dealsDrop');
-        smoothTo(dealsDropTarget);
+        smoothTo(dealsDropTarget); 
     });
+}
 
     // 2. Smart floating logic
     const handleScroll = () => {
@@ -629,9 +629,10 @@ function renderDealsDropdown(data) {
       `;
     }).join('') + `
 <div class="drTaxBanner">
-  <strong>Pricing Update:</strong> All prices are now shown <strong>Pre-Tax</strong> for cleaner math. 
-  (e.g., A clean $50 deal + 16% tax = $58.00 Out-The-Door).
-</div>`;
+        <strong>Pricing Update:</strong> All prices are shown <strong>Pre-Tax</strong>. Recreational orders include a 16% state tax.
+        <br><br>
+        <span style="color: #0B7D5A;"><strong>Medical patients</strong> get these exact same deals completely Excise-Tax free (only 6% tax at the register).</span>
+      </div>`;
    
     if (jumpWrap) {
       // Prepend an "All Deals" button that jumps to the top of the deals container
