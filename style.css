@@ -3519,3 +3519,18 @@ header, nav, section, .container, .wrap, .row {
     gap: 60px; /* Up from 22px */
   }
 }
+
+/* =========================================
+   MEDICAL BUTTON (White & Green)
+   ========================================= */
+.btn--med {
+  background: #ffffff;
+  color: #0B7D5A;
+  border-color: #ffffff;
+  box-shadow: 0 10px 28px rgba(0,0,0,.25);
+}
+
+.btn--med:hover {
+  background: #f4f9f7;
+  box-shadow: 0 16px 42px rgba(255,255,255,.15);
+}
