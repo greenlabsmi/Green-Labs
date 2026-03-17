@@ -875,24 +875,35 @@ header, nav, section, .container, .wrap, .row {
   cursor: pointer;
 }
 
-/* 2. Floating state for the Back to Top button */
+/* =========================================
+   BACK TO TOP BUTTON (Static & Reliable)
+   ========================================= */
 .drBackTop {
-  transition: all 0.2s ease;
-  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 24px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,.10);
+  background: rgba(255,255,255,.90);
+  color: #141615;
+  font-size: 14px;
+  font-weight: 900;
+  cursor: pointer;
+  width: fit-content;
+  margin: 24px auto 0; /* Centers it perfectly below the banner */
+  box-shadow: 0 10px 30px rgba(0,0,0,.10);
+  transition: all .2s ease;
 }
 
-.drBackTop.is-floating {
-  position: fixed;
-  bottom: 24px;
-  /* Adds a premium glow so it pops over the deals when floating */
-  box-shadow: 0 16px 40px rgba(0,0,0,0.25), 0 4px 12px rgba(11,125,90,0.2);
-  border-color: rgba(11,125,90,0.4);
-}
-
-/* Hide the button entirely when the dropdown is peeking/closed */
-.drDrop:not(.is-fully-open) .drBackTop {
-  opacity: 0;
-  pointer-events: none;
+.drBackTop:hover {
+  border-color: rgba(11,125,90,.30);
+  background: #ffffff;
+  color: #0B7D5A;
+  box-shadow: 0 14px 34px rgba(11,125,90,.15);
+  transform: translateY(-2px);
 }
 
 /* Top utility area (Updated to match white box) */
