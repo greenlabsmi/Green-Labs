@@ -549,9 +549,12 @@ function bindDealBackTop() {
     // 1. Make the button safely close the dropdown AND scroll up
     backTop.addEventListener('click', (e) => {
         e.preventDefault();
-        e.stopPropagation(); // Stops the body from auto-opening it again
+        e.stopPropagation(); 
         drop.classList.remove('is-fully-open');
-        drop.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        
+        // Uses your custom smart-scroll to account for the sticky header!
+        const dealsSection = document.getElementById('deals');
+        smoothTo(dealsSection); 
     });
 
     // 2. Smart floating logic
