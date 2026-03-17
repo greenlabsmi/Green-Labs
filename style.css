@@ -795,7 +795,7 @@ header, nav, section, .container, .wrap, .row {
 /* The Body with smooth max-height animation */
 .drDrop__body {
     position: relative;
-    padding: 20px 20px 40px;
+    padding: 20px 20px 80px;
     background: #ffffff;
     max-height: 15000px; /* Lowered slightly to calculate faster */
     overflow: hidden;
@@ -1177,7 +1177,7 @@ header, nav, section, .container, .wrap, .row {
     font-size: 26px;
   }
   .drDrop__body{
-    padding: 12px 12px 84px;
+    padding: 12px 12px 96px;
   }
   .drSearch{
     height: 44px;
