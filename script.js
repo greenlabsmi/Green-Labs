@@ -552,9 +552,9 @@ function bindDealBackTop() {
         e.stopPropagation(); 
         drop.classList.remove('is-fully-open');
         
-        // Uses your custom smart-scroll to account for the sticky header!
-        const dealsSection = document.getElementById('deals');
-        smoothTo(dealsSection); 
+        // Targets the dropdown directly so the title sits perfectly under the nav
+        const dealsDropTarget = document.getElementById('dealsDrop');
+        smoothTo(dealsDropTarget);
     });
 
     // 2. Smart floating logic
