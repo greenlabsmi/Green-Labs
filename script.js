@@ -559,29 +559,6 @@ function bindDealBackTop() {
     });
 }
 
-    // 2. Smart floating logic
-    const handleScroll = () => {
-        if (!drop.classList.contains('is-fully-open')) {
-            backTop.classList.remove('is-floating');
-            return;
-        }
-
-        const rect = drop.getBoundingClientRect();
-        const viewportHeight = window.innerHeight;
-
-        // If we scrolled past the top of the deals section AND haven't reached the bottom yet
-        if (rect.top < 0 && rect.bottom > viewportHeight + 60) {
-            backTop.classList.add('is-floating');
-        } else {
-            // Once we hit the bottom, remove 'fixed' so it seamlessly docks into the section
-            backTop.classList.remove('is-floating');
-        }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    window.addEventListener('resize', handleScroll, { passive: true });
-}
-
 function renderDealsDropdown(data) {
     const jumpWrap = document.getElementById('dealJumpWrap');
     const searchMeta = document.getElementById('dealSearchMeta');
