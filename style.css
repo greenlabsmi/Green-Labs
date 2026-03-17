@@ -3448,3 +3448,35 @@ header, nav, section, .container, .wrap, .row {
 #our-story {
   background: radial-gradient(circle at top center, rgba(11, 125, 90, 0.05) 0%, var(--bg) 60%);
 }
+
+/* =========================================
+   LARGE MONITOR OPTIMIZATIONS (1440px+)
+   ========================================= */
+@media (min-width: 1440px) {
+  /* 1. Expand the max-width of the whole site slightly */
+  :root {
+    --container: 1320px; /* Up from 1180px */
+  }
+
+  /* 2. Give the hero section more top/bottom breathing room */
+  .section--hero {
+    padding-top: 60px;
+    padding-bottom: 80px;
+  }
+
+  /* 3. Let the Hero Title scale up bigger (caps at 90px instead of 72px) */
+  .hero__title {
+    font-size: clamp(72px, 6vw, 90px); 
+  }
+
+  /* 4. Bump the subtitle size and let it stretch slightly wider */
+  .hero__sub {
+    font-size: 22px; 
+    max-width: 95%; /* Up from 90% */
+  }
+
+  /* 5. Increase the gap between the text and the hero image */
+  .hero__grid {
+    gap: 60px; /* Up from 22px */
+  }
+}
