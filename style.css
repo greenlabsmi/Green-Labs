@@ -1610,9 +1610,9 @@ header, nav, section, .container, .wrap, .row {
   
   /* What happens when the card opens */
   .guideCard.is-open .guideCard__media {
-    max-height: 400px; 
+    max-height: 1200px; /* Increased from 500px to un-crop the image! */
     opacity: 1;
-    padding: 24px 20px 0; /* Adds top spacing when open */
+    padding: 24px 24px 0; 
   }
   
   .guideCard__imageWrap {
@@ -1808,11 +1808,11 @@ header, nav, section, .container, .wrap, .row {
     transition: max-height 0.5s ease, opacity 0.5s ease, padding 0.5s ease;
   }
   
-  /* What happens when the card opens */
+/* What happens when the card opens */
   .guideCard.is-open .guideCard__media {
-    max-height: 500px; 
+    max-height: 1200px; /* Increased from 400px to un-crop the image! */
     opacity: 1;
-    padding: 24px 24px 0; /* Adds top spacing when open */
+    padding: 24px 20px 0;
   }
   
   .guideCard__imageWrap {
