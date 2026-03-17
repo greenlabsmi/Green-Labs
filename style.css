@@ -867,6 +867,34 @@ header, nav, section, .container, .wrap, .row {
   box-shadow: 0 14px 34px rgba(0,0,0,.13), 0 4px 14px rgba(0,0,0,.06);
 }
 
+/* 1. Make the closed dropdown feel completely clickable */
+.drDrop:not(.is-fully-open) .drDrop__body {
+  cursor: pointer;
+}
+.drDrop:not(.is-fully-open) .drSearch {
+  cursor: pointer;
+}
+
+/* 2. Floating state for the Back to Top button */
+.drBackTop {
+  transition: all 0.2s ease;
+  z-index: 20;
+}
+
+.drBackTop.is-floating {
+  position: fixed;
+  bottom: 24px;
+  /* Adds a premium glow so it pops over the deals when floating */
+  box-shadow: 0 16px 40px rgba(0,0,0,0.25), 0 4px 12px rgba(11,125,90,0.2);
+  border-color: rgba(11,125,90,0.4);
+}
+
+/* Hide the button entirely when the dropdown is peeking/closed */
+.drDrop:not(.is-fully-open) .drBackTop {
+  opacity: 0;
+  pointer-events: none;
+}
+
 /* Top utility area (Updated to match white box) */
 .drTools{
   position: sticky;
