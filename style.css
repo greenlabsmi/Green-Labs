@@ -2131,10 +2131,20 @@ header, nav, section, .container, .wrap, .row {
   grid-template-columns: 1fr; 
   margin-bottom: 40px; 
 }
-@media(min-width: 768px) { 
-  .footer__grid { 
-    grid-template-columns: 2fr 1fr 1fr 1fr; /* Brand column is wider */
-  } 
+@media(min-width: 768px) {
+  .footer__grid {
+    /* Gives the brand column a bit more space, tightening the 3 link columns */
+    grid-template-columns: 2.5fr 1fr 1fr 1fr;
+    gap: 40px; 
+  }
+}
+
+@media(min-width: 992px) {
+  /* Anchors the final column to the far right edge of the screen */
+  .footer__col:last-child {
+    align-items: flex-end;
+    text-align: right;
+  }
 }
 .footer__col { 
   display: flex; 
