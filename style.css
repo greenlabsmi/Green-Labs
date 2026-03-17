@@ -551,9 +551,10 @@ header, nav, section, .container, .wrap, .row {
   transform: translateY(10px);
   transition: opacity .55s ease, transform .55s ease;
 }
-.reveal.is-in{
-  opacity:1;
-  transform: translateY(0);
+.reveal.is-in {
+  opacity: 1;
+  transform: none; /* Removes the trap */
+  will-change: auto; /* Fully releases the fixed button to float! */
 }
 
 /* =========================================================
