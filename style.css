@@ -3421,20 +3421,20 @@ header, nav, section, .container, .wrap, .row {
    ========================================= */
 @media (min-width: 992px) {
   .status-strip {
-    transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    display: block; /* CRITICAL FIX: Forces the <a> tag to respect height and overflow! */
+    transition: all 0.3s ease-in-out;
     transform-origin: top;
     overflow: hidden;
-    max-height: 60px; /* Adjust if your strip is taller */
+    height: var(--stripH); /* Explicitly tells the browser where to start */
   }
   
   body.is-scrolled .status-strip {
     height: 0 !important;
     min-height: 0 !important;
-    max-height: 0 !important;
     padding: 0 !important;
-    border: none !important;
+    border-top-width: 0 !important;
     opacity: 0 !important;
-    overflow: hidden !important;
+    margin: 0 !important;
   }
 }
 
