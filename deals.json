@@ -13,13 +13,12 @@
         "sour_gorilla_1g_12"
       ]
     },
-    
     "items": {
       "mixmatch_carts": {
         "pill": "VAPES",
         "pillClass": "thPill--vapes",
         "title": "Mix & Match 1G Carts",
-        "price": "10 for $70",
+        "price": "10 for $60",
         "details": "Crude Boys · Drip · Super Fire",
         "cta": "Shop now",
         "href": "#deals",
@@ -29,7 +28,7 @@
         "pill": "DUTCH TOUCH",
         "pillClass": "thPill--dtg",
         "title": "Disposables",
-        "price": "3 for $55",
+        "price": "3 for $45",
         "details": "",
         "cta": "View deal",
         "href": "#deals",
@@ -39,7 +38,7 @@
         "pill": "FLOWER",
         "pillClass": "thPill--flower",
         "title": "Orange Kush Cake",
-        "price": "$100 oz",
+        "price": "$85 oz",
         "details": "Deli special",
         "cta": "View deal",
         "href": "#deals",
@@ -48,7 +47,7 @@
       "edibles_10_40": {
         "pill": "EDIBLES",
         "pillClass": "thPill--edibles",
-        "title": "10 for $40",
+        "title": "10 for $35",
         "price": "",
         "details": "",
         "cta": "",
@@ -58,7 +57,7 @@
       "infused_prerolls_3_20": {
         "pill": "INFUSED",
         "pillClass": "thPill--prerolls",
-        "title": "Mix & Match 3 for $20",
+        "title": "Mix & Match 3 for $15",
         "price": "",
         "details": "",
         "cta": "",
@@ -68,7 +67,7 @@
       "grip_oz_2_50": {
         "pill": "FLOWER",
         "pillClass": "thPill--flower",
-        "title": "Grip oz 2 for $50",
+        "title": "Grip oz 2 for $45",
         "price": "",
         "details": "",
         "cta": "",
@@ -78,7 +77,7 @@
       "sour_gorilla_1g_12": {
         "pill": "CONCENTRATES",
         "pillClass": "thPill--concentrates",
-        "title": "1G Sour Gorilla $12",
+        "title": "1G Sour Gorilla $10",
         "price": "",
         "details": "",
         "cta": "",
@@ -95,31 +94,31 @@
         {
           "title": "Ounces",
           "items": [
-            "$35 OUNCES - Grip Pre-Packaged Ounce OR Buy 2 for $50",
-            "$60 OUNCES - Headbanger OG, Pina Rita, and Shisk - Dutch Daylight",
-            "$75 OUNCES - DUTCH DAYLIGHT - Excludes Mr. Clean",
-            "$75 OUNCES - Secret Chief",
-            "$80 OUNCES - Dragon's Blood Hashplant - Sativa Hybrid",
-            "$120 OUNCES - DELI FLOWER! - NOW ACTIVE!",
-            "$130 OUNCES - Dutch Breath",
-            "$135 OUNCES - Big Smooth",
-            "$135 OUNCES - Select Dutch Touch Genetics Ounces!",
-            "$135 OUNCES - Hash D and Double Bubble - New Strains!"
+            "$30 OUNCES - Grip Pre-Packaged Ounce OR Buy 2 for $45",
+            "$50 OUNCES - Headbanger OG, Pina Rita, and Shisk - Dutch Daylight",
+            "$65 OUNCES - DUTCH DAYLIGHT - Excludes Mr. Clean",
+            "$65 OUNCES - Secret Chief",
+            "$70 OUNCES - Dragon's Blood Hashplant - Sativa Hybrid",
+            "$100 OUNCES - DELI FLOWER! - NOW ACTIVE!",
+            "$110 OUNCES - Dutch Breath",
+            "$115 OUNCES - Big Smooth",
+            "$115 OUNCES - Select Dutch Touch Genetics Ounces!",
+            "$115 OUNCES - Hash D and Double Bubble - New Strains!"
           ]
         },
         {
           "title": "Half Ounces",
           "items": [
-            "$40 HALF OUNCE - Secret Chief, Angelica and Crunchberries",
-            "$75 HALF OUNCE - Double Bubble & Hash D",
-            "$80 HALF OUNCE - Querkle (8ths)"
+            "$35 HALF OUNCE - Secret Chief, Angelica and Crunchberries",
+            "$65 HALF OUNCE - Double Bubble & Hash D",
+            "$70 HALF OUNCE - Querkle (8ths)"
           ]
         },
         {
           "title": "Quarters",
           "items": [
-            "$45 Quarter - Bubblegum and Hash D - Hybrid Strains",
-            "$45 Quarter - Death Z (Death Star x Zkittles), Gorilla 88, and Double Bubble"
+            "$40 Quarter - Bubblegum and Hash D - Hybrid Strains",
+            "$40 Quarter - Death Z (Death Star x Zkittles), Gorilla 88, and Double Bubble"
           ]
         },
         {
@@ -127,16 +126,16 @@
           "items": [
             "$10 EIGHTHS - Dutch Daylight",
             "Dutch Daylight Strains: Bubblegum, Clusterfunk, Death Star, Death Star x Zkittles Death By, Pina Rita, & Shiska",
-            "$20 EIGHTHS - Death By Funk - Limited Time Sale!",
-            "$25 EIGHTHS - Orange Kush Cake, Querkle and Dragonsblood Hashplant",
-            "$30 EIGHTHS - Bubblegum and Hash D",
-            "$40 EIGHTHS - Lilac Diesel Award Winning Tier"
+            "$15 EIGHTHS - Death By Funk - Limited Time Sale!",
+            "$20 EIGHTHS - Orange Kush Cake, Querkle and Dragonsblood Hashplant",
+            "$25 EIGHTHS - Bubblegum and Hash D",
+            "$35 EIGHTHS - Lilac Diesel Award Winning Tier"
           ]
         },
         {
           "title": "Kief & Hash Promotions",
           "items": [
-            "Dutch Touch Genetics 14g Kief - $175ea"
+            "Dutch Touch Genetics 14g Kief - $150ea"
           ]
         }
       ]
@@ -145,57 +144,57 @@
       "category": "🪄 Pre-Rolls",
       "promo": false,
       "items": [
-        "Mr Clean and Death By Funk 1g Pre-Rolls - $5ea or 10/$35 (Limited Time Sale!)",
+        "Mr Clean and Death By Funk 1g Pre-Rolls - $5ea or 10/$30 (Limited Time Sale!)",
         "Franklin Fields 1g Pre-Rolls - $5ea",
-        "TreeTown 1g Pre-Rolls - $7ea or 10/$55",
+        "TreeTown 1g Pre-Rolls - $5ea or 10/$45",
         "Dutch Touch Full Bud 1g Pre-Rolls - $10ea",
-        "Thunder Canna 14pk Pre-Rolls - $25ea",
-        "High Supply 14pk Pre-Rolls - $60 or 2/$100"
+        "Thunder Canna 14pk Pre-Rolls - $20ea",
+        "High Supply 14pk Pre-Rolls - $50 or 2/$85"
       ]
     },
     {
       "category": "💥 Infused Pre-Rolls",
       "promo": false,
       "items": [
-        "Superfire 1.2g Infused Pre-Rolls - $5ea or 10/$45",
-        "Fire Styxx 1g Infused Pre-Rolls - $7ea or 3/$20 or 10/$65",
-        "Lightsky Farms 1g Bubble Hash Joints - $20ea or 3/$50",
-        "Dutch Touch 1.25g Rosin Donuts - $25ea or 2/$40",
-        "Dutch Touch Genetics 5pk Infused Pre-Rolls - $35ea (10k x Mr. Clean In Stock Right Now!)",
-        "HashHits 5pk Pure Hash Pre-Roll Hitters - $35ea or 2/$55 (7 to 10 hits per “Pre-Roll”)"
+        "Superfire 1.2g Infused Pre-Rolls - $5ea or 10/$40",
+        "Fire Styxx 1g Infused Pre-Rolls - $5ea or 3/$15 or 10/$55",
+        "Lightsky Farms 1g Bubble Hash Joints - $15ea or 3/$45",
+        "Dutch Touch 1.25g Rosin Donuts - $20ea or 2/$35",
+        "Dutch Touch Genetics 5pk Infused Pre-Rolls - $30ea (10k x Mr. Clean In Stock Right Now!)",
+        "HashHits 5pk Pure Hash Pre-Roll Hitters - $30ea or 2/$45"
       ]
     },
     {
       "category": "💨 Vapes & Disposables",
       "promo": false,
       "items": [
-        "Platinum Vapes - $10 or 5/$40 or 15/$100",
-        "Daily Dose 1g Cartridges - $10 or 5/$45",
-        "Superfire 1g Cartridges - $10 or 15/$100",
+        "Platinum Vapes - $10 or 5/$35 or 15/$85",
+        "Daily Dose 1g Cartridges - $10 or 5/$40",
+        "Superfire 1g Cartridges - $10 or 15/$85",
         "Platinum Vapes 1g Live Resin Carts - $15",
-        "True North Fusion 1g Full Spectrum Cartridges - $18ea or 2/$35 or 4/$60",
-        "Lightsky Farms Live Resin Cartridges - $25ea or 6/$100",
-        "Redbud Roots Hash Rosin Cartridges - $25ea",
-        "Five Star Nug Run Sugar Sauce Cartridges - $30ea or 2/$55 or 4/$100",
-        "Superfire 1g Disposables - $20ea",
-        "Dutch Touch Genetics 1g Disposables - $25ea or 3/$55 (Excludes Mr. Clean)",
-        "Batch 2g Disposables - $35ea"
+        "True North Fusion 1g Full Spectrum Cartridges - $15ea or 2/$30 or 4/$50",
+        "Lightsky Farms Live Resin Cartridges - $20ea or 6/$85",
+        "Redbud Roots Hash Rosin Cartridges - $20ea",
+        "Five Star Nug Run Sugar Sauce Cartridges - $25ea or 2/$45 or 4/$85",
+        "Superfire 1g Disposables - $15ea",
+        "Dutch Touch Genetics 1g Disposables - $20ea or 3/$45 (Excludes Mr. Clean)",
+        "Batch 2g Disposables - $30ea"
       ]
     },
     {
       "category": "🍬 Edibles",
       "promo": false,
       "items": [
-        "Dutch Touch Nerd Gummies - $10ea or 5/$35",
-        "Dutch Touch 200mg Distillate Gummies - $10ea or 5/$35",
-        "Dutch Touch 200mg Gummy Bars - $12ea or 3/$35",
+        "Dutch Touch Nerd Gummies - $10ea or 5/$30",
+        "Dutch Touch 200mg Distillate Gummies - $10ea or 5/$30",
+        "Dutch Touch 200mg Gummy Bars - $10ea or 3/$30",
         "Platinum Vapes 200mg Gummies - $5ea",
         "Choice 200mg Gummies - $5ea",
-        "Play 200mg Gummies - $5ea or 10/$40",
+        "Play 200mg Gummies - $5ea or 10/$35",
         "Thunder Canna 200mg Gummies - $5ea",
         "True North 200mg Gummies - $5ea (One Hitters Back in Stock!)",
-        "Play HASH ROSIN 200mg Gummies - $10ea or 5/$35",
-        "Hey Captain 200mg Freeze Dried Ice Cream & Candies - $15ea or 3/$40"
+        "Play HASH ROSIN 200mg Gummies - $10ea or 5/$30",
+        "Hey Captain 200mg Freeze Dried Ice Cream & Candies - $15ea or 3/$35"
       ]
     },
     {
@@ -209,50 +208,50 @@
       "category": "🍯 Concentrates",
       "promo": false,
       "items": [
-        "$12 Sour Gorilla 1g Live Resin - DTG",
-        "$60 Sour Gorilla 14g Live Resin - DTG (Limited Time Sale!)",
-        "Waxtracts 3.5g Sugar - $50ea or 2/$70",
-        "Dutch Touch Genetics Baller Jars - $50ea",
-        "Dutch Touch Genetics Big Baller Jars 14g - $165ea",
-        "Dutch Touch Genetics 14g ROSIN Jar - $225ea",
-        "Peak 1g Live Rosin - $25ea",
-        "Death By Funk 3.5g Rosin - $70ea",
-        "Strait Fire 3.5g Rosin - $90ea",
-        "Redbud Roots 3.5g Rosin - $105ea"
+        "$10 Sour Gorilla 1g Live Resin - DTG",
+        "$50 Sour Gorilla 14g Live Resin - DTG (Limited Time Sale!)",
+        "Waxtracts 3.5g Sugar - $45ea or 2/$60",
+        "Dutch Touch Genetics Baller Jars - $45ea",
+        "Dutch Touch Genetics Big Baller Jars 14g - $140ea",
+        "Dutch Touch Genetics 14g ROSIN Jar - $195ea",
+        "Peak 1g Live Rosin - $20ea",
+        "Death By Funk 3.5g Rosin - $60ea",
+        "Strait Fire 3.5g Rosin - $75ea",
+        "Redbud Roots 3.5g Rosin - $90ea"
       ]
     },
     {
       "category": "🧪 Tinctures & RSO",
       "promo": false,
       "items": [
-        "Dutch Touch Strain Specific RSO - $30ea",
-        "Dutch Touch Non Strain Specific RSO - $25ea",
-        "Ratio'd TreeTown Tinctures - $20ea (Back in Stock)"
+        "Dutch Touch Strain Specific RSO - $25ea",
+        "Dutch Touch Non Strain Specific RSO - $20ea",
+        "Ratio'd TreeTown Tinctures - $15ea (Back in Stock)"
       ]
     },
     {
-    "category": "🧰 Merch & Accessories",
-    "groups": [
-      {
-        "title": "Apparel & Gear",
-        "items": [
-          "Green Labs or Dutch Touch Genetics Hoodies - $45",
-          "#KeepItDutch Beanie - $30",
-          "Green Labs or Dutch Touch Genetics T-Shirt - $25",
-          "Green Labs Beanie - $20"
-        ]
-      },
-      {
-        "title": "Accessories",
-        "items": [
-          "Dutch Touch Genetics Bowl - $10",
-          "Dutch Touch Genetics 4pc Metal Grinder - $10",
-          "Dutch Touch Genetics Rolling Tray - $5",
-          "Dutch Touch Genetics Ashtray - $3",
-          "Dutch Touch Genetics Rolling Papers & Tips - $3"
-       ]
+      "category": "🧰 Merch & Accessories",
+      "groups": [
+        {
+          "title": "Apparel & Gear",
+          "items": [
+            "Green Labs or Dutch Touch Genetics Hoodies - $45",
+            "#KeepItDutch Beanie - $30",
+            "Green Labs or Dutch Touch Genetics T-Shirt - $25",
+            "Green Labs Beanie - $20"
+          ]
+        },
+        {
+          "title": "Accessories",
+          "items": [
+            "Dutch Touch Genetics Bowl - $10",
+            "Dutch Touch Genetics 4pc Metal Grinder - $10",
+            "Dutch Touch Genetics Rolling Tray - $5",
+            "Dutch Touch Genetics Ashtray - $3",
+            "Dutch Touch Genetics Rolling Papers & Tips - $3"
+          ]
+        }
+      ]
     }
   ]
-}
-]
 }
