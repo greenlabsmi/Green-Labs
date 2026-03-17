@@ -3418,12 +3418,13 @@ header, nav, section, .container, .wrap, .row {
   }
   
   body.is-scrolled .status-strip {
+    height: 0 !important;
+    min-height: 0 !important;
     max-height: 0 !important;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
+    padding: 0 !important;
     border: none !important;
-    opacity: 0;
-    pointer-events: none;
+    opacity: 0 !important;
+    overflow: hidden !important;
   }
 }
 
@@ -3466,7 +3467,7 @@ header, nav, section, .container, .wrap, .row {
 
   /* 3. Let the Hero Title scale up bigger (caps at 90px instead of 72px) */
   .hero__title {
-    font-size: clamp(72px, 6vw, 90px); 
+    font-size: clamp(60px, 5vw, 76px);
   }
 
   /* 4. Bump the subtitle size and let it stretch slightly wider */
