@@ -541,26 +541,40 @@ function bindDealSearch() {
 }
 
 function bindDealBackTop() {
-  const details = document.getElementById('dealsDrop');
-  const backTop = document.getElementById('drBackTop');
-  if (!details || !backTop) return;
+    const drop = document.getElementById('dealsDrop');
+    const backTop = document.getElementById('drBackTop');
+    
+    if (!drop || !backTop) return;
 
-  const toggleVisibility = () => {
-    backTop.hidden = !details.open;
-  };
+    // 1. Make the button safely close the dropdown AND scroll up
+    backTop.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation(); // Stops the body from auto-opening it again
+        drop.classList.remove('is-fully-open');
+        drop.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
 
-  details.addEventListener('toggle', toggleVisibility);
+    // 2. Smart floating logic
+    const handleScroll = () => {
+        if (!drop.classList.contains('is-fully-open')) {
+            backTop.classList.remove('is-floating');
+            return;
+        }
 
-  backTop.addEventListener('click', () => {
-    const summary = details.querySelector('summary');
-    if (summary) {
-      summary.scrollIntoView({ behavior: prefersReduce ? 'auto' : 'smooth', block: 'start' });
-    } else {
-      details.scrollIntoView({ behavior: prefersReduce ? 'auto' : 'smooth', block: 'start' });
-    }
-  });
+        const rect = drop.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
 
-  toggleVisibility();
+        // If we scrolled past the top of the deals section AND haven't reached the bottom yet
+        if (rect.top < 0 && rect.bottom > viewportHeight + 60) {
+            backTop.classList.add('is-floating');
+        } else {
+            // Once we hit the bottom, remove 'fixed' so it seamlessly docks into the section
+            backTop.classList.remove('is-floating');
+        }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll, { passive: true });
 }
 
 function slugifyDealCategory(str = '') {
