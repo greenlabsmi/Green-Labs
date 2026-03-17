@@ -65,6 +65,39 @@ document.addEventListener('click', (e) => {
   }
 });
 
+// ===== SMART STICKY HEADER TRIGGER =====
+  // Hides the status strip when scrolling down
+  const handleSmartScroll = () => {
+      if (window.scrollY > 50) {
+          document.body.classList.add('is-scrolled');
+      } else {
+          document.body.classList.remove('is-scrolled');
+      }
+  };
+  window.addEventListener('scroll', handleSmartScroll, { passive: true });
+
+// ===== SCROLL REVEAL ANIMATIONS =====
+  // Watches for elements with the .reveal class and fades them in
+  const revealOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.15 // Triggers when 15% of the element is visible
+  };
+
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+          if (entry.isIntersecting) {
+              entry.target.classList.add('is-in');
+              observer.unobserve(entry.target); // Stops watching once it fades in
+          }
+      });
+  }, revealOptions);
+
+  // Find all .reveal elements and start observing them
+  document.querySelectorAll('.reveal').forEach(el => {
+      revealObserver.observe(el);
+  });
+
 // ===== SMART NATIVE MAPS ROUTER =====
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Rock-solid Apple device detection (catches iPhones, iPads, and touch Macs)
