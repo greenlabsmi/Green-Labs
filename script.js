@@ -841,8 +841,7 @@ function renderDealsDropdown(data) {
       }
     });
   });
-})();
-   
+     });
    // ===== Today's Highlights Render Function =====
   function renderHighlightsFromConfig(data, mount) {
     if (!data || !data.items || !data.layout) return;
@@ -892,20 +891,6 @@ function renderDealsDropdown(data) {
       `;
     };
 
-document.addEventListener('DOMContentLoaded', () => {
-    const dealSummary = document.querySelector('.drDrop__summary');
-    const dealDrop = document.querySelector('.drDrop');
-
-    if (dealSummary && dealDrop) {
-        dealSummary.addEventListener('click', (e) => {
-            // Stop the browser from hiding the deals instantly
-            e.preventDefault(); 
-            // Smoothly expand the height instead
-            dealDrop.classList.toggle('is-fully-open');
-        });
-    }
-});
-
     mount.innerHTML = `
       ${hero ? cardHTML(hero, 'hero') : ''}
       <div class="thGrid2">
@@ -920,7 +905,20 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     `;
   }
-  })();
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const dealSummary = document.querySelector('.drDrop__summary');
+    const dealDrop = document.querySelector('.drDrop');
+
+    if (dealSummary && dealDrop) {
+        dealSummary.addEventListener('click', (e) => {
+            // Stop the browser from hiding the deals instantly
+            e.preventDefault(); 
+            // Smoothly expand the height instead
+            dealDrop.classList.toggle('is-fully-open');
+        });
+    }
 });
 
 document.addEventListener('DOMContentLoaded', () => {
