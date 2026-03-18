@@ -968,9 +968,9 @@ header, nav, section, .container, .wrap, .row {
 
 /* The Arrow Buttons */
 .drArrowBtn {
-  display: flex; /* To hide on mobile write none */
+  display: none; /* Hides arrows on mobile so they don't block your thumb */
   position: absolute;
-  top: calc(50% - 6px); /* Centers it, offsetting the bottom padding */
+  top: calc(50% - 6px); 
   transform: translateY(-50%);
   width: 32px;
   height: 32px;
@@ -993,14 +993,24 @@ header, nav, section, .container, .wrap, .row {
   box-shadow: 0 6px 14px rgba(11, 125, 90, 0.2);
 }
 
-.drArrowBtn--left { left: -4px; }
-.drArrowBtn--right { right: -4px; }
+/* Pushes the arrows slightly inward so they don't hang off the edge */
+.drArrowBtn--left { left: 4px; }
+.drArrowBtn--right { right: 4px; }
 
-/* Show arrows ONLY on larger desktop screens */
+/* Show arrows ONLY on desktop and fix the text padding */
 @media (min-width: 769px) {
-  .drArrowBtn { 
-    display: flex; 
+  .drArrowBtn {
+    display: flex;
   }
+  
+  /* Creates a massive 48px safe-zone so chips NEVER slide under the arrows */
+  .drJumpWrap {
+    padding-left: 48px !important;
+    padding-right: 48px !important;
+    mask-image: linear-gradient(to right, transparent, black 32px, black calc(100% - 32px), transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 32px, black calc(100% - 32px), transparent);
+  }
+}
   
   /* Adds space on the edges so chips don't hide under the arrows */
   .drJumpWrap {
