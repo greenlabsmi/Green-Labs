@@ -803,108 +803,109 @@ function renderDealsDropdown(data) {
    
 /* =========================================================
    GREEN LABS — BUY GUIDE
-========================================================= */
+   ========================================================= */
 (function () {
-  const cards = document.querySelectorAll('[data-guide-card]');
-  
-  cards.forEach((card) => {
-    const btn = card.querySelector('.guideCard__toggle');
-    if (!btn) return;
-    
-    btn.addEventListener('click', () => {
-      const isOpen = card.classList.contains('is-open');
-      
-      // Close all other cards first
-      cards.forEach((otherCard) => {
-        otherCard.classList.remove('is-open');
-        const otherBtn = otherCard.querySelector('.guideCard__toggle');
-        if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
-      });
-      
-      // If it wasn't open, open it and scroll to it smoothly!
-      if (!isOpen) {
-        card.classList.add('is-open');
-        btn.setAttribute('aria-expanded', 'true');
-        
-// Wait just a split second for the CSS animation to start expanding
-            setTimeout(() => {
-                // Hardcoded to 70 to match the final shrunk header height
-                const stickyH = 70; 
-                
-                // Match the 20px offset here!
-                const yPos = card.getBoundingClientRect().top + window.pageYOffset - (stickyH + 20);
-                window.scrollTo({
-                    top: Math.max(0, yPos),
-                    behavior: 'smooth'
-                });
-            }, 350);
-      }
-    });
-  });
-     });
-   // ===== Today's Highlights Render Function =====
-  function renderHighlightsFromConfig(data, mount) {
-    if (!data || !data.items || !data.layout) return;
-    const { items, layout } = data;
+    const cards = document.querySelectorAll('[data-guide-card]');
+    cards.forEach((card) => {
+        const btn = card.querySelector('.guideCard__toggle');
+        if (!btn) return;
 
+        btn.addEventListener('click', () => {
+            const isOpen = card.classList.contains('is-open');
+
+            // Close all other cards first
+            cards.forEach((otherCard) => {
+                otherCard.classList.remove('is-open');
+                const otherBtn = otherCard.querySelector('.guideCard__toggle');
+                if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+            });
+
+            // If it wasn't open, open it and scroll to it smoothly!
+            if (!isOpen) {
+                card.classList.add('is-open');
+                btn.setAttribute('aria-expanded', 'true');
+
+                // Wait just a split second for the CSS animation to start expanding
+                setTimeout(() => {
+                    // Hardcoded to 70 to match the final shrunk header height
+                    const stickyH = 70;
+
+                    // Match the 20px offset here!
+                    const yPos = card.getBoundingClientRect().top + window.pageYOffset - (stickyH + 20);
+                    window.scrollTo({
+                        top: Math.max(0, yPos),
+                        behavior: 'smooth'
+                    });
+                }, 350);
+            }
+        });
+    });
+})(); // <--- THIS perfectly closes the Buy Guide!
+
+// ===== Today's Highlights Render Function =====
+function renderHighlightsFromConfig(data, mount) {
+    if (!data || !data.items || !data.layout) return;
+
+    const { items, layout } = data;
     const hero = items[layout.hero];
     const midL = layout.mid ? items[layout.mid[0]] : null;
     const midR = layout.mid ? items[layout.mid[1]] : null;
     const scrollIds = layout.scroll || [];
 
-    const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    }[c]));
 
     const cardHTML = (it, type) => {
-      if (!it) return '';
-      let sizeClass = type === 'hero' ? 'thHero thReveal' : type === 'mid' ? 'thMid thReveal' : 'thMini';
-      const pillClass = it.tag ? `thPill--${it.tag.toLowerCase().replace(/[^a-z]/g, '')}` : '';
-      
-      // Fix image paths for GitHub Pages
-      let img = it.image || '';
-      if (img && img.startsWith('/assets/')) img = `.${img}`;
+        if (!it) return '';
+        let sizeClass = type === 'hero' ? 'thHero thReveal' : type === 'mid' ? 'thMid thReveal' : 'thMini';
+        const pillClass = it.tag ? `thPill--${it.tag.toLowerCase().replace(/[^a-z]/g, '')}` : '';
 
-      if (type === 'mini') {
+        // Fix image paths for GitHub Pages
+        let img = it.image || '';
+        if (img && img.startsWith('/assets/')) img = `.${img}`;
+
+        if (type === 'mini') {
+            return `
+            <a href="#deals" class="thCard ${sizeClass}" data-open-deals>
+                <div class="thMedia" style="background-image:url('${esc(img)}')"></div>
+                <div class="thOverlay"></div>
+                <div class="thContent thContent--mini" style="position:absolute; bottom:0; width:100%;">
+                    ${it.tag ? `<div class="thPill ${pillClass}">${esc(it.tag)}</div>` : ''}
+                    <div class="thMiniTitle" style="color:#fff;">${esc(it.title)}</div>
+                </div>
+            </a>
+            `;
+        }
         return `
-          <a href="#deals" class="thCard ${sizeClass}" data-open-deals>
+        <a href="#deals" class="thCard ${sizeClass}" data-open-deals>
             <div class="thMedia" style="background-image:url('${esc(img)}')"></div>
             <div class="thOverlay"></div>
-            <div class="thContent thContent--mini" style="position:absolute; bottom:0; width:100%;">
-              ${it.tag ? `<div class="thPill ${pillClass}">${esc(it.tag)}</div>` : ''}
-              <div class="thMiniTitle" style="color:#fff;">${esc(it.title)}</div>
+            <div class="thContent">
+                ${it.tag ? `<div class="thPill ${pillClass}">${esc(it.tag)}</div>` : ''}
+                <h3 class="thH3">${esc(it.title)}</h3>
+                ${it.price ? `<div class="thPrice">${esc(it.price)} <span class="thTaxTag">+ TAX</span></div>` : ''}
+                ${it.details ? `<div class="thDetails">${esc(it.details)}</div>` : ''}
+                <div class="thCta">Shop Deal →</div>
             </div>
-          </a>
-        `;
-      }
-
-      return `
-        <a href="#deals" class="thCard ${sizeClass}" data-open-deals>
-          <div class="thMedia" style="background-image:url('${esc(img)}')"></div>
-          <div class="thOverlay"></div>
-          <div class="thContent">
-            ${it.tag ? `<div class="thPill ${pillClass}">${esc(it.tag)}</div>` : ''}
-            <h3 class="thH3">${esc(it.title)}</h3>
-            ${it.price ? `<div class="thPrice">${esc(it.price)} <span class="thTaxTag">+ TAX</span></div>` : ''}
-            ${it.details ? `<div class="thDetails">${esc(it.details)}</div>` : ''}
-            <div class="thCta">Shop Deal →</div>
-          </div>
         </a>
-      `;
+        `;
     };
 
     mount.innerHTML = `
-      ${hero ? cardHTML(hero, 'hero') : ''}
-      <div class="thGrid2">
-        ${midL ? cardHTML(midL, 'mid') : ''}
-        ${midR ? cardHTML(midR, 'mid') : ''}
-      </div>
-      <div class="thRowWrap thReveal">
-        <div class="thRowTitle">More deals</div>
-        <div class="thRow" role="list" aria-label="More deals">
-          ${scrollIds.map(id => items[id]).filter(Boolean).map(it => cardHTML(it, 'mini')).join('')}
+        ${hero ? cardHTML(hero, 'hero') : ''}
+        <div class="thGrid2">
+            ${midL ? cardHTML(midL, 'mid') : ''}
+            ${midR ? cardHTML(midR, 'mid') : ''}
         </div>
-      </div>
+        <div class="thRowWrap thReveal">
+            <div class="thRowTitle">More deals</div>
+            <div class="thRow" role="list" aria-label="More deals">
+                ${scrollIds.map(id => items[id]).filter(Boolean).map(it => cardHTML(it, 'mini')).join('')}
+            </div>
+        </div>
     `;
-  }
+}
 });
 
 document.addEventListener('DOMContentLoaded', () => {
