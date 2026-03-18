@@ -36,11 +36,18 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 function smoothTo(el) {
-  if (!el) return;
-  const stickyH = document.querySelector('.sticky')?.getBoundingClientRect().height || 70;
-  // Dropped the offset down to 20 so sections fit perfectly snug under the header!
-  const yPos = el.getBoundingClientRect().top + window.pageYOffset - (stickyH + 20);
-  window.scrollTo({ top: Math.max(0, yPos), behavior: prefersReduce ? 'auto' : 'smooth' });
+    if (!el) return;
+    
+    // Always assume 70px because the status strip hides on scroll!
+    const stickyH = 70; 
+    
+    // Dropped the offset down to 20 so sections fit perfectly snug under the header!
+    const yPos = el.getBoundingClientRect().top + window.pageYOffset - (stickyH + 20);
+    
+    window.scrollTo({
+        top: Math.max(0, yPos),
+        behavior: prefersReduce ? 'auto' : 'smooth'
+    });
 }
 
 // ===== MASTER SCROLL INTERCEPTOR =====
@@ -793,12 +800,17 @@ function renderDealsDropdown(data) {
         btn.setAttribute('aria-expanded', 'true');
         
 // Wait just a split second for the CSS animation to start expanding
-        setTimeout(() => {
-          const stickyH = document.querySelector('.sticky')?.getBoundingClientRect().height || 70;
-          // Match the 20px offset here!
-          const yPos = card.getBoundingClientRect().top + window.pageYOffset - (stickyH + 20);
-          window.scrollTo({ top: Math.max(0, yPos), behavior: 'smooth' });
-        }, 350);
+            setTimeout(() => {
+                // Hardcoded to 70 to match the final shrunk header height
+                const stickyH = 70; 
+                
+                // Match the 20px offset here!
+                const yPos = card.getBoundingClientRect().top + window.pageYOffset - (stickyH + 20);
+                window.scrollTo({
+                    top: Math.max(0, yPos),
+                    behavior: 'smooth'
+                });
+            }, 350);
       }
     });
   });
