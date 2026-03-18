@@ -841,7 +841,8 @@ function renderDealsDropdown(data) {
       }
     });
   });
-
+})();
+   
    // ===== Today's Highlights Render Function =====
   function renderHighlightsFromConfig(data, mount) {
     if (!data || !data.items || !data.layout) return;
