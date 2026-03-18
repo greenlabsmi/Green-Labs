@@ -483,11 +483,14 @@ header, nav, section, .container, .wrap, .row {
   opacity:.9;
   transition: all .2s ease;
 }
-.soc:hover{
-  opacity:1;
-  border-color: rgba(46,248,187,.22);
-  color: var(--brand2);
-  transform: translateY(-2px);
+.soc:hover, .soc2:hover { 
+  opacity: 1; 
+  transform: translateY(-2px); 
+}
+.soc[aria-label="Instagram"]:hover, .soc2[aria-label="Instagram"]:hover { color: #E4405F; border-color: #E4405F; }
+.soc[aria-label="Facebook"]:hover, .soc2[aria-label="Facebook"]:hover { color: #1877F2; border-color: #1877F2; }
+.soc[aria-label="X"]:hover, .soc2[aria-label="X"]:hover { color: #ffffff; border-color: #ffffff; background: #000; }
+.soc[aria-label="TikTok"]:hover, .soc2[aria-label="TikTok"]:hover { color: #EE1D52; border-color: #69C9D0; }
 }
 
 .link{
@@ -916,7 +919,7 @@ header, nav, section, .container, .wrap, .row {
   display: flex;
   gap: 8px;
   overflow: auto;
-  padding-bottom: 12px; /* Increased from 4px to prevent cutoff */
+  padding: 0 45px 12px;
   margin-bottom: -8px; /* Offsets the added padding so it doesn't push deals down */
   -webkit-overflow-scrolling: touch;
   scroll-snap-type: x proximity;
@@ -990,8 +993,8 @@ header, nav, section, .container, .wrap, .row {
   box-shadow: 0 6px 14px rgba(11, 125, 90, 0.2);
 }
 
-.drArrowBtn--left { left: -8px; }
-.drArrowBtn--right { right: -8px; }
+.drArrowBtn--left { left: -4px; }
+.drArrowBtn--right { right: -4px; }
 
 /* Show arrows ONLY on larger desktop screens */
 @media (min-width: 769px) {
@@ -3333,9 +3336,10 @@ header, nav, section, .container, .wrap, .row {
   transform: translateY(0);
 }
 
-/* Optional: Add a subtle glow behind "Our Story" to soften the transition */
 #our-story {
-  background: radial-gradient(circle at top center, rgba(11, 125, 90, 0.05) 0%, var(--bg) 60%);
+  background: radial-gradient(circle at top right, rgba(11, 125, 90, 0.22) 0%, #06110e 70%) !important;
+  border-top: 1px solid rgba(46, 248, 187, 0.1);
+  padding: 100px 0;
 }
 
 /* =========================================
