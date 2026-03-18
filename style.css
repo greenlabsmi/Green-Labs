@@ -710,6 +710,27 @@ header, nav, section, .container, .wrap, .row {
 }
 .trust__ico{ opacity:.9; }
 
+/* =========================================
+   HERO DELI LION LOGO
+   ========================================= */
+.hero__deliLogo {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 70px; /* Keeps it tasteful and perfectly sized */
+  height: auto;
+  z-index: 10;
+  opacity: 0.9;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.5));
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+/* Gives the lion a slight, premium scale-up when they hover the card */
+.hero__media--link:hover .hero__deliLogo {
+  transform: scale(1.1) rotate(4deg);
+  opacity: 1;
+}
+
 /* =========================================================
    Difference row
 ========================================================= */
