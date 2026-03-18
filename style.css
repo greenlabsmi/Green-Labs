@@ -3530,3 +3530,20 @@ header, nav, section, .container, .wrap, .row {
     gap: 60px; /* Up from 22px */
   }
 }
+
+/* =========================================
+   MEDICAL BUTTON (VIP Styling)
+   ========================================= */
+.btn--med {
+  background: #0B7D5A; /* Deep Medical Green */
+  color: #ffffff;      /* White text */
+  border-color: rgba(255,255,255,0.5); /* Semi-transparent white border */
+  box-shadow: 0 10px 28px rgba(0,0,0,.25);
+}
+
+.btn--med:hover {
+  background: #ffffff; /* Flips to solid white */
+  color: #0B7D5A;      /* Green text */
+  border-color: #ffffff;
+  box-shadow: 0 16px 35px rgba(255,255,255,.20);
+}
