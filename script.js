@@ -8,6 +8,32 @@
 =========================== */
 
 document.addEventListener('DOMContentLoaded', () => {
+
+   // ===== AGE GATE LOGIC =====
+    const ageGate = document.getElementById('ageGate');
+    const btnPass = document.getElementById('btnAgePass');
+    const btnFail = document.getElementById('btnAgeFail');
+
+    if (ageGate && btnPass && btnFail) {
+        // If they haven't verified yet, show the gate and lock the screen
+        if (!localStorage.getItem('gl_age_verified')) {
+            ageGate.removeAttribute('hidden');
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        // When they pass, save it to memory and unlock the screen
+        btnPass.addEventListener('click', () => {
+            localStorage.setItem('gl_age_verified', 'true');
+            ageGate.setAttribute('hidden', 'true');
+            document.body.style.overflow = ''; 
+        });
+
+        // If they fail, send them to Google
+        btnFail.addEventListener('click', () => {
+            window.location.href = "https://www.google.com";
+        });
+    }
+   
   const y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();
 
