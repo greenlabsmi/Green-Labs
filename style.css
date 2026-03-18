@@ -816,7 +816,7 @@ header, nav, section, .container, .wrap, .row {
 /* The Body with smooth max-height animation */
 .drDrop__body {
     position: relative;
-    padding: 20px 20px 110px;
+    padding: 20px 20px 24px;
     background: #ffffff;
     max-height: 15000px; /* Lowered slightly to calculate faster */
     overflow: hidden;
