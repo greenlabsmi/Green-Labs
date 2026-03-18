@@ -915,20 +915,19 @@ header, nav, section, .container, .wrap, .row {
   outline: none;
 }
 
+/* Deals Category Scroller Wrapper */
 .drJumpWrap {
   display: flex;
   gap: 8px;
   overflow: auto;
-  padding: 0 45px 12px;
-  margin-bottom: -8px; /* Offsets the added padding so it doesn't push deals down */
+  padding-bottom: 12px;
+  margin-bottom: -8px;
   -webkit-overflow-scrolling: touch;
   scroll-snap-type: x proximity;
-  scrollbar-width: none; 
-  -ms-overflow-style: none; 
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
-.drJumpWrap::-webkit-scrollbar {
-  display: none; 
-}
+.drJumpWrap::-webkit-scrollbar { display: none; }
 
 .drJumpChip {
   flex: 0 0 auto;
@@ -957,8 +956,7 @@ header, nav, section, .container, .wrap, .row {
 .drJumpChip.is-active {
   background: #0B7D5A;
   color: #ffffff;
-  /* Matched to the soft Deli glow */
-  box-shadow: 0 4px 10px rgba(11, 125, 90, 0.25); 
+  box-shadow: 0 4px 10px rgba(11, 125, 90, 0.25);
 }
 
 /* Container to hold the track and arrows */
@@ -968,9 +966,9 @@ header, nav, section, .container, .wrap, .row {
 
 /* The Arrow Buttons */
 .drArrowBtn {
-  display: none; /* Hides arrows on mobile so they don't block your thumb */
+  display: none; /* Hides arrows on mobile */
   position: absolute;
-  top: calc(50% - 6px); 
+  top: calc(50% - 6px);
   transform: translateY(-50%);
   width: 32px;
   height: 32px;
@@ -987,39 +985,27 @@ header, nav, section, .container, .wrap, .row {
   font-weight: 900;
   transition: all 0.2s ease;
 }
-
 .drArrowBtn:hover {
   background: #f4f9f7;
   box-shadow: 0 6px 14px rgba(11, 125, 90, 0.2);
 }
 
-/* Pushes the arrows slightly inward so they don't hang off the edge */
-.drArrowBtn--left { left: 4px; }
-.drArrowBtn--right { right: 4px; }
+/* Move arrows to the very edge of the container */
+.drArrowBtn--left { left: 0; }
+.drArrowBtn--right { right: 0; }
 
-/* Show arrows ONLY on desktop and fix the text padding */
+/* Desktop: Create a hard physical boundary so chips never go under arrows */
 @media (min-width: 769px) {
   .drArrowBtn {
     display: flex;
   }
-  
-  /* Creates a massive 48px safe-zone so chips NEVER slide under the arrows */
-  .drJumpWrap {
-    padding-left: 48px !important;
-    padding-right: 48px !important;
-    mask-image: linear-gradient(to right, transparent, black 32px, black calc(100% - 32px), transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 32px, black calc(100% - 32px), transparent);
+  .drJumpContainer {
+    padding: 0 40px; /* This locks the chips 40px away from the edges! */
   }
-}
-  
-  /* Adds space on the edges so chips don't hide under the arrows */
   .drJumpWrap {
-    padding-left: 24px;
-    padding-right: 24px;
-    
-    /* Optional: creates a super sleek fade effect on the edges of the track! */
-    mask-image: linear-gradient(to right, transparent, black 24px, black calc(100% - 24px), transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 24px, black calc(100% - 24px), transparent);
+    /* Soft fade on the edges inside the safe zone */
+    mask-image: linear-gradient(to right, transparent, black 16px, black calc(100% - 16px), transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 16px, black calc(100% - 16px), transparent);
   }
 }
 
