@@ -9,30 +9,63 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-   // ===== AGE GATE LOGIC =====
+   // ===== AGE GATE & SMART PROMO LOGIC =====
     const ageGate = document.getElementById('ageGate');
+    const promoModal = document.getElementById('promoModal');
     const btnPass = document.getElementById('btnAgePass');
     const btnFail = document.getElementById('btnAgeFail');
 
-    if (ageGate && btnPass && btnFail) {
-        // If they haven't verified yet, show the gate and lock the screen
-        if (!localStorage.getItem('gl_age_verified')) {
-            ageGate.removeAttribute('hidden');
-            document.body.style.overflow = 'hidden'; 
-        }
+    // 1. Show Age Gate if not verified
+    if (ageGate && !localStorage.getItem('gl_age_verified')) {
+        ageGate.removeAttribute('hidden');
+        document.body.style.overflow = 'hidden'; 
+    }
 
-        // When they pass, save it to memory and unlock the screen
+    // 2. "Yes, I am 21" Logic
+    if (btnPass) {
         btnPass.addEventListener('click', () => {
             localStorage.setItem('gl_age_verified', 'true');
             ageGate.setAttribute('hidden', 'true');
             document.body.style.overflow = ''; 
-        });
 
-        // If they fail, send them to Google
+            // Only show the gift popup if they haven't dismissed it before
+            if (!localStorage.getItem('gl_gift_claimed')) {
+                setTimeout(() => {
+                    showGiftPopup();
+                }, 10000); // 10 Second Delay
+            }
+        });
+    }
+
+    // 3. "No, I am not" Logic
+    if (btnFail) {
         btnFail.addEventListener('click', () => {
             window.location.href = "https://www.google.com";
         });
     }
+
+    // 4. Promo Popup Function
+    function showGiftPopup() {
+        if (!promoModal) return;
+        promoModal.removeAttribute('hidden');
+        
+        const closeBtn = document.getElementById('btnClosePromo');
+        const okBtn = document.getElementById('btnPromoOk');
+        
+        [closeBtn, okBtn].forEach(b => b?.addEventListener('click', () => {
+            promoModal.setAttribute('hidden', 'true');
+            localStorage.setItem('gl_gift_claimed', 'true');
+        }));
+    }
+
+    // 5. Drawer "Safety Net" Button Logic
+    document.querySelector('[data-open-promo]')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        showGiftPopup();
+        // Close the drawer so they can see the popup
+        document.getElementById('navDrawer')?.classList.remove('is-active');
+        document.getElementById('menuOverlay')?.classList.remove('is-active');
+    });
    
   const y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();
