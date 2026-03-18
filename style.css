@@ -3568,3 +3568,31 @@ header, nav, section, .container, .wrap, .row {
   border-color: #ffffff;
   box-shadow: 0 16px 35px rgba(255,255,255,.20);
 }
+
+/* =========================================
+   AWARD WINNER BADGE (Cannabis Cup)
+   ========================================= */
+.badge--award {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, rgba(214,163,74,0.15), rgba(214,163,74,0.02));
+  border: 1px solid rgba(214,163,74,0.4);
+  color: #D6A34A; /* DTG Gold */
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-family: "Cinzel", serif;
+  font-weight: 900;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 15px rgba(214,163,74,0.15);
+  margin-bottom: 16px;
+  width: fit-content;
+}
+
+.badge--award .award-icon {
+  font-size: 16px;
+  line-height: 1;
+  filter: drop-shadow(0 2px 4px rgba(214,163,74,0.4));
+}
