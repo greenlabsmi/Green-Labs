@@ -548,11 +548,10 @@ function bindDealBackTop() {
     
     if (!drop || !backTop) return;
 
-    // A simple, bulletproof click to close and jump to the top!
+    // A simple, bulletproof click to jump to the top!
     backTop.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation(); 
-        drop.classList.remove('is-fully-open');
         
         const dealsDropTarget = document.getElementById('dealsDrop');
         smoothTo(dealsDropTarget); 
@@ -607,8 +606,6 @@ function renderDealsDropdown(data) {
     }).join('') + `
 <div class="drTaxBanner">
         <strong>Pricing Update:</strong> All prices are shown <strong>Pre-Tax</strong>. Recreational orders include a 16% state tax.
-        <br><br>
-        <span style="color: #0B7D5A;"><strong>Medical patients</strong> get these exact same deals completely Excise-Tax free (only 6% tax at the register).</span>
       </div>`;
    
     if (jumpWrap) {
