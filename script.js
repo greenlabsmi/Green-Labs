@@ -815,67 +815,6 @@ function renderDealsDropdown(data) {
     });
   });
 
-  const vibeData = {
-    relaxed: {
-      title: 'You may want something calm, body-friendly, and terpene-forward.',
-      text: 'Look for flower or products that lean mellow, grounding, and less racey. This is a great lane for people trying to unwind, settle in, or slow the day down.',
-      chips: ['Myrcene', 'Caryophyllene', 'Evening vibe', 'Relaxing flower'],
-      note: 'Ask the team about relaxing Dutch Deli flower or softer, balanced options if you want a smoother ride.'
-    },
-    creative: {
-      title: 'You may want something bright, clear, and idea-friendly.',
-      text: 'Look for profiles that feel uplifting, flavorful, and mentally active without being too sharp or overwhelming.',
-      chips: ['Limonene', 'Pinene', 'Daytime vibe', 'Uplifting'],
-      note: 'A terpene-forward Dutch Touch Genetics recommendation could be a great place to start here.'
-    },
-    social: {
-      title: 'You may want something upbeat, happy, and conversation-friendly.',
-      text: 'This lane is great for feeling open, present, and engaged without going too sleepy or too heavy.',
-      chips: ['Hybrid', 'Mood-forward', 'Limonene', 'Balanced energy'],
-      note: 'Tell your budtender you want something fun and smooth, not too sleepy and not too intense.'
-    },
-    sleepy: {
-      title: 'You may want something heavier, softer, and more end-of-day.',
-      text: 'For nighttime, many people prefer body-forward products that help them settle down and quiet the pace a little.',
-      chips: ['Myrcene', 'Linalool', 'Night use', 'Heavy hybrid'],
-      note: 'Ask about evening flower, mellow edibles, or relaxing Dutch Deli options — and always start low.'
-    },
-    balanced: {
-      title: 'You may want a smooth middle lane that stays comfortable and functional.',
-      text: 'Balanced shoppers usually want something steady, enjoyable, and versatile without going too far in any one direction.',
-      chips: ['Hybrid', 'Moderate THC', 'Functional', 'Steady vibe'],
-      note: 'This is a strong choice for newer shoppers or anyone wanting something flexible and easygoing.'
-    }
-  };
-
-  const vibeButtons = document.querySelectorAll('.vibeBtn');
-  const vibeResult = document.getElementById('vibeResult');
-  const vibeResultTitle = document.getElementById('vibeResultTitle');
-  const vibeResultText = document.getElementById('vibeResultText');
-  const vibeResultChips = document.getElementById('vibeResultChips');
-  const vibeResultNote = document.getElementById('vibeResultNote');
-
-  vibeButtons.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const key = btn.dataset.vibe;
-      const data = vibeData[key];
-      if (!data) return;
-
-      vibeButtons.forEach((b) => b.classList.remove('is-active'));
-      btn.classList.add('is-active');
-
-      vibeResultTitle.textContent = data.title;
-      vibeResultText.textContent = data.text;
-      vibeResultNote.textContent = data.note;
-      vibeResultChips.innerHTML = data.chips
-        .map((chip) => `<span class="vibeResult__chip">${chip}</span>`)
-        .join('');
-
-      vibeResult.hidden = false;
-    });
-  });
-})();
-
    // ===== Today's Highlights Render Function =====
   function renderHighlightsFromConfig(data, mount) {
     if (!data || !data.items || !data.layout) return;
