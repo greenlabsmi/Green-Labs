@@ -1862,6 +1862,7 @@ header, nav, section, .container, .wrap, .row {
   border-top: 1px solid rgba(255,255,255,.06);
   border-bottom: 1px solid rgba(255,255,255,.06);
   padding-top: 16px; /* Shrinks the giant empty gap at the top */
+  overflow-x: hidden;
 }
 
 .dtghead{ display:flex; flex-direction:column; gap:10px; margin-bottom:16px; }
@@ -2112,7 +2113,8 @@ header, nav, section, .container, .wrap, .row {
   color: #fff;
   padding: 2.5rem 0; /* Reduced from 4rem to shrink top/bottom empty space */
   border-top: 1px solid #333;
-  scroll-margin-top: 15px; 
+  scroll-margin-top: 15px;
+  overflow-x: hidden;
 }
 .deli-head { 
   text-align: center; 
