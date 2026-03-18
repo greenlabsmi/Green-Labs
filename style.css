@@ -2429,21 +2429,28 @@ header, nav, section, .container, .wrap, .row {
   transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
 }
 
-/* hover lift (desktop only) */
+/* hover lift & image zoom (desktop only) */
 @media (hover:hover) and (pointer:fine){
-  #todays-highlights .thCard:hover{
-    transform:translateY(-6px);
+  #todays-highlights .thCard:hover {
+    transform: translateY(-6px);
     border-color: rgba(11,125,90,.16);
     box-shadow: 0 18px 40px rgba(0,0,0,.09);
   }
+  
+  /* NEW: This specifically lifts/zooms the image inside the card */
+  #todays-highlights .thCard:hover .thMedia {
+    transform: scale(1.04);
+  }
 }
 
-#todays-highlights .thMedia{
-  position:absolute;
-  inset:0;
-  background-size:cover;
-  background-position:right center;
-  transform:translateZ(0);
+#todays-highlights .thMedia {
+  position: absolute; 
+  inset: 0;
+  background-size: cover; 
+  background-position: right center;
+  /* Smooth transition added for the zoom effect */
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
 }
 
 /* Cinematic overlay: readable bottom, no white wash */
@@ -3298,25 +3305,24 @@ header, nav, section, .container, .wrap, .row {
 }
 
 /* =========================================
-   SMART STICKY STATUS STRIP (Desktop Only)
+   SMART STICKY STATUS STRIP (All Devices)
    ========================================= */
-@media (min-width: 992px) {
-  .status-strip {
-    display: block; /* CRITICAL FIX: Forces the <a> tag to respect height and overflow! */
-    transition: all 0.3s ease-in-out;
-    transform-origin: top;
-    overflow: hidden;
-    height: var(--stripH); /* Explicitly tells the browser where to start */
-  }
-  
-  body.is-scrolled .status-strip {
-    height: 0 !important;
-    min-height: 0 !important;
-    padding: 0 !important;
-    border-top-width: 0 !important;
-    opacity: 0 !important;
-    margin: 0 !important;
-  }
+.status-strip {
+  display: block; 
+  transition: all 0.3s ease-in-out;
+  transform-origin: top;
+  overflow: hidden;
+  height: var(--stripH); 
+}
+
+body.is-scrolled .status-strip {
+  height: 0 !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  border-top-width: 0 !important;
+  opacity: 0 !important;
+  margin: 0 !important;
+}
 }
 
 /* =========================================
