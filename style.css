@@ -3194,6 +3194,20 @@ header, nav, section, .container, .wrap, .row {
   }
 }
 
+/* THE TROPHY ROOM VIBE */
+.gl-strains-section {
+  position: relative;
+  /* Adds a subtle floor glow beneath the cards to make them look like they are on a stage */
+  background: radial-gradient(circle at bottom center, rgba(214, 163, 74, 0.05) 0%, transparent 70%);
+}
+
+.fancy-title {
+  /* This ensures the title remains the centerpiece and doesn't get squashed */
+  text-transform: uppercase;
+  font-size: clamp(42px, 6vw, 68px) !important;
+  margin-bottom: 5px;
+}
+
 /* =========================================================
    MOBILE FOOTER ALIGNMENT
 ========================================================= */
