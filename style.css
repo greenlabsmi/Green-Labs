@@ -800,7 +800,7 @@ header, nav, section, .container, .wrap, .row {
   position: relative;
   padding: 20px 20px 24px;
   background: #ffffff;
-  max-height: 3500px; /* Reduced from 15000px to completely eliminate the closing lag! */
+  max-height: 8000px; /* Reduced from 15000px to completely eliminate the closing lag! */
   overflow: hidden;
   transition: max-height 0.45s cubic-bezier(0.25, 1, 0.5, 1);
   will-change: max-height;
