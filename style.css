@@ -3351,10 +3351,9 @@ body.is-scrolled .status-strip {
   transform: translateY(0);
 }
 
-/* Update Point 5: Emerald Vibe (Around Line 3340) */
 #our-story {
-  /* This creates a deep green glow in the corner instead of white */
-  background: radial-gradient(circle at top right, rgba(11, 125, 90, 0.22) 0%, #06110e 70%) !important;
+  /* Swaps the white glare for a deep, localized emerald glow */
+  background: radial-gradient(circle at 80% 20%, rgba(11, 125, 90, 0.25) 0%, #060907 60%) !important;
   border-top: 1px solid rgba(46, 248, 187, 0.1);
   padding: 100px 0;
 }
