@@ -2185,6 +2185,45 @@ header, nav, section, .container, .wrap, .row {
   box-shadow: 0 4px 15px rgba(214, 163, 74, 0.25); 
 }
 
+/* --- ARTWORK MICRO TOGGLE --- */
+.art-toggle-wrapper {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 12px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.art-toggle-track {
+  width: 36px;
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0.15); /* Subtle dark theme track */
+  border-radius: 20px;
+  position: relative;
+  transition: background-color 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.art-toggle-thumb {
+  width: 14px;
+  height: 14px;
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+/* Active State (Turns Gold) */
+.art-toggle-wrapper.active .art-toggle-track {
+  background-color: #d6a34a; /* Matches your brand gold */
+  border-color: #d6a34a;
+}
+.art-toggle-wrapper.active .art-toggle-thumb {
+  transform: translateX(16px);
+}
+
 /* Carousel Wrapper for Arrows */
 .deli-carousel-wrap {
   position: relative;
