@@ -1060,11 +1060,8 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', async () => {
     let strains = [];
     try {
-        // Fetches directly from the Brand Site Hub
         const response = await fetch('https://greenlabsmi.github.io/Dutch_Touch_Brand/strains.json');
         strains = await response.json();
-        
-        // Render current award winners to the page
         renderFeaturedGenetics(strains);
     } catch (error) {
         console.error('Failed to load strains:', error);
@@ -1074,7 +1071,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const mount = document.getElementById('current-strains');
         if (!mount) return;
 
-        // Auto-filter for Award Winners or Current Lineup
+        // Auto-filter for Award Winners or Current Lineup (limit to top 8)
         const featured = data.filter(s => s.award === true || s.status === 'current').slice(0, 8);
 
         mount.innerHTML = featured.map(s => {
@@ -1098,20 +1095,58 @@ document.addEventListener('DOMContentLoaded', async () => {
         }).join('');
     }
 
-    // Modal logic (Shared with brand site images)
-    const modalHTML = `<div class="strain-modal" id="glStrainModal">...</div>`; // (Keep your existing Modal HTML here)
+    // The FULL Modal HTML setup
+    const modalHTML = `
+        <div class="strain-modal" id="glStrainModal">
+            <div class="strain-modal-dialog">
+                <button class="strain-modal-close" id="glCloseModal">&times;</button>
+                <div class="strain-modal-layout">
+                    <div class="strain-modal-media"><img id="glModalImage" src="" alt="" class="strain-modal-image"></div>
+                    <div class="strain-modal-body">
+                        <div class="strain-modal-badge" id="glModalBreeder"></div>
+                        <h3 class="strain-modal-title" id="glModalName"></h3>
+                        <div class="strain-modal-info">
+                            <p><span>TYPE</span> <strong id="glModalType" style="color:#fff;"></strong></p>
+                            <p><span>LINEAGE</span> <strong id="glModalLineage" style="color:#fff;"></strong></p>
+                            <p><span>THC</span> <strong id="glModalThc" style="color:#fff;"></strong></p>
+                        </div>
+                        <p class="strain-modal-desc" id="glModalDesc"></p>
+                        <div class="strain-modal-cta">
+                            <a href="https://greenlabsmi.github.io/Dutch_Touch_Brand/strains.html" class="btn btn--gold" style="width: 100%;"> Explore DTG Vault &rarr; </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>`;
     document.body.insertAdjacentHTML('beforeend', modalHTML);
+
+    const modal = document.getElementById('glStrainModal');
+    const closeBtn = document.getElementById('glCloseModal');
 
     // Click handler for dynamic cards
     document.body.addEventListener('click', (e) => {
         const card = e.target.closest('.strain-card');
         if (!card) return;
+
         const name = card.querySelector('.strain-name').innerText;
         const s = strains.find(item => item.name === name);
         if (s) {
-            // (Inject data into modal as we do currently...)
+            document.getElementById('glModalName').innerText = s.name;
+            document.getElementById('glModalBreeder').innerText = "Genetics by " + s.breeder;
+            document.getElementById('glModalType').innerText = s.type.toUpperCase();
+            document.getElementById('glModalLineage').innerText = s.lineage;
+            document.getElementById('glModalThc').innerText = s.thc || "N/A";
+            document.getElementById('glModalDesc').innerText = s.description;
+            
+            const imgEl = document.getElementById('glModalImage');
+            imgEl.src = 'https://greenlabsmi.github.io/Dutch_Touch_Brand/' + (s.image || 'assets/img/logo/dtg-logo-orange.png');
+            
             modal.classList.add('open');
             document.body.style.overflow = 'hidden';
         }
     });
+
+    const closeDialog = () => { modal.classList.remove('open'); document.body.style.overflow = ''; };
+    if (closeBtn) closeBtn.addEventListener('click', closeDialog);
+    if (modal) modal.addEventListener('click', (e) => { if (e.target === modal) closeDialog(); });
 });
