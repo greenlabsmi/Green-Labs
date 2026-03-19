@@ -1071,9 +1071,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         const mount = document.getElementById('current-strains');
         if (!mount) return;
 
-        // Filter for ONLY Award Winners
+        // 1. CLEAR the mount point first to ensure old cards are gone
+        mount.innerHTML = '';
+
+        // 2. Filter for ONLY Award Winners
         const featured = data.filter(s => s.award === true);
 
+        // 3. Render the champions
         mount.innerHTML = featured.map(s => {
             const img = 'https://greenlabsmi.github.io/Dutch_Touch_Brand/' + (s.image || 'assets/img/logo/dtg-logo-orange.png');
             
