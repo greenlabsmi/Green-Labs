@@ -1157,40 +1157,38 @@ document.addEventListener('DOMContentLoaded', async () => {
 /* --- ARTWORK TOGGLE "WIND" EFFECT --- */
 document.addEventListener('DOMContentLoaded', () => {
   const artToggleBtn = document.getElementById('art-mode-toggle');
-  
-  // Note: Targeting your exact .deli-card class!
   const deliCards = document.querySelectorAll('.deli-card'); 
 
   if (!artToggleBtn || deliCards.length === 0) return;
 
   artToggleBtn.addEventListener('click', () => {
-    // 1. Visually flip the toggle switch to gold
     artToggleBtn.classList.toggle('active');
     const isArtMode = artToggleBtn.classList.contains('active');
 
-    // 2. Create the Left-to-Right wind effect
     deliCards.forEach(card => {
-      // Find where this specific card is on the user's screen right now
+      // Find where this specific card is on the screen
       const rect = card.getBoundingClientRect();
-      
-      // Calculate delay based on distance from the left edge of the screen.
-      // Math.max(0, ...) ensures off-screen left tiles flip instantly.
-      // Multiply by 0.6 to control wind speed (lower = faster wind).
       const delay = Math.max(0, rect.left) * 0.6; 
       
-      // Apply the delay, then flip!
-      card.style.transitionDelay = `${delay}ms`;
+      // THE FIX: Target the front and back panels directly!
+      const frontFace = card.querySelector('.deli-card__front');
+      const backFace = card.querySelector('.deli-card__back');
 
+      // Apply the staggered delay to the faces
+      if (frontFace) frontFace.style.transitionDelay = `${delay}ms`;
+      if (backFace) backFace.style.transitionDelay = `${delay}ms`;
+
+      // Trigger the flip
       if (isArtMode) {
         card.classList.add('is-flipped');
       } else {
         card.classList.remove('is-flipped');
       }
       
-      // Optional cleanup: remove the delay after the animation finishes 
-      // so normal clicking feels instant again.
+      // Clean up the delay after the wave finishes so normal clicking is instant
       setTimeout(() => {
-        card.style.transitionDelay = '0ms';
+        if (frontFace) frontFace.style.transitionDelay = '0ms';
+        if (backFace) backFace.style.transitionDelay = '0ms';
       }, delay + 800); 
     });
   });
