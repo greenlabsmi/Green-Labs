@@ -797,14 +797,13 @@ header, nav, section, .container, .wrap, .row {
 
 /* The Body with smooth max-height animation */
 .drDrop__body {
-    position: relative;
-    padding: 20px 20px 24px;
-    background: #ffffff;
-    max-height: 15000px; /* Lowered slightly to calculate faster */
-    overflow: hidden;
-    /* FIX: Faster, smoother curve + hardware acceleration */
-    transition: max-height 0.4s ease-in-out; 
-    will-change: max-height; 
+  position: relative;
+  padding: 20px 20px 24px;
+  background: #ffffff;
+  max-height: 3500px; /* Reduced from 15000px to completely eliminate the closing lag! */
+  overflow: hidden;
+  transition: max-height 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: max-height;
 }
 
 /* THE PEEK STATE: Shows search, categories, and top of first deal */
