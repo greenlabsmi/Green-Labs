@@ -1071,16 +1071,15 @@ document.addEventListener('DOMContentLoaded', async () => {
         const mount = document.getElementById('current-strains');
         if (!mount) return;
 
-        // Auto-filter for Award Winners or Current Lineup (limit to top 8)
-        const featured = data.filter(s => s.award === true || s.status === 'current').slice(0, 8);
+        // Filter for ONLY Award Winners
+        const featured = data.filter(s => s.award === true);
 
         mount.innerHTML = featured.map(s => {
             const img = 'https://greenlabsmi.github.io/Dutch_Touch_Brand/' + (s.image || 'assets/img/logo/dtg-logo-orange.png');
-            const isAward = s.award === true;
             
             return `
-            <article class="strain-card ${isAward ? 'award-card' : ''}" id="strain-${s.slug}">
-                ${isAward ? '<div class="award-badge-corner">AWARD WINNER</div>' : ''}
+            <article class="strain-card award-card" id="strain-${s.slug}">
+                <div class="award-badge-corner">AWARD WINNER</div>
                 <div class="strain-card-inner">
                     <div class="strain-image" style="background-image: url('${img}');"></div>
                     <div class="strain-top">
