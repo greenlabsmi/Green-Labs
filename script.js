@@ -942,20 +942,6 @@ function renderHighlightsFromConfig(data, mount) {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    const dealSummary = document.querySelector('.drDrop__summary');
-    const dealDrop = document.querySelector('.drDrop');
-
-    if (dealSummary && dealDrop) {
-        dealSummary.addEventListener('click', (e) => {
-            // Stop the browser from hiding the deals instantly
-            e.preventDefault(); 
-            // Smoothly expand the height instead
-            dealDrop.classList.toggle('is-fully-open');
-        });
-    }
-});
-
-document.addEventListener('DOMContentLoaded', () => {
   // ===== DUTCH DELI INTERACTIVITY =====
   
   // 1. Haptic Feedback function for flips and snaps
