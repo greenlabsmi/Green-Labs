@@ -3648,3 +3648,38 @@ body.is-scrolled .status-strip {
     padding-left: 20px !important; /* Standard phone gutter */
   }
 }
+
+/* Make all three sections share the same seamless black base */
+.section--dtg, 
+.gl-strains-section, 
+#our-story {
+  background-color: #0b0d0c !important; /* The Green Labs Signature Black */
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 80px 0;
+  display: block;
+}
+
+/* Fix the Apparel Rail so it doesn't get cut off on the left */
+.rail {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 20px 20px 40px !important;
+  margin-left: 0 !important;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Fix the Trophy Room Grid so it's perfectly aligned */
+.strain-grid {
+  padding: 20px max(18px, calc((100vw - 1180px) / 2 + 18px)) 60px !important;
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  width: 100vw !important;
+}
+
+/* Remove any potential "beige gaps" caused by the body background */
+#dtg, .gl-strains-section, #our-story {
+  border: none !important;
+}
