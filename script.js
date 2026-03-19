@@ -1023,31 +1023,30 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Deals Dropdown Peek State Logic
-  const dealsDrop = document.getElementById('dealsDrop');
-  const dealsSummary = document.querySelector('.drDrop__summary');
-  const dealsBody = document.querySelector('.drDrop__body');
+   
+  // ===== DEALS DROPDOWN LOGIC =====
+    const dealsDrop = document.getElementById('dealsDrop');
+    const dealsSummary = document.querySelector('.drDrop__summary');
+    const dealsBody = document.querySelector('.drDrop__body');
 
-  if (dealsDrop && dealsSummary && dealsBody) {
-    // 1. Toggle when clicking the main header
-    dealsSummary.addEventListener('click', (e) => {
-      e.preventDefault(); 
-      dealsDrop.classList.toggle('is-fully-open'); 
-    });
+    if (dealsDrop && dealsSummary && dealsBody) {
+        // 1. Force the HTML to stay "open" so our CSS animation can run smoothly
+        dealsDrop.setAttribute('open', 'true');
 
-    // 2. Auto-open if ANY click happens inside the body while it's peeking (e.g. clicking a category)
-    dealsBody.addEventListener('click', () => {
-      if (!dealsDrop.classList.contains('is-fully-open')) {
-        dealsDrop.classList.add('is-fully-open');
-      }
-    });
+        // 2. Summary Click (The Header)
+        dealsSummary.addEventListener('click', (e) => {
+            e.preventDefault(); // Stops the browser's clunky default snap
+            dealsDrop.classList.toggle('is-fully-open');
+        });
 
-    // 3. Auto-open if they tap into the search bar
-    dealsBody.addEventListener('focusin', () => {
-      if (!dealsDrop.classList.contains('is-fully-open')) {
-        dealsDrop.classList.add('is-fully-open');
-      }
-    });
+        // 3. Body Click (The Peeking Deals)
+        dealsBody.addEventListener('click', (e) => {
+            // If it's closed and they click a deal (but NOT the search bar), open it!
+            if (!dealsDrop.classList.contains('is-fully-open') && !e.target.closest('.drSearch')) {
+                dealsDrop.classList.add('is-fully-open');
+            }
+        });
+    }
      
      // Scroll Category Arrows
     const dealJumpWrap = document.getElementById('dealJumpWrap');
@@ -1066,7 +1065,6 @@ document.addEventListener('DOMContentLoaded', () => {
         e.stopPropagation();
         dealJumpWrap.scrollBy({ left: 250, behavior: 'smooth' });
       });
-    }
   }
 });
 
