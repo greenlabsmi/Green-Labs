@@ -659,11 +659,11 @@ header, nav, section, .container, .wrap, .row {
 /* Add a slow zoom transition to the background image itself */
 .hero__img {
   height: 280px;
-  background: linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.60)), radial-gradient(1000px 420px at 20% 0%, rgba(46,248,187,.18), rgba(0,0,0,0) 55%), url("assets/img/hero.jpg");
+  /* Removed the dark linear-gradient, kept the subtle green glow and image */
+  background: radial-gradient(1000px 420px at 20% 0%, rgba(46,248,187,.18), rgba(0,0,0,0) 55%), url("assets/img/hero.jpg");
   background-size: cover;
   background-position: left center;
   transition: transform 0.5s ease;
-  /* NEW: Hardware acceleration fixes to prevent blur */
   backface-visibility: hidden;
   transform: translateZ(0);
   will-change: transform;
