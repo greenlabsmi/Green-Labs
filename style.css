@@ -3774,3 +3774,12 @@ body.is-scrolled .status-strip {
   margin-right: -50vw !important;
   padding: 60px 0;
 }
+
+/* --- THE DUTCH DELI HERO IMAGE --- */
+.deli-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  object-position: center;
+  border-radius: inherit; /* Helps it perfectly match any rounded corners */
+}
