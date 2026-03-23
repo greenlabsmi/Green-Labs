@@ -3627,6 +3627,19 @@ body.is-scrolled .status-strip {
   color: #4a5d56; 
 }
 
+/* --- PROMO MODAL BUTTON FIX --- */
+.promo-modal__box .btn--primary {
+  background: #0B7D5A; /* Solid deep green to prevent white glare */
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 8px 20px rgba(11, 125, 90, 0.25);
+}
+
+.promo-modal__box .btn--primary:hover {
+  background: #086045; /* Slightly darker on hover */
+  box-shadow: 0 12px 25px rgba(11, 125, 90, 0.35);
+}
+
 /* Mobile Fix: Positions the popup at the bottom center on phones */
 @media (max-width: 640px) {
   .promo-modal { bottom: 20px; left: 20px; right: 20px; width: auto; }
