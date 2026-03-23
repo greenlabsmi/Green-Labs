@@ -2949,6 +2949,21 @@ header, nav, section, .container, .wrap, .row {
   background: rgba(214, 163, 74, 0.9); 
 }
 
+/* --- GREEN SCROLLBAR FOR LIFESTYLE & APPAREL --- */
+#apparel-grid {
+  /* Firefox support */
+  scrollbar-color: rgba(46, 248, 187, 0.4) rgba(255, 255, 255, 0.02); 
+}
+
+#apparel-grid::-webkit-scrollbar-thumb {
+  /* Chrome/Safari support */
+  background: rgba(46, 248, 187, 0.4); 
+}
+
+#apparel-grid::-webkit-scrollbar-thumb:hover {
+  background: rgba(46, 248, 187, 0.8);
+}
+
 /* Shrink the overall card size but keep it premium */
 .strain-card, .strain-card * {
   cursor: pointer; 
