@@ -3811,3 +3811,14 @@ body.is-scrolled .status-strip {
   object-position: center;
   border-radius: inherit; /* Helps it perfectly match any rounded corners */
 }
+
+/* --- SCROLL ALIGNMENT FIX FOR STRAIN GRIDS --- */
+.strain-grid {
+  /* Forces the scrollbar to respect the left padding, keeping it at 0 */
+  scroll-padding-left: max(18px, calc((100vw - 1180px) / 2 + 18px)) !important;
+}
+
+.strain-card {
+  /* Forces the cards to snap to the left edge instead of the middle */
+  scroll-snap-align: start !important;
+}
