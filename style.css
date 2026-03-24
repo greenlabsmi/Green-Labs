@@ -3822,3 +3822,19 @@ body.is-scrolled .status-strip {
   /* Forces the cards to snap to the left edge instead of the middle */
   scroll-snap-align: start !important;
 }
+
+/* --- KEEP IT DUTCH / APPAREL GRID FULL WIDTH --- */
+#apparel-grid {
+  width: 100% !important;
+  max-width: none !important; /* Overrides any previous constraints */
+  
+  /* This magic math keeps the apparel cards perfectly aligned with your 1180px site boundary! */
+  padding: 20px max(18px, calc((100% - 1180px) / 2 + 18px)) 60px !important;
+  
+  display: flex !important;
+  gap: 20px;
+  overflow-x: auto;
+  
+  /* Keeps the scrollbar cleanly aligned */
+  scroll-padding-left: max(18px, calc((100% - 1180px) / 2 + 18px)) !important;
+}
