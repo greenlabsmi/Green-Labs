@@ -3739,11 +3739,11 @@ body.is-scrolled .status-strip {
 
 /* Fix the Trophy Room Grid so it's perfectly aligned */
 .strain-grid {
-  padding: 20px max(18px, calc((100vw - 1180px) / 2 + 18px)) 60px !important;
+  padding: 20px max(18px, calc((100% - 1180px) / 2 + 18px)) 60px !important;
   display: flex;
   gap: 20px;
   overflow-x: auto;
-  width: 100vw !important;
+  width: 100% !important;
 }
 
 /* Remove any potential "beige gaps" caused by the body background */
@@ -3794,13 +3794,13 @@ body.is-scrolled .status-strip {
 /* This forces the backgrounds to hit the edges of the screen */
 .gl-strains-section {
   background: #0b0d0c !important;
-  width: 100vw !important;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw !important;
-  margin-right: -50vw !important;
+  width: 100% !important;
   padding: 60px 0;
+}
+
+/* Subtle divider between Apparel and Trophy Room */
+.gl-strains-section + .gl-strains-section {
+  border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
 }
 
 /* --- THE DUTCH DELI HERO IMAGE --- */
@@ -3815,7 +3815,7 @@ body.is-scrolled .status-strip {
 /* --- SCROLL ALIGNMENT FIX FOR STRAIN GRIDS --- */
 .strain-grid {
   /* Forces the scrollbar to respect the left padding, keeping it at 0 */
-  scroll-padding-left: max(18px, calc((100vw - 1180px) / 2 + 18px)) !important;
+  scroll-padding-left: max(18px, calc((100% - 1180px) / 2 + 18px)) !important;
 }
 
 .strain-card {
