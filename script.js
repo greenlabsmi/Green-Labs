@@ -95,18 +95,16 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 function smoothTo(el) {
-    if (!el) return;
-    
-    // Always assume 70px because the status strip hides on scroll!
-    const stickyH = 70; 
-    
-    // Dropped the offset down to 20 so sections fit perfectly snug under the header!
-    const yPos = el.getBoundingClientRect().top + window.pageYOffset - (stickyH + 20);
-    
-    window.scrollTo({
-        top: Math.max(0, yPos),
-        behavior: prefersReduce ? 'auto' : 'smooth'
-    });
+  if (!el) return;
+  // Always assume 70px because the status strip hides on scroll!
+  const stickyH = 70;
+  const stripOffset = window.pageYOffset < 50 ? 34 : 0;
+  const yPos = el.getBoundingClientRect().top + window.pageYOffset - (stickyH + 20) - stripOffset;
+  
+  window.scrollTo({
+    top: Math.max(0, yPos),
+    behavior: prefersReduce ? 'auto' : 'smooth'
+  });
 }
 
 // ===== MASTER SCROLL INTERCEPTOR =====
