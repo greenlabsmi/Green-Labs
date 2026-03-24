@@ -3752,107 +3752,16 @@ body.is-scrolled .status-strip {
 }
 
 /* =========================================
-   OUR STORY - BLACK TO GREEN GRADIENT
+   FULL WIDTH DARK SECTIONS & STORY FIXES
    ========================================= */
-#our-story {
-  /* Starts pure black at the top, fades smoothly to Green Labs Emerald at the bottom */
-  background: linear-gradient(to bottom, #0b0d0c 0%, #0B7D5A 100%) !important;
-  padding: 100px 0;
-  width: 100% !important;
-}
 
-.story-content p {
-  /* Brightens the text so it pops against the green/black */
-  color: #ffffff !important; 
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-  font-size: 18px;
-  line-height: 1.7;
-}
-
-/* Fixes the "Shrinking Video" problem */
-.story-media {
-  flex: 1;
-  min-width: 320px;
-  width: 100%;
-}
-.video-wrapper {
-  position: relative;
-  padding-bottom: 56.25%; /* Perfect 16:9 aspect ratio */
-  height: 0;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-}
-.video-wrapper iframe {
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-}
-
-/* =========================================
-   FULL WIDTH DARK SECTIONS FIX
-   ========================================= */
-/* This forces the backgrounds to hit the edges of the screen */
-.gl-strains-section {
-  background: #0b0d0c !important;
-  width: 100% !important;
-  padding: 60px 0;
-}
-
-/* Subtle divider between Apparel and Trophy Room */
-.gl-strains-section + .gl-strains-section {
-  border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
-}
-
-/* --- THE DUTCH DELI HERO IMAGE --- */
-.deli-hero-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; 
-  object-position: center;
-  border-radius: inherit; /* Helps it perfectly match any rounded corners */
-}
-
-/* --- SCROLL ALIGNMENT FIX FOR STRAIN GRIDS --- */
-.strain-grid {
-  /* Forces the scrollbar to respect the left padding, keeping it at 0 */
-  scroll-padding-left: max(18px, calc((100% - 1180px) / 2 + 18px)) !important;
-}
-
-.strain-card {
-  /* Forces the cards to snap to the left edge instead of the middle */
-  scroll-snap-align: start !important;
-}
-
-/* --- KEEP IT DUTCH / APPAREL GRID FULL WIDTH --- */
-#apparel-grid {
-  width: 100% !important;
-  max-width: none !important; /* Overrides any previous constraints */
-  
-  /* This magic math keeps the apparel cards perfectly aligned with your 1180px site boundary! */
-  padding: 20px max(18px, calc((100% - 1180px) / 2 + 18px)) 60px !important;
-  
-  display: flex !important;
-  gap: 20px;
-  overflow-x: auto;
-  
-  /* Keeps the scrollbar cleanly aligned */
-  scroll-padding-left: max(18px, calc((100% - 1180px) / 2 + 18px)) !important;
-}
-
-/* Remove any potential "beige gaps" caused by the body background */
+/* 1. Remove any potential borders/beige gaps */
 #dtg, .gl-strains-section, #our-story {
   border: none !important;
 }
 
-/* =========================================
-   OUR STORY - BLACK TO GREEN GRADIENT
-   ========================================= */
-#our-story {
-  /* Starts pure black at the top, fades smoothly to Green Labs Emerald at the bottom */
-  background: linear-gradient(to bottom, #0b0d0c 0%, #0B7D5A 100%) !important;
-  padding: 100px 0;
-  
-  /* THE CAGE BREAKER: Forces the section to 100vw to hit the edges */
+/* 2. THE CAGE BREAKER: Force these backgrounds to hit the edges */
+.gl-strains-section, #our-story {
   width: 100vw !important;
   max-width: 100vw !important;
   position: relative;
@@ -3860,15 +3769,32 @@ body.is-scrolled .status-strip {
   margin-left: -50vw !important;
 }
 
+/* 3. Keep It Dutch & Trophy Room Styles */
+.gl-strains-section {
+  background: #0b0d0c !important;
+  padding: 60px 0;
+}
+
+/* Subtle divider between Apparel and Trophy Room */
+.gl-strains-section + .gl-strains-section {
+  border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+/* 4. Our Story Gradient & Text Styles */
+#our-story {
+  /* Starts pure black at the top, fades smoothly to Emerald at the bottom */
+  background: linear-gradient(to bottom, #0b0d0c 0%, #0B7D5A 100%) !important;
+  padding: 100px 0;
+}
+
 .story-content p {
-  /* Brightens the text so it pops against the green/black */
   color: #ffffff !important; 
   text-shadow: 0 2px 4px rgba(0,0,0,0.5);
   font-size: 18px;
   line-height: 1.7;
 }
 
-/* Fixes the "Shrinking Video" problem */
+/* 5. Video Sizing Fixes */
 .story-media {
   flex: 1;
   min-width: 320px;
@@ -3887,31 +3813,17 @@ body.is-scrolled .status-strip {
   top: 0; left: 0; width: 100%; height: 100%;
 }
 
+/* =========================================
+   GRIDS & HERO IMAGES
+   ========================================= */
+
 /* --- THE DUTCH DELI HERO IMAGE --- */
 .deli-hero-img {
   width: 100%;
   height: 100%;
   object-fit: cover; 
   object-position: center;
-  border-radius: inherit; /* Helps it perfectly match any rounded corners */
-}
-
-/* =========================================
-   FULL WIDTH DARK SECTIONS FIX (100VW HACK)
-   ========================================= */
-/* This forces the backgrounds to break out of the container and hit the edges */
-.gl-strains-section {
-  background: #0b0d0c !important;
-  width: 100vw !important;
-  position: relative;
-  left: 50% !important;
-  margin-left: -50vw !important;
-  padding: 60px 0;
-}
-
-/* Subtle divider between Apparel and Trophy Room */
-.gl-strains-section + .gl-strains-section {
-  border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+  border-radius: inherit;
 }
 
 /* --- FULL WIDTH SCROLL GRIDS --- */
@@ -3931,6 +3843,5 @@ body.is-scrolled .status-strip {
 }
 
 .strain-card {
-  /* Forces the cards to snap to the left edge instead of the middle */
   scroll-snap-align: start !important;
 }
