@@ -3851,7 +3851,13 @@ body.is-scrolled .status-strip {
   /* Starts pure black at the top, fades smoothly to Green Labs Emerald at the bottom */
   background: linear-gradient(to bottom, #0b0d0c 0%, #0B7D5A 100%) !important;
   padding: 100px 0;
-  width: 100% !important;
+  
+  /* THE CAGE BREAKER: Forces the section to 100vw to hit the edges */
+  width: 100vw !important;
+  max-width: 100vw !important;
+  position: relative;
+  left: 50% !important;
+  margin-left: -50vw !important;
 }
 
 .story-content p {
