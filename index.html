@@ -604,7 +604,7 @@
               <div class="guideCard__imageWrap">
                 <!-- Replace with your Canva asset -->
                 <img
-                  src="assets/img/education-terpenes.jpg"
+                  src="assets/img/education-terpenes-colt.jpg"
                   alt="Terpene education graphic"
                   class="guideCard__image"
                 />
@@ -630,45 +630,55 @@
                 are terpene tested, which helps us guide people toward the kind of experience they are actually looking for.
               </p>
 
-             <div class="guideChips" aria-label="Common terpenes">
-  <button class="guideChip" onclick="openTerp(this)" data-title="Myrcene" data-desc="Enter your Canva description for Myrcene here." style="background: rgba(230, 122, 0, 0.1); border-color: rgba(230, 122, 0, 0.3); color: #B25A00; cursor: pointer;">Myrcene · relaxing</button>
-  
-  <button class="guideChip" onclick="openTerp(this)" data-title="Limonene" data-desc="Enter your Canva description for Limonene here." style="background: rgba(214, 163, 74, 0.15); border-color: rgba(214, 163, 74, 0.4); color: #8A5B10; cursor: pointer;">Limonene · bright</button>
-  
-  <button class="guideChip" onclick="openTerp(this)" data-title="Pinene" data-desc="Enter your Canva description for Pinene here." style="background: rgba(11, 125, 90, 0.1); border-color: rgba(11, 125, 90, 0.3); color: #0B7D5A; cursor: pointer;">Pinene · clear</button>
-  
-  <button class="guideChip" onclick="openTerp(this)" data-title="Caryophyllene" data-desc="Enter your Canva description for Caryophyllene here." style="background: rgba(138, 91, 226, 0.1); border-color: rgba(138, 91, 226, 0.3); color: #5a2e98; cursor: pointer;">Caryophyllene · grounding</button>
-  
-  <button class="guideChip" onclick="openTerp(this)" data-title="Linalool" data-desc="Enter your Canva description for Linalool here." style="background: rgba(74, 144, 226, 0.1); border-color: rgba(74, 144, 226, 0.3); color: #2e629b; cursor: pointer;">Linalool · calming</button>
-</div>
+             <div style="position: relative;">
+      
+      <div id="terpModalWrapper" style="display:none; position:absolute; bottom: 100%; left: 0; margin-bottom: 12px; background: #ffffff; border-radius: 16px; padding: 16px 20px; box-shadow: 0 16px 40px rgba(0,0,0,0.18); border: 1px solid rgba(0,0,0,0.08); z-index: 50; width: calc(100vw - 40px); max-width: 320px;">
+        <button onclick="document.getElementById('terpModalWrapper').style.display='none'" style="position:absolute; right:12px; top:12px; background:none; border:none; font-size:22px; cursor:pointer; color:#999; line-height:1; padding:4px;">&times;</button>
+        <h3 id="terpModalTitle" style="font-family: 'Cinzel', serif; font-size: 20px; font-weight: 900; margin: 0 0 6px;">Title</h3>
+        <p id="terpModalDesc" style="font-size: 14px; line-height: 1.5; color: rgba(17,17,17,0.75); margin: 0; font-weight: 600;">Description goes here.</p>
+      </div>
 
-<div style="margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(0,0,0,0.1); display: flex; gap: 10px; flex-wrap: wrap;">
-  <p style="width: 100%; margin: 0 0 8px; font-size: 13px; font-weight: 800; color: rgba(17,17,17,.6);">Save these guides to your phone:</p>
-  <a href="assets/img/terpene-guide.pdf" download class="btn btn--ghost" style="font-size: 13px; color: #0B7D5A; border-color: rgba(11,125,90,0.3); background: rgba(11,125,90,0.05);">↓ Terpene Guide</a>
-  <a href="assets/img/green-labs-flyer.pdf" download class="btn btn--ghost" style="font-size: 13px; color: #0B7D5A; border-color: rgba(11,125,90,0.3); background: rgba(11,125,90,0.05);">↓ Green Labs Flyer</a>
-</div>
+      <div class="guideChips" aria-label="Common terpenes">
+        <button class="guideChip" onclick="openTerp(this)" data-title="Myrcene" data-desc="Enter your Canva description for Myrcene here." style="background: rgba(230, 122, 0, 0.1); border-color: rgba(230, 122, 0, 0.3); color: #B25A00; cursor: pointer;">Myrcene · relaxing</button>
+        <button class="guideChip" onclick="openTerp(this)" data-title="Limonene" data-desc="Enter your Canva description for Limonene here." style="background: rgba(214, 163, 74, 0.15); border-color: rgba(214, 163, 74, 0.4); color: #8A5B10; cursor: pointer;">Limonene · bright</button>
+        <button class="guideChip" onclick="openTerp(this)" data-title="Pinene" data-desc="Enter your Canva description for Pinene here." style="background: rgba(11, 125, 90, 0.1); border-color: rgba(11, 125, 90, 0.3); color: #0B7D5A; cursor: pointer;">Pinene · clear</button>
+        <button class="guideChip" onclick="openTerp(this)" data-title="Caryophyllene" data-desc="Enter your Canva description for Caryophyllene here." style="background: rgba(138, 91, 226, 0.1); border-color: rgba(138, 91, 226, 0.3); color: #5a2e98; cursor: pointer;">Caryophyllene · grounding</button>
+        <button class="guideChip" onclick="openTerp(this)" data-title="Linalool" data-desc="Enter your Canva description for Linalool here." style="background: rgba(74, 144, 226, 0.1); border-color: rgba(74, 144, 226, 0.3); color: #2e629b; cursor: pointer;">Linalool · calming</button>
+      </div>
 
-<div id="terpModalWrapper" style="display:none; position:fixed; inset:0; z-index:99999; background:rgba(0,0,0,0.6); backdrop-filter:blur(4px);">
-  <div class="promo-modal__box" style="position:relative; text-align:left; max-width:400px; width:90%; margin: 0 auto; top: 50%; transform: translateY(-50%);">
-    <button onclick="document.getElementById('terpModalWrapper').style.display='none'" class="promo-modal__close" style="right:20px; top:20px;">&times;</button>
-    <h3 id="terpModalTitle" class="promo-modal__title" style="font-size: 28px; margin-bottom: 12px;">Title</h3>
-    <p id="terpModalDesc" class="promo-modal__text" style="color:#4a5d56; font-size:15px; line-height:1.6; margin-bottom:0;">Description goes here.</p>
-  </div>
-</div>
+    </div>
 
-<script>
-  // This tiny script injects the text and color into the popup when a bubble is clicked!
-  function openTerp(btn) {
-    document.getElementById('terpModalTitle').innerText = btn.getAttribute('data-title');
-    document.getElementById('terpModalTitle').style.color = window.getComputedStyle(btn).color;
-    document.getElementById('terpModalDesc').innerText = btn.getAttribute('data-desc');
-    document.getElementById('terpModalWrapper').style.display = 'block';
-  }
-  // Close modal if clicking the dark background
-  document.getElementById('terpModalWrapper').addEventListener('click', function(e) {
-    if(e.target === this) this.style.display = 'none';
-  });
-</script>
+    <div style="margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(0,0,0,0.1); display: flex; gap: 10px; flex-wrap: wrap;">
+      <p style="width: 100%; margin: 0 0 8px; font-size: 13px; font-weight: 800; color: rgba(17,17,17,.6);">Save these guides to your phone:</p>
+      <a href="assets/img/terpene-guide.pdf" download class="btn btn--ghost" style="font-size: 13px; color: #0B7D5A; border-color: rgba(11,125,90,0.3); background: rgba(11,125,90,0.05);">↓ Terpene Guide</a>
+      <a href="assets/img/green-labs-flyer.pdf" download class="btn btn--ghost" style="font-size: 13px; color: #0B7D5A; border-color: rgba(11,125,90,0.3); background: rgba(11,125,90,0.05);">↓ Green Labs Flyer</a>
+    </div>
+
+    <script>
+      function openTerp(btn) {
+        document.getElementById('terpModalTitle').innerText = btn.getAttribute('data-title');
+        document.getElementById('terpModalTitle').style.color = window.getComputedStyle(btn).color;
+        document.getElementById('terpModalDesc').innerText = btn.getAttribute('data-desc');
+        document.getElementById('terpModalWrapper').style.display = 'block';
+      }
+
+      // NEW: Listen for clicks anywhere on the page
+      document.addEventListener('click', function(event) {
+        var modal = document.getElementById('terpModalWrapper');
+        
+        // If the modal is currently open...
+        if (modal.style.display === 'block') {
+          var isClickInside = modal.contains(event.target);
+          var isClickOnButton = event.target.closest('.guideChip');
+          
+          // And they didn't click inside the popup, AND didn't click a terpene button...
+          if (!isClickInside && !isClickOnButton) {
+            modal.style.display = 'none'; // Close it!
+          }
+        }
+      });
+    </script>
+
             </div>
           </div>
         </div>
