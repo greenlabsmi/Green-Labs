@@ -4072,48 +4072,47 @@ body.is-scrolled .status-strip {
   margin-bottom: 24px;
 }
 /* =========================================
-   GREEN LABS GUIDE: PREMIUM EDITORIAL
+   GREEN LABS GUIDE: TIGHTER & READABLE
    ========================================= */
 
-/* 1. The Label (e.g., Terpene Basics) */
+/* 1. The Label */
 .guideCard__eyebrow, .buyGuide__eyebrow {
   font-family: 'Inter', sans-serif;
   font-weight: 800;
   font-size: 13px !important;
   text-transform: uppercase;
-  letter-spacing: 2px; /* The "Luxury" air between letters */
-  color: #0B7D5A !important; /* Green Labs Emerald */
-  margin-bottom: 12px;
+  letter-spacing: 1px; /* Dialed back the spacing */
+  color: #0B7D5A !important; 
+  margin-bottom: 8px; /* Pulled this closer to the title */
 }
 
-/* 2. The Questions (e.g., What are terpenes?) */
+/* 2. The Questions */
 .guideCard__title {
-  font-family: 'Playfair Display', serif; /* Or your site's main serif */
+  font-family: 'Playfair Display', serif; 
   font-weight: 700;
-  font-size: 32px !important; /* Large and clear for 40+ eyes */
+  font-size: 28px !important; /* Slightly smaller so it doesn't float */
   color: #1a1a1a;
   line-height: 1.2;
-  margin-bottom: 15px;
+  margin-bottom: 10px; /* Tightened the gap below the question */
 }
 
-/* 3. The Main Body Text (The "Answer") */
+/* 3. The Main Body Text */
 .guideCard__lead, .guideCard__expand p {
-  font-size: 18px !important; /* The sweet spot for easy reading */
-  line-height: 1.8 !important; /* Crucial for preventing line-blurring */
+  font-size: 17px !important; /* Still readable, but less bulky */
+  line-height: 1.5 !important; /* Reduced from 1.8 to bring lines together */
   color: #333 !important;
-  margin-bottom: 20px;
+  margin-bottom: 16px; /* Reduced the empty space between paragraphs */
 }
 
-/* 4. The Terpene Chips (Buttons) */
+/* 4. The Terpene Chips */
 .guideChip {
-  font-size: 15px !important;
+  font-size: 14px !important;
   font-weight: 600;
-  padding: 10px 18px !important;
-  border-radius: 8px !important;
-  margin: 5px;
-  transition: transform 0.2s ease;
+  padding: 8px 14px !important; /* Tighter button shapes */
+  border-radius: 6px !important;
+  margin: 4px;
 }
 
 .guideChip:hover {
-  transform: scale(1.05); /* Subtle interactive pop */
+  transform: scale(1.03);
 }
