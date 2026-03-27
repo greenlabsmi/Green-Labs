@@ -3846,10 +3846,15 @@ body.is-scrolled .status-strip {
   scroll-snap-align: start !important;
 }
 
-/* --- FANCY HEADER SYSTEM --- */
+/* --- FANCY HEADER SYSTEM (TASK 2 FIX) --- */
 .fancy-header {
-  text-align: left;
+  text-align: center; /* FIXED: Centered to match other sections */
   margin-bottom: 40px;
+}
+
+.fancy-header .dtgbadge {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .fancy-title {
@@ -3872,4 +3877,54 @@ body.is-scrolled .status-strip {
   border: 1px solid;
   text-transform: uppercase;
   margin-bottom: 4px;
+}
+
+/* =========================================
+   TASK 3: "MORE DEALS" TRACK & SCROLLBAR
+   ========================================= */
+
+/* 1. The "Track" Look: Darker background with inset depth shadow */
+#todays-highlights .thRowWrap {
+  margin-top: 40px;
+  background: rgba(0, 0, 0, 0.04);
+  padding: 24px 0;
+  border-radius: 28px;
+  box-shadow: inset 0 2px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+/* 2. Track Title: Making "More Deals" look more official */
+#todays-highlights .thRowTitle {
+  padding: 0 24px;
+  margin-bottom: 16px;
+  color: #0B7D5A;
+  font-family: "Cinzel", serif;
+  font-weight: 900;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* 3. Custom Scrollbar for the deals row */
+#todays-highlights .thRow {
+  padding: 0 24px 14px;
+  scrollbar-width: auto;
+  scrollbar-color: #0B7D5A rgba(0, 0, 0, 0.05);
+}
+
+/* Chrome/Safari Scrollbar Styling */
+#todays-highlights .thRow::-webkit-scrollbar {
+  height: 6px;
+  display: block;
+}
+
+#todays-highlights .thRow::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  margin: 0 24px;
+}
+
+#todays-highlights .thRow::-webkit-scrollbar-thumb {
+  background: #0B7D5A;
+  border-radius: 10px;
 }
