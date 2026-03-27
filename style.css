@@ -4116,3 +4116,16 @@ body.is-scrolled .status-strip {
 .guideChip:hover {
   transform: scale(1.03);
 }
+/* =========================================
+   KILL THE EMPTY CARD SPACE
+   ========================================= */
+.guideCard__copy {
+  min-height: auto !important; /* Stops forcing the massive height */
+  justify-content: flex-start !important; /* Stops yanking the text apart */
+  padding-bottom: 30px !important; 
+}
+
+/* Give the "Read the full answer" button some breathing room */
+.guideCard__toggle {
+  margin-top: 24px !important; 
+}
