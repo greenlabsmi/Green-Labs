@@ -133,6 +133,32 @@
           ]
         },
         {
+      "category": "⚖️ Deli",
+      "promo": false,
+      "groups": [
+        {
+          "title": "Dutch Touch Genetics",
+          "items": [
+            "1 Gram — $8",
+            "3.5 Grams — $25",
+            "7 Grams — $40",
+            "14 Grams — $70",
+            "28 Grams — $130"
+          ]
+        },
+        {
+          "title": "Third Party (LightSky Farms, Cresco, Redbud Roots)",
+          "items": [
+            "1 Gram — $8",
+            "3.5 Grams — $20",
+            "7 Grams — $35",
+            "14 Grams — $65",
+            "28 Grams — $120"
+          ]
+        }
+      ]
+    },
+        {
           "title": "Kief & Hash Promotions",
           "items": [
             "Dutch Touch Genetics 14g Kief - $150ea"
