@@ -3939,16 +3939,19 @@ body.is-scrolled .status-strip {
 #todays-highlights .thRow, 
 #deliCarousel {
   overflow-x: auto !important;
-  scrollbar-width: thin; /* Fallback for Firefox */
-  padding-bottom: 24px !important; /* Breathing room for the scrollbar */
+  scrollbar-width: auto !important; /* Tells Firefox not to hide it */
+  padding-bottom: 24px !important; /* Space inside for the scrollbar */
+  margin-bottom: 40px !important; /* THE FIX: Pushes the Order button down! */
 }
 
-/* 2. Chrome/Safari Base Dimensions */
+/* 2. Chrome/Safari Base Dimensions (Forcing Visibility) */
 .strain-grid::-webkit-scrollbar, 
 #apparel-grid::-webkit-scrollbar, 
 #todays-highlights .thRow::-webkit-scrollbar,
 #deliCarousel::-webkit-scrollbar {
-  height: 8px; /* Thick enough to grab easily */
+  height: 8px; 
+  display: block !important; /* THE FIX: Forbids the scrollbar from disappearing */
+  -webkit-appearance: none !important; 
 }
 
 /* The invisible track background */
