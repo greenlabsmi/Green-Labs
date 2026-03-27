@@ -635,11 +635,6 @@
 
              <div style="position: relative;">
       
-      <div id="terpModalWrapper" style="display:none; position:absolute; bottom: 100%; left: 0; margin-bottom: 12px; background: #ffffff; border-radius: 16px; padding: 16px 20px; box-shadow: 0 16px 40px rgba(0,0,0,0.18); border: 1px solid rgba(0,0,0,0.08); z-index: 50; width: calc(100vw - 40px); max-width: 320px;">
-        <button onclick="document.getElementById('terpModalWrapper').style.display='none'" style="position:absolute; right:12px; top:12px; background:none; border:none; font-size:22px; cursor:pointer; color:#999; line-height:1; padding:4px;">&times;</button>
-        <h3 id="terpModalTitle" style="font-family: 'Cinzel', serif; font-size: 20px; font-weight: 900; margin: 0 0 6px;">Title</h3>
-        <p id="terpModalDesc" style="font-size: 14px; line-height: 1.5; color: rgba(17,17,17,0.75); margin: 0; font-weight: 600;">Description goes here.</p>
-      </div>
 
       <div class="guideChips" aria-label="Common terpenes">
   <button class="guideChip" onclick="openTerp(this)" data-title="Myrcene" data-desc="The most abundant terpene in modern cannabis, and is often the “dominant” terpene for many strains. Mostly associated with heavy sedative effects, however, when paired with energetic or euphoric terpenes it can help add to the stimulating profile." style="background: rgba(230, 122, 0, 0.1); border-color: rgba(230, 122, 0, 0.3); color: #B25A00; cursor: pointer;">Myrcene · relaxing</button>
@@ -678,29 +673,28 @@
     </div>
 
     <script>
-      function openTerp(btn) {
-        document.getElementById('terpModalTitle').innerText = btn.getAttribute('data-title');
-        document.getElementById('terpModalTitle').style.color = window.getComputedStyle(btn).color;
-        document.getElementById('terpModalDesc').innerText = btn.getAttribute('data-desc');
-        document.getElementById('terpModalWrapper').style.display = 'block';
-      }
+  function openTerp(btn) {
+    document.getElementById('terpModalTitle').innerText = btn.getAttribute('data-title');
+    document.getElementById('terpModalTitle').style.color = window.getComputedStyle(btn).color;
+    document.getElementById('terpModalDesc').innerText = btn.getAttribute('data-desc');
+    document.getElementById('terpModalWrapper').style.display = 'block';
+    document.body.style.overflow = 'hidden'; // Prevents background scrolling while reading
+  }
 
-      // NEW: Listen for clicks anywhere on the page
-      document.addEventListener('click', function(event) {
-        var modal = document.getElementById('terpModalWrapper');
-        
-        // If the modal is currently open...
-        if (modal.style.display === 'block') {
-          var isClickInside = modal.contains(event.target);
-          var isClickOnButton = event.target.closest('.guideChip');
-          
-          // And they didn't click inside the popup, AND didn't click a terpene button...
-          if (!isClickInside && !isClickOnButton) {
-            modal.style.display = 'none'; // Close it!
-          }
-        }
-      });
-    </script>
+  // Close when clicking the dark background
+  document.getElementById('terpModalWrapper').addEventListener('click', function(event) {
+    if (event.target === this) {
+      this.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+  });
+  
+  // X button function
+  function closeTerpModal() {
+    document.getElementById('terpModalWrapper').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+</script>
 
             </div>
           </div>
@@ -1090,6 +1084,14 @@
       <button class="btn btn--primary" id="btnPromoOk" style="width: 100%;">Got it, thanks!</button>
     </div>
   </div>
+
+<div id="terpModalWrapper" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px); z-index:999999;">
+  <div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); background:#ffffff; border-radius:24px; padding:28px; box-shadow:0 20px 60px rgba(0,0,0,0.3); width:calc(100vw - 40px); max-width:380px;">
+    <button onclick="closeTerpModal()" style="position:absolute; right:16px; top:16px; background:rgba(0,0,0,0.05); border-radius:50%; border:none; width:32px; height:32px; font-size:22px; cursor:pointer; color:#111; display:flex; align-items:center; justify-content:center;">&times;</button>
+    <h3 id="terpModalTitle" style="font-family: 'Cinzel', serif; font-size: 24px; font-weight: 900; margin: 0 0 10px;">Title</h3>
+    <p id="terpModalDesc" style="font-size: 15px; line-height: 1.6; color: rgba(17,17,17,0.8); margin: 0; font-weight: 600;">Description goes here.</p>
+  </div>
+</div>
     
 </body>
 </html>
