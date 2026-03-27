@@ -4012,3 +4012,62 @@ body.is-scrolled .status-strip {
   border-color: #096649 !important;
   color: #ffffff !important;
 }
+
+/* =========================================
+   GREEN LABS GUIDE: READABILITY & VIBE
+   ========================================= */
+
+/* The main section container */
+#guide-section {
+  background-color: #f9f9f7; /* A very slight off-white/cream for less eye strain */
+  padding: 100px 0;
+}
+
+/* Big Intro Header */
+#guide-section h1 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: clamp(32px, 5vw, 48px); /* Fluid sizing: big but not overwhelming */
+  letter-spacing: -1.5px;
+  color: #1a1a1a;
+  line-height: 1.1;
+  margin-bottom: 24px;
+}
+
+/* Intro Paragraph */
+#guide-section .intro-text {
+  font-size: 20px; /* Larger for 40+ readability */
+  line-height: 1.6;
+  color: #4a4a4a;
+  max-width: 700px; /* Keeps lines from being too wide/hard to track */
+  margin-bottom: 40px;
+}
+
+/* Topic Labels (e.g., TERPENE BASICS) */
+.guide-label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 2px; /* This gives it that "Brand" vibe */
+  color: #0B7D5A; /* Green Labs Emerald */
+  margin-bottom: 12px;
+  display: block;
+}
+
+/* Question Headers (e.g., WHAT ARE TERPENES?) */
+#guide-section h2 {
+  font-family: 'Playfair Display', serif; /* Or your main site serif */
+  font-weight: 700;
+  font-size: 38px;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+}
+
+/* Body Content */
+#guide-section p {
+  font-size: 18px; /* The "sweet spot" for comfortable reading */
+  line-height: 1.8; /* Extra breathing room between lines */
+  color: #333;
+  margin-bottom: 24px;
+}
