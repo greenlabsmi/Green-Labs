@@ -4071,3 +4071,49 @@ body.is-scrolled .status-strip {
   color: #333;
   margin-bottom: 24px;
 }
+/* =========================================
+   GREEN LABS GUIDE: PREMIUM EDITORIAL
+   ========================================= */
+
+/* 1. The Label (e.g., Terpene Basics) */
+.guideCard__eyebrow, .buyGuide__eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 13px !important;
+  text-transform: uppercase;
+  letter-spacing: 2px; /* The "Luxury" air between letters */
+  color: #0B7D5A !important; /* Green Labs Emerald */
+  margin-bottom: 12px;
+}
+
+/* 2. The Questions (e.g., What are terpenes?) */
+.guideCard__title {
+  font-family: 'Playfair Display', serif; /* Or your site's main serif */
+  font-weight: 700;
+  font-size: 32px !important; /* Large and clear for 40+ eyes */
+  color: #1a1a1a;
+  line-height: 1.2;
+  margin-bottom: 15px;
+}
+
+/* 3. The Main Body Text (The "Answer") */
+.guideCard__lead, .guideCard__expand p {
+  font-size: 18px !important; /* The sweet spot for easy reading */
+  line-height: 1.8 !important; /* Crucial for preventing line-blurring */
+  color: #333 !important;
+  margin-bottom: 20px;
+}
+
+/* 4. The Terpene Chips (Buttons) */
+.guideChip {
+  font-size: 15px !important;
+  font-weight: 600;
+  padding: 10px 18px !important;
+  border-radius: 8px !important;
+  margin: 5px;
+  transition: transform 0.2s ease;
+}
+
+.guideChip:hover {
+  transform: scale(1.05); /* Subtle interactive pop */
+}
