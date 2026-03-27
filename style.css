@@ -3845,3 +3845,31 @@ body.is-scrolled .status-strip {
 .strain-card {
   scroll-snap-align: start !important;
 }
+
+/* --- FANCY HEADER SYSTEM --- */
+.fancy-header {
+  text-align: left;
+  margin-bottom: 40px;
+}
+
+.fancy-title {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(2rem, 5vw, 2.8rem); /* Scales beautifully on mobile */
+  font-weight: 900;
+  margin: 12px 0;
+  text-transform: uppercase;
+  letter-spacing: -1.5px;
+  line-height: 1;
+}
+
+.dtgbadge {
+  display: inline-block;
+  padding: 6px 14px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  border-radius: 50px;
+  border: 1px solid;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
