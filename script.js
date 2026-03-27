@@ -530,17 +530,16 @@ function normalizeDealsData(data) {
 function bindDealJumpChips() {
   const wrap = document.getElementById('dealJumpWrap');
   if (!wrap) return;
-
   wrap.querySelectorAll('[data-jump]').forEach(btn => {
     btn.addEventListener('click', () => {
       const targetSel = btn.getAttribute('data-jump');
       const target = document.querySelector(targetSel);
       if (!target) return;
-
+      
       wrap.querySelectorAll('.drJumpChip').forEach(chip => chip.classList.remove('is-active'));
       btn.classList.add('is-active');
 
-      target.scrollIntoView({ behavior: prefersReduce ? 'auto' : 'smooth', block: 'start' });
+      smoothTo(target); 
     });
   });
 }
