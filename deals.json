@@ -193,34 +193,64 @@
     {
       "category": "💨 Vapes & Disposables",
       "promo": false,
-      "items": [
-        "Platinum Vapes - $10 or 5/$35 or 15/$85",
-        "Daily Dose 1g Cartridges - $10 or 5/$40",
-        "Superfire 1g Cartridges - $10 or 15/$85",
-        "Platinum Vapes 1g Live Resin Carts - $15",
-        "True North Fusion 1g Full Spectrum Cartridges - $15ea or 2/$30 or 4/$50",
-        "Lightsky Farms Live Resin Cartridges - $20ea or 6/$85",
-        "Redbud Roots Hash Rosin Cartridges - $20ea",
-        "Five Star Nug Run Sugar Sauce Cartridges - $25ea or 2/$45 or 4/$85",
-        "Superfire 1g Disposables - $15ea",
-        "Dutch Touch Genetics 1g Disposables - $20ea or 3/$45 (Excludes Mr. Clean)",
-        "Batch 2g Disposables - $30ea"
+      "groups": [
+        {
+          "title": "Cartridges (Distillate & Full Spectrum)",
+          "items": [
+            "Platinum Vapes - $10 or 5/$35 or 15/$85",
+            "Daily Dose 1g Cartridges - $10 or 5/$40",
+            "Superfire 1g Cartridges - $10 or 15/$85",
+            "True North Fusion 1g Full Spectrum - $15ea or 2/$30 or 4/$50"
+          ]
+        },
+        {
+          "title": "Live Resin & Hash Rosin Carts",
+          "items": [
+            "Platinum Vapes 1g Live Resin - $15",
+            "Lightsky Farms Live Resin - $20ea or 6/$85",
+            "Redbud Roots Hash Rosin - $20ea",
+            "Five Star Nug Run Sugar Sauce - $25ea or 2/$45 or 4/$85"
+          ]
+        },
+        {
+          "title": "All-in-One Disposables",
+          "items": [
+            "Superfire 1g Disposables - $15ea",
+            "Dutch Touch Genetics 1g Disposables - $20ea or 3/$45",
+            "Batch 2g Disposables - $30ea"
+          ]
+        }
       ]
     },
     {
       "category": "🍬 Edibles",
       "promo": false,
-      "items": [
-        "Dutch Touch Nerd Gummies - $10ea or 5/$30",
-        "Dutch Touch 200mg Distillate Gummies - $10ea or 5/$30",
-        "Dutch Touch 200mg Gummy Bars - $10ea or 3/$30",
-        "Platinum Vapes 200mg Gummies - $5ea",
-        "Choice 200mg Gummies - $5ea",
-        "Play 200mg Gummies - $5ea or 10/$35",
-        "Thunder Canna 200mg Gummies - $5ea",
-        "True North 200mg Gummies - $5ea (One Hitters Back in Stock!)",
-        "Play HASH ROSIN 200mg Gummies - $10ea or 5/$30",
-        "Hey Captain 200mg Freeze Dried Ice Cream & Candies - $15ea or 3/$35"
+      "groups": [
+        {
+          "title": "Standard & Distillate Gummies",
+          "items": [
+            "Dutch Touch Nerd Gummies - $10ea or 5/$30",
+            "Dutch Touch 200mg Distillate Gummies - $10ea or 5/$30",
+            "Platinum Vapes 200mg - $5ea",
+            "Choice 200mg - $5ea",
+            "Play 200mg - $5ea or 10/$35",
+            "Thunder Canna 200mg - $5ea"
+          ]
+        },
+        {
+          "title": "Live Rosin & Resin (Full Spectrum)",
+          "items": [
+            "Dutch Touch 200mg Gummy Bars - $10ea or 3/$30",
+            "Play HASH ROSIN 200mg - $10ea or 5/$30"
+          ]
+        },
+        {
+          "title": "Sleep, Specialty & Snacks",
+          "items": [
+            "True North 200mg Gummies - $5ea (One Hitters In Stock!)",
+            "Hey Captain 200mg Freeze Dried Candy - $15ea or 3/$35"
+          ]
+        }
       ]
     },
     {
@@ -233,26 +263,51 @@
     {
       "category": "🍯 Concentrates",
       "promo": false,
-      "items": [
-        "$10 Sour Gorilla 1g Live Resin - DTG",
-        "$50 Sour Gorilla 14g Live Resin - DTG (Limited Time Sale!)",
-        "Waxtracts 3.5g Sugar - $45ea or 2/$60",
-        "Dutch Touch Genetics Baller Jars - $45ea",
-        "Dutch Touch Genetics Big Baller Jars 14g - $140ea",
-        "Dutch Touch Genetics 14g ROSIN Jar - $195ea",
-        "Peak 1g Live Rosin - $20ea",
-        "Death By Funk 3.5g Rosin - $60ea",
-        "Strait Fire 3.5g Rosin - $75ea",
-        "Redbud Roots 3.5g Rosin - $90ea"
+      "groups": [
+        {
+          "title": "Live Resin & Sugar (1G - 3.5G)",
+          "items": [
+            "$10 Sour Gorilla 1g Live Resin - DTG",
+            "Waxtracts 3.5g Sugar - $45ea or 2/$60"
+          ]
+        },
+        {
+          "title": "Premium Hash Rosin",
+          "items": [
+            "Peak 1g Live Rosin - $20ea",
+            "Death By Funk 3.5g Rosin - $60ea",
+            "Strait Fire 3.5g Rosin - $75ea",
+            "Redbud Roots 3.5g Rosin - $90ea"
+          ]
+        },
+        {
+          "title": "Baller Jars (Bulk)",
+          "items": [
+            "$50 Sour Gorilla 14g Live Resin - DTG",
+            "Dutch Touch Genetics Baller Jars - $45ea",
+            "Dutch Touch Genetics Big Baller Jars 14g - $140ea",
+            "Dutch Touch Genetics 14g ROSIN Jar - $195ea"
+          ]
+        }
       ]
     },
     {
       "category": "🧪 Tinctures & RSO",
       "promo": false,
-      "items": [
-        "Dutch Touch Strain Specific RSO - $25ea",
-        "Dutch Touch Non Strain Specific RSO - $20ea",
-        "Ratio'd TreeTown Tinctures - $15ea (Back in Stock)"
+      "groups": [
+        {
+          "title": "RSO (Rick Simpson Oil)",
+          "items": [
+            "Dutch Touch Strain Specific RSO - $25ea",
+            "Dutch Touch Non-Strain Specific RSO - $20ea"
+          ]
+        },
+        {
+          "title": "Tinctures",
+          "items": [
+            "Ratio'd TreeTown Tinctures - $15ea"
+          ]
+        }
       ]
     },
     {
