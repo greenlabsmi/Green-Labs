@@ -3997,29 +3997,3 @@ body.is-scrolled .status-strip {
 #apparel-grid:hover::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.8); /* Crisp White on hover */
 }
-
-/* =========================================
-   ABOUT US: COMMUNITY BUTTON
-   ========================================= */
-.community-btn {
-  display: inline-block;
-  background: #0B7D5A; /* Green Labs Emerald */
-  color: #ffffff !important;
-  padding: 14px 28px;
-  border-radius: 50px;
-  font-family: 'Inter', sans-serif;
-  font-weight: 800;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  text-decoration: none;
-  margin-top: 20px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(11, 125, 90, 0.3);
-}
-
-.community-btn:hover {
-  background: #096649;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(11, 125, 90, 0.5);
-}
