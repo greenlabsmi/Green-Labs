@@ -3997,3 +3997,18 @@ body.is-scrolled .status-strip {
 #apparel-grid:hover::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.8); /* Crisp White on hover */
 }
+
+/* =========================================
+   ABOUT US: COMMUNITY BUTTON (GREEN VIBE)
+   ========================================= */
+.btn--green {
+  background-color: #0B7D5A !important; /* Green Labs Emerald */
+  border: 1px solid #0B7D5A !important;
+  color: #ffffff !important;
+}
+
+.btn--green:hover {
+  background-color: #096649 !important; /* Darker green on hover */
+  border-color: #096649 !important;
+  color: #ffffff !important;
+}
