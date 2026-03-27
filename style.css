@@ -3828,18 +3828,18 @@ body.is-scrolled .status-strip {
 
 /* --- FULL WIDTH SCROLL GRIDS --- */
 .strain-grid, #apparel-grid {
-  width: 100vw !important;
+  width: 100% !important; /* Inherits the full screen width from the wrapper */
   max-width: none !important;
   
-  /* The magic math to keep items aligned with your header */
-  padding: 20px max(18px, calc((100vw - 1180px) / 2 + 18px)) 60px !important;
+  /* Swapped the complex math for a clean, consistent gap from the screen edge */
+  padding: 20px 4vw 60px !important;
   
   display: flex !important;
   gap: 20px;
   overflow-x: auto !important;
   
-  /* Keeps the scrollbar cleanly aligned */
-  scroll-padding-left: max(18px, calc((100vw - 1180px) / 2 + 18px)) !important;
+  /* Keeps the scrollbar snap aligned with the edge gap */
+  scroll-padding-left: 4vw !important;
 }
 
 .strain-card {
