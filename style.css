@@ -3937,7 +3937,7 @@ body.is-scrolled .status-strip {
 .strain-grid, 
 #apparel-grid, 
 #todays-highlights .thRow, 
-#deli-track {
+#deliCarousel {
   overflow-x: auto !important;
   scrollbar-width: thin; /* Fallback for Firefox */
   padding-bottom: 24px !important; /* Breathing room for the scrollbar */
@@ -3947,7 +3947,7 @@ body.is-scrolled .status-strip {
 .strain-grid::-webkit-scrollbar, 
 #apparel-grid::-webkit-scrollbar, 
 #todays-highlights .thRow::-webkit-scrollbar,
-#deli-track::-webkit-scrollbar {
+#deliCarousel::-webkit-scrollbar {
   height: 8px; /* Thick enough to grab easily */
 }
 
@@ -3955,7 +3955,7 @@ body.is-scrolled .status-strip {
 .strain-grid::-webkit-scrollbar-track, 
 #apparel-grid::-webkit-scrollbar-track, 
 #todays-highlights .thRow::-webkit-scrollbar-track,
-#deli-track::-webkit-scrollbar-track {
+#deliCarousel::-webkit-scrollbar-track {
   background: rgba(0, 0, 0, 0.15);
   border-radius: 10px;
   margin: 0 4vw; /* Keeps the scrollbar aligned with your content padding */
@@ -3976,11 +3976,11 @@ body.is-scrolled .status-strip {
 }
 
 /* B. DUTCH DELI: Dutch Touch Gold */
-#deli-track::-webkit-scrollbar-thumb {
+#deliCarousel::-webkit-scrollbar-thumb {
   background: rgba(214, 163, 74, 0.4); /* Subtle gold until hovered */
   border-radius: 10px;
 }
-#deli-track:hover::-webkit-scrollbar-thumb {
+#deliCarousel:hover::-webkit-scrollbar-thumb {
   background: rgba(214, 163, 74, 1); /* BOOM! Solid Gold on hover */
 }
 
