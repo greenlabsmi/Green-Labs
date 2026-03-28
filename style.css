@@ -4197,30 +4197,25 @@ body.is-scrolled .status-strip {
 }
 
 /* =========================================
-   SEAMLESS TRANSITION: THE CURTAIN METHOD
+   SEAMLESS TRANSITION: THE <MAIN> RESET
    ========================================= */
 
-/* 1. Ensure the bottom border is fully turned off */
+/* 1. Kills any extra height, padding, or margin stretching the black <main> void */
+main {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+  min-height: 0 !important;
+  height: auto !important;
+}
+
+/* 2. Ensures the Green section goes all the way to the absolute bottom of <main> */
 #our-story {
-  border-bottom: none !important; 
-  position: relative; /* Allows our curtain to attach to it */
+  margin-bottom: 0 !important;
+  border-bottom: none !important;
 }
 
-/* 2. Hang a 15px emerald green block down over the gap */
-#our-story::after {
-  content: "";
-  position: absolute;
-  bottom: -10px; /* Hangs down past the bottom edge */
-  left: 0;
-  width: 100%;
-  height: 20px; /* Thick enough to swallow any margin gaps */
-  background: #0B7D5A; /* Exactly matches the bottom of your green gradient */
-  z-index: 5; /* Sits on top of the black and white lines */
-  pointer-events: none;
-}
-
-/* 3. Keep the beige section clean */
+/* 3. Pulls the Beige Visit section up tight against the end of <main> */
 main + .section--light {
-  border-top: none !important;
   margin-top: 0 !important;
+  border-top: none !important;
 }
