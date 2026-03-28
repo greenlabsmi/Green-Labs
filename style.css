@@ -4137,47 +4137,51 @@ body.is-scrolled .status-strip {
   display: block;
 }
 /* =========================================
-   ROAD TO 420: ELEGANT TILE TEXT
+   ROAD TO 420: ELEGANT TILE TEXT (FLUID UPGRADE)
    ========================================= */
 .tile-elegant-text {
   position: absolute;
-  top: 50px; 
-  left: 20px; /* Snug to the left side */
+  bottom: 20px;
+  left: 20px;
   right: 20px;
   z-index: 2;
-  text-align: left; 
+  text-align: left;
   pointer-events: none;
 }
 
-/* THIS IS THE PART THAT GOT DELETED! Brings back the cinematic look and size */
 .tile-elegant-title {
   font-family: 'Playfair Display', serif;
   font-weight: 400;
-  font-size: clamp(28px, 3.5vw, 36px); /* ⬇️ Scaled down from 32px/42px */
   color: #a4bba8;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   line-height: 1.1;
-  letter-spacing: 2px;
-  transition: all 0.4s ease;
+  letter-spacing: 1px;
+  
+  /* 🌟 FLUID FONT SIZE 🌟 */
+  /* MIN: 24px | SCALING: 3vw | MAX: 32px */
+  font-size: clamp(24px, 3vw, 32px);
 }
 
 .tile-elegant-sub {
   font-family: 'Inter', sans-serif;
   font-weight: 400;
-  font-size: 16px; 
   color: #ffffff;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
   line-height: 1.3;
-  max-width: 240px; /* ⬅️ Creates an invisible wall that forces the text to wrap! */
-  transition: all 0.4s ease;
+  
+  /* 🌟 FLUID FONT SIZE 🌟 */
+  /* MIN: 14px | SCALING: 1.5vw | MAX: 18px */
+  font-size: clamp(14px, 1.5vw, 18px);
 }
 
 .tile-elegant-note {
   font-family: 'Inter', sans-serif;
   font-weight: 400;
-  font-size: 14px; 
   color: rgba(255, 255, 255, 0.5);
-  transition: all 0.4s ease;
+  
+  /* 🌟 FLUID FONT SIZE 🌟 */
+  /* MIN: 12px | SCALING: 1vw | MAX: 14px */
+  font-size: clamp(12px, 1vw, 14px);
 }
 
 /* =========================================
