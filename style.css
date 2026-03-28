@@ -4200,20 +4200,20 @@ body.is-scrolled .status-strip {
    SEAMLESS TRANSITION: OUR STORY TO VISIT US
    ========================================= */
    
-/* 1. Removes the gap at the very bottom of the Main container (Our Story) */
-main section:last-child {
+/* 1. Targets the EXACT section. Kills the 1px white border and bottom margin */
+#our-story {
   margin-bottom: 0 !important;
-  border-bottom: none !important;
-  padding-bottom: 80px !important; 
+  border-bottom: none !important; 
 }
 
+/* 2. Kills any phantom gaps leaking out of the main wrapper */
 main {
-  margin-bottom: 0 !important; /* Kills the black gap leaking through */
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
 }
 
-/* 2. Pulls the Visit Us section (which sits right after Main) flush to the top */
-main + section.section--light {
+/* 3. Pulls the Visit section up flush to the green */
+main + .section--light {
   margin-top: 0 !important;
   border-top: none !important;
-  padding-top: 80px !important;
 }
