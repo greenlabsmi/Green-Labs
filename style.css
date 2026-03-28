@@ -4072,60 +4072,67 @@ body.is-scrolled .status-strip {
   margin-bottom: 24px;
 }
 /* =========================================
-   GREEN LABS GUIDE: TIGHTER & READABLE
+   GREEN LABS GUIDE: TIGHT & PUNCHY
    ========================================= */
 
-/* 1. The Label */
-.guideCard__eyebrow, .buyGuide__eyebrow {
+/* 1. Kill the excess empty space */
+#guide-section {
+  background-color: #f9f9f7;
+  padding: 60px 0; /* Cut almost in half from before */
+}
+
+#guide-section p {
+  font-size: 16px; /* Back to a normal, standard size */
+  line-height: 1.5; /* Tighter line spacing */
+  color: #333;
+  margin-bottom: 16px; /* Less dead space between paragraphs */
+}
+
+/* 2. Make the Questions POP */
+#guide-section h2 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 900; /* Maximum boldness */
+  font-size: 32px; 
+  color: #000000; /* Pure black for high contrast */
+  margin-bottom: 10px; /* Snugs it closer to the answer */
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+
+/* Topic Labels (e.g., TERPENE BASICS) */
+.guide-label {
   font-family: 'Inter', sans-serif;
   font-weight: 800;
-  font-size: 13px !important;
+  font-size: 12px;
   text-transform: uppercase;
-  letter-spacing: 1px; /* Dialed back the spacing */
-  color: #0B7D5A !important; 
-  margin-bottom: 8px; /* Pulled this closer to the title */
+  letter-spacing: 2px;
+  color: #0B7D5A; /* Emerald Green */
+  margin-bottom: 8px;
+  display: block;
 }
 
-/* 2. The Questions */
-.guideCard__title {
-  font-family: 'Playfair Display', serif; 
-  font-weight: 700;
-  font-size: 28px !important; /* Slightly smaller so it doesn't float */
+/* Big Intro Header */
+#guide-section h1 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: 36px;
   color: #1a1a1a;
-  line-height: 1.2;
-  margin-bottom: 10px; /* Tightened the gap below the question */
+  margin-bottom: 16px;
+}
+#guide-section .intro-text {
+  font-size: 18px;
+  color: #4a4a4a;
+  max-width: 700px;
+  margin-bottom: 30px;
 }
 
-/* 3. The Main Body Text */
-.guideCard__lead, .guideCard__expand p {
-  font-size: 17px !important; /* Still readable, but less bulky */
-  line-height: 1.5 !important; /* Reduced from 1.8 to bring lines together */
-  color: #333 !important;
-  margin-bottom: 16px; /* Reduced the empty space between paragraphs */
-}
-
-/* 4. The Terpene Chips */
-.guideChip {
-  font-size: 14px !important;
-  font-weight: 600;
-  padding: 8px 14px !important; /* Tighter button shapes */
-  border-radius: 6px !important;
-  margin: 4px;
-}
-
-.guideChip:hover {
-  transform: scale(1.03);
-}
-/* =========================================
-   KILL THE EMPTY CARD SPACE
-   ========================================= */
-.guideCard__copy {
-  min-height: auto !important; /* Stops forcing the massive height */
-  justify-content: flex-start !important; /* Stops yanking the text apart */
-  padding-bottom: 30px !important; 
-}
-
-/* Give the "Read the full answer" button some breathing room */
-.guideCard__toggle {
-  margin-top: 24px !important; 
+/* 3. FIX THE MASSIVE IMAGE / TILE */
+#guide-section img {
+  width: 100%;
+  height: auto;
+  max-height: 380px; /* The Magic Fix: Forces the image to stop growing */
+  object-fit: contain; /* Keeps it proportionate without stretching */
+  border-radius: 12px; /* Keeps the edges looking clean */
+  margin: 0 auto;
+  display: block;
 }
