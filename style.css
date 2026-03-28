@@ -4196,18 +4196,25 @@ body.is-scrolled .status-strip {
   text-shadow: 0 0 10px rgba(15, 191, 83, 0.4);
 }
 /* =========================================
-   GAP FIX: KILL THE PADDING
+   THE BULLETPROOF GAP FIX
    ========================================= */
 
-/* 1. Kills the 80px of empty dark space under the video */
+/* 1. Kills the empty green space under the video */
 #our-story {
   padding-bottom: 0 !important; 
   margin-bottom: 0 !important;
   border-bottom: none !important;
 }
 
-/* 2. Kills the 60px of empty beige space above "Visit Green Labs" */
-main + .section--light {
+/* 2. Kills the invisible margin leaking the black background */
+main#home {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* 3. Heat-seeking target to kill the exact beige padding above the Visit section */
+section:has(#visit) {
   padding-top: 0 !important; 
   margin-top: 0 !important;
+  border-top: none !important;
 }
