@@ -4150,15 +4150,14 @@ body.is-scrolled .status-strip {
   pointer-events: none;
 }
 
-.tile-elegant-title {
-  font-family: 'Playfair Display', serif;
-  font-weight: 400;
-  font-size: clamp(32px, 4vw, 42px); /* ⬆️ Increased the size! */
-  color: #a4bba8;
-  margin-bottom: 8px;
-  line-height: 1.1;
-  letter-spacing: 2px; /* Spread the letters out a bit more for that cinematic look */
-  transition: all 0.4s ease;
+.tile-elegant-text {
+  position: absolute;
+  top: 50px; /* Keeps your perfect height */
+  left: 20px; /* Pushes it slightly off the left wall */
+  right: 20px;
+  z-index: 2;
+  text-align: left; /* ⬅️ Snaps the text back to the left! */
+  pointer-events: none;
 }
 
 .tile-elegant-sub {
