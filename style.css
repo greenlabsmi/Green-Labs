@@ -4195,3 +4195,21 @@ body.is-scrolled .status-strip {
 .hero__media:hover .tile-elegant-sub {
   text-shadow: 0 0 10px rgba(15, 191, 83, 0.4);
 }
+
+/* =========================================
+   SEAMLESS TRANSITION: OUR STORY TO VISIT US
+   ========================================= */
+   
+/* 1. Pulls the bottom of Our Story flush to the edge */
+#our-story {
+  margin-bottom: 0 !important;
+  border-bottom: none !important;
+  padding-bottom: 80px !important; /* Keeps the video from touching the bottom edge */
+}
+
+/* 2. Pulls the top of the Visit Us section flush to Our Story */
+#our-story + section {
+  margin-top: 0 !important;
+  border-top: none !important;
+  padding-top: 80px !important; /* Gives 'Visit Green Labs' room to breathe */
+}
