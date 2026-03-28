@@ -4197,23 +4197,23 @@ body.is-scrolled .status-strip {
 }
 
 /* =========================================
-   SEAMLESS TRANSITION: OUR STORY TO VISIT US
+   SEAMLESS TRANSITION: THE SLEDGEHAMMER FIX
    ========================================= */
    
-/* 1. Targets the EXACT section. Kills the 1px white border and bottom margin */
 #our-story {
   margin-bottom: 0 !important;
   border-bottom: none !important; 
 }
 
-/* 2. Kills any phantom gaps leaking out of the main wrapper */
 main {
   margin-bottom: 0 !important;
   padding-bottom: 0 !important;
 }
 
-/* 3. Pulls the Visit section up flush to the green */
+/* Physically pulls the beige section up to overlap and swallow the gap! */
 main + .section--light {
-  margin-top: 0 !important;
+  margin-top: -4px !important; 
   border-top: none !important;
+  position: relative; 
+  z-index: 10; /* Ensures the beige section sits cleanly on top of the overlap */
 }
