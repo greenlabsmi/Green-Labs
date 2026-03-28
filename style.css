@@ -4137,62 +4137,34 @@ body.is-scrolled .status-strip {
   display: block;
 }
 /* =========================================
-   ROAD TO 420: NEON TILE
+   ROAD TO 420: NEON TEXT
    ========================================= */
 
-/* 1. Sets the background image and darkens it slightly for maximum glow */
-.road-tile {
-  background-image: url('assets/img/road-to-420-hero.jpg');
-  background-size: cover;
-  background-position: center;
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-  text-decoration: none;
-}
-
-.road-tile::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0, 5, 2, 0.5); /* Dark green/black tint to make the neon pop */
-  z-index: 1;
-}
-
-/* 2. The actual Neon Text and Glow */
 .neon-text {
-  position: relative;
-  z-index: 2; /* Keeps text above the dark overlay */
   font-family: 'Inter', sans-serif;
   font-weight: 900;
-  font-size: clamp(32px, 5vw, 54px); /* Scales to fit the tile perfectly */
-  color: #ffffff; /* White-hot center of the tube */
+  font-size: clamp(32px, 4vw, 48px); /* Fits perfectly inside the tile */
+  color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 3px;
-  
-  /* The Magic: Layered shadows create the neon emission */
   text-shadow:
     0 0 5px #fff,
     0 0 10px #fff,
-    0 0 20px #0fbf53, /* Bright Emerald Green */
+    0 0 20px #0fbf53, /* Emerald Green */
     0 0 40px #0fbf53,
-    0 0 80px #0fbf53,
-    0 0 120px #0fbf53;
+    0 0 80px #0fbf53;
 }
 
-/* 3. The Street Reflection */
 .neon-text::after {
   content: attr(data-text);
   position: absolute;
   top: 105%;
   left: 0;
   width: 100%;
-  transform: scaleY(-0.7); /* Flips it upside down and squishes it like a reflection */
+  transform: scaleY(-0.7); /* Flips it upside down */
   color: transparent;
-  text-shadow: 0 0 20px rgba(15, 191, 83, 0.9); /* Faded green blur */
-  opacity: 0.6;
-  filter: blur(5px);
+  text-shadow: 0 0 20px rgba(15, 191, 83, 0.8);
+  opacity: 0.5;
+  filter: blur(4px);
   pointer-events: none;
 }
