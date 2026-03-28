@@ -4213,3 +4213,20 @@ section:has(#visit) {
   position: relative;
   z-index: 10; /* Lays it cleanly over the gap */
 }
+
+/* =========================================
+   FIX: SHRINK "OUR STORY" & SNAP TOGETHER
+   ========================================= */
+
+/* 1. Kills the massive 100px bottom padding so the box hugs the video */
+#our-story {
+  padding-bottom: 40px !important; /* Just enough room so the video doesn't hit the floor */
+  margin-bottom: 0 !important;
+  border-bottom: none !important;
+}
+
+/* 2. Snaps the beige map section right up to the newly shrunken green section */
+main + .section--light {
+  margin-top: 0 !important;
+  border-top: none !important;
+}
