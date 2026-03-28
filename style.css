@@ -4197,23 +4197,30 @@ body.is-scrolled .status-strip {
 }
 
 /* =========================================
-   SEAMLESS TRANSITION: THE SLEDGEHAMMER FIX
+   SEAMLESS TRANSITION: THE CURTAIN METHOD
    ========================================= */
-   
+
+/* 1. Ensure the bottom border is fully turned off */
 #our-story {
-  margin-bottom: 0 !important;
   border-bottom: none !important; 
+  position: relative; /* Allows our curtain to attach to it */
 }
 
-main {
-  margin-bottom: 0 !important;
-  padding-bottom: 0 !important;
+/* 2. Hang a 15px emerald green block down over the gap */
+#our-story::after {
+  content: "";
+  position: absolute;
+  bottom: -10px; /* Hangs down past the bottom edge */
+  left: 0;
+  width: 100%;
+  height: 20px; /* Thick enough to swallow any margin gaps */
+  background: #0B7D5A; /* Exactly matches the bottom of your green gradient */
+  z-index: 5; /* Sits on top of the black and white lines */
+  pointer-events: none;
 }
 
-/* Physically pulls the beige section up to overlap and swallow the gap! */
+/* 3. Keep the beige section clean */
 main + .section--light {
-  margin-top: -4px !important; 
   border-top: none !important;
-  position: relative; 
-  z-index: 10; /* Ensures the beige section sits cleanly on top of the overlap */
+  margin-top: 0 !important;
 }
