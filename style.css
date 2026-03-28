@@ -4196,28 +4196,18 @@ body.is-scrolled .status-strip {
   text-shadow: 0 0 10px rgba(15, 191, 83, 0.4);
 }
 /* =========================================
-   THE ULTIMATE GAP WIPE
+   GAP FIX: KILL THE PADDING
    ========================================= */
 
-/* 1. Force the Green Section to hug the video and kill ALL outside spacing */
-section#our-story {
-  padding-bottom: 40px !important;
+/* 1. Kills the 80px of empty dark space under the video */
+#our-story {
+  padding-bottom: 0 !important; 
   margin-bottom: 0 !important;
   border-bottom: none !important;
-  min-height: 0 !important;
 }
 
-/* 2. Kill the ghost margin on the Main wrapper */
-main {
-  margin-bottom: 0 !important;
-  padding-bottom: 0 !important;
-}
-
-/* 3. Pull the Beige Map section up, overlap it, and fix its inner spacing */
-main + section.section--light {
-  margin-top: -2px !important; /* Sucks it up over any phantom 1px borders */
-  border-top: none !important;
-  padding-top: 60px !important; /* Keeps "Visit Green Labs" from hitting the ceiling */
-  position: relative;
-  z-index: 20; /* Forces it to lay cleanly on top of the green section's edge */
+/* 2. Kills the 60px of empty beige space above "Visit Green Labs" */
+main + .section--light {
+  padding-top: 0 !important; 
+  margin-top: 0 !important;
 }
