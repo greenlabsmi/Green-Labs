@@ -4137,34 +4137,40 @@ body.is-scrolled .status-strip {
   display: block;
 }
 /* =========================================
-   ROAD TO 420: NEON TEXT
+   ROAD TO 420: ELEGANT TILE TEXT
    ========================================= */
-
-.neon-text {
-  font-family: 'Inter', sans-serif;
-  font-weight: 900;
-  font-size: clamp(32px, 4vw, 48px); /* Fits perfectly inside the tile */
-  color: #ffffff;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  text-shadow:
-    0 0 5px #fff,
-    0 0 10px #fff,
-    0 0 20px #0fbf53, /* Emerald Green */
-    0 0 40px #0fbf53,
-    0 0 80px #0fbf53;
+.tile-elegant-text {
+  position: absolute;
+  bottom: 20px; /* Aligns the text to the bottom-left of the square tile */
+  left: 20px;
+  right: 20px;
+  z-index: 2;
+  text-align: left;
+  pointer-events: none; /* Ensures the whole tile is still clickable */
 }
 
-.neon-text::after {
-  content: attr(data-text);
-  position: absolute;
-  top: 105%;
-  left: 0;
-  width: 100%;
-  transform: scaleY(-0.7); /* Flips it upside down */
-  color: transparent;
-  text-shadow: 0 0 20px rgba(15, 191, 83, 0.8);
-  opacity: 0.5;
-  filter: blur(4px);
-  pointer-events: none;
+.tile-elegant-title {
+  font-family: 'Playfair Display', serif; /* The cinematic font from your image */
+  font-weight: 400;
+  font-size: clamp(24px, 3vw, 32px); /* Scaled down slightly to fit the tile */
+  color: #a4bba8; /* The pale silver-green color */
+  margin-bottom: 6px;
+  line-height: 1.1;
+  letter-spacing: 1px;
+}
+
+.tile-elegant-sub {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #ffffff;
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.tile-elegant-note {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5); /* The dimmed grey color */
 }
