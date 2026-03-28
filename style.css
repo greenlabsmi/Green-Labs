@@ -4195,27 +4195,21 @@ body.is-scrolled .status-strip {
 .hero__media:hover .tile-elegant-sub {
   text-shadow: 0 0 10px rgba(15, 191, 83, 0.4);
 }
-
 /* =========================================
-   SEAMLESS TRANSITION: THE <MAIN> RESET
+   SEAMLESS TRANSITION: THE PRECISION OVERLAP
    ========================================= */
 
-/* 1. Kills any extra height, padding, or margin stretching the black <main> void */
-main {
-  margin-bottom: 0 !important;
-  padding-bottom: 0 !important;
-  min-height: 0 !important;
-  height: auto !important;
-}
-
-/* 2. Ensures the Green section goes all the way to the absolute bottom of <main> */
+/* 1. Strip the bottom borders and margins from the green section */
 #our-story {
   margin-bottom: 0 !important;
   border-bottom: none !important;
+  padding-bottom: 60px !important; /* Keeps the video from touching the bottom edge */
 }
 
-/* 3. Pulls the Beige Visit section up tight against the end of <main> */
-main + .section--light {
-  margin-top: 0 !important;
+/* 2. Find the Visit section directly and pull it up over the gap */
+section:has(#visit) {
+  margin-top: -4px !important; /* Pulls it up to swallow the 1px lines */
   border-top: none !important;
+  position: relative;
+  z-index: 10; /* Lays it cleanly over the gap */
 }
