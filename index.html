@@ -184,11 +184,18 @@
           </div>
         </div>
 
-        <a href="#todays-highlights" class="hero__media hero__media--link" data-scroll="#todays-highlights" aria-label="Road to 420 Deals" style="display: flex; align-items: center; justify-content: center;">
+        <a href="#todays-highlights" class="hero__media hero__media--link" data-scroll="#todays-highlights" aria-label="Road to 420 Deals" style="position: relative;">
   
-  <div class="hero__img" style="background-image: url('assets/img/road-to-420-hero.jpg'); background-position: center; width: 100%;"></div>
-  <div style="position: absolute; inset: 0; background: rgba(0, 5, 2, 0.5); z-index: 1;"></div>
-  <div class="neon-text" data-text="ROAD TO 420" style="position: absolute; z-index: 2;">ROAD TO 420</div>
+  <div class="hero__img" style="background-image: url('assets/img/road-to-420-hero.jpg'); background-position: center;" role="img"></div>
+  
+  <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 60%); z-index: 1; pointer-events: none;"></div>
+  
+  <div class="tile-elegant-text">
+    <h3 class="tile-elegant-title">ROAD TO 420</h3>
+    <p class="tile-elegant-sub">The biggest deals of the year are on the way.</p>
+    <p class="tile-elegant-note">Stay tuned.</p>
+  </div>
+
 </a>
       </div>
         
