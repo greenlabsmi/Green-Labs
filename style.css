@@ -4153,7 +4153,7 @@ body.is-scrolled .status-strip {
 .tile-elegant-title {
   font-family: 'Playfair Display', serif;
   font-weight: 400;
-  font-size: clamp(26px, 3.5vw, 34px); /* ⬇️ Scaled down from 32px/42px */
+  font-size: clamp(28px, 3.5vw, 36px); /* ⬇️ Scaled down from 32px/42px */
   color: #a4bba8;
   margin-bottom: 8px;
   line-height: 1.1;
