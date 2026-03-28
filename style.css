@@ -4200,16 +4200,20 @@ body.is-scrolled .status-strip {
    SEAMLESS TRANSITION: OUR STORY TO VISIT US
    ========================================= */
    
-/* 1. Pulls the bottom of Our Story flush to the edge */
-#our-story {
+/* 1. Removes the gap at the very bottom of the Main container (Our Story) */
+main section:last-child {
   margin-bottom: 0 !important;
   border-bottom: none !important;
-  padding-bottom: 80px !important; /* Keeps the video from touching the bottom edge */
+  padding-bottom: 80px !important; 
 }
 
-/* 2. Pulls the top of the Visit Us section flush to Our Story */
-#our-story + section {
+main {
+  margin-bottom: 0 !important; /* Kills the black gap leaking through */
+}
+
+/* 2. Pulls the Visit Us section (which sits right after Main) flush to the top */
+main + section.section--light {
   margin-top: 0 !important;
   border-top: none !important;
-  padding-top: 80px !important; /* Gives 'Visit Green Labs' room to breathe */
+  padding-top: 80px !important;
 }
