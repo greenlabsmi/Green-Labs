@@ -3779,9 +3779,13 @@ body.is-scrolled .status-strip {
 
 /* 4. Our Story Gradient & Text Styles */
 #our-story {
-  /* Starts pure black at the top, fades smoothly to Emerald at the bottom */
   background: linear-gradient(to bottom, #0b0d0c 0%, #0B7D5A 100%) !important;
-  padding: 100px 0;
+  padding: 80px 0 20px !important; /* KILLS THE BLACK GAP: 80px top, 0 sides, 20px bottom */
+}
+
+/* 4.5 Fix the Beige Gap Below It */
+main + .section--light {
+  padding-top: 20px !important; /* KILLS THE BEIGE GAP: Pulls the Visit section up */
 }
 
 .story-content p {
