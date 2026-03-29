@@ -3413,11 +3413,10 @@ body.is-scrolled .status-strip {
 }
 
 /* Update Point 4: Fancy Header Styles (Add these near other strain styles) */
-.fancy-header { text-align: center; margin-bottom: 2.5rem; padding: 0 20px; }
 .fancy-title {
-  font-family: 'Playfair Display', serif;
-  font-weight: 900;
-  letter-spacing: 0px; /* Serifs like this don't need much spacing */
+  font-family: 'Playfair Display', serif !important;
+  font-weight: 900 !important;
+  letter-spacing: 0px; 
 }
 
 /* Award Card Styles */
