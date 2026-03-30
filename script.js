@@ -1107,20 +1107,35 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.error('Failed to load strains:', error);
     }
 
-    function renderFeaturedGenetics(data) {
-        const mount = document.getElementById('current-strains');
-        if (!mount) return;
+   function renderFeaturedGenetics(data) {
+    const mount = document.getElementById('current-strains');
+    if (!mount) return;
 
-        // 1. CLEAR the mount point first to ensure old cards are gone
-        mount.innerHTML = '';
+    // 1. CLEAR the mount point first to ensure old cards are gone
+    mount.innerHTML = '';
 
-        // 2. Filter for ONLY Award Winners
-        const featured = data.filter(s => s.award === true);
+    // 2. Filter for ONLY Award Winners
+    let featured = data.filter(s => s.award === true);
 
-        // 3. Render the champions
-        mount.innerHTML = featured.map(s => {
-            const img = 'https://greenlabsmi.github.io/Dutch_Touch_Brand/' + (s.image || 'assets/img/logo/dtg-logo-orange.png');
-            
+    // 2.5 FORCE CUSTOM ORDER (VIP List)
+    const customOrder = ["Mr. Clean", "Lemon Wookie"]; 
+    featured.sort((a, b) => {
+        const indexA = customOrder.indexOf(a.name);
+        const indexB = customOrder.indexOf(b.name);
+        
+        // If both are on the VIP list, sort them by their specific rank
+        if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+        // If only A is on the list, push it to the front
+        if (indexA !== -1) return -1;
+        // If only B is on the list, push it to the front
+        if (indexB !== -1) return 1;
+        // If neither are on the list, just sort them alphabetically
+        return a.name.localeCompare(b.name);
+    });
+
+    // 3. Render the champions
+    mount.innerHTML = featured.map(s => {
+       
             return `
             <article class="strain-card award-card" id="strain-${s.slug}">
                 <div class="award-badge-corner">AWARD WINNER</div>
