@@ -1233,3 +1233,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+// ===== SMART MAP LINK (Auto-upgrades ALL map links on the site) =====
+// Finds the smart-map class OR any link with a Google Maps URL
+document.querySelectorAll('.smart-map, a[href*="maps.google"], a[href*="goo.gl/maps"], a[href*="maps.app.goo.gl"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault(); // Stops the default link from firing
+        
+        // The exact address destination
+        const destination = "Green Labs Provisions, 10701 Madison St, Luna Pier, MI 48157"; 
+        
+        // Detect if the user is on an Apple device (iPhone, iPad, Mac)
+        const isApple = /iPad|iPhone|iPod|Mac/.test(navigator.userAgent) && !window.MSStream;
+        
+        if (isApple) {
+            // Forces Apple Maps to open on iOS devices
+            window.open(`https://maps.apple.com/?daddr=${encodeURIComponent(destination)}`, '_blank');
+        } else {
+            // Forces Google Maps app to open on Android, or web on PC
+            window.open(`https://maps.google.com/?daddr=${encodeURIComponent(destination)}`, '_blank');
+        }
+    });
+});
