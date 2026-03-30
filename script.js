@@ -311,40 +311,10 @@ document.addEventListener('DOMContentLoaded', () => {
     try { localStorage.setItem('gl_selected_category', cat); } catch {}
   }
 
-// ===== Shop reveal & Leafly Injection =====
+// ===== Shop reveal & Leafly Toggle =====
 const shopSection = document.getElementById('shop');
-const leaflyWrapper = document.getElementById('leafly-embed-wrapper');
-let currentLeaflyType = null; 
-
-function injectLeaflyEmbed(shopType) {
-  if (!leaflyWrapper) return;
-  if (currentLeaflyType === shopType) return;
-  
-  // Wipe the old menu container clean
-  leaflyWrapper.innerHTML = '';
-  
-  const s = document.createElement('script');
-  
-  // LEAFLY FIX: This ID must remain exactly this!
-  s.id = 'leafly-embed-script'; 
-  
-  // Add the cache buster to the URL instead so the browser gets a fresh menu on switch
-  s.src = 'https://web-embedded-menu.leafly.com/loader.js?v=' + Date.now();
-  s.dataset.origin = 'https://web-embedded-menu.leafly.com';
-  s.dataset.slug = 'green-labs-provisions'; 
-  
-  // Force Leafly to recognize the Medical vs Rec switch using their specific tag
-  const fullType = shopType === 'med' ? 'medical' : 'recreational';
-  s.dataset.environment = fullType;
-  
-  // Green Labs Brand Colors
-  s.dataset.primary = '#0B7D5A';   
-  s.dataset.secondary = '#D6A34A'; 
-  s.dataset.deals = '#2ef8bb';     
-  
-  leaflyWrapper.appendChild(s);
-  currentLeaflyType = shopType;
-}
+const recWrapper = document.getElementById('leafly-rec');
+const medWrapper = document.getElementById('leafly-med');
 
 function openShop(scrollAlso, shopType = 'rec') {
     if (typeof menuWrap !== 'undefined' && menuWrap) menuWrap.hidden = false;
@@ -354,13 +324,19 @@ function openShop(scrollAlso, shopType = 'rec') {
     const giantBtn = document.querySelector('.drShopBtn');
     if (giantBtn) giantBtn.style.display = 'none';
 
-    try { localStorage.setItem('gl_shopping_mode', shopType); } catch {}
+    // Instantly toggle the correct menu box!
+    if (shopType === 'med') {
+        if (recWrapper) recWrapper.hidden = true;
+        if (medWrapper) medWrapper.hidden = false;
+    } else {
+        if (medWrapper) medWrapper.hidden = true;
+        if (recWrapper) recWrapper.hidden = false;
+    }
 
-    injectLeaflyEmbed(shopType);
+    try { localStorage.setItem('gl_shopping_mode', shopType); } catch {}
 
     if (scrollAlso && shopSection) {
         setTimeout(() => {
-            // Using pure JavaScript to guarantee the scroll fires perfectly
             shopSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }, 50);
     }
