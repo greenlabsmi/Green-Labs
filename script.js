@@ -339,21 +339,27 @@ function openShop(scrollAlso, shopType = 'rec') {
     if (typeof menuWrap !== 'undefined' && menuWrap) menuWrap.hidden = false;
     if (shopSection) shopSection.hidden = false;
     
-    // Silently saves their choice (rec or med) to browser memory for Leafly to use later!
+    // NEW: Hide the giant "SHOP ONLINE" button once the shop is open
+    const giantBtn = document.querySelector('.drShopBtn');
+    if (giantBtn) giantBtn.style.display = 'none';
+
     try {
         localStorage.setItem('gl_shopping_mode', shopType);
     } catch {}
 
-    // Inject the Leafly menu the second they click a shop button
     injectLeaflyEmbed();
 
-    if (scrollAlso && shopSection) smoothTo(shopSection);
+    // NEW: Added a tiny delay to give the browser time to render the hidden section before scrolling!
+    if (scrollAlso && shopSection) {
+        setTimeout(() => {
+            smoothTo(shopSection);
+        }, 50);
+    }
 }
 
 $$('[data-open-shop]').forEach(el => 
     el.addEventListener('click', (e) => {
         e.preventDefault();
-        // Grabs 'rec' or 'med' from the specific button they clicked
         const type = el.getAttribute('data-open-shop') || 'rec';
         openShop(true, type);
     })
