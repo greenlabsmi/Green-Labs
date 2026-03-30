@@ -311,9 +311,8 @@ document.addEventListener('DOMContentLoaded', () => {
     try { localStorage.setItem('gl_selected_category', cat); } catch {}
   }
 
-// ===== Shop reveal & Leafly Direct Iframe =====
+// ===== Shop reveal & Leafly Injection =====
 const shopSection = document.getElementById('shop');
-// We go back to targeting the single wrapper already in your HTML!
 const leaflyWrapper = document.getElementById('leafly-embed-wrapper');
 let currentLeaflyType = null; 
 
@@ -321,13 +320,26 @@ function injectLeaflyEmbed(shopType) {
     if (!leaflyWrapper) return;
     if (currentLeaflyType === shopType) return;
     
-    // Bypassing Leafly's buggy script and injecting the raw iframe directly!
-    const environment = shopType === 'med' ? 'medical' : 'recreational';
-    const iframeUrl = `https://web-embedded-menu.leafly.com/?slug=green-labs-provisions&environment=${environment}&primary=%230B7D5A&secondary=%23D6A34A&deals=%232ef8bb`;
+    // LEAFLY FIX: If they switch from Rec to Med (or vice versa), 
+    // Leafly's script freezes if we try to rewrite it. 
+    // We force a quick, silent page refresh to give Leafly a clean slate!
+    if (currentLeaflyType !== null) {
+        window.location.hash = 'shop-' + shopType;
+        window.location.reload();
+        return;
+    }
+
+    const s = document.createElement('script');
+    s.id = 'leafly-embed-script'; 
+    s.src = 'https://web-embedded-menu.leafly.com/loader.js';
+    s.dataset.origin = 'https://web-embedded-menu.leafly.com';
+    s.dataset.slug = 'green-labs-provisions'; 
+    s.dataset.environment = shopType === 'med' ? 'medical' : 'recreational';
+    s.dataset.primary = '#0B7D5A';   
+    s.dataset.secondary = '#D6A34A'; 
+    s.dataset.deals = '#2ef8bb';     
     
-    // Instantly drops the exact menu into the box
-    leaflyWrapper.innerHTML = `<iframe src="${iframeUrl}" width="100%" height="1200" style="border:0; border-radius:12px; box-shadow: 0 16px 40px rgba(0,0,0,0.08); background: #fff;"></iframe>`;
-    
+    leaflyWrapper.appendChild(s);
     currentLeaflyType = shopType;
 }
 
@@ -338,9 +350,6 @@ function openShop(scrollAlso, shopType = 'rec') {
     const giantBtn = document.querySelector('.drShopBtn');
     if (giantBtn) giantBtn.style.display = 'none';
 
-    try { localStorage.setItem('gl_shopping_mode', shopType); } catch {}
-
-    // Instantly loads the correct iframe
     injectLeaflyEmbed(shopType);
 
     if (scrollAlso && shopSection) {
@@ -349,6 +358,17 @@ function openShop(scrollAlso, shopType = 'rec') {
         }, 50);
     }
 }
+
+// Auto-open menu if the page just refreshed to swap Rec/Med
+window.addEventListener('DOMContentLoaded', () => {
+    if (window.location.hash === '#shop-med') {
+        openShop(true, 'med');
+        history.replaceState(null, null, ' '); // Cleans the URL so it looks perfect
+    } else if (window.location.hash === '#shop-rec') {
+        openShop(true, 'rec');
+        history.replaceState(null, null, ' '); 
+    }
+});
 
 document.querySelectorAll('[data-open-shop]').forEach(el => 
     el.addEventListener('click', (e) => {
