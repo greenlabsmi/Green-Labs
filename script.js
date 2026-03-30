@@ -311,16 +311,43 @@ document.addEventListener('DOMContentLoaded', () => {
     try { localStorage.setItem('gl_selected_category', cat); } catch {}
   }
 
- function openShop(scrollAlso, shopType = 'rec') {
-    if (menuWrap) menuWrap.hidden = false;
+// ===== Shop reveal & Leafly Injection =====
+const shopSection = $('#shop');
+const leaflyWrapper = $('#leafly-embed-wrapper');
+let leaflyLoaded = false;
+
+function injectLeaflyEmbed() {
+  if (leaflyLoaded || !leaflyWrapper) return;
+  const s = document.createElement('script');
+  s.id = 'leafly-embed-script';
+  s.src = 'https://web-embedded-menu.leafly.com/loader.js';
+  s.dataset.origin = 'https://web-embedded-menu.leafly.com';
+  
+  // ⚠️ IMPORTANT: Verify this is your exact Leafly URL slug!
+  s.dataset.slug = 'green-labs-provisions'; 
+  
+  // Green Labs Brand Colors
+  s.dataset.primary = '#0B7D5A';   // GL Emerald
+  s.dataset.secondary = '#D6A34A'; // DTG Gold
+  s.dataset.deals = '#2ef8bb';     // GL Mint
+  
+  leaflyWrapper.appendChild(s);
+  leaflyLoaded = true;
+}
+
+function openShop(scrollAlso, shopType = 'rec') {
+    if (typeof menuWrap !== 'undefined' && menuWrap) menuWrap.hidden = false;
+    if (shopSection) shopSection.hidden = false;
     
     // Silently saves their choice (rec or med) to browser memory for Leafly to use later!
     try {
         localStorage.setItem('gl_shopping_mode', shopType);
     } catch {}
 
-    const shop = $('#shop');
-    if (scrollAlso && shop) smoothTo(shop);
+    // Inject the Leafly menu the second they click a shop button
+    injectLeaflyEmbed();
+
+    if (scrollAlso && shopSection) smoothTo(shopSection);
 }
 
 $$('[data-open-shop]').forEach(el => 
