@@ -314,10 +314,17 @@ document.addEventListener('DOMContentLoaded', () => {
 // ===== Shop reveal & Leafly Injection =====
 const shopSection = $('#shop');
 const leaflyWrapper = $('#leafly-embed-wrapper');
-let leaflyLoaded = false;
+let currentLeaflyType = null; // Tracks if rec or med is currently loaded
 
-function injectLeaflyEmbed() {
-  if (leaflyLoaded || !leaflyWrapper) return;
+function injectLeaflyEmbed(shopType) {
+  if (!leaflyWrapper) return;
+  
+  // If the exact same menu is already loaded, don't do anything!
+  if (currentLeaflyType === shopType) return;
+  
+  // If they are switching menus (Rec to Med), wipe the old menu first
+  leaflyWrapper.innerHTML = '';
+  
   const s = document.createElement('script');
   s.id = 'leafly-embed-script';
   s.src = 'https://web-embedded-menu.leafly.com/loader.js';
@@ -326,20 +333,25 @@ function injectLeaflyEmbed() {
   // ⚠️ IMPORTANT: Verify this is your exact Leafly URL slug!
   s.dataset.slug = 'green-labs-provisions'; 
   
+  // Tell Leafly to load the specific menu type for Dual Menus
+  const fullType = shopType === 'med' ? 'medical' : 'recreational';
+  s.dataset.menuType = fullType;
+  s.dataset.type = fullType; 
+  
   // Green Labs Brand Colors
   s.dataset.primary = '#0B7D5A';   // GL Emerald
   s.dataset.secondary = '#D6A34A'; // DTG Gold
   s.dataset.deals = '#2ef8bb';     // GL Mint
   
   leaflyWrapper.appendChild(s);
-  leaflyLoaded = true;
+  currentLeaflyType = shopType;
 }
 
 function openShop(scrollAlso, shopType = 'rec') {
     if (typeof menuWrap !== 'undefined' && menuWrap) menuWrap.hidden = false;
     if (shopSection) shopSection.hidden = false;
     
-    // NEW: Hide the giant "SHOP ONLINE" button once the shop is open
+    // Hide the giant "SHOP ONLINE" button once the shop is open
     const giantBtn = document.querySelector('.drShopBtn');
     if (giantBtn) giantBtn.style.display = 'none';
 
@@ -347,9 +359,9 @@ function openShop(scrollAlso, shopType = 'rec') {
         localStorage.setItem('gl_shopping_mode', shopType);
     } catch {}
 
-    injectLeaflyEmbed();
+    // Pass the clicked type (rec or med) directly into the injector!
+    injectLeaflyEmbed(shopType);
 
-    // NEW: Added a tiny delay to give the browser time to render the hidden section before scrolling!
     if (scrollAlso && shopSection) {
         setTimeout(() => {
             smoothTo(shopSection);
@@ -360,11 +372,11 @@ function openShop(scrollAlso, shopType = 'rec') {
 $$('[data-open-shop]').forEach(el => 
     el.addEventListener('click', (e) => {
         e.preventDefault();
+        // If the button has 'med' attached to it, it grabs it. Otherwise, defaults to 'rec'
         const type = el.getAttribute('data-open-shop') || 'rec';
         openShop(true, type);
     })
 );
-
   (function restoreCategory() {
     try {
       const cat = localStorage.getItem('gl_selected_category');
