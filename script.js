@@ -1234,9 +1234,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// ===== SMART MAP LINK (Auto-upgrades ALL map links on the site) =====
-// Finds the smart-map class OR any link with a Google Maps URL
-document.querySelectorAll('.smart-map, a[href*="maps.google"], a[href*="goo.gl/maps"], a[href*="maps.app.goo.gl"]').forEach(link => {
+// ===== SMART MAP LINK (Aggressive Catch-All for ALL map links) =====
+// This searches for the smart-map class, plus EVERY known variation of a Google Maps link
+const mapSelectors = '.smart-map, a[href*="google.com/maps"], a[href*="maps.google"], a[href*="maps.app.goo.gl"], a[href*="goo.gl/maps"]';
+
+document.querySelectorAll(mapSelectors).forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault(); // Stops the default link from firing
         
@@ -1251,7 +1253,7 @@ document.querySelectorAll('.smart-map, a[href*="maps.google"], a[href*="goo.gl/m
             window.open(`https://maps.apple.com/?daddr=${encodeURIComponent(destination)}`, '_blank');
         } else {
             // Forces Google Maps app to open on Android, or web on PC
-            window.open(`https://maps.google.com/?daddr=${encodeURIComponent(destination)}`, '_blank');
+            window.open(`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(destination)}`, '_blank');
         }
     });
 });
