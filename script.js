@@ -311,29 +311,37 @@ document.addEventListener('DOMContentLoaded', () => {
     try { localStorage.setItem('gl_selected_category', cat); } catch {}
   }
 
-// ===== Shop reveal & Leafly Toggle =====
+// ===== Shop reveal & Leafly Direct Iframe =====
 const shopSection = document.getElementById('shop');
-const recWrapper = document.getElementById('leafly-rec');
-const medWrapper = document.getElementById('leafly-med');
+// We go back to targeting the single wrapper already in your HTML!
+const leaflyWrapper = document.getElementById('leafly-embed-wrapper');
+let currentLeaflyType = null; 
+
+function injectLeaflyEmbed(shopType) {
+    if (!leaflyWrapper) return;
+    if (currentLeaflyType === shopType) return;
+    
+    // Bypassing Leafly's buggy script and injecting the raw iframe directly!
+    const environment = shopType === 'med' ? 'medical' : 'recreational';
+    const iframeUrl = `https://web-embedded-menu.leafly.com/?slug=green-labs-provisions&environment=${environment}&primary=%230B7D5A&secondary=%23D6A34A&deals=%232ef8bb`;
+    
+    // Instantly drops the exact menu into the box
+    leaflyWrapper.innerHTML = `<iframe src="${iframeUrl}" width="100%" height="1200" style="border:0; border-radius:12px; box-shadow: 0 16px 40px rgba(0,0,0,0.08); background: #fff;"></iframe>`;
+    
+    currentLeaflyType = shopType;
+}
 
 function openShop(scrollAlso, shopType = 'rec') {
     if (typeof menuWrap !== 'undefined' && menuWrap) menuWrap.hidden = false;
     if (shopSection) shopSection.hidden = false;
     
-    // Hide the giant "SHOP ONLINE" button once the shop is open
     const giantBtn = document.querySelector('.drShopBtn');
     if (giantBtn) giantBtn.style.display = 'none';
 
-    // Instantly toggle the correct menu box!
-    if (shopType === 'med') {
-        if (recWrapper) recWrapper.hidden = true;
-        if (medWrapper) medWrapper.hidden = false;
-    } else {
-        if (medWrapper) medWrapper.hidden = true;
-        if (recWrapper) recWrapper.hidden = false;
-    }
-
     try { localStorage.setItem('gl_shopping_mode', shopType); } catch {}
+
+    // Instantly loads the correct iframe
+    injectLeaflyEmbed(shopType);
 
     if (scrollAlso && shopSection) {
         setTimeout(() => {
@@ -342,7 +350,6 @@ function openShop(scrollAlso, shopType = 'rec') {
     }
 }
 
-// Attach the listener to your buttons
 document.querySelectorAll('[data-open-shop]').forEach(el => 
     el.addEventListener('click', (e) => {
         e.preventDefault();
@@ -1087,7 +1094,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const mount = document.getElementById('current-strains');
     if (!mount) return;
 
-    // 1. CLEAR the mount point first to ensure old cards are gone
+    // 1. CLEAR the mount point first
     mount.innerHTML = '';
 
     // 2. Filter for ONLY Award Winners
@@ -1099,35 +1106,33 @@ document.addEventListener('DOMContentLoaded', async () => {
         const indexA = customOrder.indexOf(a.name);
         const indexB = customOrder.indexOf(b.name);
         
-        // If both are on the VIP list, sort them by their specific rank
         if (indexA !== -1 && indexB !== -1) return indexA - indexB;
-        // If only A is on the list, push it to the front
         if (indexA !== -1) return -1;
-        // If only B is on the list, push it to the front
         if (indexB !== -1) return 1;
-        // If neither are on the list, just sort them alphabetically
         return a.name.localeCompare(b.name);
     });
 
     // 3. Render the champions
     mount.innerHTML = featured.map(s => {
-       
-            return `
-            <article class="strain-card award-card" id="strain-${s.slug}">
-                <div class="award-badge-corner">AWARD WINNER</div>
-                <div class="strain-card-inner">
-                    <div class="strain-image" style="background-image: url('${img}');"></div>
-                    <div class="strain-top">
-                        <h3 class="strain-name">${s.name}</h3>
-                        <span class="strain-badge">${s.type.toUpperCase()}</span>
-                    </div>
-                    <p class="strain-meta">${s.lineage}</p>
-                    <p class="strain-notes">Genetics by ${s.breeder}. ${s.description}</p>
+        // THE FIX: Define the image variable so it doesn't crash!
+        let img = s.image ? 'https://greenlabsmi.github.io/Dutch_Touch_Brand/' + s.image : 'https://greenlabsmi.github.io/Dutch_Touch_Brand/assets/img/logo/dtg-logo-orange.png';
+        
+        return `
+        <article class="strain-card award-card" id="strain-${s.slug}">
+            <div class="award-badge-corner">AWARD WINNER</div>
+            <div class="strain-card-inner">
+                <div class="strain-image" style="background-image: url('${img}');"></div>
+                <div class="strain-top">
+                    <h3 class="strain-name">${s.name}</h3>
+                    <span class="strain-badge">${s.type.toUpperCase()}</span>
                 </div>
-            </article>
-            `;
-        }).join('');
-    }
+                <p class="strain-meta">${s.lineage}</p>
+                <p class="strain-notes">Genetics by ${s.breeder}. ${s.description}</p>
+            </div>
+        </article>
+        `;
+    }).join('');
+}
 
     // The FULL Modal HTML setup
     const modalHTML = `
