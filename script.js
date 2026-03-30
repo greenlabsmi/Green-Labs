@@ -322,26 +322,27 @@ function injectLeaflyEmbed(shopType) {
   // If the exact same menu is already loaded, don't do anything!
   if (currentLeaflyType === shopType) return;
   
-  // If they are switching menus (Rec to Med), wipe the old menu first
+  // Wipe the old menu completely
   leaflyWrapper.innerHTML = '';
   
   const s = document.createElement('script');
-  s.id = 'leafly-embed-script';
+  // Unique ID forces the browser to pull a fresh Leafly menu instead of a cached one
+  s.id = 'leafly-embed-' + Date.now(); 
   s.src = 'https://web-embedded-menu.leafly.com/loader.js';
   s.dataset.origin = 'https://web-embedded-menu.leafly.com';
   
-  // ⚠️ IMPORTANT: Verify this is your exact Leafly URL slug!
   s.dataset.slug = 'green-labs-provisions'; 
   
-  // Tell Leafly to load the specific menu type for Dual Menus
+  // Force Leafly to recognize the Medical vs Rec switch
   const fullType = shopType === 'med' ? 'medical' : 'recreational';
   s.dataset.menuType = fullType;
   s.dataset.type = fullType; 
+  s.dataset.environment = fullType;
   
   // Green Labs Brand Colors
-  s.dataset.primary = '#0B7D5A';   // GL Emerald
-  s.dataset.secondary = '#D6A34A'; // DTG Gold
-  s.dataset.deals = '#2ef8bb';     // GL Mint
+  s.dataset.primary = '#0B7D5A';   
+  s.dataset.secondary = '#D6A34A'; 
+  s.dataset.deals = '#2ef8bb';     
   
   leaflyWrapper.appendChild(s);
   currentLeaflyType = shopType;
@@ -372,11 +373,11 @@ function openShop(scrollAlso, shopType = 'rec') {
 $$('[data-open-shop]').forEach(el => 
     el.addEventListener('click', (e) => {
         e.preventDefault();
-        // If the button has 'med' attached to it, it grabs it. Otherwise, defaults to 'rec'
         const type = el.getAttribute('data-open-shop') || 'rec';
         openShop(true, type);
     })
 );
+   
   (function restoreCategory() {
     try {
       const cat = localStorage.getItem('gl_selected_category');
