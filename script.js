@@ -312,31 +312,29 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 // ===== Shop reveal & Leafly Injection =====
-const shopSection = $('#shop');
-const leaflyWrapper = $('#leafly-embed-wrapper');
-let currentLeaflyType = null; // Tracks if rec or med is currently loaded
+const shopSection = document.getElementById('shop');
+const leaflyWrapper = document.getElementById('leafly-embed-wrapper');
+let currentLeaflyType = null; 
 
 function injectLeaflyEmbed(shopType) {
   if (!leaflyWrapper) return;
-  
-  // If the exact same menu is already loaded, don't do anything!
   if (currentLeaflyType === shopType) return;
   
-  // Wipe the old menu completely
+  // Wipe the old menu container clean
   leaflyWrapper.innerHTML = '';
   
   const s = document.createElement('script');
-  // Unique ID forces the browser to pull a fresh Leafly menu instead of a cached one
-  s.id = 'leafly-embed-' + Date.now(); 
-  s.src = 'https://web-embedded-menu.leafly.com/loader.js';
-  s.dataset.origin = 'https://web-embedded-menu.leafly.com';
   
+  // LEAFLY FIX: This ID must remain exactly this!
+  s.id = 'leafly-embed-script'; 
+  
+  // Add the cache buster to the URL instead so the browser gets a fresh menu on switch
+  s.src = 'https://web-embedded-menu.leafly.com/loader.js?v=' + Date.now();
+  s.dataset.origin = 'https://web-embedded-menu.leafly.com';
   s.dataset.slug = 'green-labs-provisions'; 
   
-  // Force Leafly to recognize the Medical vs Rec switch
+  // Force Leafly to recognize the Medical vs Rec switch using their specific tag
   const fullType = shopType === 'med' ? 'medical' : 'recreational';
-  s.dataset.menuType = fullType;
-  s.dataset.type = fullType; 
   s.dataset.environment = fullType;
   
   // Green Labs Brand Colors
@@ -356,21 +354,20 @@ function openShop(scrollAlso, shopType = 'rec') {
     const giantBtn = document.querySelector('.drShopBtn');
     if (giantBtn) giantBtn.style.display = 'none';
 
-    try {
-        localStorage.setItem('gl_shopping_mode', shopType);
-    } catch {}
+    try { localStorage.setItem('gl_shopping_mode', shopType); } catch {}
 
-    // Pass the clicked type (rec or med) directly into the injector!
     injectLeaflyEmbed(shopType);
 
     if (scrollAlso && shopSection) {
         setTimeout(() => {
-            smoothTo(shopSection);
+            // Using pure JavaScript to guarantee the scroll fires perfectly
+            shopSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }, 50);
     }
 }
 
-$$('[data-open-shop]').forEach(el => 
+// Attach the listener to your buttons
+document.querySelectorAll('[data-open-shop]').forEach(el => 
     el.addEventListener('click', (e) => {
         e.preventDefault();
         const type = el.getAttribute('data-open-shop') || 'rec';
