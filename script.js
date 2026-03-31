@@ -373,7 +373,16 @@ window.addEventListener('DOMContentLoaded', () => {
 document.querySelectorAll('[data-open-shop]').forEach(el => 
     el.addEventListener('click', (e) => {
         e.preventDefault();
-        const type = el.getAttribute('data-open-shop') || 'rec';
+        
+        // Smart Detection: Checks if the button text says "Med" or if the tag says "med"
+        const btnText = el.textContent.toLowerCase();
+        const tagValue = el.getAttribute('data-open-shop');
+        
+        let type = 'rec'; // Default to rec
+        if (tagValue === 'med' || btnText.includes('med')) {
+            type = 'med';
+        }
+        
         openShop(true, type);
     })
 );
