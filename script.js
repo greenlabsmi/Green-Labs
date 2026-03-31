@@ -311,46 +311,29 @@ document.addEventListener('DOMContentLoaded', () => {
     try { localStorage.setItem('gl_selected_category', cat); } catch {}
   }
 
-// ===== Shop reveal & Leafly Injection =====
+// ===== Shop reveal & Instant Toggle =====
 const shopSection = document.getElementById('shop');
-const leaflyWrapper = document.getElementById('leafly-embed-wrapper');
-let currentLeaflyType = null; 
-
-function injectLeaflyEmbed(shopType) {
-    if (!leaflyWrapper) return;
-    if (currentLeaflyType === shopType) return;
-    
-    // LEAFLY FIX: If they switch from Rec to Med (or vice versa), 
-    // Leafly's script freezes if we try to rewrite it. 
-    // We force a quick, silent page refresh to give Leafly a clean slate!
-    if (currentLeaflyType !== null) {
-        window.location.hash = 'shop-' + shopType;
-        window.location.reload();
-        return;
-    }
-
-    const s = document.createElement('script');
-    s.id = 'leafly-embed-script'; 
-    s.src = 'https://web-embedded-menu.leafly.com/loader.js';
-    s.dataset.origin = 'https://web-embedded-menu.leafly.com';
-    s.dataset.slug = 'green-labs-provisions'; 
-    s.dataset.environment = shopType === 'med' ? 'medical' : 'recreational';
-    s.dataset.primary = '#0B7D5A';   
-    s.dataset.secondary = '#D6A34A'; 
-    s.dataset.deals = '#2ef8bb';     
-    
-    leaflyWrapper.appendChild(s);
-    currentLeaflyType = shopType;
-}
+const recWrapper = document.getElementById('leafly-rec');
+const medWrapper = document.getElementById('leafly-med');
 
 function openShop(scrollAlso, shopType = 'rec') {
     if (typeof menuWrap !== 'undefined' && menuWrap) menuWrap.hidden = false;
     if (shopSection) shopSection.hidden = false;
     
+    // Hide the giant "SHOP ONLINE" button once the shop is open
     const giantBtn = document.querySelector('.drShopBtn');
     if (giantBtn) giantBtn.style.display = 'none';
 
-    injectLeaflyEmbed(shopType);
+    // Instantly swap the visible menu box!
+    if (shopType === 'med') {
+        if (recWrapper) recWrapper.hidden = true;
+        if (medWrapper) medWrapper.hidden = false;
+    } else {
+        if (medWrapper) medWrapper.hidden = true;
+        if (recWrapper) recWrapper.hidden = false;
+    }
+
+    try { localStorage.setItem('gl_shopping_mode', shopType); } catch {}
 
     if (scrollAlso && shopSection) {
         setTimeout(() => {
@@ -359,17 +342,7 @@ function openShop(scrollAlso, shopType = 'rec') {
     }
 }
 
-// Auto-open menu if the page just refreshed to swap Rec/Med
-window.addEventListener('DOMContentLoaded', () => {
-    if (window.location.hash === '#shop-med') {
-        openShop(true, 'med');
-        history.replaceState(null, null, ' '); // Cleans the URL so it looks perfect
-    } else if (window.location.hash === '#shop-rec') {
-        openShop(true, 'rec');
-        history.replaceState(null, null, ' '); 
-    }
-});
-
+// Attach the listener to all your buttons
 document.querySelectorAll('[data-open-shop]').forEach(el => 
     el.addEventListener('click', (e) => {
         e.preventDefault();
@@ -378,7 +351,7 @@ document.querySelectorAll('[data-open-shop]').forEach(el =>
         const btnText = el.textContent.toLowerCase();
         const tagValue = el.getAttribute('data-open-shop');
         
-        let type = 'rec'; // Default to rec
+        let type = 'rec'; 
         if (tagValue === 'med' || btnText.includes('med')) {
             type = 'med';
         }
@@ -386,13 +359,6 @@ document.querySelectorAll('[data-open-shop]').forEach(el =>
         openShop(true, type);
     })
 );
-   
-  (function restoreCategory() {
-    try {
-      const cat = localStorage.getItem('gl_selected_category');
-      if (cat) setMenuCategory(cat);
-    } catch {}
-  })();
 
   // ===== Drawer =====
   (function drawer() {
