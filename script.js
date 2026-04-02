@@ -375,8 +375,17 @@ document.querySelectorAll('[data-open-shop]').forEach(el =>
         const btnText = el.textContent.toLowerCase();
         const tagValue = el.getAttribute('data-open-shop');
         
-        // If it's the Med button, open the Popup!
+        // If it's the Med button, scroll to the shop AND open the Popup!
         if (tagValue === 'med' || btnText.includes('med')) {
+            // Unhide the shop section so we can scroll to it
+            if (shopSection) shopSection.hidden = false;
+            
+            // Scroll down in the background
+            setTimeout(() => {
+                if (shopSection) shopSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 50);
+            
+            // Open the modal
             const modal = document.getElementById('med-promo-modal');
             if (modal) modal.hidden = false;
         } else {
@@ -385,6 +394,17 @@ document.querySelectorAll('[data-open-shop]').forEach(el =>
         }
     })
 );
+
+// POPUP BUTTON LOGIC
+document.getElementById('close-med-modal')?.addEventListener('click', () => {
+    document.getElementById('med-promo-modal').hidden = true;
+});
+
+document.getElementById('proceed-to-shop')?.addEventListener('click', () => {
+    // Hide the popup and load the Leafly menu right in front of them!
+    document.getElementById('med-promo-modal').hidden = true;
+    openShop(true, 'rec'); 
+});
 
 // POPUP BUTTON LOGIC
 document.getElementById('close-med-modal')?.addEventListener('click', () => {
