@@ -1121,6 +1121,18 @@
           background: #eaf3f0; padding: 15px; border-radius: 6px; font-size: 14px; 
           margin-bottom: 25px; border-left: 4px solid #0B7D5A; color: #222; text-align: left;
       }
+      
+      /* --- BUTTON FIX: Solid Green for White Backgrounds --- */
+      .med-modal-content .btn--primary {
+          background: #0B7D5A !important;
+          color: #ffffff !important;
+          border: none !important;
+          box-shadow: 0 8px 20px rgba(11, 125, 90, 0.25) !important;
+      }
+      .med-modal-content .btn--primary:hover {
+          background: #086045 !important;
+          box-shadow: 0 12px 25px rgba(11, 125, 90, 0.35) !important;
+      }
     </style>
 
     <div id="med-promo-modal" class="med-modal-overlay" hidden>
