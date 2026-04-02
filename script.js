@@ -320,14 +320,12 @@ function injectLeafly(shopType) {
     if (!leaflyWrapper) return;
     if (currentLeaflyType === shopType) return;
     
-    // If a menu is already loaded and they switch types, force a clean refresh so Leafly doesn't freeze!
     if (currentLeaflyType !== null) {
         window.location.hash = 'shop-' + shopType;
         window.location.reload();
         return;
     }
 
-    // Inject the official Leafly script
     const s = document.createElement('script');
     s.id = 'leafly-embed-script'; 
     s.src = 'https://web-embedded-menu.leafly.com/loader.js';
@@ -362,30 +360,42 @@ function openShop(scrollAlso, shopType = 'rec') {
 window.addEventListener('DOMContentLoaded', () => {
     if (window.location.hash === '#shop-med') {
         openShop(true, 'med');
-        history.replaceState(null, null, ' '); // Cleans the URL so it looks perfect
+        history.replaceState(null, null, ' '); 
     } else if (window.location.hash === '#shop-rec') {
         openShop(true, 'rec');
         history.replaceState(null, null, ' '); 
     }
 });
 
-// Listens for clicks on any Shop button
+// INTERCEPT CLICKS ON ANY SHOP BUTTON (New Popup Logic)
 document.querySelectorAll('[data-open-shop]').forEach(el => 
     el.addEventListener('click', (e) => {
         e.preventDefault();
         
-        // Smart Detection: Checks if the button text says "Med" or if the tag says "med"
         const btnText = el.textContent.toLowerCase();
         const tagValue = el.getAttribute('data-open-shop');
         
-        let type = 'rec'; // Defaults to Rec
+        // If it's the Med button, open the Popup!
         if (tagValue === 'med' || btnText.includes('med')) {
-            type = 'med';
+            const modal = document.getElementById('med-promo-modal');
+            if (modal) modal.hidden = false;
+        } else {
+            // Otherwise, open the shop normally (Rec)
+            openShop(true, 'rec');
         }
-        
-        openShop(true, type);
     })
 );
+
+// POPUP BUTTON LOGIC
+document.getElementById('close-med-modal')?.addEventListener('click', () => {
+    document.getElementById('med-promo-modal').hidden = true;
+});
+
+document.getElementById('proceed-to-shop')?.addEventListener('click', () => {
+    // Hide the popup and smoothly scroll them to the Leafly menu!
+    document.getElementById('med-promo-modal').hidden = true;
+    openShop(true, 'rec'); 
+});
 
   // ===== Drawer =====
   (function drawer() {
