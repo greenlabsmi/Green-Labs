@@ -1137,54 +1137,112 @@ document.addEventListener('DOMContentLoaded', async () => {
     try {
         const response = await fetch('https://greenlabsmi.github.io/Dutch_Touch_Brand/strains.json');
         strains = await response.json();
+
+        // --- MASTER AWARD INJECTION LIST ---
+        const awardsMap = {
+            "Mr. Clean": "🏆 1st Place Sativa (High Times Cannabis Cup).",
+            "Lilac Diesel": "🏆 3rd Place Sativa (High Times Cannabis Cup).",
+            "Forbidden Jelly": "🏆 3rd Place Nug Run Sugar Solvent (Best in Grass).",
+            "Lemon Wookie #4": "🏆 2nd Place (Best in Grass)."
+        };
+
+        // Loop through JSON strains and attach awards
+        strains.forEach(s => {
+            // Give Death By Funk the gold badge (no specific text)
+            if (s.name.includes("Death By Funk")) {
+                s.award = true;
+            }
+            
+            // Match exact names from the map
+            let awardText = awardsMap[s.name];
+            
+            // Catch Lemon Wookie in case it is named slightly differently
+            if (!awardText && s.name.includes("Lemon Wookie")) {
+                awardText = "🏆 2nd Place (Best in Grass).";
+            }
+
+            // If an award exists, pin the badge and inject the trophy text!
+            if (awardText) {
+                s.award = true;
+                s.description = awardText + " " + (s.description || "");
+            }
+        });
+
+        // 1. Angelica RSO (Updates type to RSO and injects text)
+        let angelica = strains.find(s => s.name.includes("Angelica"));
+        if (angelica) {
+            angelica.award = true;
+            angelica.name = "Angelica RSO"; 
+            angelica.type = "RSO";
+            angelica.description = "🏆 1st Place RSO (High Times Cannabis Cup). " + (angelica.description || "");
+        } else {
+            strains.push({ name: "Angelica RSO", slug: "angelica-rso", award: true, type: "RSO", lineage: "Angelica Extract", breeder: "Dutch Touch Genetics", description: "🏆 1st Place RSO (High Times Cannabis Cup)." });
+        }
+
+        // 2. Space Hippy (Injects if missing)
+        let spaceHippy = strains.find(s => s.name.includes("Space Hippy"));
+        if (spaceHippy) {
+            spaceHippy.award = true;
+            spaceHippy.description = "🏆 2nd Place Nug Run Sugar Solvent & 3rd Place Disposable (High Times Cannabis Cup). " + (spaceHippy.description || "");
+        } else {
+            strains.push({ name: "Space Hippy", slug: "space-hippy", award: true, type: "HYBRID", lineage: "DTG Exclusive", breeder: "Dutch Touch Genetics", description: "🏆 2nd Place Nug Run Sugar Solvent & 3rd Place Disposable (High Times Cannabis Cup)." });
+        }
+
+        // 3. White Wampa (Injects if missing)
+        let whiteWampa = strains.find(s => s.name.includes("White Wampa"));
+        if (!whiteWampa) {
+            strains.push({ name: "White Wampa", slug: "white-wampa", award: true, type: "INFUSED PRE-ROLL", lineage: "DTG Exclusive", breeder: "Dutch Touch Genetics", description: "🏆 3rd Place Infused Pre-Roll (High Times Cannabis Cup)." });
+        }
+
         renderFeaturedGenetics(strains);
     } catch (error) {
         console.error('Failed to load strains:', error);
     }
 
-   function renderFeaturedGenetics(data) {
-    const mount = document.getElementById('current-strains');
-    if (!mount) return;
+    function renderFeaturedGenetics(data) {
+        const mount = document.getElementById('current-strains');
+        if (!mount) return;
 
-    // 1. CLEAR the mount point first
-    mount.innerHTML = '';
+        // 1. CLEAR the mount point first
+        mount.innerHTML = '';
 
-    // 2. Filter for ONLY Award Winners
-    let featured = data.filter(s => s.award === true);
+        // 2. Filter for ONLY Award Winners
+        let featured = data.filter(s => s.award === true);
 
-    // 2.5 FORCE CUSTOM ORDER (VIP List)
-    const customOrder = ["Mr. Clean", "Lemon Wookie"]; 
-    featured.sort((a, b) => {
-        const indexA = customOrder.indexOf(a.name);
-        const indexB = customOrder.indexOf(b.name);
-        
-        if (indexA !== -1 && indexB !== -1) return indexA - indexB;
-        if (indexA !== -1) return -1;
-        if (indexB !== -1) return 1;
-        return a.name.localeCompare(b.name);
-    });
+        // 2.5 FORCE CUSTOM ORDER (VIP List)
+        const customOrder = ["Mr. Clean", "Lemon Wookie", "Lemon Wookie #4"]; 
+        featured.sort((a, b) => {
+            const indexA = customOrder.indexOf(a.name);
+            const indexB = customOrder.indexOf(b.name);
+            
+            if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+            if (indexA !== -1) return -1;
+            if (indexB !== -1) return 1;
+            return a.name.localeCompare(b.name);
+        });
 
-    // 3. Render the champions
-    mount.innerHTML = featured.map(s => {
-        // THE FIX: Define the image variable so it doesn't crash!
-        let img = s.image ? 'https://greenlabsmi.github.io/Dutch_Touch_Brand/' + s.image : 'https://greenlabsmi.github.io/Dutch_Touch_Brand/assets/img/logo/dtg-logo-orange.png';
-        
-        return `
-        <article class="strain-card award-card" id="strain-${s.slug}">
-            <div class="award-badge-corner">AWARD WINNER</div>
-            <div class="strain-card-inner">
-                <div class="strain-image" style="background-image: url('${img}');"></div>
-                <div class="strain-top">
-                    <h3 class="strain-name">${s.name}</h3>
-                    <span class="strain-badge">${s.type.toUpperCase()}</span>
+        // 3. Render the champions
+        mount.innerHTML = featured.map(s => {
+            // THE FIX: Define the image variable so it doesn't crash!
+            let img = s.image ? 'https://greenlabsmi.github.io/Dutch_Touch_Brand/' + s.image : 'https://greenlabsmi.github.io/Dutch_Touch_Brand/assets/img/logo/dtg-logo-orange.png';
+            
+            return `
+            <article class="strain-card award-card" id="strain-${s.slug}">
+                <div class="award-badge-corner">AWARD WINNER</div>
+                <div class="strain-card-inner">
+                    <div class="strain-image" style="background-image: url('${img}');"></div>
+                    <div class="strain-top">
+                        <h3 class="strain-name">${s.name}</h3>
+                        <span class="strain-badge">${s.type.toUpperCase()}</span>
+                    </div>
+                    <p class="strain-meta">${s.lineage}</p>
+                    <p class="strain-notes">Genetics by ${s.breeder}. ${s.description}</p>
                 </div>
-                <p class="strain-meta">${s.lineage}</p>
-                <p class="strain-notes">Genetics by ${s.breeder}. ${s.description}</p>
-            </div>
-        </article>
-        `;
-    }).join('');
-}
+            </article>
+            `;
+        }).join('');
+    }
+});
 
     // The FULL Modal HTML setup
     const modalHTML = `
