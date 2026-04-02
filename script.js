@@ -1242,32 +1242,36 @@ document.addEventListener('DOMContentLoaded', async () => {
             `;
         }).join('');
     }
-});
 
     // The FULL Modal HTML setup
     const modalHTML = `
-        <div class="strain-modal" id="glStrainModal">
-            <div class="strain-modal-dialog">
-                <button class="strain-modal-close" id="glCloseModal">&times;</button>
-                <div class="strain-modal-layout">
-                    <div class="strain-modal-media"><img id="glModalImage" src="" alt="" class="strain-modal-image"></div>
-                    <div class="strain-modal-body">
-                        <div class="strain-modal-badge" id="glModalBreeder"></div>
-                        <h3 class="strain-modal-title" id="glModalName"></h3>
-                        <div class="strain-modal-info">
-                            <p><span>TYPE</span> <strong id="glModalType" style="color:#fff;"></strong></p>
-                            <p><span>LINEAGE</span> <strong id="glModalLineage" style="color:#fff;"></strong></p>
-                            <p><span>THC</span> <strong id="glModalThc" style="color:#fff;"></strong></p>
-                        </div>
-                        <p class="strain-modal-desc" id="glModalDesc"></p>
-                        <div class="strain-modal-cta">
-                            <a href="https://greenlabsmi.github.io/Dutch_Touch_Brand/strains.html" class="btn btn--gold" style="width: 100%;"> Explore DTG Vault &rarr; </a>
-                        </div>
+    <div class="strain-modal" id="glStrainModal">
+        <div class="strain-modal-dialog">
+            <button class="strain-modal-close" id="glCloseModal">&times;</button>
+            <div class="strain-modal-layout">
+                <div class="strain-modal-media"><img id="glModalImage" src="" alt="" class="strain-modal-image"></div>
+                <div class="strain-modal-body">
+                    <div class="strain-modal-badge" id="glModalBreeder"></div>
+                    <h3 class="strain-modal-title" id="glModalName"></h3>
+                    <div class="strain-modal-info">
+                        <p><span>TYPE</span> <strong id="glModalType" style="color:#fff;"></strong></p>
+                        <p><span>LINEAGE</span> <strong id="glModalLineage" style="color:#fff;"></strong></p>
+                        <p><span>THC</span> <strong id="glModalThc" style="color:#fff;"></strong></p>
+                    </div>
+                    <p class="strain-modal-desc" id="glModalDesc"></p>
+                    <div class="strain-modal-cta">
+                        <a href="https://greenlabsmi.github.io/Dutch_Touch_Brand/strains.html" class="btn btn--gold" style="width: 100%;">
+                            Explore DTG Vault &rarr;
+                        </a>
                     </div>
                 </div>
             </div>
-        </div>`;
-    document.body.insertAdjacentHTML('beforeend', modalHTML);
+        </div>
+    </div>`;
+    
+    if (!document.getElementById('glStrainModal')) {
+        document.body.insertAdjacentHTML('beforeend', modalHTML);
+    }
 
     const modal = document.getElementById('glStrainModal');
     const closeBtn = document.getElementById('glCloseModal');
@@ -1295,9 +1299,16 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     });
 
-    const closeDialog = () => { modal.classList.remove('open'); document.body.style.overflow = ''; };
+    const closeDialog = () => {
+        if (modal) modal.classList.remove('open');
+        document.body.style.overflow = '';
+    };
+
     if (closeBtn) closeBtn.addEventListener('click', closeDialog);
-    if (modal) modal.addEventListener('click', (e) => { if (e.target === modal) closeDialog(); });
+
+    if (modal) modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeDialog();
+    });
 });
 
 /* --- ARTWORK TOGGLE "WIND" EFFECT --- */
