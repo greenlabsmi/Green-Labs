@@ -1093,6 +1093,61 @@
   </div>
 </footer>
 
+<style>
+      .med-modal-overlay {
+          position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+          background: rgba(0, 0, 0, 0.7); z-index: 9999;
+          display: flex; align-items: center; justify-content: center;
+          opacity: 1; transition: opacity 0.3s ease; backdrop-filter: blur(4px);
+      }
+      .med-modal-overlay[hidden] { display: none; opacity: 0; }
+      .med-modal-content {
+          background: #fff; width: 90%; max-width: 480px;
+          border-radius: 12px; padding: 30px; position: relative;
+          box-shadow: 0 20px 40px rgba(0,0,0,0.3); text-align: center;
+      }
+      .med-modal-close {
+          position: absolute; top: 15px; right: 20px;
+          background: none; border: none; font-size: 28px;
+          cursor: pointer; color: #999; line-height: 1;
+      }
+      .med-modal-close:hover { color: #333; }
+      .med-deal-list {
+          text-align: left; background: #f4f8f6; padding: 15px 20px 15px 40px; 
+          border-radius: 8px; margin-bottom: 20px; color: #4a5d56; font-weight: 500;
+      }
+      .med-deal-list li { margin-bottom: 8px; }
+      .med-instruction {
+          background: #eaf3f0; padding: 15px; border-radius: 6px; font-size: 14px; 
+          margin-bottom: 25px; border-left: 4px solid #0B7D5A; color: #222; text-align: left;
+      }
+    </style>
+
+    <div id="med-promo-modal" class="med-modal-overlay" hidden>
+      <div class="med-modal-content">
+        <button class="med-modal-close" id="close-med-modal">&times;</button>
+        
+        <h2 style="color: #0B7D5A; font-family: serif; font-size: 28px; margin-bottom: 10px;">Shop Medical & Save!</h2>
+        <p style="font-weight: 600; color: #333; margin-bottom: 15px;">Unlock exclusive patient-only pricing and lower taxes:</p>
+        
+        <ul class="med-deal-list">
+            <li><strong>$95 Ounces</strong> on select strains</li>
+            <li><strong>$140 Ounces</strong> on Award-Winning DTG Genetics</li>
+            <li style="margin-bottom: 0;"><strong>Everyday Deals</strong> on RSO, Disposables & Concentrates</li>
+        </ul>
+        
+        <div class="med-instruction">
+            <strong>How to order:</strong> Click below to open our menu, then simply select the <strong>Medical</strong> tab at the top of the Leafly window.
+        </div>
+        
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+            <button id="proceed-to-shop" class="btn btn--primary" style="width: 100%; font-size: 16px;">Take Me to the Menu</button>
+            
+            <a href="#" class="btn" style="background: #D6A34A; color: #fff; width: 100%; font-size: 15px;">Don't have a Med Card? Click here!</a>
+        </div>
+      </div>
+    </div>
+
 <script src="deli-board.js"></script>
 <script src="script.js?v=318"></script>
 
