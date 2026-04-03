@@ -1500,3 +1500,36 @@ setTimeout(() => {
         rightWrap.appendChild(shopBtn);
     });
 }, 500);
+
+// ===== THE LEAFLY BODYGUARD (ANTI-CRASH FIX) =====
+document.addEventListener('click', (e) => {
+    // 1. Stop Leafly from mistaking our scroll links for menu filters
+    const anchor = e.target.closest('a');
+    if (anchor) {
+        const href = anchor.getAttribute('href');
+        // If the user clicks an internal scroll link (like #deli)...
+        if (href && href.startsWith('#') && href.length > 1) {
+            const section = document.querySelector(href);
+            if (section) {
+                e.preventDefault(); // STOP the address bar from changing!
+                history.replaceState(null, null, window.location.pathname); // Wipe it completely clean
+                section.scrollIntoView({ behavior: 'smooth' }); // Scroll smoothly anyway
+            }
+        }
+    }
+});
+
+// 2. Failsafe to guarantee the Shop Strain buttons always work
+document.addEventListener('click', (e) => {
+    if (e.target.closest('.deli-shop-btn') || e.target.closest('#glModalShopBtn')) {
+        // If the Leafly iframe is currently on the screen and throwing an error, 
+        // this forces a micro-refresh that automatically slides back down to a perfect menu!
+        const leaflyIframe = document.querySelector('iframe[src*="leafly"]');
+        if (leaflyIframe) {
+            e.preventDefault();
+            e.stopPropagation();
+            window.location.hash = '#shop-rec';
+            window.location.reload();
+        }
+    }
+});
