@@ -1292,7 +1292,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }).join('');
     }
 
-    // The FULL Modal HTML setup
+   // The FULL Modal HTML setup
     const modalHTML = `
     <div class="strain-modal" id="glStrainModal">
         <div class="strain-modal-dialog">
@@ -1312,7 +1312,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <a href="https://greenlabsmi.github.io/Dutch_Touch_Brand/strains.html" class="btn btn--gold" style="width: 100%;">
                             Explore DTG Vault &rarr;
                         </a>
-                        <button id="glModalShopBtn" class="btn btn--primary" onclick="document.getElementById('glCloseModal').click(); if(typeof openShop === 'function') openShop(true, 'rec');" style="width: 100%; background: #0B7D5A; color: #fff; border: none;">
+                        <button id="glModalShopBtn" class="btn btn--primary" onclick="document.getElementById('glCloseModal').click(); const nav = document.querySelector('[data-open-shop]'); if(nav) nav.click();" style="width: 100%; background: #0B7D5A; color: #fff; border: none;">
                             Shop Strain &rarr;
                         </button>
                     </div>
@@ -1352,7 +1352,7 @@ if (!document.getElementById('glStrainModal')) {
             if (outOfStockList.includes(s.name)) {
                 // What happens if it IS out of stock
                 shopBtn.innerHTML = "Out of Stock";
-                shopBtn.style.background = "#555"; // Turns the button gray
+                shopBtn.style.background = "#555"; 
                 shopBtn.style.cursor = "not-allowed";
                 shopBtn.onclick = (e) => { e.preventDefault(); }; 
             } else {
@@ -1363,7 +1363,8 @@ if (!document.getElementById('glStrainModal')) {
                 shopBtn.onclick = (e) => { 
                     e.preventDefault();
                     document.getElementById('glCloseModal').click(); 
-                    if(typeof openShop === 'function') openShop(true, 'rec'); 
+                    const mainNavShop = document.querySelector('[data-open-shop="rec"]') || document.querySelector('[data-open-shop]');
+                    if(mainNavShop) mainNavShop.click(); 
                 };
             }
             // ------------------------------
@@ -1457,25 +1458,41 @@ document.querySelectorAll(mapSelectors).forEach(link => {
     });
 });
 
-// ===== Auto-Inject "Shop" Buttons into Deli Cards =====
+// ===== Auto-Inject Sleek "Shop" Buttons into Deli Cards =====
 setTimeout(() => {
-    document.querySelectorAll('.deli-card-wrapper').forEach(wrapper => {
-        // Prevent duplicates just in case
-        if (wrapper.querySelector('.deli-shop-btn')) return; 
+    document.querySelectorAll('.deli-card__label').forEach(label => {
+        // Prevent duplicates
+        if (label.querySelector('.deli-shop-btn')) return; 
 
+        // Find the price span
+        const priceSpan = label.querySelector('.deli-card__price');
+        if (!priceSpan) return;
+
+        // 1. Create a tight column wrapper for the right side of the card
+        const rightWrap = document.createElement('div');
+        rightWrap.style.cssText = 'display: flex; flex-direction: column; align-items: stretch; gap: 6px;';
+
+        // 2. Move the price tag into our new wrapper
+        priceSpan.parentNode.insertBefore(rightWrap, priceSpan);
+        rightWrap.appendChild(priceSpan);
+
+        // 3. Create the sleek mini button (Matches price width exactly)
         const shopBtn = document.createElement('button');
         shopBtn.className = 'btn btn--ghost deli-shop-btn';
-        shopBtn.style.cssText = 'width: 100%; margin-top: 12px; font-size: 13px; border-color: rgba(46, 248, 187, 0.4); color: #2ef8bb; background: rgba(46, 248, 187, 0.05); z-index: 10; position: relative; cursor: pointer;';
-        shopBtn.innerHTML = 'Shop Strain &rarr;';
         
+        // Includes a clean little shopping bag icon
+        shopBtn.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg> SHOP`;
+        
+        shopBtn.style.cssText = 'padding: 4px 0; font-size: 11px; font-weight: 800; border-radius: 4px; border-color: rgba(46, 248, 187, 0.4); color: #2ef8bb; background: rgba(46, 248, 187, 0.05); z-index: 10; position: relative; cursor: pointer; display: flex; align-items: center; justify-content: center; width: 100%;';
+        
+        // The Foolproof Click Mechanism
         shopBtn.onclick = (e) => {
             e.preventDefault();
-            e.stopPropagation(); // CRITICAL: This stops the card from flipping when they click the button!
-            if (typeof openShop === 'function') {
-                openShop(true, 'rec');
-            }
+            e.stopPropagation(); // Stops the card from flipping
+            const mainNavShop = document.querySelector('[data-open-shop="rec"]') || document.querySelector('[data-open-shop]');
+            if(mainNavShop) mainNavShop.click();
         };
         
-        wrapper.appendChild(shopBtn);
+        rightWrap.appendChild(shopBtn);
     });
-}, 500); // Slight delay to ensure the cards are loaded first
+}, 500);
