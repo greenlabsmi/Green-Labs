@@ -1423,3 +1423,26 @@ document.querySelectorAll(mapSelectors).forEach(link => {
         }
     });
 });
+
+// ===== Auto-Inject "Shop" Buttons into Deli Cards =====
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.deli-card-wrapper').forEach(wrapper => {
+        // Create the button
+        const shopBtn = document.createElement('button');
+        shopBtn.className = 'btn btn--ghost';
+        // Styled specifically for the dark theme of the Deli board
+        shopBtn.style.cssText = 'width: 100%; margin-top: 12px; font-size: 13px; border-color: rgba(46, 248, 187, 0.4); color: #2ef8bb; background: rgba(46, 248, 187, 0.05);';
+        shopBtn.innerHTML = 'Shop Strain &rarr;';
+        
+        // Make it instantly open the Shop Menu and scroll to it
+        shopBtn.onclick = (e) => {
+            e.preventDefault();
+            if (typeof openShop === 'function') {
+                openShop(true, 'rec');
+            }
+        };
+        
+        // Drop it right under the label/price
+        wrapper.appendChild(shopBtn);
+    });
+});
