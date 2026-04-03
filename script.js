@@ -1160,7 +1160,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             "Clusterfunk": { description: "Deep notes of oil and fuelly funk paired with skunky, sour hues. ClusterFunk is suitable for evening usage and for whenever you want to go nuclear." },
             "Crunchberries": { description: "The resulting flowers are long, bushy and practically white-colored with trichome density. The CrunchBerry’s high delivers a uplifting and peaceful effect. The strain reportedly delivers a vanilla-and-pine aroma." },
             "Death Star": { description: "This strain is named for its skunky sweet jet fuel aromas that are pungent and fill up your nostrils. It has a powerful buzz that can make you feel sleepy, relaxed, and euphoric." },
-            "Death X Funk": { description: "CAUTION: One of our most potent strains. Extremely sedative and also psychoactive. Great for pain management and insomnia. Straight Gas." },
+            "Death By Funk": { description: "Deep notes of oil and fuelly funk paired with skunky, sour hues and sweet jet fuel aromas that are pungent and fill up your nostrils. It has a powerful buzz that can make you feel sleepy, relaxed, and euphoric. Medical marijuana patients often choose this when dealing with symptoms associated with stress, pain, and anxiety. Features flavors like diesel, pungent, and tea." },
             "Double Dutch Cookies": { description: "Super frosty appearance and sweet kush flavor notes with hints of mango cookies." },
             "Field Trip": { description: "Field Trip is a hybrid weed strain made from a genetic cross between GSC and Sunshine Daydream." },
             "Forbidden Jelly": { description: "This strain produces uplifting and cerebral effects that will make you feel happy and perhaps tingly. The heavy amount of Caryohphyllene gives off a nice relaxing body high without being sedated to the couch." },
@@ -1193,7 +1193,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             "Mr. Clean": "🏆 1st Place Sativa (High Times Cannabis Cup).",
             "Lilac Diesel": "🏆 3rd Place Sativa (High Times Cannabis Cup).",
             "Forbidden Jelly": "🏆 3rd Place Nug Run Sugar Solvent (Best in Grass).",
-            "Lemon Wookie #4": "🏆 2nd Place (Best in Grass)."
+            "Lemon Wookie #4": "🏆 2nd Place (Best in Grass).",
+            "Death By Funk": "🏆 3rd Place Indica Flower (Best in Grass)."
         };
 
         // Inject Dave's overrides and Awards perfectly into the live data!
