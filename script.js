@@ -1308,17 +1308,20 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <p><span>THC</span> <strong id="glModalThc" style="color:#fff;"></strong></p>
                     </div>
                     <p class="strain-modal-desc" id="glModalDesc"></p>
-                    <div class="strain-modal-cta">
+                    <div class="strain-modal-cta" style="display: flex; flex-direction: column; gap: 10px;">
                         <a href="https://greenlabsmi.github.io/Dutch_Touch_Brand/strains.html" class="btn btn--gold" style="width: 100%;">
                             Explore DTG Vault &rarr;
                         </a>
+                        <button id="glModalShopBtn" class="btn btn--primary" onclick="document.getElementById('glCloseModal').click(); if(typeof openShop === 'function') openShop(true, 'rec');" style="width: 100%; background: #0B7D5A; color: #fff; border: none;">
+                            Shop Strain &rarr;
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     </div>`;
     
-    if (!document.getElementById('glStrainModal')) {
+if (!document.getElementById('glStrainModal')) {
         document.body.insertAdjacentHTML('beforeend', modalHTML);
     }
 
@@ -1332,6 +1335,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         const name = card.querySelector('.strain-name').innerText;
         const s = strains.find(item => item.name === name);
+        
         if (s) {
             document.getElementById('glModalName').innerText = s.name;
             document.getElementById('glModalBreeder').innerText = "Genetics by " + s.breeder;
@@ -1339,25 +1343,54 @@ document.addEventListener('DOMContentLoaded', async () => {
             document.getElementById('glModalLineage').innerText = s.lineage;
             document.getElementById('glModalThc').innerText = s.thc || "N/A";
             document.getElementById('glModalDesc').innerText = s.description;
+
+            // --- OUT OF STOCK BLOCKER ---
+            const outOfStockList = ["Mr. Clean", "Spirit Hashplant"]; 
             
-            const imgEl = document.getElementById('glModalImage');
-            imgEl.src = 'https://greenlabsmi.github.io/Dutch_Touch_Brand/' + (s.image || 'assets/img/logo/dtg-logo-orange.png');
+            const shopBtn = document.getElementById('glModalShopBtn');
+            
+            if (outOfStockList.includes(s.name)) {
+                // What happens if it IS out of stock
+                shopBtn.innerHTML = "Out of Stock";
+                shopBtn.style.background = "#555"; // Turns the button gray
+                shopBtn.style.cursor = "not-allowed";
+                shopBtn.onclick = (e) => { e.preventDefault(); }; 
+            } else {
+                // What happens if it is IN stock
+                shopBtn.innerHTML = "Shop Strain &rarr;";
+                shopBtn.style.background = "#0B7D5A"; 
+                shopBtn.style.cursor = "pointer";
+                shopBtn.onclick = (e) => { 
+                    e.preventDefault();
+                    document.getElementById('glCloseModal').click(); 
+                    if(typeof openShop === 'function') openShop(true, 'rec'); 
+                };
+            }
+            // ------------------------------
+
+            // ADDED BACK: Set the image and open the modal!
+            let img = s.image ? 'https://greenlabsmi.github.io/Dutch_Touch_Brand/' + s.image : 'https://greenlabsmi.github.io/Dutch_Touch_Brand/assets/img/logo/dtg-logo-orange.png';
+            if (document.getElementById('glModalImage')) {
+                document.getElementById('glModalImage').src = img;
+            }
             
             modal.classList.add('open');
-            document.body.style.overflow = 'hidden';
+            document.body.style.overflow = 'hidden'; 
         }
     });
 
+    // Close Modal Logic
     const closeDialog = () => {
         if (modal) modal.classList.remove('open');
         document.body.style.overflow = '';
     };
 
     if (closeBtn) closeBtn.addEventListener('click', closeDialog);
-
-    if (modal) modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeDialog();
-    });
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeDialog();
+        });
+    }
 });
 
 /* --- ARTWORK TOGGLE "WIND" EFFECT --- */
@@ -1425,24 +1458,24 @@ document.querySelectorAll(mapSelectors).forEach(link => {
 });
 
 // ===== Auto-Inject "Shop" Buttons into Deli Cards =====
-document.addEventListener('DOMContentLoaded', () => {
+setTimeout(() => {
     document.querySelectorAll('.deli-card-wrapper').forEach(wrapper => {
-        // Create the button
+        // Prevent duplicates just in case
+        if (wrapper.querySelector('.deli-shop-btn')) return; 
+
         const shopBtn = document.createElement('button');
-        shopBtn.className = 'btn btn--ghost';
-        // Styled specifically for the dark theme of the Deli board
-        shopBtn.style.cssText = 'width: 100%; margin-top: 12px; font-size: 13px; border-color: rgba(46, 248, 187, 0.4); color: #2ef8bb; background: rgba(46, 248, 187, 0.05);';
+        shopBtn.className = 'btn btn--ghost deli-shop-btn';
+        shopBtn.style.cssText = 'width: 100%; margin-top: 12px; font-size: 13px; border-color: rgba(46, 248, 187, 0.4); color: #2ef8bb; background: rgba(46, 248, 187, 0.05); z-index: 10; position: relative; cursor: pointer;';
         shopBtn.innerHTML = 'Shop Strain &rarr;';
         
-        // Make it instantly open the Shop Menu and scroll to it
         shopBtn.onclick = (e) => {
             e.preventDefault();
+            e.stopPropagation(); // CRITICAL: This stops the card from flipping when they click the button!
             if (typeof openShop === 'function') {
                 openShop(true, 'rec');
             }
         };
         
-        // Drop it right under the label/price
         wrapper.appendChild(shopBtn);
     });
-});
+}, 500); // Slight delay to ensure the cards are loaded first
