@@ -1138,6 +1138,56 @@ document.addEventListener('DOMContentLoaded', async () => {
         const response = await fetch('https://greenlabsmi.github.io/Dutch_Touch_Brand/strains.json');
         strains = await response.json();
 
+        // --- THE DAVE DICTIONARY --- 
+        // Instantly overrides the JSON file with Dave's exact words!
+        const davesOverrides = {
+            "Illudium": { lineage: "Hawaiian Indica x Pre98 Bubba", type: "Hybrid", description: "Effects include feeling relaxed, happy, and sleepy. Patients often choose Illudium when dealing with symptoms associated with insomnia, pain, and stress. Illudium features flavors like chocolate, caramel, and coffee. The aromatic profile balances bright citrus and herbal woodland with a peppery, fuel-tinged base. Primary notes often include lemon zest, sweet orange rind, and crushed juniper, wrapped in whispers of diesel and black pepper." },
+            "Dead Prez": { lineage: "Death Star x Dread Bread", type: "Hybrid", description: "Primary Aromas: Sour spite smell. Skunky, sweet jet fuel, and diesel. Undertones: Earthy, pungent, with hints of citrus and spice (pepper)." },
+            "Cobra Lips": { lineage: "Chem 3 x Appalachia", type: "Hybrid", description: "Aroma & Taste: The strain is known for a complex, pungent terpene profile featuring notes of pine, wet soil, funk, fuel, and a tart, green apple finish. Effects: Long-lasting, and energetic buzz that balances euphoria with a relaxed physical state. It is often described as a functional yet potent high." },
+            "Vortex": { lineage: "Space Queen x Apollo 13", type: "Sativa", description: "Aroma/Taste: The flavor profile is described as a mix of sweet and sour lemon, with strong notes of tropical mango and, at times, a 'funky' or 'rotting fruit' undertone." },
+            "Strawberry Daiquiri": { lineage: "Strawberry Cough x Jack the Ripper", type: "Sativa", description: "Aroma combines notes of strawberry, cherry and chocolate on an acidic background, while its energetic, positive effect can prove highly effective for users battling against anxiety and depression." },
+            "Sticky Trap": { lineage: "Gorilla Glue 4 x Vortex", type: "Hybrid", description: "Aroma: GG4 has a pungent, earthy, and piney aroma with hints of diesel and chocolate. Vortex leans toward a sweet, tropical, and fruity profile. Together, the combo creates a balanced blend of pungent earthiness from GG4 with sweet, tropical, and citrusy notes from Vortex, making a complex and aromatic flavor experience." },
+            "Mr. Clean": { lineage: "Lime Skunk x The Cube", type: "Sativa", description: "Strong citrus (lime), sour, earthy, and skunky, described as tasting like lemon-pine cleaners. Known for high, energetic, and creative effects." },
+            "Ripped Bubba": { lineage: "Bubba Kush Pre-98 X Jacks Cleaner X Space Queen", type: "Hybrid", description: "Creative and Motivational in the mind and calming in the body and soul. Taste: Cherry, Kush, Hash, Black Berry, Skittles Candy, some variations have a heavier Lemon smell." },
+            "Falcon 9": { lineage: "Sunset Sherb X Tina", type: "Indica", description: "Noted for a smooth, gassy ice cream flavor profile that comes from dark purple buds accented by vibrant orange pistils. Meant for indica lovers, Falcon 9 is known to start as a strong head high before settling into the body. Patients report that it can help with chronic pain, depression, and PTSD." },
+            "13 Layer Cake": { lineage: "Apollo 13 x Wonka Bars", type: "Sativa", description: "Aroma and taste are unique and very pungent with hints of GMO. Its scent has been described as peppery/garlic and earthy. Taste takes on the herbal notes of tea with a skunky aftertaste." },
+            "Agent Orange": { description: "Agent Orange is a well-balanced hybrid marijuana strain with uplifting and motivating effects. Agent Orange has an aroma of fresh-cut citrus and is an excellent mood enhancer if you are feeling lethargic or depressed." },
+            "AJ's Cream Cake": { description: "Cream is a hybrid weed strain made from a genetic cross between Wedding Cake and Gelato #33. Leafly customers tell us Cream effects include feeling focused, aroused, and tingly." },
+            "Angelica": { description: "A strain with 2.42% total terpenes - Highest in β-Myrcene, D-Limonene, and β-Caryophyllene. Buds grow large and dense in a Kush fashion, offering a thick smoke. Expect flavor notes of lemon, hash, incense, and menthol to flood your senses with a euphoric high that will blanket your mind and body." },
+            "Apollo 13": { description: "The high is clear and cerebral, without a hint of paranoia. Her citrus flavor and happy high make Apollo 13 very popular at parties! Exquisite terpene profile with 2.45% total terpenes." },
+            "Bonkers": { description: "The result is a fruity strain with a creamy lemon flavor profile that erupts from beautiful lime green buds. The experience makes for a smooth buzz that is toned down in intensity." },
+            "Caesar": { description: "Consumers can expect the insane trichome production associated with Original Glue alongside a potent gassy nose that will catch attention after cracking the seal. Prepare to be baked in physical bliss and relaxation." },
+            "Clusterfunk": { description: "Deep notes of oil and fuelly funk paired with skunky, sour hues. ClusterFunk is suitable for evening usage and for whenever you want to go nuclear." },
+            "Crunchberries": { description: "The resulting flowers are long, bushy and practically white-colored with trichome density. The CrunchBerry’s high delivers a uplifting and peaceful effect. The strain reportedly delivers a vanilla-and-pine aroma." },
+            "Death Star": { description: "This strain is named for its skunky sweet jet fuel aromas that are pungent and fill up your nostrils. It has a powerful buzz that can make you feel sleepy, relaxed, and euphoric." },
+            "Death X Funk": { description: "CAUTION: One of our most potent strains. Extremely sedative and also psychoactive. Great for pain management and insomnia. Straight Gas." },
+            "Double Dutch Cookies": { description: "Super frosty appearance and sweet kush flavor notes with hints of mango cookies." },
+            "Field Trip": { description: "Field Trip is a hybrid weed strain made from a genetic cross between GSC and Sunshine Daydream." },
+            "Forbidden Jelly": { description: "This strain produces uplifting and cerebral effects that will make you feel happy and perhaps tingly. The heavy amount of Caryohphyllene gives off a nice relaxing body high without being sedated to the couch." },
+            "Goji OG": { description: "The flavor of Goji OG is as unique as the berry it's named after, offering a dynamic aroma including red berry, black cherry, strawberry, hawaiian punch, and licorice." },
+            "Grease Monkey": { description: "Grease Monkey is a sweet hybrid marijuana strain with earthy and skunky overtones. This strain saddles the consumer with a lazy, munchie-fueled body buzz that may soften the blow of chronic pain, nausea, and stress." },
+            "Hawaiian Bread": { description: "Hawaiian is a sativa marijuana strain known to provide happy and creative thoughts. This strain features an aroma that will remind you of tropical fruits." },
+            "Jesus OG": { description: "Consumers enjoy the lemony kush aroma of this indica-dominant cross, along with heavy effects that relax the body while leaving the mind functional and clear." },
+            "Lilac Diesel": { description: "Big buds have a complex terpene profile, including notes of citrus, sweet berries, earthy pine, and chem. Lilac Diesel is a great afternoon strain for a lackadaisical adventure." },
+            "Mango Hashplant": { description: "Her tight, resin-drenched flower clusters develop a brittle surface when dried and give off a deep, rich Afghani aroma that’s undercut with a hint of hashish." },
+            "Milk & Cookies": { description: "The odor is gassy, but sweet, with creamy hints of vanilla and orange citrus. Smoking or vaping Milk and Cookies turns the creamy flavor sour, leaving a peppery bite upon the exhale." },
+            "Orange Kush Cake": { description: "Consumers can expect a rich, complicated terpene profile including notes of sharp orange, citrus, gas, sour candy, dried grapes, and even earthy sandalwood." },
+            "Querkle": { description: "Querkle carries a strong grape and berry aroma. Heavily euphoric and cerebral, Querkle may be used during the day but is ideal for evening use as it relaxes muscles and guides the mind into sleep." },
+            "Sky Lotus": { description: "The aroma is a mixture of Pine-Sol, lemon, and sweet berries, while the flavor is more piney and floral. This plant develops an abundance of trichomes which leads to a potent, punchy buzz." },
+            "Space Monkey": { description: "The aroma is pungent, funky, sour, and dank with a little sweet lavender for good measure. Enthusiasts love its relaxing body high, low-key head high." },
+            "Super Silver Hash Plant": { description: "Flavors and aromas include notes of fuel, hazy, and dank. The high will leave you uplifted and motivated in the mind while feeling relaxed in the body." },
+            "Guicy G": { description: "The taste of Guicy G will leave you begging for more, with a bouquet of fresh fruity berries, sugary citrus and touches of light spice." },
+            "Solo Walker": { description: "Musky/Melon/Guava/ sweet and sour notes of funk." },
+            "Hash D": { description: "Users generally report a calming, relaxing, and heavy hitting 'body stone' effect. The strain carries a strong, pungent odor that combines the chemical/fuel notes of Chem D with earthy, hashish undertones." },
+            "Spirit Hashplant": { description: "Reports indicate a strong Ghost OG scent, often described as gassy, earthy, and piney." },
+            "Gorilla 88": { description: "Known to provide a powerful, relaxing, and euphoric experience, often suitable for evening use due to potential couchlock. Inherits the sticky, pungent nature of GG4 with added notes of cinnamon and earth." },
+            "Banana Split": { description: "The familiar tangerine burst of the Tangie is backed with the bold fruity notes from the Banana Sherbet." },
+            "Double Bubble": { description: "Reports suggest a range of aromas including tropical fruit, juicy fruit bubblegum, hash, musk, and sandalwood." },
+            "Death Z": { description: "Hops/Floral/hints of gas and citrus coming from parents death star and z skittlez." },
+            "Pina Rita": { description: "The strain is famous for a unique combination of pineapple and cherry candy notes. Provides a very tasty, functional, and uplifting high, making it great for daytime use." },
+            "Chocolate Marshmallows": { description: "Flavors of sweet chocolate and creamy vanilla galore. The aroma is just as mouthwatering, with a sweet white chocolate smell that's accented by a punch of skunky pungency." }
+        };
+
         // --- MASTER AWARD INJECTION LIST ---
         const awardsMap = {
             "Mr. Clean": "🏆 1st Place Sativa (High Times Cannabis Cup).",
@@ -1146,40 +1196,40 @@ document.addEventListener('DOMContentLoaded', async () => {
             "Lemon Wookie #4": "🏆 2nd Place (Best in Grass)."
         };
 
-        // Loop through JSON strains and attach awards
+        // Inject Dave's overrides and Awards perfectly into the live data!
         strains.forEach(s => {
-            // Give Death By Funk the gold badge (no specific text)
-            if (s.name.includes("Death By Funk")) {
-                s.award = true;
-            }
-            
-            // Match exact names from the map
-            let awardText = awardsMap[s.name];
-            
-            // Catch Lemon Wookie in case it is named slightly differently
-            if (!awardText && s.name.includes("Lemon Wookie")) {
-                awardText = "🏆 2nd Place (Best in Grass).";
+            // Apply Dave's Text First
+            const overrideKey = Object.keys(davesOverrides).find(key => s.name.toLowerCase().includes(key.toLowerCase()));
+            if (overrideKey) {
+                if (davesOverrides[overrideKey].lineage) s.lineage = davesOverrides[overrideKey].lineage;
+                if (davesOverrides[overrideKey].type) s.type = davesOverrides[overrideKey].type;
+                if (davesOverrides[overrideKey].description) s.description = davesOverrides[overrideKey].description;
             }
 
-            // If an award exists, pin the badge and inject the trophy text!
+            // Pin the specific badges
+            if (s.name.includes("Death By Funk")) s.award = true;
+            let awardText = awardsMap[s.name];
+            if (!awardText && s.name.includes("Lemon Wookie")) awardText = "🏆 2nd Place (Best in Grass).";
+
+            // If an award exists, pin the badge and inject the trophy text on top of Dave's description!
             if (awardText) {
                 s.award = true;
                 s.description = awardText + " " + (s.description || "");
             }
         });
 
-        // 1. Angelica RSO (Updates type to RSO and injects text)
+        // 1. Angelica RSO
         let angelica = strains.find(s => s.name.includes("Angelica"));
         if (angelica) {
             angelica.award = true;
-            angelica.name = "Angelica RSO"; 
+            angelica.name = "Angelica RSO";
             angelica.type = "RSO";
             angelica.description = "🏆 1st Place RSO (High Times Cannabis Cup). " + (angelica.description || "");
         } else {
             strains.push({ name: "Angelica RSO", slug: "angelica-rso", award: true, type: "RSO", lineage: "Angelica Extract", breeder: "Dutch Touch Genetics", description: "🏆 1st Place RSO (High Times Cannabis Cup)." });
         }
 
-        // 2. Space Hippy (Injects if missing)
+        // 2. Space Hippy
         let spaceHippy = strains.find(s => s.name.includes("Space Hippy"));
         if (spaceHippy) {
             spaceHippy.award = true;
@@ -1188,13 +1238,14 @@ document.addEventListener('DOMContentLoaded', async () => {
             strains.push({ name: "Space Hippy", slug: "space-hippy", award: true, type: "HYBRID", lineage: "DTG Exclusive", breeder: "Dutch Touch Genetics", description: "🏆 2nd Place Nug Run Sugar Solvent & 3rd Place Disposable (High Times Cannabis Cup)." });
         }
 
-        // 3. White Wampa (Injects if missing)
+        // 3. White Wampa 
         let whiteWampa = strains.find(s => s.name.includes("White Wampa"));
         if (!whiteWampa) {
             strains.push({ name: "White Wampa", slug: "white-wampa", award: true, type: "INFUSED PRE-ROLL", lineage: "DTG Exclusive", breeder: "Dutch Touch Genetics", description: "🏆 3rd Place Infused Pre-Roll (High Times Cannabis Cup)." });
         }
 
         renderFeaturedGenetics(strains);
+
     } catch (error) {
         console.error('Failed to load strains:', error);
     }
@@ -1203,27 +1254,22 @@ document.addEventListener('DOMContentLoaded', async () => {
         const mount = document.getElementById('current-strains');
         if (!mount) return;
 
-        // 1. CLEAR the mount point first
         mount.innerHTML = '';
-
-        // 2. Filter for ONLY Award Winners
         let featured = data.filter(s => s.award === true);
 
-        // 2.5 FORCE CUSTOM ORDER (VIP List)
-        const customOrder = ["Mr. Clean", "Lemon Wookie", "Lemon Wookie #4"]; 
+        // FORCE CUSTOM ORDER (VIP List)
+        const customOrder = ["Mr. Clean", "Lemon Wookie", "Lemon Wookie #4"];
         featured.sort((a, b) => {
             const indexA = customOrder.indexOf(a.name);
             const indexB = customOrder.indexOf(b.name);
-            
             if (indexA !== -1 && indexB !== -1) return indexA - indexB;
             if (indexA !== -1) return -1;
             if (indexB !== -1) return 1;
             return a.name.localeCompare(b.name);
         });
 
-        // 3. Render the champions
+        // Render the champions
         mount.innerHTML = featured.map(s => {
-            // THE FIX: Define the image variable so it doesn't crash!
             let img = s.image ? 'https://greenlabsmi.github.io/Dutch_Touch_Brand/' + s.image : 'https://greenlabsmi.github.io/Dutch_Touch_Brand/assets/img/logo/dtg-logo-orange.png';
             
             return `
@@ -1236,7 +1282,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <span class="strain-badge">${s.type.toUpperCase()}</span>
                     </div>
                     <p class="strain-meta">${s.lineage}</p>
-                    <p class="strain-notes">Genetics by ${s.breeder}. ${s.description}</p>
+                    
+                    <p class="strain-notes">${s.description}</p>
+                    
                 </div>
             </article>
             `;
