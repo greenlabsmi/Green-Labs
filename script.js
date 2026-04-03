@@ -1308,11 +1308,11 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <p><span>THC</span> <strong id="glModalThc" style="color:#fff;"></strong></p>
                     </div>
                     <p class="strain-modal-desc" id="glModalDesc"></p>
-                    <div class="strain-modal-cta" style="display: flex; flex-direction: column; gap: 10px;">
+                    <div class="strain-modal-cta" style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
                         <a href="https://greenlabsmi.github.io/Dutch_Touch_Brand/strains.html" class="btn btn--gold" style="width: 100%;">
                             Explore DTG Vault &rarr;
                         </a>
-                        <button id="glModalShopBtn" class="btn btn--primary" onclick="document.getElementById('glCloseModal').click(); const nav = document.querySelector('[data-open-shop]'); if(nav) nav.click();" style="width: 100%; background: #0B7D5A; color: #fff; border: none;">
+                        <button id="glModalShopBtn" class="btn btn--ghost" onclick="document.getElementById('glCloseModal').click(); const nav = document.querySelector('[data-open-shop]'); if(nav) nav.click();" style="width: auto; padding: 6px 20px; font-size: 13px; background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.15); border-radius: 4px;">
                             Shop Strain &rarr;
                         </button>
                     </div>
@@ -1320,8 +1320,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             </div>
         </div>
     </div>`;
-    
-if (!document.getElementById('glStrainModal')) {
+
+    if (!document.getElementById('glStrainModal')) {
         document.body.insertAdjacentHTML('beforeend', modalHTML);
     }
 
@@ -1350,15 +1350,19 @@ if (!document.getElementById('glStrainModal')) {
             const shopBtn = document.getElementById('glModalShopBtn');
             
             if (outOfStockList.includes(s.name)) {
-                // What happens if it IS out of stock
+                // What happens if it IS out of stock (Darker, invisible gray)
                 shopBtn.innerHTML = "Out of Stock";
-                shopBtn.style.background = "#555"; 
+                shopBtn.style.background = "transparent"; 
+                shopBtn.style.color = "#555";
+                shopBtn.style.borderColor = "#333";
                 shopBtn.style.cursor = "not-allowed";
                 shopBtn.onclick = (e) => { e.preventDefault(); }; 
             } else {
-                // What happens if it is IN stock
+                // What happens if it is IN stock (Classy, muted translucent white)
                 shopBtn.innerHTML = "Shop Strain &rarr;";
-                shopBtn.style.background = "#0B7D5A"; 
+                shopBtn.style.background = "rgba(255,255,255,0.05)"; 
+                shopBtn.style.color = "rgba(255,255,255,0.7)";
+                shopBtn.style.borderColor = "rgba(255,255,255,0.15)";
                 shopBtn.style.cursor = "pointer";
                 shopBtn.onclick = (e) => { 
                     e.preventDefault();
@@ -1369,7 +1373,6 @@ if (!document.getElementById('glStrainModal')) {
             }
             // ------------------------------
 
-            // ADDED BACK: Set the image and open the modal!
             let img = s.image ? 'https://greenlabsmi.github.io/Dutch_Touch_Brand/' + s.image : 'https://greenlabsmi.github.io/Dutch_Touch_Brand/assets/img/logo/dtg-logo-orange.png';
             if (document.getElementById('glModalImage')) {
                 document.getElementById('glModalImage').src = img;
@@ -1476,14 +1479,15 @@ setTimeout(() => {
         priceSpan.parentNode.insertBefore(rightWrap, priceSpan);
         rightWrap.appendChild(priceSpan);
 
-        // 3. Create the sleek mini button (Matches price width exactly)
+        // 3. Create the sleek mini button
         const shopBtn = document.createElement('button');
         shopBtn.className = 'btn btn--ghost deli-shop-btn';
         
-        // Includes a clean little shopping bag icon
+        // Includes the clean little shopping bag icon
         shopBtn.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg> SHOP`;
         
-        shopBtn.style.cssText = 'padding: 4px 0; font-size: 11px; font-weight: 800; border-radius: 4px; border-color: rgba(46, 248, 187, 0.4); color: #2ef8bb; background: rgba(46, 248, 187, 0.05); z-index: 10; position: relative; cursor: pointer; display: flex; align-items: center; justify-content: center; width: 100%;';
+        // THE FIX: Translucent, muted, premium style! (No more neon green)
+        shopBtn.style.cssText = 'padding: 4px 0; font-size: 11px; font-weight: 800; border-radius: 4px; border: 1px solid rgba(255, 255, 255, 0.15); color: rgba(255, 255, 255, 0.7); background: rgba(255, 255, 255, 0.05); z-index: 10; position: relative; cursor: pointer; display: flex; align-items: center; justify-content: center; width: 100%; transition: all 0.2s ease;';
         
         // The Foolproof Click Mechanism
         shopBtn.onclick = (e) => {
