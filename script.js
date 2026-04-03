@@ -1348,7 +1348,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             document.getElementById('glModalDesc').innerText = s.description;
 
             // --- OUT OF STOCK BLOCKER ---
-            const outOfStockList = ["Mr. Clean", "Spirit Hashplant"]; 
+            const outOfStockList = ["Lemon Wookie", "Angelica RSO","Forbidden Jelly","Space Hippy",]; 
             
             const shopBtn = document.getElementById('glModalShopBtn');
             
