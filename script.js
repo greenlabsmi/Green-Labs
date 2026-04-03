@@ -973,9 +973,12 @@ function renderHighlightsFromConfig(data, mount) {
         let img = it.image || '';
         if (img && img.startsWith('/assets/')) img = `.${img}`;
 
+        // The bulletproof background click trick
+        const shopClick = `event.preventDefault(); const nav = document.querySelector('[data-open-shop=\\'rec\\']') || document.querySelector('[data-open-shop]'); if(nav) nav.click();`;
+
         if (type === 'mini') {
             return `
-            <a href="#deals" class="thCard ${sizeClass}" data-open-deals>
+            <a href="#shop" class="thCard ${sizeClass}" onclick="${shopClick}">
                 <div class="thMedia" style="background-image:url('${esc(img)}')"></div>
                 <div class="thOverlay"></div>
                 <div class="thContent thContent--mini" style="position:absolute; bottom:0; width:100%;">
@@ -986,7 +989,7 @@ function renderHighlightsFromConfig(data, mount) {
             `;
         }
         return `
-        <a href="#deals" class="thCard ${sizeClass}" data-open-deals>
+        <a href="#shop" class="thCard ${sizeClass}" onclick="${shopClick}">
             <div class="thMedia" style="background-image:url('${esc(img)}')"></div>
             <div class="thOverlay"></div>
             <div class="thContent">
@@ -994,7 +997,7 @@ function renderHighlightsFromConfig(data, mount) {
                 <h3 class="thH3">${esc(it.title)}</h3>
                 ${it.price ? `<div class="thPrice">${esc(it.price)} <span class="thTaxTag">+ TAX</span></div>` : ''}
                 ${it.details ? `<div class="thDetails">${esc(it.details)}</div>` : ''}
-                <div class="thCta">Shop Deal →</div>
+                <div class="thCta">Shop Deal &rarr;</div>
             </div>
         </a>
         `;
