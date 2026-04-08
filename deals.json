@@ -21,21 +21,21 @@
         "price": "5 for $35",
         "details": "Superfire · Crude Boys · Drip",
         "tag": "VAPES",
-        "image": "assets/img/deals/hl-carts.jpg"
+        "image": "assets/img/highlights/mixmatch-carts.jpg"
       },
       "deli-oz": {
         "title": "Pina Rita Ounce Special",
         "price": "$85 / oz",
         "details": "Premium Dutch Touch Deli Flower",
         "tag": "FLOWER",
-        "image": "assets/img/deals/hl-pinarita.jpg"
+        "image": "assets/img/deals/orange-kush-cake.jpg"
       },
       "dtg-disposables": {
         "title": "DTG 1G Disposables",
         "price": "3 for $45",
         "details": "Full Gram All-in-Ones",
         "tag": "VAPES",
-        "image": "assets/img/deals/hl-dtg-dispo.jpg"
+        "image": "assets/img/deals/dt-disposables.jpg"
       },
       "mix-gummies": {
         "title": "Mix & Match Edibles",
