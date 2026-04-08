@@ -1,88 +1,67 @@
 {
   "highlights": {
     "layout": {
-      "hero": "mixmatch_carts",
+      "hero": "mix-carts",
       "mid": [
-        "dt_disposables",
-        "deli_orange_kush_cake"
+        "mix-gummies",
+        "mix-prerolls"
       ],
       "scroll": [
-        "edibles_10_40",
-        "infused_prerolls_3_20",
-        "grip_oz_2_50",
-        "sour_gorilla_1g_12"
+        "dtg-baller",
+        "fire-styxx",
+        "lightsky-carts",
+        "redbud-carts"
       ]
     },
     "items": {
-      "mixmatch_carts": {
-        "pill": "VAPES",
-        "pillClass": "thPill--vapes",
+      "mix-carts": {
         "title": "Mix & Match 1G Carts",
-        "price": "10 for $60",
-        "details": "Crude Boys · Drip · Super Fire",
-        "cta": "Shop now",
-        "href": "#deals",
-        "image": "assets/img/highlights/mixmatch-carts.jpg"
+        "price": "5 for $35",
+        "details": "Superfire · Crude Boys · Drip",
+        "tag": "VAPES",
+        "image": "assets/img/deals/hl-carts.jpg"
       },
-      "dt_disposables": {
-        "pill": "DUTCH TOUCH",
-        "pillClass": "thPill--dtg",
-        "title": "Disposables",
-        "price": "3 for $45",
-        "details": "",
-        "cta": "View deal",
-        "href": "#deals",
-        "image": "assets/img/deals/dt-disposables.jpg"
+      "mix-gummies": {
+        "title": "Mix & Match Edibles",
+        "price": "5 for $18",
+        "details": "Thunder Canna · Choice Chews · True North · Superfire",
+        "tag": "EDIBLES",
+        "image": "assets/img/deals/hl-gummies.jpg"
       },
-      "deli_orange_kush_cake": {
-        "pill": "FLOWER",
-        "pillClass": "thPill--flower",
-        "title": "Orange Kush Cake",
-        "price": "$85 oz",
-        "details": "Deli special",
-        "cta": "View deal",
-        "href": "#deals",
-        "image": "assets/img/deals/orange-kush-cake.jpg"
+      "mix-prerolls": {
+        "title": "Mix & Match Pre-Rolls",
+        "price": "5 for $15",
+        "details": "Hazy Days · Paul Bunyan · Franklin Fields · High Supply · TreeTown",
+        "tag": "FLOWER",
+        "image": "assets/img/deals/hl-prerolls.jpg"
       },
-      "edibles_10_40": {
-        "pill": "EDIBLES",
-        "pillClass": "thPill--edibles",
-        "title": "10 for $35",
-        "price": "",
-        "details": "",
-        "cta": "",
-        "href": "#deals",
-        "image": "assets/img/deals/edibles.jpg"
+      "dtg-baller": {
+        "title": "Full Spectrum Big Baller Jar",
+        "price": "$60 ea",
+        "details": "Dutch Touch Genetics Hash D Live Resin",
+        "tag": "CONCENTRATES",
+        "image": "assets/img/deals/hl-dtg-baller.jpg"
       },
-      "infused_prerolls_3_20": {
-        "pill": "INFUSED",
-        "pillClass": "thPill--prerolls",
-        "title": "Mix & Match 3 for $15",
-        "price": "",
-        "details": "",
-        "cta": "",
-        "href": "#deals",
-        "image": "assets/img/deals/infused-prerolls.jpg"
+      "fire-styxx": {
+        "title": "Fire Styxx 1g Infused Pre-Rolls",
+        "price": "$6 ea",
+        "details": "Or stock up with 10 for $50",
+        "tag": "INFUSED",
+        "image": "assets/img/deals/hl-fire-styxx.jpg"
       },
-      "grip_oz_2_50": {
-        "pill": "FLOWER",
-        "pillClass": "thPill--flower",
-        "title": "Grip oz 2 for $45",
-        "price": "",
-        "details": "",
-        "cta": "",
-        "href": "#deals",
-        "image": "assets/img/deals/grip-oz.jpg"
+      "lightsky-carts": {
+        "title": "Lightsky Farms Live Resin",
+        "price": "$25 ea",
+        "details": "Or stock up with 6 for $100",
+        "tag": "VAPES",
+        "image": "assets/img/deals/hl-lightsky.jpg"
       },
-      "sour_gorilla_1g_12": {
-        "pill": "CONCENTRATES",
-        "pillClass": "thPill--concentrates",
-        "title": "1G Sour Gorilla $10",
-        "price": "",
-        "details": "",
-        "cta": "",
-        "href": "#deals",
-        "image": "assets/img/deals/sour-gorilla-1g.jpg"
+      "redbud-carts": {
+        "title": "Redbud Roots 1g Full Spectrum",
+        "price": "$10 ea",
+        "details": "Or stock up with 3 for $25",
+        "tag": "VAPES",
+        "image": "assets/img/deals/hl-redbud.jpg"
       }
     }
   },
