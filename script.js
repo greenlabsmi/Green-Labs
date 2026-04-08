@@ -977,17 +977,17 @@ function renderHighlightsFromConfig(data, mount) {
         const shopClick = `event.preventDefault(); const nav = document.querySelector('[data-open-shop=\\'rec\\']') || document.querySelector('[data-open-shop]'); if(nav) nav.click();`;
 
         if (type === 'mini') {
-            return `
-            <a href="#shop" class="thCard ${sizeClass}" onclick="${shopClick}">
-                <div class="thMedia" style="background-image:url('${esc(img)}')"></div>
-                <div class="thOverlay"></div>
-                <div class="thContent thContent--mini" style="position:absolute; bottom:0; width:100%;">
-                    ${it.tag ? `<div class="thPill ${pillClass}">${esc(it.tag)}</div>` : ''}
-                    <div class="thMiniTitle" style="color:#fff;">${esc(it.title)}</div>
-                </div>
-            </a>
-            `;
-        }
+      return `
+        <a href="#shop" class="thCard ${sizeClass}" onclick="${shopClick}">
+          <div class="thMedia" style="background-image:url('${esc(img)}')"></div>
+          <div class="thOverlay"></div>
+          <div class="thContent thContent--mini" style="position:absolute; bottom:0; width:100%; padding: 15px;">
+            <div class="thMiniTitle" style="color:#fff; font-weight: 800; font-size: 16px; margin-bottom: 4px; line-height: 1.2;">${esc(it.title)}</div>
+            ${it.price ? `<div class="thPrice" style="font-size: 15px; color: #D6A34A; font-weight: 900;">${esc(it.price)} <span class="thTaxTag" style="font-size: 10px; opacity: 0.8;">+ TAX</span></div>` : ''}
+          </div>
+        </a>
+      `;
+    }
         return `
         <a href="#shop" class="thCard ${sizeClass}" onclick="${shopClick}">
             <div class="thMedia" style="background-image:url('${esc(img)}')"></div>
