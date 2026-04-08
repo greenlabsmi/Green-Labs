@@ -3,10 +3,12 @@
     "layout": {
       "hero": "mix-carts",
       "mid": [
-        "mix-gummies",
-        "mix-prerolls"
+        "deli-oz",
+        "dtg-disposables"
       ],
       "scroll": [
+        "mix-gummies",
+        "mix-prerolls",
         "dtg-baller",
         "fire-styxx",
         "lightsky-carts",
@@ -21,29 +23,43 @@
         "tag": "VAPES",
         "image": "assets/img/deals/hl-carts.jpg"
       },
+      "deli-oz": {
+        "title": "Pina Rita Ounce Special",
+        "price": "$85 / oz",
+        "details": "Premium Dutch Touch Deli Flower",
+        "tag": "FLOWER",
+        "image": "assets/img/deals/hl-pinarita.jpg"
+      },
+      "dtg-disposables": {
+        "title": "DTG 1G Disposables",
+        "price": "3 for $45",
+        "details": "Full Gram All-in-Ones",
+        "tag": "VAPES",
+        "image": "assets/img/deals/hl-dtg-dispo.jpg"
+      },
       "mix-gummies": {
         "title": "Mix & Match Edibles",
         "price": "5 for $18",
-        "details": "Thunder Canna · Choice Chews · True North · Superfire",
+        "details": "Thunder Canna · Choice · True North · Superfire",
         "tag": "EDIBLES",
         "image": "assets/img/deals/hl-gummies.jpg"
       },
       "mix-prerolls": {
         "title": "Mix & Match Pre-Rolls",
         "price": "5 for $15",
-        "details": "Hazy Days · Paul Bunyan · Franklin Fields · High Supply · TreeTown",
-        "tag": "FLOWER",
+        "details": "Hazy Days · Paul Bunyan · Franklin Fields · High Supply",
+        "tag": "PREROLLS",
         "image": "assets/img/deals/hl-prerolls.jpg"
       },
       "dtg-baller": {
         "title": "Full Spectrum Big Baller Jar",
         "price": "$60 ea",
         "details": "Dutch Touch Genetics Hash D Live Resin",
-        "tag": "CONCENTRATES",
+        "tag": "EXTRACTS",
         "image": "assets/img/deals/hl-dtg-baller.jpg"
       },
       "fire-styxx": {
-        "title": "Fire Styxx 1g Infused Pre-Rolls",
+        "title": "Fire Styxx 1g Infused",
         "price": "$6 ea",
         "details": "Or stock up with 10 for $50",
         "tag": "INFUSED",
@@ -57,7 +73,7 @@
         "image": "assets/img/deals/hl-lightsky.jpg"
       },
       "redbud-carts": {
-        "title": "Redbud Roots 1g Full Spectrum",
+        "title": "Redbud Roots Full Spectrum",
         "price": "$10 ea",
         "details": "Or stock up with 3 for $25",
         "tag": "VAPES",
