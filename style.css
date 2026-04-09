@@ -4211,3 +4211,30 @@ main + .section--light {
   box-shadow: 0 16px 40px rgba(0,0,0,0.08); /* Soft premium shadow */
   background: #ffffff;
 }
+
+/* =========================================
+   MOBILE "PEEK & FADE" SCROLL REVEAL FIX
+   ========================================= */
+@media (max-width: 640px) {
+    /* 1. The Peek: Shrink the tiles slightly so the next one ALWAYS gets cut in half */
+    #todays-highlights .thMini {
+        width: 150px;
+        height: 140px; 
+    }
+
+    /* 2. The Fade: Create a fog gradient on the right edge so cards fade off-screen */
+    #todays-highlights .thRow {
+        -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
+        mask-image: linear-gradient(to right, black 85%, transparent 100%);
+        padding-right: 60px !important; /* Ensures the last card can scroll past the fade */
+    }
+    
+    /* 3. Pull the text padding tighter so it still looks perfect on the smaller card */
+    #todays-highlights .thContent--mini {
+        padding: 12px !important;
+    }
+    
+    #todays-highlights .thMiniTitle {
+        font-size: 14px !important; 
+    }
+}
