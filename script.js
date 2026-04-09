@@ -1000,42 +1000,6 @@ function renderHighlightsFromConfig(data, mount) {
           </div>
         </a>
       `;
-    };const cardHTML = (it, type) => {
-      if (!it) return '';
-      let sizeClass = type === 'hero' ? 'thHero thReveal' : type === 'mid' ? 'thMid thReveal' : 'thMini';
-      const pillClass = it.tag ? `thPill--${it.tag.toLowerCase().replace(/[^a-z]/g, '')}` : '';
-      let img = it.image || '';
-      if (img && img.startsWith('/assets/')) img = `.${img}`;
-
-      const shopClick = `event.preventDefault(); const nav = document.querySelector('[data-open-shop=\\'rec\\']') || document.querySelector('[data-open-shop]'); if(nav) nav.click();`;
-
-      // NEW CLEAN LAYOUT: Small scroller tiles only show the Title
-      if (type === 'mini') {
-        return `
-          <a href="#shop" class="thCard ${sizeClass}" onclick="${shopClick}">
-            <div class="thMedia" style="background-image:url('${esc(img)}')"></div>
-            <div class="thOverlay"></div>
-            <div class="thContent thContent--mini" style="position:absolute; bottom:0; width:100%; padding: 15px; box-sizing: border-box;">
-              <div class="thMiniTitle" style="color:#fff; font-weight: 900; font-size: 16px; line-height: 1.2; text-shadow: 0 2px 8px rgba(0,0,0,0.8);">${esc(it.title)}</div>
-            </div>
-          </a>
-        `;
-      }
-
-      // ORIGINAL PREMIUM LAYOUT: Hero and Mid cards keep their tags, prices, and buttons
-      return `
-        <a href="#shop" class="thCard ${sizeClass}" onclick="${shopClick}">
-          <div class="thMedia" style="background-image:url('${esc(img)}')"></div>
-          <div class="thOverlay"></div>
-          <div class="thContent">
-            ${it.tag ? `<div class="thPill ${pillClass}">${esc(it.tag)}</div>` : ''}
-            <h3 class="thH3">${esc(it.title)}</h3>
-            ${it.price ? `<div class="thPrice">${esc(it.price)} <span class="thTaxTag">+ TAX</span></div>` : ''}
-            ${it.details ? `<div class="thDetails">${esc(it.details)}</div>` : ''}
-            <div class="thCta">Shop Deal &rarr;</div>
-          </div>
-        </a>
-      `;
     };
 
     mount.innerHTML = `
