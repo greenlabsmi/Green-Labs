@@ -2500,8 +2500,8 @@ header, nav, section, .container, .wrap, .row {
 #todays-highlights .thHero{ height:460px; }
 #todays-highlights .thMid{ height:230px; border-radius:20px; }
 #todays-highlights .thMini{
-  height: 220px; /* Bumped up from 170px */
-  width: 220px;  /* Bumped up from 190px */
+  height: 215px; /* Dropped down slightly to fix the edge bleed */
+  width: 230px;  /* Pulled wider for a cleaner aspect ratio */
   border-radius: 18px;
   flex: 0 0 auto;
 }
