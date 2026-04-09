@@ -2615,6 +2615,12 @@ header, nav, section, .container, .wrap, .row {
   color:#121614;
 }
 
+/* Center and zoom the small scrolling tiles to cut out empty Canva space */
+#todays-highlights .thMini .thMedia {
+  background-position: center;
+  background-size: 130%; 
+}
+
 /* HERO: turn content into a vertical layout that can "push" items down */
 #todays-highlights .thHero .thContent{
   position:absolute;
