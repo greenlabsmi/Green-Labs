@@ -981,9 +981,8 @@ function renderHighlightsFromConfig(data, mount) {
         <a href="#shop" class="thCard ${sizeClass}" onclick="${shopClick}">
           <div class="thMedia" style="background-image:url('${esc(img)}')"></div>
           <div class="thOverlay"></div>
-          <div class="thContent thContent--mini" style="position:absolute; bottom:0; width:100%; padding: 15px;">
-            <div class="thMiniTitle" style="color:#fff; font-weight: 800; font-size: 16px; margin-bottom: 4px; line-height: 1.2;">${esc(it.title)}</div>
-            ${it.price ? `<div class="thPrice" style="font-size: 15px; color: #D6A34A; font-weight: 900;">${esc(it.price)} <span class="thTaxTag" style="font-size: 10px; opacity: 0.8;">+ TAX</span></div>` : ''}
+          <div class="thContent thContent--mini" style="position:absolute; bottom:0; width:100%; padding: 18px;">
+            <div class="thMiniTitle" style="color:#fff; font-weight: 900; font-size: 17px; line-height: 1.2; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">${esc(it.title)}</div>
           </div>
         </a>
       `;
