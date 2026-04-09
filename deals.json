@@ -17,66 +17,39 @@
     },
     "items": {
       "mix-carts": {
-        "title": "Mix & Match 1G Carts",
-        "price": "5 for $35",
-        "details": "Superfire · Crude Boys · Drip",
-        "tag": "VAPES",
-        "image": "assets/img/highlights/mixmatch-carts.jpg"
+        "title": "Mix & Match 1G Carts 5 for $35",
+        "image": "assets/img/deals/hl-carts.jpg"
       },
       "deli-oz": {
-        "title": "Pina Rita Ounce Special",
-        "price": "$85 / oz",
-        "details": "Premium Dutch Touch Deli Flower",
-        "tag": "FLOWER",
-        "image": "assets/img/deals/orange-kush-cake.jpg"
+        "title": "Pina Rita Ounce Special $85",
+        "image": "assets/img/deals/hl-pinarita.jpg"
       },
       "dtg-disposables": {
-        "title": "DTG 1G Disposables",
-        "price": "3 for $45",
-        "details": "Full Gram All-in-Ones",
-        "tag": "VAPES",
-        "image": "assets/img/deals/dt-disposables.jpg"
+        "title": "DTG 1G Disposables 3 for $45",
+        "image": "assets/img/deals/hl-dtg-dispo.jpg"
       },
       "mix-gummies": {
-        "title": "Mix & Match Edibles",
-        "price": "5 for $18",
-        "details": "Thunder Canna · Choice · True North · Superfire",
-        "tag": "EDIBLES",
+        "title": "Mix & Match Edibles 5 for $18",
         "image": "assets/img/deals/hl-gummies.jpg"
       },
       "mix-prerolls": {
-        "title": "Mix & Match Pre-Rolls",
-        "price": "5 for $15",
-        "details": "Hazy Days · Paul Bunyan · Franklin Fields · High Supply",
-        "tag": "PREROLLS",
+        "title": "Mix & Match Pre-Rolls 5 for $15",
         "image": "assets/img/deals/hl-prerolls.jpg"
       },
       "dtg-baller": {
-        "title": "Full Spectrum Big Baller Jar",
-        "price": "$60 ea",
-        "details": "Dutch Touch Genetics Hash D Live Resin",
-        "tag": "EXTRACTS",
+        "title": "14g Live Resin Big Baller Jar $50",
         "image": "assets/img/deals/hl-dtg-baller.jpg"
       },
       "fire-styxx": {
-        "title": "Fire Styxx 1g Infused",
-        "price": "$6 ea",
-        "details": "Or stock up with 10 for $50",
-        "tag": "INFUSED",
+        "title": "Fire Styxx Infused 10 for $50",
         "image": "assets/img/deals/hl-fire-styxx.jpg"
       },
       "lightsky-carts": {
-        "title": "Lightsky Farms Live Resin",
-        "price": "$25 ea",
-        "details": "Or stock up with 6 for $100",
-        "tag": "VAPES",
+        "title": "Lightsky Farms Live Resin 6 for $100",
         "image": "assets/img/deals/hl-lightsky.jpg"
       },
       "redbud-carts": {
-        "title": "Redbud Roots Full Spectrum",
-        "price": "$10 ea",
-        "details": "Or stock up with 3 for $25",
-        "tag": "VAPES",
+        "title": "Redbud 1g Full Spectrum 3 for $25",
         "image": "assets/img/deals/hl-redbud.jpg"
       }
     }
