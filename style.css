@@ -2394,12 +2394,8 @@ header, nav, section, .container, .wrap, .row {
    Paste ABOVE the Reduced motion block
 ========================================================= */
 #todays-highlights.thSection{
-  background:
-    radial-gradient(900px 360px at 18% 0%,
-      rgba(11,125,90,.10) 0%,
-      rgba(248,249,246,0) 55%),
-    linear-gradient(180deg, #F7F8F6 0%, #F4F5F2 100%);
-  padding:56px 0 44px;
+  background: radial-gradient(900px 360px at 18% 0%, rgba(11,125,90,.10) 0%, rgba(248,249,246,0) 55%), linear-gradient(180deg, #F7F8F6 0%, #F4F5F2 100%);
+  padding: 56px 0 16px; /* Shrinks the massive gap at the bottom */
   border-top: 1px solid rgba(0,0,0,.06);
   border-bottom: 1px solid rgba(0,0,0,.06);
 }
@@ -2503,7 +2499,12 @@ header, nav, section, .container, .wrap, .row {
 
 #todays-highlights .thHero{ height:460px; }
 #todays-highlights .thMid{ height:230px; border-radius:20px; }
-#todays-highlights .thMini{ height:170px; width:190px; border-radius:18px; flex:0 0 auto; }
+#todays-highlights .thMini{
+  height: 220px; /* Bumped up from 170px */
+  width: 220px;  /* Bumped up from 190px */
+  border-radius: 18px;
+  flex: 0 0 auto;
+}
 
 #todays-highlights .thPill{
   display:inline-flex;
@@ -3865,9 +3866,9 @@ main + .section--light {
    TASK 3: "MORE DEALS" TRACK & SCROLLBAR
    ========================================= */
 
-/* 1. Remove the "Track" box completely */
+/* 1. Remove the "Track" box completely & tighten the top gap */
 #todays-highlights .thRowWrap {
-    margin-top: 34px;
+    margin-top: 16px; /* Pulled up from 34px to close the gap */
     background: transparent;
     padding: 0;
     border-radius: 0;
@@ -3875,11 +3876,9 @@ main + .section--light {
     border: none;
 }
 
-/* 2. Re-align the title */
+/* 2. Kill the redundant "More Deals" text */
 #todays-highlights .thRowTitle {
-    padding: 0; 
-    margin-bottom: 14px;
-    font-size: 14px;
+    display: none; 
 }
 
 /* 3. Break the scroller out edge-to-edge like the Deli/Strains */
