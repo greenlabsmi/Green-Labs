@@ -973,19 +973,21 @@ function renderHighlightsFromConfig(data, mount) {
 
       const shopClick = `event.preventDefault(); const nav = document.querySelector('[data-open-shop=\\'rec\\']') || document.querySelector('[data-open-shop]'); if(nav) nav.click();`;
 
-      // NEW CLEAN LAYOUT: Small scroller tiles only show the Title
+      // NEW CLEAN LAYOUT: Small scroller tiles with auto-colored prices
       if (type === 'mini') {
+        // Magically finds prices (like "$50" or "5 for $18") and makes them Green, larger, and on a new line
+        const smartTitle = esc(it.title).replace(/(\d+\s+for\s+\$\d+|\$\d+)/gi, '<span style="color: #2ef8bb; display: block; font-size: 19px; margin-top: 4px; font-weight: 950; text-shadow: 0 2px 10px rgba(0,0,0,1);">$1</span>');
+
         return `
           <a href="#shop" class="thCard ${sizeClass}" onclick="${shopClick}">
             <div class="thMedia" style="background-image:url('${esc(img)}')"></div>
-            <div class="thOverlay"></div>
-            <div class="thContent thContent--mini" style="position:absolute; bottom:0; width:100%; padding: 15px; box-sizing: border-box;">
-              <div class="thMiniTitle" style="color:#fff; font-weight: 900; font-size: 16px; line-height: 1.2; text-shadow: 0 2px 8px rgba(0,0,0,0.8);">${esc(it.title)}</div>
+            <div class="thOverlay" style="background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 45%, rgba(0,0,0,0.3) 65%, rgba(0,0,0,0.9) 100%);"></div>
+            <div class="thContent thContent--mini" style="position:absolute; bottom:0; width:100%; padding: 16px; box-sizing: border-box;">
+              <div class="thMiniTitle" style="color:#fff; font-weight: 800; font-size: 15px; line-height: 1.2; text-shadow: 0 2px 8px rgba(0,0,0,0.9);">${smartTitle}</div>
             </div>
           </a>
         `;
       }
-
       // ORIGINAL PREMIUM LAYOUT: Hero and Mid cards keep their tags, prices, and buttons
       return `
         <a href="#shop" class="thCard ${sizeClass}" onclick="${shopClick}">
