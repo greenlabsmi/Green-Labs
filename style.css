@@ -4277,7 +4277,7 @@ main + .section--light {
 
 /* Modern Grid Layout for Desktop */
 @media (min-width: 768px) {
-  .buyGuide__inner {
+  .buyGuide__cards { /* <--- Changed this from .buyGuide__inner */
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
     gap: 30px; 
