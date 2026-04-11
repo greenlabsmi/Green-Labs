@@ -1234,6 +1234,7 @@ header, nav, section, .container, .wrap, .row {
 .buyGuide__inner{
   width:min(1180px, 100%);
   margin:0 auto;
+  padding-bottom: 60px;
 }
 
 .buyGuide__intro{
