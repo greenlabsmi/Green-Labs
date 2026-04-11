@@ -4243,3 +4243,20 @@ main + .section--light {
         font-size: 15px !important; 
     }
 }
+
+/* =========================================
+   SMART CENTERING FOR SCROLL GRIDS
+   Centers tiles on wide screens if they fit, 
+   but safely defaults to left-scroll if they overflow!
+   ========================================= */
+@media (min-width: 1024px) {
+    .strain-grid > *:first-child,
+    #apparel-grid > *:first-child {
+        margin-left: auto !important;
+    }
+    
+    .strain-grid > *:last-child,
+    #apparel-grid > *:last-child {
+        margin-right: auto !important;
+    }
+}
