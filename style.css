@@ -4062,10 +4062,10 @@ main + .section--light {
    GREEN LABS GUIDE: TIGHT & PUNCHY
    ========================================= */
 
-/* 1. Kill the excess empty space */
+/* 1. Standardize the section padding */
 #guide-section {
-  background-color: #f9f9f7;
-  padding: 60px 0; /* Cut almost in half from before */
+    background-color: #f9f9f7;
+    padding: 60px 0 80px; /* 60px top, 0 sides, 80px bottom to match other sections */
 }
 
 #guide-section p {
