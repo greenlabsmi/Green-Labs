@@ -4005,13 +4005,13 @@ main + .section--light {
    ========================================= */
 
 /* The main section container */
-#guide-section {
+.buyGuide {
   background-color: #f9f9f7; /* A very slight off-white/cream for less eye strain */
   padding: 100px 0;
 }
 
 /* Big Intro Header */
-#guide-section h1 {
+.buyGuide h1 {
   font-family: 'Inter', sans-serif;
   font-weight: 900;
   font-size: clamp(32px, 5vw, 48px); /* Fluid sizing: big but not overwhelming */
@@ -4022,7 +4022,7 @@ main + .section--light {
 }
 
 /* Intro Paragraph */
-#guide-section .intro-text {
+.buyGuide .intro-text {
   font-size: 20px; /* Larger for 40+ readability */
   line-height: 1.6;
   color: #4a4a4a;
@@ -4043,7 +4043,7 @@ main + .section--light {
 }
 
 /* Question Headers (e.g., WHAT ARE TERPENES?) */
-#guide-section h2 {
+.buyGuide h2 {
   font-family: 'Playfair Display', serif; /* Or your main site serif */
   font-weight: 700;
   font-size: 38px;
@@ -4052,7 +4052,7 @@ main + .section--light {
 }
 
 /* Body Content */
-#guide-section p {
+.buyGuide p {
   font-size: 18px; /* The "sweet spot" for comfortable reading */
   line-height: 1.8; /* Extra breathing room between lines */
   color: #333;
@@ -4063,12 +4063,12 @@ main + .section--light {
    ========================================= */
 
 /* 1. Standardize the section padding */
-#guide-section {
+.buyGuide {
     background-color: #f9f9f7;
     padding: 60px 0 80px; /* 60px top, 0 sides, 80px bottom to match other sections */
 }
 
-#guide-section p {
+.buyGuide p {
   font-size: 16px; /* Back to a normal, standard size */
   line-height: 1.5; /* Tighter line spacing */
   color: #333;
@@ -4076,7 +4076,7 @@ main + .section--light {
 }
 
 /* 2. Make the Questions POP */
-#guide-section h2 {
+.buyGuide h2 {
   font-family: 'Inter', sans-serif;
   font-weight: 900; /* Maximum boldness */
   font-size: 32px; 
@@ -4099,14 +4099,14 @@ main + .section--light {
 }
 
 /* Big Intro Header */
-#guide-section h1 {
+.buyGuide h1 {
   font-family: 'Inter', sans-serif;
   font-weight: 900;
   font-size: 36px;
   color: #1a1a1a;
   margin-bottom: 16px;
 }
-#guide-section .intro-text {
+.buyGuide .intro-text {
   font-size: 18px;
   color: #4a4a4a;
   max-width: 700px;
@@ -4114,7 +4114,7 @@ main + .section--light {
 }
 
 /* 3. FIX THE MASSIVE IMAGE / TILE */
-#guide-section img {
+.buyGuide img {
   width: 100%;
   height: auto;
   max-height: 380px; /* The Magic Fix: Forces the image to stop growing */
