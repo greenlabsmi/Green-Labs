@@ -4274,19 +4274,4 @@ main + .section--light {
   line-height: 1.2;
   letter-spacing: -0.5px; 
 }
-
-/* Modern Grid Layout for Desktop */
-@media (min-width: 768px) {
-  .buyGuide__cards { /* <--- Changed this from .buyGuide__inner */
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-    gap: 30px; 
-    align-items: stretch; 
-  }
-  
-  .guideCard {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
 }
