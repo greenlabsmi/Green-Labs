@@ -2619,8 +2619,9 @@ header, nav, section, .container, .wrap, .row {
 
 /* Center and zoom the small scrolling tiles to cut out empty Canva space */
 #todays-highlights .thMini .thMedia {
-  background-position: center;
-  background-size: 130%; 
+    background-position: center; 
+    background-size: cover; 
+    background-repeat: no-repeat;
 }
 
 /* HERO: turn content into a vertical layout that can "push" items down */
@@ -4222,11 +4223,11 @@ main + .section--light {
    MOBILE "PEEK & FADE" SCROLL REVEAL FIX
    ========================================= */
 @media (max-width: 640px) {
-    /* 1. Make the cards bigger now that the box is gone! */
-    #todays-highlights .thMini {
-        width: 165px;
-        height: 165px; 
-    }
+    /* 1. Make the cards bigger now that the box is gone! */ 
+#todays-highlights .thMini {
+    width: 185px; 
+    height: 200px; 
+}
 
     /* 2. The Fade: Create a fog gradient on the right edge */
     #todays-highlights .thRow {
