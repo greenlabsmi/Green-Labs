@@ -719,7 +719,6 @@
 
     <div class="buyGuide__cards">
 
-      <!-- CARD 1 -->
       <article class="guideCard" data-guide-card>
         <div class="guideCard__shell">
           <div class="guideCard__main">
@@ -731,20 +730,10 @@
                 terpenes are usually a big part of the reason why. They shape aroma, flavor,
                 and often the kind of experience you actually have.
               </p>
-
-             <div class="guideCard__expand">
-        <div class="guideCard__expandInner"> ... </div>
-    </div>
-
-    <button class="guideCard__toggle" type="button" aria-expanded="false" style="margin: 0 auto 30px; display: flex;">
-        <span class="guideCard__toggleText">Read the full answer</span>
-        <span class="guideCard__toggleIcon" aria-hidden="true">+</span>
-    </button>
-</div> ```
+            </div>
 
             <div class="guideCard__media">
               <div class="guideCard__imageWrap">
-                <!-- Replace with your Canva asset -->
                 <img src="assets/img/education-terpenes-colt.jpg" alt="Terpene education graphic" class="guideCard__image" loading="lazy" />
               </div>
             </div>
@@ -768,75 +757,51 @@
                 are terpene tested, which helps us guide people toward the kind of experience they are actually looking for.
               </p>
 
-             <div style="position: relative;">
-      
+              <div style="position: relative;">
+                <div class="guideChips" aria-label="Common terpenes">
+                  <button class="guideChip" onclick="openTerp(this)" data-title="Myrcene" data-desc="The most abundant terpene in modern cannabis, and is often the “dominant” terpene for many strains. Mostly associated with heavy sedative effects, however, when paired with energetic or euphoric terpenes it can help add to the stimulating profile." style="background: rgba(230, 122, 0, 0.1); border-color: rgba(230, 122, 0, 0.3); color: #B25A00; cursor: pointer;">Myrcene · relaxing</button>
+                  
+                  <button class="guideChip" onclick="openTerp(this)" data-title="Limonene" data-desc="Often directly associated with the smell of lemons, limonene offers a bright and energetic experience that often helps combat depression and anxiety. When paired with “Indica” associated terpenes, it will often offer a giggly or upbeat feel to an otherwise sedative strain (see Clusterfunk or Death Star)" style="background: rgba(214, 163, 74, 0.15); border-color: rgba(214, 163, 74, 0.4); color: #8A5B10; cursor: pointer;">Limonene · bright</button>
+                  
+                  <button class="guideChip" onclick="openTerp(this)" data-title="Pinene" data-desc="Commonly found in pine trees, this terpene is associated with an invigorated energy, pinene boasts anti-inflammatory, anti-biotic, and bronchodilating effects. As a bronchodilator, pinene helps to increase blood flow, open airways, and relax lung muscles" style="background: rgba(11, 125, 90, 0.1); border-color: rgba(11, 125, 90, 0.3); color: #0B7D5A; cursor: pointer;">Pinene · clear</button>
+                  
+                  <button class="guideChip" onclick="openTerp(this)" data-title="Caryophyllene" data-desc="Championed for its anti-inflammatory effects due to its ability to bond to the CB2 cannabinoid receptor, this terpene makes for one of the most effective for pain relief. Caryophyllene is typically associated with the “couch lock” effect of indicas, especially when paired with high amounts of myrcene" style="background: rgba(138, 91, 226, 0.1); border-color: rgba(138, 91, 226, 0.3); color: #5a2e98; cursor: pointer;">Caryophyllene · grounding</button>
+                  
+                  <button class="guideChip" onclick="openTerp(this)" data-title="Linalool" data-desc="Often associated with lavender due to its high concentration in the plant, linalool is commonly talked about for its use in reducing anxiety and depression, as well as reducing the bodies response to physical stress. It also believed to help reduce the strength of pain signals and responses in the body" style="background: rgba(74, 144, 226, 0.1); border-color: rgba(74, 144, 226, 0.3); color: #2e629b; cursor: pointer;">Linalool · calming</button>
 
-      <div class="guideChips" aria-label="Common terpenes">
-  <button class="guideChip" onclick="openTerp(this)" data-title="Myrcene" data-desc="The most abundant terpene in modern cannabis, and is often the “dominant” terpene for many strains. Mostly associated with heavy sedative effects, however, when paired with energetic or euphoric terpenes it can help add to the stimulating profile." style="background: rgba(230, 122, 0, 0.1); border-color: rgba(230, 122, 0, 0.3); color: #B25A00; cursor: pointer;">Myrcene · relaxing</button>
-  
-  <button class="guideChip" onclick="openTerp(this)" data-title="Limonene" data-desc="Often directly associated with the smell of lemons, limonene offers a bright and energetic experience that often helps combat depression and anxiety. When paired with “Indica” associated terpenes, it will often offer a giggly or upbeat feel to an otherwise sedative strain (see Clusterfunk or Death Star)" style="background: rgba(214, 163, 74, 0.15); border-color: rgba(214, 163, 74, 0.4); color: #8A5B10; cursor: pointer;">Limonene · bright</button>
-  
-  <button class="guideChip" onclick="openTerp(this)" data-title="Pinene" data-desc="Commonly found in pine trees, this terpene is associated with an invigorated energy, pinene boasts anti-inflammatory, anti-biotic, and bronchodilating effects. As a bronchodilator, pinene helps to increase blood flow, open airways, and relax lung muscles" style="background: rgba(11, 125, 90, 0.1); border-color: rgba(11, 125, 90, 0.3); color: #0B7D5A; cursor: pointer;">Pinene · clear</button>
-  
-  <button class="guideChip" onclick="openTerp(this)" data-title="Caryophyllene" data-desc="Championed for its anti-inflammatory effects due to its ability to bond to the CB2 cannabinoid receptor, this terpene makes for one of the most effective for pain relief. Caryophyllene is typically associated with the “couch lock” effect of indicas, especially when paired with high amounts of myrcene" style="background: rgba(138, 91, 226, 0.1); border-color: rgba(138, 91, 226, 0.3); color: #5a2e98; cursor: pointer;">Caryophyllene · grounding</button>
-  
-  <button class="guideChip" onclick="openTerp(this)" data-title="Linalool" data-desc="Often associated with lavender due to its high concentration in the plant, linalool is commonly talked about for its use in reducing anxiety and depression, as well as reducing the bodies response to physical stress. It also believed to help reduce the strength of pain signals and responses in the body" style="background: rgba(74, 144, 226, 0.1); border-color: rgba(74, 144, 226, 0.3); color: #2e629b; cursor: pointer;">Linalool · calming</button>
+                  <button class="guideChip" onclick="openTerp(this)" data-title="Humulene" data-desc="Known most widely for its hops smell and appetite suppressing properties, humulene is uniquely effective because it possesses anti-inflammatory and allergy relieving effects, while not being sedative or sleepy. It also has promising cancer fighting properties when paired with other specific cannabinoids & terpenes." style="background: rgba(124, 141, 76, 0.1); border-color: rgba(124, 141, 76, 0.3); color: #7c8d4c; cursor: pointer;">Humulene · relieving</button>
 
-  <button class="guideChip" onclick="openTerp(this)" data-title="Humulene" data-desc="Known most widely for its hops smell and appetite suppressing properties, humulene is uniquely effective because it possesses anti-inflammatory and allergy relieving effects, while not being sedative or sleepy. It also has promising cancer fighting properties when paired with other specific cannabinoids & terpenes." style="background: rgba(124, 141, 76, 0.1); border-color: rgba(124, 141, 76, 0.3); color: #7c8d4c; cursor: pointer;">Humulene · relieving</button>
+                  <button class="guideChip" onclick="openTerp(this)" data-title="Terpinolene" data-desc="Characterized by a complex, fresh aroma of pine, flowers, and citrus. Terpinolene is a multifaceted terpene that often provides an uplifting and energetic experience, making it popular in daytime strains. It also boasts antibacterial, antioxidant, and potential cancer-fighting properties." style="background: rgba(211, 107, 118, 0.1); border-color: rgba(211, 107, 118, 0.3); color: #d36b76; cursor: pointer;">Terpinolene · uplifting</button>
 
-  <button class="guideChip" onclick="openTerp(this)" data-title="Terpinolene" data-desc="Characterized by a complex, fresh aroma of pine, flowers, and citrus. Terpinolene is a multifaceted terpene that often provides an uplifting and energetic experience, making it popular in daytime strains. It also boasts antibacterial, antioxidant, and potential cancer-fighting properties." style="background: rgba(211, 107, 118, 0.1); border-color: rgba(211, 107, 118, 0.3); color: #d36b76; cursor: pointer;">Terpinolene · uplifting</button>
+                  <button class="guideChip" onclick="openTerp(this)" data-title="Valencene" data-desc="Boasting anti-inflammatory, anti-allergy/adjuvant (or immune boosting) effects, Valencene promises an alert, bubbly experience. It is similar to limonene in its effects, however, valencene is categorized specifically by a deeply orange, citrus zest. Valencene is also a more rare form of terpene, a sesquiterpene, priding itself also with its neuroprotective qualities." style="background: rgba(226, 122, 29, 0.1); border-color: rgba(226, 122, 29, 0.3); color: #e27a1d; cursor: pointer;">Valencene · bubbly</button>
 
-  <button class="guideChip" onclick="openTerp(this)" data-title="Valencene" data-desc="Boasting anti-inflammatory, anti-allergy/adjuvant (or immune boosting) effects, Valencene promises an alert, bubbly experience. It is similar to limonene in its effects, however, valencene is categorized specifically by a deeply orange, citrus zest. Valencene is also a more rare form of terpene, a sesquiterpene, priding itself also with its neuroprotective qualities." style="background: rgba(226, 122, 29, 0.1); border-color: rgba(226, 122, 29, 0.3); color: #e27a1d; cursor: pointer;">Valencene · bubbly</button>
+                  <button class="guideChip" onclick="openTerp(this)" data-title="Ocimene" data-desc="Found abundantly throughout the plant kingdom, named after Greek Basil, ocimene is often used in cosmetics, specifically skin care products. This terpene offers anti-inflammatory, decongestive effects, and acts as a stimulant. Ocimene seems to perform best when paired with myrcene and pinene." style="background: rgba(94, 163, 101, 0.1); border-color: rgba(94, 163, 101, 0.3); color: #5ea365; cursor: pointer;">Ocimene · decongestive</button>
 
-  <button class="guideChip" onclick="openTerp(this)" data-title="Ocimene" data-desc="Found abundantly throughout the plant kingdom, named after Greek Basil, ocimene is often used in cosmetics, specifically skin care products. This terpene offers anti-inflammatory, decongestive effects, and acts as a stimulant. Ocimene seems to perform best when paired with myrcene and pinene." style="background: rgba(94, 163, 101, 0.1); border-color: rgba(94, 163, 101, 0.3); color: #5ea365; cursor: pointer;">Ocimene · decongestive</button>
+                  <button class="guideChip" onclick="openTerp(this)" data-title="Nerolidol" data-desc="Studies show that it may be effective at treating systemic kinds of inflammation, lending specific interest to those with chronic conditions like asthma, arthritis, and fibromyalgia. Nerolidol is often found in cleaning supplies and cosmetics used for its pleasant floral and sometimes citrusy scent, but is highly effective when used for sleep-aid and hinders cell-mutation." style="background: rgba(175, 126, 188, 0.1); border-color: rgba(175, 126, 188, 0.3); color: #af7ebc; cursor: pointer;">Nerolidol · soothing</button>
 
-  <button class="guideChip" onclick="openTerp(this)" data-title="Nerolidol" data-desc="Studies show that it may be effective at treating systemic kinds of inflammation, lending specific interest to those with chronic conditions like asthma, arthritis, and fibromyalgia. Nerolidol is often found in cleaning supplies and cosmetics used for its pleasant floral and sometimes citrusy scent, but is highly effective when used for sleep-aid and hinders cell-mutation." style="background: rgba(175, 126, 188, 0.1); border-color: rgba(175, 126, 188, 0.3); color: #af7ebc; cursor: pointer;">Nerolidol · soothing</button>
+                  <button class="guideChip" onclick="openTerp(this)" data-title="Guaiol" data-desc="Helping to reduce the body's response to chronic inflammatory pain like Nerolidol, guaiol exhibits a similar smell profile and use outside of cannabis. In traditional holistic medicine it has been used to lower blood pressure and treat sore throat, and offers additional anti-bacterial, and cancer fighting properties." style="background: rgba(85, 137, 166, 0.1); border-color: rgba(85, 137, 166, 0.3); color: #5589a6; cursor: pointer;">Guaiol · healing</button>
 
-  <button class="guideChip" onclick="openTerp(this)" data-title="Guaiol" data-desc="Helping to reduce the body's response to chronic inflammatory pain like Nerolidol, guaiol exhibits a similar smell profile and use outside of cannabis. In traditional holistic medicine it has been used to lower blood pressure and treat sore throat, and offers additional anti-bacterial, and cancer fighting properties." style="background: rgba(85, 137, 166, 0.1); border-color: rgba(85, 137, 166, 0.3); color: #5589a6; cursor: pointer;">Guaiol · healing</button>
+                  <button class="guideChip" onclick="openTerp(this)" data-title="Bisabolol" data-desc="Bisabolol is a recurring component in Chamomile, which is an herb often used in skincare products for its anti-inflammatory and moisturizing effects on the skin. While it does offer a sweet floral scent, bisabolol is of more particular interest to those with chronic pain, in particular neuropathic pain. This terpene helps to block the body's pain signals and subsequently assists with gut health." style="background: rgba(209, 174, 69, 0.1); border-color: rgba(209, 174, 69, 0.3); color: #d1ae45; cursor: pointer;">Bisabolol · pain-blocking</button>
 
-  <button class="guideChip" onclick="openTerp(this)" data-title="Bisabolol" data-desc="Bisabolol is a recurring component in Chamomile, which is an herb often used in skincare products for its anti-inflammatory and moisturizing effects on the skin. While it does offer a sweet floral scent, bisabolol is of more particular interest to those with chronic pain, in particular neuropathic pain. This terpene helps to block the body's pain signals and subsequently assists with gut health." style="background: rgba(209, 174, 69, 0.1); border-color: rgba(209, 174, 69, 0.3); color: #d1ae45; cursor: pointer;">Bisabolol · pain-blocking</button>
+                  <button class="guideChip" onclick="openTerp(this)" data-title="Cymene" data-desc="Found in cumin and thyme, cymene offers a warm, woody, and slightly citrusy aroma. It is widely recognized for its strong antibacterial and antimicrobial properties. Emerging research suggests it also acts as a powerful anti-inflammatory and pain-reliever, while protecting the brain from oxidative stress." style="background: rgba(162, 145, 80, 0.1); border-color: rgba(162, 145, 80, 0.3); color: #a29150; cursor: pointer;">Cymene · antimicrobial</button>
+                </div>
+              </div>
 
-  <button class="guideChip" onclick="openTerp(this)" data-title="Cymene" data-desc="Found in cumin and thyme, cymene offers a warm, woody, and slightly citrusy aroma. It is widely recognized for its strong antibacterial and antimicrobial properties. Emerging research suggests it also acts as a powerful anti-inflammatory and pain-reliever, while protecting the brain from oxidative stress." style="background: rgba(162, 145, 80, 0.1); border-color: rgba(162, 145, 80, 0.3); color: #a29150; cursor: pointer;">Cymene · antimicrobial</button>
-</div>
-
-    </div>
-
-    <div style="margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(0,0,0,0.1); display: flex; gap: 10px; flex-wrap: wrap;">
-      <p style="width: 100%; margin: 0 0 8px; font-size: 13px; font-weight: 800; color: rgba(17,17,17,.6);">Save these guides to your phone:</p>
-      <a href="assets/img/terpene-guide.pdf" download class="btn btn--ghost" style="font-size: 13px; color: #0B7D5A; border-color: rgba(11,125,90,0.3); background: rgba(11,125,90,0.05);">↓ Terpene Guide</a>
-      <a href="assets/img/green-labs-flyer.pdf" download class="btn btn--ghost" style="font-size: 13px; color: #0B7D5A; border-color: rgba(11,125,90,0.3); background: rgba(11,125,90,0.05);">↓ Green Labs Flyer</a>
-    </div>
-
-    <script>
-  function openTerp(btn) {
-    document.getElementById('terpModalTitle').innerText = btn.getAttribute('data-title');
-    document.getElementById('terpModalTitle').style.color = window.getComputedStyle(btn).color;
-    document.getElementById('terpModalDesc').innerText = btn.getAttribute('data-desc');
-    document.getElementById('terpModalWrapper').style.display = 'block';
-    document.body.style.overflow = 'hidden'; // Prevents background scrolling while reading
-  }
-
-  // Close when clicking the dark background
-  document.getElementById('terpModalWrapper').addEventListener('click', function(event) {
-    if (event.target === this) {
-      this.style.display = 'none';
-      document.body.style.overflow = '';
-    }
-  });
-  
-  // X button function
-  function closeTerpModal() {
-    document.getElementById('terpModalWrapper').style.display = 'none';
-    document.body.style.overflow = '';
-  }
-</script>
-
+              <div style="margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(0,0,0,0.1); display: flex; gap: 10px; flex-wrap: wrap;">
+                <p style="width: 100%; margin: 0 0 8px; font-size: 13px; font-weight: 800; color: rgba(17,17,17,.6);">Save these guides to your phone:</p>
+                <a href="assets/img/terpene-guide.pdf" download class="btn btn--ghost" style="font-size: 13px; color: #0B7D5A; border-color: rgba(11,125,90,0.3); background: rgba(11,125,90,0.05);">↓ Terpene Guide</a>
+                <a href="assets/img/green-labs-flyer.pdf" download class="btn btn--ghost" style="font-size: 13px; color: #0B7D5A; border-color: rgba(11,125,90,0.3); background: rgba(11,125,90,0.05);">↓ Green Labs Flyer</a>
+              </div>
             </div>
           </div>
+
+          <button class="guideCard__toggle" type="button" aria-expanded="false" style="margin: 30px auto; display: flex;">
+            <span class="guideCard__toggleText">Read the full answer</span>
+            <span class="guideCard__toggleIcon" aria-hidden="true">+</span>
+          </button>
         </div>
       </article>
 
-      <!-- CARD 2 -->
       <article class="guideCard" data-guide-card>
         <div class="guideCard__shell">
           <div class="guideCard__main">
@@ -847,16 +812,10 @@
                 There is no perfect number that works for everyone. Tolerance, mood, environment,
                 food, and body chemistry all matter — which is why starting small is always the smartest move.
               </p>
-
-              <button class="guideCard__toggle" type="button" aria-expanded="false">
-                <span class="guideCard__toggleText">Read the full answer</span>
-                <span class="guideCard__toggleIcon" aria-hidden="true">+</span>
-              </button>
             </div>
 
             <div class="guideCard__media">
               <div class="guideCard__imageWrap">
-                <!-- Replace with your Canva asset -->
                 <img src="assets/img/education-dose.jpg" alt="Cannabis dose and timing education graphic" class="guideCard__image" loading="lazy" />
               </div>
             </div>
@@ -896,10 +855,14 @@
               </div>
             </div>
           </div>
+
+          <button class="guideCard__toggle" type="button" aria-expanded="false" style="margin: 30px auto; display: flex;">
+            <span class="guideCard__toggleText">Read the full answer</span>
+            <span class="guideCard__toggleIcon" aria-hidden="true">+</span>
+          </button>
         </div>
       </article>
 
-      <!-- CARD 3 -->
       <article class="guideCard" data-guide-card>
         <div class="guideCard__shell">
           <div class="guideCard__main">
@@ -910,16 +873,10 @@
                 That is completely normal. You do not need to know strain names, terpene charts,
                 or percentages to shop well. If you can tell us how you want to feel, we can guide the rest.
               </p>
-
-              <button class="guideCard__toggle" type="button" aria-expanded="false">
-                <span class="guideCard__toggleText">Read the full answer</span>
-                <span class="guideCard__toggleIcon" aria-hidden="true">+</span>
-              </button>
             </div>
 
             <div class="guideCard__media">
               <div class="guideCard__imageWrap">
-                <!-- Replace with your Canva asset -->
                 <img src="assets/img/education-budtender.jpg" alt="Dutch Deli and flower education graphic" class="guideCard__image" loading="lazy" />
               </div>
             </div>
@@ -946,16 +903,41 @@
                   <li>Quality-driven cultivation</li>
                   <li>Terpene tested strains</li>
                   <li>Better guidance through the Dutch Deli experience</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
+                </ul>
+              </div>
+            </div>
+          </div>
 
-    </div> 
-  </div> 
-</div>
+          <button class="guideCard__toggle" type="button" aria-expanded="false" style="margin: 30px auto; display: flex;">
+            <span class="guideCard__toggleText">Read the full answer</span>
+            <span class="guideCard__toggleIcon" aria-hidden="true">+</span>
+          </button>
+        </div>
+      </article>
+
+      <script>
+        function openTerp(btn) {
+          document.getElementById('terpModalTitle').innerText = btn.getAttribute('data-title');
+          document.getElementById('terpModalTitle').style.color = window.getComputedStyle(btn).color;
+          document.getElementById('terpModalDesc').innerText = btn.getAttribute('data-desc');
+          document.getElementById('terpModalWrapper').style.display = 'block';
+          document.body.style.overflow = 'hidden'; // Prevents background scrolling while reading
+        }
+
+        // Close when clicking the dark background
+        document.getElementById('terpModalWrapper').addEventListener('click', function(event) {
+          if (event.target === this) {
+            this.style.display = 'none';
+            document.body.style.overflow = '';
+          }
+        });
+        
+        // X button function
+        function closeTerpModal() {
+          document.getElementById('terpModalWrapper').style.display = 'none';
+          document.body.style.overflow = '';
+        }
+      </script>
     
     <!-- ===== KEEP IT DUTCH (DTG section) ===== -->
   <div class="gl-strains-section" style="padding-top: 80px;">
