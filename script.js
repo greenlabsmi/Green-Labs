@@ -908,47 +908,6 @@ function renderDealsDropdown(data) {
   `;
 }
 })();
-   
-/* =========================================================
-   GREEN LABS — BUY GUIDE
-   ========================================================= */
-(function () {
-    const cards = document.querySelectorAll('[data-guide-card]');
-    cards.forEach((card) => {
-        const btn = card.querySelector('.guideCard__toggle');
-        if (!btn) return;
-
-        btn.addEventListener('click', () => {
-            const isOpen = card.classList.contains('is-open');
-
-            // Close all other cards first
-            cards.forEach((otherCard) => {
-                otherCard.classList.remove('is-open');
-                const otherBtn = otherCard.querySelector('.guideCard__toggle');
-                if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
-            });
-
-            // If it wasn't open, open it and scroll to it smoothly!
-            if (!isOpen) {
-                card.classList.add('is-open');
-                btn.setAttribute('aria-expanded', 'true');
-
-                // Wait just a split second for the CSS animation to start expanding
-                setTimeout(() => {
-                    // Hardcoded to 70 to match the final shrunk header height
-                    const stickyH = 70;
-
-                    // Match the 20px offset here!
-                    const yPos = card.getBoundingClientRect().top + window.pageYOffset - (stickyH + 20);
-                    window.scrollTo({
-                        top: Math.max(0, yPos),
-                        behavior: 'smooth'
-                    });
-                }, 350);
-            }
-        });
-    });
-})(); // <--- THIS perfectly closes the Buy Guide!
 
 // ===== Today's Highlights Render Function =====
 function renderHighlightsFromConfig(data, mount) {
@@ -1538,24 +1497,45 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// Education Tile Toggle Logic
+// ============================================================
+// MASTER EDUCATION TILE LOGIC (GLITCH-FREE)
+// ============================================================
 document.querySelectorAll('[data-guide-card]').forEach(card => {
     const btn = card.querySelector('.guideCard__toggle');
     const btnText = card.querySelector('.guideCard__toggleText');
+    const btnIcon = card.querySelector('.guideCard__toggleIcon');
 
-    btn.addEventListener('click', () => {
-        const isOpen = card.classList.toggle('is-open');
-        
-        // Update the text and icon based on state
-        if (isOpen) {
+    if (!btn) return;
+
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const isOpen = card.classList.contains('is-open');
+
+        // 1. Close all other cards first (Accordion Style)
+        document.querySelectorAll('[data-guide-card]').forEach(otherCard => {
+            otherCard.classList.remove('is-open');
+            const otherBtn = otherCard.querySelector('.guideCard__toggleText');
+            const otherIcon = otherCard.querySelector('.guideCard__toggleIcon');
+            if (otherBtn) otherBtn.innerText = "Read the full answer";
+            if (otherIcon) otherIcon.innerText = "+";
+        });
+
+        // 2. If the clicked card was closed, open it
+        if (!isOpen) {
+            card.classList.add('is-open');
             btnText.innerText = "Close full answer";
-            btn.querySelector('.guideCard__toggleIcon').innerText = "−"; // Changes + to -
-        } else {
-            btnText.innerText = "Read the full answer";
-            btn.querySelector('.guideCard__toggleIcon').innerText = "+";
+            btnIcon.innerText = "−";
             
-            // Optional: Smoothly scroll back up to the top of the card when closing
-            card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // Smoothly scroll to the card
+            setTimeout(() => {
+                const yPos = card.getBoundingClientRect().top + window.pageYOffset - 90;
+                window.scrollTo({ top: Math.max(0, yPos), behavior: 'smooth' });
+            }, 300);
+        } else {
+            // If it was already open, Brain 1 already closed it above, 
+            // so we just scroll back to the top of the section.
+            const section = document.getElementById('learn-before-you-buy');
+            if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
     });
 });
