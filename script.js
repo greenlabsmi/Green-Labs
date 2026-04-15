@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnFail = document.getElementById('btnAgeFail');
 
     // 1. Show Age Gate if not verified
-    if (ageGate && !localStorage.getItem('gl_age_verified')) {
+    if (ageGate && !sessionStorage.getItem('gl_age_verified')) {
         ageGate.removeAttribute('hidden');
         document.body.style.overflow = 'hidden'; 
     }
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. "Yes, I am 21" Logic
     if (btnPass) {
         btnPass.addEventListener('click', () => {
-            localStorage.setItem('gl_age_verified', 'true');
+           sessionStorage.setItem('gl_age_verified', 'true');
             ageGate.setAttribute('hidden', 'true');
             document.body.style.overflow = ''; 
 
