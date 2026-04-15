@@ -22,7 +22,7 @@
 
   <link rel="icon" href="assets/img/favicon.png" />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@700;900&family=Bebas+Neue&family=Outfit:wght@700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=322">
+  <link rel="stylesheet" href="style.css?v=320">
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -706,9 +706,8 @@
 
 <section class="buyGuide">
   <div id="learn-before-you-buy" class="buyGuide__inner" style="padding-bottom: 80px;">
-
-    <div class="buyGuide__intro">
-      <div class="buyGuide__intro" style="padding: 0 20px;">
+    
+    <div class="buyGuide__intro" style="padding: 0 20px;">
       <p class="buyGuide__eyebrow">Green Labs Guide</p>
       <h2 class="buyGuide__title">Not sure what to buy? Start here.</h2>
       <p class="buyGuide__sub">
@@ -718,7 +717,7 @@
     </div>
 
     <div class="buyGuide__cards">
-
+      
       <article class="guideCard" data-guide-card>
         <div class="guideCard__shell">
           <div class="guideCard__main">
@@ -915,29 +914,33 @@
         </div>
       </article>
 
-      <script>
-        function openTerp(btn) {
-          document.getElementById('terpModalTitle').innerText = btn.getAttribute('data-title');
-          document.getElementById('terpModalTitle').style.color = window.getComputedStyle(btn).color;
-          document.getElementById('terpModalDesc').innerText = btn.getAttribute('data-desc');
-          document.getElementById('terpModalWrapper').style.display = 'block';
-          document.body.style.overflow = 'hidden'; // Prevents background scrolling while reading
-        }
+    </div> 
+  </div> 
+</section>
 
-        // Close when clicking the dark background
-        document.getElementById('terpModalWrapper').addEventListener('click', function(event) {
-          if (event.target === this) {
-            this.style.display = 'none';
-            document.body.style.overflow = '';
-          }
-        });
-        
-        // X button function
-        function closeTerpModal() {
-          document.getElementById('terpModalWrapper').style.display = 'none';
-          document.body.style.overflow = '';
-        }
-      </script>
+<script>
+  function openTerp(btn) {
+    document.getElementById('terpModalTitle').innerText = btn.getAttribute('data-title');
+    document.getElementById('terpModalTitle').style.color = window.getComputedStyle(btn).color;
+    document.getElementById('terpModalDesc').innerText = btn.getAttribute('data-desc');
+    document.getElementById('terpModalWrapper').style.display = 'block';
+    document.body.style.overflow = 'hidden'; // Prevents background scrolling while reading
+  }
+
+  // Close when clicking the dark background
+  document.getElementById('terpModalWrapper').addEventListener('click', function(event) {
+    if (event.target === this) {
+      this.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+  });
+  
+  // X button function
+  function closeTerpModal() {
+    document.getElementById('terpModalWrapper').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+</script>
     
     <!-- ===== KEEP IT DUTCH (DTG section) ===== -->
   <div class="gl-strains-section" style="padding-top: 80px;">
