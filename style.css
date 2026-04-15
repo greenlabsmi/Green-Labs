@@ -4275,3 +4275,34 @@ main + .section--light {
   line-height: 1.2;
   letter-spacing: -0.5px; 
 }
+
+/* ============================================================
+   TROPHY ROOM MOBILE SCROLL FIX
+============================================================ */
+#current-strains {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    padding: 10px 5vw 40px;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    
+    /* The "Native App" Feel for iOS */
+    -webkit-overflow-scrolling: touch; 
+    
+    /* Prevents the vertical page shake while swiping horizontally */
+    touch-action: pan-x; 
+}
+
+/* Ensure the cards inside the Trophy Room don't "squish" */
+#current-strains .strain-card {
+    flex: 0 0 85%; /* Sets the card width to 85% of the screen */
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+    transition: transform 0.3s ease;
+}
+
+/* Hide the ugly scrollbar for a cleaner look */
+#current-strains::-webkit-scrollbar {
+    display: none;
+}
