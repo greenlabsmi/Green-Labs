@@ -1585,7 +1585,6 @@ header, nav, section, .container, .wrap, .row {
   .guideInfoGrid{
     grid-template-columns: 1fr;
   }
-}
 
 @media (max-width: 640px){
   .buyGuide { padding-left: 14px; padding-right: 14px; }
@@ -3395,7 +3394,6 @@ body.is-scrolled .status-strip {
   opacity: 0 !important;
   margin: 0 !important;
 }
-}
 
 /* =========================================
    FADE-IN ON SCROLL (.reveal -> .is-in)
@@ -4319,56 +4317,36 @@ main + .section--light {
 footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255,0.1); }
 
 /* =========================================================
-   EMERGENCY GAP & LAYOUT REPAIR
+   EMERGENCY GAP & LAYOUT REPAIR (UPDATED)
 ========================================================= */
 
-/* 1. Fix the Right-Side Cut Off (Kills the auto-margin conflict) */
+/* 1. Fix the Right-Side Cut Off */
 @media (min-width: 1024px) {
     .strain-grid > *:first-child,
-    #apparel-grid > *:first-child {
-        margin-left: 0 !important;
-    }
+    #apparel-grid > *:first-child { margin-left: 0 !important; }
+    
     .strain-grid > *:last-child,
-    #apparel-grid > *:last-child {
-        margin-right: 0 !important;
-    }
-    .strain-grid {
-        justify-content: center; /* Safely centers without breaking the right edge */
-    }
+    #apparel-grid > *:last-child { margin-right: 0 !important; }
+    
+    .strain-grid { justify-content: flex-start !important; }
 }
 
-/* 2. Kill the massive gap below "Our Story" */
-#our-story {
-  padding-bottom: 20px !important; 
-}
-.gl-strains-section {
-  padding-top: 40px !important; 
-}
+/* 2. Kill the massive gap below "Our Story" & "Trophy Room" */
+#our-story { padding-bottom: 0 !important; }
+.gl-strains-section { padding-top: 40px !important; }
 
 /* 3. Pull the Loyalty and Visit sections together */
-main + .section--light {
+.section--light {
   padding-top: 40px !important; 
   padding-bottom: 40px !important;
 }
-.loyalty {
-  margin-bottom: 30px !important; /* Forces the visit section up tighter */
-}
-.visitgrid {
-  margin-top: 0 !important;
-}
+.loyalty { margin-bottom: 0 !important; }
+.visitgrid { margin-top: 20px !important; }
 
 /* 4. Ensure the black background seamlessly connects */
-.section--dtg, 
-.gl-strains-section, 
-#our-story {
+.section--dtg, .gl-strains-section, #our-story {
   border-bottom: none !important;
   border-top: none !important;
   margin-bottom: 0 !important;
   margin-top: 0 !important;
-}
-
-/* 5. Final check on the footer gap */
-footer.footer { 
-  margin-top: 0 !important; 
-  padding-top: 40px; 
 }
