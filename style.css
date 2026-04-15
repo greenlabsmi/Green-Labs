@@ -3811,20 +3811,30 @@ main + .section--light {
   border-radius: inherit;
 }
 
-/* --- FULL WIDTH SCROLL GRIDS --- */
+/* --- FULL WIDTH SCROLL GRIDS (Green Labs Fix) --- */
 .strain-grid, #apparel-grid {
-  width: 100% !important; /* Inherits the full screen width from the wrapper */
-  max-width: none !important;
-  
-  /* Swapped the complex math for a clean, consistent gap from the screen edge */
-  padding: 20px 4vw 60px !important;
-  
-  display: flex !important;
-  gap: 20px;
-  overflow-x: auto !important;
-  
-  /* Keeps the scrollbar snap aligned with the edge gap */
-  scroll-padding-left: 4vw !important;
+    width: 100% !important;
+    max-width: none !important;
+    padding: 20px 4vw 60px !important;
+    display: flex !important;
+    gap: 20px;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 4vw !important;
+    -webkit-overflow-scrolling: touch; /* Smoothes out iOS thumb scroll */
+    touch-action: pan-x; /* STOPS THE SHAKING: Only allows horizontal swiping */
+}
+
+/* Ensure cards don't shrink on mobile */
+.strain-grid .strain-card, #apparel-grid .strain-card {
+    flex: 0 0 85% !important; /* Forces 85% width so next card peeks in */
+    scroll-snap-align: center !important;
+}
+
+@media (min-width: 992px) {
+    .strain-grid .strain-card, #apparel-grid .strain-card {
+        flex: 0 0 300px !important; /* Standard size for desktop */
+    }
 }
 
 .strain-card {
