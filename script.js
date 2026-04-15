@@ -1537,3 +1537,25 @@ document.addEventListener('click', (e) => {
         }
     }
 });
+
+// Education Tile Toggle Logic
+document.querySelectorAll('[data-guide-card]').forEach(card => {
+    const btn = card.querySelector('.guideCard__toggle');
+    const btnText = card.querySelector('.guideCard__toggleText');
+
+    btn.addEventListener('click', () => {
+        const isOpen = card.classList.toggle('is-open');
+        
+        // Update the text and icon based on state
+        if (isOpen) {
+            btnText.innerText = "Close full answer";
+            btn.querySelector('.guideCard__toggleIcon').innerText = "−"; // Changes + to -
+        } else {
+            btnText.innerText = "Read the full answer";
+            btn.querySelector('.guideCard__toggleIcon').innerText = "+";
+            
+            // Optional: Smoothly scroll back up to the top of the card when closing
+            card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+});
