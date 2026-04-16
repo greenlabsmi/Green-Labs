@@ -4363,3 +4363,15 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
     color: #111 !important;
     margin-bottom: 16px !important;
 }
+
+/* =========================================================
+   RESTORE VERTICAL MOBILE SCROLLING
+========================================================= */
+.strain-grid, 
+#apparel-grid, 
+#current-strains, 
+.deli-carousel, 
+#todays-highlights .thRow {
+    touch-action: auto !important; /* Restores normal up/down page scrolling */
+    overscroll-behavior-x: contain !important; /* Stops horizontal swipes from shaking the page */
+}
