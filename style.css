@@ -4461,3 +4461,9 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
         font-size: 18px !important;
     }
 }
+
+/* Tighten the landing spot for the final sections */
+#our-story, 
+#visit {
+    scroll-margin-top: 70px !important; /* This matches the exact height of your header */
+}
