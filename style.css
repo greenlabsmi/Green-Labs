@@ -4467,3 +4467,15 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
 #visit {
     scroll-margin-top: 70px !important; /* This matches the exact height of your header */
 }
+
+/* =========================================================
+   VISIT SECTION: ONE-LINE SUBTITLE FIX
+========================================================= */
+#visit .section__sub {
+    white-space: nowrap;      /* FORCES text to stay on one line */
+    font-size: clamp(10px, 3.8vw, 18px) !important; /* Dynamically shrinks font on small screens */
+    overflow: hidden;
+    text-overflow: ellipsis;  /* Safety fallback for tiny screens */
+    width: 100%;
+    display: block;
+}
