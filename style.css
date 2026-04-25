@@ -2090,7 +2090,6 @@ header, nav, section, .container, .wrap, .row {
 ========================================================= */
 @media (min-width: 760px){
   .hero__grid{ grid-template-columns: 1.1fr .9fr; gap:22px; }
-  .hero__img{ height: 360px; }
 
   .diff{ grid-template-columns: repeat(3, 1fr); }
   .dealtileGrid{ grid-template-columns: repeat(3, 1fr); }
