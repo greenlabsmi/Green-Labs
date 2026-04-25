@@ -12,7 +12,7 @@ const GL_CARDS = [
     name: "Lemon Wookie",
     rarity: "Legendary",
     type: "Citrus Power",
-    image: "assets/img/strains/lemon-wookie-art.jpg",
+    image: "assets/img/strains/lemon-wookie-art.jpg", // Correct root-relative path
     reward: "$2 off Lemon Wookie deli flower",
     teaser: "Award-winning citrus power. Legendary card perk.",
     collectUrl: "collect/lemon-wookie.html"
@@ -58,6 +58,8 @@ const GL_CARDS = [
     collectUrl: "collect/cobra-lips.html"
   }
 ];
+
+// ... (keep your getCollectedCards, saveCollectedCards, etc. functions here)
 
 // HELPER FUNCTIONS
 function getCollectedCards() {
