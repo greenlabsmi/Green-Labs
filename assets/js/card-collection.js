@@ -1,18 +1,12 @@
-/**
- * GREEN LABS DIGITAL COLLECTIBLES
- * Logic for localStorage-based card binder.
- */
-
 const GL_STORAGE_KEY = "greenlabs_collected_cards_v1";
 
-// CARD DATABASE: Update image paths, rewards, and descriptions here.
 const GL_CARDS = [
   {
     id: "lemon-wookie",
     name: "Lemon Wookie",
     rarity: "Legendary",
     type: "Citrus Power",
-    image: "assets/img/strains/lemon-wookie-art.jpg", // Correct root-relative path
+    image: "assets/img/strains/lemon-wookie-art.jpg",
     reward: "$2 off Lemon Wookie deli flower",
     teaser: "Award-winning citrus power. Legendary card perk.",
     collectUrl: "collect/lemon-wookie.html"
@@ -59,9 +53,6 @@ const GL_CARDS = [
   }
 ];
 
-// ... (keep your getCollectedCards, saveCollectedCards, etc. functions here)
-
-// HELPER FUNCTIONS
 function getCollectedCards() {
   const data = localStorage.getItem(GL_STORAGE_KEY);
   return data ? JSON.parse(data) : [];
@@ -76,9 +67,9 @@ function collectCard(cardId) {
   if (!collected.includes(cardId)) {
     collected.push(cardId);
     saveCollectedCards(collected);
-    return true; // New card added
+    return true; 
   }
-  return false; // Already owned
+  return false; 
 }
 
 function getCardById(cardId) {
