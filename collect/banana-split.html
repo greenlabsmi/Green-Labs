@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Card Unlocked! | Green Labs</title>
+    <link rel="stylesheet" href="../style.css"> <style>
+        body { background: #050505; color: white; font-family: 'Inter', sans-serif; text-align: center; padding: 20px; }
+        .unlock-container { max-width: 400px; margin: 40px auto; padding: 30px; border-radius: 24px; background: #111; border: 1px solid #222; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+        .card-img { width: 100%; border-radius: 12px; border: 2px solid #d6a441; box-shadow: 0 0 20px rgba(214, 164, 65, 0.3); margin-bottom: 20px; }
+        .rarity { color: #d6a441; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; font-size: 12px; margin-bottom: 5px; }
+        .strain-name { font-size: 32px; font-family: 'Cinzel', serif; margin: 0 0 10px 0; }
+        .reward-box { background: rgba(7, 137, 95, 0.15); border: 1px dashed #07895f; padding: 15px; border-radius: 12px; margin: 20px 0; }
+        .reward-text { color: #2ef8bb; font-weight: 700; margin: 0; }
+        .btn-stack { display: flex; flex-direction: column; gap: 10px; }
+        .fine-print { font-size: 10px; color: #666; margin-top: 30px; line-height: 1.4; }
+        .confetti { color: #d6a441; font-size: 14px; font-weight: 700; }
+    </style>
+</head>
+<body>
+
+    <div class="unlock-container">
+        <div id="status-msg" class="confetti">✨ NEW CARD UNLOCKED!</div>
+        <p class="rarity" id="rarity-label"></p>
+        <h1 class="strain-name" id="name-label">Loading...</h1>
+        
+        <img id="card-art" src="" alt="Card Art" class="card-img">
+
+        <div class="reward-box">
+            <p style="font-size: 12px; color: #aaa; margin-bottom: 5px;">COLLECTOR PERK:</p>
+            <p class="reward-text" id="reward-label"></p>
+        </div>
+
+        <div class="btn-stack">
+            <a href="../collection.html" class="btn btn--gold" style="width: 100%; text-decoration: none;">View My Collection</a>
+            <a href="https://greenlabsmi.com" class="btn btn--ghost" style="width: 100%; text-decoration: none;">Back to Website</a>
+        </div>
+
+        <p class="fine-print">
+            Show this screen or your collection page at checkout. Rewards are manually applied by a budtender. 
+            Browser-based collection may reset if browser data is cleared.
+        </p>
+    </div>
+
+    <script src="../assets/js/card-collection.js"></script>
+    <script>
+        // CHANGE THIS ID FOR EACH PAGE (e.g., "hash-d", "dead-prez", etc)
+        const CURRENT_CARD_ID = "banana-split"; 
+
+        window.onload = () => {
+            const card = getCardById(CURRENT_CARD_ID);
+            if (!card) return;
+
+            // Save to localStorage
+            const isNew = collectCard(CURRENT_CARD_ID);
+            if (!isNew) document.getElementById('status-msg').innerText = "VIEWING OWNED CARD";
+
+            // Update UI
+            document.getElementById('name-label').innerText = card.name;
+            document.getElementById('rarity-label').innerText = `${card.rarity} • ${card.type}`;
+            document.getElementById('reward-label').innerText = card.reward;
+            document.getElementById('card-art').src = "../" + card.image;
+        };
+    </script>
+</body>
+</html>
