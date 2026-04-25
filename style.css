@@ -4483,3 +4483,35 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
     width: 100%;
     display: block;
 }
+
+/* =========================================================
+   TEMP LOYALTY HUB REPLACEMENT (PENDING APPROVAL)
+========================================================= */
+/* 1. Hides all the inner HTML (the tiers, perks, and headers) */
+#loyalty-hub > * {
+    display: none !important;
+}
+
+/* 2. Shrinks the massive container into a neat little box */
+#loyalty-hub {
+    max-width: 500px !important;
+    padding: 40px 30px !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    background: #0b0d0c !important;
+    border: 1px solid rgba(214, 163, 74, 0.3) !important;
+}
+
+/* 3. Injects your temporary message */
+#loyalty-hub::after {
+    content: "🌿 Ask your budtender about our loyalty program to save money on every purchase.";
+    display: block;
+    color: #D6A34A;
+    font-family: 'Cinzel', serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.6;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
