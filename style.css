@@ -656,21 +656,21 @@ header, nav, section, .container, .wrap, .row {
   border-color: rgba(46,248,187,.30);
 }
 
-/* Add a slow zoom transition to the background image itself */
 .hero__img {
-    width: 100%; /* Ensures the image reaches the edges so the zoom doesn't break */
-    height: clamp(280px, 45vh, 480px); /* Makes it taller on big screens instead of thinner! */
-    
-    /* Removed the dark linear-gradient, kept the subtle green glow and image */
-    background: radial-gradient(1000px 420px at 20% 0%, rgba(46,248,187,.18), rgba(0,0,0,0) 55%), url("assets/img/hero.jpg");
-    
-    background-size: cover;
-    background-position: center !important; /* Centers the image so the right side is never cut off */
-    
+    width: 100%;
+    height: clamp(280px, 45vh, 480px);
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
     transition: transform 0.5s ease;
     backface-visibility: hidden;
-    transform: translateZ(0);
+    transform: scale(1.01) translateZ(0); /* The 1.01 scale eliminates the border gap! */
     will-change: transform;
+}
+
+/* Make sure the hover scales up smoothly from the 1.01 base */
+.hero__media--link:hover .hero__img {
+    transform: scale(1.05) translateZ(0);
 }
 
 /* Trigger the zoom when the wrapper is hovered */
