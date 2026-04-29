@@ -7,69 +7,44 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root { --gold: #d6a441; --green: #2ef8bb; --bg: #050505; --glass: rgba(255, 255, 255, 0.05); }
-        body { background: var(--bg); color: white; font-family: 'Inter', sans-serif; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; overflow-x: hidden; }
+        body { background: var(--bg); color: white; font-family: 'Inter', sans-serif; margin: 0; padding: 0; overflow-x: hidden; }
         h1, h2, h3 { font-family: 'Cinzel', serif; letter-spacing: 1px; }
-        
         .binder-container { max-width: 900px; margin: 0 auto; padding: 20px; }
         .header { text-align: center; padding: 40px 0 10px; }
         .header h1 { font-size: clamp(24px, 8vw, 38px); color: var(--gold); margin: 0; }
-        
-        /* Progress Bar */
         .master-progress { background: var(--glass); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 20px; border-radius: 20px; margin-bottom: 30px; text-align: center; }
         .bar-bg { background: #111; height: 10px; border-radius: 5px; overflow: hidden; margin-top: 10px; }
         .bar-fill { background: linear-gradient(90deg, var(--gold), #ffcc66); height: 100%; transition: width 1s ease-out; }
-
-        /* Section Titles */
         .section-label { font-size: 10px; font-weight: 800; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; display: block; border-left: 2px solid var(--gold); padding-left: 10px; }
-
-        /* --- Zone 1: Recent Unlocks --- */
         #recent-unlocks-container { display: none; margin-bottom: 40px; }
-        .recent-scroll { display: flex; gap: 15px; overflow-x: auto; padding-bottom: 15px; scroll-snap-type: x mandatory; }
-        .recent-card { flex: 0 0 120px; scroll-snap-align: start; text-align: center; }
-        .recent-card img { width: 100%; aspect-ratio: 1/1; border-radius: 15px; border: 2px solid var(--gold); box-shadow: 0 0 15px rgba(214,164,65,0.3); }
-        .recent-card span { font-size: 10px; font-weight: 700; display: block; margin-top: 8px; color: var(--gold); }
-
-        /* --- Zone 2: Sorted Sets --- */
+        .recent-scroll { display: flex; gap: 15px; overflow-x: auto; padding-bottom: 15px; }
+        .recent-card { flex: 0 0 120px; text-align: center; cursor: pointer; }
+        .recent-card img { width: 100%; aspect-ratio: 1/1; border-radius: 15px; border: 2px solid var(--gold); }
         .set-section { margin-bottom: 40px; background: rgba(255,255,255,0.02); padding: 20px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); }
         .set-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 15px; }
         .set-reward { font-size: 10px; font-weight: 800; color: var(--green); text-transform: uppercase; }
-        
         .card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-        .card-slot { background: rgba(255,255,255,0.03); border-radius: 12px; padding: 8px; border: 1px solid rgba(255,255,255,0.05); transition: all 0.3s ease; cursor: pointer; text-align: center; position: relative; }
+        .card-slot { background: rgba(255,255,255,0.03); border-radius: 12px; padding: 8px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; cursor: pointer; text-align: center; }
         .card-slot.collected { border-color: rgba(214, 164, 65, 0.4); background: rgba(214, 164, 65, 0.08); }
         .card-slot.locked { filter: grayscale(1); opacity: 0.3; }
-        
         .card-thumb { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 8px; margin-bottom: 8px; }
         .card-name { font-size: 9px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .hint-text { font-size: 8px; color: rgba(255,255,255,0.4); margin-top: 4px; font-style: italic; }
-
-        /* Modal & UI Elements */
         .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 1000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(15px); padding: 20px; }
         .modal-content { background: #111; border: 1px solid var(--gold); border-radius: 24px; width: 100%; max-width: 400px; padding: 30px; text-align: center; position: relative; }
         .modal-art { width: 100%; border-radius: 15px; margin-bottom: 20px; border: 1px solid rgba(214,164,65,0.3); }
         .qr-area { background: white; padding: 15px; border-radius: 15px; display: inline-block; margin-top: 20px; }
         .btn-close { position: absolute; top: 15px; right: 15px; font-size: 28px; color: #666; border: none; background: none; cursor: pointer; }
-
-        @media (min-width: 600px) { .card-grid { grid-template-columns: repeat(4, 1fr); } .recent-card { flex: 0 0 150px; } }
     </style>
 </head>
 <body>
     <div class="binder-container">
-        <header class="header">
-            <h1>The Dutch Collection</h1>
-            <p style="font-size: 12px; color: rgba(255,255,255,0.4);">Digital Strain Binder v2.1</p>
-        </header>
-
+        <header class="header"><h1>The Dutch Collection</h1><p>Digital Strain Binder v2.2</p></header>
         <div class="master-progress">
             <span id="progress-text" style="font-size: 11px; font-weight: 800; color: var(--gold);">0 / 22 COLLECTED</span>
             <div class="bar-bg"><div id="progress-fill" class="bar-fill" style="width: 0%;"></div></div>
         </div>
-
-        <div id="recent-unlocks-container">
-            <span class="section-label">Recently Unlocked</span>
-            <div id="recent-list" class="recent-scroll"></div>
-        </div>
-
+        <div id="recent-unlocks-container"><span class="section-label">Recently Unlocked</span><div id="recent-list" class="recent-scroll"></div></div>
         <span class="section-label">Your Collections</span>
         <div id="sets-container"></div>
     </div>
@@ -78,7 +53,7 @@
         <div class="modal-content">
             <button class="btn-close" onclick="closeModal()">×</button>
             <img src="" id="modal-art" class="modal-art">
-            <h2 id="modal-title" style="color: var(--gold); margin:0; font-size: 24px;"></h2>
+            <h2 id="modal-title" style="color: var(--gold); margin:0;"></h2>
             <p id="modal-perk" style="color: var(--green); font-weight:800; font-size:14px; margin: 10px 0;"></p>
             <div class="qr-area"><div id="qrcode"></div></div>
             <p style="font-size:10px; color:#666; margin-top:15px; font-weight: 700;">BUDTENDER: SCAN TO POPULATE REASON BOX</p>
@@ -87,27 +62,41 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script>
+        // --- COMPLETE DATABASE OF ALL 22 STRAINS ---
         const GL_CARDS = [
-            { id: 'pina-rita', name: 'Pina Rita', image: 'assets/img/strains/pina-rita-art.jpg', reward: '$1 Off Pina Rita', hint: 'Check the $85/oz Specials' },
-            { id: 'lemon-wookie', name: 'Lemon Wookie', image: 'assets/img/strains/lemon-wookie-art.jpg', reward: '$1 Off Lemon Wookie', hint: 'Look for the 🏆 Award Winner' },
-            { id: 'vortex-11', name: 'Vortex #11', image: 'assets/img/strains/vortex-art.png', reward: '$1 Off Vortex', hint: 'Find the New Sativa Drop' },
-            { id: 'dead-prez', name: 'Dead Prez', image: 'assets/img/strains/dead-prez-art.png', reward: '$1 Off Dead Prez', hint: 'Search the Indica Section' },
-            { id: 'cobra-lips', name: 'Cobra Lips #1', image: 'assets/img/strains/cobra-lips-art.jpg', reward: '$1 Off Cobra Lips', hint: 'The Serpent is Hiding...' },
+            { id: 'lemon-wookie', name: 'Lemon Wookie', image: 'assets/img/strains/lemon-wookie-art.jpg', reward: '$1 Off Lemon Wookie', hint: 'The Award Winner' },
             { id: 'falcon-9', name: 'Falcon 9', image: 'assets/img/strains/falcon-9-art.jpg', reward: '$1 Off Falcon 9', hint: 'Look to the Stars' },
-            { id: '13-layer-cake', name: '13 Layer Cake', image: 'assets/img/strains/13-layer-cake-art.jpg', reward: '$1 Off 13 Layer Cake', hint: 'Check the Sativa Hybrids' },
-            { id: 'banana-split', name: 'Banana Split', image: 'assets/img/strains/banana-split-art.jpg', reward: '$1 Off Banana Split', hint: 'Find the Dessert Terps' },
-            { id: 'security-guy', name: 'The Bodyguard', image: 'assets/img/hero.jpg', reward: 'Free Sticker Pack', hint: 'At the Reception Desk' },
-            { id: 'colossus', name: 'The Colossus', image: 'assets/img/greenlabs-logo.png', reward: '15% Off One Item', hint: 'The 15ft Tall Giant' }
+            { id: 'solo-walker', name: 'Solo Walker', image: 'assets/img/strains/solo-walker-art.jpg', reward: '$1 Off Solo Walker', hint: 'Check the Deli' },
+            { id: '13-layer-cake', name: '13 Layer Cake', image: 'assets/img/strains/13-layer-cake-art.jpg', reward: '$1 Off 13 Layer Cake', hint: 'The Sativa Hybrid' },
+            { id: 'banana-split', name: 'Banana Split', image: 'assets/img/strains/banana-split-art.jpg', reward: '$1 Off Banana Split', hint: 'Sweet Terps' },
+            { id: 'double-bubble', name: 'Double Bubble', image: 'assets/img/strains/double-bubble-art.jpg', reward: '$1 Off Double Bubble', hint: 'Check the Hybrids' },
+            { id: 'security-guy', name: 'The Bodyguard', image: 'assets/img/hero.jpg', reward: 'Free Sticker Pack', hint: 'Reception Desk' },
+            { id: 'colossus', name: 'The Colossus', image: 'assets/img/greenlabs-logo.png', reward: '15% Off One Item', hint: 'The 15ft Painting' },
+            { id: 'pina-rita', name: 'Pina Rita', image: 'assets/img/strains/pina-rita-art.jpg', reward: '$1 Off Pina Rita', hint: 'Mega Deal section' },
+            { id: 'vortex-11', name: 'Vortex #11', image: 'assets/img/strains/vortex-art.png', reward: '$1 Off Vortex', hint: 'New Sativa Drop' },
+            { id: 'dead-prez', name: 'Dead Prez', image: 'assets/img/strains/dead-prez-art.png', reward: '$1 Off Dead Prez', hint: 'Indica Section' },
+            { id: 'cobra-lips', name: 'Cobra Lips #1', image: 'assets/img/strains/cobra-lips-art.jpg', reward: '$1 Off Cobra Lips', hint: 'Hybrid Wall' },
+            { id: 'illudium', name: 'Illudium', image: 'assets/img/strains/illudium-art.png', reward: '$1 Off Illudium', hint: 'Indica Wall' },
+            { id: 'garlic-breath', name: 'Garlic Breath', image: 'assets/img/strains/garlic-breath-art.jpg', reward: '$1 Off Garlic Breath', hint: 'Indica Wall' },
+            { id: 'orange-kush-cake', name: 'Orange Kush Cake', image: 'assets/img/strains/orange-kush-cake-art.jpg', reward: '$1 Off OKC', hint: 'Sativa Hybrid' },
+            { id: 'sticky-trap', name: 'Sticky Trap', image: 'assets/img/strains/sticky-trap-art.jpg', reward: '$1 Off Sticky Trap', hint: 'Hybrid Section' },
+            { id: 'strawberry-daiquiri', name: 'Strawberry Daiquiri', image: 'assets/img/strains/strawberry-daiquiri-art.jpg', reward: '$1 Off Strawberry', hint: 'Deli Section' },
+            { id: 'spirit-hashplant', name: 'Spirit Hashplant', image: 'assets/img/strains/spirit-hashplant-art.jpg', reward: '$1 Off Spirit', hint: 'Indica Section' },
+            { id: 'gorilla-88', name: 'Gorilla 88', image: 'assets/img/strains/gorilla-88-art.jpg', reward: '$1 Off Gorilla', hint: 'Indica Section' },
+            { id: 'hash-d-2', name: 'Hash D #2', image: 'assets/img/strains/hash-d-2-art.jpg', reward: '$1 Off Hash D', hint: 'Staff Pick' },
+            { id: 'guicy-g', name: 'Guicy G', image: 'assets/img/strains/guicy-g-art.jpg', reward: '$1 Off Guicy G', hint: 'Hybrid Section' },
+            { id: 'death-z', name: 'Death Z', image: 'assets/img/strains/death-z-art.jpg', reward: '$1 Off Death Z', hint: 'Hybrid Section' }
         ];
 
         const GL_SETS = [
             { id: 'jedi', name: 'Jedi Council', reward: '20% OFF STAR WARS SET', cardIds: ['lemon-wookie', 'falcon-9', 'solo-walker'] },
             { id: 'bakery', name: 'The Bakery', reward: 'FREE 100MG EDIBLE', cardIds: ['13-layer-cake', 'banana-split', 'double-bubble'] },
-            { id: 'hidden', name: 'Secret Stash', reward: 'MYSTERY MERCH PERK', cardIds: ['security-guy', 'colossus', 'daily-prophet'] }
+            { id: 'hidden', name: 'Secret Stash', reward: 'MYSTERY MERCH PERK', cardIds: ['security-guy', 'colossus'] }
         ];
 
         function getCollected() { 
-            return JSON.parse(localStorage.getItem('collectedStrains')) || []; 
+            let data = localStorage.getItem('collectedStrains');
+            return data ? JSON.parse(data) : []; 
         }
 
         function render() {
@@ -119,71 +108,44 @@
             container.innerHTML = '';
             recentList.innerHTML = '';
 
-            // 1. Update Master Progress
+            // Update Progress
             const progress = (collected.length / 22) * 100;
             document.getElementById('progress-fill').style.width = progress + '%';
             document.getElementById('progress-text').innerText = `${collected.length} / 22 COLLECTED`;
 
-            // 2. Handle "Recent Unlocks" Zone
+            // Recent Unlocks
             if (collected.length > 0) {
                 recentContainer.style.display = 'block';
-                // Show last 5 collected cards in reverse order
-                const lastFive = [...collected].reverse().slice(0, 5);
-                lastFive.forEach(id => {
+                [...collected].reverse().slice(0, 5).forEach(id => {
                     const card = GL_CARDS.find(c => c.id === id);
-                    if (card) {
-                        recentList.insertAdjacentHTML('beforeend', `
-                            <div class="recent-card" onclick="openModal('${id}')">
-                                <img src="${card.image}">
-                                <span>${card.name}</span>
-                            </div>`);
-                    }
+                    if (card) recentList.insertAdjacentHTML('beforeend', `<div class="recent-card" onclick="openModal('${id}')"><img src="${card.image}"><span>${card.name}</span></div>`);
                 });
             }
 
-            // 3. Sort Sets: Active first, then Locked, then Completed
-            const sortedSets = [...GL_SETS].sort((a, b) => {
-                const aCount = a.cardIds.filter(id => collected.includes(id)).length;
-                const bCount = b.cardIds.filter(id => collected.includes(id)).length;
-                const aDone = aCount === a.cardIds.length;
-                const bDone = bCount === b.cardIds.length;
-                
-                if (aDone && !bDone) return 1;
-                if (!aDone && bDone) return -1;
-                return bCount - aCount;
-            });
-
-            // 4. Render Sets
-            sortedSets.forEach(set => {
+            // Render Sets
+            GL_SETS.forEach(set => {
                 const count = set.cardIds.filter(id => collected.includes(id)).length;
                 const isComplete = count === set.cardIds.length;
                 const hasAny = count > 0;
-
+                
                 const html = `
-                    <div class="set-section" style="${isComplete ? 'border-color: var(--gold);' : ''}">
+                    <div class="set-section">
                         <div class="set-header">
-                            <div>
-                                <h2 style="${!hasAny ? 'opacity:0.3' : ''}">${set.name}</h2>
-                                <span class="set-reward" style="${isComplete ? 'color: var(--gold);' : ''}">
-                                    ${isComplete ? '✨ SET COMPLETE: CLAIM REWARD' : set.reward}
-                                </span>
-                            </div>
-                            <div style="font-size: 10px; font-weight: 800; color: ${hasAny ? 'var(--gold)' : '#333'}">${count}/${set.cardIds.length}</div>
+                            <div><h2 style="${!hasAny ? 'opacity:0.3' : ''}">${set.name}</h2><span class="set-reward">${isComplete ? '✨ SET COMPLETE' : set.reward}</span></div>
+                            <div style="font-size: 10px; color: ${hasAny ? 'var(--gold)' : '#333'}">${count}/${set.cardIds.length}</div>
                         </div>
                         <div class="card-grid" id="grid-${set.id}"></div>
                     </div>`;
-                
                 container.insertAdjacentHTML('beforeend', html);
                 const grid = document.getElementById(`grid-${set.id}`);
-
                 set.cardIds.forEach(id => {
-                    const card = GL_CARDS.find(c => c.id === id) || { name: '???', image: '', hint: 'Coming Soon' };
+                    const card = GL_CARDS.find(c => c.id === id);
                     const isOwned = collected.includes(id);
                     grid.insertAdjacentHTML('beforeend', `
                         <div class="card-slot ${isOwned ? 'collected' : 'locked'}" onclick="${isOwned ? `openModal('${id}')` : ''}">
-                            <img src="${card.image}" class="card-thumb">
-                            <div class="card-name">${card.name}</div>
-                            ${!isOwned ? `<div class="hint-text">Hint: ${card.hint}</div>` : ''}
+                            <img src="${card ? card.image : ''}" class="card-thumb">
+                            <div class="card-name">${card ? card.name : '???'}</div>
+                            ${!isOwned ? `<div class="hint-text">Hint: ${card ? card.hint : 'Coming Soon'}</div>` : ''}
                         </div>`);
                 });
             });
@@ -200,11 +162,7 @@
         }
 
         function closeModal() { document.getElementById('redemption-modal').style.display = 'none'; }
-        
         window.onload = render;
-
-        // --- DEBUG: Uncomment the line below to test the UI with fake data ---
-        // localStorage.setItem('collectedStrains', JSON.stringify(['lemon-wookie', 'security-guy']));
     </script>
 </body>
 </html>
