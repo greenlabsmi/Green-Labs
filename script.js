@@ -1098,7 +1098,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', async () => {
     let strains = [];
     try {
-        const response = await fetch('https://dutchtouchgenetics.com');
+        const response = await fetch('https://dutchtouchgenetics.com/strains.json');
         strains = await response.json();
 
         // --- THE DAVE DICTIONARY --- 
