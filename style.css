@@ -4532,3 +4532,22 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
         padding-left: 0 !important;
     }
 }
+
+/* =========================================================
+   HERO 3-TILE SPREAD FIX
+========================================================= */
+.diff {
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important; /* Forces exactly 3 equal columns */
+    gap: 20px !important;
+    grid-column: 1 / -1 !important; /* The Magic Bullet: Forces this container to span 100% of the screen width */
+    margin-top: 30px; /* Gives it breathing room below the Hero image */
+}
+
+/* Make sure they stack cleanly on mobile instead of squishing */
+@media (max-width: 800px) {
+    .diff {
+        grid-template-columns: 1fr !important; 
+    }
+}
