@@ -4514,3 +4514,20 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
     text-align: center;
     letter-spacing: 0.5px;
 }
+
+/* =========================================================
+   HIGHLIGHTS SCROLL FIX: PREVENT LEFT-SIDE CUTOFF
+========================================================= */
+.thRow {
+    justify-content: flex-start !important; 
+    padding-left: 20px !important; /* Gives a nice breathing gap on the left edge */
+    padding-right: 20px !important;
+}
+
+/* On desktop, if they don't fill the screen, center them safely */
+@media (min-width: 1000px) {
+    .thRow {
+        justify-content: center !important;
+        padding-left: 0 !important;
+    }
+}
