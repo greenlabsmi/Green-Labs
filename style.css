@@ -2613,11 +2613,12 @@ header, nav, section, .container, .wrap, .row {
 }
 
 #todays-highlights .thMiniTitle{
-  font-size:16px;
+  font-size:18px;
   font-weight:900;
   line-height:1.1;
   color:#121614;
 }
+
 
 /* Center and zoom the small scrolling tiles to cut out empty Canva space */
 #todays-highlights .thMini .thMedia {
