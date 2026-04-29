@@ -4551,3 +4551,24 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
         grid-template-columns: 1fr !important; 
     }
 }
+
+/* =========================================================
+   THE BULLETPROOF SCROLL FIX: ZERO LEFT-SIDE CUTOFF
+========================================================= */
+.thRow {
+    display: flex !important;
+    flex-wrap: nowrap !important; /* Forces a single horizontal line */
+    justify-content: flex-start !important; /* Hard anchor to the left edge */
+    overflow-x: auto !important; /* Enables the side-scrolling */
+    width: 100% !important;
+    max-width: 100vw !important; /* Stops the row from becoming wider than your monitor */
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    margin-left: 0 !important; /* Kills any rogue centering margins */
+    -webkit-overflow-scrolling: touch !important; /* Makes it buttery smooth on iPhones */
+}
+
+/* Tells the mini tiles: "Do not shrink, do not stretch!" */
+#todays-highlights .thMini {
+    flex: 0 0 auto !important; 
+}
