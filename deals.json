@@ -21,12 +21,12 @@
         "title": "Mix & Match 1G Carts",
         "price": "5 for $35",
         "tag": "VAPES",
-        "details": "Superfire · Crude Boys · Drip",
+        "details": "Superfire · Crude Boys · Drip · Daily Dose",
         "image": "assets/img/highlights/mixmatch-carts.jpg"
       },
       "deli-oz": {
         "title": "Pina Rita Ounce Special",
-        "price": "$85",
+        "price": "$74",
         "tag": "FLOWER",
         "details": "Premium Dutch Touch Deli Flower",
         "image": "assets/img/deals/hl-pina-rita.jpg"
@@ -42,10 +42,10 @@
       "mix-gummies": { "title": "Mix & Match Edibles 5 for $18", "image": "assets/img/highlights/hl-gummies.jpg" },
       "mix-prerolls": { "title": "Mix & Match Pre-Rolls 10 for $35", "image": "assets/img/highlights/hl-prerolls.jpg" },
       "fire-styxx": { "title": "Fire Styxx 10 for $50", "image": "assets/img/highlights/hl-fire-styxx.jpg" },
-      "lightsky-carts": { "title": "LSF Live Resin 6 for $100", "image": "assets/img/highlights/hl-lightsky.jpg" },
+      "lightsky-carts": { "title": "LSF Live Resin 5 for $90", "image": "assets/img/highlights/hl-lightsky.jpg" },
       "redbud-carts": { "title": "Redbud 1g Cart 3 for $25", "image": "assets/img/highlights/hl-redbud.jpg" },
       "premium-gummies": { "title": "Premium Gummies 5 for $35", "image": "assets/img/highlights/hl-premium-gummies.jpg" },
-      "grip-oz": { "title": "Grip Oz Flower 2 for $35", "image": "assets/img/highlights/hl-grip.jpg"}
+      "grip-oz": { "title": "Grip Oz Flower 2 for $45", "image": "assets/img/highlights/hl-grip.jpg"}
     }
   },
   "deals": [
