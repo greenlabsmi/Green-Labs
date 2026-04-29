@@ -4553,6 +4553,19 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
 }
 
 /* =========================================================
+   KILL THE SPLIT-SCREEN (FULL SPREAD FIX)
+========================================================= */
+.hero__grid {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+}
+
+.hero__media--link, .hero__media {
+    width: 100% !important;
+}
+
+/* =========================================================
    THE BULLETPROOF SCROLL FIX: ZERO LEFT-SIDE CUTOFF
 ========================================================= */
 .thRow {
