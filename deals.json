@@ -54,36 +54,30 @@
       "promo": false,
       "groups": [
         {
-          "title": "Ounces",
+          "title": "Deli Flower Deals",
+          "items": [
+            "Dutch Touch Genetics — $6/1g | $20/8th | $35/Qtr | $60/Half | $110/Oz",
+            "3rd Party Flower — $6/1g | $20/8th | $35/Qtr | $50/Half | $100/Oz",
+            "DTG Mega Deal (Strain of the Month) — $200/2oz | $230/70g Max Out",
+            "3rd Party Mega Deal (Strain of the Month) — $190/2oz | $220/70g Max Out",
+            "Ripped Bubba 1oz — $50 or 2/$95",
+            "Endo Deli Flower — $125/Oz",
+            "Vortex Deli Flower — $70/Oz",
+            "Death Z, Pina Rita & Sticky Trap 1oz — $74 or 2/$130"
+          ]
+        },
+        {
+          "title": "Pre-Packed Flower Deals",
           "items": [
             "Grip Pre-Packaged Ounces — 2 for $45",
-            "Dutch Daylight Flower (All Strains) — $40 or 2/$75",
-            "Ripped Bubba Ounces — $50 or 2/$95",
+            "Dutch Daylight Flower (All Strains) — $40 or 2/$75", 
             "Angelica & Secret Chief 1oz Bags — $65",
-            "Vortex Deli Flower — $70",
-            "Cresco 1oz Bag (Jesters) — $70 or 2/$130",
-            "Death Z, Pina Rita & Sticky Trap Ounces — $74 or 2/$130",
-            "Spirit Hashplant & Gorilla 88 Ounces — $75",
-            "Endo Deli Flower — $125",
-            "Solo Walker & Banana Split Ounces — $135",
-            "Spirit Hashplant & Guicy G Ounces — $145",
-            "Mr. Clean 1oz Jars — $150 (Limited Stock!)"
-          ]
-        },
-        {
-          "title": "Half Ounces",
-          "items": [
-            "Double Bubble & Hash D Half Ounces — $75"
-          ]
-        },
-        {
-          "title": "Quarters & Eighths",
-          "items": [
-            "Chocolate Marshmallow Quarters — $45",
-            "Secret Chief Eighths — $10",
-            "Querkle & Hash D Eighths — $20",
-            "BubbleGum & Guicy G Eighths — $20",
-            "Lilac Diesel Eighths (Award Winning) — $35"
+            "Cresco 1oz Bag (Jesters) — $70 or 2/$130",      
+            "Double Bubble & Hash D Half Ounces — $75",
+            "Mr. Clean 1oz Jars (Limited Stock!) — $150",
+            "Lilac Diesel Eighths (Award Winning) — $35",
+            "Querkle, Hash D, BubbleGum & Guicy G Eighths — $20",
+            "Secret Chief Eighths — $10"
           ]
         }
       ]
