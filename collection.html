@@ -17,37 +17,31 @@
         .bar-fill { background: var(--gold); height: 100%; transition: width 1s ease; }
 
         .set-section { margin-bottom: 60px; }
-        .set-header { margin-bottom: 20px; border-left: 3px solid var(--gold); padding-left: 15px; }
+        .set-header { margin-bottom: 20px; border-left: 3px solid var(--gold); padding-left: 15px; display: flex; justify-content: space-between; align-items: flex-end; }
         .set-reward { font-size: 11px; font-weight: 800; color: var(--green); text-transform: uppercase; letter-spacing: 1px; }
+        
+        /* NEW: Claim Button Styling */
+        .claim-btn { 
+            background: var(--gold); color: #000; border: none; padding: 5px 12px; 
+            border-radius: 5px; font-weight: 800; font-size: 10px; cursor: pointer;
+            margin-top: 5px; display: inline-block; animation: pulse 2s infinite;
+        }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; } }
 
         .card-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; } 
-        
         .card-wrapper { cursor: pointer; transition: transform 0.2s; }
         .card-wrapper:active { transform: scale(0.96); }
 
         .card-frame { 
-            width: 100%; 
-            aspect-ratio: 2/3; 
-            background: #111; 
-            border-radius: 15px; 
-            overflow: hidden; 
-            border: 1px solid rgba(255,255,255,0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 100%; aspect-ratio: 2/3; background: #111; 
+            border-radius: 15px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);
+            display: flex; align-items: center; justify-content: center;
         }
         
-        /* FIX: Ensures the whole card graphic is visible in the grid */
-        .card-img-fix { 
-            width: 100%; height: 100%; 
-            object-fit: contain; 
-            background: #000;
-        }
-
+        .card-img-fix { width: 100%; height: 100%; object-fit: contain; background: #000; }
         .card-label { padding: 12px 5px; }
         .card-label h3 { font-size: 16px; margin: 0; color: #fff; }
         .card-hint { font-size: 10px; color: rgba(255,255,255,0.4); margin-top: 4px; }
-
         .locked { filter: grayscale(1); opacity: 0.3; }
 
         .modal { 
@@ -69,26 +63,9 @@
         }
 
         .modal-body { padding: 20px; max-width: 500px; margin: 0 auto; width: 100%; box-sizing: border-box; text-align: center; }
-        
-        /* FIX: Pop-up image now fits the entire screen without cropping */
-        .modal-hero { 
-            width: 100%; 
-            max-height: 60vh; 
-            object-fit: contain; 
-            border-radius: 15px; 
-            margin-bottom: 25px;
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
-        }
-
-        .reward-pill { 
-            background: rgba(46, 248, 187, 0.05); border: 1px solid var(--green); 
-            padding: 15px; border-radius: 12px; margin-bottom: 25px;
-        }
-
-        .qr-section { 
-            background: #fff; padding: 20px; border-radius: 20px; 
-            display: inline-block; margin-bottom: 30px;
-        }
+        .modal-hero { width: 100%; max-height: 60vh; object-fit: contain; border-radius: 15px; margin-bottom: 25px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5)); }
+        .reward-pill { background: rgba(46, 248, 187, 0.05); border: 1px solid var(--green); padding: 15px; border-radius: 12px; margin-bottom: 25px; }
+        .qr-section { background: #fff; padding: 20px; border-radius: 20px; display: inline-block; margin-bottom: 30px; }
         #qrcode img { margin: 0 auto; }
 
         @media (min-width: 600px) { .card-grid { grid-template-columns: repeat(4, 1fr); } }
@@ -117,23 +94,16 @@
         
         <div class="modal-body">
             <img src="" id="modal-art" class="modal-hero">
-            
             <p id="modal-rarity" style="color: var(--gold); font-weight: 800; font-size: 11px; letter-spacing: 2px; margin-bottom: 5px;"></p>
             <h2 id="modal-title" style="font-size: 28px; margin: 0 0 15px 0;"></h2>
-
             <div class="reward-pill">
                 <span style="font-size: 9px; color: rgba(255,255,255,0.5); display: block; margin-bottom: 3px;">COLLECTOR DISCOUNT:</span>
                 <p id="modal-perk" style="color: var(--green); font-weight: 800; font-size: 18px; margin: 0;"></p>
             </div>
-
             <div class="qr-section">
                 <div id="qrcode"></div>
                 <p style="color: #666; font-size: 9px; font-weight: 800; margin-top: 12px; text-transform: uppercase;">Scan at Register</p>
             </div>
-            
-            <p style="font-size: 10px; color: rgba(255,255,255,0.4); line-height: 1.5; padding-bottom: 40px;">
-                Show this to your budtender to redeem your discount.
-            </p>
         </div>
     </div>
 
@@ -168,14 +138,24 @@
 
             GL_SETS.forEach(set => {
                 const count = set.cardIds.filter(id => collected.includes(id)).length;
+                const isComplete = count === set.cardIds.length;
                 const hasAny = count > 0;
-                const html = `<div class="set-section">
+                
+                const html = `
+                    <div class="set-section">
                         <div class="set-header">
-                            <h2 style="margin:0; ${!hasAny ? 'opacity:0.3' : ''}">${set.name}</h2>
-                            <span class="set-reward">${set.reward}</span>
+                            <div>
+                                <h2 style="margin:0; ${!hasAny ? 'opacity:0.3' : ''}">${set.name}</h2>
+                                ${isComplete ? 
+                                    `<button class="claim-btn" onclick="openSetModal('${set.id}')">✨ CLAIM MEGA DEAL</button>` : 
+                                    `<span class="set-reward">${set.reward}</span>`
+                                }
+                            </div>
+                            <div style="font-size: 10px; color: ${hasAny ? 'var(--gold)' : '#333'}">${count}/${set.cardIds.length}</div>
                         </div>
                         <div class="card-grid" id="grid-${set.id}"></div>
                     </div>`;
+                
                 container.insertAdjacentHTML('beforeend', html);
                 const grid = document.getElementById(`grid-${set.id}`);
                 set.cardIds.forEach(id => {
@@ -197,6 +177,20 @@
             document.getElementById('modal-art').src = card.image;
             document.getElementById('qrcode').innerHTML = '';
             new QRCode(document.getElementById("qrcode"), { text: `DANKAMON_REDEEM: ${card.reward} (${card.name})`, width: 180, height: 180 });
+            document.getElementById('redemption-modal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // NEW: Function for Set Redemption
+        function openSetModal(setId) {
+            const set = GL_SETS.find(s => s.id === setId);
+            document.getElementById('modal-title').innerText = set.name + " COMPLETE!";
+            document.getElementById('modal-perk').innerText = set.reward;
+            document.getElementById('modal-rarity').innerText = "SET MEGA-REWARD";
+            // Uses the first card image of the set as a placeholder for the hero art
+            document.getElementById('modal-art').src = GL_CARDS.find(c => c.id === set.cardIds[0]).image;
+            document.getElementById('qrcode').innerHTML = '';
+            new QRCode(document.getElementById("qrcode"), { text: `DANKAMON_SET_REDEEM: ${set.reward}`, width: 180, height: 180 });
             document.getElementById('redemption-modal').style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
