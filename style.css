@@ -2504,7 +2504,7 @@ header, nav, section, .container, .wrap, .row {
 #todays-highlights .thMid{ height:230px; border-radius:20px; }
 #todays-highlights .thMini{
   height: 215px; /* Dropped down slightly to fix the edge bleed */
-  width: 230px;  /* Pulled wider for a cleaner aspect ratio */
+  width: 280px;  /* Pulled wider for a cleaner aspect ratio */
   border-radius: 18px;
   flex: 0 0 auto;
 }
@@ -4235,8 +4235,8 @@ main + .section--light {
 @media (max-width: 640px) {
     /* 1. Make the cards bigger now that the box is gone! */ 
 #todays-highlights .thMini {
-    width: 185px; 
-    height: 200px; 
+    width: 240px;
+    height: 180px; 
 }
 
     /* 2. The Fade: Create a fog gradient on the right edge */
