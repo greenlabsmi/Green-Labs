@@ -4572,3 +4572,21 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
 #todays-highlights .thMini {
     flex: 0 0 auto !important; 
 }
+
+/* =========================================================
+   UNIFY HERO & PILLAR CARDS (SEAMLESS LOOK)
+========================================================= */
+/* 1. Kill the gap and green border under the Hero image */
+.section--hero {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+    border-bottom: none !important; /* Erases that green dividing line */
+}
+
+/* 2. Pull Pillars up flush, and add the missing space BELOW them */
+.pillars {
+    margin-top: 0 !important; /* Kills the empty space above the cards */
+    padding-top: 20px !important; /* Just a tiny bit of breathing room from the image */
+    padding-bottom: 80px !important; /* Pushes the 'Today's Highlights' section safely down */
+    margin-bottom: 0 !important;
+}
