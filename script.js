@@ -1098,7 +1098,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', async () => {
     let strains = [];
     try {
-        const response = await fetch('https://greenlabsmi.github.io/Dutch_Touch_Brand/strains.json');
+        const response = await fetch('https://dutchtouchgenetics.com');
         strains = await response.json();
 
         // --- THE DAVE DICTIONARY --- 
@@ -1234,7 +1234,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         // Render the champions
         mount.innerHTML = featured.map(s => {
-            let img = s.image ? 'https://greenlabsmi.github.io/Dutch_Touch_Brand/' + s.image : 'https://greenlabsmi.github.io/Dutch_Touch_Brand/assets/img/logo/dtg-logo-orange.png';
+            let img = s.image ? 'https://dutchtouchgenetics.com/' + s.image : 'https://dutchtouchgenetics.com/assets/img/logo/dtg-logo-orange.png';
             
             return `
             <article class="strain-card award-card" id="strain-${s.slug}">
@@ -1272,7 +1272,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     </div>
                     <p class="strain-modal-desc" id="glModalDesc"></p>
                     <div class="strain-modal-cta" style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
-                        <a href="https://greenlabsmi.github.io/Dutch_Touch_Brand/strains.html" class="btn btn--gold" style="width: 100%;">
+                        <a href="https://dutchtouchgenetics.com/strains.html" class="btn btn--gold" style="width: 100%;">
                             Explore DTG Vault &rarr;
                         </a>
                         <button id="glModalShopBtn" class="btn btn--ghost" onclick="document.getElementById('glCloseModal').click(); const nav = document.querySelector('[data-open-shop]'); if(nav) nav.click();" style="width: auto; padding: 6px 20px; font-size: 13px; background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.15); border-radius: 4px;">
@@ -1336,7 +1336,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
             // ------------------------------
 
-            let img = s.image ? 'https://greenlabsmi.github.io/Dutch_Touch_Brand/' + s.image : 'https://greenlabsmi.github.io/Dutch_Touch_Brand/assets/img/logo/dtg-logo-orange.png';
+            let img = s.image ? 'https://dutchtouchgenetics.com/' + s.image : 'https://dutchtouchgenetics.com/assets/img/logo/dtg-logo-orange.png';
             if (document.getElementById('glModalImage')) {
                 document.getElementById('glModalImage').src = img;
             }
