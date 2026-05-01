@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dutch-A-Mon | Green Labs Collection</title>
+    <title>Dutch-A-Dex | Green Labs Collection</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
@@ -14,7 +14,7 @@
 
         .binder-container { max-width: 1000px; margin: 0 auto; padding: 20px; }
         
-        /* HEADER & STATS (Locked to single line) */
+        /* HEADER & STATS */
         .dex-header-container {
             display: flex; justify-content: space-between; align-items: center; 
             margin: 20px 0 40px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1);
@@ -25,8 +25,7 @@
         .dex-counter-pill {
             background: var(--glass); border: 1px solid var(--gold); border-radius: 30px;
             padding: 8px 16px; display: flex; flex-direction: column; align-items: center;
-            white-space: nowrap; /* Prevents stacking */
-            box-shadow: 0 0 15px rgba(214, 164, 65, 0.15);
+            white-space: nowrap; box-shadow: 0 0 15px rgba(214, 164, 65, 0.15);
         }
         .dex-counter-pill span.num { font-size: 18px; font-weight: 800; color: #fff; }
         .dex-counter-pill span.lbl { font-size: 8px; color: var(--gold); text-transform: uppercase; font-weight: 700; letter-spacing: 1px;}
@@ -41,7 +40,7 @@
         .set-fraction { font-size: 20px; font-weight: 900; color: var(--gold); }
         .set-reward { display: block; font-size: 10px; color: var(--green); font-weight: 800; text-transform: uppercase; margin-top: 4px; padding-left: 13px; }
 
-        /* Card Styling (Cleaned up, no home screen share icon) */
+        /* Card Styling */
         .card-wrapper { flex: 0 0 140px; scroll-snap-align: start; cursor: pointer; position: relative; }
         .card-frame { width: 100%; aspect-ratio: 2/3; background: #111; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); position: relative; }
         
@@ -66,9 +65,9 @@
         .modal-body { padding: 20px; max-width: 450px; margin: 0 auto; text-align: center; width: 100%; }
         
         /* Interactive Hero Image Container */
-        .hero-container { position: relative; margin-bottom: 15px; cursor: pointer; }
-        .modal-hero { width: 100%; max-height: 50vh; object-fit: contain; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .hero-hint { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.7); backdrop-filter: blur(5px); color: #fff; font-size: 10px; padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2); pointer-events: none; }
+        .hero-container { position: relative; margin-bottom: 15px; cursor: pointer; display: inline-block; width: 100%; }
+        .modal-hero { width: 100%; max-height: 50vh; object-fit: contain; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 10px 30px rgba(0,0,0,0.5); display: block; }
+        .hero-hint { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.7); backdrop-filter: blur(5px); color: #fff; font-size: 10px; padding: 6px 14px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2); pointer-events: none; white-space: nowrap; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
 
         /* Slimmer Discount Box */
         .reward-pill { background: rgba(46, 248, 187, 0.05); border: 1px solid rgba(46, 248, 187, 0.3); padding: 10px; border-radius: 8px; margin-bottom: 25px; }
@@ -81,12 +80,11 @@
 
         /* --- FULL SCREEN SWIPE VIEWER (LIGHTBOX) --- */
         #lightbox-modal { position: fixed; inset: 0; background: #000; z-index: 3000; display: none; flex-direction: column; }
-        .lightbox-close { position: absolute; top: 20px; right: 20px; color: #fff; background: rgba(255,255,255,0.1); border: none; border-radius: 50%; width: 40px; height: 40px; font-size: 20px; z-index: 3010; cursor: pointer; backdrop-filter: blur(5px); }
+        .lightbox-close { position: absolute; top: 20px; right: 20px; color: #fff; background: rgba(255,255,255,0.1); border: none; border-radius: 50%; width: 40px; height: 40px; font-size: 20px; z-index: 3010; cursor: pointer; backdrop-filter: blur(5px); display: flex; align-items: center; justify-content: center; }
         .lightbox-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; height: 100vh; scrollbar-width: none; }
         .lightbox-track::-webkit-scrollbar { display: none; }
-        .lightbox-slide { flex: 0 0 100vw; height: 100vh; scroll-snap-align: center; display: flex; align-items: center; justify-content: center; position: relative; padding: 20px; }
-        .lightbox-slide img { max-width: 100%; max-height: 85vh; object-fit: contain; border-radius: 15px; }
-        .lightbox-name { position: absolute; bottom: 40px; text-align: center; width: 100%; color: #fff; font-family: 'Cinzel', serif; font-size: 24px; text-shadow: 0 2px 10px rgba(0,0,0,0.8); }
+        .lightbox-slide { flex: 0 0 100vw; height: 100vh; scroll-snap-align: center; display: flex; align-items: center; justify-content: center; position: relative; padding: 0; }
+        .lightbox-slide img { width: 100%; height: 100%; object-fit: contain; }
 
         /* Footer */
         .collection-footer { background: #0a0a0a; border-top: 1px solid rgba(255,255,255,0.1); padding: 40px 20px; text-align: center; }
@@ -98,12 +96,12 @@
     <div class="binder-container">
         <header class="dex-header-container">
             <div class="dex-title">
-                <h1>DANK-A-MON</h1>
+                <h1>DUTCH-A-DEX</h1>
                 <p>The Dutch Touch Collection</p>
             </div>
             <div class="dex-counter-pill">
                 <span class="num" id="master-count">0/22</span>
-                <span class="lbl">DEX COUNTER</span>
+                <span class="lbl">COLLECTED</span>
             </div>
         </header>
 
@@ -224,18 +222,16 @@
             renderLightboxTrack(collected);
         }
 
-        // Builds the Swipeable Gallery behind the scenes
+        // Builds the Swipeable Gallery behind the scenes with NO TEXT
         function renderLightboxTrack(collected) {
             const track = document.getElementById('lightbox-track');
             track.innerHTML = '';
-            // Match order of top row (newest first)
             [...collected].reverse().forEach(id => {
                 const card = GL_CARDS.find(c => c.id === id);
                 if(card) {
                     track.insertAdjacentHTML('beforeend', `
                         <div class="lightbox-slide" id="slide-${id}">
                             <img src="${card.image}">
-                            <div class="lightbox-name">${card.name}</div>
                         </div>
                     `);
                 }
@@ -249,7 +245,7 @@
             document.getElementById('header-strain-name').innerText = card.name.toUpperCase();
             document.getElementById('modal-art').src = card.image;
             document.getElementById('modal-rarity').innerText = card.rarity;
-            document.getElementById('modal-perk').innerText = card.reward;
+            document.getElementById('modal-perk').innerText = "DISCOUNT: " + card.reward;
             
             document.getElementById('qrcode').innerHTML = '';
             new QRCode(document.getElementById("qrcode"), { text: `DANKAMON: ${id}`, width: 140, height: 140, colorDark: "#000", colorLight: "#fff" });
@@ -265,7 +261,6 @@
 
         function openLightbox() {
             document.getElementById('lightbox-modal').style.display = 'flex';
-            // Snap straight to the card they tapped
             document.getElementById(`slide-${currentActiveId}`).scrollIntoView({ behavior: 'instant', inline: 'center' });
         }
 
