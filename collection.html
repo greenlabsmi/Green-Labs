@@ -78,13 +78,13 @@
         .qr-instruction { color: var(--gold); font-family: 'Cinzel', serif; font-size: 14px; font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; justify-content: center; gap: 8px; }
         .qr-area { background: #fff; padding: 15px; border-radius: 12px; display: inline-block; margin-bottom: 20px; border: 2px dashed #ccc; }
 
-        /* --- FULL SCREEN SWIPE VIEWER (LIGHTBOX) --- */
+        /* --- FULL SCREEN SWIPE VIEWER (LIGHTBOX - ZERO TEXT) --- */
         #lightbox-modal { position: fixed; inset: 0; background: #000; z-index: 3000; display: none; flex-direction: column; }
         .lightbox-close { position: absolute; top: 20px; right: 20px; color: #fff; background: rgba(255,255,255,0.1); border: none; border-radius: 50%; width: 40px; height: 40px; font-size: 20px; z-index: 3010; cursor: pointer; backdrop-filter: blur(5px); display: flex; align-items: center; justify-content: center; }
         .lightbox-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; height: 100vh; scrollbar-width: none; }
         .lightbox-track::-webkit-scrollbar { display: none; }
         .lightbox-slide { flex: 0 0 100vw; height: 100vh; scroll-snap-align: center; display: flex; align-items: center; justify-content: center; position: relative; padding: 0; }
-        .lightbox-slide img { width: 100%; height: 100%; object-fit: contain; }
+        .lightbox-slide img { width: 100vw; height: 100vh; object-fit: contain; }
 
         /* Footer */
         .collection-footer { background: #0a0a0a; border-top: 1px solid rgba(255,255,255,0.1); padding: 40px 20px; text-align: center; }
@@ -151,31 +151,16 @@
             </div>
     </div>
 
+    <script src="assets/js/dutchamon-db.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script>
-        const GL_CARDS = [
-            { id: 'lemon-wookie', name: 'Lemon Wookie', image: 'assets/img/strains/lemon-wookie-art.jpg', reward: '$1 Off 1/8th', rarity: 'Indica-Hybrid' },
-            { id: 'falcon-9', name: 'Falcon 9', image: 'assets/img/strains/falcon-9-art.jpg', reward: '$1 Off 1/8th', rarity: 'Premium Hybrid' },
-            { id: 'solo-walker', name: 'Solo Walker', image: 'assets/img/strains/solo-walker-art.jpg', reward: '$1 Off 1/8th', rarity: 'Elite Genetics' },
-            { id: '13-layer-cake', name: '13 Layer Cake', image: 'assets/img/strains/13-layer-cake-art.jpg', reward: '$1 Off 1/8th', rarity: 'Sativa Hybrid' },
-            { id: 'banana-split', name: 'Banana Split', image: 'assets/img/strains/banana-split-art.jpg', reward: '$1 Off 1/8th', rarity: 'Hybrid' },
-            { id: 'double-bubble', name: 'Double Bubble', image: 'assets/img/strains/double-bubble-art.jpg', reward: '$1 Off 1/8th', rarity: 'Hybrid' },
-            { id: 'security-guy', name: 'The Bodyguard', image: 'assets/img/hero.jpg', reward: 'Free Sticker', rarity: 'Secret Drop' },
-            { id: 'colossus', name: 'The Colossus', image: 'assets/img/greenlabs-logo.png', reward: '15% Off Total', rarity: 'Legendary' }
-        ];
-
-        const GL_SETS = [
-            { id: 'jedi', name: 'Jedi Council', reward: 'Reward: 20% Off Set', cardIds: ['lemon-wookie', 'falcon-9', 'solo-walker'] },
-            { id: 'bakery', name: 'The Bakery', reward: 'Reward: Free Edible', cardIds: ['13-layer-cake', 'banana-split', 'double-bubble'] }
-        ];
-
         let currentActiveId = null;
 
         function getCollected() { return JSON.parse(localStorage.getItem('collectedStrains')) || []; }
 
         function render() {
             const collected = getCollected();
-            document.getElementById('master-count').innerText = `${collected.length}/22`;
+            document.getElementById('master-count').innerText = `${collected.length}/${GL_CARDS.length}`;
 
             const topRow = document.getElementById('all-collected-row');
             topRow.innerHTML = '';
@@ -248,7 +233,7 @@
             document.getElementById('modal-perk').innerText = "DISCOUNT: " + card.reward;
             
             document.getElementById('qrcode').innerHTML = '';
-            new QRCode(document.getElementById("qrcode"), { text: `DANKAMON: ${id}`, width: 140, height: 140, colorDark: "#000", colorLight: "#fff" });
+            new QRCode(document.getElementById("qrcode"), { text: `DUTCHAMON: ${id}`, width: 140, height: 140, colorDark: "#000", colorLight: "#fff" });
             
             document.getElementById('viewer-modal').style.display = 'flex';
             document.body.style.overflow = 'hidden';
@@ -270,9 +255,12 @@
 
         function shareCurrentCard() {
             const card = GL_CARDS.find(c => c.id === currentActiveId);
-            const url = `https://greenlabsmi.com/collect/${currentActiveId}.html`;
+            const url = `https://greenlabsmi.com/collect/unlock.html?id=${currentActiveId}`;
             if (navigator.share) {
-                navigator.share({ title: 'Dank-A-Mon Unlocked!', text: `I found the ${card.name}! Start your collection before they disappear:`, url: url });
+                navigator.share({ title: 'Dutchamon Unlocked!', text: `I found the ${card.name}! Start your collection before they disappear:`, url: url });
+            } else {
+                navigator.clipboard.writeText(`I found the ${card.name}! Start your collection before they disappear: ${url}`);
+                alert('Dutchamon link copied to clipboard!');
             }
         }
 
