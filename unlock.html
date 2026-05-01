@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Card Unlocked! | Dutchamon</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { background: #050505; color: white; font-family: 'Inter', sans-serif; text-align: center; padding: 20px; margin: 0; display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+        .unlock-container { width: 100%; max-width: 400px; padding: 30px; border-radius: 24px; background: #111; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+        
+        .status-badge { color: #d6a441; font-size: 14px; font-weight: 800; margin-bottom: 15px; display: block; letter-spacing: 2px; text-transform: uppercase; }
+        .rarity { color: rgba(255,255,255,0.5); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 10px; margin-bottom: 5px; }
+        .strain-name { font-size: 32px; font-family: 'Cinzel', serif; margin: 0 0 20px 0; color: #fff; }
+        
+        .card-img { width: 100%; border-radius: 12px; border: 1px solid rgba(214, 164, 65, 0.5); box-shadow: 0 0 30px rgba(214, 164, 65, 0.2); margin-bottom: 25px; object-fit: contain; background: #000; }
+        
+        .reward-box { background: rgba(46, 248, 187, 0.05); border: 1px solid rgba(46, 248, 187, 0.3); padding: 15px; border-radius: 12px; margin: 20px 0; }
+        .reward-text { color: #2ef8bb; font-weight: 800; margin: 0; font-size: 18px; }
+        
+        .btn-stack { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+        .btn-main { background: #d6a441; color: #000; text-decoration: none; padding: 16px; border-radius: 12px; font-weight: 800; font-size: 14px; }
+        
+        #error-state { display: none; padding: 40px 20px; }
+    </style>
+</head>
+<body>
+
+    <div class="unlock-container" id="success-state">
+        <span id="status-msg" class="status-badge">✨ DUTCHAMON UNLOCKED!</span>
+        <p class="rarity" id="rarity-label">Loading...</p>
+        <h1 class="strain-name" id="name-label">Loading...</h1>
+        
+        <img id="card-art" src="" alt="Card Art" class="card-img">
+
+        <div class="reward-box">
+            <p style="font-size: 10px; color: rgba(255,255,255,0.5); margin: 0 0 5px 0;">COLLECTOR DISCOUNT:</p>
+            <p class="reward-text" id="reward-label">Loading...</p>
+        </div>
+
+        <div class="btn-stack">
+            <a href="../collection.html" class="btn-main">View in Collection</a>
+        </div>
+    </div>
+
+    <div class="unlock-container" id="error-state">
+        <h1 style="color: #d6a441; font-family: 'Cinzel', serif;">Scan Error</h1>
+        <p style="color: #aaa; font-size: 14px;">This card could not be found. Please try scanning again.</p>
+        <a href="../collection.html" class="btn-main" style="display: block; margin-top: 20px;">Go to Binder</a>
+    </div>
+
+    <script src="../assets/js/dutchamon-db.js"></script>
+    <script>
+        window.onload = () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const scannedId = urlParams.get('id');
+            const card = GL_CARDS.find(c => c.id === scannedId);
+
+            if (card) {
+                document.getElementById('name-label').innerText = card.name;
+                document.getElementById('rarity-label').innerText = card.rarity;
+                document.getElementById('reward-label').innerText = card.reward;
+                document.getElementById('card-art').src = "../" + card.image;
+
+                let collected = JSON.parse(localStorage.getItem('collectedStrains')) || [];
+                if (!collected.includes(scannedId)) {
+                    collected.push(scannedId);
+                    localStorage.setItem('collectedStrains', JSON.stringify(collected));
+                } else {
+                    document.getElementById('status-msg').innerText = "ALREADY IN COLLECTION";
+                    document.getElementById('status-msg').style.color = "#aaa";
+                }
+            } else {
+                document.getElementById('success-state').style.display = 'none';
+                document.getElementById('error-state').style.display = 'block';
+            }
+        };
+    </script>
+</body>
+</html>
