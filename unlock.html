@@ -39,17 +39,17 @@
         </div>
 
         <div class="btn-stack">
-            <a href="../collection.html" class="btn-main">View in Collection</a>
+            <a href="collection.html" class="btn-main">View in Collection</a>
         </div>
     </div>
 
     <div class="unlock-container" id="error-state">
         <h1 style="color: #d6a441; font-family: 'Cinzel', serif;">Scan Error</h1>
         <p style="color: #aaa; font-size: 14px;">This card could not be found. Please try scanning again.</p>
-        <a href="../collection.html" class="btn-main" style="display: block; margin-top: 20px;">Go to Binder</a>
+        <a href="collection.html" class="btn-main" style="display: block; margin-top: 20px;">Go to Binder</a>
     </div>
 
-    <script src="../assets/js/dutchamon-db.js"></script>
+    <script src="assets/js/dutchamon-db.js"></script>
     <script>
         window.onload = () => {
             const urlParams = new URLSearchParams(window.location.search);
@@ -60,7 +60,8 @@
                 document.getElementById('name-label').innerText = card.name;
                 document.getElementById('rarity-label').innerText = card.rarity;
                 document.getElementById('reward-label').innerText = card.reward;
-                document.getElementById('card-art').src = "../" + card.image;
+                // FIXED: Uses exact path from database without ../
+                document.getElementById('card-art').src = card.image;
 
                 let collected = JSON.parse(localStorage.getItem('collectedStrains')) || [];
                 if (!collected.includes(scannedId)) {
