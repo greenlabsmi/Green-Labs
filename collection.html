@@ -253,9 +253,11 @@
             document.getElementById('lightbox-modal').style.display = 'none';
         }
 
-        function shareCurrentCard() {
+       function shareCurrentCard() {
             const card = GL_CARDS.find(c => c.id === currentActiveId);
-            const url = `https://greenlabsmi.com/collect/unlock.html?id=${currentActiveId}`;
+            // FIXED: Removed /collect/ from the URL since unlock.html is in the main folder now
+            const url = `https://greenlabsmi.com/unlock.html?id=${currentActiveId}`;
+            
             if (navigator.share) {
                 navigator.share({ title: 'Dutchamon Unlocked!', text: `I found the ${card.name}! Start your collection before they disappear:`, url: url });
             } else {
