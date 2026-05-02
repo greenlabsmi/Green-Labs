@@ -1540,7 +1540,7 @@ document.querySelectorAll('[data-guide-card]').forEach(card => {
     });
 }); // <-- THIS BRACKET WAS MISSING! It closes the education cards.
 
-// --- STAR WAR PROMO POP-UP (ANIMATED CRAWL - ALWAYS SHOW) ---
+// --- STAR WAR PROMO POP-UP (EPIC CRAWL - ALWAYS SHOW) ---
 setTimeout(() => {
     const swPopup = document.createElement('div');
     swPopup.id = 'star-wars-popup';
@@ -1548,7 +1548,27 @@ setTimeout(() => {
     
     swPopup.innerHTML = `
         <div class="sw-crawl-container" id="sw-crawl">
-            <div class="sw-crawl-text">MAY THE 4TH<br>BE WITH YOU...</div>
+            <div class="sw-crawl-text">
+                MAY THE 4TH BE WITH YOU...<br><br><br>
+                <span style="color:#fff; font-size:0.7em; letter-spacing:2px;">THE DEALS</span><br><br>
+                Dutch Daylight Death Star (OZ)<br>
+                <span style="color:#2ef8bb;">$46 out-the-door</span><br><br>
+                Jarred Wampa & Thunder Wookie (OZ)<br>
+                <span style="color:#2ef8bb;">$157 out-the-door</span><br><br>
+                Death Star Sugar<br>
+                <span style="color:#2ef8bb;">50% OFF (1g: $9 | 3.5g: $29)</span><br><br>
+                Deli OZ - Death Z & Solo Walker<br>
+                <span style="color:#2ef8bb;">$82 out-the-door</span><br><br><br><br><br><br>
+                
+                <span style="color:#fff; font-size:0.7em; letter-spacing:2px;">THE RAFFLE</span><br><br>
+                Purchase ANY Dutch Touch Star Wars<br>product to enter the giveaway!<br><br><br>
+                1ST PLACE<br>
+                <span style="color:#2ef8bb;">$50 Gift Card + Deli Half OZ</span><br><br>
+                2ND PLACE<br>
+                <span style="color:#2ef8bb;">$25 Gift Card + Deli Quarter</span><br><br>
+                3RD PLACE<br>
+                <span style="color:#2ef8bb;">$25 Gift Card + Deli Eighth</span>
+            </div>
         </div>
         
         <div class="sw-deals-image" style="position:relative; width:90%; max-width:600px; border:2px solid #FFE81F; border-radius:12px; overflow:hidden; z-index:10002;">
@@ -1562,7 +1582,7 @@ setTimeout(() => {
     setTimeout(() => {
         const crawlWrap = document.getElementById('sw-crawl');
         if(crawlWrap) crawlWrap.remove();
-    }, 4500);
+    }, 25000); // 25 seconds to complete the epic scroll
 
     // Close button logic
     const closeBtn = document.getElementById('close-sw');
@@ -1571,5 +1591,4 @@ setTimeout(() => {
     closeBtn.onclick = () => {
         swPopup.remove();
     };
-}, 30000); // 30 second delay
-
+}, 2000); // Trigger set to 2 seconds for instant testing!
