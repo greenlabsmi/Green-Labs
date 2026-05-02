@@ -48,39 +48,65 @@
   },
   "deals": [
     {
-      "category": "🌿 Flower",
-      "promo": false,
+      "category": "🚀 May the 4th Exclusives",
+      "promo": true,
       "groups": [
         {
-          "title": "Deli Flower Deals",
+          "title": "⚔️ Jedi Council Deals",
           "items": [
-            "Dutch Touch Genetics Deli— $6/1g | $20/8th | $35/Qtr | $60/Half | $110/Oz",
-            "3rd Party Flower Deli — $6/1g | $20/8th | $35/Qtr | $50/Half | $100/Oz",
-            "DTG Mega Deal (Strain of the Month) — $200/2oz | $230/70g Max Out",
-            "3rd Party Mega Deal (Strain of the Month) — $190/2oz | $220/70g Max Out",
-            "Ripped Bubba 1oz — $50 or 2/$95",
-            "Endo Deli Flower — $125/Oz",
-            "Vortex Deli Flower — $70/Oz",
-            "Death Z, Pina Rita & Sticky Trap 1oz — $74 or 2/$130"
+            "Dutch Daylight Death Star (OZ) — $46 out-the-door",
+            "Jarred Wampa & Thunder Wookie (OZ) — $157 out-the-door",
+            "Deli OZ (Death Z & Solo Walker) — $82 out-the-door",
+            "Death Star Sugar — 50% OFF (1g: $9 | 3.5g: $29)"
           ]
         },
         {
-          "title": "Pre-Packed Flower Deals",
+          "title": "🎟️ The Bounty (Raffle Prizes)",
           "items": [
-            "Grip Pre-Packaged Ounces — 2 for $45",
-            "Dutch Daylight Flower (All Strains) — $40 or 2/$75", 
-            "Angelica & Secret Chief 1oz Bags — $65",
-            "Cresco 1oz Bag (Jesters) — $70 or 2/$130",      
-            "Double Bubble & Hash D Half Ounces — $75",
-            "Mr. Clean 1oz Jars (Limited Stock!) — $150",
-            "Lilac Diesel Eighths (Award Winning) — $35",
-            "Querkle, Hash D, BubbleGum & Guicy G Eighths — $20",
-            "Secret Chief Eighths — $10"
+            "Purchase ANY Dutch Touch Star Wars product to enter the giveaway!",
+            "🥇 1st Place — $50 Gift Card + Deli Half OZ",
+            "🥈 2nd Place — $25 Gift Card + Deli Quarter",
+            "🥉 3rd Place — $25 Gift Card + Deli Eighth"
           ]
         }
       ]
     },
     {
+      "category": "🌿 Flower",
+      "promo": false,
+      "groups": [
+        {
+          "title": "🏆 DTG Deli Pricing",
+          "items": [
+            "1 Gram — $6",
+            "Eighth (3.5g) — $20",
+            "Quarter (7g) — $35",
+            "Half Ounce (14g) — $60",
+            "Full Ounce (28g) — $110"
+          ]
+        },
+        {
+          "title": "🌿 3rd Party Deli Pricing",
+          "items": [
+            "1 Gram — $6",
+            "Eighth (3.5g) — $20",
+            "Quarter (7g) — $35",
+            "Half Ounce (14g) — $50",
+            "Full Ounce (28g) — $100"
+          ]
+        },
+        {
+          "title": "🔥 Mega Deals & Ounce Specials",
+          "items": [
+            "Grip Oz — $30 (or 2/$45)",
+            "Dutch Daylight Oz — $40 (or 2/$75)",
+            "Endo Deli Flower — $125/Oz",
+            "Vortex Deli Flower — $70/Oz",
+            "Ripped Bubba 1oz — $50 or 2/$95",
+            "Pina Rita & Sticky Trap 1oz — $74"
+          ]
+        },
+        {
       "category": "💨 Vapes & Disposables",
       "promo": true,
       "groups": [
