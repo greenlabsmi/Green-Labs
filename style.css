@@ -4590,3 +4590,26 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
     padding-bottom: 80px !important; /* Pushes the 'Today's Highlights' section safely down */
     margin-bottom: 0 !important;
 }
+
+/* --- GALAXY THEME RE-SKIN --- */
+body {
+    background-color: #000 !important;
+    background-image: 
+        radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+        radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+        radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px);
+    background-size: 550px 550px, 350px 350px, 250px 250px;
+    background-attachment: fixed;
+}
+
+/* Lightsaber Glow for Cards */
+.deli-card-wrapper:hover .deli-card {
+    box-shadow: 0 0 20px #2ef8bb; /* Jedi Green */
+    border-color: #2ef8bb;
+}
+
+/* Star Wars Header Yellow */
+.fancy-title {
+    color: #FFE81F !important;
+    text-shadow: 0 0 10px rgba(255, 232, 31, 0.5);
+}
