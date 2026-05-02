@@ -1540,40 +1540,36 @@ document.querySelectorAll('[data-guide-card]').forEach(card => {
     });
 }); // <-- THIS BRACKET WAS MISSING! It closes the education cards.
 
-// --- STAR WAR PROMO POP-UP (ANIMATED CRAWL) ---
+// --- STAR WAR PROMO POP-UP (ANIMATED CRAWL - ALWAYS SHOW) ---
 setTimeout(() => {
-    // Only show if they haven't closed it this session
-    if (!sessionStorage.getItem('gl_sw_popup_shown')) {
-        const swPopup = document.createElement('div');
-        swPopup.id = 'star-wars-popup';
-        swPopup.style = "position:fixed; inset:0; z-index:10000; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.92); backdrop-filter:blur(8px);";
+    const swPopup = document.createElement('div');
+    swPopup.id = 'star-wars-popup';
+    swPopup.style = "position:fixed; inset:0; z-index:10000; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.92); backdrop-filter:blur(8px);";
+    
+    swPopup.innerHTML = `
+        <div class="sw-crawl-container" id="sw-crawl">
+            <div class="sw-crawl-text">MAY THE 4TH<br>BE WITH YOU...</div>
+        </div>
         
-        swPopup.innerHTML = `
-            <div class="sw-crawl-container" id="sw-crawl">
-                <div class="sw-crawl-text">MAY THE 4TH<br>BE WITH YOU...</div>
-            </div>
-            
-            <div class="sw-deals-image" style="position:relative; width:90%; max-width:600px; border:2px solid #FFE81F; border-radius:12px; overflow:hidden; z-index:10002;">
-                <button id="close-sw" style="position:absolute; top:10px; right:15px; background:rgba(0,0,0,0.6); border:1px solid #FFE81F; border-radius:50%; color:#FFE81F; width:36px; height:36px; font-size:24px; cursor:pointer; display:flex; align-items:center; justify-content:center; z-index:10; transition: 0.2s;">&times;</button>
-                <img src="assets/img/star-wars-deals.jpg" alt="Star Wars Deals" style="width:100%; display:block;">
-            </div>
-        `;
-        document.body.appendChild(swPopup);
-        
-        // Clean up the crawl text from the DOM after it flies away
-        setTimeout(() => {
-            const crawlWrap = document.getElementById('sw-crawl');
-            if(crawlWrap) crawlWrap.remove();
-        }, 4500);
+        <div class="sw-deals-image" style="position:relative; width:90%; max-width:600px; border:2px solid #FFE81F; border-radius:12px; overflow:hidden; z-index:10002;">
+            <button id="close-sw" style="position:absolute; top:10px; right:15px; background:rgba(0,0,0,0.6); border:1px solid #FFE81F; border-radius:50%; color:#FFE81F; width:36px; height:36px; font-size:24px; cursor:pointer; display:flex; align-items:center; justify-content:center; z-index:10; transition: 0.2s;">&times;</button>
+            <img src="assets/img/star-wars-deals.jpg" alt="Star Wars Deals" style="width:100%; display:block;">
+        </div>
+    `;
+    document.body.appendChild(swPopup);
+    
+    // Clean up the crawl text from the DOM after it flies away
+    setTimeout(() => {
+        const crawlWrap = document.getElementById('sw-crawl');
+        if(crawlWrap) crawlWrap.remove();
+    }, 4500);
 
-        // Close button logic
-        const closeBtn = document.getElementById('close-sw');
-        closeBtn.onmouseover = () => { closeBtn.style.background = '#FFE81F'; closeBtn.style.color = '#000'; };
-        closeBtn.onmouseout = () => { closeBtn.style.background = 'rgba(0,0,0,0.6)'; closeBtn.style.color = '#FFE81F'; };
-        closeBtn.onclick = () => {
-            swPopup.remove();
-            sessionStorage.setItem('gl_sw_popup_shown', 'true');
-        };
-    }
+    // Close button logic
+    const closeBtn = document.getElementById('close-sw');
+    closeBtn.onmouseover = () => { closeBtn.style.background = '#FFE81F'; closeBtn.style.color = '#000'; };
+    closeBtn.onmouseout = () => { closeBtn.style.background = 'rgba(0,0,0,0.6)'; closeBtn.style.color = '#FFE81F'; };
+    closeBtn.onclick = () => {
+        swPopup.remove();
+    };
 }, 30000); // 30 second delay
 
