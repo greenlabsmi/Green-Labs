@@ -4672,6 +4672,17 @@ body {
     z-index: 10001;
     overflow: hidden;
 }
+/* 10. Reveal Full Cinematic Hero Image (Stop the Cropping) */
+.hero__media {
+    height: auto !important;
+    aspect-ratio: 16 / 9 !important;
+    max-height: none !important; /* Overrides the default panorama height */
+}
+
+.hero__img {
+    background-size: cover !important;
+    background-position: top center !important;
+}
 
 .sw-crawl-text {
     color: #FFE81F;
