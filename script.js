@@ -1563,4 +1563,3 @@ setTimeout(() => {
     }
 }, 30000); // 30 second delay
 
-}); // <-- This final bracket stays at the very bottom to close the whole script.
