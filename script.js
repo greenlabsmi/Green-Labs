@@ -1571,4 +1571,4 @@ setTimeout(() => {
     closeBtn.onclick = () => {
         swPopup.remove();
     };
-}, 2000); // 2 second delay for instant testing! (Change to 30000 for live)
+}, 30000); // 2 second delay for instant testing! (Change to 30000 for live)
