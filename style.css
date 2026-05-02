@@ -4591,7 +4591,12 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
     margin-bottom: 0 !important;
 }
 
-/* --- GALAXY THEME RE-SKIN --- */
+/* ==============================================================
+   🚀 MAY THE 4TH EVENT - MASTER THEME BLOCK
+   (Delete this entire block after May 5th to revert the site)
+   ============================================================== */
+
+/* 1. Deep Space Starfield Background */
 body {
     background-color: #000 !important;
     background-image: 
@@ -4602,14 +4607,49 @@ body {
     background-attachment: fixed;
 }
 
-/* Lightsaber Glow for Cards */
+/* 2. Strip Solid Backgrounds (Make the stars visible everywhere) */
+.section, .section--light, .section--dark, 
+.thSection, .buyGuide, .footer, #our-story {
+    background: transparent !important; 
+}
+
+/* 3. Lightsaber Glows on Hover */
 .deli-card-wrapper:hover .deli-card {
-    box-shadow: 0 0 20px #2ef8bb; /* Jedi Green */
+    box-shadow: 0 0 20px #2ef8bb; 
     border-color: #2ef8bb;
 }
 
-/* Star Wars Header Yellow */
+/* 4. Fix Text Colors (Make dark text light for the space background) */
+.section--light h2, .section--light p, .section--light span, .section--light div,
+.buyGuide__title, .buyGuide__sub, .guideCard__title, .guideCard__lead,
+.guideCard__expandInner p, .infobox__t, .infobox__row, .infobox__row strong {
+    color: #e0e0e0 !important;
+}
+
+/* 5. Classic Star Wars Yellow for Titles */
 .fancy-title {
     color: #FFE81F !important;
-    text-shadow: 0 0 10px rgba(255, 232, 31, 0.5);
+    text-shadow: 0 0 10px rgba(255, 232, 31, 0.4) !important;
 }
+
+/* 6. Smoked Glass Effect for Content Cards */
+.guideCard__shell, .drDrop__body, .infobox, .drSearchWrap input, .story-content {
+    background: rgba(0, 0, 0, 0.6) !important;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(46, 248, 187, 0.3) !important; /* Subtle Jedi Green border */
+    color: #fff !important;
+}
+
+/* 7. Glass Sticky Header */
+.sticky {
+    background: rgba(11, 13, 12, 0.85) !important;
+    backdrop-filter: blur(10px);
+}
+
+/* 8. Leafly Wrapper Fix */
+#leafly-embed-wrapper {
+    background: rgba(0, 0, 0, 0.7) !important;
+    border-radius: 12px;
+    padding: 10px;
+}
+/* ============================================================== */
