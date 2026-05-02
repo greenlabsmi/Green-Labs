@@ -4619,16 +4619,24 @@ body {
     border-color: #2ef8bb;
 }
 
-/* 4. Crisp White Text (Removes the blanket override that broke the Deals menu) */
-.buyGuide__sub, .guideCard__lead, .guideCard__expandInner p, 
+/* 4. Crisp White Text (Super Specific to override stubborn dark text) */
+.buyGuide .buyGuide__sub, 
+.buyGuide .guideCard__lead, 
+.buyGuide .guideCard__expandInner p, 
+.buyGuide .guideInfo__label,
+.buyGuide .guideInfo__text,
+.buyGuide .guideCard__toggle,
 .infobox__t, .infobox__row, .infobox__row strong, 
 #shop p, .thSub, .thRowTitle {
     color: #ffffff !important;
 }
 
 /* 5. Glowing Star Wars Yellow for Titles & Eyebrows */
-.fancy-title, .thTitle, .buyGuide__title, .guideCard__title, 
-.buyGuide__eyebrow, .guideCard__eyebrow {
+.fancy-title, .thTitle, 
+.buyGuide .buyGuide__title, 
+.buyGuide .guideCard__title, 
+.buyGuide .buyGuide__eyebrow, 
+.buyGuide .guideCard__eyebrow {
     color: #FFE81F !important;
     text-shadow: 0 0 12px rgba(255, 232, 31, 0.4) !important;
 }
