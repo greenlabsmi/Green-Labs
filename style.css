@@ -4619,17 +4619,18 @@ body {
     border-color: #2ef8bb;
 }
 
-/* 4. Fix Text Colors (Make dark text light for the space background) */
-.section--light h2, .section--light p, .section--light span, .section--light div,
-.buyGuide__title, .buyGuide__sub, .guideCard__title, .guideCard__lead,
-.guideCard__expandInner p, .infobox__t, .infobox__row, .infobox__row strong {
-    color: #e0e0e0 !important;
+/* 4. Crisp White Text (Removes the blanket override that broke the Deals menu) */
+.buyGuide__sub, .guideCard__lead, .guideCard__expandInner p, 
+.infobox__t, .infobox__row, .infobox__row strong, 
+#shop p, .thSub, .thRowTitle {
+    color: #ffffff !important;
 }
 
-/* 5. Classic Star Wars Yellow for Titles */
-.fancy-title {
+/* 5. Glowing Star Wars Yellow for Titles & Eyebrows */
+.fancy-title, .thTitle, .buyGuide__title, .guideCard__title, 
+.buyGuide__eyebrow, .guideCard__eyebrow {
     color: #FFE81F !important;
-    text-shadow: 0 0 10px rgba(255, 232, 31, 0.4) !important;
+    text-shadow: 0 0 12px rgba(255, 232, 31, 0.4) !important;
 }
 
 /* 6. Smoked Glass Effect for Content Cards */
