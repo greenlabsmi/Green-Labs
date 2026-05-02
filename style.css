@@ -4702,4 +4702,16 @@ body {
     0% { opacity: 0; transform: scale(0.8); box-shadow: 0 0 0px #2ef8bb; }
     100% { opacity: 1; transform: scale(1); box-shadow: 0 0 40px #2ef8bb; border-color: #2ef8bb; }
 }
+/* 10. Massive Cinematic Hero Banner (Desktop Un-Crop) */
+.hero__media {
+    height: auto !important;
+    max-height: none !important; /* Destroys the 480px default limit */
+    aspect-ratio: 16 / 9 !important; /* Forces a massive widescreen movie poster shape */
+}
+
+.hero__img {
+    height: 100% !important; 
+    background-size: cover !important;
+    background-position: top center !important; /* Prioritizes the top of the artwork so heads don't get chopped off */
+}
 /* ============================================================== */
