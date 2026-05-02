@@ -4661,57 +4661,63 @@ body {
     border-radius: 12px;
     padding: 10px;
 }
-/* 9. Star Wars Pop-up Animations (The Epic Event Crawl) */
+/* 9. Star Wars Pop-up Animations (The True Upward Crawl) */
 .sw-crawl-container {
     position: absolute;
     inset: 0;
     display: flex;
     justify-content: center;
-    perspective: 400px; 
+    perspective: 600px; /* Creates the 3D depth */
     z-index: 10001;
     overflow: hidden;
 }
 
 .sw-crawl-text {
     position: absolute;
-    bottom: -100%; /* Starts completely off-screen at the bottom */
+    top: 100vh; /* Starts the text totally off-screen at the bottom */
     width: 90%;
     max-width: 700px;
     color: #FFE81F;
     font-family: 'Cinzel', sans-serif;
-    font-size: clamp(16px, 4vw, 30px); /* Slightly smaller to fit the massive text block */
+    font-size: clamp(16px, 4vw, 26px); /* Keeps text from getting too massive */
+    line-height: 1.5;
     font-weight: 900;
     text-align: center;
     text-shadow: 0 0 15px rgba(255, 232, 31, 0.8);
     transform-origin: 50% 100%;
-    animation: spaceCrawl 24s linear forwards; /* Extended to a slow 24 seconds */
+    animation: crawlUp 24s linear forwards; 
 }
 
-/* Tilts back and slowly fades into the deep distance */
-@keyframes spaceCrawl {
-    0% { transform: rotateX(25deg) translateY(0) scale(1); opacity: 0; }
-    5% { opacity: 1; }
-    90% { opacity: 1; }
-    100% { transform: rotateX(45deg) translateY(-250vh) scale(0.1); opacity: 0; }
+/* Tilts back 45 degrees and slides upward into the distance */
+@keyframes crawlUp {
+    0% { transform: rotateX(45deg) translateY(0); opacity: 1; }
+    80% { opacity: 1; }
+    100% { transform: rotateX(45deg) translateY(-300vh); opacity: 0; }
 }
 
 /* The deals image scaling in with a lightsaber flash */
 .sw-deals-image {
     opacity: 0;
-    animation: igniteSaber 0.8s ease 23.5s forwards; /* Ignites exactly as the text vanishes */
+    animation: igniteSaber 0.8s ease 23.5s forwards; 
 }
-/* 10. Reveal Full Cinematic Hero Image (Stop the Cropping) */
+
+@keyframes igniteSaber {
+    0% { opacity: 0; transform: scale(0.8); box-shadow: 0 0 0px #2ef8bb; }
+    100% { opacity: 1; transform: scale(1); box-shadow: 0 0 40px #2ef8bb; border-color: #2ef8bb; }
+}
+
+/* 10. Reveal Full Cinematic Hero Image (Locked 16:9 Ratio) */
 .hero__media {
     height: auto !important;
     max-height: none !important;
-    aspect-ratio: auto !important;
+    aspect-ratio: 16 / 9 !important; /* Forces a perfect widescreen movie poster shape */
     background: transparent !important;
 }
 
 .hero__img {
-    height: 65vw !important; /* Scales height naturally based on screen width */
-    min-height: 400px !important;
-    background-size: contain !important; /* 'Contain' ensures the whole image fits without ANY cropping! */
+    height: 100% !important; /* Fits perfectly inside the 16:9 box */
+    min-height: 0 !important; /* Removes the rule that caused the massive empty space */
+    background-size: cover !important; 
     background-position: center !important;
     background-repeat: no-repeat !important;
 }
