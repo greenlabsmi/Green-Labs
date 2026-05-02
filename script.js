@@ -1538,4 +1538,29 @@ document.querySelectorAll('[data-guide-card]').forEach(card => {
             if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
     });
-});
+}); // <-- THIS BRACKET WAS MISSING! It closes the education cards.
+
+// --- STAR WAR PROMO POP-UP ---
+setTimeout(() => {
+    // Only show if they haven't closed it this session
+    if (!sessionStorage.getItem('gl_sw_popup_shown')) {
+        const swPopup = document.createElement('div');
+        swPopup.id = 'star-wars-popup';
+        swPopup.style = "position:fixed; inset:0; z-index:10000; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.85); backdrop-filter:blur(5px);";
+        
+        swPopup.innerHTML = `
+            <div style="position:relative; width:90%; max-width:600px; border:2px solid #FFE81F; border-radius:12px; overflow:hidden; box-shadow: 0 0 30px rgba(255, 232, 31, 0.3);">
+                <button id="close-sw" style="position:absolute; top:10px; right:15px; background:none; border:none; color:#fff; font-size:30px; cursor:pointer;">&times;</button>
+                <img src="assets/img/star-wars-deals.png" alt="Star Wars Deals" style="width:100%; display:block;">
+            </div>
+        `;
+        document.body.appendChild(swPopup);
+        
+        document.getElementById('close-sw').onclick = () => {
+            swPopup.remove();
+            sessionStorage.setItem('gl_sw_popup_shown', 'true');
+        };
+    }
+}, 30000); // 30 second delay
+
+}); // <-- This final bracket stays at the very bottom to close the whole script.
