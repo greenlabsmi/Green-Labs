@@ -1551,7 +1551,7 @@ setTimeout(() => {
         swPopup.innerHTML = `
             <div style="position:relative; width:90%; max-width:600px; border:2px solid #FFE81F; border-radius:12px; overflow:hidden; box-shadow: 0 0 30px rgba(255, 232, 31, 0.3);">
                 <button id="close-sw" style="position:absolute; top:10px; right:15px; background:none; border:none; color:#fff; font-size:30px; cursor:pointer;">&times;</button>
-                <img src="assets/img/star-wars-deals.png" alt="Star Wars Deals" style="width:100%; display:block;">
+                <img src="assets/img/star-wars-deals.jpg" alt="Star Wars Deals" style="width:100%; display:block;">
             </div>
         `;
         document.body.appendChild(swPopup);
