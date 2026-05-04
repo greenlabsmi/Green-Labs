@@ -2598,16 +2598,11 @@ header, nav, section, .container, .wrap, .row {
 #todays-highlights .thRow {
   display: flex;
   gap: 12px;
-  overflow: auto;
-  padding-bottom: 10px;
+  overflow-x: auto;
+  padding-bottom: 15px;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
-  
-  /* THE FIX: Pulls the scroller to the edge, but pads the first item to align perfectly */
-  margin-left: -20px;
-  margin-right: -20px;
-  padding-left: 20px;
-  padding-right: 20px;
+  /* We removed all the negative margins and padding here! */
 }
 
 #todays-highlights .thRow > .thCard{
