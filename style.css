@@ -3895,24 +3895,6 @@ main + .section--light {
     display: none; 
 }
 
-/* 3. Break the scroller out edge-to-edge like the Deli/Strains */
-#todays-highlights .thRow {
-    width: 100vw !important;
-    max-width: none !important;
-    margin-left: calc(50% - 50vw) !important;
-    padding-left: max(14px, 5vw) !important;
-    padding-bottom: 24px !important;
-    scroll-padding-left: max(14px, 5vw) !important;
-}
-
-/* Center the tiles on large desktop screens when they don't need to scroll */
-@media (min-width: 1440px) {
-    #todays-highlights .thRow {
-        justify-content: center;
-        padding-left: 0 !important; /* Removes the left bumper so it perfectly centers */
-    }
-}
-
 /* Chrome/Safari Scrollbar Styling */
 #todays-highlights .thRow::-webkit-scrollbar {
   height: 6px;
