@@ -1542,27 +1542,65 @@ document.querySelectorAll('[data-guide-card]').forEach(card => {
 
 
 
-// --- BEST IN GRASS PROMO POP-UP (ALWAYS SHOW) ---
+// --- BEST IN GRASS PROMO POP-UP (VIP AWARD SHOW EDITION + STRAIN HYPE) ---
 setTimeout(() => {
+    // Inject custom CSS animations for the VIP feel
+    if (!document.getElementById('big-styles')) {
+        const style = document.createElement('style');
+        style.id = 'big-styles';
+        style.innerHTML = `
+            @keyframes awardDrop {
+                0% { transform: scale(0.8) translateY(-40px); opacity: 0; }
+                50% { transform: scale(1.02) translateY(5px); opacity: 1; }
+                100% { transform: scale(1) translateY(0); opacity: 1; }
+            }
+            @keyframes sweepShine {
+                0% { left: -150%; }
+                100% { left: 250%; }
+            }
+            .big-btn-shine {
+                position: relative; overflow: hidden;
+            }
+            .big-btn-shine::after {
+                content: ''; position: absolute; top: 0; left: 0; width: 50%; height: 100%;
+                background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+                transform: skewX(-25deg);
+                animation: sweepShine 3s infinite;
+            }
+        `;
+        document.head.appendChild(style);
+    }
+
     const bigPopup = document.createElement('div');
     bigPopup.id = 'big-promo-popup';
     bigPopup.style = "position:fixed; inset:0; z-index:10000; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.85); backdrop-filter:blur(8px);";
     
+    // The Authentic BiG Deep Magenta
+    const bigPink = '#DF0059'; 
+
     bigPopup.innerHTML = `
-        <div style="position:relative; width:90%; max-width:500px; background:radial-gradient(circle at top right, rgba(255, 16, 122, 0.15), transparent), linear-gradient(135deg, #0b0d0c, #050505); border:1px solid rgba(255, 16, 122, 0.4); border-radius:24px; padding:40px 30px; text-align:center; box-shadow: 0 40px 100px rgba(0,0,0,0.8);">
+        <div style="position:relative; width:90%; max-width:520px; background:radial-gradient(circle at top right, rgba(223, 0, 89, 0.15), transparent), linear-gradient(135deg, #0b0d0c, #050505); border:2px solid rgba(223, 0, 89, 0.4); border-radius:24px; padding:45px 30px; text-align:center; box-shadow: 0 40px 100px rgba(0,0,0,0.8), 0 0 50px rgba(223, 0, 89, 0.15); animation: awardDrop 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;">
             <button id="close-big" style="position:absolute; top:15px; right:20px; background:none; border:none; color:#999; font-size:28px; cursor:pointer; transition:0.2s;">&times;</button>
             
-            <div style="display:inline-block; font-size:11px; font-weight:900; letter-spacing:0.15em; color:#FF107A; background:rgba(255, 16, 122, 0.1); border:1px solid rgba(255, 16, 122, 0.2); padding:6px 14px; border-radius:999px; margin-bottom:20px;">MAY 9TH EXCLUSIVE</div>
+            <div style="display:inline-block; font-size:15px; font-weight:950; letter-spacing:0.15em; color:#fff; background:${bigPink}; padding:8px 22px; border-radius:999px; margin-bottom:20px; box-shadow: 0 4px 15px rgba(223, 0, 89, 0.4);">
+                MAY 9TH EXCLUSIVE
+            </div>
             
-            <h2 style="font-family:'Cinzel', serif; font-size:32px; font-weight:900; color:#fff; margin:0 0 15px; line-height:1.1;">Best In Grass</h2>
+            <h2 style="font-family:'Cinzel', serif; font-size:38px; font-weight:900; color:#fff; margin:0 0 10px; line-height:1.1; text-shadow: 0 4px 15px rgba(223,0,89,0.3);">Best In Grass</h2>
             
-            <p style="color:rgba(255,255,255,0.9); font-size:16px; font-weight:700; line-height:1.5; margin:0 0 15px;">Michigan's biggest cannabis competition is back! Become an official judge and vote for your favorite products across the state.</p>
+            <p style="color:rgba(255,255,255,0.9); font-size:17px; font-weight:800; line-height:1.4; margin:0 0 15px;">The envelope, please... ✉️<br><span style="font-weight:600; font-size: 15px;">Become an official judge and vote for Michigan's finest. Judge kits are available IN-STORE ONLY while supplies last.</span></p>
             
-            <p style="color:#FF107A; font-size:14px; font-weight:800; line-height:1.5; margin:0 0 20px; text-transform:uppercase; letter-spacing:0.05em;">Judge kits are available IN-STORE ONLY. Strictly while supplies last.</p>
+            <div style="background: rgba(223, 0, 89, 0.1); border: 1px solid rgba(223, 0, 89, 0.3); padding: 16px; border-radius: 16px; margin-bottom: 24px; box-shadow: inset 0 0 20px rgba(223,0,89,0.05);">
+                <div style="color:${bigPink}; font-size:13px; font-weight:900; letter-spacing:0.1em; margin-bottom:8px;">🔥 EXCLUSIVE MAY 9TH DROPS 🔥</div>
+                <div style="color:#fff; font-family:'Cinzel', serif; font-size:20px; font-weight:900; line-height:1.3; text-shadow: 0 2px 8px rgba(223,0,89,0.5);">
+                    Mr. Clean &bull; Lilac Diesel<br>Clusterfunk &bull; Lemon Wookies
+                </div>
+                <div style="color:rgba(255,255,255,0.7); font-size:13px; font-weight:700; margin-top:8px; font-style:italic;">Special event pricing all day!</div>
+            </div>
             
-            <p style="color:rgba(255,255,255,0.5); font-size:13px; font-style:italic; margin:0 0 25px;">Ask your budtender for more details.</p>
-            
-            <button id="btn-big-shop" class="btn" style="width:100%; font-size:16px; padding:12px 0; background:linear-gradient(135deg, #FF107A, #B20B55); color:#fff; border:none; box-shadow: 0 10px 28px rgba(255,16,122,0.3); font-weight: 900; border-radius: 999px; cursor: pointer; transition: 0.2s;">Shop the Drop</button>
+            <button id="btn-big-shop" class="btn big-btn-shine" style="width:100%; font-size:16px; padding:14px 0; background:linear-gradient(135deg, ${bigPink}, #90003A); color:#fff; border:1px solid #FF3385; box-shadow: 0 10px 30px rgba(223,0,89,0.4); font-weight: 950; border-radius: 999px; cursor: pointer; transition: 0.2s; letter-spacing: 0.05em;">VIEW COMPETITION DETAILS</button>
+
+            <p style="color:rgba(255,255,255,0.4); font-size:12px; font-style:italic; margin:20px 0 0;">Ask your budtender for more details.</p>
         </div>
     `;
     document.body.appendChild(bigPopup);
@@ -1573,20 +1611,18 @@ setTimeout(() => {
     closeBtn.onmouseout = () => closeBtn.style.color = '#999';
 
     const shopBtn = document.getElementById('btn-big-shop');
-    shopBtn.onmouseover = () => shopBtn.style.transform = 'translateY(-2px)';
-    shopBtn.onmouseout = () => shopBtn.style.transform = 'translateY(0)';
+    shopBtn.onmouseover = () => { shopBtn.style.transform = 'translateY(-3px)'; shopBtn.style.boxShadow = '0 15px 40px rgba(223,0,89,0.6)'; };
+    shopBtn.onmouseout = () => { shopBtn.style.transform = 'translateY(0)'; shopBtn.style.boxShadow = '0 10px 30px rgba(223,0,89,0.4)'; };
     
     // Click handlers
     const closePopup = () => {
         bigPopup.remove();
-        // sessionStorage line removed so it never remembers!
     };
     closeBtn.onclick = closePopup;
     
-    // Clicking "Shop the Drop" automatically closes the popup and opens the Leafly menu
+    // Linking directly to the Best in Grass official site!
     shopBtn.onclick = () => {
         closePopup();
-        const shopNav = document.querySelector('[data-open-shop="rec"]') || document.querySelector('[data-open-shop]');
-        if(shopNav) shopNav.click();
+        window.open('https://bestingrass.io/competitions/michigan-2026/', '_blank');
     };
-}, 2000); // Trigger set to 2 seconds
+}, 2000); // Trigger set to 2 seconds for instant testing
