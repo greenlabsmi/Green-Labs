@@ -10,7 +10,7 @@ const GL_CARDS = [
     { id: 'solo-walker', name: 'Solo Walker', image: 'assets/img/strains/solo-walker-card.jpg', reward: '$1 Off 1/8th', rarity: 'Hybrid' },
     { id: 'hash-d', name: 'Hash D', image: 'assets/img/strains/hash-d-card.jpg', reward: '$1 Off 1/8th', rarity: 'Indica' },
     { id: '13-layer-cake', name: '13 Layer Cake', image: 'assets/img/strains/13-layer-cake-card.jpg', reward: '$1 Off 1/8th', rarity: 'Sativa' },
-    { id: 'bubble-gum', name: 'Bubble Gum 88G13', image: 'assets/img/strains/bubble-gum-card.jpg', reward: '$1 Off 1/8th', rarity: 'Indica' },
+    { id: 'bubblegum-88g13', name: 'Bubble Gum 88G13', image: 'assets/img/strains/bubblegum-88g13hp-card.jpg', reward: '$1 Off 1/8th', rarity: 'Indica' },
     { id: 'hash-d-alt', name: 'Hash D (Alt Variant)', image: 'assets/img/strains/hash-d-alt-card.jpg', reward: 'Special Promo Reward', rarity: 'Limited Edition' },
     { id: 'super-silver-hp', name: 'Super Silver Hashplant', image: 'assets/img/strains/super-silver-hashplant-card.jpg', reward: '$1 Off 1/8th', rarity: 'Sativa' },
     { id: 'sin-city-grapes', name: 'Sin City Grapes', image: 'assets/img/strains/sin-city-grapes-card.jpg', reward: '$1 Off 1/8th', rarity: 'Indica' },
