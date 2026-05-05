@@ -1559,27 +1559,27 @@ setTimeout(() => {
                 50% { background-position: 100% 50%; }
                 100% { background-position: 0% 50%; }
             }
-            /* The flowing text effect */
+            /* The flowing text effect - Slowed down to 24s */
             .big-gradient-text {
                 background: linear-gradient(90deg, #00e5ff, #bd00ff, #ff00a0, #00e5ff);
                 background-size: 300% 300%;
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
-                animation: bigGradientFlow 6s ease infinite;
+                animation: bigGradientFlow 24s ease infinite; 
             }
-            /* The flowing background effect */
+            /* The flowing background effect - Slowed down to 24s */
             .big-gradient-bg {
                 background: linear-gradient(90deg, #00e5ff, #bd00ff, #ff00a0, #00e5ff);
                 background-size: 300% 300%;
-                animation: bigGradientFlow 6s ease infinite;
+                animation: bigGradientFlow 24s ease infinite;
             }
-            /* The glowing animated border trick */
+            /* The glowing animated border trick - Slowed down to 24s */
             .big-gradient-border {
                 position: relative;
                 border-radius: 24px;
-                background: #0b0d0c; /* Green Labs Dark Base */
+                background: #0b0d0c; 
                 background-clip: padding-box;
-                border: 3px solid transparent; /* Transparent so the pseudo-element shows through */
+                border: 3px solid transparent; 
             }
             .big-gradient-border::before {
                 content: '';
@@ -1589,7 +1589,7 @@ setTimeout(() => {
                 z-index: -1;
                 background: linear-gradient(90deg, #00e5ff, #bd00ff, #ff00a0, #00e5ff);
                 background-size: 300% 300%;
-                animation: bigGradientFlow 6s ease infinite;
+                animation: bigGradientFlow 24s ease infinite;
             }
         `;
         document.head.appendChild(style);
@@ -1600,27 +1600,31 @@ setTimeout(() => {
     bigPopup.style = "position:fixed; inset:0; z-index:10000; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.85); backdrop-filter:blur(8px);";
     
     bigPopup.innerHTML = `
-        <div class="big-gradient-border" style="position:relative; width:90%; max-width:520px; padding:45px 30px; text-align:center; box-shadow: 0 40px 100px rgba(0,0,0,0.8), 0 0 50px rgba(189, 0, 255, 0.2); animation: awardDrop 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;">
+        <div class="big-gradient-border" style="position:relative; width:90%; max-width:520px; padding:35px 25px; text-align:center; box-shadow: 0 40px 100px rgba(0,0,0,0.8), 0 0 50px rgba(189, 0, 255, 0.2); animation: awardDrop 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;">
             <button id="close-big" style="position:absolute; top:15px; right:20px; background:none; border:none; color:#999; font-size:28px; cursor:pointer; transition:0.2s; z-index: 10;">&times;</button>
             
-            <div class="big-gradient-bg" style="display:inline-block; font-size:15px; font-weight:950; letter-spacing:0.15em; color:#fff; padding:8px 22px; border-radius:999px; margin-bottom:20px; box-shadow: 0 4px 15px rgba(189, 0, 255, 0.4);">
+            <div class="big-gradient-bg" style="display:inline-block; font-size:14px; font-weight:950; letter-spacing:0.15em; color:#fff; padding:6px 20px; border-radius:999px; margin-bottom:18px; box-shadow: 0 4px 15px rgba(189, 0, 255, 0.4);">
                 MAY 9TH EXCLUSIVE
             </div>
             
-            <h2 style="font-family:'Cinzel', serif; font-size:38px; font-weight:900; color:#fff; margin:0 0 10px; line-height:1.1; text-shadow: 0 4px 15px rgba(189,0,255,0.3);">Best In Grass</h2>
+            <div style="background: rgba(0,0,0,0.6); backdrop-filter: blur(12px); border-radius: 18px; padding: 24px; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.06); box-shadow: 0 10px 30px rgba(0,0,0,0.4);">
+                <h2 style="font-family:'Cinzel', serif; font-size:36px; font-weight:900; color:#fff; margin:0 0 12px; line-height:1.1;">Best In Grass</h2>
+                <p style="color:rgba(255,255,255,0.95); font-size:16px; font-weight:800; line-height:1.5; margin:0;">
+                    Feeling fancy? Think you only smoke the best? 🧐<br>
+                    <span style="font-weight:600; font-size: 14px; color: rgba(255,255,255,0.75); display:block; margin-top:8px;">Put your lungs where your mouth is. Grab an official judge kit and tell the rest of Michigan what's actually good. Kits are IN-STORE ONLY while supplies last.</span>
+                </p>
+            </div>
             
-            <p style="color:rgba(255,255,255,0.9); font-size:17px; font-weight:800; line-height:1.4; margin:0 0 15px;">Feeling fancy? Think you only smoke the best? 🧐<br><span style="font-weight:600; font-size: 15px;">Put your lungs where your mouth is. Grab an official judge kit and tell the rest of Michigan what's actually good. Kits are IN-STORE ONLY while supplies last.</span></p>
-            
-            <div style="background: rgba(189, 0, 255, 0.05); border: 1px solid rgba(189, 0, 255, 0.2); padding: 16px; border-radius: 16px; margin-bottom: 24px; box-shadow: inset 0 0 20px rgba(189,0,255,0.05);">
+            <div style="background: rgba(0,0,0,0.75); border: 1px solid rgba(189, 0, 255, 0.3); padding: 18px; border-radius: 16px; margin-bottom: 24px; box-shadow: inset 0 0 20px rgba(189,0,255,0.05), 0 10px 20px rgba(0,0,0,0.5);">
                 <div class="big-gradient-text" style="font-size:13px; font-weight:900; letter-spacing:0.1em; margin-bottom:6px;">🔥 SPECIAL EVENT PRICING 🔥</div>
-                <div style="color:#fff; font-family:'Cinzel', serif; font-size:18px; font-weight:900; line-height:1.3; text-shadow: 0 2px 8px rgba(189,0,255,0.5);">
+                <div style="color:#fff; font-family:'Cinzel', serif; font-size:18px; font-weight:900; line-height:1.3; text-shadow: 0 2px 8px rgba(0,0,0,0.8);">
                     Exclusive Deli Deals, Fresh Drops,<br>& Elite Discounts All Day
                 </div>
             </div>
             
             <button id="btn-big-shop" class="btn big-gradient-bg" style="width:100%; font-size:16px; padding:14px 0; color:#fff; border:none; box-shadow: 0 10px 30px rgba(189,0,255,0.4); font-weight: 950; border-radius: 999px; cursor: pointer; transition: 0.2s; letter-spacing: 0.05em;">VIEW COMPETITION DETAILS</button>
 
-            <p style="color:rgba(255,255,255,0.4); font-size:12px; font-style:italic; margin:20px 0 0;">Ask your budtender for more details.</p>
+            <p style="color:rgba(255,255,255,0.4); font-size:12px; font-style:italic; margin:16px 0 0;">Ask your budtender for more details.</p>
         </div>
     `;
     document.body.appendChild(bigPopup);
