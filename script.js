@@ -1540,35 +1540,46 @@ document.querySelectorAll('[data-guide-card]').forEach(card => {
     });
 }); // <-- THIS BRACKET WAS MISSING! It closes the education cards.
 
-// --- STAR WAR PROMO POP-UP (ORIGINAL FAST CRAWL - ALWAYS SHOW) ---
+// --- BEST IN GRASS PROMO POP-UP ---
 setTimeout(() => {
-    const swPopup = document.createElement('div');
-    swPopup.id = 'star-wars-popup';
-    swPopup.style = "position:fixed; inset:0; z-index:10000; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.92); backdrop-filter:blur(8px);";
-    
-    swPopup.innerHTML = `
-        <div class="sw-crawl-container" id="sw-crawl">
-            <div class="sw-crawl-text">MAY THE 4TH<br>BE WITH YOU...</div>
-        </div>
+    // Only show if they haven't closed it this session
+    if (!sessionStorage.getItem('gl_big_popup_shown')) {
+        const bigPopup = document.createElement('div');
+        bigPopup.id = 'big-promo-popup';
+        bigPopup.style = "position:fixed; inset:0; z-index:10000; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.85); backdrop-filter:blur(8px);";
         
-        <div class="sw-deals-image" style="position:relative; width:90%; max-width:600px; border:2px solid #FFE81F; border-radius:12px; overflow:hidden; z-index:10002;">
-            <button id="close-sw" style="position:absolute; top:10px; right:15px; background:rgba(0,0,0,0.6); border:1px solid #FFE81F; border-radius:50%; color:#FFE81F; width:36px; height:36px; font-size:24px; cursor:pointer; display:flex; align-items:center; justify-content:center; z-index:10; transition: 0.2s;">&times;</button>
-            <img src="assets/img/star-wars-deals.jpg" alt="Star Wars Deals" style="width:100%; display:block;">
-        </div>
-    `;
-    document.body.appendChild(swPopup);
-    
-    // Clean up the crawl text from the DOM after it flies away
-    setTimeout(() => {
-        const crawlWrap = document.getElementById('sw-crawl');
-        if(crawlWrap) crawlWrap.remove();
-    }, 4500);
-
-    // Close button logic
-    const closeBtn = document.getElementById('close-sw');
-    closeBtn.onmouseover = () => { closeBtn.style.background = '#FFE81F'; closeBtn.style.color = '#000'; };
-    closeBtn.onmouseout = () => { closeBtn.style.background = 'rgba(0,0,0,0.6)'; closeBtn.style.color = '#FFE81F'; };
-    closeBtn.onclick = () => {
-        swPopup.remove();
-    };
-}, 15000); // 2 second delay for instant testing! (Change to 30000 for live)
+        bigPopup.innerHTML = `
+            <div style="position:relative; width:90%; max-width:500px; background:radial-gradient(circle at top right, rgba(11,125,90,0.15), transparent), linear-gradient(135deg, #0b0d0c, #050505); border:1px solid rgba(46, 248, 187, 0.3); border-radius:24px; padding:40px 30px; text-align:center; box-shadow: 0 40px 100px rgba(0,0,0,0.8);">
+                <button id="close-big" style="position:absolute; top:15px; right:20px; background:none; border:none; color:#999; font-size:28px; cursor:pointer; transition:0.2s;">&times;</button>
+                
+                <div style="display:inline-block; font-size:11px; font-weight:900; letter-spacing:0.15em; color:#2ef8bb; background:rgba(46,248,187,0.1); border:1px solid rgba(46,248,187,0.2); padding:6px 14px; border-radius:999px; margin-bottom:20px;">MAY 9TH EXCLUSIVE</div>
+                
+                <h2 style="font-family:'Cinzel', serif; font-size:32px; font-weight:900; color:#fff; margin:0 0 15px; line-height:1.1;">Best In Grass<br>Judge Kits Drop</h2>
+                
+                <p style="color:rgba(255,255,255,0.7); font-size:16px; font-weight:600; line-height:1.5; margin:0 0 30px;">Be the first to grab your official judge bags and unlock exclusive deals on participating brands!</p>
+                
+                <button id="btn-big-shop" class="btn btn--primary" style="width:100%; font-size:16px; padding:12px 0;">Shop the Drop</button>
+            </div>
+        `;
+        document.body.appendChild(bigPopup);
+        
+        // Hover effect for close button
+        const closeBtn = document.getElementById('close-big');
+        closeBtn.onmouseover = () => closeBtn.style.color = '#fff';
+        closeBtn.onmouseout = () => closeBtn.style.color = '#999';
+        
+        // Click handlers
+        const closePopup = () => {
+            bigPopup.remove();
+            sessionStorage.setItem('gl_big_popup_shown', 'true');
+        };
+        closeBtn.onclick = closePopup;
+        
+        // Clicking "Shop the Drop" automatically closes the popup and opens the Leafly menu
+        document.getElementById('btn-big-shop').onclick = () => {
+            closePopup();
+            const shopNav = document.querySelector('[data-open-shop="rec"]') || document.querySelector('[data-open-shop]');
+            if(shopNav) shopNav.click();
+        };
+    }
+}, 2000); // Trigger set to 2 seconds for instant testing!
