@@ -48,30 +48,6 @@
   },
   "deals": [
     {
-      "category": "🚀 May the 4th Exclusives",
-      "promo": true,
-      "groups": [
-        {
-          "title": "⚔️ Jedi Council Deals",
-          "items": [
-            "Dutch Daylight Death Star (OZ) — $40",
-            "Jarred Wampa & Thunder Wookie (OZ) — $135 LIMITED AMOUNT",
-            "Deli OZ (Death Z & Solo Walker) — $70",
-            "Death Star Sugar — 50% OFF (1g: $7.50 | 3.5g: $25)"
-          ]
-        },
-        {
-          "title": "🎟️ The Bounty (Raffle Prizes)",
-          "items": [
-            "Purchase ANY Dutch Touch Star Wars product to enter the giveaway!",
-            "🥇 1st Place — $50 Gift Card + Deli Half OZ",
-            "🥈 2nd Place — $25 Gift Card + Deli Quarter",
-            "🥉 3rd Place — $25 Gift Card + Deli Eighth"
-          ]
-        }
-      ]
-    },
-    {
       "category": "🌿 Flower",
       "promo": false,
       "groups": [
@@ -99,10 +75,11 @@
           "title": "🔥 Mega Deals & Ounce Specials",
           "items": [
             "Grip Oz — $30 (or 2/$45)",
-            "Dutch Daylight Oz — $40 (or 2/$60)",
+            "Dutch Daylight Oz — $40 (or 2/$65)",
             "Vortex Deli Flower — $70/Oz",
             "Ripped Bubba 1oz — $50 or 2/$95",
             "Pina Rita & Sticky Trap 1oz — $74"
+            "Guicy G and Illudium 1oz - $90"
       ]
     }
   ]
