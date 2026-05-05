@@ -1542,7 +1542,7 @@ document.querySelectorAll('[data-guide-card]').forEach(card => {
 
 
 
-// --- BEST IN GRASS PROMO POP-UP (VIP AWARD SHOW EDITION + STRAIN HYPE) ---
+// --- BEST IN GRASS PROMO POP-UP (VIP EDITION - NO STRAINS YET) ---
 setTimeout(() => {
     // Inject custom CSS animations for the VIP feel
     if (!document.getElementById('big-styles')) {
@@ -1588,14 +1588,13 @@ setTimeout(() => {
             
             <h2 style="font-family:'Cinzel', serif; font-size:38px; font-weight:900; color:#fff; margin:0 0 10px; line-height:1.1; text-shadow: 0 4px 15px rgba(223,0,89,0.3);">Best In Grass</h2>
             
-            <p style="color:rgba(255,255,255,0.9); font-size:17px; font-weight:800; line-height:1.4; margin:0 0 15px;">The envelope, please... ✉️<br><span style="font-weight:600; font-size: 15px;">Become an official judge and vote for Michigan's finest. Judge kits are available IN-STORE ONLY while supplies last.</span></p>
+            <p style="color:rgba(255,255,255,0.9); font-size:17px; font-weight:800; line-height:1.4; margin:0 0 15px;">Feeling fancy? Think you only smoke the best? 🧐<br><span style="font-weight:600; font-size: 15px;">Put your lungs where your mouth is. Grab an official judge kit and tell the rest of Michigan what's actually good. Kits are IN-STORE ONLY while supplies last.</span></p>
             
             <div style="background: rgba(223, 0, 89, 0.1); border: 1px solid rgba(223, 0, 89, 0.3); padding: 16px; border-radius: 16px; margin-bottom: 24px; box-shadow: inset 0 0 20px rgba(223,0,89,0.05);">
-                <div style="color:${bigPink}; font-size:13px; font-weight:900; letter-spacing:0.1em; margin-bottom:8px;">🔥 EXCLUSIVE MAY 9TH DROPS 🔥</div>
-                <div style="color:#fff; font-family:'Cinzel', serif; font-size:20px; font-weight:900; line-height:1.3; text-shadow: 0 2px 8px rgba(223,0,89,0.5);">
-                    Mr. Clean &bull; Lilac Diesel<br>Clusterfunk &bull; Lemon Wookies
+                <div style="color:${bigPink}; font-size:13px; font-weight:900; letter-spacing:0.1em; margin-bottom:6px;">🔥 SPECIAL EVENT PRICING 🔥</div>
+                <div style="color:#fff; font-family:'Cinzel', serif; font-size:18px; font-weight:900; line-height:1.3; text-shadow: 0 2px 8px rgba(223,0,89,0.5);">
+                    Exclusive Deli Deals, Fresh Drops,<br>& Elite Discounts All Day
                 </div>
-                <div style="color:rgba(255,255,255,0.7); font-size:13px; font-weight:700; margin-top:8px; font-style:italic;">Special event pricing all day!</div>
             </div>
             
             <button id="btn-big-shop" class="btn big-btn-shine" style="width:100%; font-size:16px; padding:14px 0; background:linear-gradient(135deg, ${bigPink}, #90003A); color:#fff; border:1px solid #FF3385; box-shadow: 0 10px 30px rgba(223,0,89,0.4); font-weight: 950; border-radius: 999px; cursor: pointer; transition: 0.2s; letter-spacing: 0.05em;">VIEW COMPETITION DETAILS</button>
