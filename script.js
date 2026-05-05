@@ -1649,4 +1649,4 @@ setTimeout(() => {
         closePopup();
         window.open('https://bestingrass.io/competitions/michigan-2026/', '_blank');
     };
-}, 2000); // Trigger set to 2 seconds for instant testing
+}, 15000); // Trigger set to 2 seconds for instant testing
