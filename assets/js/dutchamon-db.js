@@ -19,7 +19,7 @@ const GL_CARDS = [
 
     // === THE DUTCH BAKERY ===
     { id: '13-layer-cake', name: '13 Layer Cake', image: 'assets/img/strains/13-layer-cake-card.jpg', reward: '$1 Off 1/8th', rarity: 'Sativa' },
-    { id: 'pb-chocolate', name: 'PB n Chocolate', image: 'assets/img/strains/pb-n-chocolate-card.jpg', reward: '$1 Off 1/8th', rarity: 'Hybrid' },
+    { id: 'pb-chocolate', name: 'PB n Chocolate', image: 'assets/img/strains/peanut-butter-n-chocolate-card.jpg', reward: '$1 Off 1/8th', rarity: 'Hybrid' },
     { id: 'choc-marshmallows', name: 'Choc Marshmallows', image: 'assets/img/strains/chocolate-marshmellow-11-art.jpg', reward: '$1 Off 1/8th', rarity: 'Hybrid' },
     { id: 'bubblegum-88g13hp', name: 'Bubble Gum 88G13', image: 'assets/img/strains/bubblegum-88g13hp-card.jpg', reward: '$1 Off 1/8th', rarity: 'Hybrid' },
 
