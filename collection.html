@@ -4,49 +4,114 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Dutch-A-Dex | Collection</title>
+    <meta property="og:title" content="My Dutch-A-Dex Collection">
+    <meta property="og:description" content="Check out the rare strains I've found at Green Labs! How many do you have?">
+    <meta property="og:image" content="https://greenlabsmi.com/assets/img/dutchamon-share.jpg">
+    <meta property="og:url" content="https://greenlabsmi.com/collection.html">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root { --gold: #d6a441; --bg: #050505; }
         body { background: var(--bg); color: white; font-family: 'Inter', sans-serif; margin: 0; padding: 20px; }
-        h1 { font-family: 'Cinzel', serif; color: var(--gold); text-align: center; }
-        .set-container { margin-bottom: 40px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
-        .set-title { font-family: 'Cinzel', serif; font-size: 20px; margin-bottom: 10px; }
-        .set-reward-banner { background: rgba(46, 248, 187, 0.1); color: #2ef8bb; padding: 10px; border-radius: 8px; font-size: 12px; font-weight: 800; margin-bottom: 15px; display: none; text-align: center; border: 1px solid #2ef8bb; }
+        h1 { font-family: 'Cinzel', serif; color: var(--gold); text-align: center; font-size: 36px; margin-bottom: 5px; text-shadow: 0 4px 15px rgba(214, 164, 65, 0.2); }
+        .subtitle { text-align: center; color: #aaa; font-size: 14px; margin-bottom: 30px; }
+        
+        /* Carousel Styles */
+        .carousel-title { font-family: 'Cinzel', serif; font-size: 18px; color: #fff; margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 5px; }
+        .carousel-container { display: flex; overflow-x: auto; gap: 15px; padding-bottom: 20px; margin-bottom: 30px; scroll-snap-type: x mandatory; scrollbar-width: none; }
+        .carousel-container::-webkit-scrollbar { display: none; }
+        .carousel-container .card { flex: 0 0 140px; scroll-snap-align: start; cursor: pointer; }
+        .empty-carousel { font-size: 14px; color: #666; font-style: italic; padding: 20px 0; }
+
+        /* Set Styles */
+        .set-container { margin-bottom: 50px; background: rgba(255,255,255,0.02); padding: 20px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.05); }
+        .set-header { text-align: center; margin-bottom: 20px; }
+        .set-title { font-family: 'Cinzel', serif; font-size: 26px; color: var(--gold); text-transform: uppercase; margin: 0; letter-spacing: 2px; }
+        .set-tagline { font-size: 13px; color: #888; margin-top: 5px; font-weight: 600; }
+        
+        .set-reward-banner { background: rgba(46, 248, 187, 0.1); color: #2ef8bb; padding: 12px; border-radius: 8px; font-size: 13px; font-weight: 800; margin-bottom: 20px; display: none; text-align: center; border: 1px solid rgba(46, 248, 187, 0.3); text-transform: uppercase; letter-spacing: 1px; }
         .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 15px; }
-        .card { position: relative; border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); transition: transform 0.3s; }
-        .card.locked { filter: grayscale(1) opacity(0.3); }
-        .card img { width: 100%; display: block; }
-        .completion-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.9); display: none; align-items: center; justify-content: center; z-index: 100; padding: 20px; }
-        .modal-content { background: #111; padding: 30px; border-radius: 20px; text-align: center; border: 2px solid var(--gold); max-width: 400px; }
+        .card { position: relative; border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); transition: transform 0.2s; cursor: pointer; }
+        .card:active { transform: scale(0.95); }
+        .card.locked { filter: grayscale(1) brightness(0.3); }
+        .card img { width: 100%; display: block; object-fit: contain; }
+
+        /* Modals */
+        .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.95); display: none; align-items: center; justify-content: center; z-index: 100; padding: 20px; flex-direction: column; }
+        .modal-content { background: #111; padding: 20px; border-radius: 20px; text-align: center; border: 1px solid var(--gold); max-width: 350px; width: 100%; box-shadow: 0 20px 50px rgba(0,0,0,0.8); }
+        .modal-img { width: 100%; border-radius: 12px; margin-bottom: 15px; }
+        .modal-name { font-family: 'Cinzel', serif; font-size: 24px; color: #fff; margin: 0 0 5px 0; }
+        .modal-reward { font-size: 13px; color: #2ef8bb; font-weight: 800; margin-bottom: 20px; }
+        
+        .btn { background: var(--gold); color: #000; border: none; padding: 12px 20px; border-radius: 8px; font-weight: 800; width: 100%; cursor: pointer; margin-bottom: 10px; font-family: 'Inter', sans-serif; }
+        .btn-outline { background: transparent; border: 1px solid rgba(255,255,255,0.3); color: #fff; }
     </style>
 </head>
 <body>
 
     <h1>DUTCH-A-DEX</h1>
+    <p class="subtitle" id="collection-counter">Loading Cards...</p>
+
+    <div class="carousel-title">MY COLLECTION</div>
+    <div class="carousel-container" id="my-carousel"></div>
+
     <div id="binder"></div>
 
-    <div class="completion-modal" id="comp-modal">
+    <div class="modal" id="card-modal">
         <div class="modal-content">
-            <h2 style="font-family: 'Cinzel'; color: var(--gold);">SET COMPLETE!</h2>
-            <p id="comp-msg"></p>
-            <p style="font-size: 12px; color: #aaa;">Screenshot this and tag @DutchTouchGenetics on IG for a bonus goodie!</p>
-            <button onclick="document.getElementById('comp-modal').style.display='none'" style="background: var(--gold); border: none; padding: 10px 20px; border-radius: 8px; font-weight: 800; margin-top: 20px;">Back to Binder</button>
+            <img id="modal-img" src="" class="modal-img">
+            <h2 id="modal-name" class="modal-name">Strain Name</h2>
+            <p id="modal-reward" class="modal-reward">Reward Data</p>
+            <button class="btn" id="modal-share-btn">Share to Story</button>
+            <button class="btn btn-outline" onclick="closeModal()">Close</button>
         </div>
     </div>
 
-    <script src="assets/js/dutchamon-db.js?v=1.1"></script>
+    <div class="modal" id="comp-modal">
+        <div class="modal-content">
+            <h2 style="font-family: 'Cinzel'; color: var(--gold); margin-top: 0;">SET COMPLETE!</h2>
+            <p id="comp-msg" style="font-size: 14px; line-height: 1.5;"></p>
+            <p style="font-size: 12px; color: #aaa;">Screenshot this and tag @DutchTouchGenetics on IG for a bonus goodie!</p>
+            <button class="btn" onclick="document.getElementById('comp-modal').style.display='none'">Awesome!</button>
+        </div>
+    </div>
+
+    <script src="assets/js/dutchamon-db.js?v=1.2"></script>
     <script>
         const collected = JSON.parse(localStorage.getItem('collectedStrains')) || [];
         const binder = document.getElementById('binder');
+        const carousel = document.getElementById('my-carousel');
+        
+        // Update Counter
+        document.getElementById('collection-counter').innerText = `${collected.length} / ${GL_CARDS.length} Cards Found`;
 
+        // Render Carousel
+        if (collected.length === 0) {
+            carousel.innerHTML = `<div class="empty-carousel">Scan your first QR code in-store to start your collection!</div>`;
+        } else {
+            // Find full card data for collected IDs and sort them by when they were found
+            collected.forEach(id => {
+                const cardData = GL_CARDS.find(c => c.id === id);
+                if (cardData) {
+                    const cardEl = document.createElement('div');
+                    cardEl.className = 'card';
+                    cardEl.innerHTML = `<img src="${cardData.image}">`;
+                    cardEl.onclick = () => openCardModal(cardData, true);
+                    carousel.appendChild(cardEl);
+                }
+            });
+        }
+
+        // Render Sets
         GL_SETS.forEach(set => {
             const setDiv = document.createElement('div');
             setDiv.className = 'set-container';
-            
             const isComplete = set.cardIds.every(id => collected.includes(id));
             
             setDiv.innerHTML = `
-                <div class="set-title">${set.name}</div>
+                <div class="set-header">
+                    <h2 class="set-title">${set.name}</h2>
+                    <div class="set-tagline">${set.tagline}</div>
+                </div>
                 <div class="set-reward-banner" id="banner-${set.id}" style="display: ${isComplete ? 'block' : 'none'}">
                     🏆 SET COMPLETE: Redeem for ${set.reward}!
                 </div>
@@ -59,20 +124,61 @@
                 const cardData = GL_CARDS.find(c => c.id === cardId);
                 const isCollected = collected.includes(cardId);
                 const cardEl = document.createElement('div');
+                
                 cardEl.className = `card ${isCollected ? '' : 'locked'}`;
                 cardEl.innerHTML = `<img src="${cardData.image}">`;
+                cardEl.onclick = () => openCardModal(cardData, isCollected);
                 grid.appendChild(cardEl);
             });
 
+            // Set Completion Logic
             if (isComplete && !localStorage.getItem(`notified-${set.id}`)) {
-                showCompletion(set);
+                document.getElementById('comp-modal').style.display = 'flex';
+                document.getElementById('comp-msg').innerText = `You finished the ${set.name} collection! Show this to your budtender to claim your ${set.reward}.`;
                 localStorage.setItem(`notified-${set.id}`, 'true');
             }
         });
 
-        function showCompletion(set) {
-            document.getElementById('comp-modal').style.display = 'flex';
-            document.getElementById('comp-msg').innerText = `You finished the ${set.name} collection! Show this to your budtender to claim your ${set.reward}.`;
+        // Modal Logic
+        function openCardModal(cardData, isUnlocked) {
+            const modal = document.getElementById('card-modal');
+            const img = document.getElementById('modal-img');
+            const nameLabel = document.getElementById('modal-name');
+            const rewardLabel = document.getElementById('modal-reward');
+            const shareBtn = document.getElementById('modal-share-btn');
+
+            if (isUnlocked) {
+                img.src = cardData.image;
+                img.style.filter = "none";
+                nameLabel.innerText = cardData.name;
+                rewardLabel.innerText = `Collector Perk: ${cardData.reward}`;
+                rewardLabel.style.color = "#2ef8bb";
+                shareBtn.style.display = "block";
+                
+                shareBtn.onclick = () => {
+                    if (navigator.share) {
+                        navigator.share({
+                            title: 'Dutchamon Unlocked!',
+                            text: `Check out the ${cardData.name} card I found at Green Labs!`,
+                            url: `https://greenlabsmi.com/unlock.html?id=${cardData.id}`
+                        });
+                    } else {
+                        alert("Hold down on the image to save and share it to your story!");
+                    }
+                };
+            } else {
+                img.src = cardData.image;
+                img.style.filter = "grayscale(1) brightness(0.3)";
+                nameLabel.innerText = "???";
+                rewardLabel.innerText = "Locked: Keep searching to discover!";
+                rewardLabel.style.color = "#aaa";
+                shareBtn.style.display = "none";
+            }
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('card-modal').style.display = 'none';
         }
     </script>
 </body>
