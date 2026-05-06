@@ -4,78 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Card Unlocked! | Dutchamon</title>
+    
+    <meta property="og:title" content="A New Dutchamon Appears!">
+    <meta property="og:description" content="I just found a rare strain card at Green Labs! Can you collect them all?">
+    <meta property="og:image" content="https://greenlabsmi.com/assets/img/dutchamon-share.jpg">
+    <meta property="og:url" content="https://greenlabsmi.com/collection.html">
+
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         body { background: #050505; color: white; font-family: 'Inter', sans-serif; text-align: center; padding: 20px; margin: 0; display: flex; align-items: center; justify-content: center; min-height: 100vh; }
         .unlock-container { width: 100%; max-width: 400px; padding: 30px; border-radius: 24px; background: #111; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
-        
         .status-badge { color: #d6a441; font-size: 14px; font-weight: 800; margin-bottom: 15px; display: block; letter-spacing: 2px; text-transform: uppercase; }
-        .rarity { color: rgba(255,255,255,0.5); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 10px; margin-bottom: 5px; }
         .strain-name { font-size: 32px; font-family: 'Cinzel', serif; margin: 0 0 20px 0; color: #fff; }
-        
-        .card-img { width: 100%; border-radius: 12px; border: 1px solid rgba(214, 164, 65, 0.5); box-shadow: 0 0 30px rgba(214, 164, 65, 0.2); margin-bottom: 25px; object-fit: contain; background: #000; }
-        
-        .reward-box { background: rgba(46, 248, 187, 0.05); border: 1px solid rgba(46, 248, 187, 0.3); padding: 15px; border-radius: 12px; margin: 20px 0; }
-        .reward-text { color: #2ef8bb; font-weight: 800; margin: 0; font-size: 18px; }
-        
-        .btn-stack { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
-        .btn-main { background: #d6a441; color: #000; text-decoration: none; padding: 16px; border-radius: 12px; font-weight: 800; font-size: 14px; }
-        
-        #error-state { display: none; padding: 40px 20px; }
+        .card-img { width: 100%; border-radius: 12px; border: 1px solid rgba(214, 164, 65, 0.5); margin-bottom: 25px; }
+        .btn-stack { display: flex; flex-direction: column; gap: 10px; }
+        .btn-main { background: #d6a441; color: #000; text-decoration: none; padding: 16px; border-radius: 12px; font-weight: 800; }
+        .btn-share { background: rgba(255,255,255,0.05); color: #fff; border: 1px solid rgba(255,255,255,0.2); padding: 12px; border-radius: 12px; text-decoration: none; font-size: 13px; font-weight: 600; cursor: pointer; }
     </style>
 </head>
 <body>
 
     <div class="unlock-container" id="success-state">
         <span id="status-msg" class="status-badge">✨ DUTCHAMON UNLOCKED!</span>
-        <p class="rarity" id="rarity-label">Loading...</p>
         <h1 class="strain-name" id="name-label">Loading...</h1>
-        
-        <img id="card-art" src="" alt="Card Art" class="card-img">
-
-        <div class="reward-box">
-            <p style="font-size: 10px; color: rgba(255,255,255,0.5); margin: 0 0 5px 0;">COLLECTOR DISCOUNT:</p>
-            <p class="reward-text" id="reward-label">Loading...</p>
-        </div>
-
+        <img id="card-art" src="" class="card-img">
         <div class="btn-stack">
-            <a href="collection.html" class="btn-main">View in Collection</a>
+            <a href="collection.html" class="btn-main">Add to Binder</a>
+            <button onclick="shareCard()" class="btn-share">Share with a Friend</button>
         </div>
-    </div>
-
-    <div class="unlock-container" id="error-state">
-        <h1 style="color: #d6a441; font-family: 'Cinzel', serif;">Scan Error</h1>
-        <p style="color: #aaa; font-size: 14px;">This card could not be found. Please try scanning again.</p>
-        <a href="collection.html" class="btn-main" style="display: block; margin-top: 20px;">Go to Binder</a>
     </div>
 
     <script src="assets/js/dutchamon-db.js?v=1.1"></script>
     <script>
-        window.onload = () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const scannedId = urlParams.get('id');
-            const card = GL_CARDS.find(c => c.id === scannedId);
+        const urlParams = new URLSearchParams(window.location.search);
+        const scannedId = urlParams.get('id');
+        const card = GL_CARDS.find(c => c.id === scannedId);
 
-            if (card) {
-                document.getElementById('name-label').innerText = card.name;
-                document.getElementById('rarity-label').innerText = card.rarity;
-                document.getElementById('reward-label').innerText = card.reward;
-                // FIXED: Uses exact path from database without ../
-                document.getElementById('card-art').src = card.image;
-
-                let collected = JSON.parse(localStorage.getItem('collectedStrains')) || [];
-                if (!collected.includes(scannedId)) {
-                    collected.push(scannedId);
-                    localStorage.setItem('collectedStrains', JSON.stringify(collected));
-                } else {
-                    document.getElementById('status-msg').innerText = "ALREADY IN COLLECTION";
-                    document.getElementById('status-msg').style.color = "#aaa";
-                }
-            } else {
-                document.getElementById('success-state').style.display = 'none';
-                document.getElementById('error-state').style.display = 'block';
+        if (card) {
+            document.getElementById('name-label').innerText = card.name;
+            document.getElementById('card-art').src = card.image;
+            let collected = JSON.parse(localStorage.getItem('collectedStrains')) || [];
+            if (!collected.includes(scannedId)) {
+                collected.push(scannedId);
+                localStorage.setItem('collectedStrains', JSON.stringify(collected));
             }
-        };
+        }
+
+        function shareCard() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Dutchamon Unlocked!',
+                    text: `Check out this ${card.name} card I found at Green Labs!`,
+                    url: window.location.href
+                });
+            } else {
+                alert("Copy this link to share: " + window.location.href);
+            }
+        }
     </script>
 </body>
 </html>
