@@ -35,15 +35,32 @@
         .card.locked { filter: grayscale(1) brightness(0.3); }
         .card img { width: 100%; display: block; object-fit: contain; }
 
-        /* Modals */
+        /* Detail Modal */
         .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.95); display: none; align-items: center; justify-content: center; z-index: 100; padding: 20px; flex-direction: column; }
-        .modal-content { background: #111; padding: 20px; border-radius: 20px; text-align: center; border: 1px solid var(--gold); max-width: 350px; width: 100%; box-shadow: 0 20px 50px rgba(0,0,0,0.8); }
-        .modal-img { width: 100%; border-radius: 12px; margin-bottom: 15px; }
+        .modal-content { background: #111; padding: 20px; border-radius: 20px; text-align: center; border: 1px solid var(--gold); max-width: 350px; width: 100%; box-shadow: 0 20px 50px rgba(0,0,0,0.8); position: relative; }
+        .modal-img-container { position: relative; cursor: pointer; }
+        .modal-img { width: 100%; border-radius: 12px; margin-bottom: 15px; transition: opacity 0.3s; }
+        .modal-qr { position: absolute; inset: 0; background: white; border-radius: 12px; display: none; align-items: center; justify-content: center; padding: 20px; margin-bottom: 15px; }
+        .modal-qr img { width: 100%; max-width: 200px; }
+        .zoom-hint { position: absolute; bottom: 25px; right: 10px; background: rgba(0,0,0,0.7); color: white; font-size: 10px; padding: 5px 10px; border-radius: 20px; pointer-events: none; }
+        
         .modal-name { font-family: 'Cinzel', serif; font-size: 24px; color: #fff; margin: 0 0 5px 0; }
         .modal-reward { font-size: 13px; color: #2ef8bb; font-weight: 800; margin-bottom: 20px; }
         
-        .btn { background: var(--gold); color: #000; border: none; padding: 12px 20px; border-radius: 8px; font-weight: 800; width: 100%; cursor: pointer; margin-bottom: 10px; font-family: 'Inter', sans-serif; }
+        .btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+        .btn { background: var(--gold); color: #000; border: none; padding: 12px; border-radius: 8px; font-weight: 800; width: 100%; cursor: pointer; font-family: 'Inter', sans-serif; font-size: 13px; text-decoration: none; box-sizing: border-box; display: inline-block; }
         .btn-outline { background: transparent; border: 1px solid rgba(255,255,255,0.3); color: #fff; }
+        .btn-full { grid-column: span 2; }
+        .btn-redeem { background: #2ef8bb; color: #000; margin-bottom: 10px; }
+
+        /* Fullscreen Swipe Gallery */
+        .fs-modal { position: fixed; inset: 0; background: #000; z-index: 200; display: none; flex-direction: column; }
+        .fs-close { position: absolute; top: 20px; right: 20px; background: rgba(255,255,255,0.2); color: white; border: none; width: 40px; height: 40px; border-radius: 50%; font-size: 20px; z-index: 210; cursor: pointer; }
+        .fs-gallery { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; width: 100%; height: 100%; align-items: center; scrollbar-width: none; }
+        .fs-gallery::-webkit-scrollbar { display: none; }
+        .fs-item { flex: 0 0 100%; scroll-snap-align: center; display: flex; justify-content: center; align-items: center; padding: 20px; height: 100%; box-sizing: border-box; }
+        .fs-item img { max-width: 100%; max-height: 85vh; object-fit: contain; border-radius: 12px; }
+        .fs-hint { position: absolute; bottom: 30px; width: 100%; text-align: center; color: rgba(255,255,255,0.5); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; pointer-events: none; }
     </style>
 </head>
 <body>
@@ -58,12 +75,29 @@
 
     <div class="modal" id="card-modal">
         <div class="modal-content">
-            <img id="modal-img" src="" class="modal-img">
+            <div class="modal-img-container" onclick="openFullscreen()">
+                <img id="modal-img" src="" class="modal-img">
+                <div class="zoom-hint" id="zoom-hint">🔍 Tap to Expand</div>
+                <div class="modal-qr" id="modal-qr">
+                    <img id="qr-img" src="">
+                </div>
+            </div>
             <h2 id="modal-name" class="modal-name">Strain Name</h2>
             <p id="modal-reward" class="modal-reward">Reward Data</p>
-            <button class="btn" id="modal-share-btn">Share to Story</button>
-            <button class="btn btn-outline" onclick="closeModal()">Close</button>
+            
+            <button class="btn btn-full btn-redeem" id="toggle-qr-btn" onclick="toggleQR()">📱 Redeem (Budtender Scan)</button>
+            <div class="btn-grid" id="action-buttons">
+                <button class="btn" id="modal-share-btn">Share to Story</button>
+                <a class="btn btn-outline" id="modal-download-btn" href="" download>Save Image</a>
+            </div>
+            <button class="btn btn-outline btn-full" style="border:none; color:#888;" onclick="closeModal()">Close</button>
         </div>
+    </div>
+
+    <div class="fs-modal" id="fs-modal">
+        <button class="fs-close" onclick="closeFullscreen()">✕</button>
+        <div class="fs-gallery" id="fs-gallery"></div>
+        <div class="fs-hint">Swipe to view collection ↔</div>
     </div>
 
     <div class="modal" id="comp-modal">
@@ -71,15 +105,17 @@
             <h2 style="font-family: 'Cinzel'; color: var(--gold); margin-top: 0;">SET COMPLETE!</h2>
             <p id="comp-msg" style="font-size: 14px; line-height: 1.5;"></p>
             <p style="font-size: 12px; color: #aaa;">Screenshot this and tag @DutchTouchGenetics on IG for a bonus goodie!</p>
-            <button class="btn" onclick="document.getElementById('comp-modal').style.display='none'">Awesome!</button>
+            <button class="btn btn-full" onclick="document.getElementById('comp-modal').style.display='none'">Awesome!</button>
         </div>
     </div>
 
-    <script src="assets/js/dutchamon-db.js?v=1.2"></script>
+    <script src="assets/js/dutchamon-db.js?v=1.3"></script>
     <script>
         const collected = JSON.parse(localStorage.getItem('collectedStrains')) || [];
         const binder = document.getElementById('binder');
         const carousel = document.getElementById('my-carousel');
+        let currentCardId = null;
+        let qrShowing = false;
         
         // Update Counter
         document.getElementById('collection-counter').innerText = `${collected.length} / ${GL_CARDS.length} Cards Found`;
@@ -88,7 +124,6 @@
         if (collected.length === 0) {
             carousel.innerHTML = `<div class="empty-carousel">Scan your first QR code in-store to start your collection!</div>`;
         } else {
-            // Find full card data for collected IDs and sort them by when they were found
             collected.forEach(id => {
                 const cardData = GL_CARDS.find(c => c.id === id);
                 if (cardData) {
@@ -139,47 +174,104 @@
             }
         });
 
-        // Modal Logic
+        // Detail Modal Logic
         function openCardModal(cardData, isUnlocked) {
+            currentCardId = cardData.id;
+            qrShowing = false;
+            
             const modal = document.getElementById('card-modal');
             const img = document.getElementById('modal-img');
-            const nameLabel = document.getElementById('modal-name');
-            const rewardLabel = document.getElementById('modal-reward');
-            const shareBtn = document.getElementById('modal-share-btn');
+            const qrBox = document.getElementById('modal-qr');
+            const qrImg = document.getElementById('qr-img');
+            const toggleBtn = document.getElementById('toggle-qr-btn');
+            const actionBtns = document.getElementById('action-buttons');
+            const downloadBtn = document.getElementById('modal-download-btn');
+            const hint = document.getElementById('zoom-hint');
+
+            // Reset QR state
+            img.style.display = 'block';
+            qrBox.style.display = 'none';
+            toggleBtn.innerText = "📱 Redeem (Budtender Scan)";
 
             if (isUnlocked) {
                 img.src = cardData.image;
                 img.style.filter = "none";
-                nameLabel.innerText = cardData.name;
-                rewardLabel.innerText = `Collector Perk: ${cardData.reward}`;
-                rewardLabel.style.color = "#2ef8bb";
-                shareBtn.style.display = "block";
+                document.getElementById('modal-name').innerText = cardData.name;
+                document.getElementById('modal-reward').innerText = `Collector Perk: ${cardData.reward}`;
+                document.getElementById('modal-reward').style.color = "#2ef8bb";
                 
-                shareBtn.onclick = () => {
+                // Enable actions
+                toggleBtn.style.display = "block";
+                actionBtns.style.display = "grid";
+                hint.style.display = "block";
+                
+                // Set Download & Share data
+                downloadBtn.href = cardData.image;
+                downloadBtn.download = `${cardData.name}-Dutchamon.jpg`;
+                
+                // Generate Dynamic QR Code based on Reward text
+                qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(cardData.reward)}`;
+                
+                document.getElementById('modal-share-btn').onclick = () => {
                     if (navigator.share) {
-                        navigator.share({
-                            title: 'Dutchamon Unlocked!',
-                            text: `Check out the ${cardData.name} card I found at Green Labs!`,
-                            url: `https://greenlabsmi.com/unlock.html?id=${cardData.id}`
-                        });
+                        navigator.share({ title: 'Dutchamon Unlocked!', text: `Check out the ${cardData.name} card I found at Green Labs!`, url: `https://greenlabsmi.com/unlock.html?id=${cardData.id}` });
                     } else {
-                        alert("Hold down on the image to save and share it to your story!");
+                        alert("Long press the image to save it and share to your story!");
                     }
                 };
             } else {
                 img.src = cardData.image;
                 img.style.filter = "grayscale(1) brightness(0.3)";
-                nameLabel.innerText = "???";
-                rewardLabel.innerText = "Locked: Keep searching to discover!";
-                rewardLabel.style.color = "#aaa";
-                shareBtn.style.display = "none";
+                document.getElementById('modal-name').innerText = "???";
+                document.getElementById('modal-reward').innerText = "Locked: Keep searching to discover!";
+                document.getElementById('modal-reward').style.color = "#aaa";
+                
+                // Disable actions
+                toggleBtn.style.display = "none";
+                actionBtns.style.display = "none";
+                hint.style.display = "none";
             }
             modal.style.display = 'flex';
         }
 
-        function closeModal() {
-            document.getElementById('card-modal').style.display = 'none';
+        function toggleQR() {
+            qrShowing = !qrShowing;
+            document.getElementById('modal-img').style.display = qrShowing ? 'none' : 'block';
+            document.getElementById('modal-qr').style.display = qrShowing ? 'flex' : 'none';
+            document.getElementById('zoom-hint').style.display = qrShowing ? 'none' : 'block';
+            document.getElementById('toggle-qr-btn').innerText = qrShowing ? "Flip Back to Card" : "📱 Redeem (Budtender Scan)";
         }
+
+        function closeModal() { document.getElementById('card-modal').style.display = 'none'; }
+
+        // Fullscreen Swipe Gallery Logic
+        function openFullscreen() {
+            if(qrShowing || !collected.includes(currentCardId)) return; // Don't open if QR is showing or locked
+            
+            const gallery = document.getElementById('fs-gallery');
+            gallery.innerHTML = ''; 
+            
+            // Populate gallery with ONLY unlocked cards
+            collected.forEach(id => {
+                const cData = GL_CARDS.find(c => c.id === id);
+                if(cData) {
+                    const item = document.createElement('div');
+                    item.className = 'fs-item';
+                    item.id = `fs-item-${id}`;
+                    item.innerHTML = `<img src="${cData.image}">`;
+                    gallery.appendChild(item);
+                }
+            });
+            
+            document.getElementById('fs-modal').style.display = 'flex';
+            
+            // Snap to the specific card they clicked
+            setTimeout(() => {
+                document.getElementById(`fs-item-${currentCardId}`).scrollIntoView({ behavior: 'instant', inline: 'center' });
+            }, 50);
+        }
+
+        function closeFullscreen() { document.getElementById('fs-modal').style.display = 'none'; }
     </script>
 </body>
 </html>
