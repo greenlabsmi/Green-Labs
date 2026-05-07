@@ -3,8 +3,9 @@ const GL_CARDS = [
     { id: 'lemon-wookie', name: 'Lemon Wookie', image: 'assets/img/strains/lemon-wookie-card.jpg', reward: '$1 Off 1/8th', rarity: 'Indica-Hybrid' },
     { id: 'falcon-9', name: 'Falcon 9', image: 'assets/img/strains/falcon-9-art.jpg', reward: '$1 Off 1/8th', rarity: 'Indica-Dominant' },
     { id: 'solo-walker', name: 'Solo Walker', image: 'assets/img/strains/solo-walker-card.jpg', reward: '$1 Off 1/8th', rarity: 'Hybrid' },
-    { id: 'death-star', name: 'Death Star', image: 'assets/img/strains/greenlabs-logo.png', reward: '$1 Off 1/8th', rarity: 'Indica' },
-
+    { id: 'death-z', name: 'Death Star', image: 'assets/img/strains/death-z-card', reward: '$1 Off 1/8th', rarity: 'Indica' },
+    { id: 'falcon-9', name: 'Falcon 9', image: 'assets/img/strains/falcon-9-art.jpg', reward: '$1 Off 1/8th', rarity: 'Indica-Dominant' },
+    
     // === THE NIGHT SHIFT (Indicas) ===
     { id: 'death-z', name: 'Death Z', image: 'assets/img/strains/death-z-card.jpg', reward: '$1 Off 1/8th', rarity: 'Indica' },
     { id: 'clusterfunk', name: 'Clusterfunk', image: 'assets/img/strains/clusterfunk-card.jpg', reward: '$1 Off 1/8th', rarity: 'Indica' },
@@ -16,7 +17,8 @@ const GL_CARDS = [
     { id: 'banana-split', name: 'Banana Split', image: 'assets/img/strains/banana-split-art.jpg', reward: '$1 Off 1/8th', rarity: 'Hybrid' },
     { id: 'pina-rita', name: 'Pina Rita', image: 'assets/img/strains/pina-rita-art.jpg', reward: '$1 Off 1/8th', rarity: 'Sativa' },
     { id: 'strawberry-daiquiri', name: 'Strawberry Daiquiri', image: 'assets/img/strains/strawberry-daiquiri-art.jpg', reward: '$1 Off 1/8th', rarity: 'Sativa' },
-
+    { id: 'banana-split', name: 'Banana Split', image: 'assets/img/strains/banana-split-card.jpg', reward: '$1 Off 1/8th', rarity: 'Hybrid' },
+    
     // === THE DUTCH BAKERY ===
     { id: '13-layer-cake', name: '13 Layer Cake', image: 'assets/img/strains/13-layer-cake-card.jpg', reward: '$1 Off 1/8th', rarity: 'Sativa' },
     { id: 'pb-chocolate', name: 'PB n Chocolate', image: 'assets/img/strains/peanut-butter-n-chocolate-card.jpg', reward: '$1 Off 1/8th', rarity: 'Hybrid' },
@@ -33,7 +35,8 @@ const GL_CARDS = [
     // === THE SHINY VAULT (Variants) ===
     { id: 'hash-d-alt', name: 'Hash D (Shiny Variant)', image: 'assets/img/strains/hash-d-alt-card.jpg', reward: 'Special Promo', rarity: 'Holographic' },
     { id: 'bubblegum-pink', name: 'Bubblegum (Pink Variant)', image: 'assets/img/greenlabs-logo.png', reward: 'Special Promo', rarity: 'Holographic' },
-
+    { id: 'banana-split-pink', name: 'Banana Split (Pink Variant)', image: 'assets/img/strains/banana-split-alt-card.jpg', reward: 'Special Promo', rarity: 'Holographic' },
+   
     // === STORE EXPLORER ===
     { id: 'bodyguards', name: 'The Bodyguards', image: 'assets/img/hero.jpg', reward: 'Security Discount', rarity: 'Store Special' },
     { id: 'chalkboard', name: 'The Chalkboard', image: 'assets/img/greenlabs-logo.png', reward: 'Free Sticker', rarity: 'Explorer Series' }
