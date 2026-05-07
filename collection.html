@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Dutch-A-Dex | Collection</title>
     <meta property="og:title" content="My Dutch-A-Dex Collection">
-    <meta property="og:description" content="Check out the rare strains I've found at Green Labs! How many do you have?">
+    <meta property="og:description" content="Check out the rare strains I've found at Green Labs! Can you collect them all?">
     <meta property="og:image" content="https://greenlabsmi.com/assets/img/dutchamon-share.jpg">
     <meta property="og:url" content="https://greenlabsmi.com/collection.html">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        :root { --gold: #d6a441; --bg: #050505; }
-        body { background: var(--bg); color: white; font-family: 'Inter', sans-serif; margin: 0; padding: 20px; }
+        :root { --gold: #d6a441; --bg: #050505; --mint: #2ef8bb; }
+        body { background: var(--bg); color: white; font-family: 'Inter', sans-serif; margin: 0; padding: 20px; -webkit-tap-highlight-color: transparent; }
         h1 { font-family: 'Cinzel', serif; color: var(--gold); text-align: center; font-size: 36px; margin-bottom: 5px; text-shadow: 0 4px 15px rgba(214, 164, 65, 0.2); }
         .subtitle { text-align: center; color: #aaa; font-size: 14px; margin-bottom: 30px; }
         
@@ -20,7 +20,6 @@
         .carousel-container { display: flex; overflow-x: auto; gap: 15px; padding-bottom: 20px; margin-bottom: 30px; scroll-snap-type: x mandatory; scrollbar-width: none; }
         .carousel-container::-webkit-scrollbar { display: none; }
         .carousel-container .card { flex: 0 0 140px; scroll-snap-align: start; cursor: pointer; }
-        .empty-carousel { font-size: 14px; color: #666; font-style: italic; padding: 20px 0; }
 
         /* Set Styles */
         .set-container { margin-bottom: 50px; background: rgba(255,255,255,0.02); padding: 20px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.05); }
@@ -28,45 +27,45 @@
         .set-title { font-family: 'Cinzel', serif; font-size: 26px; color: var(--gold); text-transform: uppercase; margin: 0; letter-spacing: 2px; }
         .set-tagline { font-size: 13px; color: #888; margin-top: 5px; font-weight: 600; }
         
-        .set-reward-banner { background: rgba(46, 248, 187, 0.1); color: #2ef8bb; padding: 12px; border-radius: 8px; font-size: 13px; font-weight: 800; margin-bottom: 20px; display: none; text-align: center; border: 1px solid rgba(46, 248, 187, 0.3); text-transform: uppercase; letter-spacing: 1px; }
+        .set-reward-banner { background: rgba(46, 248, 187, 0.1); color: var(--mint); padding: 12px; border-radius: 8px; font-size: 12px; font-weight: 800; margin-bottom: 20px; display: none; text-align: center; border: 1px solid var(--mint); text-transform: uppercase; letter-spacing: 1px; cursor: pointer; animation: glow 2s infinite alternate; }
+        @keyframes glow { from { box-shadow: 0 0 5px rgba(46, 248, 187, 0.2); } to { box-shadow: 0 0 15px rgba(46, 248, 187, 0.5); } }
+        
         .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 15px; }
         .card { position: relative; border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); transition: transform 0.2s; cursor: pointer; }
-        .card:active { transform: scale(0.95); }
-        .card.locked { filter: grayscale(1) brightness(0.3); }
-        .card img { width: 100%; display: block; object-fit: contain; }
+        .card.locked { filter: grayscale(1) brightness(0.2); }
+        .card img { width: 100%; display: block; object-fit: contain; pointer-events: none; } /* Prevents drag-save on grid */
 
-        /* Detail Modal */
+        /* Modals */
         .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.95); display: none; align-items: center; justify-content: center; z-index: 100; padding: 20px; flex-direction: column; }
-        .modal-content { background: #111; padding: 20px; border-radius: 20px; text-align: center; border: 1px solid var(--gold); max-width: 350px; width: 100%; box-shadow: 0 20px 50px rgba(0,0,0,0.8); position: relative; }
-        .modal-img-container { position: relative; cursor: pointer; }
-        .modal-img { width: 100%; border-radius: 12px; margin-bottom: 15px; transition: opacity 0.3s; }
-        .modal-qr { position: absolute; inset: 0; background: white; border-radius: 12px; display: none; align-items: center; justify-content: center; padding: 20px; margin-bottom: 15px; }
+        .modal-content { background: #111; padding: 20px; border-radius: 20px; text-align: center; border: 1px solid var(--gold); max-width: 350px; width: 100%; position: relative; }
+        
+        /* Modal Art */
+        .modal-img-container { position: relative; margin-bottom: 15px; }
+        .modal-img { width: 100%; border-radius: 12px; display: block; -webkit-touch-callout: default; } /* Enables Long Press Save */
+        .modal-qr { position: absolute; inset: 0; background: white; border-radius: 12px; display: none; align-items: center; justify-content: center; padding: 20px; }
         .modal-qr img { width: 100%; max-width: 200px; }
-        .zoom-hint { position: absolute; bottom: 25px; right: 10px; background: rgba(0,0,0,0.7); color: white; font-size: 10px; padding: 5px 10px; border-radius: 20px; pointer-events: none; }
-        
-        .modal-name { font-family: 'Cinzel', serif; font-size: 24px; color: #fff; margin: 0 0 5px 0; }
-        .modal-reward { font-size: 13px; color: #2ef8bb; font-weight: 800; margin-bottom: 20px; }
-        
-        .btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
-        .btn { background: var(--gold); color: #000; border: none; padding: 12px; border-radius: 8px; font-weight: 800; width: 100%; cursor: pointer; font-family: 'Inter', sans-serif; font-size: 13px; text-decoration: none; box-sizing: border-box; display: inline-block; }
-        .btn-outline { background: transparent; border: 1px solid rgba(255,255,255,0.3); color: #fff; }
-        .btn-full { grid-column: span 2; }
-        .btn-redeem { background: #2ef8bb; color: #000; margin-bottom: 10px; }
+        .save-tip { background: var(--gold); color: black; font-size: 11px; font-weight: 800; padding: 6px; border-radius: 4px; margin-top: -10px; margin-bottom: 15px; display: none; }
 
-        /* Fullscreen Swipe Gallery */
+        .modal-name { font-family: 'Cinzel', serif; font-size: 22px; color: #fff; margin: 0 0 5px 0; }
+        .modal-reward { font-size: 13px; color: var(--mint); font-weight: 800; margin-bottom: 15px; }
+        
+        .btn { background: var(--gold); color: #000; border: none; padding: 12px; border-radius: 8px; font-weight: 800; width: 100%; cursor: pointer; font-family: 'Inter', sans-serif; font-size: 13px; margin-bottom: 8px; }
+        .btn-outline { background: transparent; border: 1px solid rgba(255,255,255,0.3); color: #fff; }
+        .btn-redeem { background: var(--mint); color: #000; }
+
+        /* Fullscreen Gallery */
         .fs-modal { position: fixed; inset: 0; background: #000; z-index: 200; display: none; flex-direction: column; }
-        .fs-close { position: absolute; top: 20px; right: 20px; background: rgba(255,255,255,0.2); color: white; border: none; width: 40px; height: 40px; border-radius: 50%; font-size: 20px; z-index: 210; cursor: pointer; }
+        .fs-close { position: absolute; top: 20px; right: 20px; color: white; background: rgba(255,255,255,0.1); border: none; width: 40px; height: 40px; border-radius: 50%; z-index: 210; font-size: 20px; }
         .fs-gallery { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; width: 100%; height: 100%; align-items: center; scrollbar-width: none; }
         .fs-gallery::-webkit-scrollbar { display: none; }
-        .fs-item { flex: 0 0 100%; scroll-snap-align: center; display: flex; justify-content: center; align-items: center; padding: 20px; height: 100%; box-sizing: border-box; }
-        .fs-item img { max-width: 100%; max-height: 85vh; object-fit: contain; border-radius: 12px; }
-        .fs-hint { position: absolute; bottom: 30px; width: 100%; text-align: center; color: rgba(255,255,255,0.5); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; pointer-events: none; }
+        .fs-item { flex: 0 0 100%; scroll-snap-align: center; display: flex; justify-content: center; align-items: center; padding: 20px; box-sizing: border-box; }
+        .fs-item img { max-width: 100%; max-height: 80vh; border-radius: 10px; }
     </style>
 </head>
 <body>
 
     <h1>DUTCH-A-DEX</h1>
-    <p class="subtitle" id="collection-counter">Loading Cards...</p>
+    <p class="subtitle" id="collection-counter">0 / 0 Cards Found</p>
 
     <div class="carousel-title">MY COLLECTION</div>
     <div class="carousel-container" id="my-carousel"></div>
@@ -75,68 +74,71 @@
 
     <div class="modal" id="card-modal">
         <div class="modal-content">
-            <div class="modal-img-container" onclick="openFullscreen()">
+            <div class="modal-img-container">
                 <img id="modal-img" src="" class="modal-img">
-                <div class="zoom-hint" id="zoom-hint">🔍 Tap to Expand</div>
-                <div class="modal-qr" id="modal-qr">
-                    <img id="qr-img" src="">
-                </div>
+                <div class="modal-qr" id="modal-qr"><img id="qr-img" src=""></div>
             </div>
-            <h2 id="modal-name" class="modal-name">Strain Name</h2>
-            <p id="modal-reward" class="modal-reward">Reward Data</p>
             
-            <button class="btn btn-full btn-redeem" id="toggle-qr-btn" onclick="toggleQR()">📱 Redeem (Budtender Scan)</button>
-            <div class="btn-grid" id="action-buttons">
-                <button class="btn" id="modal-share-btn">Share to Story</button>
-                <a class="btn btn-outline" id="modal-download-btn" href="" download>Save Image</a>
-            </div>
-            <button class="btn btn-outline btn-full" style="border:none; color:#888;" onclick="closeModal()">Close</button>
+            <div id="save-instruction" class="save-tip">👆 LONG-PRESS IMAGE TO SAVE TO PHOTOS</div>
+            
+            <h2 id="modal-name" class="modal-name">Strain Name</h2>
+            <p id="modal-reward" class="modal-reward"></p>
+            
+            <button class="btn btn-redeem" id="toggle-qr-btn" onclick="toggleQR()">📱 Redeem (Budtender Scan)</button>
+            <button class="btn btn-outline" id="save-btn" onclick="showSaveTip()">Save to Photo Album</button>
+            <button class="btn" id="modal-share-btn">Share Link</button>
+            <button class="btn btn-outline" style="border:none; color:#666;" onclick="closeModal()">Close</button>
         </div>
-    </div>
-
-    <div class="fs-modal" id="fs-modal">
-        <button class="fs-close" onclick="closeFullscreen()">✕</button>
-        <div class="fs-gallery" id="fs-gallery"></div>
-        <div class="fs-hint">Swipe to view collection ↔</div>
     </div>
 
     <div class="modal" id="comp-modal">
         <div class="modal-content">
-            <h2 style="font-family: 'Cinzel'; color: var(--gold); margin-top: 0;">SET COMPLETE!</h2>
-            <p id="comp-msg" style="font-size: 14px; line-height: 1.5;"></p>
-            <p style="font-size: 12px; color: #aaa;">Screenshot this and tag @DutchTouchGenetics on IG for a bonus goodie!</p>
-            <button class="btn btn-full" onclick="document.getElementById('comp-modal').style.display='none'">Awesome!</button>
+            <h2 style="font-family: 'Cinzel'; color: var(--gold); margin-bottom: 10px;">SET MASTERY!</h2>
+            <img id="comp-img" src="" class="modal-img" style="border: 2px solid var(--gold);">
+            
+            <div class="save-tip" style="display:block; background: var(--mint);">📸 SAVING INSTRUCTIONS:</div>
+            <p style="font-size: 13px; color: #fff; line-height: 1.4; margin: 10px 0;">
+                1. <b>Long-press</b> the image to "Save to Photos".<br>
+                2. Post to your <b>Instagram Story</b>.<br>
+                3. Tag <b>@DutchTouchGenetics</b>.<br>
+                4. Show story to budtender for your reward!
+            </p>
+            
+            <button class="btn" onclick="document.getElementById('comp-modal').style.display='none'">Back to Binder</button>
         </div>
     </div>
 
-    <script src="assets/js/dutchamon-db.js?v=1.3"></script>
+    <div class="fs-modal" id="fs-modal">
+        <button class="fs-close" onclick="document.getElementById('fs-modal').style.display='none'">✕</button>
+        <div class="fs-gallery" id="fs-gallery"></div>
+    </div>
+
+    <script src="assets/js/dutchamon-db.js?v=1.4"></script>
     <script>
         const collected = JSON.parse(localStorage.getItem('collectedStrains')) || [];
         const binder = document.getElementById('binder');
         const carousel = document.getElementById('my-carousel');
-        let currentCardId = null;
         let qrShowing = false;
         
-        // Update Counter
         document.getElementById('collection-counter').innerText = `${collected.length} / ${GL_CARDS.length} Cards Found`;
 
-        // Render Carousel
+        // Load Carousel
         if (collected.length === 0) {
-            carousel.innerHTML = `<div class="empty-carousel">Scan your first QR code in-store to start your collection!</div>`;
+            carousel.innerHTML = `<div style="font-size:12px; color:#555; padding: 20px;">Scan in-store to start your Dex...</div>`;
         } else {
             collected.forEach(id => {
-                const cardData = GL_CARDS.find(c => c.id === id);
-                if (cardData) {
-                    const cardEl = document.createElement('div');
-                    cardEl.className = 'card';
-                    cardEl.innerHTML = `<img src="${cardData.image}">`;
-                    cardEl.onclick = () => openCardModal(cardData, true);
-                    carousel.appendChild(cardEl);
+                const data = GL_CARDS.find(c => c.id === id);
+                if (data) {
+                    const div = document.createElement('div');
+                    div.className = 'card';
+                    div.innerHTML = `<img src="${data.image}">`;
+                    div.onclick = () => openCardModal(data, true);
+                    carousel.appendChild(div);
                 }
             });
         }
 
-        // Render Sets
+        // Load Binder Sets
         GL_SETS.forEach(set => {
             const setDiv = document.createElement('div');
             setDiv.className = 'set-container';
@@ -147,8 +149,10 @@
                     <h2 class="set-title">${set.name}</h2>
                     <div class="set-tagline">${set.tagline}</div>
                 </div>
-                <div class="set-reward-banner" id="banner-${set.id}" style="display: ${isComplete ? 'block' : 'none'}">
-                    🏆 SET COMPLETE: Redeem for ${set.reward}!
+                <div class="set-reward-banner" id="banner-${set.id}" 
+                     style="display: ${isComplete ? 'block' : 'none'}" 
+                     onclick='showAchievement("${set.id}")'>
+                    🏆 CLAIM ${set.reward} (CLICK HERE)
                 </div>
                 <div class="card-grid" id="grid-${set.id}"></div>
             `;
@@ -156,122 +160,66 @@
 
             const grid = document.getElementById(`grid-${set.id}`);
             set.cardIds.forEach(cardId => {
-                const cardData = GL_CARDS.find(c => c.id === cardId);
+                const card = GL_CARDS.find(c => c.id === cardId);
                 const isCollected = collected.includes(cardId);
-                const cardEl = document.createElement('div');
-                
-                cardEl.className = `card ${isCollected ? '' : 'locked'}`;
-                cardEl.innerHTML = `<img src="${cardData.image}">`;
-                cardEl.onclick = () => openCardModal(cardData, isCollected);
-                grid.appendChild(cardEl);
+                const el = document.createElement('div');
+                el.className = `card ${isCollected ? '' : 'locked'}`;
+                el.innerHTML = `<img src="${card.image}">`;
+                el.onclick = () => openCardModal(card, isCollected);
+                grid.appendChild(el);
             });
-
-            // Set Completion Logic
-            if (isComplete && !localStorage.getItem(`notified-${set.id}`)) {
-                document.getElementById('comp-modal').style.display = 'flex';
-                document.getElementById('comp-msg').innerText = `You finished the ${set.name} collection! Show this to your budtender to claim your ${set.reward}.`;
-                localStorage.setItem(`notified-${set.id}`, 'true');
-            }
         });
 
-        // Detail Modal Logic
-        function openCardModal(cardData, isUnlocked) {
-            currentCardId = cardData.id;
+        function openCardModal(card, isUnlocked) {
             qrShowing = false;
+            document.getElementById('save-instruction').style.display = 'none';
+            document.getElementById('modal-img').style.display = 'block';
+            document.getElementById('modal-qr').style.display = 'none';
             
-            const modal = document.getElementById('card-modal');
-            const img = document.getElementById('modal-img');
-            const qrBox = document.getElementById('modal-qr');
-            const qrImg = document.getElementById('qr-img');
-            const toggleBtn = document.getElementById('toggle-qr-btn');
-            const actionBtns = document.getElementById('action-buttons');
-            const downloadBtn = document.getElementById('modal-download-btn');
-            const hint = document.getElementById('zoom-hint');
-
-            // Reset QR state
-            img.style.display = 'block';
-            qrBox.style.display = 'none';
-            toggleBtn.innerText = "📱 Redeem (Budtender Scan)";
-
             if (isUnlocked) {
-                img.src = cardData.image;
-                img.style.filter = "none";
-                document.getElementById('modal-name').innerText = cardData.name;
-                document.getElementById('modal-reward').innerText = `Collector Perk: ${cardData.reward}`;
-                document.getElementById('modal-reward').style.color = "#2ef8bb";
+                document.getElementById('modal-img').src = card.image;
+                document.getElementById('modal-img').style.filter = "none";
+                document.getElementById('modal-name').innerText = card.name;
+                document.getElementById('modal-reward').innerText = `PERK: ${card.reward}`;
+                document.getElementById('qr-img').src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(card.reward)}`;
                 
-                // Enable actions
-                toggleBtn.style.display = "block";
-                actionBtns.style.display = "grid";
-                hint.style.display = "block";
-                
-                // Set Download & Share data
-                downloadBtn.href = cardData.image;
-                downloadBtn.download = `${cardData.name}-Dutchamon.jpg`;
-                
-                // Generate Dynamic QR Code based on Reward text
-                qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(cardData.reward)}`;
-                
+                document.getElementById('toggle-qr-btn').style.display = "block";
+                document.getElementById('save-btn').style.display = "block";
                 document.getElementById('modal-share-btn').onclick = () => {
-                    if (navigator.share) {
-                        navigator.share({ title: 'Dutchamon Unlocked!', text: `Check out the ${cardData.name} card I found at Green Labs!`, url: `https://greenlabsmi.com/unlock.html?id=${cardData.id}` });
-                    } else {
-                        alert("Long press the image to save it and share to your story!");
-                    }
+                    navigator.share({ title: 'Dutchamon!', text: `I found ${card.name}!`, url: `https://greenlabsmi.com/unlock.html?id=${card.id}` });
                 };
             } else {
-                img.src = cardData.image;
-                img.style.filter = "grayscale(1) brightness(0.3)";
+                document.getElementById('modal-img').src = card.image;
+                document.getElementById('modal-img').style.filter = "grayscale(1) brightness(0.2)";
                 document.getElementById('modal-name').innerText = "???";
-                document.getElementById('modal-reward').innerText = "Locked: Keep searching to discover!";
-                document.getElementById('modal-reward').style.color = "#aaa";
-                
-                // Disable actions
-                toggleBtn.style.display = "none";
-                actionBtns.style.display = "none";
-                hint.style.display = "none";
+                document.getElementById('modal-reward').innerText = "Keep scanning to unlock!";
+                document.getElementById('toggle-qr-btn').style.display = "none";
+                document.getElementById('save-btn').style.display = "none";
             }
-            modal.style.display = 'flex';
+            document.getElementById('card-modal').style.display = 'flex';
+        }
+
+        function showSaveTip() {
+            document.getElementById('save-instruction').style.display = 'block';
+            document.getElementById('save-btn').innerText = "Tap & Hold Image Above";
         }
 
         function toggleQR() {
             qrShowing = !qrShowing;
             document.getElementById('modal-img').style.display = qrShowing ? 'none' : 'block';
             document.getElementById('modal-qr').style.display = qrShowing ? 'flex' : 'none';
-            document.getElementById('zoom-hint').style.display = qrShowing ? 'none' : 'block';
-            document.getElementById('toggle-qr-btn').innerText = qrShowing ? "Flip Back to Card" : "📱 Redeem (Budtender Scan)";
+            document.getElementById('save-instruction').style.display = 'none';
+            document.getElementById('toggle-qr-btn').innerText = qrShowing ? "Flip to Card" : "📱 Redeem (Budtender Scan)";
+        }
+
+        function showAchievement(setId) {
+            const set = GL_SETS.find(s => s.id === setId);
+            const primaryCard = GL_CARDS.find(c => c.id === set.cardIds[0]);
+            document.getElementById('comp-img').src = primaryCard.image; // Placeholder for Set Badge
+            document.getElementById('comp-modal').style.display = 'flex';
         }
 
         function closeModal() { document.getElementById('card-modal').style.display = 'none'; }
-
-        // Fullscreen Swipe Gallery Logic
-        function openFullscreen() {
-            if(qrShowing || !collected.includes(currentCardId)) return; // Don't open if QR is showing or locked
-            
-            const gallery = document.getElementById('fs-gallery');
-            gallery.innerHTML = ''; 
-            
-            // Populate gallery with ONLY unlocked cards
-            collected.forEach(id => {
-                const cData = GL_CARDS.find(c => c.id === id);
-                if(cData) {
-                    const item = document.createElement('div');
-                    item.className = 'fs-item';
-                    item.id = `fs-item-${id}`;
-                    item.innerHTML = `<img src="${cData.image}">`;
-                    gallery.appendChild(item);
-                }
-            });
-            
-            document.getElementById('fs-modal').style.display = 'flex';
-            
-            // Snap to the specific card they clicked
-            setTimeout(() => {
-                document.getElementById(`fs-item-${currentCardId}`).scrollIntoView({ behavior: 'instant', inline: 'center' });
-            }, 50);
-        }
-
-        function closeFullscreen() { document.getElementById('fs-modal').style.display = 'none'; }
     </script>
 </body>
 </html>
