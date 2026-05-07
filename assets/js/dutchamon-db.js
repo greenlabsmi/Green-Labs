@@ -30,7 +30,7 @@ const GL_CARDS = [
 
     // === THE SHINY VAULT (Variants) ===
     { id: 'hash-d-alt', name: 'Hash D (Shiny Variant)', image: 'assets/img/strains/hash-d-alt-card.jpg', reward: 'Special Promo', rarity: 'Holographic' },
-    { id: 'bubblegum-88g13hp', name: 'Bubblegum (Pink Variant)', image: 'assets/img/bubblegum-88g13hp-card', reward: 'Special Promo', rarity: 'Holographic' },
+    { id: 'bubblegum-pink', name: 'Bubblegum (Pink Variant)', image: 'assets/img/strains/bubblegum-pink-card.jpg', reward: 'Special Promo', rarity: 'Holographic' },
     { id: 'banana-split-alt', name: 'Banana Split (Pink Variant)', image: 'assets/img/strains/banana-split-alt-card.jpg', reward: 'Special Promo', rarity: 'Holographic' },
     { id: 'falcon-9-alt', name: 'Falcon 9 (Shiny Variant)', image: 'assets/img/strains/falcon-9-alt-card.jpg', reward: 'Special Promo', rarity: 'Holographic' },
     
@@ -45,6 +45,6 @@ const GL_SETS = [
     { id: 'fruit-basket', name: 'The Fruit Basket', tagline: 'A tropical storm of juicy terpene profiles.', reward: '10% Off Fruity Extracts', cardIds: ['sin-city-grapes', 'banana-split', 'pina-rita', 'strawberry-daiquiri'] },
     { id: 'bakery', name: 'The Dutch Bakery', tagline: 'Freshly baked, sweet, and sticky.', reward: 'Free 100mg Edible', cardIds: ['13-layer-cake', 'pb-chocolate', 'choc-marshmallows', 'bubblegum-88g13hp'] },
     { id: 'trophy-case', name: 'The Trophy Case', tagline: 'Decorated champions and cup-winning classics.', reward: 'Free Pre-roll', cardIds: ['super-silver-hashplant', 'mr-clean', 'lilac-diesel', 'cobra-lips', 'field-trip'] },
-    { id: 'shiny-vault', name: 'The Shiny Vault', tagline: 'Ultra-rare holos and alternate artworks.', reward: '$10 Store Credit', cardIds: ['hash-d-alt', 'bubblegum-88g13hp', 'banana-split-alt', 'falcon-9-alt'] },
+    { id: 'shiny-vault', name: 'The Shiny Vault', tagline: 'Ultra-rare holos and alternate artworks.', reward: '$10 Store Credit', cardIds: ['hash-d-alt', 'bubblegum-pink', 'banana-split-alt', 'falcon-9-alt'] },
     { id: 'explorer', name: 'Store Explorer', tagline: 'Hidden secrets scattered around Green Labs.', reward: 'Mystery Bag', cardIds: ['bodyguards', 'chalkboard'] }
 ];
