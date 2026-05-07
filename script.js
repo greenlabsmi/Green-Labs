@@ -1597,11 +1597,13 @@ setTimeout(() => {
 
     const bigPopup = document.createElement('div');
     bigPopup.id = 'big-promo-popup';
-    bigPopup.style = "position:fixed; inset:0; z-index:10000; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.85); backdrop-filter:blur(8px);";
+    // The dark overlay background wrapper
+    bigPopup.style = "position:fixed; inset:0; z-index:10000; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.85); backdrop-filter:blur(4px);";
     
     bigPopup.innerHTML = `
         <div class="big-gradient-border" style="position:relative; width:90%; max-width:520px; padding:35px 25px; text-align:center; box-shadow: 0 40px 100px rgba(0,0,0,0.8), 0 0 50px rgba(189, 0, 255, 0.2); animation: awardDrop 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;">
-            <button id="close-big" style="position:absolute; top:15px; right:20px; background:none; border:none; color:#999; font-size:28px; cursor:pointer; transition:0.2s; z-index: 10;">&times;</button>
+            
+            <button id="close-big" style="position:absolute; top:-15px; right:-15px; width:38px; height:38px; background:#D6A34A; color:#000; font-family:Arial, sans-serif; font-size:26px; border:2px solid #000; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 10px rgba(0,0,0,0.6); z-index: 10000; transition: transform 0.2s ease, background 0.2s ease;">&times;</button>
             
             <div class="big-gradient-bg" style="display:inline-block; font-size:14px; font-weight:950; letter-spacing:0.15em; color:#fff; padding:6px 20px; border-radius:999px; margin-bottom:18px; box-shadow: 0 4px 15px rgba(189, 0, 255, 0.4);">
                 MAY 9TH EXCLUSIVE
@@ -1629,10 +1631,10 @@ setTimeout(() => {
     `;
     document.body.appendChild(bigPopup);
     
-    // Hover effects
+    // Hover effects for the new Gold X
     const closeBtn = document.getElementById('close-big');
-    closeBtn.onmouseover = () => closeBtn.style.color = '#fff';
-    closeBtn.onmouseout = () => closeBtn.style.color = '#999';
+    closeBtn.onmouseover = () => { closeBtn.style.transform = 'scale(1.1)'; closeBtn.style.background = '#fff'; };
+    closeBtn.onmouseout = () => { closeBtn.style.transform = 'scale(1)'; closeBtn.style.background = '#D6A34A'; };
 
     const shopBtn = document.getElementById('btn-big-shop');
     shopBtn.onmouseover = () => { shopBtn.style.transform = 'translateY(-3px)'; shopBtn.style.boxShadow = '0 15px 40px rgba(189,0,255,0.6)'; };
@@ -1643,10 +1645,18 @@ setTimeout(() => {
         bigPopup.remove();
     };
     closeBtn.onclick = closePopup;
+
+    // CLICK OUTSIDE TO CLOSE LOGIC
+    bigPopup.onclick = (e) => {
+        // Only trigger the close function if they clicked the dark background overlay, not the ad box
+        if (e.target === bigPopup) {
+            closePopup();
+        }
+    };
     
     // Linking directly to the Best in Grass official site!
     shopBtn.onclick = () => {
         closePopup();
         window.open('https://bestingrass.io/competitions/michigan-2026/', '_blank');
     };
-}, 15000); // Trigger set to 2 seconds for instant testing
+}, 15000);
