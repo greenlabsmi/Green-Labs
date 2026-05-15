@@ -21,7 +21,7 @@
     {
       "tier": "VALUE",
       "label": "3rd Party Deli",
-      "color": "#F26B24",
+      "color": "#708090",
       "tagline": "Everyday Value",
       "prices": [
         ["Gram", "$6"], ["3.5g", "$20"], ["7g", "$35"], ["14g", "$50"], ["28g", "$100"]
