@@ -4832,3 +4832,38 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
     }
 }
 
+@media (max-width: 768px) {
+  /* 1. Force the Hero box to be the right shape for the Canva graphic */
+  #todays-highlights .thHero {
+    height: auto !important;
+    min-height: unset !important;
+    aspect-ratio: 1 / 1 !important; /* Forces a square; change to 1.2/1 if image is a rectangle */
+    background-color: #0b1a14 !important; /* Matches your Canva green */
+  }
+
+  /* 2. Stop the image from stretching/chopping */
+  #todays-highlights .thHero .thMedia {
+    background-size: contain !important; /* THE FIX: Shows the whole image */
+    background-position: center top !important;
+    transform: none !important; /* Kills parallax for the hero so text stays readable */
+  }
+
+  /* 3. Turn off the dark overlay for the hero so the graphic stays bright */
+  #todays-highlights .thHero .thOverlay {
+    display: none !important;
+  }
+
+  /* 4. Move the dynamic HTML text out of the way */
+  #todays-highlights .thHero .thContent {
+    position: relative !important; /* Pushes content BELOW the image instead of over it */
+    padding: 15px !important;
+    background: #0b1a14;
+    inset: auto !important;
+  }
+
+  /* 5. Shrink the HTML headline so it doesn't compete with the Canva text */
+  #todays-highlights .thHero .thH3 {
+    font-size: 24px !important;
+    margin-bottom: 5px !important;
+  }
+}
