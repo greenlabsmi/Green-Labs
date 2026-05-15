@@ -2,23 +2,21 @@
   "deli_board": [
     {
       "tier": "PREMIUM",
-      "label": "DTG Trophy Room",
+      "label": "Trophy Room Tier",
       "color": "#D6A34A",
       "tagline": "Award-Winning Genetics",
       "prices": [
-        ["Gram", "$10"], ["3.5g", "$25"], ["7g", "$45"], 
-        ["14g", "$80"], ["28g", "$140"]
+        ["Gram", "$12"], ["Eighth", "$35"], ["Quarter", "$60"], ["Half", "$85"], ["Ounce", "$150"]
       ]
     },
     {
       "tier": "CORE",
-      "label": "Dutch Deli Standard",
+      "label": "The Standard",
       "color": "#4CAF50",
       "featured": true,
-      "tagline": "Weighed Fresh to Order",
+      "tagline": "Dutch Touch Quality",
       "prices": [
-        ["Gram", "$6"], ["3.5g", "$20"], ["7g", "$35"], 
-        ["14g", "$60"], ["28g", "$110"]
+        ["Gram", "$8"], ["Eighth", "$15"], ["Quarter", "$30"], ["Half", "$55"], ["Ounce", "$90"]
       ]
     },
     {
@@ -27,111 +25,111 @@
       "color": "#2196F3",
       "tagline": "Everyday Value",
       "prices": [
-        ["Gram", "$6"], ["3.5g", "$20"], ["7g", "$35"], 
-        ["14g", "$50"], ["28g", "$100"]
+        ["Gram", "$6"], ["Eighth", "$12"], ["Quarter", "$22"], ["Half", "$40"], ["Ounce", "$60"]
       ]
     }
   ],
   "highlights": {
     "layout": {
-      "hero": "item_1",
-      "mid": ["item_2", "item_3"],
-      "scroll": ["item_4", "item_5", "item_6", "item_7"]
+      "hero": "cresco-blue",
+      "mid": [
+        "deli-oz",
+        "dtg-disposables"
+      ],
+      "scroll": [
+        "mix-gummies",
+        "mix-prerolls",
+        "lightsky-carts",
+        "redbud-carts",
+        "premium-gummies",
+        "grip-oz"
+      ]
     },
     "items": {
-      "item_1": {
+      "cresco-blue": {
+        "title": "Cresco Blue Zoap",
+        "price": "$60/oz",
+        "tag": "MEGA DEAL",
+        "details": "Hot Spot Special! While Supplies Last",
+        "image": "assets/img/highlights/mixmatch-carts.jpg"
+      },
+      "deli-oz": {
+        "title": "Pina Rita 1oz Bag",
+        "price": "$70",
         "tag": "FLOWER",
-        "title": "Pina Rita Ounce Special",
-        "price": "$74",
-        "details": "Premium Dutch Touch Deli Flower"
+        "details": "Premium Dutch Touch Deli Flower",
+        "image": "assets/img/deals/hl-pina-rita.jpg"
       },
-      "item_2": {
-        "tag": "VAPES",
-        "title": "Mix & Match 1G Carts",
-        "price": "5 for $35",
-        "details": "Superfire, Crude Boys, Drip"
-      },
-      "item_3": {
-        "tag": "VAPES",
+      "dtg-disposables": {
         "title": "DTG 1G Disposables",
         "price": "3 for $45",
-        "details": "Full Gram All-in-Ones"
+        "tag": "VAPES",
+        "details": "Full Gram All-in-Ones",
+        "image": "assets/img/deals/dt-disposables.jpg"
       },
-      "item_4": {
-        "tag": "EDIBLES",
-        "title": "Mix & Match Edibles",
-        "price": "5 for $18",
-        "details": "Selection of Value Gummies"
-      },
-      "item_5": {
-        "tag": "PRE-ROLLS",
-        "title": "Mix & Match Pre-Rolls",
-        "price": "10 for $35",
-        "details": "1G Full Bud Pre-Rolls"
-      },
-      "item_6": {
-        "tag": "CONCENTRATES",
-        "title": "LSF Live Resin Carts",
-        "price": "5 for $90",
-        "details": "Top-Tier Live Resin"
-      },
-      "item_7": {
-        "tag": "FLOWER",
-        "title": "Grip Oz Specials",
-        "price": "2 for $45",
-        "details": "Select strains while they last"
-      }
+      "mix-gummies": { "title": "Mix & Match Edibles 5 for $18", "image": "assets/img/highlights/hl-gummies.jpg" },
+      "mix-prerolls": { "title": "Mix & Match Pre-Rolls 10 for $35", "image": "assets/img/highlights/hl-prerolls.jpg" },
+      "lightsky-carts": { "title": "LSF Live Resin 5 for $90", "image": "assets/img/highlights/hl-lightsky.jpg" },
+      "redbud-carts": { "title": "Redbud 1g Cart 3 for $25", "image": "assets/img/highlights/hl-redbud.jpg" },
+      "premium-gummies": { "title": "Premium Gummies 5 for $35", "image": "assets/img/highlights/hl-premium-gummies.jpg" },
+      "grip-oz": { "title": "Grip Oz Flower 2 for $45", "image": "assets/img/highlights/hl-grip.jpg"}
     }
   },
   "deals": [
     {
       "category": "🌿 Flower",
       "promo": false,
-      "items": [
-        "$30 - Grip Oz (or 2 for $45)",
-        "$40 - Dutch Daylight Oz (or 2 for $65)",
-        "$50 - Ripped Bubba 1oz (or 2 for $95)",
-        "$70 - Death Z, Solo Walker, Vortex Oz",
-        "$74 - Pina Rita & Sticky Trap 1oz",
-        "$90 - Guicy G and Illudium 1oz",
-        "$10 - DTG Secret Chief 3.5g Special"
+      "groups": [
+        {
+          "title": "🔥 Mega Deals & Ounce Specials",
+          "items": [
+            "DTG Secret Chief 3.5g — $10 (HOT SPOT!)",
+            "Grip Oz — $30 (Low Stock)",
+            "Cresco Blue Zoap — $12/8th or $60/oz",
+            "Dutch Daylight Oz — $40 (or 2/$60)",
+            "Ripped Bubba Oz — $50 (or 2/$95)",
+            "Angelica & Secret Chief Oz — $65",
+            "Pina Rita, Gorilla 88, Jesters Oz — $70",
+            "Spirit Hashplant, Solowalker, Banana Split — $12/8th or $70/oz",
+            "Double Bubble & Chocolate Marshmallow Oz — $90",
+            "Lilac Diesel Oz — $150 (Award Winner)"
+          ]
+        },
+        {
+          "title": "💨 Vapes & Disposables",
+          "items": [
+            "Mix & Match 1G Carts — 5 for $35",
+            "Drip & Crude Boys — 10 for $65",
+            "DTG 1G Disposables — 3 for $45",
+            "1g Jeeter Singles — $15",
+            "Baby Jeeter 5-Packs — $30"
+          ]
+        }
       ]
     },
     {
       "category": "🍬 Edibles & Beverages",
       "promo": false,
-      "items": [
-        "5/$18 - Value Gummy Mix & Match",
-        "5/$35 - Premium Gummy Mix & Match",
-        "$4.29 - DTG 200mg Distillate Gummies (50% OFF)",
-        "3/$20 - Squishy 200mg Hash Rosin Gummies",
-        "10/$35 - Midwest 200mg Vegan Gummies",
-        "$15 - Mary Jones 100mg Sodas",
-        "$10 - Tonic 100mg Drinks"
-      ]
-    },
-    {
-      "category": "💨 Vapes & Disposables",
-      "promo": false,
-      "items": [
-        "3/$25 or 5/$35 - Mix & Match 1G Carts",
-        "3/$25 - Redbud 1G Carts",
-        "5/$90 - LSF Live Resin Carts",
-        "3/$45 - DTG 1G Disposables",
-        "$25 - Batch 2G Disposables",
-        "3/$110 - Batch 4G Disposables"
-      ]
-    },
-    {
-      "category": "🪄 Pre-Rolls",
-      "promo": false,
-      "items": [
-        "10/$35 - Mix & Match 1G Pre-Rolls",
-        "10/$35 - Boomstick 1G THCa Infused",
-        "10/$50 - Bonfire 1.2G Infused",
-        "10/$60 - Party Favor 50% THC Infused",
-        "$12 - DTG Hash Rosin Donut (40% OFF)",
-        "$30 - DTG 5-Pack Infused (Mr. Clean / Death Star)"
+      "groups": [
+        {
+          "title": "Gummies & Chocolates",
+          "items": [
+            "El Cheepo Gummies — $3ea",
+            "DTG 200mg Distillate Gummies — $4.29ea (50% OFF)",
+            "Midwest 200mg Vegan Gummies — 10 for $35",
+            "Boujee Bites 200mg Hash Rosin — 5 for $35",
+            "PIXILS and Potpots — 2 for $25"
+          ]
+        },
+        {
+          "title": "THC Beverages",
+          "items": [
+            "Highly Casual Seltzers — $5",
+            "Tonic 100mg Drinks — $10",
+            "Armada 50mg Triple Jam — $10",
+            "Mary Jones 100mg Sugar-Free Cola — $12"
+          ]
+        }
       ]
     }
   ]
