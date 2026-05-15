@@ -4755,3 +4755,21 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
     border-bottom: none;
   }
 }
+
+/* Ensure the Hero Highlight graphic fits entirely on mobile */
+.thHero .thMedia {
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+    /* Optional: Match the background color to the graphic's dark green 
+       so the edges blend in if the screen is super wide */
+    background-color: #0b1a14; 
+}
+
+/* Adjust height on mobile so the container doesn't look empty */
+@media (max-width: 768px) {
+    .thHero {
+        height: auto !important;
+        aspect-ratio: 4 / 3; /* Matches the general shape of your Canva export */
+    }
+}
