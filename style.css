@@ -4599,7 +4599,7 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
 /* =========================================================
    STATIC DELI PRICING MENU (Above Deals)
    ========================================================= */
-.deli-pricing-banner {
+.dpb-drop {
   background: #ffffff;
   border-radius: 24px;
   border: 1px solid rgba(11, 125, 90, 0.2);
@@ -4611,17 +4611,38 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
 .dpb-header {
   background: linear-gradient(135deg, #0B7D5A, #086045);
   color: #ffffff;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  list-style: none; /* Hides default arrow */
+}
+.dpb-header::-webkit-details-marker {
+  display: none;
+}
+.dpb-header-text {
   text-align: center;
-  padding: 16px 20px;
+  flex-grow: 1;
+}
+.dpb-chev {
+  font-size: 28px;
+  color: #FFD700; /* Bright Gold */
+  transition: transform 0.3s ease;
+  line-height: 1;
+}
+.dpb-drop[open] .dpb-chev {
+  transform: rotate(180deg);
 }
 
 .dpb-title {
   font-family: "Cinzel", serif;
-  font-size: 26px;
+  font-size: 32px; /* Bigger on desktop */
   font-weight: 900;
   margin: 0 0 4px;
   letter-spacing: 0.05em;
-  color: #D6A34A; /* DTG Gold */
+  color: #FFD700; /* Brighter, more golden */
+  text-shadow: 0 2px 12px rgba(255, 215, 0, 0.4); /* Golden glow */
 }
 
 .dpb-sub {
@@ -4631,11 +4652,15 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
   opacity: 0.9;
 }
 
+.dpb-body {
+  background: #ffffff;
+  border-top: 1px solid rgba(0,0,0,0.05);
+}
+
 .dpb-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0;
-  background: #ffffff;
 }
 
 .dpb-tier {
@@ -4689,7 +4714,6 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
   z-index: 2;
 }
 
-/* The dotted line effect between the weight and price */
 .dpb-dots {
   flex-grow: 1;
   border-bottom: 2px dotted rgba(0,0,0,0.15);
@@ -4708,6 +4732,12 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
 
 /* Stacks them vertically on phones */
 @media (max-width: 860px) {
+  .dpb-title {
+    font-size: 24px;
+  }
+  .dpb-header-text {
+    text-align: left; /* Aligns neatly next to the chevron */
+  }
   .dpb-grid {
     grid-template-columns: 1fr;
   }
