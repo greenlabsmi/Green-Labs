@@ -4631,8 +4631,7 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
 
 .dpb-chev {
   font-size: 28px;
-  /* DTG Orange for the drop-down arrow */
-  color: #F26B24; 
+  color: #D6A34A; /* Matches the Gold title */
   transition: transform 0.3s ease;
   line-height: 1;
 }
@@ -4732,8 +4731,7 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
   background: #fff;
   padding-left: 8px;
   z-index: 2;
-  /* DTG Orange for the actual price numbers */
-  color: #F26B24; 
+  color: #0B7D5A; /* Rich Green Labs Emerald */
   font-size: 18px;
 }
 
