@@ -1032,7 +1032,7 @@
   }
 
   // Close when clicking the dark background
-  document.getElementById('terpModalWrapper').addEventListener('click', function(event) {
+  document.getElementById('terpModalWrapper')?.addEventListener('click', function(event) {
     if (event.target === this) {
       this.style.display = 'none';
       document.body.style.overflow = '';
