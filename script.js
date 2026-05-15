@@ -684,32 +684,40 @@ function renderDealsDropdown(data) {
 
     // 1. Create the Sleek Static Deli Menu Box
     if (data.deli_board && deliBoardMount) {
+      // 🟢 Automatically close on mobile, stay open on desktop!
+      const isOpen = window.innerWidth > 860 ? 'open' : ''; 
+      
       deliBoardMount.innerHTML = `
-        <div class="deli-pricing-banner">
-          <div class="dpb-header">
-            <h3 class="dpb-title">The Dutch Deli</h3>
-            <p class="dpb-sub">Weighed fresh to order. Choose your tier below.</p>
-          </div>
-          <div class="dpb-grid">
-            ${data.deli_board.map(tier => `
-              <div class="dpb-tier">
-                <div class="dpb-tier-head">
-                  <h4 class="dpb-tier-name" style="color: ${tier.color}">${tier.tier} TIER</h4>
-                  <div class="dpb-tier-label">${tier.label}</div>
+        <details class="dpb-drop" ${isOpen}>
+          <summary class="dpb-header">
+            <div class="dpb-header-text">
+              <h3 class="dpb-title">The Dutch Deli</h3>
+              <p class="dpb-sub">Weighed fresh to order. Choose your tier below.</p>
+            </div>
+            <span class="dpb-chev" aria-hidden="true">▾</span>
+          </summary>
+          <div class="dpb-body">
+            <div class="dpb-grid">
+              ${data.deli_board.map(tier => `
+                <div class="dpb-tier">
+                  <div class="dpb-tier-head">
+                    <h4 class="dpb-tier-name" style="color: ${tier.color}">${tier.tier} TIER</h4>
+                    <div class="dpb-tier-label">${tier.label}</div>
+                  </div>
+                  <div class="dpb-prices">
+                    ${tier.prices.map(([wt, pr]) => `
+                      <div class="dpb-price-row">
+                        <span class="dpb-wt">${wt}</span>
+                        <span class="dpb-dots"></span>
+                        <span class="dpb-pr">${pr}</span>
+                      </div>
+                    `).join('')}
+                  </div>
                 </div>
-                <div class="dpb-prices">
-                  ${tier.prices.map(([wt, pr]) => `
-                    <div class="dpb-price-row">
-                      <span class="dpb-wt">${wt}</span>
-                      <span class="dpb-dots"></span>
-                      <span class="dpb-pr">${pr}</span>
-                    </div>
-                  `).join('')}
-                </div>
-              </div>
-            `).join('')}
+              `).join('')}
+            </div>
           </div>
-        </div>
+        </details>
       `;
     }
 
