@@ -4824,3 +4824,61 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
     margin: 0 !important;
   }
 }
+
+/* ============================================================
+   THE 1548x1016 MOBILE "NO-CROP" COMMAND
+   ============================================================ */
+@media (max-width: 768px) {
+  
+  /* 1. Create a container that matches your image shape exactly */
+  #todays-highlights .thHero {
+    height: auto !important;
+    min-height: 0 !important;
+    /* This calculation (1548 / 1016) prevents the box from being too tall */
+    aspect-ratio: 1548 / 1016 !important; 
+    background-color: #0b1a14 !important; 
+    display: block !important;
+    position: relative !important;
+    overflow: visible !important;
+  }
+
+  /* 2. Kill the Parallax Script and lock the image to the edges */
+  #todays-highlights .thHero .thMedia,
+  #todays-highlights .thHero .thParallax {
+    position: absolute !important;
+    inset: 0 !important;
+    /* This tells the image to FIT, not cover */
+    background-size: 100% 100% !important; 
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    /* THE KILLER: This stops the JavaScript from moving or zooming the image */
+    transform: none !important; 
+    transition: none !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  /* 3. Remove the dark filter so your Canva colors are bright */
+  #todays-highlights .thHero .thOverlay {
+    display: none !important;
+  }
+
+  /* 4. Shift the Website Text UNDER the graphic */
+  /* This prevents the "Shop" text from covering your jars */
+  #todays-highlights .thHero .thContent {
+    position: relative !important;
+    top: 100% !important; /* Forces text below the image */
+    background: #0b1a14;
+    padding: 24px 15px !important;
+    inset: auto !important;
+    width: 100% !important;
+    z-index: 10 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  /* 5. Shrink the dynamic text so it doesn't look clunky */
+  #todays-highlights .thHero .thH3 { font-size: 24px !important; margin-bottom: 5px !important; }
+  #todays-highlights .thHero .thPrice { font-size: 38px !important; margin: 0 !important; }
+}
