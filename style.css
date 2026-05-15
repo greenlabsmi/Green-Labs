@@ -4797,3 +4797,38 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
         aspect-ratio: 4 / 3; /* Matches the general shape of your Canva export */
     }
 }
+
+/* --- THE "NUCLEAR" MOBILE HERO FIX --- */
+@media (max-width: 768px) {
+    /* 1. Stop the container from having a forced height */
+    .thHero {
+        height: auto !important;
+        min-height: unset !important;
+        aspect-ratio: 1.2 / 1 !important; /* Adjust this to 1/1 if it still feels tall */
+        display: flex !important;
+        flex-direction: column !important;
+        background: #0b1a14 !important; /* Matches your Canva Green */
+    }
+
+    /* 2. Force the media div to stop parallaxing and just FIT */
+    .thHero .thMedia, 
+    .thHero .thParallax {
+        position: relative !important;
+        transform: none !important; /* Kills the Parallax movement */
+        height: 100% !important;
+        width: 100% !important;
+        background-size: contain !important; /* The magic "Don't Crop" command */
+        background-repeat: no-repeat !important;
+        background-position: center top !important;
+        padding-top: 0 !important;
+    }
+
+    /* 3. Make sure the content (text/buttons) doesn't overlap the graphic */
+    .thHero .thContent {
+        position: relative !important;
+        padding: 15px !important;
+        background: #0b1a14 !important; /* Flat color so you can read text below image */
+        margin-top: -5px; /* Pulls it up slightly to close any gap */
+    }
+}
+
