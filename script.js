@@ -670,50 +670,51 @@ function renderDealsDropdown(data) {
     const dealList = document.getElementById('dealList');
     const jumpWrap = document.getElementById('dealJumpWrap');
     const searchMeta = document.getElementById('dealSearchMeta');
+    const deliBoardMount = document.getElementById('deliBoardMount'); // 👈 New Target!
     
-    // ✅ FIX: Grab JUST the regular deals array to feed the normalizer
     const regularDeals = data.deals || [];
     const cats = normalizeDealsData(regularDeals);
 
-    // ✅ FIX: Update safety check to ensure it doesn't hide the Deli Board!
     if (!cats.length && !data.deli_board) {
       dealList.innerHTML = '<div class="drEmpty">No deals available right now.</div>';
       if (jumpWrap) jumpWrap.innerHTML = '';
-      if (searchMeta) {
-        searchMeta.hidden = true;
-        searchMeta.textContent = '';
-      }
+      if (searchMeta) { searchMeta.hidden = true; searchMeta.textContent = ''; }
       return;
     }
 
-    // 1. Create the Deli Board HTML
-    let deliHTML = '';
-    if (data.deli_board) {
-      deliHTML = `
-        <div class="deli-board">
-          ${data.deli_board.map(tier => `
-            <div class="deli-card ${tier.featured ? 'deli-card--featured' : ''}">
-              <div class="deli-card__header">
-                <p class="deli-card__label" style="color:${tier.color}">${tier.label}</p>
-                <h3 class="deli-card__tier" style="color:${tier.color}">${tier.tier}</h3>
+    // 1. Create the Sleek Static Deli Menu Box
+    if (data.deli_board && deliBoardMount) {
+      deliBoardMount.innerHTML = `
+        <div class="deli-pricing-banner">
+          <div class="dpb-header">
+            <h3 class="dpb-title">The Dutch Deli</h3>
+            <p class="dpb-sub">Weighed fresh to order. Choose your tier below.</p>
+          </div>
+          <div class="dpb-grid">
+            ${data.deli_board.map(tier => `
+              <div class="dpb-tier">
+                <div class="dpb-tier-head">
+                  <h4 class="dpb-tier-name" style="color: ${tier.color}">${tier.tier} TIER</h4>
+                  <div class="dpb-tier-label">${tier.label}</div>
+                </div>
+                <div class="dpb-prices">
+                  ${tier.prices.map(([wt, pr]) => `
+                    <div class="dpb-price-row">
+                      <span class="dpb-wt">${wt}</span>
+                      <span class="dpb-dots"></span>
+                      <span class="dpb-pr">${pr}</span>
+                    </div>
+                  `).join('')}
+                </div>
               </div>
-              <div class="deli-card__prices">
-                ${tier.prices.map(([wt, pr]) => `
-                  <div class="deli-price-row">
-                    <span class="deli-price__wt">${wt}</span>
-                    <span class="deli-price__val">${pr}</span>
-                  </div>
-                `).join('')}
-              </div>
-              <div class="deli-card__tagline">${tier.tagline}</div>
-            </div>
-          `).join('')}
+            `).join('')}
+          </div>
         </div>
       `;
     }
 
-    // 2. Render the Board + all other Categories
-    dealList.innerHTML = deliHTML + cats.map(cat => {
+    // 2. Render the normal Dropdown Categories
+    dealList.innerHTML = cats.map(cat => {
       const lineCount = cat.groups.reduce((sum, g) => sum + g.lines.length, 0);
       const groupsHtml = cat.groups.map(group => {
         const linesHtml = group.lines.map(line => `
@@ -725,9 +726,7 @@ function renderDealsDropdown(data) {
         return `
           <div class="drGroup" data-group>
             ${group.title ? `<div class="drGroup__title">${esc(group.title)}</div>` : ''}
-            <div class="drLines">
-              ${linesHtml}
-            </div>
+            <div class="drLines">${linesHtml}</div>
           </div>
         `;
       }).join('');
@@ -749,29 +748,20 @@ function renderDealsDropdown(data) {
       </div>`;
    
     if (jumpWrap) {
-      // Prepend an "All Deals" button that jumps to the top of the deals container
-      jumpWrap.innerHTML = `
-        <button class="drJumpChip" type="button" data-jump="#dealsDrop">
-          All Deals
-        </button>
-      ` + cats.map(cat => `
+      jumpWrap.innerHTML = `<button class="drJumpChip" type="button" data-jump="#dealsDrop">All Deals</button>` 
+      + cats.map(cat => `
         <button class="drJumpChip" type="button" data-jump="#deal-cat-${cat.id}">
           ${esc(cat.category.replace(/^[^\w]+/, '').trim())}
         </button>
       `).join('');
     }
 
-    if (searchMeta) {
-      searchMeta.hidden = true;
-      searchMeta.textContent = '';
-    }
+    if (searchMeta) { searchMeta.hidden = true; searchMeta.textContent = ''; }
 
     bindDealJumpChips();
     bindDealSearch();
     bindDealBackTop();
-  }
-    function renderDealTiles(data) {
-  if (!tilesWrap) return;
+}
 
   // Flatten deals.json into simple "lines"
   const lines = [];
