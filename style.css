@@ -4597,26 +4597,29 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
 }
 
 /* =========================================================
-   STATIC DELI PRICING MENU (Above Deals)
+   STATIC DELI PRICING MENU (DTG Vibe: Black, Gold, Orange)
    ========================================================= */
 .dpb-drop {
   background: #ffffff;
   border-radius: 24px;
-  border: 1px solid rgba(11, 125, 90, 0.2);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.06), 0 8px 16px rgba(11,125,90,0.08);
+  /* Soft DTG Gold border instead of green */
+  border: 1px solid rgba(214, 163, 74, 0.4); 
+  /* Subtle warm shadow instead of green shadow */
+  box-shadow: 0 20px 40px rgba(0,0,0,0.06), 0 8px 24px rgba(242, 107, 36, 0.08);
   margin-bottom: 30px;
   overflow: hidden;
 }
 
 .dpb-header {
-  background: linear-gradient(135deg, #0B7D5A, #086045);
+  /* Sleek charcoal-to-black gradient (not heavy/harsh pure black) */
+  background: linear-gradient(135deg, #1c1c1c, #080808);
   color: #ffffff;
   padding: 16px 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
-  list-style: none; /* Hides default arrow */
+  list-style: none; 
 }
 .dpb-header::-webkit-details-marker {
   display: none;
@@ -4625,9 +4628,11 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
   text-align: center;
   flex-grow: 1;
 }
+
 .dpb-chev {
   font-size: 28px;
-  color: #FFD700; /* Bright Gold */
+  /* DTG Orange for the drop-down arrow */
+  color: #F26B24; 
   transition: transform 0.3s ease;
   line-height: 1;
 }
@@ -4637,24 +4642,25 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
 
 .dpb-title {
   font-family: "Cinzel", serif;
-  font-size: 32px; /* Bigger on desktop */
+  font-size: 32px; 
   font-weight: 900;
   margin: 0 0 4px;
   letter-spacing: 0.05em;
-  color: #FFD700; /* Brighter, more golden */
-  text-shadow: 0 2px 12px rgba(255, 215, 0, 0.4); /* Golden glow */
+  /* DTG Premium Gold */
+  color: #D6A34A; 
+  text-shadow: 0 2px 12px rgba(214, 163, 74, 0.35); 
 }
 
 .dpb-sub {
   margin: 0;
   font-size: 14px;
-  font-weight: 600;
-  opacity: 0.9;
+  font-weight: 500;
+  color: #e0e0e0; /* Softer off-white */
 }
 
 .dpb-body {
   background: #ffffff;
-  border-top: 1px solid rgba(0,0,0,0.05);
+  border-top: 2px solid #D6A34A; /* Crisp gold divider line */
 }
 
 .dpb-grid {
@@ -4690,7 +4696,7 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
   font-size: 12px;
   font-weight: 800;
   text-transform: uppercase;
-  color: #4a5d56;
+  color: #666; /* Neutral grey to let the top colors pop */
 }
 
 .dpb-prices {
@@ -4716,7 +4722,7 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
 
 .dpb-dots {
   flex-grow: 1;
-  border-bottom: 2px dotted rgba(0,0,0,0.15);
+  border-bottom: 2px dotted rgba(214, 163, 74, 0.4); /* Gold dotted lines */
   margin: 0 4px;
   position: relative;
   top: -4px;
@@ -4726,7 +4732,8 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
   background: #fff;
   padding-left: 8px;
   z-index: 2;
-  color: #0B7D5A;
+  /* DTG Orange for the actual price numbers */
+  color: #F26B24; 
   font-size: 18px;
 }
 
@@ -4736,7 +4743,8 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
     font-size: 24px;
   }
   .dpb-header-text {
-    text-align: left; /* Aligns neatly next to the chevron */
+    text-align: center; 
+    padding-left: 28px; 
   }
   .dpb-grid {
     grid-template-columns: 1fr;
