@@ -1,4 +1,33 @@
 {
+  "deli_board": [
+    {
+      "tier": "PREMIUM",
+      "label": "DTG Trophy Room",
+      "color": "#D6A34A",
+      "tagline": "Award-Winning Genetics",
+      "prices": [
+        ["Gram", "$10"], ["3.5g", "$25"], ["7g", "$45"], ["14g", "$80"], ["28g", "$140"]
+      ]
+    },
+    {
+      "tier": "CORE",
+      "label": "Dutch Deli Standard",
+      "color": "#0B7D5A",
+      "tagline": "Weighed Fresh to Order",
+      "prices": [
+        ["Gram", "$8"], ["Eighth (3.5g)", "$15"], ["Quarter (7g)", "$30"], ["Half (14g)", "$50"], ["Ounce (28g)", "$90"]
+      ]
+    },
+    {
+      "tier": "VALUE",
+      "label": "3rd Party Deli",
+      "color": "#2196F3",
+      "tagline": "Everyday Value",
+      "prices": [
+        ["Gram", "$6"], ["3.5g", "$20"], ["7g", "$35"], ["14g", "$50"], ["28g", "$100"]
+      ]
+    }
+  ],
   "highlights": {
     "layout": {
       "hero": "mix-carts",
