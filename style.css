@@ -4756,114 +4756,71 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
   }
 }
 
-/* --- High-End Hero Fix --- */
+/* ============================================================
+   FINAL HERO OPTIMIZATION: 1548x1016 GRAPHIC FIX
+   ============================================================ */
 @media (max-width: 768px) {
-    /* 1. Force the container to match the shape of the image */
-    .thHero {
-        height: auto !important;       /* Removes the fixed 400px height */
-        min-height: 250px !important;  /* Prevents it from being too small */
-        aspect-ratio: 1 / 1 !important; /* Forces a square-ish shape for mobile */
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-    }
-
-    /* 2. Make the image fit 100% of the width without cropping */
-    .thHero .thMedia {
-        background-size: contain !important;
-        background-repeat: no-repeat !important;
-        background-position: center top !important; /* Keeps "Deli Prices Dropped" at the top */
-        background-color: #0b1a14; /* Matches your Canva background green */
-        height: 100% !important;
-        width: 100% !important;
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
-
-    /* 3. Move the text down so it doesn't cover the jars */
-    .thHero .thContent {
-        margin-top: auto; /* Pushes the title/button to the bottom */
-        background: linear-gradient(to top, rgba(0,0,0,0.9) 30%, transparent) !important;
-        padding: 20px !important;
-    }
-}
-
-
-/* Adjust height on mobile so the container doesn't look empty */
-@media (max-width: 768px) {
-    .thHero {
-        height: auto !important;
-        aspect-ratio: 4 / 3; /* Matches the general shape of your Canva export */
-    }
-}
-
-/* --- THE "NUCLEAR" MOBILE HERO FIX --- */
-@media (max-width: 768px) {
-    /* 1. Stop the container from having a forced height */
-    .thHero {
-        height: auto !important;
-        min-height: unset !important;
-        aspect-ratio: 1.2 / 1 !important; /* Adjust this to 1/1 if it still feels tall */
-        display: flex !important;
-        flex-direction: column !important;
-        background: #0b1a14 !important; /* Matches your Canva Green */
-    }
-
-    /* 2. Force the media div to stop parallaxing and just FIT */
-    .thHero .thMedia, 
-    .thHero .thParallax {
-        position: relative !important;
-        transform: none !important; /* Kills the Parallax movement */
-        height: 100% !important;
-        width: 100% !important;
-        background-size: contain !important; /* The magic "Don't Crop" command */
-        background-repeat: no-repeat !important;
-        background-position: center top !important;
-        padding-top: 0 !important;
-    }
-
-    /* 3. Make sure the content (text/buttons) doesn't overlap the graphic */
-    .thHero .thContent {
-        position: relative !important;
-        padding: 15px !important;
-        background: #0b1a14 !important; /* Flat color so you can read text below image */
-        margin-top: -5px; /* Pulls it up slightly to close any gap */
-    }
-}
-
-@media (max-width: 768px) {
-  /* 1. Force the Hero box to be the right shape for the Canva graphic */
+  
+  /* 1. FORCE THE CONTAINER TO THE EXACT IMAGE SHAPE */
   #todays-highlights .thHero {
     height: auto !important;
     min-height: unset !important;
-    aspect-ratio: 1 / 1 !important; /* Forces a square; change to 1.2/1 if image is a rectangle */
-    background-color: #0b1a14 !important; /* Matches your Canva green */
+    max-height: none !important;
+    /* This calculation (width / height) matches 1548x1016 perfectly */
+    aspect-ratio: 1548 / 1016 !important; 
+    background-color: #0b1a14 !important; 
+    display: block !important;
+    overflow: visible !important;
+    position: relative !important;
   }
 
-  /* 2. Stop the image from stretching/chopping */
+  /* 2. KILL PARALLAX & FORCE FULL IMAGE VISIBILITY */
   #todays-highlights .thHero .thMedia {
-    background-size: contain !important; /* THE FIX: Shows the whole image */
-    background-position: center top !important;
-    transform: none !important; /* Kills parallax for the hero so text stays readable */
+    position: absolute !important;
+    inset: 0 !important;
+    /* Forces the image to sit edge-to-edge without zooming or cropping */
+    background-size: 100% 100% !important; 
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    /* Stops the JavaScript from scaling or moving the image */
+    transform: none !important; 
+    transition: none !important;
+    height: 100% !important;
+    width: 100% !important;
   }
 
-  /* 3. Turn off the dark overlay for the hero so the graphic stays bright */
+  /* 3. CLEAN UP THE OVERLAYS */
+  /* Remove the dark gradient so your Canva colors stay true */
   #todays-highlights .thHero .thOverlay {
     display: none !important;
   }
 
-  /* 4. Move the dynamic HTML text out of the way */
+  /* 4. RE-POSITION THE CONTENT (Text & Button) */
+  /* We move this BELOW the image so it doesn't cover your "Dropped" jars */
   #todays-highlights .thHero .thContent {
-    position: relative !important; /* Pushes content BELOW the image instead of over it */
-    padding: 15px !important;
+    position: relative !important;
+    /* This "un-floats" the text and places it neatly under the graphic */
+    top: 100% !important; 
+    margin-top: 0 !important;
     background: #0b1a14;
+    padding: 24px 15px !important;
     inset: auto !important;
+    width: 100% !important;
+    text-align: center;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
   }
 
-  /* 5. Shrink the HTML headline so it doesn't compete with the Canva text */
+  /* 5. SIZE ADJUSTMENTS FOR MOBILE TEXT */
   #todays-highlights .thHero .thH3 {
-    font-size: 24px !important;
-    margin-bottom: 5px !important;
+    font-size: 26px !important;
+    margin: 0 0 8px 0 !important;
+    text-shadow: none !important;
+  }
+
+  #todays-highlights .thHero .thPrice {
+    font-size: 40px !important;
+    margin: 0 !important;
   }
 }
