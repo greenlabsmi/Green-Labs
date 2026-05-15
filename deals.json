@@ -12,7 +12,7 @@
     {
       "tier": "CORE",
       "label": "Dutch Deli Standard",
-      "color": "#0B7D5A",
+      "color": "#1A1A1A",
       "tagline": "Weighed Fresh to Order",
       "prices": [
         ["Gram", "$8"], ["Eighth (3.5g)", "$15"], ["Quarter (7g)", "$30"], ["Half (14g)", "$50"], ["Ounce (28g)", "$90"]
@@ -21,7 +21,7 @@
     {
       "tier": "VALUE",
       "label": "3rd Party Deli",
-      "color": "#2196F3",
+      "color": "#F26B24",
       "tagline": "Everyday Value",
       "prices": [
         ["Gram", "$6"], ["3.5g", "$20"], ["7g", "$35"], ["14g", "$50"], ["28g", "$100"]
