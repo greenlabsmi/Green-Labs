@@ -482,7 +482,7 @@ document.getElementById('proceed-to-shop')?.addEventListener('click', () => {
     });
   })();
 
-  // ===== Deals + Highlights render (from deals.json) =====
+  // ===== Deals + Highlights render (from ) =====
   (function loadDeals() {
     const dealList = $('#dealList');
     const tilesWrap = $('#dealTiles');
@@ -506,10 +506,11 @@ document.getElementById('proceed-to-shop')?.addEventListener('click', () => {
         return r.json();
       })
       .then((data) => {
+      // We keep dealsData just in case other parts of your script need it
       const dealsData = Array.isArray(data) ? data : (data.deals || []);
       
-      // Let the JSON file do all the work
-      renderDealsDropdown(dealsData);
+      // ✅ FIX: Pass the ENTIRE data object so the Deli Board can see it
+      renderDealsDropdown(data); 
 
       // renderDealTiles(dealsData); // disabled — using Today's Highlights cards only
       
@@ -520,40 +521,6 @@ document.getElementById('proceed-to-shop')?.addEventListener('click', () => {
       }
       initTodaysHighlightsFX();
     })
-       
-      .catch((err) => {
-        console.error(err);
-
-        dealList.innerHTML = `
-          <div class="cat">
-            <div class="catTitle">Deals unavailable right now.</div>
-            <div style="font-weight:800;opacity:.75;margin-top:8px;">
-              Check that <code>deals.json</code> exists at the published site path and is valid JSON.
-            </div>
-          </div>
-        `;
-
-        if (tilesWrap) tilesWrap.innerHTML = '';
-
-        if (highlightsMount) {
-          highlightsMount.innerHTML = `
-            <div style="padding:14px;font-weight:800;opacity:.7;color:#121614;">
-              Highlights unavailable.
-            </div>
-          `;
-        }
-
-        initTodaysHighlightsFX();
-      });
-
-   function slugifyDealCategory(str = '') {
-  return String(str)
-    .toLowerCase()
-    .trim()
-    .replace(/&/g, 'and')
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/(^-|-$)/g, '');
-}
 
 function emojiForDealCategory(label = '') {
   const k = String(label).toLowerCase();
@@ -703,9 +670,13 @@ function renderDealsDropdown(data) {
     const dealList = document.getElementById('dealList');
     const jumpWrap = document.getElementById('dealJumpWrap');
     const searchMeta = document.getElementById('dealSearchMeta');
-    const cats = normalizeDealsData(data);
+    
+    // ✅ FIX: Grab JUST the regular deals array to feed the normalizer
+    const regularDeals = data.deals || [];
+    const cats = normalizeDealsData(regularDeals);
 
-    if (!cats.length) {
+    // ✅ FIX: Update safety check to ensure it doesn't hide the Deli Board!
+    if (!cats.length && !data.deli_board) {
       dealList.innerHTML = '<div class="drEmpty">No deals available right now.</div>';
       if (jumpWrap) jumpWrap.innerHTML = '';
       if (searchMeta) {
