@@ -4756,15 +4756,39 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
   }
 }
 
-/* Ensure the Hero Highlight graphic fits entirely on mobile */
-.thHero .thMedia {
-    background-size: contain !important;
-    background-repeat: no-repeat !important;
-    background-position: center center !important;
-    /* Optional: Match the background color to the graphic's dark green 
-       so the edges blend in if the screen is super wide */
-    background-color: #0b1a14; 
+/* --- High-End Hero Fix --- */
+@media (max-width: 768px) {
+    /* 1. Force the container to match the shape of the image */
+    .thHero {
+        height: auto !important;       /* Removes the fixed 400px height */
+        min-height: 250px !important;  /* Prevents it from being too small */
+        aspect-ratio: 1 / 1 !important; /* Forces a square-ish shape for mobile */
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* 2. Make the image fit 100% of the width without cropping */
+    .thHero .thMedia {
+        background-size: contain !important;
+        background-repeat: no-repeat !important;
+        background-position: center top !important; /* Keeps "Deli Prices Dropped" at the top */
+        background-color: #0b1a14; /* Matches your Canva background green */
+        height: 100% !important;
+        width: 100% !important;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    /* 3. Move the text down so it doesn't cover the jars */
+    .thHero .thContent {
+        margin-top: auto; /* Pushes the title/button to the bottom */
+        background: linear-gradient(to top, rgba(0,0,0,0.9) 30%, transparent) !important;
+        padding: 20px !important;
+    }
 }
+
 
 /* Adjust height on mobile so the container doesn't look empty */
 @media (max-width: 768px) {
