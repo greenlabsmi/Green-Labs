@@ -700,6 +700,7 @@ function bindDealBackTop() {
 }
 
 function renderDealsDropdown(data) {
+    const dealList = document.getElementById('dealList');
     const jumpWrap = document.getElementById('dealJumpWrap');
     const searchMeta = document.getElementById('dealSearchMeta');
     const cats = normalizeDealsData(data);
