@@ -1,12 +1,3 @@
-/* ===========================
-   script.js (FULL REPLACEMENT)
-   Green Labs — project-page safe + launch-ready
-   Fixes:
-   - GitHub Pages project pathing (/Green-Labs/)
-   - highlights + deals render from deals.json
-   - safe image paths (no leading slash)
-=========================== */
-
 document.addEventListener('DOMContentLoaded', () => {
 
    // ===== AGE GATE & SMART PROMO LOGIC =====
@@ -545,6 +536,15 @@ function highlightDealMatch(text, query) {
   } catch {
     return safe;
   }
+}
+
+function slugifyDealCategory(str = '') {
+  return String(str)
+    .toLowerCase()
+    .trim()
+    .replace(/&/g, 'and')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
 }
 
 function normalizeDealsData(data) {
