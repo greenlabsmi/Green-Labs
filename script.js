@@ -714,7 +714,34 @@ function renderDealsDropdown(data) {
       return;
     }
 
-    dealList.innerHTML = cats.map(cat => {
+    // 1. Create the Deli Board HTML
+    let deliHTML = '';
+    if (data.deli_board) {
+      deliHTML = `
+        <div class="deli-board">
+          ${data.deli_board.map(tier => `
+            <div class="deli-card ${tier.featured ? 'deli-card--featured' : ''}">
+              <div class="deli-card__header">
+                <p class="deli-card__label" style="color:${tier.color}">${tier.label}</p>
+                <h3 class="deli-card__tier" style="color:${tier.color}">${tier.tier}</h3>
+              </div>
+              <div class="deli-card__prices">
+                ${tier.prices.map(([wt, pr]) => `
+                  <div class="deli-price-row">
+                    <span class="deli-price__wt">${wt}</span>
+                    <span class="deli-price__val">${pr}</span>
+                  </div>
+                `).join('')}
+              </div>
+              <div class="deli-card__tagline">${tier.tagline}</div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    // 2. Render the Board + all other Categories
+    dealList.innerHTML = deliHTML + cats.map(cat => {
       const lineCount = cat.groups.reduce((sum, g) => sum + g.lines.length, 0);
       const groupsHtml = cat.groups.map(group => {
         const linesHtml = group.lines.map(line => `
@@ -745,8 +772,8 @@ function renderDealsDropdown(data) {
         </section>
       `;
     }).join('') + `
-<div class="drTaxBanner">
-        <strong>Pricing Update:</strong> All prices are shown <strong>Pre-Tax</strong>. Recreational orders include a 16% state tax.
+      <div class="drTaxBanner">
+        <strong>Pricing Update:</strong> All prices are <strong>Out The Door (Tax Included)</strong>.
       </div>`;
    
     if (jumpWrap) {
