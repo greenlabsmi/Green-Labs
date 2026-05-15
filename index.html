@@ -337,6 +337,8 @@
 <section class="section section--light">
   <div id="deals" class="container reveal">
 
+    <div id="deliBoardMount"></div>
+
     <details class="drDrop" id="dealsDrop" open>
       <summary class="drDrop__summary">
         <span class="drDrop__title">TODAY’S DEALS</span>
@@ -1032,7 +1034,7 @@
   }
 
   // Close when clicking the dark background
-  document.getElementById('terpModalWrapper')?.addEventListener('click', function(event) {
+  document.getElementById('terpModalWrapper').addEventListener('click', function(event) {
     if (event.target === this) {
       this.style.display = 'none';
       document.body.style.overflow = '';
