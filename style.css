@@ -4757,31 +4757,48 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
 }
 
 /* ============================================================
-   MAIN HOMEPAGE TOP HERO BANNER: 1548x1016 NO-CROP FIX
+   SAFE HOMEPAGE HERO CLEANUP (NO OVERLAP / NO CROP)
    ============================================================ */
 @media (max-width: 768px) {
   
-  /* 1. Force the main top hero box to match your Canva graphic shape */
+  /* 1. Lock the main hero container to your exact 1548x1016 image shape */
   .section--hero {
     height: auto !important;
     min-height: unset !important;
     max-height: none !important;
-    /* Mathematically locks the box to your exact image proportions */
     aspect-ratio: 1548 / 1016 !important; 
     width: 100% !important;
     position: relative !important;
-    margin-bottom: 20px !important;
+    overflow: visible !important;
+    margin-bottom: 30px !important;
   }
 
-  /* 2. Target the background image layer inside the hero section */
-  .section--hero div,
-  .section--hero [class*="media"],
-  .section--hero [class*="bg"] {
-    background-size: contain !important; /* Stops the browser from zooming and chopping the sides */
+  /* 2. Target ONLY the background layer precisely, stopping the crop */
+  .section--hero {
+    background-size: contain !important;
     background-repeat: no-repeat !important;
     background-position: center center !important;
-    width: 100% !important;
-    height: 100% !important;
-    transform: none !important; /* Disables any background parallax scaling */
+  }
+  
+  /* Safe catch-all for the inner graphic container if your theme uses one */
+  .section--hero [style*="background"],
+  .section--hero [class*="media"],
+  .section--hero [class*="bg"] {
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+    transform: none !important; /* Kills parallax scaling on mobile */
+  }
+
+  /* 3. Hide the duplicate HTML text elements that are spilling out 
+     and crashing into your lower sections */
+  .section--hero h1,
+  .section--hero h2,
+  .section--hero h3,
+  .section--hero p,
+  .section--hero span:not([class*="icon"]),
+  .section--hero [class*="content"],
+  .section--hero [class*="text"] {
+    display: none !important;
   }
 }
