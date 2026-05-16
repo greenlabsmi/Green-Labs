@@ -4757,48 +4757,36 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
 }
 
 /* ============================================================
-   MAIN HOMEPAGE TOP HERO BANNER: PERFECT HEIGHT & POSITION FIX
+   SAFE HOMEPAGE HERO BANNER FIX (NO CROP, NO COLLAPSE)
    ============================================================ */
 @media (max-width: 768px) {
   
-  /* 1. Account for BOTH the buttons at the top and the 1548x1016 image at the bottom */
+  /* 1. Ensure the container has enough height so the buttons and image both fit */
   .section--hero {
-    /* 65.63vw is the exact proportional height of your image on a mobile screen. 
-       We add 180px to give your top rows of buttons plenty of breathing room. */
-    height: calc(65.63vw + 180px) !important; 
-    min-height: unset !important;
-    max-height: none !important;
-    aspect-ratio: unset !important; /* Remove the conflicting rigid aspect-ratio */
-    width: 100% !important;
-    position: relative !important;
-    margin-bottom: 25px !important;
-    
-    /* Push the image smoothly to the bottom of the container, below the buttons */
-    background-size: 100% auto !important;
-    background-position: center bottom !important;
-    background-repeat: no-repeat !important;
+    min-height: 550px !important; 
+    height: auto !important;
+    background-color: #0b1a14 !important; /* Seamless Canva dark green */
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
   }
 
-  /* 2. Sync any inner background layers to use the same bottom positioning */
+  /* 2. Target the background layers and force them to "contain" rather than "cover" */
+  .section--hero,
   .section--hero [style*="background"],
-  .section--hero [class*="media"],
-  .section--hero [class*="bg"] {
-    background-size: 100% auto !important;
-    background-position: center bottom !important;
+  .section--hero [class*="bg"],
+  .section--hero [class*="media"] {
+    background-size: contain !important;
+    background-position: center bottom !important; /* Pins image below buttons */
     background-repeat: no-repeat !important;
-    transform: none !important; /* Stop parallax from distorting or scaling it */
-    height: 100% !important;
-    width: 100% !important;
+    transform: none !important; /* Kills parallax scaling */
   }
 
-  /* 3. Keep the duplicate text layers hidden so they don't cause overlaps */
-  .section--hero h1,
-  .section--hero h2,
-  .section--hero h3,
-  .section--hero p,
-  .section--hero span:not([class*="icon"]),
-  .section--hero [class*="content"],
-  .section--hero [class*="text"] {
-    display: none !important;
+  /* 3. Catch-all in case the graphic was inserted as an actual HTML image */
+  .section--hero img {
+    max-width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+    margin-top: auto; /* Pushes the image to the bottom of the section */
   }
 }
