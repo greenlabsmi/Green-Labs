@@ -30,9 +30,9 @@
   ],
   "highlights": {
     "layout": {
-      "hero": "mix-carts",
-      "mid": ["deli-oz", "dtg-disposables"],
-      "scroll": ["mix-gummies", "mix-prerolls", "lightsky-carts", "redbud-carts", "premium-gummies", "grip-oz"]
+      "hero": "deli-oz",
+      "mid": ["mix-carts", "dtg-disposables"],
+      "scroll": ["mix-gummies", "lightsky-carts", "redbud-carts", "premium-gummies", "grip-oz", "mix-prerolls"]
     },
     "items": {
       "mix-carts": {
@@ -45,7 +45,7 @@
       "deli-oz": {
         "title": "",
         "price": "",
-        "tag": "FLOWER",
+        "tag": "",
         "details": "",
         "image": "assets/img/deals/deli-oz-special.jpg"
       },
