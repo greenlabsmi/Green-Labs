@@ -740,6 +740,22 @@ header, nav, section, .container, .wrap, .row {
   white-space: nowrap;
 }
 
+@media (max-width: 768px) {
+  /* This targets the spacing directly between the text block and the image on mobile */
+  .hero__grid {
+    gap: 20px !important; 
+  }
+  
+  /* These act as a fail-safe in case margins are pushing them apart */
+  .hero__copy {
+    margin-bottom: 0 !important;
+  }
+  
+  .hero__media {
+    margin-top: 0 !important;
+  }
+}
+
 /* =========================================================
    Difference row
 ========================================================= */
