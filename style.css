@@ -658,7 +658,8 @@ header, nav, section, .container, .wrap, .row {
 
 .hero__img {
     width: 100%;
-    height: clamp(280px, 45vh, 480px);
+    height: auto; /* Replaces the restrictive clamp height */
+    aspect-ratio: 1548 / 1016; /* Mathematically locks in your exact dimensions */
     background-size: cover !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
