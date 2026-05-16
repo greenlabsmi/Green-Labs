@@ -756,6 +756,26 @@ header, nav, section, .container, .wrap, .row {
   }
 }
 
+/* Kills the background gap/frame around the image */
+.hero__media {
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  overflow: hidden; /* Ensures the image doesn't bleed out of any rounded corners */
+  display: block;
+}
+
+/* Forces the image to stretch wall-to-wall inside that box */
+.hero__img {
+  width: 100% !important;
+  height: 100% !important; 
+  aspect-ratio: 1548 / 1016;
+  background-size: cover !important;
+  background-position: center !important;
+  margin: 0 !important;
+  display: block;
+}
+
 /* =========================================================
    Difference row
 ========================================================= */
