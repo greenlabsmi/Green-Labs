@@ -776,6 +776,24 @@ header, nav, section, .container, .wrap, .row {
   display: block;
 }
 
+/* ============================================================
+   EXPAND MAIN HERO GRAPHIC ON DESKTOP
+============================================================ */
+@media (min-width: 900px) {
+  /* This shifts the grid so the image gets more room than the text */
+  .hero__grid {
+    grid-template-columns: 1fr 1.25fr !important; /* Makes the right side 25% wider */
+    align-items: center !important; 
+  }
+  
+  /* This kills any hidden max-width limits holding the image back */
+  .hero__media {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important; /* Sucks out any extra margins pushing it inward */
+  }
+}
+
 /* =========================================================
    Difference row
 ========================================================= */
