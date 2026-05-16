@@ -815,14 +815,16 @@ function renderHighlightsFromConfig(data, mount) {
       return `
         <a href="#shop" class="thCard ${sizeClass}" onclick="${shopClick}">
           <div class="thMedia" style="background-image:url('${esc(img)}')"></div>
-          <div class="thOverlay"></div>
+          ${type === 'hero' ? '' : '<div class="thOverlay"></div>'}
+          ${type === 'hero' ? '' : `
           <div class="thContent">
             ${it.tag ? `<div class="thPill ${pillClass}">${esc(it.tag)}</div>` : ''}
             <h3 class="thH3">${esc(it.title)}</h3>
             ${it.price ? `<div class="thPrice">${esc(it.price)} <span class="thTaxTag">+ TAX</span></div>` : ''}
             ${it.details ? `<div class="thDetails">${esc(it.details)}</div>` : ''}
-            <div class="thCta">Shop Deal &rarr;</div>
+            <div class="thCta">Shop Deal →</div>
           </div>
+          `}
         </a>
       `;
     };
