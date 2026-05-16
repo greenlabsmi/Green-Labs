@@ -4790,3 +4790,36 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
     margin-top: auto; /* Pushes the image to the bottom of the section */
   }
 }
+
+/* ============================================================
+   PERFECT HOMEPAGE HERO BANNER (NO CROP, NO GAP)
+   ============================================================ */
+@media (max-width: 768px) {
+  
+  /* 1. Remove the forced 550px height so the gap disappears */
+  .section--hero {
+    min-height: unset !important; 
+    height: auto !important;
+    padding-bottom: 20px !important;
+  }
+
+  /* 2. Lock the rounded box to your exact 1548x1016 image shape */
+  .section--hero [style*="background"],
+  .section--hero [class*="bg"],
+  .section--hero [class*="media"],
+  .section--hero > div > div {
+    height: auto !important;
+    min-height: unset !important;
+    aspect-ratio: 1548 / 1016 !important; /* The magic ratio */
+    width: 100% !important;
+    
+    /* Lock the image corner-to-corner inside the box */
+    background-size: 100% 100% !important; 
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    transform: none !important; /* Kills parallax scaling */
+    
+    margin-top: 15px !important; /* Gives the buttons above some breathing room */
+  }
+}
+
