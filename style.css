@@ -4792,34 +4792,34 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
 }
 
 /* ============================================================
-   PERFECT HOMEPAGE HERO BANNER (NO CROP, NO GAP)
+   THE FINAL HERO LOCK-IN: NO CROP, NO GAP, NO OVERLAP
    ============================================================ */
 @media (max-width: 768px) {
   
-  /* 1. Remove the forced 550px height so the gap disappears */
+  /* 1. Parent Wrapper: Let it stack naturally */
   .section--hero {
-    min-height: unset !important; 
-    height: auto !important;
-    padding-bottom: 20px !important;
-  }
-
-  /* 2. Lock the rounded box to your exact 1548x1016 image shape */
-  .section--hero [style*="background"],
-  .section--hero [class*="bg"],
-  .section--hero [class*="media"],
-  .section--hero > div > div {
     height: auto !important;
     min-height: unset !important;
-    aspect-ratio: 1548 / 1016 !important; /* The magic ratio */
+    display: flex !important;
+    flex-direction: column !important;
+    padding-bottom: 40px !important; /* Creates a solid buffer above Education cards */
+  }
+
+  /* 2. The Image Layer: Make it physical so it forces the cards down */
+  .section--hero [style*="background"],
+  .section--hero [class*="bg"],
+  .section--hero [class*="media"] {
+    position: relative !important; /* Un-floats the image so it pushes elements down */
+    display: block !important;
     width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 1548 / 1016 !important; /* Locks in your exact Canva dimensions */
     
-    /* Lock the image corner-to-corner inside the box */
-    background-size: 100% 100% !important; 
+    background-size: 100% 100% !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
-    transform: none !important; /* Kills parallax scaling */
+    transform: none !important; /* Permanently kills the overlapping parallax */
     
-    margin-top: 15px !important; /* Gives the buttons above some breathing room */
+    margin-top: 25px !important; /* Space between the image and the buttons above it */
   }
 }
-
