@@ -20,7 +20,7 @@
     },
     {
       "tier": "VALUE",
-      "label": "3rd Party Deli",
+      "label": "Monthly Specials",
       "color": "#708090",
       "tagline": "Everyday Value",
       "prices": [
@@ -70,14 +70,6 @@
       "promo": false,
       "groups": [
         {
-          "title": "🏆 DTG Deli Pricing",
-          "items": ["1 Gram — $6", "Eighth (3.5g) — $20", "Quarter (7g) — $35", "Half Ounce (14g) — $60", "Full Ounce (28g) — $110"]
-        },
-        {
-          "title": "🌿 Lightsky, Redbud, Cresco",
-          "items": ["1 Gram — $6", "Eighth (3.5g) — $20", "Quarter (7g) — $35", "Half Ounce (14g) — $50", "Full Ounce (28g) — $100"]
-        },
-        {
           "title": "🔥 Mega Deals & Ounce Specials",
           "items": [
             "DTG Secret Chief 3.5g — $10 (HOT SPOT!)",
@@ -85,7 +77,7 @@
             "Cresco Blue Zoap Deli- 3.5g — $12 or 1oz — $60",
             "Dutch Daylight Oz — $40 (or 2/$65)",
             "Angelica & Secret Chief Oz — $65",
-            "Solo Walker & Spirit Hashplant — $70/Oz",
+            "Spirit Hashplant, Gorilla 88, & Solo Walker — $70/Oz",
             "Double Bubble & Bubblegum 88G13 Hashplant Oz — $90",
             "Lilac Diesel 1oz — $150"
           ]
