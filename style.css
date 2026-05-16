@@ -4838,6 +4838,7 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
     aspect-ratio: 1805 / 871; /* Exact dimensions locked in! */
     background-size: cover !important;
     background-position: center !important;
+    box-shadow: none !important; /* Kills inset shadows causing tint */
 }
 
 /* 2. Remove the dark tint overlay ONLY from the big hero graphic */
@@ -4845,6 +4846,15 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
 #todays-highlights .thHero::before {
     display: none !important;
     background: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
+}
+
+/* 2b. Hide any extra gradient overlay layers */
+#todays-highlights .thHero [class*="overlay"],
+#todays-highlights .thHero [class*="tint"],
+#todays-highlights .thHero [class*="gradient"] {
+    display: none !important;
 }
 
 /* 3. Hide the floating "Shop Deal" text on the big hero since the graphic does the talking */
