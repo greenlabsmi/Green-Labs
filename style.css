@@ -4757,41 +4757,41 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
 }
 
 /* ============================================================
-   SAFE HOMEPAGE HERO CLEANUP (NO OVERLAP / NO CROP)
+   MAIN HOMEPAGE TOP HERO BANNER: PERFECT HEIGHT & POSITION FIX
    ============================================================ */
 @media (max-width: 768px) {
   
-  /* 1. Lock the main hero container to your exact 1548x1016 image shape */
+  /* 1. Account for BOTH the buttons at the top and the 1548x1016 image at the bottom */
   .section--hero {
-    height: auto !important;
+    /* 65.63vw is the exact proportional height of your image on a mobile screen. 
+       We add 180px to give your top rows of buttons plenty of breathing room. */
+    height: calc(65.63vw + 180px) !important; 
     min-height: unset !important;
     max-height: none !important;
-    aspect-ratio: 1548 / 1016 !important; 
+    aspect-ratio: unset !important; /* Remove the conflicting rigid aspect-ratio */
     width: 100% !important;
     position: relative !important;
-    overflow: visible !important;
-    margin-bottom: 30px !important;
+    margin-bottom: 25px !important;
+    
+    /* Push the image smoothly to the bottom of the container, below the buttons */
+    background-size: 100% auto !important;
+    background-position: center bottom !important;
+    background-repeat: no-repeat !important;
   }
 
-  /* 2. Target ONLY the background layer precisely, stopping the crop */
-  .section--hero {
-    background-size: contain !important;
-    background-repeat: no-repeat !important;
-    background-position: center center !important;
-  }
-  
-  /* Safe catch-all for the inner graphic container if your theme uses one */
+  /* 2. Sync any inner background layers to use the same bottom positioning */
   .section--hero [style*="background"],
   .section--hero [class*="media"],
   .section--hero [class*="bg"] {
-    background-size: contain !important;
+    background-size: 100% auto !important;
+    background-position: center bottom !important;
     background-repeat: no-repeat !important;
-    background-position: center center !important;
-    transform: none !important; /* Kills parallax scaling on mobile */
+    transform: none !important; /* Stop parallax from distorting or scaling it */
+    height: 100% !important;
+    width: 100% !important;
   }
 
-  /* 3. Hide the duplicate HTML text elements that are spilling out 
-     and crashing into your lower sections */
+  /* 3. Keep the duplicate text layers hidden so they don't cause overlaps */
   .section--hero h1,
   .section--hero h2,
   .section--hero h3,
