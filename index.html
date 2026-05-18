@@ -97,8 +97,10 @@
           <span aria-hidden="true">☰</span>
         </button>
       </div> </div> 
+
     
     
+<!-- ===== memorial day banner ===== -->    
 <style>
   #jsb-promo-banner {
     background-color: #FFDE00; /* Banana Hammock Yellow */
@@ -144,31 +146,68 @@
   }
 </style>
 
-<a href="#shop" id="jsb-promo-banner" data-open-shop>
-  <div class="jsb-marquee">
-    <div class="jsb-text">
-      <span class="snoogins-tag">SNOOGANS!</span> 
-      Jay & Silent Bob x Jeeter: Banana Hammock 1G Pre-rolls Are Here! $15 Bucks Little Man ➔
+<style>
+  #memorial-promo-banner {
+    background: linear-gradient(90deg, #0b0d0c 0%, #0B7D5A 50%, #0b0d0c 100%);
+    color: #fff;
+    padding: 12px 0;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 14px;
+    display: block;
+    text-decoration: none;
+    border-bottom: 3px solid #D6A34A; /* Luxury Gold Accent */
+    overflow: hidden;
+    position: relative;
+    z-index: 1000;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.05em;
+  }
+  .memorial-marquee {
+    display: flex;
+    white-space: nowrap;
+    animation: memorial-scroll 12s linear infinite; /* Keeps your snappy scroll speed */
+  }
+  .memorial-marquee:hover {
+    animation-play-state: paused;
+  }
+  .memorial-text {
+    display: flex;
+    align-items: center;
+    padding-right: 60px; /* Exact spacing match */
+  }
+  .memorial-tag {
+    background: #D6A34A; /* Solid Gold Tag */
+    color: #000;
+    padding: 2px 8px;
+    margin-right: 12px;
+    border-radius: 4px;
+    font-weight: 900;
+  }
+  .highlight-price {
+    color: #2ef8bb; /* Emerald Green Highlight */
+    margin-left: 6px;
+    font-weight: 900;
+  }
+  @keyframes memorial-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+</style>
+
+    <a href="#deals" id="memorial-promo-banner" data-open-deals>
+  <div class="memorial-marquee">
+    <div class="memorial-text">
+      <span class="memorial-tag">MEMORIAL DAY DROP</span> 
+      The Deli Debut: Award-Winning Mr. Clean & Lilac Diesel Have Arrived! <span class="highlight-price">$110 / OZ ➔</span>
     </div>
-    <div class="jsb-text">
-      <span class="snoogins-tag">SNOOGANS!</span> 
-      Jay & Silent Bob x Jeeter: Banana Hammock 1G Pre-rolls Are Here! Put That Sh— In My Hand ➔
+    <div class="memorial-text">
+      <span class="memorial-tag">MEMORIAL DAY DROP</span> 
+      The Deli Debut: Award-Winning Mr. Clean & Lilac Diesel Have Arrived! <span class="highlight-price">$110 / OZ ➔</span>
     </div>
   </div>
 </a>
 
-<script>
-  // Fades and removes the banner after 60 seconds
-  setTimeout(function() {
-    var banner = document.getElementById('jsb-promo-banner');
-    if (banner) {
-      banner.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-      banner.style.opacity = '0';
-      banner.style.transform = 'translateY(-100%)';
-      setTimeout(function() { banner.remove(); }, 800);
-    }
-  }, 60000); 
-</script>
 
 
     
