@@ -148,25 +148,30 @@
 
 <style>
   #memorial-promo-banner {
-    background: linear-gradient(90deg, #0b0d0c 0%, #0B7D5A 50%, #0b0d0c 100%);
+    /* Sleek luxury flag gradient: Deep Midnight Blue ➔ Patriotic Crimson ➔ Deep Midnight Blue */
+    background: linear-gradient(90deg, #050b14 0%, #991B1B 50%, #050b14 100%);
     color: #fff;
-    padding: 12px 0;
-    font-weight: 900;
+    padding: 14px 0;
+    font-weight: 800;
     text-transform: uppercase;
-    font-size: 14px;
+    font-size: 13px;
     display: block;
     text-decoration: none;
-    border-bottom: 3px solid #D6A34A; /* Luxury Gold Accent */
+    border-bottom: 2px solid #D6A34A; /* Luxury Gold Bottom Border */
     overflow: hidden;
     position: relative;
     z-index: 1000;
     font-family: 'Inter', sans-serif;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    opacity: 0;
+    animation: banner-entrance 0.8s ease forwards;
   }
   .memorial-marquee {
     display: flex;
     white-space: nowrap;
-    animation: memorial-scroll 12s linear infinite; /* Keeps your snappy scroll speed */
+    animation: memorial-scroll 14s linear infinite;
   }
   .memorial-marquee:hover {
     animation-play-state: paused;
@@ -174,24 +179,31 @@
   .memorial-text {
     display: flex;
     align-items: center;
-    padding-right: 60px; /* Exact spacing match */
+    padding-right: 80px;
   }
   .memorial-tag {
     background: #D6A34A; /* Solid Gold Tag */
     color: #000;
-    padding: 2px 8px;
-    margin-right: 12px;
+    padding: 3px 10px;
+    margin-right: 14px;
     border-radius: 4px;
     font-weight: 900;
+    font-size: 11px;
+    letter-spacing: 0.02em;
   }
   .highlight-price {
-    color: #2ef8bb; /* Emerald Green Highlight */
-    margin-left: 6px;
+    color: #ffffff; /* Crisp white price so it pops perfectly against the red center */
+    margin-left: 8px;
     font-weight: 900;
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.6); /* High-end radiant white glow */
   }
   @keyframes memorial-scroll {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
+  }
+  @keyframes banner-entrance {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 </style>
 
