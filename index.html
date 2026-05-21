@@ -458,7 +458,7 @@
       <div id="deliCarousel" class="strain-grid deli-carousel">
 
         <div class="deli-card-wrapper" data-category="sativa"> 
-          <div class="deli-card" onclick="this.classList.toggle('is-flipped'); triggerHaptic()">
+          <div class="deli-card" onclick="this.classList.toggle('is-flipped'); if(typeof triggerHaptic === 'function') triggerHaptic(); event.stopPropagation();">
             <div class="deli-badge-corner" style="background: #d6a441; color: #000; border: none; font-weight: 900; letter-spacing: 1px;">🏆 CUP WINNER</div>
             <div class="deli-card__front" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/mr-clean-bud.jpg');">
               <div class="deli-card__hint">Tap for Label Art 🔄</div>
