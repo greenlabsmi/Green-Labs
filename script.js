@@ -752,7 +752,7 @@ function renderDealsDropdown(data) {
       `;
     }).join('') + `
       <div class="drTaxBanner">
-        <strong>Pricing Update:</strong> All prices are <strong>Out The Door (Tax Included)</strong>.
+        <strong>Note:</strong> All prices are <strong>Pre-Tax</strong>.
       </div>`;
    
     if (jumpWrap) {
