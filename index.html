@@ -440,14 +440,14 @@
       <p style="color: rgba(255,255,255,0.6); font-weight: 700; margin-top: 10px; font-size: 15px;">Fresh from the grow. Weighed right in front of you.</p>
     </div>
 
-    <div class="filters reveal">
-      <button class="filter is-active" data-filter="all">All Strains</button>
-      <button class="filter" data-filter="mega">Mega Deals 💥</button>
-      <button class="filter" data-filter="sativa">Sativa</button>
-      <button class="filter" data-filter="hybrid">Hybrid</button>
-      <button class="filter" data-filter="indica">Indica</button>
+    <div class="filters reveal" style="display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; flex-wrap: wrap;">
+      <button class="deli-filter is-active" data-filter="all">All Strains</button>
+      <button class="deli-filter" data-filter="mega">Mega Deals 💥</button>
+      <button class="deli-filter" data-filter="sativa">Sativa</button>
+      <button class="deli-filter" data-filter="hybrid">Hybrid</button>
+      <button class="deli-filter" data-filter="indica">Indica</button>
       
-      <div class="art-toggle-wrapper" id="art-mode-toggle">
+      <div class="art-toggle-wrapper" id="art-mode-toggle" style="width: 100%; display: flex; justify-content: center; margin-top: 15px;">
         <div class="art-toggle-track">
           <div class="art-toggle-thumb"></div>
         </div>
@@ -457,13 +457,13 @@
     <div class="deli-carousel-wrap reveal">
       <div id="deliCarousel" class="strain-grid deli-carousel">
 
-      <div class="deli-card-wrapper" data-category="sativa"> 
+        <div class="deli-card-wrapper" data-category="sativa"> 
           <div class="deli-card" onclick="this.classList.toggle('is-flipped'); triggerHaptic()">
             <div class="deli-badge-corner badge--mega" style="background-color: #d6a441; color: black;">🏆 CUP WINNER</div>
-            <div class="deli-card__front" style="background-image: url('assets/img/strains/mr-clean.png');">
+            <div class="deli-card__front" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/mr-clean.png');">
               <div class="deli-card__hint">Tap for Label Art 🔄</div>
             </div>
-            <div class="deli-card__back" style="background-image: url('assets/img/strains/mr-clean-art.jpg');"></div>
+            <div class="deli-card__back" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/mr-clean-art.jpg');"></div>
           </div>
           <div class="deli-card__label">
             <div>
@@ -477,27 +477,27 @@
         <div class="deli-card-wrapper" data-category="hybrid"> 
           <div class="deli-card" onclick="this.classList.toggle('is-flipped'); triggerHaptic()">
             <div class="deli-badge-corner badge--mega" style="background-color: #d6a441; color: black;">🏆 CUP WINNER</div>
-            <div class="deli-card__front" style="background-image: url('assets/img/strains/lilac-diesel-bud.jpg');">
+            <div class="deli-card__front" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/lilac-diesel-bud.jpg');">
               <div class="deli-card__hint">Tap for Label Art 🔄</div>
             </div>
-            <div class="deli-card__back" style="background-image: url('assets/img/strains/lilac-diesel.png');"></div>
+            <div class="deli-card__back" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/lilac-diesel.png');"></div>
           </div>
           <div class="deli-card__label">
             <div>
               <h3>Lilac Diesel</h3>
               <p class="deli-card__genetics">Hybrid • Premium Tier</p>
             </div>
-            <span class="deli-card__price">$110 / oz</span>
+            <span class="deli-card__price">$25 / 3.5g</span>
           </div>
         </div>
 
         <div class="deli-card-wrapper" data-category="indica"> 
           <div class="deli-card" onclick="this.classList.toggle('is-flipped'); triggerHaptic()">
             <div class="deli-badge-corner badge--mega">NEW DROP</div>
-            <div class="deli-card__front" style="background-image: url('assets/img/strains/clusterfunk.png');">
+            <div class="deli-card__front" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/clusterfunk.png');">
               <div class="deli-card__hint">Tap for Label Art 🔄</div>
             </div>
-            <div class="deli-card__back" style="background-image: url('assets/img/strains/clusterfunk-art.jpg');"></div>
+            <div class="deli-card__back" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/clusterfunk-art.jpg');"></div>
           </div>
           <div class="deli-card__label">
             <div>
@@ -511,17 +511,17 @@
         <div class="deli-card-wrapper" data-category="concentrate"> 
           <div class="deli-card" onclick="this.classList.toggle('is-flipped'); triggerHaptic()">
             <div class="deli-badge-corner badge--mega" style="background-color: #2ef8bb; color: black;">🔥 INFUSED HASH</div>
-            <div class="deli-card__front" style="background-image: url('assets/img/strains/chocolate-marshmallow-bubblehash-bud.jpg');">
+            <div class="deli-card__front" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/chocolate-marshmallow-bubblehash-bud.jpg');">
               <div class="deli-card__hint">Tap for Label Art 🔄</div>
             </div>
-            <div class="deli-card__back" style="background-image: url('assets/img/strains/chocolate-marshmallows-bubblehash-art.jpg');"></div>
+            <div class="deli-card__back" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/chocolate-marshmallows-bubblehash-art.jpg');"></div>
           </div>
           <div class="deli-card__label">
             <div>
               <h3>Choc. Marshmallow</h3>
               <p class="deli-card__genetics">Infused Bubble Hash</p>
             </div>
-            <span class="deli-card__price">$XX / g</span>
+            <span class="deli-card__price">$30 / 3.5g</span>
           </div>
         </div>
         
