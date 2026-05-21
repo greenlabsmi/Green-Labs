@@ -1460,6 +1460,87 @@
     }
 </script>
 
+
+
+<div id="promo-modal" class="promo-modal-overlay" style="display: none;">
+    <div class="promo-modal-content">
+        <button class="promo-close-btn" onclick="closePromoModal()">×</button>
+        <span class="promo-badge">THE DELI IS STOCKED</span>
+        <h2 class="promo-title">AWARD WINNERS <br>HAVE ARRIVED.</h2>
+        <p class="promo-body">
+            <strong>Mr. Clean & Lilac Diesel</strong> are officially on the floor.<br><br>
+            Plus, don't miss our new <strong>Infused Bubble Hash Chocolate Marshmallow</strong>. 
+        </p>
+        <div class="promo-subtext">🍋 <em>Lemon Wookie drops tomorrow!</em></div>
+        <a href="#shop" class="promo-btn" onclick="closePromoModal()">SHOP THE DELI</a>
+    </div>
+</div>
+
+<style>
+    .promo-modal-overlay {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(0, 0, 0, 0.85); z-index: 9999;
+        display: flex; align-items: center; justify-content: center;
+        backdrop-filter: blur(5px); padding: 20px;
+    }
+    .promo-modal-content {
+        background: #050505; border: 2px solid transparent; border-radius: 16px;
+        padding: 40px 30px; max-width: 450px; width: 100%;
+        text-align: center; position: relative;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.9); background-clip: padding-box;
+    }
+    .promo-modal-content::before {
+        content: ''; position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px;
+        background: linear-gradient(45deg, #d6a441, #2ef8bb, #d6a441);
+        background-size: 200% 200%; z-index: -1; border-radius: 18px;
+        animation: gradientGlow 3s ease infinite;
+    }
+    @keyframes gradientGlow {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+    .promo-close-btn {
+        position: absolute; top: 15px; right: 20px;
+        background: transparent; border: none; color: #fff; font-size: 28px;
+        cursor: pointer; opacity: 0.7; transition: 0.3s;
+    }
+    .promo-close-btn:hover { opacity: 1; color: #d6a441; }
+    .promo-badge {
+        background: rgba(214, 164, 65, 0.15); color: #d6a441; padding: 6px 14px;
+        border-radius: 20px; font-size: 11px; font-weight: 800; letter-spacing: 2px;
+        text-transform: uppercase; display: inline-block; margin-bottom: 15px;
+        border: 1px solid rgba(214, 164, 65, 0.3);
+    }
+    .promo-title { font-family: 'Cinzel', serif; color: #fff; font-size: 28px; margin: 0 0 15px 0; line-height: 1.2; }
+    .promo-body { color: #ccc; font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.5; margin-bottom: 20px; }
+    .promo-body strong { color: #d6a441; }
+    .promo-subtext { font-size: 13px; color: #888; margin-bottom: 25px; }
+    .promo-btn {
+        background: #d6a441; color: #000; text-decoration: none; padding: 14px 24px;
+        border-radius: 8px; font-weight: 800; font-family: 'Inter', sans-serif;
+        text-transform: uppercase; letter-spacing: 1px; display: block; transition: 0.3s;
+    }
+    .promo-btn:hover { background: #e8b958; transform: translateY(-2px); }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const modal = document.getElementById('promo-modal');
+        const hasSeenPromo = localStorage.getItem('deliDropPromoSeen_May21');
+        
+        if (!hasSeenPromo) {
+            setTimeout(() => { modal.style.display = 'flex'; }, 800);
+        }
+    });
+
+    function closePromoModal() {
+        document.getElementById('promo-modal').style.display = 'none';
+        localStorage.setItem('deliDropPromoSeen_May21', 'true');
+    }
+</script>
+
+
       
     
 </body>
