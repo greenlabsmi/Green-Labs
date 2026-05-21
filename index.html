@@ -440,12 +440,12 @@
       <p style="color: rgba(255,255,255,0.6); font-weight: 700; margin-top: 10px; font-size: 15px;">Fresh from the grow. Weighed right in front of you.</p>
     </div>
 
-    <div class="deli-filters reveal">
-      <button class="deli-filter is-active" data-filter="all">All Strains</button>
-      <button class="deli-filter" data-filter="mega">Mega Deals 💥</button>
-      <button class="deli-filter" data-filter="sativa">Sativa</button>
-      <button class="deli-filter" data-filter="hybrid">Hybrid</button>
-      <button class="deli-filter" data-filter="indica">Indica</button>
+    <div class="filters reveal">
+      <button class="filter is-active" data-filter="all">All Strains</button>
+      <button class="filter" data-filter="mega">Mega Deals 💥</button>
+      <button class="filter" data-filter="sativa">Sativa</button>
+      <button class="filter" data-filter="hybrid">Hybrid</button>
+      <button class="filter" data-filter="indica">Indica</button>
       
       <div class="art-toggle-wrapper" id="art-mode-toggle">
         <div class="art-toggle-track">
@@ -1471,7 +1471,7 @@
             Plus, don't miss our new <strong>Infused Bubble Hash Chocolate Marshmallow</strong>. 
         </p>
         <div class="promo-subtext">🍋 <em>Lemon Wookie drops tomorrow!</em></div>
-        <a href="#shop" class="promo-btn" onclick="closePromoModal(); scrollToDeli();">SHOP THE DELI</a>
+        <a href="javascript:void(0)" class="promo-btn" onclick="closePromoModal(); scrollToDeli();">SHOP THE DELI</a>
     </div>
 </div>
 
@@ -1528,30 +1528,28 @@
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const modal = document.getElementById('promo-modal');
-        // REMOVED: localStorage check to show on every visit
-
-        // delay decreased slightly to 500ms (0.5s) for subtle effect, but will try 1000ms as per discussion
-        setTimeout(() => { modal.style.display = 'flex'; }, 5000); // 5-second delay
+        
+        // 5-second delay before popping up
+        setTimeout(() => { modal.style.display = 'flex'; }, 5000); 
     });
 
     function closePromoModal() {
         document.getElementById('promo-modal').style.display = 'none';
-        // REMOVED: flag setting - always show again
     }
 
-    // Handles clicks outside the pop-up content
+    // Handles clicks outside the pop-up content to close it
     function handleOverlayClick(event) {
         if (event.target === document.getElementById('promo-modal')) {
             closePromoModal();
         }
     }
 
-    // New function for scrolling to the deli section
+    // Scrolls smoothly to the deli section
     function scrollToDeli() {
-        // Find the deli section element - assumes your deli section has id="deli-section"
-        const deliSection = document.getElementById('deli-section');
+        const deliSection = document.getElementById('deli'); 
+        
         if (deliSection) {
-            deliSection.scrollIntoView({ behavior: 'smooth' });
+            deliSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
     }
 </script>
