@@ -1507,31 +1507,9 @@
 
 
 
-<script>
-    // POP UP-Show pop-up on load if they haven't seen it yet today
-    document.addEventListener("DOMContentLoaded", function() {
-        const modal = document.getElementById('promo-modal');
-        const hasSeenPromo = localStorage.getItem('deliDropPromoSeen_May21');
-        
-        if (!hasSeenPromo) {
-            // slight delay so it doesn't jump scare them the exact millisecond the page loads
-            setTimeout(() => {
-                modal.style.display = 'flex';
-            }, 800);
-        }
-    });
-
-    function closePromoModal() {
-        document.getElementById('promo-modal').style.display = 'none';
-        // Set flag so it doesn't show again today
-        localStorage.setItem('deliDropPromoSeen_May21', 'true');
-    }
-</script>
-
-
-
 <div id="promo-modal" class="promo-modal-overlay" style="display: none;" onclick="handleOverlayClick(event)">
-    <div class="promo-modal-content" onclick="event.stopPropagation()"> <button class="promo-close-btn" onclick="closePromoModal()">×</button>
+    <div class="promo-modal-content" onclick="event.stopPropagation()"> 
+        <button class="promo-close-btn" onclick="closePromoModal()">×</button>
         <span class="promo-badge">THE DELI IS STOCKED</span>
         <h2 class="promo-title">AWARD WINNERS <br>HAVE ARRIVED.</h2>
         <p class="promo-body">
@@ -1549,14 +1527,14 @@
         background: rgba(0, 0, 0, 0.85); z-index: 9999;
         display: flex; align-items: center; justify-content: center;
         backdrop-filter: blur(5px); padding: 20px;
-        cursor: pointer; /* Change cursor on overlay to imply closing */
+        cursor: pointer;
     }
     .promo-modal-content {
         background: #050505; border: 2px solid transparent; border-radius: 16px;
         padding: 40px 30px; max-width: 450px; width: 100%;
         text-align: center; position: relative;
         box-shadow: 0 20px 50px rgba(0,0,0,0.9); background-clip: padding-box;
-        cursor: default; /* Reset cursor on content */
+        cursor: default;
     }
     .promo-modal-content::before {
         content: ''; position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px;
@@ -1596,26 +1574,31 @@
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const modal = document.getElementById('promo-modal');
+        const hasSeenPromo = localStorage.getItem('deliDropPromoSeen_May21');
         
-        // 5-second delay before popping up
-        setTimeout(() => { modal.style.display = 'flex'; }, 5000); 
+        // Only show if they haven't seen it yet
+        if (!hasSeenPromo) {
+            setTimeout(() => {
+                modal.style.display = 'flex';
+            }, 800); // Kept your 800ms delay as preferred
+        }
     });
 
     function closePromoModal() {
-        document.getElementById('promo-modal').style.display = 'none';
+        const modal = document.getElementById('promo-modal');
+        modal.style.display = 'none';
+        // Set flag so it doesn't show again
+        localStorage.setItem('deliDropPromoSeen_May21', 'true');
     }
 
-    // Handles clicks outside the pop-up content to close it
     function handleOverlayClick(event) {
         if (event.target === document.getElementById('promo-modal')) {
             closePromoModal();
         }
     }
 
-    // Scrolls smoothly to the deli section
     function scrollToDeli() {
         const deliSection = document.getElementById('deli'); 
-        
         if (deliSection) {
             deliSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
