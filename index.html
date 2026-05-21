@@ -209,14 +209,17 @@
 
 <a href="#deals" id="memorial-promo-banner" data-open-deals>
   <div class="memorial-marquee">
+    
     <div class="memorial-text">
-      <span class="memorial-tag">COMING THURSDAY 5/21</span> 
-      The Deli Debut: Award-Winning Mr. Clean & Lilac Diesel Drop Thursday! <span class="highlight-price">$110 / OZ ➔</span>
+      <span class="memorial-tag">THE DELI IS STOCKED</span> 
+      🔥 Award-Winning Mr. Clean & Lilac Diesel are on the floor! &nbsp;&nbsp;•&nbsp;&nbsp; 🍫 NEW: Infused Bubble Hash Chocolate Marshmallow &nbsp;&nbsp;•&nbsp;&nbsp; 🍋 Lemon Wookie drops TOMORROW &nbsp;&nbsp;•&nbsp;&nbsp; 🎖️ Ask about our Veteran Discounts! <span class="highlight-price">SHOP DELI ➔</span>
     </div>
+    
     <div class="memorial-text">
-      <span class="memorial-tag">COMING THURSDAY 5/21</span> 
-      The Deli Debut: Award-Winning Mr. Clean & Lilac Diesel Drop Thursday! <span class="highlight-price">$110 / OZ ➔</span>
+      <span class="memorial-tag">THE DELI IS STOCKED</span> 
+      🔥 Award-Winning Mr. Clean & Lilac Diesel are on the floor! &nbsp;&nbsp;•&nbsp;&nbsp; 🍫 NEW: Infused Bubble Hash Chocolate Marshmallow &nbsp;&nbsp;•&nbsp;&nbsp; 🍋 Lemon Wookie drops TOMORROW &nbsp;&nbsp;•&nbsp;&nbsp; 🎖️ Ask about our Veteran Discounts! <span class="highlight-price">SHOP DELI ➔</span>
     </div>
+    
   </div>
 </a>
 
@@ -1433,6 +1436,31 @@
     <p id="terpModalDesc" style="font-size: 15px; line-height: 1.6; color: rgba(17,17,17,0.8); margin: 0; font-weight: 600;">Description goes here.</p>
   </div>
 </div>
+
+
+
+<script>
+    // POP UP-Show pop-up on load if they haven't seen it yet today
+    document.addEventListener("DOMContentLoaded", function() {
+        const modal = document.getElementById('promo-modal');
+        const hasSeenPromo = localStorage.getItem('deliDropPromoSeen_May21');
+        
+        if (!hasSeenPromo) {
+            // slight delay so it doesn't jump scare them the exact millisecond the page loads
+            setTimeout(() => {
+                modal.style.display = 'flex';
+            }, 800);
+        }
+    });
+
+    function closePromoModal() {
+        document.getElementById('promo-modal').style.display = 'none';
+        // Set flag so it doesn't show again today
+        localStorage.setItem('deliDropPromoSeen_May21', 'true');
+    }
+</script>
+
+      
     
 </body>
 </html>
