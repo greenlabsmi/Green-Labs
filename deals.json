@@ -94,7 +94,6 @@
       ],
       "scroll": [
         "mix-gummies",
-        "jeeter-promo",
         "kshn-pouches",
         "redbud-carts",
         "premium-gummies",
@@ -143,10 +142,6 @@
       "premium-gummies": {
         "title": "Premium Gummies 5 for $35",
         "image": "assets/img/highlights/hl-premium-gummies.jpg"
-      },
-      "jeeter-promo": {
-        "title": "Jeeter Memorial Day 50% OFF",
-        "image": "assets/img/highlights/hl-jeeter.jpg"
       },
       "kshn-pouches": {
         "title": "KSHN Pouches 200mg $15",
