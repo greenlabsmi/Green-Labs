@@ -98,7 +98,60 @@
         </button>
       </div> </div> 
 
-    
+
+
+    <div class="deli-banner">
+  <div class="deli-banner__track">
+    <div class="deli-banner__content">
+      <span>🏆 AWARD WINNING GENETICS</span>
+      <span class="deli-banner__divider">•</span>
+      <span>MR. CLEAN & LILAC DIESEL</span>
+      <span class="deli-banner__divider">•</span>
+      <span class="deli-banner__price">NOW ON DELI: $110 / OZ</span>
+      <span class="deli-banner__divider">•</span>
+      <span>🏆 AWARD WINNING GENETICS</span>
+      <span class="deli-banner__divider">•</span>
+      <span>MR. CLEAN & LILAC DIESEL</span>
+      <span class="deli-banner__divider">•</span>
+      <span class="deli-banner__price">NOW ON DELI: $110 / OZ</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .deli-banner {
+    width: 100%;
+    background: #050505;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+    overflow: hidden;
+    padding: 12px 0;
+    white-space: nowrap;
+  }
+
+  .deli-banner__track {
+    display: inline-block;
+    animation: marquee 25s linear infinite;
+  }
+
+  .deli-banner__content {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: #fff;
+    text-transform: uppercase;
+  }
+
+  .deli-banner__price { color: #d6a441; }
+  .deli-banner__divider { margin: 0 20px; color: #333; }
+
+  @keyframes marquee {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-50%, 0); }
+  }
+</style>
     
 
 
