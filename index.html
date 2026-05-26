@@ -100,132 +100,7 @@
 
     
     
-<!-- ===== memorial day banner ===== -->    
-<style>
-  #jsb-promo-banner {
-    background-color: #FFDE00; /* Banana Hammock Yellow */
-    color: #000;
-    padding: 12px 0; /* Thinner profile */
-    font-weight: 900;
-    text-transform: uppercase;
-    font-size: 14px;
-    display: block;
-    text-decoration: none;
-    border-bottom: 3px solid #6c33a3; /* Collab Purple */
-    overflow: hidden;
-    position: relative;
-    z-index: 1000;
-  }
-  
-  .jsb-marquee {
-    display: flex;
-    white-space: nowrap;
-    animation: jsb-scroll 12s linear infinite; /* Faster scroll speed */
-  }
 
-  .jsb-marquee:hover { animation-play-state: paused; }
-
-  .jsb-text {
-    display: flex;
-    align-items: center;
-    padding-right: 60px; /* Gap between loop repeats */
-  }
-
-  .snoogins-tag {
-    background: #000;
-    color: #FFDE00;
-    padding: 2px 8px;
-    margin-right: 12px;
-    border-radius: 4px;
-    font-style: italic;
-  }
-
-  @keyframes jsb-scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-</style>
-
-<style>
-  #memorial-promo-banner {
-    /* Sleek luxury flag gradient: Deep Midnight Blue ➔ Patriotic Crimson ➔ Deep Midnight Blue */
-    background: linear-gradient(90deg, #050b14 0%, #991B1B 50%, #050b14 100%);
-    color: #fff;
-    padding: 14px 0;
-    font-weight: 800;
-    text-transform: uppercase;
-    font-size: 13px;
-    display: block;
-    text-decoration: none;
-    border-bottom: 2px solid #D6A34A; /* Luxury Gold Bottom Border */
-    overflow: hidden;
-    position: relative;
-    z-index: 1000;
-    font-family: 'Inter', sans-serif;
-    letter-spacing: 0.08em;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    opacity: 0;
-    animation: banner-entrance 0.8s ease forwards;
-  }
-  .memorial-marquee {
-    display: flex;
-    white-space: nowrap;
-    animation: memorial-scroll 14s linear infinite;
-  }
-  .memorial-marquee:hover {
-    animation-play-state: paused;
-  }
-  .memorial-text {
-    display: flex;
-    align-items: center;
-    padding-right: 80px;
-  }
-  .memorial-tag {
-    background: #D6A34A; /* Solid Gold Tag */
-    color: #000;
-    padding: 3px 10px;
-    margin-right: 14px;
-    border-radius: 4px;
-    font-weight: 900;
-    font-size: 11px;
-    letter-spacing: 0.02em;
-  }
-  .highlight-price {
-    color: #ffffff; /* Crisp white price pops against the crimson center */
-    margin-left: 8px;
-    font-weight: 900;
-    text-shadow: 0 0 12px rgba(255, 255, 255, 0.6); /* High-end radiant white glow */
-  }
-  @keyframes memorial-scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-  @keyframes banner-entrance {
-    from { opacity: 0; transform: translateY(-5px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-</style>
-
-<a href="#deals" id="memorial-promo-banner" data-open-deals>
-  <div class="memorial-marquee">
-    
-    <div class="memorial-text">
-      <span class="memorial-tag">THE DELI IS STOCKED</span> 
-      🔥 Award-Winning Mr. Clean & Lilac Diesel are on the floor! &nbsp;&nbsp;•&nbsp;&nbsp; 🍫 NEW: Infused Bubble Hash Chocolate Marshmallow &nbsp;&nbsp;•&nbsp;&nbsp; 🍋 Lemon Wookie drops TOMORROW &nbsp;&nbsp;•&nbsp;&nbsp; 🎖️ Ask about our Veteran Discounts! <span class="highlight-price">SHOP DELI ➔</span>
-    </div>
-    
-    <div class="memorial-text">
-      <span class="memorial-tag">THE DELI IS STOCKED</span> 
-      🔥 Award-Winning Mr. Clean & Lilac Diesel are on the floor! &nbsp;&nbsp;•&nbsp;&nbsp; 🍫 NEW: Infused Bubble Hash Chocolate Marshmallow &nbsp;&nbsp;•&nbsp;&nbsp; 🍋 Lemon Wookie drops TOMORROW &nbsp;&nbsp;•&nbsp;&nbsp; 🎖️ Ask about our Veteran Discounts! <span class="highlight-price">SHOP DELI ➔</span>
-    </div>
-    
-  </div>
-</a>
-
-
-
-    
 
     <!-- Status strip -->
     <a href="https://www.google.com/maps/dir/?api=1&destination=10701+Madison+St,+Luna+Pier,+MI+48157" target="_blank" rel="noopener" class="status-strip" id="statusStrip" aria-label="Get directions to Green Labs">
@@ -326,7 +201,7 @@
 </div> 
       <a href="#deals" data-open-deals class="hero__media hero__media--link" aria-label="Shop The Dutch Deli" style="position: relative;">
         <!-- UPDATE THE URL BELOW TO YOUR NEW IMAGE NAME -->
-        <div class="hero__img" style="background-image: url('assets/img/memorial-hero.jpg'); background-position: center;" role="img"></div>
+        <div class="hero__img" style="background-image: url('assets/img/deli-drop-hero.jpg'); background-position: center;" role="img"></div>
       </a>
 
     </div> </div> </section>
