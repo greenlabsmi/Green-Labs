@@ -96,6 +96,7 @@
         "mix-gummies",
         "kshn-pouches",
         "redbud-carts",
+        "jeeter-promo",
         "premium-gummies",
         "lightsky-carts",
         "mix-prerolls"
@@ -122,6 +123,10 @@
         "tag": "VAPES",
         "details": "Full Gram All-in-Ones",
         "image": "assets/img/deals/dt-disposables.jpg"
+      },
+      "jeeter-jay": {
+        "title": "Jeeter Jays Infused 1g",
+        "image": "assets/img/highlights/jeeter-jay-hl.jpg"
       },
       "mix-gummies": {
         "title": "Mix & Match Edibles 5 for $18",
