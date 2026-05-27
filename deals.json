@@ -6,11 +6,26 @@
       "color": "#D6A34A",
       "tagline": "Award-Winning Genetics",
       "prices": [
-        ["Gram", "$10"],
-        ["3.5g", "$25"],
-        ["7g", "$40"],
-        ["14g", "$70"],
-        ["28g", "$110"]
+        [
+          "Gram",
+          "$10"
+        ],
+        [
+          "3.5g",
+          "$25"
+        ],
+        [
+          "7g",
+          "$40"
+        ],
+        [
+          "14g",
+          "$70"
+        ],
+        [
+          "28g",
+          "$110"
+        ]
       ]
     },
     {
@@ -19,11 +34,26 @@
       "color": "#1A1A1A",
       "tagline": "Weighed Fresh to Order",
       "prices": [
-        ["Gram", "$8"],
-        ["Eighth (3.5g)", "$15"],
-        ["Quarter (7g)", "$30"],
-        ["Half (14g)", "$50"],
-        ["Ounce (28g)", "$90"]
+        [
+          "Gram",
+          "$8"
+        ],
+        [
+          "Eighth (3.5g)",
+          "$15"
+        ],
+        [
+          "Quarter (7g)",
+          "$30"
+        ],
+        [
+          "Half (14g)",
+          "$50"
+        ],
+        [
+          "Ounce (28g)",
+          "$90"
+        ]
       ]
     },
     {
@@ -32,71 +62,81 @@
       "color": "#708090",
       "tagline": "Everyday Value",
       "prices": [
-        ["Gram", "$6"],
-        ["3.5g", "$12"],
-        ["7g", "$22"],
-        ["14g", "$45"],
-        ["28g", "$70"]
+        [
+          "Gram",
+          "$6"
+        ],
+        [
+          "3.5g",
+          "$12"
+        ],
+        [
+          "7g",
+          "$22"
+        ],
+        [
+          "14g",
+          "$45"
+        ],
+        [
+          "28g",
+          "$70"
+        ]
       ]
     }
   ],
   "highlights": {
     "layout": {
       "hero": "deli-oz",
-      "mid": ["mix-carts", "dtg-disposables"],
+      "mid": [
+        "mix-carts",
+        "dtg-disposables"
+      ],
       "scroll": [
-  "mix-gummies",
-  "jeeter-promo",
-  "kshn-pouches",
-  "jeeter-jay",
-  "hash-house-rosin-cart",
-  "redbud-carts",
-  "premium-gummies",
-  "lightsky-carts",
-  "mix-prerolls"
-]
+        "mix-gummies",
+        "jeeter-promo",
+        "kshn-pouches",
+        "jeeter-jay",
+        "hash-house-rosin-cart",
+        "redbud-carts",
+        "premium-gummies",
+        "lightsky-carts",
+        "mix-prerolls"
+      ]
     },
     "items": {
       "mix-carts": {
         "title": "Mix & Match 1G Carts",
         "price": "5 for $35",
         "tag": "VAPES",
-        "details": "Party Favors · Mr. Vapor · Crude Boys · Drip",
+        "details": "Superfire \u00b7 Crude Boys \u00b7 Drip \u00b7 Daily Dose",
         "image": "assets/img/highlights/mixmatch-carts.jpg"
       },
       "deli-oz": {
-        "title": "Mr. Clean & Lilac Diesel on Deli",
-        "price": "$110/Oz",
-        "tag": "FLOWER",
-        "details": "While Supplies Last",
-        "image": "assets/img/deli-oz-special.jpg"
+        "title": "",
+        "price": "",
+        "tag": "",
+        "details": "",
+        "image": "assets/img/deli-oz-special-solo.jpg"
       },
       "dtg-disposables": {
         "title": "DTG 1G Disposables",
         "price": "3 for $45",
         "tag": "VAPES",
-        "details": "Excludes Mr. Clean Live Terps",
+        "details": "Full Gram All-in-Ones",
         "image": "assets/img/deals/dt-disposables.jpg"
       },
-      "hash-house-rosin-cart": {
-       "title": "Hash House Rosin Cart",
-       "price": "$15",
-       "tag": "VAPES",
-       "details": "Mega Deal Hot Spot",
-       "image": "assets/img/highlights/hash-house-rosin-cart.jpg"
-      },
-      "jeeter-jay": {
-        "title": "Jeeter Jays Infused 1g",
-        "price": "$15",
-        "image": "assets/img/highlights/jeeter-jay-hl.jpg"
-      },
       "mix-gummies": {
-        "title": "Value Gummies 5 for $18",
+        "title": "Mix & Match Edibles 5 for $18",
         "image": "assets/img/highlights/hl-gummies.jpg"
       },
       "mix-prerolls": {
         "title": "Mix & Match Pre-Rolls 10 for $35",
         "image": "assets/img/highlights/hl-prerolls.jpg"
+      },
+      "lightsky-carts": {
+        "title": "LSF Live Resin 5 for $90",
+        "image": "assets/img/highlights/hl-lightsky.jpg"
       },
       "redbud-carts": {
         "title": "Redbud 1g Cart 3 for $25",
@@ -106,182 +146,188 @@
         "title": "Premium Gummies 5 for $35",
         "image": "assets/img/highlights/hl-premium-gummies.jpg"
       },
+      "jeeter-promo": {
+        "title": "Jeeter Memorial Day 50% OFF",
+        "image": "assets/img/highlights/hl-jeeter.jpg"
+      },
       "kshn-pouches": {
         "title": "KSHN Pouches 200mg $15",
         "image": "assets/img/highlights/hl-kshn.jpg"
+      },
+      "jeeter-jay": {
+        "title": "Jeeter Jays Infused 1g",
+        "price": "$15",
+        "image": "assets/img/highlights/jeeter-jay-hl.jpg"
+      },
+      "hash-house-rosin-cart": {
+        "title": "Hash House Rosin Cart",
+        "price": "$15",
+        "image": "assets/img/highlights/hash-house-rosin-cart.jpg"
       }
     }
   },
   "deals": [
     {
-      "category": "🌿 Flower",
+      "category": "\ud83c\udf3f Flower",
       "promo": false,
       "groups": [
         {
-          "title": "🔥 Mega Deals & Ounce Specials",
+          "title": "\ud83d\udd25 Mega Deals & Ounce Specials",
           "items": [
-            "Mr. Clean & Lilac Diesel on Deli — $110/Oz",
-            "DTG Secret Chief 3.5g — $10",
-            "Dutch Daylight Oz — $40 or 2/$60",
-            "Angelica & Secret Chief Oz — $65",
-            "Cresco Brand of Flower Oz — $70",
-            "Spirit Hashplant, Chocolate Marshmallow #14, & Solo Walker — $70/Oz",
-            "Chocolate Marshmallow #11, Double Bubble, Bubblegum 88G13 Hashplant, & Pina Rita Jarred Oz Specials — $90/Oz",
-            "Clusterfunk 3.5g — $30",
-            "Guicy G 3.5g — $15",
-            "Chocolate Marshmallow #11 & #14 — $90/Oz",
-            "Double Bubble — $90/Oz"
+            "DTG Secret Chief 3.5g \u2014 $10 (HOT SPOT!)",
+            "Grip Oz \u2014 $30 (or 2/$45)",
+            "Cresco Blue Zoap Deli- 3.5g \u2014 $12 or 1oz \u2014 $60",
+            "Dutch Daylight Oz \u2014 $40 (or 2/$60)",
+            "Angelica & Secret Chief Oz \u2014 $65",
+            "Spirit Hashplant, Gorilla 88, & Solo Walker \u2014 $70/Oz",
+            "Double Bubble & Bubblegum 88G13 Hashplant Oz \u2014 $90",
+            "Lilac Diesel 1oz \u2014 $150"
           ]
         }
       ]
     },
     {
-      "category": "💨 Vapes & Disposables",
+      "category": "\ud83d\udca8 Vapes & Disposables",
       "promo": true,
       "groups": [
         {
           "title": "Cartridges",
           "items": [
-            "Mix & Match 1G Carts — $9ea, 3/$25, or 5/$35",
-            "Jungle Juice 1G Cartridges — $8ea or 5/$35",
-            "Mr. Vapor, Drip & Crude Boys — 10/$65",
-            "Redbud Roots 1G Full Spectrum Carts — $10ea or 3/$25",
-            "Rove 1G Live Resin Carts — $25ea",
-            "Hash House Rosin Cart — $15"
+            "Mix & Match 1G Carts \u2014 3/$25 or 5 for $35",
+            "Drip & Crude Boys \u2014 10 for $65",
+            "Redbud 1G Full Spectrum Carts \u2014 3 for $25",
+            "Cresco 1G Live Resin Carts \u2014 $30ea or 3/$85",
+            "LSF Live Resin Carts \u2014 5 for $90"
           ]
         },
         {
           "title": "Disposables",
           "items": [
-            "Dutch Touch Genetics 1G Disposables — $20ea or 3/$45",
-            "Superfire 1G Disposables — $15ea",
-            "Drip 3G Green Crack Disposable — $30ea",
-            "Batch 4G Disposables — $45ea or 3/$110",
-            "Jay & Silent Bob Disposables — $25ea",
-            "Jeeter Dispo — $25ea"
+            "Dutch Touch Genetics 1G Disposables \u2014 $20ea or 3 for $45",
+            "Superfire 1G Disposables \u2014 $15ea",
+            "Party Favors 3G Disposables \u2014 $25ea",
+            "Batch 4G Disposables \u2014 $45ea or 3 for $110"
           ]
         }
       ]
     },
     {
-      "category": "🔥 Pre-Rolls",
+      "category": "\ud83d\udd25 Pre-Rolls",
       "promo": false,
       "groups": [
         {
           "title": "Infused Pre-Rolls",
           "items": [
-            "Grip 1G Infused Pre-Rolls — $4ea",
-            "Superfire 1.2G Infused Pre-Rolls — $4ea",
-            "Platinum Vape 1G Infused Pre-Roll — $4.29ea",
-            "Bonfire 1.2G Infused Pre-Rolls — $6ea or 10/$50",
-            "Swisher 5-Pack Blunts — $30",
-            "Mr. Clean & Death Star 5-Pack Infused Pre-Rolls by DTG — $30ea",
-            "Dutch Touch Genetics 1.25G Rosin Donut — $12ea"
+            "Boomstick 1G THCa Infused \u2014 $4ea or 10/$35",
+            "Grip 1G Infused \u2014 $4ea",
+            "Platinum Vape 1G Infused \u2014 $4.29ea",
+            "Blazr 1G Resin Infused \u2014 $5ea or 10/$45",
+            "Bonfire 1.2G Infused \u2014 $6ea or 10/$50",
+            "Party Favor 50% THC Infused \u2014 $8ea, 5/$35, or 10/$60",
+            "DTG Hash Rosin Donut Infused (1.25G) \u2014 $12ea",
+            "DTG 5-Pack Infused (Mr. Clean & Death Star) \u2014 $30ea",
+            "1g Jeeter Singles \u2014 50% OFF (Memorial Day Promo)",
+            "Baby Jeeter 5-Packs \u2014 50% OFF (Memorial Day Promo)"
           ]
         },
         {
           "title": "Non-Infused Pre-Rolls",
           "items": [
-            "Valorem 1G Shake Pre-Rolls — $2ea or 20/$35",
-            "Franklin Fields 1G Pre-Rolls — $4ea or 10/$35",
-            "Sapura 1G Pre-Rolls — $7ea or 3/$20",
-            "Dutch Touch Genetics Full Bud Pre-Rolls — $10ea",
-            "DTG Full Bud Pre-Roll Mix & Match with Sapura — 3/$20",
-            "Excludes Mr. Clean and Lilac Diesel"
-          ]
-        },
-        {
-          "title": "Jeeter Promotions",
-          "items": [
-            "Baby Jeeters — $30",
-            "1 Gram Jeeter — $15",
-            "Jeeter Dispo — $25"
+            "Valorem 1g Pre-Rolls \u2014 $2ea or 20 for $35",
+            "Banana Split & Double Bubble Full Bud Deli \u2014 $5ea",
+            "Death By Funk 1G Pre-Rolls \u2014 $4ea or 10/$35",
+            "Mix & Match Pre-Rolls \u2014 10 for $35",
+            "Green Labs 1G Pre-Rolls \u2014 $4ea",
+            "DTG Full Bud Pre-Rolls \u2014 $10ea"
           ]
         }
       ]
     },
     {
-      "category": "🍬 Edibles & Beverages",
+      "category": "\ud83c\udf6c Edibles & Beverages",
       "promo": false,
       "groups": [
         {
           "title": "Gummies & Chocolates",
           "items": [
-            "KSHN THC Pouches 200mg — $15",
-            "DTG 200mg Distillate Gummies — $4.29ea",
-            "Dutch Touch 200mg RSO Gummy Bar — $12",
-            "El Cheepo Gummies — $3ea",
-            "Value Gummies Mix & Match — 5/$18",
-            "Value Gummies Include: Choice, Midwest, El Cheepo, and Play",
-            "Play 200mg Gummies — $4ea or 10/$30",
-            "Midwest 200mg Vegan Gummies — $4ea or 10/$35",
-            "Choice 200mg Gummies — $4ea",
-            "Premium Gummies Mix & Match — 5/$35",
-            "Premium Gummies Include: Squishies, Boujee Bites, and Thunder Canna Live Resin",
-            "Thunder Canna Live Resin 200mg — $8ea or 5/$35",
-            "Squishies / Boujee Bites 200mg Hash Rosin Gummies — $10ea or 5/$35",
-            "PIXILS — $15 or 2/$25",
-            "Dead Prez and Milk and Cookies 1G RSO — $12ea or 2/$20"
+            "KSHN Pouches 200mg \u2014 $15",
+            "El Cheepo Gummies \u2014 $3ea",
+            "Value Gummies Mix & Match \u2014 5 for $18",
+            "Premium Gummies Mix & Match \u2014 5 for $35",
+            "DTG 200mg Distillate Gummies \u2014 $4.29ea (50% OFF)",
+            "Midwest 200mg Vegan Gummies \u2014 $4ea or 10/$35",
+            "True North 200mg One Hitter \u2014 $5ea",
+            "Five Star 200mg One Hitter \u2014 $6ea",
+            "Thunder Canna Live Resin 200mg \u2014 $8ea",
+            "Boujee Bites 200mg Hash Rosin Gummies \u2014 $10ea or 5/$35",
+            "Gelato 200mg Cookies & Ice Cream Cones \u2014 $12ea",
+            "DTG 200mg RSO Gummy Bar \u2014 $12ea",
+            "PIXILS and Potpots \u2014 $15ea or 2/$25"
           ]
         },
         {
           "title": "THC Beverages",
           "items": [
-            "Tonic 100mg Drinks — $10"
+            "Highly Casual Seltzers \u2014 $5",
+            "Tonic 100mg Drinks \u2014 $10",
+            "Armada 50mg Triple Jam \u2014 $10",
+            "Mary Jones 100mg Sugar-Free Cola \u2014 $12",
+            "CQ 100mg Ginger Ale & Dr. Quencher \u2014 $15"
           ]
         }
       ]
     },
     {
-      "category": "🍯 Concentrates & RSO",
+      "category": "\ud83c\udf6f Concentrates & RSO",
       "promo": false,
       "groups": [
         {
           "title": "Live Resin & Batter",
           "items": [
-            "Sour Gorilla 1G Live Resin — $7ea or 3/$20",
-            "Sour Gorilla 14G Live Resin — $51.45",
-            "Hash D Live Resin — 3.5G for $20",
-            "DTG 3.5G Batter — $40",
-            "Excludes Clusterfunk & Mr. Clean",
-            "DTG 3.5G Diamonds — $90",
-            "DTG 14G Batter — $140"
+            "Sour Gorilla 1G Live Resin \u2014 $7ea or 3/$20",
+            "Hash D Live Resin \u2014 3.5G for $20",
+            "DTG 3.5G Batter \u2014 $40 (Excludes Clusterfunk/Mr. Clean)",
+            "Sour Gorilla 14G Live Resin \u2014 $51.45",
+            "Hash D Live Resin \u2014 14G for $60",
+            "DTG 3.5G Diamonds \u2014 $90",
+            "DTG 14G Batter \u2014 $140"
           ]
         },
         {
-          "title": "Rosin Concentrates",
+          "title": "Rosin & RSO",
           "items": [
-            "Death By Funk 3.5G Rosin — $45",
-            "Hash D and Chernobyl 3.5G Rosin — $60",
-            "Strait Fire 3.5G Rosin — $75",
-            "Redbud Roots 3.5G Rosin Candy Drip — $90",
-            "Strait Fire 3.5G Rosin or $20 per G",
-            "DTG 14G Rosin — $225"
+            "Dead Prez & Milk and Cookies 1G RSO \u2014 $12ea or 2/$20",
+            "Boujee 1G Rosin \u2014 $10ea",
+            "Death By Funk 3.5G Rosin \u2014 $45",
+            "Hash D & Chernobyl 3.5G Rosin \u2014 $60",
+            "Strait Fire 3.5G Rosin \u2014 $75",
+            "Hash D #2 14G Rosin \u2014 $110",
+            "DTG 14G Rosin \u2014 $225"
           ]
         }
       ]
     },
     {
-      "category": "🧢 Merch & Accessories",
+      "category": "\ud83e\udde2 Merch & Accessories",
       "promo": false,
       "groups": [
         {
           "title": "Apparel",
           "items": [
-            "Green Labs or Dutch Touch Genetics Hoodies — $40",
-            "#KeepItDutch Beanie — $25",
-            "Green Labs or Dutch Touch Genetics T-Shirt — $20",
-            "Green Labs Beanie — $18"
+            "Green Labs or DTG Hoodies \u2014 $40",
+            "#KeepItDutch Beanie \u2014 $25",
+            "Green Labs or DTG T-Shirts \u2014 $20",
+            "Green Labs Beanie \u2014 $18"
           ]
         },
         {
           "title": "Accessories",
           "items": [
-            "Dutch Touch Genetics Bowl — $10",
-            "Dutch Touch Genetics 4pc Metal Grinder — $10",
-            "Dutch Touch Genetics Rolling Tray — $4",
-            "Dutch Touch Genetics Ashtray — $2",
-            "Dutch Touch Genetics Rolling Papers & Tips — $3"
+            "DTG 4pc Metal Grinder \u2014 $10",
+            "DTG Glass Bowl \u2014 $10",
+            "DTG Rolling Tray \u2014 $4",
+            "DTG Rolling Papers & Tips \u2014 $3",
+            "DTG Ashtray \u2014 $2"
           ]
         }
       ]
