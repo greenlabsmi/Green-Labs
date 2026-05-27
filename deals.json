@@ -45,14 +45,16 @@
       "hero": "deli-oz",
       "mid": ["mix-carts", "dtg-disposables"],
       "scroll": [
-        "mix-gummies",
-        "kshn-pouches",
-        "redbud-carts",
-        "jeeter-promo",
-        "premium-gummies",
-        "hash-house-rosin-cart",
-        "mix-prerolls"
-      ]
+  "mix-gummies",
+  "jeeter-promo",
+  "kshn-pouches",
+  "jeeter-jay",
+  "hash-house-rosin-cart",
+  "redbud-carts",
+  "premium-gummies",
+  "lightsky-carts",
+  "mix-prerolls"
+]
     },
     "items": {
       "mix-carts": {
@@ -77,17 +79,15 @@
         "image": "assets/img/deals/dt-disposables.jpg"
       },
       "hash-house-rosin-cart": {
-        "title": "Hash House Rosin Cart",
-        "price": "$15",
-        "tag": "VAPES",
-        "details": "Mega Deal Hot Spot",
-        "image": "assets/img/highlights/hash-house-rosin-cart.jpg"
+       "title": "Hash House Rosin Cart",
+       "price": "$15",
+       "tag": "VAPES",
+       "details": "Mega Deal Hot Spot",
+       "image": "assets/img/highlights/hash-house-rosin-cart.jpg"
       },
-      "jeeter-promo": {
-        "title": "Banana Hammock",
-        "price": "$15-$30",
-        "tag": "PRE-ROLLS",
-        "details": "Baby Jeeters · 1g Jeeter · Jeeter Dispo",
+      "jeeter-jay": {
+        "title": "Jeeter Jays Infused 1g",
+        "price": "$15",
         "image": "assets/img/highlights/jeeter-jay-hl.jpg"
       },
       "mix-gummies": {
