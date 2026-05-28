@@ -1419,7 +1419,7 @@
 </script>
 
 
-<!-- SUMMER PROMO POPUP - DELETE THIS ENTIRE BLOCK WHEN PROMO ENDS -->
+<!-- SUMMER PROMO POPUP - SHOWS EVERY VISIT -->
 <div id="summerPromoOverlay" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); display:none; justify-content:center; align-items:center; z-index:9999; backdrop-filter:blur(8px); cursor:pointer;">
   
   <!-- Popup Box -->
@@ -1434,13 +1434,9 @@
 </div>
 
 <script>
-  // Show popup after 10 seconds
+  // Show popup after 10 seconds every single time
   setTimeout(() => {
-    const overlay = document.getElementById('summerPromoOverlay');
-    if (!localStorage.getItem('summer_promo_seen')) {
-      overlay.style.display = 'flex';
-      localStorage.setItem('summer_promo_seen', 'true');
-    }
+    document.getElementById('summerPromoOverlay').style.display = 'flex';
   }, 10000);
 
   // Click outside the box to close
