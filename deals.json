@@ -26,7 +26,7 @@
     "layout": {
       "hero": "deli-oz",
       "mid": ["mix-carts", "dtg-disposables"],
-      "scroll": ["mix-gummies", "kshn-pouches", "jeeter-jay", "play-gummies", "fire-styxx", "hash-house-rosin-cart", "redbud-carts", "premium-gummies", "lightsky-carts", "mix-prerolls"]
+      "scroll": ["mix-gummies", "kshn-pouches", "play-gummies", "fire-styxx", "hash-house-rosin-cart", "redbud-carts", "premium-gummies", "lightsky-carts", "mix-prerolls"]
     },
     "items": {
       "mix-carts": { "title": "Mix & Match 1G Carts", "price": "5 for $35", "tag": "VAPES", "details": "Party Favors · Mr. Vapor · Crude Boys · Drip", "image": "assets/img/highlights/mixmatch-carts.jpg" },
@@ -38,7 +38,6 @@
       "redbud-carts": { "title": "Redbud 1g Cart 3 for $25", "image": "assets/img/highlights/hl-redbud.jpg" },
       "premium-gummies": { "title": "Premium Gummies 5 for $35", "image": "assets/img/highlights/hl-premium-gummies.jpg" },
       "kshn-pouches": { "title": "KSHN Pouches 200mg 2/$25", "image": "assets/img/highlights/hl-kshn.jpg" },
-      "jeeter-jay": { "title": "Jeeter Jays Infused 1g $15", "image": "assets/img/highlights/jeeter-jay-hl.jpg" },
       "hash-house-rosin-cart": { "title": "Hash House Rosin Cart $15", "image": "assets/img/highlights/hash-house-hl.jpg" },
       "fire-styxx": { "title": "Fire Styxx - 10/$55", "image": "assets/img/highlights/hl-fire-styxx.jpg" },
       "play-gummies": { "title": "Play 200mg Gummies - 10/$30", "image": "assets/img/highlights/play-gummy-hl.jpg" }
