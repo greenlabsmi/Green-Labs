@@ -48,7 +48,13 @@
     },
     "items": {
       "mix-carts": { "title": "Mix & Match 1G Carts", "price": "5 for $35", "tag": "VAPES", "details": "Party Favors · Mr. Vapor · Crude Boys · Drip", "image": "assets/img/highlights/mixmatch-carts.jpg" },
-      "deli-oz": { "title": "Mr. Clean & Lilac Diesel on Deli", "price": "$110/Oz", "tag": "FLOWER", "details": "While Supplies Last", "image": "assets/img/deli-tv-award-winners.jpg" },
+      "deli-oz": { 
+        "title": "4 Award Winning Strains on Deli", 
+        "price": "$110/Oz", 
+        "tag": "FLOWER", 
+        "details": "Mr. Clean, Death By Funk, Space Hippy, & Lilac Diesel", 
+        "image": "assets/img/deli-tv-award-winners.jpg" 
+      },
       "dtg-disposables": { "title": "DTG 1G Disposables", "price": "3 for $45", "tag": "VAPES", "details": "Excludes Mr. Clean Live Terps", "image": "assets/img/deals/dt-disposables.jpg" },
       "mix-gummies": { "title": "Value Gummies 5 for $18", "image": "assets/img/highlights/hl-gummies.jpg" },
       "mix-prerolls": { "title": "Mix & Match Pre-Rolls 10 for $35", "image": "assets/img/highlights/hl-prerolls.jpg" },
