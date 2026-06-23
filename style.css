@@ -741,6 +741,187 @@ header, nav, section, .container, .wrap, .row {
 
 
 /* =========================================================
+   HERO - PERMANENT BASE + ACTIVE SEASONAL UPDATE
+   Green Labs / Luna Pier Summer Sale
+   No HTML class changes required.
+   ========================================================= */
+
+
+/* =========================================================
+   HERO - PERMANENT BASE
+   Keep this year-round. Do not touch unless redesigning layout.
+   ========================================================= */
+
+.hero-banner {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+
+  background:
+    radial-gradient(circle at 20% 20%, rgba(46, 248, 187, 0.08), transparent 28%),
+    radial-gradient(circle at 80% 70%, rgba(228, 184, 105, 0.08), transparent 28%),
+    linear-gradient(135deg, #06110d 0%, #0b1d16 45%, #030806 100%);
+
+  border-bottom: 1px solid rgba(255,255,255,.08);
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.04),
+    0 24px 80px rgba(0,0,0,.42);
+}
+
+/* Keeps actual hero content above background effects */
+.hero-banner > * {
+  position: relative;
+  z-index: 3;
+}
+
+.hero__grid {
+  position: relative;
+  z-index: 3;
+
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 1fr;
+  align-items: center;
+
+  padding: clamp(24px, 3vw, 34px);
+
+  background: rgba(7, 18, 14, .72);
+  border: 1px solid rgba(255,255,255,.10);
+
+  box-shadow:
+    inset 0 0 50px rgba(0,0,0,.22),
+    0 18px 55px rgba(0,0,0,.32);
+}
+
+@media (min-width: 900px) {
+  .hero__grid {
+    grid-template-columns: .9fr 1.25fr;
+  }
+}
+
+.hero__title {
+  font-family: "Cinzel", serif;
+  font-weight: 900;
+  font-size: clamp(40px, 5.5vw, 72px);
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  margin: 16px 0;
+  color: #ffffff;
+
+  text-shadow:
+    0 2px 0 rgba(0,0,0,.38),
+    0 0 24px rgba(255,255,255,.08);
+}
+
+.title-small {
+  font-size: 0.55em;
+  font-weight: 700;
+  color: rgba(255,255,255,.75);
+}
+
+.hero__sub {
+  font-size: clamp(16px, 1.5vw, 20px);
+  line-height: 1.5;
+  color: rgba(233,236,235,.88);
+  margin-bottom: 28px;
+  max-width: 92%;
+}
+
+.hero__badge-text {
+  font-weight: 900;
+  letter-spacing: .08em;
+  font-family: "Cinzel", serif;
+  white-space: nowrap;
+  font-size: clamp(9px, 2.5vw, 12px);
+  color: #e4b869;
+}
+
+.hero__media {
+  border-radius: var(--radius2);
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.025);
+  overflow: hidden;
+  position: relative;
+  display: block;
+
+  transition:
+    transform .3s ease,
+    border-color .3s ease,
+    box-shadow .3s ease;
+
+  backface-visibility: hidden;
+
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.08),
+    0 18px 42px rgba(0,0,0,.50);
+}
+
+.hero__media:hover {
+  transform: translateY(-4px);
+  border-color: rgba(46,248,187,.30);
+
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.14),
+    0 24px 60px rgba(0,0,0,.48);
+}
+
+.hero__img {
+  width: 100%;
+  aspect-ratio: 1548 / 1016;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: block;
+
+  transition: transform .5s ease;
+}
+
+.hero__media:hover .hero__img {
+  transform: scale(1.03);
+}
+
+.hero__mediaNote {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+
+  font-size: 12px;
+  font-weight: 800;
+  color: rgba(233,236,235,.82);
+
+  background: rgba(0,0,0,.45);
+  border: 1px solid rgba(255,255,255,.14);
+  padding: 6px 10px;
+  border-radius: 999px;
+}
+
+
+/* =========================================================
+   HERO BUTTON BASE
+   These are normal hero button styles before seasonal overrides.
+   ========================================================= */
+
+.hero-banner .hero__actions .btn,
+.hero-banner .hero__actions a,
+.hero-banner .hero__actions button {
+  position: relative;
+  overflow: hidden;
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease,
+    filter .2s ease;
+}
+
+.hero-banner .hero__actions .btn:hover,
+.hero-banner .hero__actions a:hover,
+.hero-banner .hero__actions button:hover {
+  transform: translateY(-2px);
+}
+
+
+/* =========================================================
    ACTIVE SEASONAL HERO SKIN
    Current: Fourth of July / Freedom Festival / Red, White & Buds
    To change seasons later, replace only this section.
@@ -750,9 +931,9 @@ header, nav, section, .container, .wrap, .row {
 .hero-banner {
   background:
     /* fireworks glow */
-    radial-gradient(circle at 88% 18%, rgba(255, 221, 120, 0.22), transparent 13%),
-    radial-gradient(circle at 78% 30%, rgba(220, 45, 50, 0.16), transparent 14%),
-    radial-gradient(circle at 94% 38%, rgba(47, 128, 237, 0.16), transparent 15%),
+    radial-gradient(circle at 88% 18%, rgba(255, 221, 120, 0.24), transparent 14%),
+    radial-gradient(circle at 78% 30%, rgba(220, 45, 50, 0.18), transparent 15%),
+    radial-gradient(circle at 94% 38%, rgba(47, 128, 237, 0.18), transparent 16%),
 
     /* Luna Pier lake / sunset horizon feel */
     radial-gradient(ellipse at 76% 76%, rgba(255, 119, 55, 0.15), transparent 35%),
@@ -790,73 +971,103 @@ header, nav, section, .container, .wrap, .row {
     radial-gradient(circle at 17% 48%, rgba(7, 197, 143, .08), transparent 34%);
 }
 
-/* Animated fireworks layer */
+/* Visible animated fireworks layer */
 .hero-banner::after {
   content: "";
   position: absolute;
-  z-index: 1;
-  top: 28px;
-  right: 34px;
-  width: 330px;
-  height: 270px;
+  z-index: 2;
+  top: 16px;
+  right: 18px;
+  width: 520px;
+  height: 380px;
   pointer-events: none;
-  opacity: .9;
+  opacity: .95;
 
   background:
-    /* big gold/red/blue burst */
-    radial-gradient(circle, rgba(255,255,255,.95) 0 2px, transparent 3px) 68% 22% / 7px 7px no-repeat,
+    /* large gold firework */
+    radial-gradient(circle, rgba(255,255,255,1) 0 3px, transparent 4px) 68% 22% / 10px 10px no-repeat,
     conic-gradient(
-      from 12deg,
-      transparent 0 7deg,
-      rgba(255, 219, 111, .92) 8deg 10deg,
-      transparent 11deg 26deg,
-      rgba(255,255,255,.72) 27deg 29deg,
-      transparent 30deg 48deg,
-      rgba(220,45,50,.88) 49deg 51deg,
-      transparent 52deg 72deg,
-      rgba(58,130,255,.88) 73deg 75deg,
-      transparent 76deg 360deg
-    ) 62% 20% / 165px 165px no-repeat,
+      from 10deg,
+      transparent 0 5deg,
+      rgba(255,220,100,.95) 6deg 9deg,
+      transparent 10deg 20deg,
+      rgba(255,255,255,.82) 21deg 24deg,
+      transparent 25deg 38deg,
+      rgba(255,70,60,.9) 39deg 42deg,
+      transparent 43deg 57deg,
+      rgba(65,140,255,.9) 58deg 61deg,
+      transparent 62deg 75deg,
+      rgba(255,220,100,.85) 76deg 79deg,
+      transparent 80deg 360deg
+    ) 58% 16% / 230px 230px no-repeat,
 
-    /* smaller red/blue burst */
-    radial-gradient(circle, rgba(255,255,255,.9) 0 2px, transparent 3px) 28% 50% / 7px 7px no-repeat,
+    /* red, white, blue burst */
+    radial-gradient(circle, rgba(255,255,255,.95) 0 3px, transparent 4px) 32% 48% / 10px 10px no-repeat,
     conic-gradient(
-      from -20deg,
-      transparent 0 9deg,
-      rgba(255,66,58,.88) 10deg 12deg,
-      transparent 13deg 34deg,
-      rgba(255,255,255,.7) 35deg 37deg,
-      transparent 38deg 58deg,
-      rgba(54,125,255,.86) 59deg 61deg,
-      transparent 62deg 360deg
-    ) 25% 48% / 125px 125px no-repeat,
+      from -18deg,
+      transparent 0 6deg,
+      rgba(255,60,55,.92) 7deg 10deg,
+      transparent 11deg 23deg,
+      rgba(255,255,255,.82) 24deg 27deg,
+      transparent 28deg 42deg,
+      rgba(65,135,255,.92) 43deg 46deg,
+      transparent 47deg 62deg,
+      rgba(255,220,100,.75) 63deg 66deg,
+      transparent 67deg 360deg
+    ) 28% 46% / 175px 175px no-repeat,
 
-    /* tiny sparks */
-    radial-gradient(circle, rgba(255,238,165,.95) 0 2px, transparent 3px) 84% 58% / 9px 9px no-repeat,
-    radial-gradient(circle, rgba(255,255,255,.75) 0 1px, transparent 2px) 12% 12% / 6px 6px no-repeat,
-    radial-gradient(circle, rgba(70,145,255,.85) 0 1px, transparent 2px) 18% 78% / 6px 6px no-repeat,
-    radial-gradient(circle, rgba(255,80,75,.85) 0 1px, transparent 2px) 90% 12% / 6px 6px no-repeat;
+    /* smaller distant firework */
+    radial-gradient(circle, rgba(255,255,255,.9) 0 2px, transparent 3px) 88% 56% / 9px 9px no-repeat,
+    conic-gradient(
+      from 45deg,
+      transparent 0 8deg,
+      rgba(255,238,165,.85) 9deg 12deg,
+      transparent 13deg 28deg,
+      rgba(255,80,75,.8) 29deg 32deg,
+      transparent 33deg 48deg,
+      rgba(70,145,255,.82) 49deg 52deg,
+      transparent 53deg 360deg
+    ) 84% 54% / 130px 130px no-repeat,
 
-  filter: drop-shadow(0 0 14px rgba(255,211,105,.36));
-  animation: glFireworksPulse 4.8s ease-in-out infinite;
+    /* extra spark dots */
+    radial-gradient(circle, rgba(255,238,165,.95) 0 2px, transparent 3px) 82% 12% / 9px 9px no-repeat,
+    radial-gradient(circle, rgba(255,255,255,.85) 0 2px, transparent 3px) 14% 16% / 8px 8px no-repeat,
+    radial-gradient(circle, rgba(70,145,255,.9) 0 2px, transparent 3px) 18% 78% / 8px 8px no-repeat,
+    radial-gradient(circle, rgba(255,80,75,.9) 0 2px, transparent 3px) 92% 16% / 8px 8px no-repeat,
+    radial-gradient(circle, rgba(255,255,255,.75) 0 1px, transparent 2px) 54% 80% / 6px 6px no-repeat;
+
+  filter:
+    drop-shadow(0 0 14px rgba(255,211,105,.45))
+    drop-shadow(0 0 24px rgba(47,128,237,.22));
+
+  animation: glFireworksPulse 3.2s ease-in-out infinite;
 }
 
 @keyframes glFireworksPulse {
-  0%, 100% {
-    opacity: .55;
-    transform: scale(.94) rotate(0deg);
-    filter: drop-shadow(0 0 7px rgba(255,211,105,.25));
+  0% {
+    opacity: .30;
+    transform: scale(.78);
+    filter:
+      drop-shadow(0 0 4px rgba(255,211,105,.20))
+      drop-shadow(0 0 8px rgba(47,128,237,.10));
   }
 
-  45% {
+  30% {
     opacity: 1;
-    transform: scale(1.04) rotate(1deg);
-    filter: drop-shadow(0 0 20px rgba(255,211,105,.55));
+    transform: scale(1.06);
+    filter:
+      drop-shadow(0 0 22px rgba(255,211,105,.65))
+      drop-shadow(0 0 34px rgba(47,128,237,.32));
   }
 
-  70% {
-    opacity: .82;
-    transform: scale(.98) rotate(-.5deg);
+  58% {
+    opacity: .72;
+    transform: scale(.96);
+  }
+
+  100% {
+    opacity: .30;
+    transform: scale(.78);
   }
 }
 
@@ -890,23 +1101,9 @@ header, nav, section, .container, .wrap, .row {
   opacity: .9;
 }
 
-/* Gold star accent */
+/* Remove random hanging stars */
 .hero__grid::after {
-  content: "★";
-  position: absolute;
-  top: 18px;
-  right: 28px;
-
-  color: #f4c95d;
-  font-size: 28px;
-  opacity: .85;
-
-  text-shadow:
-    0 0 12px rgba(244,201,93,.55),
-    24px 10px 0 rgba(255,255,255,.55),
-    48px 0 0 rgba(47,128,237,.55);
-
-  pointer-events: none;
+  content: none;
 }
 
 /* Seasonal badge shimmer */
@@ -1032,6 +1229,73 @@ header, nav, section, .container, .wrap, .row {
 
   border: 1px solid rgba(255,255,255,.22);
 }
+
+
+/* =========================================================
+   MOBILE ADJUSTMENTS
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .hero__grid {
+    padding: 24px 18px;
+    border-left-width: 3px;
+    border-right-width: 3px;
+  }
+
+  .hero__sub {
+    max-width: 100%;
+  }
+
+  .hero-banner::after {
+    width: 260px;
+    height: 190px;
+    top: 12px;
+    right: 4px;
+    opacity: .58;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-banner {
+    padding-top: 32px;
+    padding-bottom: 36px;
+  }
+
+  .hero-banner::after {
+    width: 210px;
+    height: 160px;
+    opacity: .42;
+  }
+
+  .hero-banner .hero__actions .btn,
+  .hero-banner .hero__actions a,
+  .hero-banner .hero__actions button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__media,
+  .hero__img,
+  .hero-banner::after,
+  .hero__badge-text,
+  .hero-banner .hero__actions .btn,
+  .hero-banner .hero__actions a,
+  .hero-banner .hero__actions button {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* =========================================================
+   END HERO + ACTIVE SEASONAL UPDATE
+   ========================================================= */
 
 
 /* =========================================================
