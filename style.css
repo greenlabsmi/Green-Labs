@@ -561,7 +561,7 @@ header, nav, section, .container, .wrap, .row {
 }
 
 /* =========================================================
-   HERO
+   HERO - CLEAN BASE (No !important overrides)
 ========================================================= */
 .hero__grid {
   display: grid; 
@@ -570,7 +570,6 @@ header, nav, section, .container, .wrap, .row {
   align-items: center; 
 }
 
-/* Hero Typography */
 .hero__title {
   font-family: "Cinzel", serif;
   font-weight: 900;
@@ -581,15 +580,13 @@ header, nav, section, .container, .wrap, .row {
   color: #ffffff;
 }
 
-/* Elegant typographic rhythm for connector words */
 .title-small {
-  font-size: 0.55em; /* Keeps them perfectly scaled relative to the big text */
-  font-weight: 700; /* Slightly less heavy */
-  color: rgba(255, 255, 255, 0.75); /* Softens them so the main words pop */
+  font-size: 0.55em;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.75);
 }
 
 .hero__sub {
-  /* Scales slightly from 16px to 20px */
   font-size: clamp(16px, 1.5vw, 20px);
   line-height: 1.5;
   color: rgba(233, 236, 235, 0.85);
@@ -597,41 +594,24 @@ header, nav, section, .container, .wrap, .row {
   max-width: 90%;
 }
 
-/* Container for the badge */
-
-/* The text inside with the single-line fix and glisten effect */
 .hero__badge-text {
   font-weight: 900;
   letter-spacing: .08em;
   font-family: "Cinzel", serif;
-  
-  /* Force single line and smart scaling for mobile */
   white-space: nowrap;
   font-size: clamp(9px, 2.5vw, 12px);
-
-  /* The text-only gold glisten */
-  background: linear-gradient(
-    120deg,
-    rgba(228, 184, 105, 0.95) 0%,
-    rgba(228, 184, 105, 0.95) 45%,
-    #ffffff 50%,
-    rgba(228, 184, 105, 0.95) 55%,
-    rgba(228, 184, 105, 0.95) 100%
-  );
+  background: linear-gradient(120deg, rgba(228, 184, 105, 0.95) 0%, rgba(228, 184, 105, 0.95) 45%, #ffffff 50%, rgba(228, 184, 105, 0.95) 55%, rgba(228, 184, 105, 0.95) 100%);
   background-size: 250% 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: textGlisten 6s linear infinite;
 }
 
-/* The animation timing */
 @keyframes textGlisten {
   0% { background-position: 100% 50%; }
-  15% { background-position: 0% 50%; } /* Smooth glisten across */
-  100% { background-position: 0% 50%; } /* Long pause before next glisten */
+  15%, 100% { background-position: 0% 50%; }
 }
 
-/* Update the existing hero__media class to act as a block link */
 .hero__media {
   border-radius: var(--radius2);
   border: 1px solid rgba(255,255,255,.10);
@@ -641,47 +621,33 @@ header, nav, section, .container, .wrap, .row {
   position: relative;
   display: block;
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-  /* NEW: Hardware acceleration fixes to prevent blur */
   backface-visibility: hidden;
-  transform: translateZ(0);
 }
 
-/* Add hover effects for the new link wrapper */
-.hero__media--link {
-  cursor: pointer;
-}
-.hero__media--link:hover {
-  transform: translateY(-4px) translateZ(0); /* added translateZ */
+.hero__media:hover {
+  transform: translateY(-4px);
   box-shadow: 0 24px 60px rgba(0,0,0,.45);
   border-color: rgba(46,248,187,.30);
 }
 
 .hero__img {
-    width: 100%;
-    height: auto; /* Replaces the restrictive clamp height */
-    aspect-ratio: 1548 / 1016; /* Mathematically locks in your exact dimensions */
-    background-size: cover !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
-    transition: transform 0.5s ease;
-    backface-visibility: hidden;
-    transform: scale(1.01) translateZ(0); /* The 1.01 scale eliminates the border gap! */
-    will-change: transform;
+  width: 100%;
+  aspect-ratio: 1548 / 1016;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: transform 0.5s ease;
+  display: block;
 }
 
-/* Make sure the hover scales up smoothly from the 1.01 base */
-.hero__media--link:hover .hero__img {
-    transform: scale(1.05) translateZ(0);
+.hero__media:hover .hero__img {
+  transform: scale(1.03);
 }
 
-/* Trigger the zoom when the wrapper is hovered */
-.hero__media--link:hover .hero__img {
-  transform: scale(1.03) translateZ(0); /* added translateZ */
-}
-.hero__mediaNote{
-  position:absolute;
-  bottom:10px;
-  right:10px;
+.hero__mediaNote {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
   font-size: 12px;
   font-weight: 800;
   color: rgba(233,236,235,.78);
@@ -690,33 +656,6 @@ header, nav, section, .container, .wrap, .row {
   padding: 6px 10px;
   border-radius: 999px;
 }
-.hero__mediaNote span{ color: var(--brand2); }
-
-.trust{
-  margin-top:14px;
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-}
-.trust__chip{
-  display:inline-flex;
-  gap:8px;
-  align-items:center;
-  padding: 8px 12px;
-  border-radius:999px;
-  border: 1px solid rgba(255,255,255,.10);
-  background: rgba(255,255,255,.03);
-  color: rgba(233,236,235,.92);
-  font-weight: 800;
-  font-size: 13px;
-}
-.trust__dot{
-  width:10px; height:10px;
-  border-radius:999px;
-  background:#16a34a;
-  box-shadow: 0 0 0 3px rgba(22,163,74,.18);
-}
-.trust__ico{ opacity:.9; }
 
 /* Sold Out Overlay */
 .hero__sold-out {
@@ -724,73 +663,22 @@ header, nav, section, .container, .wrap, .row {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) rotate(-10deg);
-  background: rgba(230, 57, 70, 0.95); /* High-contrast Red */
+  background: rgba(230, 57, 70, 0.95);
   color: #fff;
   padding: 12px 35px;
   font-family: "Cinzel", serif;
   font-size: clamp(32px, 6vw, 64px);
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
   border: 4px solid #fff;
   border-radius: 4px;
-  box-shadow: 0 15px 45px rgba(0,0,0,0.6);
   z-index: 10;
-  pointer-events: none; /* Ensures the link underneath still works */
-  white-space: nowrap;
 }
 
-@media (max-width: 768px) {
-  /* This targets the spacing directly between the text block and the image on mobile */
-  .hero__grid {
-    gap: 20px !important; 
-  }
-  
-  /* These act as a fail-safe in case margins are pushing them apart */
-  .hero__copy {
-    margin-bottom: 0 !important;
-  }
-  
-  .hero__media {
-    margin-top: 0 !important;
-  }
-}
-
-/* Kills the background gap/frame around the image */
-.hero__media {
-  padding: 0 !important;
-  background: transparent !important;
-  border: none !important;
-  overflow: hidden; /* Ensures the image doesn't bleed out of any rounded corners */
-  display: block;
-}
-
-/* Forces the image to stretch wall-to-wall inside that box */
-.hero__img {
-  width: 100% !important;
-  height: 100% !important; 
-  aspect-ratio: 1548 / 1016;
-  background-size: cover !important;
-  background-position: center !important;
-  margin: 0 !important;
-  display: block;
-}
-
-/* ============================================================
-   EXPAND MAIN HERO GRAPHIC ON DESKTOP
-============================================================ */
+/* Desktop Expansion */
 @media (min-width: 900px) {
-  /* This shifts the grid so the image gets more room than the text */
   .hero__grid {
-    grid-template-columns: 1fr 1.25fr !important; /* Makes the right side 25% wider */
-    align-items: center !important; 
-  }
-  
-  /* This kills any hidden max-width limits holding the image back */
-  .hero__media {
-    max-width: 100% !important;
-    width: 100% !important;
-    margin: 0 !important; /* Sucks out any extra margins pushing it inward */
+    grid-template-columns: 1fr 1.25fr;
   }
 }
 
@@ -4892,40 +4780,3 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
         0 0 30px rgba(0, 0, 0, 0.8) !important;
 }
 
-
-/* --- Luna Pier Summer Night Theme --- */
-
-/* 1. Starry Night Hero Background */
-.hero-banner {
-    background: radial-gradient(circle at 20% 30%, #ffffff11 1px, transparent 1px),
-                radial-gradient(circle at 80% 70%, #ffffff11 2px, transparent 2px),
-                linear-gradient(180deg, #0a192f 0%, #112240 100%) !important;
-    background-size: 200px 200px, 300px 300px, 100% 100%;
-    position: relative;
-    overflow: hidden;
-    border-bottom: 4px solid #d9534f;
-}
-
-/* 2. Firework Accents (Subtle pops of color) */
-.hero-banner::after {
-    content: "✨";
-    position: absolute;
-    top: 20%;
-    left: 70%;
-    font-size: 2rem;
-    opacity: 0.6;
-    animation: fireworkPop 3s infinite;
-}
-
-@keyframes fireworkPop {
-    0%, 100% { opacity: 0; transform: scale(0.5); }
-    50% { opacity: 0.8; transform: scale(1.2); }
-}
-
-/* 3. Red, White & Blue Pillar/Container Accents */
-.deli-container, .deals-section {
-    border-left: 4px solid #d9534f; /* Red */
-    border-right: 4px solid #337ab7; /* Blue */
-    background-color: #fcfcfc; /* White */
-    padding: 20px;
-}
