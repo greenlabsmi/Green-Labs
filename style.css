@@ -561,8 +561,8 @@ header, nav, section, .container, .wrap, .row {
 }
 
 /* =========================================================
-   HERO - CLEAN BASE (No !important overrides)
-========================================================= */
+   HERO - CLEAN BASE
+   ========================================================= */
 .hero__grid {
   display: grid; 
   gap: 18px; 
@@ -620,7 +620,7 @@ header, nav, section, .container, .wrap, .row {
   box-shadow: var(--shadow2);
   position: relative;
   display: block;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.3s ease;
   backface-visibility: hidden;
 }
 
@@ -657,30 +657,67 @@ header, nav, section, .container, .wrap, .row {
   border-radius: 999px;
 }
 
-/* Sold Out Overlay */
-.hero__sold-out {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(-10deg);
-  background: rgba(230, 57, 70, 0.95);
-  color: #fff;
-  padding: 12px 35px;
-  font-family: "Cinzel", serif;
-  font-size: clamp(32px, 6vw, 64px);
-  font-weight: 900;
-  text-transform: uppercase;
-  border: 4px solid #fff;
-  border-radius: 4px;
-  z-index: 10;
-}
-
-/* Desktop Expansion */
 @media (min-width: 900px) {
   .hero__grid {
     grid-template-columns: 1fr 1.25fr;
   }
 }
+
+/* =========================================================
+   SEASONAL UPDATES (Freedom Festival / Other)
+   Add, remove, or modify code here. It will override the base.
+   ========================================================= */
+
+/* 1. Starry Night Hero Background */
+.hero-banner, .section--hero {
+    background: radial-gradient(circle at 20% 30%, #ffffff11 1px, transparent 1px),
+                radial-gradient(circle at 80% 70%, #ffffff11 2px, transparent 2px),
+                linear-gradient(180deg, #0a192f 0%, #112240 100%);
+    background-size: 200px 200px, 300px 300px, 100% 100%;
+    border-bottom: 4px solid #d9534f;
+}
+
+/* 2. Red, White & Blue Accents */
+.hero__grid, .deli-container, .deals-section {
+    border-left: 4px solid #d9534f;
+    border-right: 4px solid #337ab7;
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+/* 3. Subtle Fireworks Pop */
+.hero.section--hero::after {
+    content: "✨";
+    position: absolute;
+    top: 20%;
+    right: 15%;
+    font-size: 3rem;
+    opacity: 0.6;
+    animation: fireworkPop 4s infinite ease-in-out;
+    pointer-events: none;
+}
+
+@keyframes fireworkPop {
+    0%, 100% { opacity: 0; transform: scale(0.2); }
+    50% { opacity: 0.9; transform: scale(1.5); }
+}
+
+/* 4. Mobile Layout Fixes */
+@media (max-width: 768px) {
+  .section--hero {
+    min-height: 550px; 
+    height: auto;
+    background-color: #0b1a14;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+  }
+}
+
+/* =========================================================
+   END SEASONAL UPDATES
+   ========================================================= */
+
+
 
 /* =========================================================
    Difference row
@@ -4699,131 +4736,4 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
   }
 }
 
-/* ============================================================
-   SAFE HOMEPAGE HERO BANNER FIX (NO CROP, NO COLLAPSE)
-   ============================================================ */
-@media (max-width: 768px) {
-  
-  /* 1. Ensure the container has enough height so the buttons and image both fit */
-  .section--hero {
-    min-height: 550px !important; 
-    height: auto !important;
-    background-color: #0b1a14 !important; /* Seamless Canva dark green */
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 20px;
-  }
 
-  /* 2. Target the background layers and force them to "contain" rather than "cover" */
-  .section--hero,
-  .section--hero [style*="background"],
-  .section--hero [class*="bg"],
-  .section--hero [class*="media"] {
-    background-size: contain !important;
-    background-position: center bottom !important; /* Pins image below buttons */
-    background-repeat: no-repeat !important;
-    transform: none !important; /* Kills parallax scaling */
-  }
-
-  /* 3. Catch-all in case the graphic was inserted as an actual HTML image */
-  .section--hero img {
-    max-width: 100% !important;
-    height: auto !important;
-    object-fit: contain !important;
-    margin-top: auto; /* Pushes the image to the bottom of the section */
-  }
-}
-
-/* ============================================================
-   TODAY'S HIGHLIGHTS FIXES
-============================================================ */
-
-/* 1. Un-crop the main hero image and lock its exact shape */
-#todays-highlights .thHero {
-    height: auto !important;
-    aspect-ratio: 1805 / 871; /* Exact dimensions locked in! */
-    background-size: cover !important;
-    background-position: center !important;
-    box-shadow: none !important; /* Kills inset shadows causing tint */
-}
-
-/* 2. Remove the dark tint overlay ONLY from the big hero graphic */
-#todays-highlights .thHero::after,
-#todays-highlights .thHero::before {
-    display: none !important;
-    background: transparent !important;
-    background-image: none !important;
-    box-shadow: none !important;
-}
-
-/* 2b. Hide any extra gradient overlay layers */
-#todays-highlights .thHero [class*="overlay"],
-#todays-highlights .thHero [class*="tint"],
-#todays-highlights .thHero [class*="gradient"] {
-    display: none !important;
-}
-
-/* 3. Hide the floating "Shop Deal" text on the big hero since the graphic does the talking */
-#todays-highlights .thHero .thContent {
-    display: none !important; 
-}
-
-/* 4. Fix the unreadable text on the smaller mid-cards (like the Carts) */
-#todays-highlights .thMid .thH3,
-#todays-highlights .thMid .thPrice,
-#todays-highlights .thMid .thDetails,
-#todays-highlights .thMid .thCta,
-#todays-highlights .thMid .thPill {
-    text-shadow: 
-        0 2px 4px rgba(0, 0, 0, 0.9), 
-        0 4px 15px rgba(0, 0, 0, 0.9),
-        0 0 30px rgba(0, 0, 0, 0.8) !important;
-}
-
-
-
-
-
-
-/* =========================================================
-   FREEDOM FESTIVAL THEME (Active: June 2026)
-   ========================================================= */
-
-/* 1. Starry Night Hero Background */
-.hero-banner {
-    background: radial-gradient(circle at 20% 30%, #ffffff11 1px, transparent 1px),
-                radial-gradient(circle at 80% 70%, #ffffff11 2px, transparent 2px),
-                linear-gradient(180deg, #0a192f 0%, #112240 100%);
-    background-size: 200px 200px, 300px 300px, 100% 100%;
-    position: relative;
-    overflow: hidden;
-    border-bottom: 4px solid #d9534f;
-}
-
-/* 2. Red, White & Blue Accents */
-.hero__grid, .deli-container, .deals-section {
-    border-left: 4px solid #d9534f; /* Red */
-    border-right: 4px solid #337ab7; /* Blue */
-    background-color: rgba(255, 255, 255, 0.03);
-}
-
-/* 3. Subtle Fireworks Pop */
-.hero-banner::after {
-    content: "✨";
-    position: absolute;
-    top: 20%;
-    right: 15%;
-    font-size: 3rem;
-    opacity: 0.6;
-    animation: fireworkPop 4s infinite ease-in-out;
-    pointer-events: none;
-}
-
-@keyframes fireworkPop {
-    0%, 100% { opacity: 0; transform: scale(0.2); }
-    50% { opacity: 0.9; transform: scale(1.5); }
-}
-
-/* =========================================================
-   END FESTIVAL THEME
-   ========================================================= */
