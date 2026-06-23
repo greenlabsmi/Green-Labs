@@ -664,33 +664,35 @@ header, nav, section, .container, .wrap, .row {
 }
 
 /* =========================================================
-   SEASONAL UPDATES (Freedom Festival / Other)
-   Add, remove, or modify code here. It will override the base.
+   SEASONAL UPDATES (Freedom Festival)
    ========================================================= */
 
-/* 1. Starry Night Hero Background */
-.hero-banner, .section--hero {
+/* 1. Starry Night Hero Background - Applied to banner only */
+.hero-banner {
     background: radial-gradient(circle at 20% 30%, #ffffff11 1px, transparent 1px),
                 radial-gradient(circle at 80% 70%, #ffffff11 2px, transparent 2px),
-                linear-gradient(180deg, #0a192f 0%, #112240 100%);
+                linear-gradient(180deg, #0a192f 0%, #112240 100%) !important;
     background-size: 200px 200px, 300px 300px, 100% 100%;
     border-bottom: 4px solid #d9534f;
+    position: relative;
 }
 
-/* 2. Red, White & Blue Accents */
+/* 2. Red, White & Blue Accents - Target specific containers */
 .hero__grid, .deli-container, .deals-section {
     border-left: 4px solid #d9534f;
     border-right: 4px solid #337ab7;
     background-color: rgba(255, 255, 255, 0.03);
+    padding: 20px;
+    border-radius: 8px;
 }
 
-/* 3. Subtle Fireworks Pop */
-.hero.section--hero::after {
+/* 3. Subtle Fireworks - Fixed position inside the hero-banner */
+.hero-banner::after {
     content: "✨";
     position: absolute;
-    top: 20%;
-    right: 15%;
-    font-size: 3rem;
+    top: 5%; /* Moved higher to avoid layout interference */
+    right: 5%;
+    font-size: 2rem;
     opacity: 0.6;
     animation: fireworkPop 4s infinite ease-in-out;
     pointer-events: none;
@@ -701,15 +703,11 @@ header, nav, section, .container, .wrap, .row {
     50% { opacity: 0.9; transform: scale(1.5); }
 }
 
-/* 4. Mobile Layout Fixes */
+/* 4. Mobile Layout - Cleaned to avoid height clipping */
 @media (max-width: 768px) {
-  .section--hero {
-    min-height: 550px; 
-    height: auto;
-    background-color: #0b1a14;
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 20px;
+  .hero-banner {
+    padding-top: 40px;
+    padding-bottom: 40px;
   }
 }
 
