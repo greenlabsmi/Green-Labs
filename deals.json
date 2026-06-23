@@ -44,7 +44,7 @@
     "layout": {
       "hero": "deli-oz",
       "mid": ["mix-carts", "dtg-disposables"],
-      "scroll": ["mix-gummies", "kshn-pouches", "play-gummies", "fire-styxx", "hash-house-rosin-cart", "redbud-carts", "premium-gummies", "mix-prerolls"]
+      "scroll": ["mix-gummies", "kshn-pouches", "play-gummies", "fire-styxx", "hash-house-rosin-cart", "premium-gummies", "mix-prerolls"]
     },
     "items": {
       "mix-carts": { "title": "Mix & Match 1G Carts", "price": "5 for $35", "tag": "VAPES", "details": "Party Favors · Mr. Vapor · Crude Boys · Drip", "image": "assets/img/highlights/mixmatch-carts.jpg" },
@@ -58,7 +58,6 @@
       "dtg-disposables": { "title": "DTG 1G Disposables", "price": "3 for $45", "tag": "VAPES", "details": "Excludes Mr. Clean Live Terps", "image": "assets/img/deals/dt-disposables.jpg" },
       "mix-gummies": { "title": "Value Gummies 5 for $18", "image": "assets/img/highlights/hl-gummies.jpg" },
       "mix-prerolls": { "title": "Mix & Match Pre-Rolls 10 for $35", "image": "assets/img/highlights/hl-prerolls.jpg" },
-      "redbud-carts": { "title": "Redbud 1g Cart 3 for $25", "image": "assets/img/highlights/hl-redbud.jpg" },
       "premium-gummies": { "title": "Premium Gummies 5 for $35", "image": "assets/img/highlights/hl-premium-gummies.jpg" },
       "kshn-pouches": { "title": "KSHN Pouches 200mg 2 for $25", "image": "assets/img/highlights/hl-kshn.jpg" },
       "hash-house-rosin-cart": { "title": "Hash House Rosin Cart $15", "image": "assets/img/highlights/hash-house-hl.jpg" },
@@ -111,7 +110,8 @@
           "items": [
             "Mix & Match 1G Carts — $9ea, 3/$25, 5/$35, or 10/$65",
             "Mix & Match Brands Include: Party Favors, Daily Dose, Play, Mr. Vapor, Jungle Juice, Crude Boys, and Drip",
-            "Redbud Roots 1G Full Spectrum Carts — $10ea or 3/$25",
+            "PLAY 1g Hash Infused — 10/$65",
+            "Cresco 1g Live Resin Carts — $30ea",
             "Five Star Sugar Sauce Carts — $20ea or 4/$90",
             "Rove 1G Live Resin Cartridges — $25ea",
             "Hash House Rosin Cart — $15"
@@ -122,7 +122,10 @@
           "items": [
             "Dutch Touch Genetics 1G Disposables — $20ea or 3/$45",
             "Dutch Touch Genetics 1G Disposables Exclude Award Winning Strains",
-            "Superfire 1G Disposables — $15ea",
+            "Superfire 1G Disposables — $15ea or 3/$40",
+            "Grip 2g Live Resin Disposables — $20ea",
+            "Rove 1g Live Resin Diamond Pods — $25",
+            "Rove 1g Live Resin Diamond Disposable — $35",
             "Franklin Fields Live Resin 1G Disposable — $25ea",
             "Mitten 2G Disposables — $25ea — Staff Favorite",
             "Party Favors 3G Disposable — $30ea",
@@ -140,6 +143,7 @@
           "items": [
             "Grip Infused Pre-Rolls — $4ea",
             "Sin City 1.3G Infused Pre-Rolls — $4ea or 10/$35",
+            "Blazer 1g Live Resin Pre-Rolls — $5ea",
             "Fire Styxx and Bonfire Pre-Rolls — $6ea or 10/$55",
             "Swisher 5-Pack Blunts — $30",
             "Dutch Touch Infused Pre-Rolls 5-Packs — $30",
@@ -203,13 +207,16 @@
             "Element Live Resin 2G — $25",
             "Dutch Touch 3.5G Batter — $40",
             "Dutch Touch 3.5G Batter Excludes Award Winning Strains",
-            "Dutch Touch Genetics 3.5G Diamonds — $90",
+            "Death Star & Guicy G 14g Batter — $80",
+            "Mr. Clean & Hash D #2 14g Batter — $105",
             "Dutch Touch Genetics 14G Batter — $140"
           ]
         },
         {
           "title": "Rosin Concentrates",
           "items": [
+            "Death by Funk Indoor Rosin — $25 per Gram",
+            "Death By Funk Outdoor Rosin — $45 per 3.5g",
             "Death By Funk Live Hash Rosin — $15 for 1G, $45 for 3.5G, or $160 for 14G",
             "Light Sky Farms 1G Rosin — $35",
             "Hash D and Chernobyl 3.5G Rosin — $60",
