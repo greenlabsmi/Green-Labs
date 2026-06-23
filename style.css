@@ -4893,63 +4893,39 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
 }
 
 
-/* --- Luna Pier Freedom Festival Theming (Combined Update) --- */
+/* --- Luna Pier Summer Night Theme --- */
 
-/* 1. Enhanced Freedom Festival Ticker */
-.top-ticker {
-    background: linear-gradient(90deg, #1a2a6c, #b21f1f, #fdbb2d);
-    background-size: 300% 300%;
-    animation: festivalGradient 8s ease infinite;
-    color: #ffffff;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    padding: 12px 0;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-    border-bottom: 2px solid #fdbb2d;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-}
-
-@keyframes festivalGradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-.festival-highlight {
-    color: #fdbb2d;
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0% { opacity: 1; }
-    50% { opacity: 0.7; }
-    100% { opacity: 1; }
-}
-
-/* 2. Hero Section: Atmospheric Night/Firework Vibe */
+/* 1. Starry Night Hero Background */
 .hero-banner {
-    background: linear-gradient(180deg, #0a192f 0%, #112240 100%) !important;
+    background: radial-gradient(circle at 20% 30%, #ffffff11 1px, transparent 1px),
+                radial-gradient(circle at 80% 70%, #ffffff11 2px, transparent 2px),
+                linear-gradient(180deg, #0a192f 0%, #112240 100%) !important;
+    background-size: 200px 200px, 300px 300px, 100% 100%;
     position: relative;
     overflow: hidden;
     border-bottom: 4px solid #d9534f;
 }
 
-.hero-banner h1 {
-    text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
-    color: #ffffff;
+/* 2. Firework Accents (Subtle pops of color) */
+.hero-banner::after {
+    content: "✨";
+    position: absolute;
+    top: 20%;
+    left: 70%;
+    font-size: 2rem;
+    opacity: 0.6;
+    animation: fireworkPop 3s infinite;
 }
 
-/* 3. CTA Buttons: Summer Sunset/Sand Glow */
-.btn-primary {
-    border: 2px solid #fdbb2d !important;
-    box-shadow: 0 0 15px rgba(240, 173, 78, 0.4);
-    transition: all 0.3s ease;
+@keyframes fireworkPop {
+    0%, 100% { opacity: 0; transform: scale(0.5); }
+    50% { opacity: 0.8; transform: scale(1.2); }
 }
 
-.btn-primary:hover {
-    background-color: #fdbb2d !important;
-    color: #0a192f;
+/* 3. Red, White & Blue Pillar/Container Accents */
+.deli-container, .deals-section {
+    border-left: 4px solid #d9534f; /* Red */
+    border-right: 4px solid #337ab7; /* Blue */
+    background-color: #fcfcfc; /* White */
+    padding: 20px;
 }
