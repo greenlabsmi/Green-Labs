@@ -561,37 +561,90 @@ header, nav, section, .container, .wrap, .row {
 }
 
 /* =========================================================
-   HERO - CLEAN BASE
+   HERO - PERMANENT BASE + ACTIVE SEASONAL UPDATE
+   Green Labs / Luna Pier Summer Sale
+   No HTML class changes required.
    ========================================================= */
+
+
+/* =========================================================
+   HERO - PERMANENT BASE
+   Keep this year-round. Do not touch unless redesigning layout.
+   ========================================================= */
+
+.hero-banner {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+
+  background:
+    radial-gradient(circle at 20% 20%, rgba(46, 248, 187, 0.08), transparent 28%),
+    radial-gradient(circle at 80% 70%, rgba(228, 184, 105, 0.08), transparent 28%),
+    linear-gradient(135deg, #06110d 0%, #0b1d16 45%, #030806 100%);
+
+  border-bottom: 1px solid rgba(255,255,255,.08);
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.04),
+    0 24px 80px rgba(0,0,0,.42);
+}
+
+/* Keeps actual hero content above background effects */
+.hero-banner > * {
+  position: relative;
+  z-index: 2;
+}
+
 .hero__grid {
-  display: grid; 
-  gap: 18px; 
-  grid-template-columns: 1fr; 
-  align-items: center; 
+  position: relative;
+
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 1fr;
+  align-items: center;
+
+  padding: clamp(24px, 3vw, 34px);
+
+  background: rgba(7, 18, 14, .72);
+  border: 1px solid rgba(255,255,255,.10);
+
+  box-shadow:
+    inset 0 0 50px rgba(0,0,0,.22),
+    0 18px 55px rgba(0,0,0,.32);
+}
+
+@media (min-width: 900px) {
+  .hero__grid {
+    grid-template-columns: .9fr 1.25fr;
+  }
 }
 
 .hero__title {
   font-family: "Cinzel", serif;
   font-weight: 900;
-  font-size: clamp(40px, 5.5vw, 72px); 
+  font-size: clamp(40px, 5.5vw, 72px);
   line-height: 1.05;
   letter-spacing: 0.02em;
   margin: 16px 0;
   color: #ffffff;
+
+  text-shadow:
+    0 2px 0 rgba(0,0,0,.38),
+    0 0 24px rgba(255,255,255,.08);
 }
 
 .title-small {
   font-size: 0.55em;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255,255,255,.75);
 }
 
 .hero__sub {
   font-size: clamp(16px, 1.5vw, 20px);
   line-height: 1.5;
-  color: rgba(233, 236, 235, 0.85);
+  color: rgba(233,236,235,.88);
   margin-bottom: 28px;
-  max-width: 90%;
+  max-width: 92%;
 }
 
 .hero__badge-text {
@@ -600,34 +653,36 @@ header, nav, section, .container, .wrap, .row {
   font-family: "Cinzel", serif;
   white-space: nowrap;
   font-size: clamp(9px, 2.5vw, 12px);
-  background: linear-gradient(120deg, rgba(228, 184, 105, 0.95) 0%, rgba(228, 184, 105, 0.95) 45%, #ffffff 50%, rgba(228, 184, 105, 0.95) 55%, rgba(228, 184, 105, 0.95) 100%);
-  background-size: 250% 100%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: textGlisten 6s linear infinite;
-}
-
-@keyframes textGlisten {
-  0% { background-position: 100% 50%; }
-  15%, 100% { background-position: 0% 50%; }
+  color: #e4b869;
 }
 
 .hero__media {
   border-radius: var(--radius2);
-  border: 1px solid rgba(255,255,255,.10);
-  background: rgba(255,255,255,.02);
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.025);
   overflow: hidden;
-  box-shadow: var(--shadow2);
   position: relative;
   display: block;
-  transition: transform 0.3s ease;
+
+  transition:
+    transform .3s ease,
+    border-color .3s ease,
+    box-shadow .3s ease;
+
   backface-visibility: hidden;
+
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.08),
+    0 18px 42px rgba(0,0,0,.50);
 }
 
 .hero__media:hover {
   transform: translateY(-4px);
-  box-shadow: 0 24px 60px rgba(0,0,0,.45);
   border-color: rgba(46,248,187,.30);
+
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.14),
+    0 24px 60px rgba(0,0,0,.48);
 }
 
 .hero__img {
@@ -636,8 +691,9 @@ header, nav, section, .container, .wrap, .row {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  transition: transform 0.5s ease;
   display: block;
+
+  transition: transform .5s ease;
 }
 
 .hero__media:hover .hero__img {
@@ -648,71 +704,405 @@ header, nav, section, .container, .wrap, .row {
   position: absolute;
   bottom: 10px;
   right: 10px;
+
   font-size: 12px;
   font-weight: 800;
-  color: rgba(233,236,235,.78);
-  background: rgba(0,0,0,.35);
-  border: 1px solid rgba(255,255,255,.10);
+  color: rgba(233,236,235,.82);
+
+  background: rgba(0,0,0,.45);
+  border: 1px solid rgba(255,255,255,.14);
   padding: 6px 10px;
   border-radius: 999px;
 }
 
-@media (min-width: 900px) {
-  .hero__grid {
-    grid-template-columns: 1fr 1.25fr;
-  }
-}
 
 /* =========================================================
-   SEASONAL UPDATES (Freedom Festival)
+   HERO BUTTON BASE
+   These are normal hero button styles before seasonal overrides.
    ========================================================= */
 
-/* 1. Starry Night Hero Background - Applied to banner only */
+.hero-banner .hero__actions .btn,
+.hero-banner .hero__actions a,
+.hero-banner .hero__actions button {
+  position: relative;
+  overflow: hidden;
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease,
+    filter .2s ease;
+}
+
+.hero-banner .hero__actions .btn:hover,
+.hero-banner .hero__actions a:hover,
+.hero-banner .hero__actions button:hover {
+  transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   ACTIVE SEASONAL HERO SKIN
+   Current: Fourth of July / Freedom Festival / Red, White & Buds
+   To change seasons later, replace only this section.
+   No HTML edits needed.
+   ========================================================= */
+
 .hero-banner {
-    background: radial-gradient(circle at 20% 30%, #ffffff11 1px, transparent 1px),
-                radial-gradient(circle at 80% 70%, #ffffff11 2px, transparent 2px),
-                linear-gradient(180deg, #0a192f 0%, #112240 100%) !important;
-    background-size: 200px 200px, 300px 300px, 100% 100%;
-    border-bottom: 4px solid #d9534f;
-    position: relative;
+  background:
+    /* fireworks glow */
+    radial-gradient(circle at 88% 18%, rgba(255, 221, 120, 0.22), transparent 13%),
+    radial-gradient(circle at 78% 30%, rgba(220, 45, 50, 0.16), transparent 14%),
+    radial-gradient(circle at 94% 38%, rgba(47, 128, 237, 0.16), transparent 15%),
+
+    /* Luna Pier lake / sunset horizon feel */
+    radial-gradient(ellipse at 76% 76%, rgba(255, 119, 55, 0.15), transparent 35%),
+    radial-gradient(ellipse at 55% 100%, rgba(0, 155, 255, 0.12), transparent 42%),
+
+    /* star field */
+    radial-gradient(circle at 8% 18%, rgba(255,255,255,.42) 0 1px, transparent 2px),
+    radial-gradient(circle at 18% 82%, rgba(255,255,255,.30) 0 1px, transparent 2px),
+    radial-gradient(circle at 36% 24%, rgba(255,255,255,.30) 0 1px, transparent 2px),
+    radial-gradient(circle at 51% 74%, rgba(255,255,255,.36) 0 1px, transparent 2px),
+    radial-gradient(circle at 69% 19%, rgba(255,255,255,.30) 0 1px, transparent 2px),
+    radial-gradient(circle at 94% 84%, rgba(255,255,255,.32) 0 1px, transparent 2px),
+
+    /* deep patriotic summer night */
+    linear-gradient(135deg, #06121f 0%, #0b1d34 42%, #10294a 72%, #06111e 100%);
+
+  border-bottom: 4px solid #c82127;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.06),
+    inset 0 -70px 120px rgba(0,0,0,.40),
+    0 24px 80px rgba(0,0,0,.45);
 }
 
-/* 2. Red, White & Blue Accents - Target specific containers */
-.hero__grid, .deli-container, .deals-section {
-    border-left: 4px solid #d9534f;
-    border-right: 4px solid #337ab7;
-    background-color: rgba(255, 255, 255, 0.03);
-    padding: 20px;
-    border-radius: 8px;
+/* Dark readability overlay */
+.hero-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.54) 0%, rgba(0,0,0,.22) 48%, rgba(0,0,0,.40) 100%),
+    radial-gradient(circle at 17% 48%, rgba(7, 197, 143, .08), transparent 34%);
 }
 
-/* 3. Subtle Fireworks - Fixed position inside the hero-banner */
+/* Animated fireworks layer */
 .hero-banner::after {
-    content: "✨";
-    position: absolute;
-    top: 5%; /* Moved higher to avoid layout interference */
-    right: 5%;
-    font-size: 2rem;
-    opacity: 0.6;
-    animation: fireworkPop 4s infinite ease-in-out;
-    pointer-events: none;
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 28px;
+  right: 34px;
+  width: 330px;
+  height: 270px;
+  pointer-events: none;
+  opacity: .9;
+
+  background:
+    /* big gold/red/blue burst */
+    radial-gradient(circle, rgba(255,255,255,.95) 0 2px, transparent 3px) 68% 22% / 7px 7px no-repeat,
+    conic-gradient(
+      from 12deg,
+      transparent 0 7deg,
+      rgba(255, 219, 111, .92) 8deg 10deg,
+      transparent 11deg 26deg,
+      rgba(255,255,255,.72) 27deg 29deg,
+      transparent 30deg 48deg,
+      rgba(220,45,50,.88) 49deg 51deg,
+      transparent 52deg 72deg,
+      rgba(58,130,255,.88) 73deg 75deg,
+      transparent 76deg 360deg
+    ) 62% 20% / 165px 165px no-repeat,
+
+    /* smaller red/blue burst */
+    radial-gradient(circle, rgba(255,255,255,.9) 0 2px, transparent 3px) 28% 50% / 7px 7px no-repeat,
+    conic-gradient(
+      from -20deg,
+      transparent 0 9deg,
+      rgba(255,66,58,.88) 10deg 12deg,
+      transparent 13deg 34deg,
+      rgba(255,255,255,.7) 35deg 37deg,
+      transparent 38deg 58deg,
+      rgba(54,125,255,.86) 59deg 61deg,
+      transparent 62deg 360deg
+    ) 25% 48% / 125px 125px no-repeat,
+
+    /* tiny sparks */
+    radial-gradient(circle, rgba(255,238,165,.95) 0 2px, transparent 3px) 84% 58% / 9px 9px no-repeat,
+    radial-gradient(circle, rgba(255,255,255,.75) 0 1px, transparent 2px) 12% 12% / 6px 6px no-repeat,
+    radial-gradient(circle, rgba(70,145,255,.85) 0 1px, transparent 2px) 18% 78% / 6px 6px no-repeat,
+    radial-gradient(circle, rgba(255,80,75,.85) 0 1px, transparent 2px) 90% 12% / 6px 6px no-repeat;
+
+  filter: drop-shadow(0 0 14px rgba(255,211,105,.36));
+  animation: glFireworksPulse 4.8s ease-in-out infinite;
 }
 
-@keyframes fireworkPop {
-    0%, 100% { opacity: 0; transform: scale(0.2); }
-    50% { opacity: 0.9; transform: scale(1.5); }
+@keyframes glFireworksPulse {
+  0%, 100% {
+    opacity: .55;
+    transform: scale(.94) rotate(0deg);
+    filter: drop-shadow(0 0 7px rgba(255,211,105,.25));
+  }
+
+  45% {
+    opacity: 1;
+    transform: scale(1.04) rotate(1deg);
+    filter: drop-shadow(0 0 20px rgba(255,211,105,.55));
+  }
+
+  70% {
+    opacity: .82;
+    transform: scale(.98) rotate(-.5deg);
+  }
 }
 
-/* 4. Mobile Layout - Cleaned to avoid height clipping */
-@media (max-width: 768px) {
+/* Seasonal hero card frame */
+.hero__grid {
+  border-left: 4px solid #d9252e;
+  border-right: 4px solid #2f80ed;
+  border-top: 1px solid rgba(255,255,255,.10);
+  border-bottom: 1px solid rgba(255,255,255,.10);
+
+  background:
+    linear-gradient(90deg, rgba(217,37,46,.10), transparent 16%, transparent 84%, rgba(47,128,237,.10)),
+    rgba(7, 18, 34, .74);
+
+  box-shadow:
+    inset 0 0 50px rgba(0,0,0,.28),
+    0 18px 55px rgba(0,0,0,.35);
+}
+
+/* Patriotic top trim */
+.hero__grid::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 3px;
+  pointer-events: none;
+
+  background: linear-gradient(90deg, #d9252e, #ffffff, #2f80ed);
+  opacity: .9;
+}
+
+/* Gold star accent */
+.hero__grid::after {
+  content: "★";
+  position: absolute;
+  top: 18px;
+  right: 28px;
+
+  color: #f4c95d;
+  font-size: 28px;
+  opacity: .85;
+
+  text-shadow:
+    0 0 12px rgba(244,201,93,.55),
+    24px 10px 0 rgba(255,255,255,.55),
+    48px 0 0 rgba(47,128,237,.55);
+
+  pointer-events: none;
+}
+
+/* Seasonal badge shimmer */
+.hero__badge-text {
+  background:
+    linear-gradient(
+      120deg,
+      rgba(228,184,105,.95) 0%,
+      rgba(228,184,105,.95) 45%,
+      #ffffff 50%,
+      rgba(228,184,105,.95) 55%,
+      rgba(228,184,105,.95) 100%
+    );
+
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: textGlisten 6s linear infinite;
+}
+
+@keyframes textGlisten {
+  0% {
+    background-position: 100% 50%;
+  }
+
+  15%,
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Seasonal image glow */
+.hero__media {
+  border-color: rgba(255,255,255,.16);
+
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.08),
+    0 18px 42px rgba(0,0,0,.50),
+    0 0 42px rgba(47,128,237,.16);
+}
+
+.hero__media:hover {
+  border-color: rgba(244,201,93,.38);
+
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.14),
+    0 24px 60px rgba(0,0,0,.48),
+    0 0 52px rgba(47,128,237,.22);
+}
+
+/* Fourth of July hero buttons */
+.hero-banner .hero__actions .btn,
+.hero-banner .hero__actions a,
+.hero-banner .hero__actions button {
+  position: relative;
+  overflow: hidden;
+
+  border: 1px solid rgba(255,255,255,.28);
+  color: #ffffff;
+
+  background:
+    linear-gradient(90deg, #b91c1c 0%, #d9252e 31%, #f8f8f8 50%, #1d4ed8 72%, #123b8f 100%);
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.12),
+    0 10px 26px rgba(0,0,0,.32),
+    0 0 20px rgba(47,128,237,.14);
+
+  text-shadow: 0 1px 2px rgba(0,0,0,.55);
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease,
+    filter .2s ease;
+}
+
+/* Button shine */
+.hero-banner .hero__actions .btn::after,
+.hero-banner .hero__actions a::after,
+.hero-banner .hero__actions button::after {
+  content: "";
+  position: absolute;
+  inset: -40% -70%;
+
+  background:
+    linear-gradient(
+      110deg,
+      transparent 35%,
+      rgba(255,255,255,.42) 50%,
+      transparent 65%
+    );
+
+  transform: translateX(-55%) rotate(10deg);
+  transition: transform .45s ease;
+  pointer-events: none;
+}
+
+.hero-banner .hero__actions .btn:hover,
+.hero-banner .hero__actions a:hover,
+.hero-banner .hero__actions button:hover {
+  transform: translateY(-2px);
+  filter: saturate(1.1) brightness(1.08);
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.22),
+    0 14px 34px rgba(0,0,0,.42),
+    0 0 26px rgba(255,255,255,.14);
+}
+
+.hero-banner .hero__actions .btn:hover::after,
+.hero-banner .hero__actions a:hover::after,
+.hero-banner .hero__actions button:hover::after {
+  transform: translateX(55%) rotate(10deg);
+}
+
+/* Keep second and third buttons Green Labs flavored */
+.hero-banner .hero__actions a:nth-child(2),
+.hero-banner .hero__actions a:nth-child(3),
+.hero-banner .hero__actions .btn-secondary {
+  background:
+    linear-gradient(135deg, rgba(7,197,143,.25), rgba(10,28,50,.94));
+
+  border: 1px solid rgba(255,255,255,.22);
+}
+
+
+/* =========================================================
+   MOBILE ADJUSTMENTS
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .hero__grid {
+    padding: 24px 18px;
+    border-left-width: 3px;
+    border-right-width: 3px;
+  }
+
+  .hero__sub {
+    max-width: 100%;
+  }
+
+  .hero-banner::after {
+    width: 190px;
+    height: 160px;
+    top: 18px;
+    right: 10px;
+    opacity: .58;
+  }
+
+  .hero__grid::after {
+    top: 12px;
+    right: 16px;
+    font-size: 20px;
+    opacity: .65;
+  }
+}
+
+@media (max-width: 600px) {
   .hero-banner {
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 32px;
+    padding-bottom: 36px;
+  }
+
+  .hero-banner::after {
+    opacity: .42;
+  }
+
+  .hero-banner .hero__actions .btn,
+  .hero-banner .hero__actions a,
+  .hero-banner .hero__actions button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__media,
+  .hero__img,
+  .hero-banner::after,
+  .hero__badge-text,
+  .hero-banner .hero__actions .btn,
+  .hero-banner .hero__actions a,
+  .hero-banner .hero__actions button {
+    animation: none;
+    transition: none;
   }
 }
 
 /* =========================================================
-   END SEASONAL UPDATES
+   END HERO + ACTIVE SEASONAL UPDATE
    ========================================================= */
 
 
