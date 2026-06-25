@@ -567,24 +567,32 @@ header, nav, section, .container, .wrap, .row {
 .section--hero {
     background-color: #000000 !important;
     
-    /* 10 Layers of stars for extreme density */
+    /* 20 Layers of stars using staggered sizes and opacities for density */
     background-image: 
-        radial-gradient(white, rgba(255,255,255,.6) 1px, transparent 1px),
-        radial-gradient(white, rgba(255,255,255,.5) 1px, transparent 1px),
-        radial-gradient(white, rgba(255,255,255,.4) 1px, transparent 1px),
-        radial-gradient(white, rgba(255,255,255,.3) 1px, transparent 1px),
-        radial-gradient(white, rgba(255,255,255,.2) 1px, transparent 1px),
-        radial-gradient(white, rgba(255,255,255,.1) 1px, transparent 1px),
-        radial-gradient(white, rgba(255,255,255,.05) 1px, transparent 1px),
-        radial-gradient(white, rgba(255,255,255,.03) 1px, transparent 1px),
-        radial-gradient(white, rgba(255,255,255,.02) 1px, transparent 1px),
-        radial-gradient(white, rgba(255,255,255,.01) 1px, transparent 1px) !important;
-    
-    /* Prime number sizing to prevent pattern repetition */
-    background-size: 191px 191px, 233px 233px, 281px 281px, 311px 311px, 379px 379px, 419px 419px, 461px 461px, 503px 503px, 547px 547px, 601px 601px !important;
-    
-    /* Random starting offsets */
-    background-position: 0 0, 50px 80px, 120px 30px, 200px 150px, 300px 50px, 400px 250px, 500px 100px, 100px 400px, 250px 300px, 50px 500px !important;
+        radial-gradient(1px 1px at 10% 20%, white, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 20% 80%, white, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 30% 50%, white, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 40% 10%, white, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 50% 90%, white, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 60% 30%, white, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 70% 70%, white, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 80% 40%, white, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 90% 60%, white, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 15% 45%, white, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 25% 75%, white, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 35% 25%, white, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 45% 65%, white, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 55% 15%, white, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 65% 85%, white, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 75% 35%, white, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 85% 65%, white, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 5% 95%, white, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 95% 5%, white, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 50% 50%, white, rgba(0,0,0,0)) !important;
+
+    /* Sized small to act as a 'repeatable field' of hundreds of dots */
+    background-size: 200px 200px !important;
+    background-repeat: repeat !important;
     
     padding-top: 60px !important;
     padding-bottom: 80px !important;
@@ -596,7 +604,7 @@ header, nav, section, .container, .wrap, .row {
     position: relative;
 }
 
-/* Add the Red/White/Blue top trim here */
+/* Red/White/Blue top trim */
 .section--hero::before {
     content: '';
     position: absolute;
