@@ -2648,29 +2648,6 @@ header, nav, section, .container, .wrap, .row {
 }
 
 
-/* =========================================================
-   HIGHLIGHTS IMAGE SAFETY RESET
-   Keeps promo images from inheriting hero-style behavior.
-   Keep this inside the Today’s Highlights CSS section.
-   ========================================================= */
-
-#todays-highlights img {
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  display: block;
-  object-fit: contain;
-  object-position: center;
-}
-
-#todays-highlights .hero__img {
-  aspect-ratio: auto;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-
 /* Cinematic overlay: readable bottom, no white wash */
 #todays-highlights .thOverlay {
     position: absolute;
