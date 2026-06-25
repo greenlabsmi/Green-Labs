@@ -397,7 +397,7 @@ header, nav, section, .container, .wrap, .row {
   background: rgba(15,18,17,.98);
   border-left: 1px solid rgba(255,255,255,.10);
   z-index:220;
- 
+
   display:flex;
   flex-direction:column;
   transform: translateX(100%);
@@ -560,323 +560,239 @@ header, nav, section, .container, .wrap, .row {
   will-change: auto; /* Fully releases the fixed button to float! */
 }
 
-
-
 /* =========================================================
-   HERO — LAYER 1: CLEAN BASE WITH HERO IMAGE
-   No Fourth of July effects yet.
-   This should look like the normal hero, but using red-white-buds-hero.
-   ========================================================= */
-
-.hero-banner {
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
-
-  background:
-    radial-gradient(circle at 20% 20%, rgba(46, 248, 187, 0.08), transparent 28%),
-    radial-gradient(circle at 80% 70%, rgba(228, 184, 105, 0.08), transparent 28%),
-    linear-gradient(135deg, #06110d 0%, #0b1d16 45%, #030806 100%);
-
-  border-bottom: 1px solid rgba(255,255,255,.08);
-
-  box-shadow:
-    inset 0 0 0 1px rgba(255,255,255,.04),
-    0 24px 80px rgba(0,0,0,.42);
+   HERO
+========================================================= */
+.hero__grid {
+  display: grid; 
+  gap: 18px; 
+  grid-template-columns: 1fr; 
+  align-items: center; 
 }
 
-.hero-banner > * {
-  position: relative;
-  z-index: 2;
-}
-
-.hero-banner .hero__grid {
-  position: relative;
-
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
-  align-items: center;
-
-  padding: clamp(24px, 3vw, 34px);
-
-  background: rgba(7, 18, 14, .72);
-  border: 1px solid rgba(255,255,255,.10);
-
-  box-shadow:
-    inset 0 0 50px rgba(0,0,0,.22),
-    0 18px 55px rgba(0,0,0,.32);
-}
-
-@media (min-width: 900px) {
-  .hero-banner .hero__grid {
-    grid-template-columns: .9fr 1.25fr;
-  }
-}
-
-.hero-banner .hero__title {
+/* Hero Typography */
+.hero__title {
   font-family: "Cinzel", serif;
   font-weight: 900;
-  font-size: clamp(40px, 5.5vw, 72px);
+  font-size: clamp(40px, 5.5vw, 72px); 
   line-height: 1.05;
   letter-spacing: 0.02em;
   margin: 16px 0;
   color: #ffffff;
-
-  text-shadow:
-    0 2px 0 rgba(0,0,0,.38),
-    0 0 24px rgba(255,255,255,.08);
 }
 
-.hero-banner .title-small {
-  font-size: 0.55em;
-  font-weight: 700;
-  color: rgba(255,255,255,.75);
+/* Elegant typographic rhythm for connector words */
+.title-small {
+  font-size: 0.55em; /* Keeps them perfectly scaled relative to the big text */
+  font-weight: 700; /* Slightly less heavy */
+  color: rgba(255, 255, 255, 0.75); /* Softens them so the main words pop */
 }
 
-.hero-banner .hero__sub {
+.hero__sub {
+  /* Scales slightly from 16px to 20px */
   font-size: clamp(16px, 1.5vw, 20px);
   line-height: 1.5;
-  color: rgba(233,236,235,.88);
+  color: rgba(233, 236, 235, 0.85);
   margin-bottom: 28px;
-  max-width: 92%;
+  max-width: 90%;
 }
 
-.hero-banner .hero__badge-text {
+/* Container for the badge */
+
+/* The text inside with the single-line fix and glisten effect */
+.hero__badge-text {
   font-weight: 900;
   letter-spacing: .08em;
   font-family: "Cinzel", serif;
+
+  /* Force single line and smart scaling for mobile */
   white-space: nowrap;
   font-size: clamp(9px, 2.5vw, 12px);
-  color: #e4b869;
+
+  /* The text-only gold glisten */
+  background: linear-gradient(
+    120deg,
+    rgba(228, 184, 105, 0.95) 0%,
+    rgba(228, 184, 105, 0.95) 45%,
+    #ffffff 50%,
+    rgba(228, 184, 105, 0.95) 55%,
+    rgba(228, 184, 105, 0.95) 100%
+  );
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textGlisten 6s linear infinite;
 }
 
-/* Hero image card */
-.hero-banner .hero__media {
+/* The animation timing */
+@keyframes textGlisten {
+  0% { background-position: 100% 50%; }
+  15% { background-position: 0% 50%; } /* Smooth glisten across */
+  100% { background-position: 0% 50%; } /* Long pause before next glisten */
+}
+
+/* Update the existing hero__media class to act as a block link */
+.hero__media {
   border-radius: var(--radius2);
-  border: 1px solid rgba(255,255,255,.14);
-  background: rgba(255,255,255,.025);
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.02);
   overflow: hidden;
+  box-shadow: var(--shadow2);
   position: relative;
   display: block;
-
-  transition:
-    transform .3s ease,
-    border-color .3s ease,
-    box-shadow .3s ease;
-
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  /* NEW: Hardware acceleration fixes to prevent blur */
   backface-visibility: hidden;
-
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,.08),
-    0 18px 42px rgba(0,0,0,.50);
+  transform: translateZ(0);
 }
 
-.hero-banner .hero__media:hover {
-  transform: translateY(-4px);
+/* Add hover effects for the new link wrapper */
+.hero__media--link {
+  cursor: pointer;
+}
+.hero__media--link:hover {
+  transform: translateY(-4px) translateZ(0); /* added translateZ */
+  box-shadow: 0 24px 60px rgba(0,0,0,.45);
   border-color: rgba(46,248,187,.30);
-
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,.14),
-    0 24px 60px rgba(0,0,0,.48);
 }
 
-/* IMPORTANT: this is the actual hero image */
-.hero-banner .hero__img {
-  width: 100%;
-  aspect-ratio: 1548 / 1016;
-
-  background-image: url("./assets/red-white-buds-hero.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  display: block;
-  min-height: 280px;
-
-  transition: transform .5s ease;
+.hero__img {
+    width: 100%;
+    height: auto; /* Replaces the restrictive clamp height */
+    aspect-ratio: 1548 / 1016; /* Mathematically locks in your exact dimensions */
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    transition: transform 0.5s ease;
+    backface-visibility: hidden;
+    transform: scale(1.01) translateZ(0); /* The 1.01 scale eliminates the border gap! */
+    will-change: transform;
 }
 
-.hero-banner .hero__media:hover .hero__img {
-  transform: scale(1.03);
+/* Make sure the hover scales up smoothly from the 1.01 base */
+.hero__media--link:hover .hero__img {
+    transform: scale(1.05) translateZ(0);
 }
 
-.hero-banner .hero__mediaNote {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-
+/* Trigger the zoom when the wrapper is hovered */
+.hero__media--link:hover .hero__img {
+  transform: scale(1.03) translateZ(0); /* added translateZ */
+}
+.hero__mediaNote{
+  position:absolute;
+  bottom:10px;
+  right:10px;
   font-size: 12px;
   font-weight: 800;
-  color: rgba(233,236,235,.82);
-
-  background: rgba(0,0,0,.45);
-  border: 1px solid rgba(255,255,255,.14);
+  color: rgba(233,236,235,.78);
+  background: rgba(0,0,0,.35);
+  border: 1px solid rgba(255,255,255,.10);
   padding: 6px 10px;
   border-radius: 999px;
 }
+.hero__mediaNote span{ color: var(--brand2); }
 
-/* Hero buttons */
-.hero-banner .hero__actions .btn,
-.hero-banner .hero__actions a,
-.hero-banner .hero__actions button {
-  position: relative;
-  overflow: hidden;
+.trust{
+  margin-top:14px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.trust__chip{
+  display:inline-flex;
+  gap:8px;
+  align-items:center;
+  padding: 8px 12px;
+  border-radius:999px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.03);
+  color: rgba(233,236,235,.92);
+  font-weight: 800;
+  font-size: 13px;
+}
+.trust__dot{
+  width:10px; height:10px;
+  border-radius:999px;
+  background:#16a34a;
+  box-shadow: 0 0 0 3px rgba(22,163,74,.18);
+}
+.trust__ico{ opacity:.9; }
 
-  transition:
-    transform .2s ease,
-    box-shadow .2s ease,
-    filter .2s ease;
+/* Sold Out Overlay */
+.hero__sold-out {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-10deg);
+  background: rgba(230, 57, 70, 0.95); /* High-contrast Red */
+  color: #fff;
+  padding: 12px 35px;
+  font-family: "Cinzel", serif;
+  font-size: clamp(32px, 6vw, 64px);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border: 4px solid #fff;
+  border-radius: 4px;
+  box-shadow: 0 15px 45px rgba(0,0,0,0.6);
+  z-index: 10;
+  pointer-events: none; /* Ensures the link underneath still works */
+  white-space: nowrap;
 }
 
-.hero-banner .hero__actions .btn:hover,
-.hero-banner .hero__actions a:hover,
-.hero-banner .hero__actions button:hover {
-  transform: translateY(-2px);
-}
-
-/* Mobile */
-@media (max-width: 900px) {
-  .hero-banner .hero__grid {
-    padding: 24px 18px;
+@media (max-width: 768px) {
+  /* This targets the spacing directly between the text block and the image on mobile */
+  .hero__grid {
+    gap: 20px !important; 
   }
 
-  .hero-banner .hero__sub {
-    max-width: 100%;
-  }
-}
-
-@media (max-width: 600px) {
-  .hero-banner {
-    padding-top: 32px;
-    padding-bottom: 36px;
+  /* These act as a fail-safe in case margins are pushing them apart */
+  .hero__copy {
+    margin-bottom: 0 !important;
   }
 
-  .hero-banner .hero__img {
-    min-height: 220px;
-  }
-
-  .hero-banner .hero__actions .btn,
-  .hero-banner .hero__actions a,
-  .hero-banner .hero__actions button {
-    width: 100%;
-    justify-content: center;
-  }
-}
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .hero-banner .hero__media,
-  .hero-banner .hero__img,
-  .hero-banner .hero__actions .btn,
-  .hero-banner .hero__actions a,
-  .hero-banner .hero__actions button {
-    animation: none;
-    transition: none;
-  }
-}
-
-/* =========================================================
-   END HERO — LAYER 1
-   ========================================================= */
-
-/* =========================================================
-   MOBILE ADJUSTMENTS
-   ========================================================= */
-
-@media (max-width: 900px) {
-  .hero-banner .hero__grid {
-    padding: 24px 18px;
-    border-left-width: 3px;
-    border-right-width: 3px;
-  }
-
-  .hero-banner .hero__sub {
-    max-width: 100%;
-  }
-
-  .hero-banner::after {
-    width: 260px;
-    height: 190px;
-    top: 12px;
-    right: 4px;
-    opacity: .58;
+  .hero__media {
+    margin-top: 0 !important;
   }
 }
 
-@media (max-width: 600px) {
-  .hero-banner {
-    padding-top: 32px;
-    padding-bottom: 36px;
-  }
-
-  .hero-banner::after {
-    width: 210px;
-    height: 160px;
-    opacity: .42;
-  }
-
-  .hero-banner .hero__actions .btn,
-  .hero-banner .hero__actions a,
-  .hero-banner .hero__actions button {
-    width: 100%;
-    justify-content: center;
-  }
-}
-
-
-/* =========================================================
-   REDUCED MOTION
-   ========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-banner .hero__media,
-  .hero-banner .hero__img,
-  .hero-banner::after,
-  .hero-banner .hero__badge-text,
-  .hero-banner .hero__actions .btn,
-  .hero-banner .hero__actions a,
-  .hero-banner .hero__actions button {
-    animation: none;
-    transition: none;
-  }
-}
-
-
-/* =========================================================
-   HIGHLIGHTS IMAGE SAFETY RESET
-   Keeps promo images from inheriting hero-style behavior.
-   ========================================================= */
-
-.highlights img,
-.highlights-section img,
-.highlight-card img,
-.promo-card img,
-.deal-card img {
-  width: 100%;
-  height: auto;
-  max-width: 100%;
+/* Kills the background gap/frame around the image */
+.hero__media {
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  overflow: hidden; /* Ensures the image doesn't bleed out of any rounded corners */
   display: block;
-  object-fit: contain;
-  object-position: center;
 }
 
-.highlights .hero__img,
-.highlights-section .hero__img,
-.highlight-card .hero__img,
-.promo-card .hero__img,
-.deal-card .hero__img {
-  aspect-ratio: auto;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
+/* Forces the image to stretch wall-to-wall inside that box */
+.hero__img {
+  width: 100% !important;
+  height: 100% !important; 
+  aspect-ratio: 1548 / 1016;
+  background-size: cover !important;
+  background-position: center !important;
+  margin: 0 !important;
+  display: block;
 }
 
-/* =========================================================
-   END HERO + ACTIVE SEASONAL UPDATE
-   ========================================================= */
+/* ============================================================
+   EXPAND MAIN HERO GRAPHIC ON DESKTOP
+============================================================ */
+@media (min-width: 900px) {
+  /* This shifts the grid so the image gets more room than the text */
+  .hero__grid {
+    grid-template-columns: 1fr 1.25fr !important; /* Makes the right side 25% wider */
+    align-items: center !important; 
+  }
 
-
+  /* This kills any hidden max-width limits holding the image back */
+  .hero__media {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important; /* Sucks out any extra margins pushing it inward */
+  }
+}
 
 /* =========================================================
    Difference row
@@ -1760,13 +1676,13 @@ header, nav, section, .container, .wrap, .row {
     display: flex;
     flex-direction: column;
   }
-  
+
   .guideCard__copy {
     order: 2; /* Text sits on the bottom */
     padding: 24px 20px 20px;
     min-height: auto;
   }
-  
+
   .guideCard__media {
     order: 1; /* Puts the image at the very top */
     padding: 0 20px; 
@@ -1775,20 +1691,20 @@ header, nav, section, .container, .wrap, .row {
     overflow: hidden;
     transition: max-height 0.5s ease, opacity 0.5s ease, padding 0.5s ease;
   }
-  
+
   /* What happens when the card opens */
   .guideCard.is-open .guideCard__media {
     max-height: 1200px; /* Increased from 500px to un-crop the image! */
     opacity: 1;
     padding: 24px 24px 0; 
   }
-  
+
   .guideCard__imageWrap {
     min-height: 220px; 
     border-radius: 18px; 
     width: 100%; 
   }
-  
+
   .guideCard__expandInner { padding-left: 20px; padding-right: 20px; }
   .guideCard.is-open .guideCard__expandInner { padding-bottom: 20px; }
 
@@ -1806,7 +1722,7 @@ header, nav, section, .container, .wrap, .row {
   .guideCard__copy { min-height: auto; padding: 20px 16px 10px; }
   .guideCard__title { font-size: clamp(22px, 7.5vw, 32px); }
   .guideCard__lead { font-size: 14px; line-height: 1.5; -webkit-line-clamp: unset; }
-  
+
   /* Tiny phone adjustments for the new animation */
   .guideCard__media { padding: 0 16px; }
   .guideCard.is-open .guideCard__media { padding: 20px 16px 0; }
@@ -1846,14 +1762,14 @@ header, nav, section, .container, .wrap, .row {
     overflow: hidden;
     transition: max-height 0.5s ease, opacity 0.5s ease, padding 0.5s ease;
   }
-  
+
 /* What happens when the card opens */
   .guideCard.is-open .guideCard__media {
     max-height: 1200px; /* Increased from 400px to un-crop the image! */
     opacity: 1;
     padding: 24px 20px 0;
   }
-  
+
   .guideCard__imageWrap {
     min-height: 260px; 
     border-radius: 20px; 
@@ -1866,7 +1782,7 @@ header, nav, section, .container, .wrap, .row {
 @media (max-width: 640px){
   .buyGuide{ padding-left: 14px; padding-right: 14px; }
   .guideCard__shell{ border-radius: 24px; }
-  
+
   /* Scale down padding for mobile screens */
   .guideCard__copy { padding: 24px 20px 20px; }
   .guideCard__media { padding: 0 20px; }
@@ -1875,7 +1791,7 @@ header, nav, section, .container, .wrap, .row {
   .guideCard__expandInner { padding-left: 20px; padding-right: 20px; }
   .guideCard.is-open .guideCard__expandInner { padding-bottom: 20px; }
   .vibeFinder { border-radius: 24px; padding: 22px 18px; }
-  
+
   /* Scale down typography for mobile */
   .guideCard__eyebrow { margin-bottom: 8px; font-size: 10px; letter-spacing: .14em; }
   .guideCard__title { margin: 0 0 10px; font-size: clamp(24px, 7vw, 36px); line-height: .96; }
@@ -1887,7 +1803,7 @@ header, nav, section, .container, .wrap, .row {
 @media (max-width: 420px){
   .guideCard__copy { padding: 20px 16px 10px; }
   .guideCard__title { font-size: clamp(22px, 7.5vw, 32px); }
-  
+
   /* Tiny phone adjustments */
   .guideCard__media { padding: 0 16px; }
   .guideCard.is-open .guideCard__media { padding: 20px 16px 0; }
@@ -2439,7 +2355,7 @@ header, nav, section, .container, .wrap, .row {
   scroll-snap-type: x mandatory; 
   scrollbar-width: none; 
   scroll-behavior: smooth; 
-  
+
   /* Break out of container to fill screen */
   width: 100vw;
   margin-left: calc(50% - 50vw);
@@ -2630,7 +2546,7 @@ header, nav, section, .container, .wrap, .row {
     border-color: rgba(11,125,90,.16);
     box-shadow: 0 18px 40px rgba(0,0,0,.09);
   }
-  
+
   /* NEW: This specifically lifts/zooms the image inside the card */
   #todays-highlights .thCard:hover .thMedia {
     transform: scale(1.04);
@@ -2646,7 +2562,6 @@ header, nav, section, .container, .wrap, .row {
   transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   will-change: transform;
 }
-
 
 /* Cinematic overlay: readable bottom, no white wash */
 #todays-highlights .thOverlay {
@@ -4301,7 +4216,7 @@ main + .section--light {
   margin-bottom: 6px;
   line-height: 1.1;
   letter-spacing: 1px;
-  
+
   /* 🌟 BUMPED UP SIZING 🌟 */
   /* MIN: 28px | SCALING: 4vw | MAX: 42px */
   font-size: clamp(28px, 4vw, 42px);
@@ -4313,7 +4228,7 @@ main + .section--light {
   color: #ffffff;
   margin-bottom: 4px;
   line-height: 1.3;
-  
+
   /* 🌟 BUMPED UP SIZING 🌟 */
   /* MIN: 16px | SCALING: 1.8vw | MAX: 22px */
   font-size: clamp(16px, 1.8vw, 22px);
@@ -4323,7 +4238,7 @@ main + .section--light {
   font-family: 'Inter', sans-serif;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.5);
-  
+
   /* 🌟 BUMPED UP SIZING 🌟 */
   /* MIN: 14px | SCALING: 1.2vw | MAX: 16px */
   font-size: clamp(14px, 1.2vw, 16px);
@@ -4391,12 +4306,12 @@ main + .section--light {
         mask-image: linear-gradient(to right, black 85%, transparent 100%);
         padding-right: 50px !important; /* Ensures the last card can scroll past the fade */
     }
-    
+
     /* 3. Pull the text padding tighter so it still looks perfect */
     #todays-highlights .thContent--mini {
         padding: 14px !important;
     }
-    
+
     #todays-highlights .thMiniTitle {
         font-size: 15px !important; 
     }
@@ -4412,7 +4327,7 @@ main + .section--light {
     #apparel-grid > *:first-child {
         margin-left: auto !important;
     }
-    
+
     .strain-grid > *:last-child,
     #apparel-grid > *:last-child {
         margin-right: auto !important;
@@ -4442,10 +4357,10 @@ main + .section--light {
     padding: 10px 5vw 40px;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
-    
+
     /* The "Native App" Feel for iOS */
     -webkit-overflow-scrolling: touch; 
-    
+
     /* Prevents the vertical page shake while swiping horizontally */
     touch-action: pan-x; 
 }
@@ -4473,10 +4388,10 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
 @media (min-width: 1024px) {
     .strain-grid > *:first-child,
     #apparel-grid > *:first-child { margin-left: 0 !important; }
-    
+
     .strain-grid > *:last-child,
     #apparel-grid > *:last-child { margin-right: 0 !important; }
-    
+
     .strain-grid { justify-content: flex-start !important; }
 }
 
@@ -4629,15 +4544,20 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
     display: block;
 }
 
+/* =========================================================
  /* =========================================================
    TEMP LOYALTY HUB REPLACEMENT (PENDING APPROVAL)
 ========================================================= */
+
 /* 1. Hides all the inner HTML (the tiers, perks, and headers) */
+/*
 #loyalty-hub > * {
     display: none !important;
 }
+*/
 
 /* 2. Shrinks the massive container into a neat little box */
+/*
 #loyalty-hub {
     max-width: 500px !important;
     padding: 40px 30px !important;
@@ -4647,8 +4567,10 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
     background: #0b0d0c !important;
     border: 1px solid rgba(214, 163, 74, 0.3) !important;
 }
+*/
 
 /* 3. Injects your temporary message */
+/*
 #loyalty-hub::after {
     content: "🌿 Ask your budtender about our loyalty program to save money on every purchase.";
     display: block;
@@ -4660,6 +4582,7 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
     text-align: center;
     letter-spacing: 0.5px;
 }
+*/
 
 /* =========================================================
    HIGHLIGHTS SCROLL FIX: PREVENT LEFT-SIDE CUTOFF
@@ -4896,4 +4819,83 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
   }
 }
 
+/* ============================================================
+   SAFE HOMEPAGE HERO BANNER FIX (NO CROP, NO COLLAPSE)
+   ============================================================ */
+@media (max-width: 768px) {
 
+  /* 1. Ensure the container has enough height so the buttons and image both fit */
+  .section--hero {
+    min-height: 550px !important; 
+    height: auto !important;
+    background-color: #0b1a14 !important; /* Seamless Canva dark green */
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+  }
+
+  /* 2. Target the background layers and force them to "contain" rather than "cover" */
+  .section--hero,
+  .section--hero [style*="background"],
+  .section--hero [class*="bg"],
+  .section--hero [class*="media"] {
+    background-size: contain !important;
+    background-position: center bottom !important; /* Pins image below buttons */
+    background-repeat: no-repeat !important;
+    transform: none !important; /* Kills parallax scaling */
+  }
+
+  /* 3. Catch-all in case the graphic was inserted as an actual HTML image */
+  .section--hero img {
+    max-width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+    margin-top: auto; /* Pushes the image to the bottom of the section */
+  }
+}
+
+/* ============================================================
+   TODAY'S HIGHLIGHTS FIXES
+============================================================ */
+
+/* 1. Un-crop the main hero image and lock its exact shape */
+#todays-highlights .thHero {
+    height: auto !important;
+    aspect-ratio: 1805 / 871; /* Exact dimensions locked in! */
+    background-size: cover !important;
+    background-position: center !important;
+    box-shadow: none !important; /* Kills inset shadows causing tint */
+}
+
+/* 2. Remove the dark tint overlay ONLY from the big hero graphic */
+#todays-highlights .thHero::after,
+#todays-highlights .thHero::before {
+    display: none !important;
+    background: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
+}
+
+/* 2b. Hide any extra gradient overlay layers */
+#todays-highlights .thHero [class*="overlay"],
+#todays-highlights .thHero [class*="tint"],
+#todays-highlights .thHero [class*="gradient"] {
+    display: none !important;
+}
+
+/* 3. Hide the floating "Shop Deal" text on the big hero since the graphic does the talking */
+#todays-highlights .thHero .thContent {
+    display: none !important; 
+}
+
+/* 4. Fix the unreadable text on the smaller mid-cards (like the Carts) */
+#todays-highlights .thMid .thH3,
+#todays-highlights .thMid .thPrice,
+#todays-highlights .thMid .thDetails,
+#todays-highlights .thMid .thCta,
+#todays-highlights .thMid .thPill {
+    text-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.9), 
+        0 4px 15px rgba(0, 0, 0, 0.9),
+        0 0 30px rgba(0, 0, 0, 0.8) !important;
+}
