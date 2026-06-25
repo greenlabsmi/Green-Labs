@@ -662,6 +662,71 @@ header, nav, section, .container, .wrap, .row {
     .pillars { margin-top: 0 !important; padding-top: 20px !important; }
 }
 
+
+/* Firework Container: Full screen, sits behind content */
+.firework-container {
+    position: absolute;
+    inset: 0;
+    z-index: 1; /* Behind content, in front of stars */
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* The core firework object */
+.firework, .firework::before, .firework::after {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    /* Creates the "explosion" effect using multiple shadows */
+    box-shadow: 
+        0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 
+        0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff;
+    animation: explode 2.5s infinite ease-out;
+}
+
+/* Different Colors for the Finale */
+.firework.gold { color: #D6A34A; }
+.firework.emerald { color: #2ef8bb; }
+.firework.patriotic { color: #c82127; }
+
+@keyframes explode {
+    0% { transform: scale(0.1); opacity: 1; }
+    50% { 
+        /* The burst: expanding shadows outward */
+        box-shadow: 
+            -50px -50px currentColor, 50px -50px currentColor, 
+            -50px 50px currentColor, 50px 50px currentColor,
+            0px -70px currentColor, 0px 70px currentColor,
+            -70px 0px currentColor, 70px 0px currentColor;
+        opacity: 1; 
+    }
+    100% { transform: scale(2.5); opacity: 0; }
+}
+
+/* Desktop vs Mobile Scatter */
+.firework { top: 40%; left: 50%; } /* Default center */
+.firework:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+.firework:nth-child(2) { top: 50%; left: 80%; animation-delay: 0.7s; }
+.firework:nth-child(3) { top: 15%; left: 50%; animation-delay: 1.4s; }
+.firework:nth-child(4) { top: 65%; left: 20%; animation-delay: 0.3s; }
+.firework:nth-child(5) { top: 30%; left: 90%; animation-delay: 2.1s; }
+.firework:nth-child(6) { top: 75%; left: 45%; animation-delay: 0.5s; }
+.firework:nth-child(7) { top: 10%; left: 30%; animation-delay: 1.1s; }
+.firework:nth-child(8) { top: 80%; left: 75%; animation-delay: 1.8s; }
+.firework:nth-child(9) { top: 25%; left: 60%; animation-delay: 0.9s; }
+.firework:nth-child(10) { top: 55%; left: 35%; animation-delay: 2.4s; }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    @keyframes explode {
+        0% { transform: scale(0.1); }
+        50% { box-shadow: -30px -30px currentColor, 30px -30px currentColor, -30px 30px currentColor, 30px 30px currentColor; }
+        100% { transform: scale(1.8); opacity: 0; }
+    }
+}
+
+
 /* =========================================================
    Difference row
 ========================================================= */
