@@ -664,8 +664,8 @@ header, nav, section, .container, .wrap, .row {
 
 
 /* =========================================================
-   HERO FIREWORKS — SPARK STREAK VERSION
-   Replace all old .firework CSS with this.
+   HERO FIREWORKS — GOLDEN SPARK PARTICLE VERSION
+   Looks more like real sparkle fireworks than CSS wheels.
    ========================================================= */
 
 .section--hero {
@@ -687,381 +687,313 @@ header, nav, section, .container, .wrap, .row {
   z-index: 3;
 }
 
-.firework {
-  --fw-main: #ffd86b;
-  --fw-second: #ffffff;
-  --fw-glow: rgba(255, 216, 107, .42);
-  --fw-size: 220px;
+/* One whole firework */
+.fw {
+  --fw-color: #ffd86b;
+  --fw-color-2: #fff2bd;
+  --fw-size: 170px;
+  --fw-time: 4.8s;
 
   position: absolute;
   width: var(--fw-size);
   height: var(--fw-size);
-  border-radius: 50%;
   opacity: 0;
-  transform: translate(-50%, -50%) scale(.1);
-
-  background:
-    radial-gradient(circle at center, #fff 0 2px, var(--fw-main) 3px, transparent 8px),
-
-    repeating-conic-gradient(
-      from 4deg,
-      transparent 0deg 5deg,
-      var(--fw-main) 5.5deg 6.5deg,
-      transparent 7deg 14deg,
-      var(--fw-second) 14.5deg 15.5deg,
-      transparent 16deg 24deg
-    ),
-
-    radial-gradient(circle at center, transparent 0 42%, var(--fw-glow) 43%, transparent 68%);
-
-  mask:
-    radial-gradient(circle at center, #000 0 5%, transparent 6% 18%, #000 19% 62%, transparent 72%);
-  -webkit-mask:
-    radial-gradient(circle at center, #000 0 5%, transparent 6% 18%, #000 19% 62%, transparent 72%);
-
-  filter:
-    drop-shadow(0 0 8px var(--fw-main))
-    drop-shadow(0 0 24px var(--fw-glow));
-
-  animation: fireworkSparkBurst 5.8s infinite ease-out;
+  transform: translate(-50%, -50%) scale(.2);
+  animation: fwPop var(--fw-time) infinite ease-out;
 }
 
-/* tiny spark field around each burst */
-.firework::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-
-  background:
-    radial-gradient(circle, var(--fw-second) 0 2px, transparent 3px) 50% 4% / 8px 8px no-repeat,
-    radial-gradient(circle, var(--fw-main) 0 2px, transparent 3px) 72% 12% / 8px 8px no-repeat,
-    radial-gradient(circle, var(--fw-second) 0 1.5px, transparent 3px) 91% 31% / 7px 7px no-repeat,
-    radial-gradient(circle, var(--fw-main) 0 2px, transparent 3px) 96% 52% / 8px 8px no-repeat,
-    radial-gradient(circle, var(--fw-second) 0 1.5px, transparent 3px) 80% 80% / 7px 7px no-repeat,
-    radial-gradient(circle, var(--fw-main) 0 2px, transparent 3px) 52% 96% / 8px 8px no-repeat,
-    radial-gradient(circle, var(--fw-second) 0 1.5px, transparent 3px) 22% 83% / 7px 7px no-repeat,
-    radial-gradient(circle, var(--fw-main) 0 2px, transparent 3px) 4% 54% / 8px 8px no-repeat,
-    radial-gradient(circle, var(--fw-second) 0 1.5px, transparent 3px) 13% 25% / 7px 7px no-repeat,
-    radial-gradient(circle, var(--fw-main) 0 2px, transparent 3px) 30% 10% / 8px 8px no-repeat;
-
-  opacity: 0;
-  animation: fireworkSparkDots 5.8s infinite ease-out;
-}
-
-/* launch trail / falling ember */
-.firework::after {
+/* bright center flash */
+.fw::before {
   content: "";
   position: absolute;
   left: 50%;
   top: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  box-shadow:
+    0 0 12px #fff,
+    0 0 28px var(--fw-color),
+    0 0 48px var(--fw-color);
+  animation: fwCore var(--fw-time) infinite ease-out;
+}
+
+/* launch/smoke trail */
+.fw::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 52%;
   width: 2px;
-  height: 110px;
+  height: 95px;
   transform: translateX(-50%);
-  background: linear-gradient(to bottom, var(--fw-main), rgba(255,255,255,.45), transparent);
+  background: linear-gradient(to bottom, rgba(255,255,255,.9), var(--fw-color), transparent);
   filter: blur(.4px);
   opacity: 0;
-  animation: fireworkTrail 5.8s infinite ease-out;
+  animation: fwTrail var(--fw-time) infinite ease-out;
 }
 
-.firework.gold {
-  --fw-main: #ffd86b;
-  --fw-second: #fff2bd;
-  --fw-glow: rgba(255, 216, 107, .48);
+/* individual sparkle particles */
+.fw span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 4px;
+  height: 22px;
+  border-radius: 999px;
+  transform-origin: center bottom;
+  background: linear-gradient(to top, transparent, var(--fw-color), #fff);
+  box-shadow:
+    0 0 8px var(--fw-color),
+    0 0 16px rgba(255,255,255,.35);
+  opacity: 0;
+  animation: fwSpark var(--fw-time) infinite cubic-bezier(.17,.67,.2,1);
 }
 
-.firework.emerald {
-  --fw-main: #2ef8bb;
-  --fw-second: #d8fff5;
-  --fw-glow: rgba(46, 248, 187, .38);
+/* angles + distances */
+.fw span:nth-child(1)  { --a:   0deg; --d: 84px; }
+.fw span:nth-child(2)  { --a:  24deg; --d: 108px; }
+.fw span:nth-child(3)  { --a:  48deg; --d: 78px; }
+.fw span:nth-child(4)  { --a:  72deg; --d: 118px; }
+.fw span:nth-child(5)  { --a:  96deg; --d: 92px; }
+.fw span:nth-child(6)  { --a: 120deg; --d: 114px; }
+.fw span:nth-child(7)  { --a: 144deg; --d: 82px; }
+.fw span:nth-child(8)  { --a: 168deg; --d: 104px; }
+.fw span:nth-child(9)  { --a: 192deg; --d: 98px; }
+.fw span:nth-child(10) { --a: 216deg; --d: 116px; }
+.fw span:nth-child(11) { --a: 240deg; --d: 88px; }
+.fw span:nth-child(12) { --a: 264deg; --d: 110px; }
+.fw span:nth-child(13) { --a: 288deg; --d: 80px; }
+.fw span:nth-child(14) { --a: 312deg; --d: 120px; }
+.fw span:nth-child(15) { --a: 336deg; --d: 94px; }
+.fw span:nth-child(16) { --a: 352deg; --d: 106px; }
+
+/* color themes */
+.fw--gold {
+  --fw-color: #ffd86b;
+  --fw-color-2: #fff3c4;
 }
 
-.firework.patriotic {
-  --fw-main: #ff4a4a;
-  --fw-second: #6ea6ff;
-  --fw-glow: rgba(255, 74, 74, .42);
+.fw--red {
+  --fw-color: #ff4a4a;
+  --fw-color-2: #ffd0d0;
 }
 
-@keyframes fireworkSparkBurst {
+.fw--blue {
+  --fw-color: #5ea0ff;
+  --fw-color-2: #d8e9ff;
+}
+
+.fw--green {
+  --fw-color: #2ef8bb;
+  --fw-color-2: #d7fff3;
+}
+
+/* placement across whole sky */
+.fw--one {
+  top: 18%;
+  left: 18%;
+  --fw-size: 230px;
+  --fw-time: 5.2s;
+  animation-delay: 0s;
+}
+
+.fw--two {
+  top: 20%;
+  left: 54%;
+  --fw-size: 260px;
+  --fw-time: 5.8s;
+  animation-delay: 1.1s;
+}
+
+.fw--three {
+  top: 24%;
+  left: 84%;
+  --fw-size: 230px;
+  --fw-time: 6.1s;
+  animation-delay: 2.2s;
+}
+
+.fw--four {
+  top: 42%;
+  left: 38%;
+  --fw-size: 150px;
+  --fw-time: 4.8s;
+  animation-delay: 2.8s;
+}
+
+.fw--five {
+  top: 39%;
+  left: 72%;
+  --fw-size: 165px;
+  --fw-time: 5.4s;
+  animation-delay: 3.7s;
+}
+
+/* sync child delays to parent feel */
+.fw--one span, .fw--one::before, .fw--one::after { animation-delay: 0s; }
+.fw--two span, .fw--two::before, .fw--two::after { animation-delay: 1.1s; }
+.fw--three span, .fw--three::before, .fw--three::after { animation-delay: 2.2s; }
+.fw--four span, .fw--four::before, .fw--four::after { animation-delay: 2.8s; }
+.fw--five span, .fw--five::before, .fw--five::after { animation-delay: 3.7s; }
+
+/* stagger spark sizes */
+.fw span:nth-child(odd) {
+  height: 18px;
+  width: 3px;
+}
+
+.fw span:nth-child(3n) {
+  height: 26px;
+  width: 4px;
+}
+
+.fw span:nth-child(4n) {
+  opacity: .75;
+}
+
+/* animation */
+@keyframes fwPop {
   0%, 10% {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(.08);
+    transform: translate(-50%, -50%) scale(.15);
   }
 
   16% {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(.25);
+    transform: translate(-50%, -50%) scale(.45);
   }
 
-  30% {
-    opacity: .95;
+  32% {
+    opacity: 1;
     transform: translate(-50%, -50%) scale(1);
   }
 
-  48% {
-    opacity: .42;
-    transform: translate(-50%, -48%) scale(1.12);
-  }
-
-  70%, 100% {
-    opacity: 0;
-    transform: translate(-50%, -44%) scale(1.22);
-  }
-}
-
-@keyframes fireworkSparkDots {
-  0%, 12% {
-    opacity: 0;
-    transform: scale(.4);
-  }
-
-  24% {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  48% {
-    opacity: .5;
-    transform: scale(1.12);
+  54% {
+    opacity: .35;
+    transform: translate(-50%, -47%) scale(1.08);
   }
 
   72%, 100% {
     opacity: 0;
-    transform: scale(1.25) translateY(8px);
+    transform: translate(-50%, -43%) scale(1.14);
   }
 }
 
-@keyframes fireworkTrail {
-  0%, 22% {
+@keyframes fwCore {
+  0%, 12% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(.3);
+  }
+
+  17% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  30% {
+    opacity: .35;
+    transform: translate(-50%, -50%) scale(2.2);
+  }
+
+  45%, 100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(2.8);
+  }
+}
+
+@keyframes fwSpark {
+  0%, 12% {
+    opacity: 0;
+    transform:
+      rotate(var(--a))
+      translateY(0)
+      scaleY(.25);
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  38% {
+    opacity: .95;
+    transform:
+      rotate(var(--a))
+      translateY(calc(var(--d) * -1))
+      scaleY(1);
+  }
+
+  58% {
+    opacity: .35;
+    transform:
+      rotate(var(--a))
+      translateY(calc((var(--d) + 14px) * -1))
+      scaleY(.75);
+  }
+
+  75%, 100% {
+    opacity: 0;
+    transform:
+      rotate(var(--a))
+      translateY(calc((var(--d) + 34px) * -1))
+      scaleY(.45);
+  }
+}
+
+@keyframes fwTrail {
+  0%, 18% {
     opacity: 0;
     transform: translateX(-50%) translateY(0);
   }
 
-  34% {
-    opacity: .34;
-    transform: translateX(-50%) translateY(14px);
+  30% {
+    opacity: .32;
+    transform: translateX(-50%) translateY(10px);
   }
 
-  56%, 100% {
+  52%, 100% {
     opacity: 0;
     transform: translateX(-50%) translateY(48px);
   }
 }
 
-/* Spread across the whole sky */
-.firework:nth-child(1) {
-  top: 16%;
-  left: 16%;
-  --fw-size: 220px;
-  animation-delay: 0s;
-}
-
-.firework:nth-child(2) {
-  top: 27%;
-  left: 34%;
-  --fw-size: 145px;
-  animation-delay: .7s;
-}
-
-.firework:nth-child(3) {
-  top: 17%;
-  left: 52%;
-  --fw-size: 205px;
-  animation-delay: 1.3s;
-}
-
-.firework:nth-child(4) {
-  top: 25%;
-  left: 70%;
-  --fw-size: 185px;
-  animation-delay: 2s;
-}
-
-.firework:nth-child(5) {
-  top: 18%;
-  left: 88%;
-  --fw-size: 170px;
-  animation-delay: 2.7s;
-}
-
-.firework:nth-child(6) {
-  top: 38%;
-  left: 22%;
-  --fw-size: 120px;
-  animation-delay: 1.7s;
-}
-
-.firework:nth-child(7) {
-  top: 38%;
-  left: 46%;
-  --fw-size: 130px;
-  animation-delay: 3.3s;
-}
-
-.firework:nth-child(8) {
-  top: 39%;
-  left: 62%;
-  --fw-size: 115px;
-  animation-delay: 2.4s;
-}
-
-.firework:nth-child(9) {
-  top: 35%;
-  left: 80%;
-  --fw-size: 135px;
-  animation-delay: 4s;
-}
-
-.firework:nth-child(10) {
-  top: 10%;
-  left: 38%;
-  --fw-size: 155px;
-  animation-delay: 4.6s;
-}
-
-/* Different timings */
-.firework:nth-child(2),
-.firework:nth-child(6),
-.firework:nth-child(8) {
-  animation-duration: 4.8s;
-}
-
-.firework:nth-child(3),
-.firework:nth-child(5),
-.firework:nth-child(9) {
-  animation-duration: 6.2s;
-}
-
-.firework:nth-child(4),
-.firework:nth-child(7),
-.firework:nth-child(10) {
-  animation-duration: 6.8s;
-}
-
-/* sync pseudo-elements */
-.firework:nth-child(2)::before,
-.firework:nth-child(2)::after,
-.firework:nth-child(6)::before,
-.firework:nth-child(6)::after,
-.firework:nth-child(8)::before,
-.firework:nth-child(8)::after {
-  animation-duration: 4.8s;
-}
-
-.firework:nth-child(3)::before,
-.firework:nth-child(3)::after,
-.firework:nth-child(5)::before,
-.firework:nth-child(5)::after,
-.firework:nth-child(9)::before,
-.firework:nth-child(9)::after {
-  animation-duration: 6.2s;
-}
-
-.firework:nth-child(4)::before,
-.firework:nth-child(4)::after,
-.firework:nth-child(7)::before,
-.firework:nth-child(7)::after,
-.firework:nth-child(10)::before,
-.firework:nth-child(10)::after {
-  animation-duration: 6.8s;
-}
-
-/* delays for pseudo-elements */
-.firework:nth-child(1)::before,
-.firework:nth-child(1)::after { animation-delay: 0s; }
-
-.firework:nth-child(2)::before,
-.firework:nth-child(2)::after { animation-delay: .7s; }
-
-.firework:nth-child(3)::before,
-.firework:nth-child(3)::after { animation-delay: 1.3s; }
-
-.firework:nth-child(4)::before,
-.firework:nth-child(4)::after { animation-delay: 2s; }
-
-.firework:nth-child(5)::before,
-.firework:nth-child(5)::after { animation-delay: 2.7s; }
-
-.firework:nth-child(6)::before,
-.firework:nth-child(6)::after { animation-delay: 1.7s; }
-
-.firework:nth-child(7)::before,
-.firework:nth-child(7)::after { animation-delay: 3.3s; }
-
-.firework:nth-child(8)::before,
-.firework:nth-child(8)::after { animation-delay: 2.4s; }
-
-.firework:nth-child(9)::before,
-.firework:nth-child(9)::after { animation-delay: 4s; }
-
-.firework:nth-child(10)::before,
-.firework:nth-child(10)::after { animation-delay: 4.6s; }
-
+/* mobile */
 @media (max-width: 768px) {
-  .firework:nth-child(n+6) {
+  .fw--four,
+  .fw--five {
     display: none;
   }
 
-  .firework:nth-child(1) {
-    top: 14%;
-    left: 22%;
-    --fw-size: 135px;
-  }
-
-  .firework:nth-child(2) {
-    top: 25%;
-    left: 46%;
-    --fw-size: 100px;
-  }
-
-  .firework:nth-child(3) {
+  .fw--one {
     top: 16%;
-    left: 72%;
+    left: 24%;
+    --fw-size: 150px;
+  }
+
+  .fw--two {
+    top: 22%;
+    left: 58%;
+    --fw-size: 170px;
+  }
+
+  .fw--three {
+    top: 30%;
+    left: 84%;
     --fw-size: 145px;
   }
+}
 
-  .firework:nth-child(4) {
-    top: 35%;
-    left: 62%;
-    --fw-size: 100px;
+/* reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .fw,
+  .fw::before,
+  .fw::after,
+  .fw span {
+    animation: none;
+    opacity: .35;
   }
-
-  .firework:nth-child(5) {
-    top: 30%;
-    left: 86%;
-    --fw-size: 105px;
-  }
-}
-
-/* =========================================================
-   Difference row
-========================================================= */
-.diff{
-  margin-top:22px;
-  display:grid;
-  gap:12px;
-  grid-template-columns: 1fr;
-}
-.diff__card{
-  border-radius: var(--radius2);
-  border: 1px solid rgba(255,255,255,.08);
-  background: rgba(255,255,255,.02);
-  padding: 14px 14px;
-  box-shadow: 0 14px 40px rgba(0,0,0,.25);
-}
-.diff__ico{ font-size: 20px; margin-bottom: 6px; }
-.diff__t{
-  font-family:"Cinzel", serif;
-  font-weight: 900;
-  letter-spacing: .06em;
-  margin-bottom: 4px;
-}
-.diff__s{ color: rgba(233,236,235,.74); font-weight: 700; }
-
-.dealsSection, #todays-highlights{overflow-x: clip; }
-
-.dealsSection *, #deals *, #todays-highlights *{
-  box-sizing: border-box;
 }
 
 /* =========================================================
