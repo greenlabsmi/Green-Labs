@@ -563,8 +563,9 @@ header, nav, section, .container, .wrap, .row {
 
 
 /* =========================================================
-   HERO — LAYER 1: CLEAN PERMANENT BASE
-   Start here. No seasonal effects yet.
+   HERO — LAYER 1: CLEAN BASE WITH HERO IMAGE
+   No Fourth of July effects yet.
+   This should look like the normal hero, but using red-white-buds-hero.
    ========================================================= */
 
 .hero-banner {
@@ -650,6 +651,7 @@ header, nav, section, .container, .wrap, .row {
   color: #e4b869;
 }
 
+/* Hero image card */
 .hero-banner .hero__media {
   border-radius: var(--radius2);
   border: 1px solid rgba(255,255,255,.14);
@@ -679,13 +681,18 @@ header, nav, section, .container, .wrap, .row {
     0 24px 60px rgba(0,0,0,.48);
 }
 
+/* IMPORTANT: this is the actual hero image */
 .hero-banner .hero__img {
   width: 100%;
   aspect-ratio: 1548 / 1016;
+
+  background-image: url("./assets/red-white-buds-hero.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+
   display: block;
+  min-height: 280px;
 
   transition: transform .5s ease;
 }
@@ -709,6 +716,7 @@ header, nav, section, .container, .wrap, .row {
   border-radius: 999px;
 }
 
+/* Hero buttons */
 .hero-banner .hero__actions .btn,
 .hero-banner .hero__actions a,
 .hero-banner .hero__actions button {
@@ -727,6 +735,7 @@ header, nav, section, .container, .wrap, .row {
   transform: translateY(-2px);
 }
 
+/* Mobile */
 @media (max-width: 900px) {
   .hero-banner .hero__grid {
     padding: 24px 18px;
@@ -743,6 +752,10 @@ header, nav, section, .container, .wrap, .row {
     padding-bottom: 36px;
   }
 
+  .hero-banner .hero__img {
+    min-height: 220px;
+  }
+
   .hero-banner .hero__actions .btn,
   .hero-banner .hero__actions a,
   .hero-banner .hero__actions button {
@@ -751,6 +764,7 @@ header, nav, section, .container, .wrap, .row {
   }
 }
 
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .hero-banner .hero__media,
   .hero-banner .hero__img,
@@ -765,7 +779,6 @@ header, nav, section, .container, .wrap, .row {
 /* =========================================================
    END HERO — LAYER 1
    ========================================================= */
-
 
 /* =========================================================
    MOBILE ADJUSTMENTS
