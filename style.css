@@ -567,21 +567,25 @@ header, nav, section, .container, .wrap, .row {
 .section--hero {
     background-color: #000000 !important;
     
-    /* 1. The "Hundreds of Stars" Field */
+    /* 10 Layers of stars for extreme density */
     background-image: 
-        radial-gradient(white, rgba(255,255,255,.5) 1px, transparent 2px),
-        radial-gradient(white, rgba(255,255,255,.3) 1px, transparent 3px),
-        radial-gradient(white, rgba(255,255,255,.2) 1px, transparent 4px),
-        radial-gradient(white, rgba(255,255,255,.1) 1px, transparent 5px),
-        radial-gradient(white, rgba(255,255,255,.05) 1px, transparent 6px) !important;
+        radial-gradient(white, rgba(255,255,255,.6) 1px, transparent 1px),
+        radial-gradient(white, rgba(255,255,255,.5) 1px, transparent 1px),
+        radial-gradient(white, rgba(255,255,255,.4) 1px, transparent 1px),
+        radial-gradient(white, rgba(255,255,255,.3) 1px, transparent 1px),
+        radial-gradient(white, rgba(255,255,255,.2) 1px, transparent 1px),
+        radial-gradient(white, rgba(255,255,255,.1) 1px, transparent 1px),
+        radial-gradient(white, rgba(255,255,255,.05) 1px, transparent 1px),
+        radial-gradient(white, rgba(255,255,255,.03) 1px, transparent 1px),
+        radial-gradient(white, rgba(255,255,255,.02) 1px, transparent 1px),
+        radial-gradient(white, rgba(255,255,255,.01) 1px, transparent 1px) !important;
     
-    /* 2. Tight sizing creates the "density" */
-    background-size: 150px 150px, 250px 250px, 350px 350px, 450px 450px, 550px 550px !important;
+    /* Prime number sizing to prevent pattern repetition */
+    background-size: 191px 191px, 233px 233px, 281px 281px, 311px 311px, 379px 379px, 419px 419px, 461px 461px, 503px 503px, 547px 547px, 601px 601px !important;
     
-    /* 3. Random offsets so they don't look like a repeating tile */
-    background-position: 0 0, 80px 120px, 160px 40px, 240px 200px, 40px 300px !important;
+    /* Random starting offsets */
+    background-position: 0 0, 50px 80px, 120px 30px, 200px 150px, 300px 50px, 400px 250px, 500px 100px, 100px 400px, 250px 300px, 50px 500px !important;
     
-    /* Keep your existing spacing and border rules below */
     padding-top: 60px !important;
     padding-bottom: 80px !important;
     border-bottom: 8px solid transparent !important;
@@ -589,6 +593,19 @@ header, nav, section, .container, .wrap, .row {
     margin-bottom: 0 !important;
     display: flex !important;
     flex-direction: column !important;
+    position: relative;
+}
+
+/* Add the Red/White/Blue top trim here */
+.section--hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(to right, #c82127, #ffffff, #002868);
+    opacity: 0.9;
 }
 
 /* 2. Grid & Layout */
