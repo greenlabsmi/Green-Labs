@@ -561,22 +561,25 @@ header, nav, section, .container, .wrap, .row {
 }
 
 /* =========================================================
-   MASTER HERO SYSTEM (Unified Layout + Theme)
+   MASTER HERO SYSTEM (Starry Night + Patriotic Border)
    ========================================================= */
 
-/* 1. Main Hero Container (The Sky) */
 .section--hero {
     background-color: #000000 !important;
-    background-image: 
-        radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
-        radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
-        radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px) !important;
-    background-size: 550px 550px, 350px 350px, 250px 250px !important;
-    background-position: 0 0, 40px 60px, 130px 270px !important;
     
+    /* 1. Very Starry Night (Higher density, less glow) */
+    background-image: 
+        radial-gradient(white, rgba(255,255,255,.3) 1px, transparent 20px),
+        radial-gradient(white, rgba(255,255,255,.2) 1px, transparent 15px),
+        radial-gradient(white, rgba(255,255,255,.1) 1px, transparent 10px) !important;
+    background-size: 300px 300px, 200px 200px, 100px 100px !important;
+    background-position: 0 0, 40px 60px, 130px 270px !important;
+
+    /* 2. Red, White, and Blue Border */
     padding-top: 60px !important;
     padding-bottom: 80px !important;
-    border-bottom: 4px solid #c82127 !important;
+    border-bottom: 8px solid transparent !important;
+    border-image: linear-gradient(to right, #c82127, #ffffff, #002868) 1 !important;
     margin-bottom: 0 !important;
     display: flex !important;
     flex-direction: column !important;
