@@ -567,19 +567,21 @@ header, nav, section, .container, .wrap, .row {
 .section--hero {
     background-color: #000000 !important;
     
-    /* 4 Layers of randomness for a non-repeating sky */
+    /* 1. The "Hundreds of Stars" Field */
     background-image: 
-        radial-gradient(white, rgba(255,255,255,.25) 1px, transparent 15px),
-        radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 10px),
-        radial-gradient(white, rgba(255,255,255,.1) 1px, transparent 8px),
-        radial-gradient(white, rgba(255,255,255,.05) 1px, transparent 5px) !important;
+        radial-gradient(white, rgba(255,255,255,.5) 1px, transparent 2px),
+        radial-gradient(white, rgba(255,255,255,.3) 1px, transparent 3px),
+        radial-gradient(white, rgba(255,255,255,.2) 1px, transparent 4px),
+        radial-gradient(white, rgba(255,255,255,.1) 1px, transparent 5px),
+        radial-gradient(white, rgba(255,255,255,.05) 1px, transparent 6px) !important;
     
-    /* These sizes MUST be different numbers for each layer to stop the "grid" repeat */
-    background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px !important;
+    /* 2. Tight sizing creates the "density" */
+    background-size: 150px 150px, 250px 250px, 350px 350px, 450px 450px, 550px 550px !important;
     
-    /* Randomize the starting offsets */
-    background-position: 0 0, 40px 60px, 130px 270px, 70px 100px !important;
+    /* 3. Random offsets so they don't look like a repeating tile */
+    background-position: 0 0, 80px 120px, 160px 40px, 240px 200px, 40px 300px !important;
     
+    /* Keep your existing spacing and border rules below */
     padding-top: 60px !important;
     padding-bottom: 80px !important;
     border-bottom: 8px solid transparent !important;
