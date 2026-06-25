@@ -561,237 +561,71 @@ header, nav, section, .container, .wrap, .row {
 }
 
 /* =========================================================
-   HERO
-========================================================= */
-.hero__grid {
-  display: grid; 
-  gap: 18px; 
-  grid-template-columns: 1fr; 
-  align-items: center; 
+   MASTER HERO SYSTEM (Unified Layout + Theme)
+   ========================================================= */
+
+/* 1. Main Hero Container (The Sky) */
+.section--hero {
+    background-color: #000000 !important;
+    background-image: 
+        radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+        radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+        radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px) !important;
+    background-size: 550px 550px, 350px 350px, 250px 250px !important;
+    background-position: 0 0, 40px 60px, 130px 270px !important;
+    
+    padding-top: 60px !important;
+    padding-bottom: 80px !important;
+    border-bottom: 4px solid #c82127 !important;
+    margin-bottom: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
 }
 
-/* Hero Typography */
-.hero__title {
-  font-family: "Cinzel", serif;
-  font-weight: 900;
-  font-size: clamp(40px, 5.5vw, 72px); 
-  line-height: 1.05;
-  letter-spacing: 0.02em;
-  margin: 16px 0;
-  color: #ffffff;
+/* 2. Grid & Layout */
+.hero__grid { display: grid; gap: 18px; grid-template-columns: 1fr; align-items: center; }
+
+/* 3. Typography */
+.hero__title { font-family: "Cinzel", serif; font-weight: 900; font-size: clamp(40px, 5.5vw, 72px); line-height: 1.05; letter-spacing: 0.02em; margin: 16px 0; color: #ffffff; }
+.title-small { font-size: 0.55em; font-weight: 700; color: rgba(255, 255, 255, 0.75); }
+.hero__sub { font-size: clamp(16px, 1.5vw, 20px); line-height: 1.5; color: rgba(233, 236, 235, 0.85); margin-bottom: 28px; max-width: 90%; }
+.hero__badge-text { font-weight: 900; letter-spacing: .08em; font-family: "Cinzel", serif; white-space: nowrap; font-size: clamp(9px, 2.5vw, 12px); background: linear-gradient(120deg, rgba(228, 184, 105, 0.95) 0%, rgba(228, 184, 105, 0.95) 45%, #ffffff 50%, rgba(228, 184, 105, 0.95) 55%, rgba(228, 184, 105, 0.95) 100%); background-size: 250% 100%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: textGlisten 6s linear infinite; }
+@keyframes textGlisten { 0% { background-position: 100% 50%; } 15% { background-position: 0% 50%; } 100% { background-position: 0% 50%; } }
+
+/* 4. Media & Image Handling */
+.hero__media { border-radius: var(--radius2); border: none !important; background: transparent !important; overflow: hidden; position: relative; display: block; transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; backface-visibility: hidden; transform: translateZ(0); padding: 0 !important; }
+.hero__media--link { cursor: pointer; }
+.hero__media--link:hover { transform: translateY(-4px) translateZ(0); box-shadow: 0 24px 60px rgba(0,0,0,.45); border-color: rgba(46,248,187,.30); }
+.hero__img { width: 100% !important; height: 100% !important; aspect-ratio: 1548 / 1016; background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important; transition: transform 0.5s ease; backface-visibility: hidden; will-change: transform; transform: scale(1.01) translateZ(0); display: block; margin: 0 !important; }
+.hero__media--link:hover .hero__img { transform: scale(1.03) translateZ(0); }
+.hero__mediaNote { position:absolute; bottom:10px; right:10px; font-size: 12px; font-weight: 800; color: rgba(233,236,235,.78); background: rgba(0,0,0,.35); border: 1px solid rgba(255,255,255,.10); padding: 6px 10px; border-radius: 999px; }
+.hero__mediaNote span { color: var(--brand2); }
+
+/* 5. Trust Chips */
+.trust { margin-top:14px; display:flex; flex-wrap:wrap; gap:10px; }
+.trust__chip { display:inline-flex; gap:8px; align-items:center; padding: 8px 12px; border-radius:999px; border: 1px solid rgba(255,255,255,.10); background: rgba(255,255,255,.03); color: rgba(233,236,235,.92); font-weight: 800; font-size: 13px; }
+.trust__dot { width:10px; height:10px; border-radius:999px; background:#16a34a; box-shadow: 0 0 0 3px rgba(22,163,74,.18); }
+.trust__ico { opacity:.9; }
+
+/* 6. Responsive Overrides */
+@media (min-width: 900px) {
+    .hero__grid { grid-template-columns: 1fr 1.25fr !important; }
+    .hero__media { max-width: 100% !important; width: 100% !important; margin: 0 !important; }
 }
 
-/* Elegant typographic rhythm for connector words */
-.title-small {
-  font-size: 0.55em; /* Keeps them perfectly scaled relative to the big text */
-  font-weight: 700; /* Slightly less heavy */
-  color: rgba(255, 255, 255, 0.75); /* Softens them so the main words pop */
-}
-
-.hero__sub {
-  /* Scales slightly from 16px to 20px */
-  font-size: clamp(16px, 1.5vw, 20px);
-  line-height: 1.5;
-  color: rgba(233, 236, 235, 0.85);
-  margin-bottom: 28px;
-  max-width: 90%;
-}
-
-/* Container for the badge */
-
-/* The text inside with the single-line fix and glisten effect */
-.hero__badge-text {
-  font-weight: 900;
-  letter-spacing: .08em;
-  font-family: "Cinzel", serif;
-
-  /* Force single line and smart scaling for mobile */
-  white-space: nowrap;
-  font-size: clamp(9px, 2.5vw, 12px);
-
-  /* The text-only gold glisten */
-  background: linear-gradient(
-    120deg,
-    rgba(228, 184, 105, 0.95) 0%,
-    rgba(228, 184, 105, 0.95) 45%,
-    #ffffff 50%,
-    rgba(228, 184, 105, 0.95) 55%,
-    rgba(228, 184, 105, 0.95) 100%
-  );
-  background-size: 250% 100%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: textGlisten 6s linear infinite;
-}
-
-/* The animation timing */
-@keyframes textGlisten {
-  0% { background-position: 100% 50%; }
-  15% { background-position: 0% 50%; } /* Smooth glisten across */
-  100% { background-position: 0% 50%; } /* Long pause before next glisten */
-}
-
-/* Update the existing hero__media class to act as a block link */
-.hero__media {
-  border-radius: var(--radius2);
-  border: 1px solid rgba(255,255,255,.10);
-  background: rgba(255,255,255,.02);
-  overflow: hidden;
-  box-shadow: var(--shadow2);
-  position: relative;
-  display: block;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-  /* NEW: Hardware acceleration fixes to prevent blur */
-  backface-visibility: hidden;
-  transform: translateZ(0);
-}
-
-/* Add hover effects for the new link wrapper */
-.hero__media--link {
-  cursor: pointer;
-}
-.hero__media--link:hover {
-  transform: translateY(-4px) translateZ(0); /* added translateZ */
-  box-shadow: 0 24px 60px rgba(0,0,0,.45);
-  border-color: rgba(46,248,187,.30);
-}
-
-.hero__img {
-    width: 100%;
-    height: auto; /* Replaces the restrictive clamp height */
-    aspect-ratio: 1548 / 1016; /* Mathematically locks in your exact dimensions */
-    background-size: cover !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
-    transition: transform 0.5s ease;
-    backface-visibility: hidden;
-    transform: scale(1.01) translateZ(0); /* The 1.01 scale eliminates the border gap! */
-    will-change: transform;
-}
-
-/* Make sure the hover scales up smoothly from the 1.01 base */
-.hero__media--link:hover .hero__img {
-    transform: scale(1.05) translateZ(0);
-}
-
-/* Trigger the zoom when the wrapper is hovered */
-.hero__media--link:hover .hero__img {
-  transform: scale(1.03) translateZ(0); /* added translateZ */
-}
-.hero__mediaNote{
-  position:absolute;
-  bottom:10px;
-  right:10px;
-  font-size: 12px;
-  font-weight: 800;
-  color: rgba(233,236,235,.78);
-  background: rgba(0,0,0,.35);
-  border: 1px solid rgba(255,255,255,.10);
-  padding: 6px 10px;
-  border-radius: 999px;
-}
-.hero__mediaNote span{ color: var(--brand2); }
-
-.trust{
-  margin-top:14px;
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-}
-.trust__chip{
-  display:inline-flex;
-  gap:8px;
-  align-items:center;
-  padding: 8px 12px;
-  border-radius:999px;
-  border: 1px solid rgba(255,255,255,.10);
-  background: rgba(255,255,255,.03);
-  color: rgba(233,236,235,.92);
-  font-weight: 800;
-  font-size: 13px;
-}
-.trust__dot{
-  width:10px; height:10px;
-  border-radius:999px;
-  background:#16a34a;
-  box-shadow: 0 0 0 3px rgba(22,163,74,.18);
-}
-.trust__ico{ opacity:.9; }
-
-/* Sold Out Overlay */
-.hero__sold-out {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(-10deg);
-  background: rgba(230, 57, 70, 0.95); /* High-contrast Red */
-  color: #fff;
-  padding: 12px 35px;
-  font-family: "Cinzel", serif;
-  font-size: clamp(32px, 6vw, 64px);
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  border: 4px solid #fff;
-  border-radius: 4px;
-  box-shadow: 0 15px 45px rgba(0,0,0,0.6);
-  z-index: 10;
-  pointer-events: none; /* Ensures the link underneath still works */
-  white-space: nowrap;
+@media (min-width: 1440px) {
+    :root { --container: 1320px; }
+    .hero__title { font-size: clamp(60px, 5vw, 76px); }
+    .hero__sub { font-size: 22px; max-width: 95%; }
+    .hero__grid { gap: 60px; }
 }
 
 @media (max-width: 768px) {
-  /* This targets the spacing directly between the text block and the image on mobile */
-  .hero__grid {
-    gap: 20px !important; 
-  }
-
-  /* These act as a fail-safe in case margins are pushing them apart */
-  .hero__copy {
-    margin-bottom: 0 !important;
-  }
-
-  .hero__media {
-    margin-top: 0 !important;
-  }
-}
-
-/* Kills the background gap/frame around the image */
-.hero__media {
-  padding: 0 !important;
-  background: transparent !important;
-  border: none !important;
-  overflow: hidden; /* Ensures the image doesn't bleed out of any rounded corners */
-  display: block;
-}
-
-/* Forces the image to stretch wall-to-wall inside that box */
-.hero__img {
-  width: 100% !important;
-  height: 100% !important; 
-  aspect-ratio: 1548 / 1016;
-  background-size: cover !important;
-  background-position: center !important;
-  margin: 0 !important;
-  display: block;
-}
-
-/* ============================================================
-   EXPAND MAIN HERO GRAPHIC ON DESKTOP
-============================================================ */
-@media (min-width: 900px) {
-  /* This shifts the grid so the image gets more room than the text */
-  .hero__grid {
-    grid-template-columns: 1fr 1.25fr !important; /* Makes the right side 25% wider */
-    align-items: center !important; 
-  }
-
-  /* This kills any hidden max-width limits holding the image back */
-  .hero__media {
-    max-width: 100% !important;
-    width: 100% !important;
-    margin: 0 !important; /* Sucks out any extra margins pushing it inward */
-  }
+    .section--hero { padding-top: 40px !important; padding-bottom: 40px !important; min-height: 450px !important; }
+    .hero__grid { gap: 20px !important; }
+    .hero__copy { margin-bottom: 0 !important; }
+    .hero__media { margin-top: 0 !important; }
+    .pillars { margin-top: 0 !important; padding-top: 20px !important; }
 }
 
 /* =========================================================
@@ -3512,37 +3346,7 @@ body.is-scrolled .status-strip {
   padding: 4px 10px; border-radius: 4px; letter-spacing: 0.1em; 
 }
 
-/* =========================================
-   LARGE MONITOR OPTIMIZATIONS (1440px+)
-   ========================================= */
-@media (min-width: 1440px) {
-  /* 1. Expand the max-width of the whole site slightly */
-  :root {
-    --container: 1320px; /* Up from 1180px */
-  }
 
-  /* 2. Give the hero section more top/bottom breathing room */
-  .section--hero {
-    padding-top: 60px;
-    padding-bottom: 80px;
-  }
-
-  /* 3. Let the Hero Title scale up bigger (caps at 90px instead of 72px) */
-  .hero__title {
-    font-size: clamp(60px, 5vw, 76px);
-  }
-
-  /* 4. Bump the subtitle size and let it stretch slightly wider */
-  .hero__sub {
-    font-size: 22px; 
-    max-width: 95%; /* Up from 90% */
-  }
-
-  /* 5. Increase the gap between the text and the hero image */
-  .hero__grid {
-    gap: 60px; /* Up from 22px */
-  }
-}
 
 /* =========================================
    MEDICAL BUTTON (VIP Styling)
@@ -4641,23 +4445,7 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
     flex: 0 0 auto !important; 
 }
 
-/* =========================================================
-   UNIFY HERO & PILLAR CARDS (SEAMLESS LOOK)
-========================================================= */
-/* 1. Kill the gap and green border under the Hero image */
-.section--hero {
-    padding-bottom: 0 !important;
-    margin-bottom: 0 !important;
-    border-bottom: none !important; /* Erases that green dividing line */
-}
 
-/* 2. Pull Pillars up flush, and add the missing space BELOW them */
-.pillars {
-    margin-top: 0 !important; /* Kills the empty space above the cards */
-    padding-top: 20px !important; /* Just a tiny bit of breathing room from the image */
-    padding-bottom: 80px !important; /* Pushes the 'Today's Highlights' section safely down */
-    margin-bottom: 0 !important;
-}
 
 /* =========================================================
    STATIC DELI PRICING MENU (DTG Vibe: Black, Gold, Orange)
@@ -4819,40 +4607,7 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
   }
 }
 
-/* ============================================================
-   SAFE HOMEPAGE HERO BANNER FIX (NO CROP, NO COLLAPSE)
-   ============================================================ */
-@media (max-width: 768px) {
 
-  /* 1. Ensure the container has enough height so the buttons and image both fit */
-  .section--hero {
-    min-height: 550px !important; 
-    height: auto !important;
-    background-color: #0b1a14 !important; /* Seamless Canva dark green */
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 20px;
-  }
-
-  /* 2. Target the background layers and force them to "contain" rather than "cover" */
-  .section--hero,
-  .section--hero [style*="background"],
-  .section--hero [class*="bg"],
-  .section--hero [class*="media"] {
-    background-size: contain !important;
-    background-position: center bottom !important; /* Pins image below buttons */
-    background-repeat: no-repeat !important;
-    transform: none !important; /* Kills parallax scaling */
-  }
-
-  /* 3. Catch-all in case the graphic was inserted as an actual HTML image */
-  .section--hero img {
-    max-width: 100% !important;
-    height: auto !important;
-    object-fit: contain !important;
-    margin-top: auto; /* Pushes the image to the bottom of the section */
-  }
-}
 
 /* ============================================================
    TODAY'S HIGHLIGHTS FIXES
@@ -4901,19 +4656,3 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
 }
 
 
-
-
-.hero-banner {
-    /* 1. Black background */
-    background-color: #000000 !important;
-    
-    /* 2. Layered radial gradients to create "star" dots */
-    background-image: 
-        radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
-        radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
-        radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px);
-    
-    /* 3. Randomize the star patterns by setting different sizes */
-    background-size: 550px 550px, 350px 350px, 250px 250px;
-    background-position: 0 0, 40px 60px, 130px 270px;
-}
