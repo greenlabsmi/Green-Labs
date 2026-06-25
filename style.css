@@ -566,12 +566,12 @@ header, nav, section, .container, .wrap, .row {
    HERO - PERMANENT BASE + ACTIVE SEASONAL UPDATE
    Green Labs / Luna Pier Summer Sale
    No HTML class changes required.
+   Scoped so it does NOT break Highlights images.
    ========================================================= */
 
 
 /* =========================================================
    HERO - PERMANENT BASE
-   Keep this year-round. Do not touch unless redesigning layout.
    ========================================================= */
 
 .hero-banner {
@@ -591,13 +591,13 @@ header, nav, section, .container, .wrap, .row {
     0 24px 80px rgba(0,0,0,.42);
 }
 
-/* Keeps actual hero content above background effects */
+/* Keeps actual hero content above the fireworks layer */
 .hero-banner > * {
   position: relative;
-  z-index: 3;
+  z-index: 5;
 }
 
-.hero__grid {
+.hero-banner .hero__grid {
   position: relative;
   z-index: 3;
 
@@ -617,12 +617,12 @@ header, nav, section, .container, .wrap, .row {
 }
 
 @media (min-width: 900px) {
-  .hero__grid {
+  .hero-banner .hero__grid {
     grid-template-columns: .9fr 1.25fr;
   }
 }
 
-.hero__title {
+.hero-banner .hero__title {
   font-family: "Cinzel", serif;
   font-weight: 900;
   font-size: clamp(40px, 5.5vw, 72px);
@@ -636,13 +636,13 @@ header, nav, section, .container, .wrap, .row {
     0 0 24px rgba(255,255,255,.08);
 }
 
-.title-small {
+.hero-banner .title-small {
   font-size: 0.55em;
   font-weight: 700;
   color: rgba(255,255,255,.75);
 }
 
-.hero__sub {
+.hero-banner .hero__sub {
   font-size: clamp(16px, 1.5vw, 20px);
   line-height: 1.5;
   color: rgba(233,236,235,.88);
@@ -650,7 +650,7 @@ header, nav, section, .container, .wrap, .row {
   max-width: 92%;
 }
 
-.hero__badge-text {
+.hero-banner .hero__badge-text {
   font-weight: 900;
   letter-spacing: .08em;
   font-family: "Cinzel", serif;
@@ -659,7 +659,7 @@ header, nav, section, .container, .wrap, .row {
   color: #e4b869;
 }
 
-.hero__media {
+.hero-banner .hero__media {
   border-radius: var(--radius2);
   border: 1px solid rgba(255,255,255,.14);
   background: rgba(255,255,255,.025);
@@ -679,7 +679,7 @@ header, nav, section, .container, .wrap, .row {
     0 18px 42px rgba(0,0,0,.50);
 }
 
-.hero__media:hover {
+.hero-banner .hero__media:hover {
   transform: translateY(-4px);
   border-color: rgba(46,248,187,.30);
 
@@ -688,7 +688,7 @@ header, nav, section, .container, .wrap, .row {
     0 24px 60px rgba(0,0,0,.48);
 }
 
-.hero__img {
+.hero-banner .hero__img {
   width: 100%;
   aspect-ratio: 1548 / 1016;
   background-size: cover;
@@ -699,11 +699,11 @@ header, nav, section, .container, .wrap, .row {
   transition: transform .5s ease;
 }
 
-.hero__media:hover .hero__img {
+.hero-banner .hero__media:hover .hero__img {
   transform: scale(1.03);
 }
 
-.hero__mediaNote {
+.hero-banner .hero__mediaNote {
   position: absolute;
   bottom: 10px;
   right: 10px;
@@ -720,48 +720,20 @@ header, nav, section, .container, .wrap, .row {
 
 
 /* =========================================================
-   HERO BUTTON BASE
-   These are normal hero button styles before seasonal overrides.
-   ========================================================= */
-
-.hero-banner .hero__actions .btn,
-.hero-banner .hero__actions a,
-.hero-banner .hero__actions button {
-  position: relative;
-  overflow: hidden;
-
-  transition:
-    transform .2s ease,
-    box-shadow .2s ease,
-    filter .2s ease;
-}
-
-.hero-banner .hero__actions .btn:hover,
-.hero-banner .hero__actions a:hover,
-.hero-banner .hero__actions button:hover {
-  transform: translateY(-2px);
-}
-
-
-/* =========================================================
    ACTIVE SEASONAL HERO SKIN
    Current: Fourth of July / Freedom Festival / Red, White & Buds
-   To change seasons later, replace only this section.
-   No HTML edits needed.
+   Replace only this section later for other seasons.
    ========================================================= */
 
 .hero-banner {
   background:
-    /* fireworks glow */
     radial-gradient(circle at 88% 18%, rgba(255, 221, 120, 0.24), transparent 14%),
     radial-gradient(circle at 78% 30%, rgba(220, 45, 50, 0.18), transparent 15%),
     radial-gradient(circle at 94% 38%, rgba(47, 128, 237, 0.18), transparent 16%),
 
-    /* Luna Pier lake / sunset horizon feel */
     radial-gradient(ellipse at 76% 76%, rgba(255, 119, 55, 0.15), transparent 35%),
     radial-gradient(ellipse at 55% 100%, rgba(0, 155, 255, 0.12), transparent 42%),
 
-    /* star field */
     radial-gradient(circle at 8% 18%, rgba(255,255,255,.42) 0 1px, transparent 2px),
     radial-gradient(circle at 18% 82%, rgba(255,255,255,.30) 0 1px, transparent 2px),
     radial-gradient(circle at 36% 24%, rgba(255,255,255,.30) 0 1px, transparent 2px),
@@ -769,7 +741,6 @@ header, nav, section, .container, .wrap, .row {
     radial-gradient(circle at 69% 19%, rgba(255,255,255,.30) 0 1px, transparent 2px),
     radial-gradient(circle at 94% 84%, rgba(255,255,255,.32) 0 1px, transparent 2px),
 
-    /* deep patriotic summer night */
     linear-gradient(135deg, #06121f 0%, #0b1d34 42%, #10294a 72%, #06111e 100%);
 
   border-bottom: 4px solid #c82127;
@@ -793,11 +764,11 @@ header, nav, section, .container, .wrap, .row {
     radial-gradient(circle at 17% 48%, rgba(7, 197, 143, .08), transparent 34%);
 }
 
-/* Visible animated fireworks layer */
+/* Visible fireworks layer */
 .hero-banner::after {
   content: "";
   position: absolute;
-  z-index: 2;
+  z-index: 4;
   top: 16px;
   right: 18px;
   width: 520px;
@@ -806,7 +777,6 @@ header, nav, section, .container, .wrap, .row {
   opacity: .95;
 
   background:
-    /* large gold firework */
     radial-gradient(circle, rgba(255,255,255,1) 0 3px, transparent 4px) 68% 22% / 10px 10px no-repeat,
     conic-gradient(
       from 10deg,
@@ -823,7 +793,6 @@ header, nav, section, .container, .wrap, .row {
       transparent 80deg 360deg
     ) 58% 16% / 230px 230px no-repeat,
 
-    /* red, white, blue burst */
     radial-gradient(circle, rgba(255,255,255,.95) 0 3px, transparent 4px) 32% 48% / 10px 10px no-repeat,
     conic-gradient(
       from -18deg,
@@ -838,7 +807,6 @@ header, nav, section, .container, .wrap, .row {
       transparent 67deg 360deg
     ) 28% 46% / 175px 175px no-repeat,
 
-    /* smaller distant firework */
     radial-gradient(circle, rgba(255,255,255,.9) 0 2px, transparent 3px) 88% 56% / 9px 9px no-repeat,
     conic-gradient(
       from 45deg,
@@ -851,7 +819,6 @@ header, nav, section, .container, .wrap, .row {
       transparent 53deg 360deg
     ) 84% 54% / 130px 130px no-repeat,
 
-    /* extra spark dots */
     radial-gradient(circle, rgba(255,238,165,.95) 0 2px, transparent 3px) 82% 12% / 9px 9px no-repeat,
     radial-gradient(circle, rgba(255,255,255,.85) 0 2px, transparent 3px) 14% 16% / 8px 8px no-repeat,
     radial-gradient(circle, rgba(70,145,255,.9) 0 2px, transparent 3px) 18% 78% / 8px 8px no-repeat,
@@ -894,7 +861,7 @@ header, nav, section, .container, .wrap, .row {
 }
 
 /* Seasonal hero card frame */
-.hero__grid {
+.hero-banner .hero__grid {
   border-left: 4px solid #d9252e;
   border-right: 4px solid #2f80ed;
   border-top: 1px solid rgba(255,255,255,.10);
@@ -910,7 +877,7 @@ header, nav, section, .container, .wrap, .row {
 }
 
 /* Patriotic top trim */
-.hero__grid::before {
+.hero-banner .hero__grid::before {
   content: "";
   position: absolute;
   left: 0;
@@ -924,12 +891,12 @@ header, nav, section, .container, .wrap, .row {
 }
 
 /* Remove random hanging stars */
-.hero__grid::after {
+.hero-banner .hero__grid::after {
   content: none;
 }
 
 /* Seasonal badge shimmer */
-.hero__badge-text {
+.hero-banner .hero__badge-text {
   background:
     linear-gradient(
       120deg,
@@ -959,7 +926,7 @@ header, nav, section, .container, .wrap, .row {
 }
 
 /* Seasonal image glow */
-.hero__media {
+.hero-banner .hero__media {
   border-color: rgba(255,255,255,.16);
 
   box-shadow:
@@ -968,7 +935,7 @@ header, nav, section, .container, .wrap, .row {
     0 0 42px rgba(47,128,237,.16);
 }
 
-.hero__media:hover {
+.hero-banner .hero__media:hover {
   border-color: rgba(244,201,93,.38);
 
   box-shadow:
@@ -1058,13 +1025,13 @@ header, nav, section, .container, .wrap, .row {
    ========================================================= */
 
 @media (max-width: 900px) {
-  .hero__grid {
+  .hero-banner .hero__grid {
     padding: 24px 18px;
     border-left-width: 3px;
     border-right-width: 3px;
   }
 
-  .hero__sub {
+  .hero-banner .hero__sub {
     max-width: 100%;
   }
 
@@ -1103,16 +1070,46 @@ header, nav, section, .container, .wrap, .row {
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-  .hero__media,
-  .hero__img,
+  .hero-banner .hero__media,
+  .hero-banner .hero__img,
   .hero-banner::after,
-  .hero__badge-text,
+  .hero-banner .hero__badge-text,
   .hero-banner .hero__actions .btn,
   .hero-banner .hero__actions a,
   .hero-banner .hero__actions button {
     animation: none;
     transition: none;
   }
+}
+
+
+/* =========================================================
+   HIGHLIGHTS IMAGE SAFETY RESET
+   Keeps promo images from inheriting hero-style behavior.
+   ========================================================= */
+
+.highlights img,
+.highlights-section img,
+.highlight-card img,
+.promo-card img,
+.deal-card img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  display: block;
+  object-fit: contain;
+  object-position: center;
+}
+
+.highlights .hero__img,
+.highlights-section .hero__img,
+.highlight-card .hero__img,
+.promo-card .hero__img,
+.deal-card .hero__img {
+  aspect-ratio: auto;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 /* =========================================================
@@ -2889,6 +2886,30 @@ header, nav, section, .container, .wrap, .row {
   transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   will-change: transform;
 }
+
+
+/* =========================================================
+   HIGHLIGHTS IMAGE SAFETY RESET
+   Keeps promo images from inheriting hero-style behavior.
+   Keep this inside the Today’s Highlights CSS section.
+   ========================================================= */
+
+#todays-highlights img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  display: block;
+  object-fit: contain;
+  object-position: center;
+}
+
+#todays-highlights .hero__img {
+  aspect-ratio: auto;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 
 /* Cinematic overlay: readable bottom, no white wash */
 #todays-highlights .thOverlay {
