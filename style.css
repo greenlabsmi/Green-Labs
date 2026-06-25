@@ -664,18 +664,16 @@ header, nav, section, .container, .wrap, .row {
 
 
 /* =========================================================
-   HERO FIREWORKS — CSS BURSTS THAT LOOK MORE REAL
-   Keep your existing firework HTML. Replace old firework CSS.
+   HERO FIREWORKS — SPARK STREAK VERSION
+   Replace all old .firework CSS with this.
    ========================================================= */
 
-/* Make sure hero can hold absolute layers */
 .section--hero {
   position: relative;
   overflow: hidden;
   isolation: isolate;
 }
 
-/* Firework layer sits above background, behind hero content */
 .firework-container {
   position: absolute;
   inset: 0;
@@ -684,300 +682,270 @@ header, nav, section, .container, .wrap, .row {
   overflow: hidden;
 }
 
-/* Make sure hero content stays above fireworks */
 .section--hero .container {
   position: relative;
   z-index: 3;
 }
 
-/* Core firework object */
 .firework {
-  --fw-color: #ffd86b;
-  --fw-color-2: #ffffff;
-  --fw-size: 190px;
-  --fw-glow: rgba(255, 216, 107, .45);
+  --fw-main: #ffd86b;
+  --fw-second: #ffffff;
+  --fw-glow: rgba(255, 216, 107, .42);
+  --fw-size: 220px;
 
   position: absolute;
   width: var(--fw-size);
   height: var(--fw-size);
-  left: 50%;
-  top: 30%;
-  transform: translate(-50%, -50%) scale(.12);
   border-radius: 50%;
   opacity: 0;
+  transform: translate(-50%, -50%) scale(.1);
 
-  /*
-    This creates the real firework feel:
-    - bright center
-    - radial sparks
-    - outer soft glow
-    - uneven streaks
-  */
   background:
-    radial-gradient(circle at center, #ffffff 0 2px, transparent 3px),
+    radial-gradient(circle at center, #fff 0 2px, var(--fw-main) 3px, transparent 8px),
 
     repeating-conic-gradient(
-      from 7deg,
-      transparent 0deg 7deg,
-      var(--fw-color) 8deg 10deg,
-      transparent 11deg 18deg,
-      var(--fw-color-2) 19deg 20deg,
-      transparent 21deg 31deg
+      from 4deg,
+      transparent 0deg 5deg,
+      var(--fw-main) 5.5deg 6.5deg,
+      transparent 7deg 14deg,
+      var(--fw-second) 14.5deg 15.5deg,
+      transparent 16deg 24deg
     ),
 
-    radial-gradient(circle at center, transparent 0 30%, var(--fw-glow) 31%, transparent 62%);
+    radial-gradient(circle at center, transparent 0 42%, var(--fw-glow) 43%, transparent 68%);
 
-  -webkit-mask:
-    radial-gradient(circle at center, transparent 0 14%, #000 15% 62%, transparent 72%);
   mask:
-    radial-gradient(circle at center, transparent 0 14%, #000 15% 62%, transparent 72%);
+    radial-gradient(circle at center, #000 0 5%, transparent 6% 18%, #000 19% 62%, transparent 72%);
+  -webkit-mask:
+    radial-gradient(circle at center, #000 0 5%, transparent 6% 18%, #000 19% 62%, transparent 72%);
 
   filter:
-    drop-shadow(0 0 8px var(--fw-color))
-    drop-shadow(0 0 20px var(--fw-glow));
+    drop-shadow(0 0 8px var(--fw-main))
+    drop-shadow(0 0 24px var(--fw-glow));
 
-  animation: fireworkRealBurst 5.2s infinite ease-out;
+  animation: fireworkSparkBurst 5.8s infinite ease-out;
 }
 
-/* Inner flash */
+/* tiny spark field around each burst */
 .firework::before {
   content: "";
   position: absolute;
-  inset: 38%;
+  inset: 0;
   border-radius: 50%;
+
   background:
-    radial-gradient(circle, #ffffff 0 16%, var(--fw-color) 17% 45%, transparent 46%);
+    radial-gradient(circle, var(--fw-second) 0 2px, transparent 3px) 50% 4% / 8px 8px no-repeat,
+    radial-gradient(circle, var(--fw-main) 0 2px, transparent 3px) 72% 12% / 8px 8px no-repeat,
+    radial-gradient(circle, var(--fw-second) 0 1.5px, transparent 3px) 91% 31% / 7px 7px no-repeat,
+    radial-gradient(circle, var(--fw-main) 0 2px, transparent 3px) 96% 52% / 8px 8px no-repeat,
+    radial-gradient(circle, var(--fw-second) 0 1.5px, transparent 3px) 80% 80% / 7px 7px no-repeat,
+    radial-gradient(circle, var(--fw-main) 0 2px, transparent 3px) 52% 96% / 8px 8px no-repeat,
+    radial-gradient(circle, var(--fw-second) 0 1.5px, transparent 3px) 22% 83% / 7px 7px no-repeat,
+    radial-gradient(circle, var(--fw-main) 0 2px, transparent 3px) 4% 54% / 8px 8px no-repeat,
+    radial-gradient(circle, var(--fw-second) 0 1.5px, transparent 3px) 13% 25% / 7px 7px no-repeat,
+    radial-gradient(circle, var(--fw-main) 0 2px, transparent 3px) 30% 10% / 8px 8px no-repeat;
+
   opacity: 0;
-  filter:
-    drop-shadow(0 0 10px #ffffff)
-    drop-shadow(0 0 22px var(--fw-color));
-  animation: fireworkCoreFlash 5.2s infinite ease-out;
+  animation: fireworkSparkDots 5.8s infinite ease-out;
 }
 
-/* Smoke / falling ember trail */
+/* launch trail / falling ember */
 .firework::after {
   content: "";
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 3px;
-  height: 90px;
+  width: 2px;
+  height: 110px;
   transform: translateX(-50%);
+  background: linear-gradient(to bottom, var(--fw-main), rgba(255,255,255,.45), transparent);
+  filter: blur(.4px);
   opacity: 0;
-  background:
-    linear-gradient(to bottom, var(--fw-color), rgba(255,255,255,.35), transparent);
-  filter: blur(.5px);
-  animation: fireworkTrailFall 5.2s infinite ease-out;
+  animation: fireworkTrail 5.8s infinite ease-out;
 }
 
-/* Color sets */
 .firework.gold {
-  --fw-color: #ffd86b;
-  --fw-color-2: #fff3c4;
-  --fw-glow: rgba(255, 216, 107, .46);
+  --fw-main: #ffd86b;
+  --fw-second: #fff2bd;
+  --fw-glow: rgba(255, 216, 107, .48);
 }
 
 .firework.emerald {
-  --fw-color: #2ef8bb;
-  --fw-color-2: #c7fff0;
-  --fw-glow: rgba(46, 248, 187, .36);
+  --fw-main: #2ef8bb;
+  --fw-second: #d8fff5;
+  --fw-glow: rgba(46, 248, 187, .38);
 }
 
 .firework.patriotic {
-  --fw-color: #ff4a4a;
-  --fw-color-2: #6ea6ff;
-  --fw-glow: rgba(255, 74, 74, .38);
+  --fw-main: #ff4a4a;
+  --fw-second: #6ea6ff;
+  --fw-glow: rgba(255, 74, 74, .42);
 }
 
-/* Realistic burst timing */
-@keyframes fireworkRealBurst {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(.08);
-  }
-
-  10% {
+@keyframes fireworkSparkBurst {
+  0%, 10% {
     opacity: 0;
     transform: translate(-50%, -50%) scale(.08);
   }
 
   16% {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(.24);
+    transform: translate(-50%, -50%) scale(.25);
   }
 
-  27% {
-    opacity: .96;
-    transform: translate(-50%, -50%) scale(.88);
+  30% {
+    opacity: .95;
+    transform: translate(-50%, -50%) scale(1);
   }
 
-  42% {
-    opacity: .55;
-    transform: translate(-50%, -50%) scale(1.05);
+  48% {
+    opacity: .42;
+    transform: translate(-50%, -48%) scale(1.12);
   }
 
-  58% {
-    opacity: .18;
-    transform: translate(-50%, -47%) scale(1.13);
-  }
-
-  72%,
-  100% {
+  70%, 100% {
     opacity: 0;
-    transform: translate(-50%, -44%) scale(1.18);
+    transform: translate(-50%, -44%) scale(1.22);
   }
 }
 
-@keyframes fireworkCoreFlash {
-  0%,
-  11% {
+@keyframes fireworkSparkDots {
+  0%, 12% {
     opacity: 0;
-    transform: scale(.35);
+    transform: scale(.4);
   }
 
-  16% {
+  24% {
     opacity: 1;
     transform: scale(1);
   }
 
-  26% {
-    opacity: .45;
-    transform: scale(1.35);
+  48% {
+    opacity: .5;
+    transform: scale(1.12);
   }
 
-  42%,
-  100% {
+  72%, 100% {
     opacity: 0;
-    transform: scale(1.7);
+    transform: scale(1.25) translateY(8px);
   }
 }
 
-@keyframes fireworkTrailFall {
-  0%,
-  24% {
+@keyframes fireworkTrail {
+  0%, 22% {
     opacity: 0;
     transform: translateX(-50%) translateY(0);
   }
 
   34% {
-    opacity: .32;
-    transform: translateX(-50%) translateY(12px);
+    opacity: .34;
+    transform: translateX(-50%) translateY(14px);
   }
 
-  55% {
+  56%, 100% {
     opacity: 0;
-    transform: translateX(-50%) translateY(42px);
-  }
-
-  100% {
-    opacity: 0;
-    transform: translateX(-50%) translateY(42px);
+    transform: translateX(-50%) translateY(48px);
   }
 }
 
-/* =========================================================
-   FIREWORK PLACEMENT
-   Spread across the sky, left + center + right.
-   Keep most above the water/text area.
-   ========================================================= */
-
+/* Spread across the whole sky */
 .firework:nth-child(1) {
   top: 16%;
-  left: 18%;
-  --fw-size: 150px;
+  left: 16%;
+  --fw-size: 220px;
   animation-delay: 0s;
 }
 
 .firework:nth-child(2) {
-  top: 23%;
-  left: 36%;
-  --fw-size: 110px;
-  animation-delay: .8s;
+  top: 27%;
+  left: 34%;
+  --fw-size: 145px;
+  animation-delay: .7s;
 }
 
 .firework:nth-child(3) {
-  top: 15%;
-  left: 58%;
-  --fw-size: 185px;
-  animation-delay: 1.6s;
+  top: 17%;
+  left: 52%;
+  --fw-size: 205px;
+  animation-delay: 1.3s;
 }
 
 .firework:nth-child(4) {
-  top: 27%;
-  left: 74%;
-  --fw-size: 145px;
-  animation-delay: 2.4s;
+  top: 25%;
+  left: 70%;
+  --fw-size: 185px;
+  animation-delay: 2s;
 }
 
 .firework:nth-child(5) {
   top: 18%;
   left: 88%;
-  --fw-size: 125px;
-  animation-delay: 3.2s;
+  --fw-size: 170px;
+  animation-delay: 2.7s;
 }
 
 .firework:nth-child(6) {
-  top: 37%;
-  left: 25%;
-  --fw-size: 95px;
-  animation-delay: 2s;
+  top: 38%;
+  left: 22%;
+  --fw-size: 120px;
+  animation-delay: 1.7s;
 }
 
 .firework:nth-child(7) {
-  top: 35%;
-  left: 49%;
-  --fw-size: 105px;
-  animation-delay: 3.8s;
+  top: 38%;
+  left: 46%;
+  --fw-size: 130px;
+  animation-delay: 3.3s;
 }
 
 .firework:nth-child(8) {
   top: 39%;
-  left: 66%;
-  --fw-size: 90px;
-  animation-delay: 1.1s;
+  left: 62%;
+  --fw-size: 115px;
+  animation-delay: 2.4s;
 }
 
 .firework:nth-child(9) {
-  top: 34%;
-  left: 82%;
-  --fw-size: 110px;
-  animation-delay: 4.4s;
+  top: 35%;
+  left: 80%;
+  --fw-size: 135px;
+  animation-delay: 4s;
 }
 
 .firework:nth-child(10) {
   top: 10%;
-  left: 43%;
-  --fw-size: 130px;
-  animation-delay: 4.9s;
+  left: 38%;
+  --fw-size: 155px;
+  animation-delay: 4.6s;
 }
 
-/* Give each firework a slightly different speed */
+/* Different timings */
 .firework:nth-child(2),
 .firework:nth-child(6),
 .firework:nth-child(8) {
-  animation-duration: 4.4s;
+  animation-duration: 4.8s;
 }
 
 .firework:nth-child(3),
 .firework:nth-child(5),
 .firework:nth-child(9) {
-  animation-duration: 5.8s;
+  animation-duration: 6.2s;
 }
 
 .firework:nth-child(4),
 .firework:nth-child(7),
 .firework:nth-child(10) {
-  animation-duration: 6.2s;
+  animation-duration: 6.8s;
 }
 
-/* Match pseudo animation timing to parent */
+/* sync pseudo-elements */
 .firework:nth-child(2)::before,
 .firework:nth-child(2)::after,
 .firework:nth-child(6)::before,
 .firework:nth-child(6)::after,
 .firework:nth-child(8)::before,
 .firework:nth-child(8)::after {
-  animation-duration: 4.4s;
+  animation-duration: 4.8s;
 }
 
 .firework:nth-child(3)::before,
@@ -986,7 +954,7 @@ header, nav, section, .container, .wrap, .row {
 .firework:nth-child(5)::after,
 .firework:nth-child(9)::before,
 .firework:nth-child(9)::after {
-  animation-duration: 5.8s;
+  animation-duration: 6.2s;
 }
 
 .firework:nth-child(4)::before,
@@ -995,46 +963,41 @@ header, nav, section, .container, .wrap, .row {
 .firework:nth-child(7)::after,
 .firework:nth-child(10)::before,
 .firework:nth-child(10)::after {
-  animation-duration: 6.2s;
+  animation-duration: 6.8s;
 }
 
-/* Sync pseudo-element delays */
+/* delays for pseudo-elements */
 .firework:nth-child(1)::before,
 .firework:nth-child(1)::after { animation-delay: 0s; }
 
 .firework:nth-child(2)::before,
-.firework:nth-child(2)::after { animation-delay: .8s; }
+.firework:nth-child(2)::after { animation-delay: .7s; }
 
 .firework:nth-child(3)::before,
-.firework:nth-child(3)::after { animation-delay: 1.6s; }
+.firework:nth-child(3)::after { animation-delay: 1.3s; }
 
 .firework:nth-child(4)::before,
-.firework:nth-child(4)::after { animation-delay: 2.4s; }
+.firework:nth-child(4)::after { animation-delay: 2s; }
 
 .firework:nth-child(5)::before,
-.firework:nth-child(5)::after { animation-delay: 3.2s; }
+.firework:nth-child(5)::after { animation-delay: 2.7s; }
 
 .firework:nth-child(6)::before,
-.firework:nth-child(6)::after { animation-delay: 2s; }
+.firework:nth-child(6)::after { animation-delay: 1.7s; }
 
 .firework:nth-child(7)::before,
-.firework:nth-child(7)::after { animation-delay: 3.8s; }
+.firework:nth-child(7)::after { animation-delay: 3.3s; }
 
 .firework:nth-child(8)::before,
-.firework:nth-child(8)::after { animation-delay: 1.1s; }
+.firework:nth-child(8)::after { animation-delay: 2.4s; }
 
 .firework:nth-child(9)::before,
-.firework:nth-child(9)::after { animation-delay: 4.4s; }
+.firework:nth-child(9)::after { animation-delay: 4s; }
 
 .firework:nth-child(10)::before,
-.firework:nth-child(10)::after { animation-delay: 4.9s; }
+.firework:nth-child(10)::after { animation-delay: 4.6s; }
 
-/* Mobile: fewer, softer fireworks */
 @media (max-width: 768px) {
-  .firework {
-    --fw-size: 105px;
-  }
-
   .firework:nth-child(n+6) {
     display: none;
   }
@@ -1042,42 +1005,31 @@ header, nav, section, .container, .wrap, .row {
   .firework:nth-child(1) {
     top: 14%;
     left: 22%;
-    --fw-size: 105px;
+    --fw-size: 135px;
   }
 
   .firework:nth-child(2) {
-    top: 24%;
-    left: 48%;
-    --fw-size: 90px;
+    top: 25%;
+    left: 46%;
+    --fw-size: 100px;
   }
 
   .firework:nth-child(3) {
     top: 16%;
     left: 72%;
-    --fw-size: 120px;
+    --fw-size: 145px;
   }
 
   .firework:nth-child(4) {
-    top: 34%;
+    top: 35%;
     left: 62%;
-    --fw-size: 85px;
+    --fw-size: 100px;
   }
 
   .firework:nth-child(5) {
-    top: 29%;
+    top: 30%;
     left: 86%;
-    --fw-size: 90px;
-  }
-}
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .firework,
-  .firework::before,
-  .firework::after {
-    animation: none;
-    opacity: .32;
-    transform: translate(-50%, -50%) scale(.85);
+    --fw-size: 105px;
   }
 }
 
