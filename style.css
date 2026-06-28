@@ -3017,8 +3017,9 @@ header, nav, section, .container, .wrap, .row {
 
 .pillars{
   display:grid;
-  gap:12px;            /* tight stack on mobile */
+  gap:12px;
   margin-top:18px;
+  padding-bottom: 40px; /* Add this line to create the breathing room */
 }
 
 /* Card: compact by default (mobile-first) */
