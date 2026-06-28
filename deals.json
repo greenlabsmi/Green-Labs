@@ -47,7 +47,7 @@
       "scroll": ["mix-gummies", "kshn-pouches", "play-gummies", "fire-styxx", "hash-house-rosin-cart", "premium-gummies", "mix-prerolls"]
     },
     "items": {
-      "mix-carts": { "title": "Mix & Match 1G Carts", "price": "5 for $35", "tag": "VAPES", "details": "Party Favors · Mr. Vapor · Crude Boys · Drip", "image": "assets/img/highlights/mixmatch-carts.jpg" },
+      "mix-carts": { "title": "Mix & Match 1G Carts", "price": "5 for $35", "tag": "VAPES", "details": "Play · Jungle Juice · Crude Boys · Drip", "image": "assets/img/highlights/mixmatch-carts.jpg" },
       "deli-oz": { 
         "title": "4 Award Winning Strains on Deli", 
         "price": "$110/Oz", 
