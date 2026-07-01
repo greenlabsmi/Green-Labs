@@ -1430,35 +1430,226 @@
   }
 </style>
 
+
+
+
+<!-- FIRST FRIDAZE POPUP - DELETE THIS WHOLE BLOCK TO REMOVE -->
+<style>
+  #first-fridaze-popup {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    background: rgba(0, 0, 0, 0.78);
+    backdrop-filter: blur(6px);
+  }
+
+  #first-fridaze-popup.ff-show {
+    display: flex;
+  }
+
+  .ff-card {
+    position: relative;
+    width: min(94vw, 480px);
+    overflow: hidden;
+    border-radius: 28px;
+    background:
+      linear-gradient(90deg, rgba(0,168,120,.18) 1px, transparent 1px),
+      linear-gradient(0deg, rgba(0,168,120,.12) 1px, transparent 1px),
+      #050505;
+    background-size: 18px 18px;
+    border: 4px solid #00a878;
+    color: #fff;
+    text-align: center;
+    padding: 28px 22px 24px;
+    box-shadow: 0 0 42px rgba(0, 168, 120, 0.55);
+  }
+
+  .ff-card::before {
+    content: "";
+    position: absolute;
+    inset: 12px;
+    border: 2px dashed rgba(255,255,255,.25);
+    border-radius: 22px;
+    pointer-events: none;
+  }
+
+  .ff-logo {
+    width: 58px;
+    height: 58px;
+    object-fit: contain;
+    background: white;
+    border-radius: 50%;
+    padding: 6px;
+    margin-bottom: 10px;
+  }
+
+  .ff-close {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    z-index: 2;
+    background: transparent;
+    border: 0;
+    color: #fff;
+    font-size: 34px;
+    font-weight: 900;
+    cursor: pointer;
+  }
+
+  .ff-pill {
+    display: inline-block;
+    background: #00a878;
+    color: #050505;
+    font-weight: 1000;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    padding: 8px 15px;
+    border-radius: 999px;
+    font-size: 13px;
+    margin-bottom: 12px;
+  }
+
+  .ff-present {
+    color: #00a878;
+    font-weight: 1000;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .ff-title {
+    margin: 0;
+    font-size: clamp(48px, 13vw, 76px);
+    line-height: .86;
+    font-weight: 1000;
+    letter-spacing: -2px;
+    color: #fff;
+    text-shadow: 
+      4px 4px 0 #000,
+      7px 7px 0 #00a878;
+  }
+
+  .ff-burst {
+    margin: 20px auto 14px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .ff-burst span {
+    background: #fff;
+    color: #007f61;
+    border-radius: 60% 40% 55% 45%;
+    padding: 10px 8px;
+    font-weight: 1000;
+    transform: rotate(-3deg);
+    box-shadow: 3px 3px 0 #00a878;
+  }
+
+  .ff-burst span:nth-child(even) {
+    transform: rotate(3deg);
+  }
+
+  .ff-date {
+    color: #00e6a8;
+    font-size: 24px;
+    font-weight: 1000;
+    margin: 18px 0 8px;
+  }
+
+  .ff-copy {
+    max-width: 390px;
+    margin: 0 auto 16px;
+    font-size: 16px;
+    line-height: 1.45;
+    font-weight: 700;
+  }
+
+  .ff-prize {
+    background: rgba(0,168,120,.18);
+    border: 2px solid rgba(0,168,120,.7);
+    border-radius: 18px;
+    padding: 14px;
+    margin: 16px 0;
+    font-weight: 900;
+  }
+
+  .ff-prize strong {
+    display: block;
+    color: #00e6a8;
+    font-size: 19px;
+    margin-bottom: 4px;
+  }
+
+  .ff-button {
+    display: inline-block;
+    background: #00e6a8;
+    color: #050505;
+    text-decoration: none;
+    font-weight: 1000;
+    padding: 14px 25px;
+    border-radius: 999px;
+    box-shadow: 0 8px 0 #007f61;
+  }
+
+  .ff-dates {
+    margin-top: 17px;
+    font-size: 13px;
+    font-weight: 900;
+    color: rgba(255,255,255,.78);
+  }
+
+  @media (max-width: 420px) {
+    .ff-burst {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>
+
 <div id="first-fridaze-popup" aria-hidden="true">
   <div class="ff-card" role="dialog" aria-modal="true" aria-labelledby="ff-title">
-    <button class="ff-close" type="button" aria-label="Close First Fridaze popup">×</button>
+    <button class="ff-close" type="button">×</button>
+
+    <img class="ff-logo" src="greenlabs-logo-master.png" alt="Green Labs logo">
 
     <div class="ff-pill">New Monthly Event</div>
-    <div class="ff-present">Green Labs Presents</div>
+    <div class="ff-present">Green Labs Presents:</div>
 
     <h2 id="ff-title" class="ff-title">First<br>Fridaze</h2>
 
     <div class="ff-date">Friday 7/3 · 4–8PM</div>
 
     <p class="ff-copy">
-      Vendors, food trucks, games, giveaways, prizes, and good vibes at Green Labs.
+      Food trucks, local vendors, games, giveaways, prizes, and good vibes at Green Labs.
     </p>
 
-    <div class="ff-grid">
-      <span>City Soda</span>
-      <span>Local Vendors</span>
-      <span>Cornhole Tourney</span>
-      <span>Games + Prizes</span>
+    <div class="ff-burst">
+      <span>Food</span>
+      <span>Games</span>
+      <span>Vendors</span>
+      <span>Prizes</span>
+      <span>Vibes</span>
+      <span>Fun</span>
     </div>
 
     <div class="ff-prize">
-      <strong>Cornhole Prizes</strong>
+      <strong>Cornhole Tourney</strong>
       1st Place: Free Deli OZ<br>
       2nd Place: Free Half OZ
     </div>
 
-    <a class="ff-button" href="#contact">Get Directions</a>
+    <a 
+      class="ff-button" 
+      href="https://www.google.com/maps/dir/?api=1&destination=Green%20Labs%20Provisions%20Luna%20Pier%20MI"
+      target="_blank"
+      rel="noopener"
+    >
+      Get Directions
+    </a>
 
     <div class="ff-dates">
       First Friday of every month · 7/3 · 8/7 · 9/4 · 10/2
@@ -1470,35 +1661,29 @@
   (function () {
     const popup = document.getElementById("first-fridaze-popup");
     const closeButton = popup.querySelector(".ff-close");
-    const directionButton = popup.querySelector(".ff-button");
 
-    function openFirstFridazePopup() {
+    function openPopup() {
       popup.classList.add("ff-show");
       popup.setAttribute("aria-hidden", "false");
     }
 
-    function closeFirstFridazePopup() {
+    function closePopup() {
       popup.classList.remove("ff-show");
       popup.setAttribute("aria-hidden", "true");
     }
 
     window.addEventListener("load", function () {
-      setTimeout(openFirstFridazePopup, 7000);
+      setTimeout(openPopup, 7000);
     });
 
-    closeButton.addEventListener("click", closeFirstFridazePopup);
-    directionButton.addEventListener("click", closeFirstFridazePopup);
+    closeButton.addEventListener("click", closePopup);
 
     popup.addEventListener("click", function (event) {
-      if (event.target === popup) {
-        closeFirstFridazePopup();
-      }
+      if (event.target === popup) closePopup();
     });
 
     document.addEventListener("keydown", function (event) {
-      if (event.key === "Escape") {
-        closeFirstFridazePopup();
-      }
+      if (event.key === "Escape") closePopup();
     });
   })();
 </script>
