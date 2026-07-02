@@ -42,19 +42,12 @@
   ],
   "highlights": {
     "layout": {
-      "hero": "deli-oz",
+      "hero": null,
       "mid": ["mix-carts", "dtg-disposables"],
       "scroll": ["mix-gummies", "kshn-pouches", "play-gummies", "fire-styxx", "hash-house-rosin-cart", "premium-gummies", "mix-prerolls"]
     },
     "items": {
       "mix-carts": { "title": "Mix & Match 1G Carts", "price": "5 for $35", "tag": "VAPES", "details": "Play · Jungle Juice · Crude Boys · Drip", "image": "assets/img/highlights/mixmatch-carts.jpg" },
-      "deli-oz": { 
-        "title": "4 Award Winning Strains on Deli", 
-        "price": "$110/Oz", 
-        "tag": "FLOWER", 
-        "details": "Mr. Clean, Death By Funk, Space Hippy, & Lilac Diesel", 
-        "image": "assets/img/deli-oz-june.jpg" 
-      },
       "dtg-disposables": { "title": "DTG 1G Disposables", "price": "3 for $45", "tag": "VAPES", "details": "Excludes Mr. Clean Live Terps", "image": "assets/img/deals/dt-disposables.jpg" },
       "mix-gummies": { "title": "Value Gummies 5 for $18", "image": "assets/img/highlights/hl-gummies.jpg" },
       "mix-prerolls": { "title": "Mix & Match Pre-Rolls 10 for $35", "image": "assets/img/highlights/hl-prerolls.jpg" },
@@ -73,9 +66,8 @@
         {
           "title": "☀️ Red, White & Buds - Luna Pier Summer Sale",
           "items": [
-            "$12 Eighths — $70 Ounces",
-            "Select Deli Flower Strains: Guicy G, Death Z, Pina Rita, Hash D, Sin City Grapes, Garlic Breath, Dead Prez, 13 Layer Cake, Illudium, Chocolate Marshmallow, Cobra Lips",
-            "Freedom Festival - Saturday, June 27, 2026 - 8:00 AM-11:00 PM - Fireworks at 10:00 PM"
+            "$12 Eighths",
+            "Select Deli Flower Strains: Guicy G, Death Z, Hash D, Garlic Breath, Dead Prez, Chocolate Marshmallow, Cobra Lips"
           ]
         },
         {
@@ -83,9 +75,10 @@
           "items": [
             "Dutch Daylight Flower Ounce — $40 or 2/$60",
             "Angelica and Secret Chief Ounce — $65",
-            "Illudium, Cobra Lips, and Chocolate Marshmallow #14 Ounce — $70",
+            "Cobra Lips and Chocolate Marshmallow #14 Ounce — $70",
             "Cresco Brand of Flower Ounce — $70",
-            "Mr. Clean, Death By Funk, Space Hippy, and Lilac Diesel Ounce — $110",
+            "Mr. Clean, Death By Funk, and Lilac Diesel Ounce — $110",
+            "Space Hippy Ounce — $90",
             "Clusterfunk 3.5g — $30"
           ]
         },
