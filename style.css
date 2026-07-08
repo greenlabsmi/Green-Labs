@@ -568,17 +568,17 @@ header, nav, section, .container, .wrap, .row {
 .section--hero {
   background-color: #020706 !important;
   background-image:
-    radial-gradient(circle at 78% 22%, rgba(15, 154, 132, .22), transparent 28%),
-    radial-gradient(circle at 12% 78%, rgba(218, 146, 34, .18), transparent 30%),
-    radial-gradient(circle at 48% 42%, rgba(255, 255, 255, .04), transparent 34%),
-    linear-gradient(180deg, #020706 0%, #03110f 52%, #061a16 100%) !important;
+    radial-gradient(circle at 8% 6%, rgba(255, 190, 88, .34), transparent 26%),
+    radial-gradient(circle at 18% 16%, rgba(238, 159, 54, .18), transparent 30%),
+    linear-gradient(180deg, #050807 0%, #061210 44%, #05211f 72%, #043b37 100%) !important;
+
   background-size: cover !important;
   background-repeat: no-repeat !important;
 
   padding-top: 60px !important;
   padding-bottom: 80px !important;
   border-bottom: 8px solid transparent !important;
-  border-image: linear-gradient(to right, #0f8f7d, #e3b65f, #0f8f7d) 1 !important;
+  border-image: linear-gradient(to right, #0c7f75, #e3b65f, #0f9b8d) 1 !important;
   margin-bottom: 0 !important;
 
   display: flex !important;
@@ -588,23 +588,45 @@ header, nav, section, .container, .wrap, .row {
   isolation: isolate;
 }
 
-/* Soft summer shimmer layer */
 .section--hero::before {
   content: '';
   position: absolute;
   inset: 0;
   pointer-events: none;
   z-index: 0;
+
   background:
-    linear-gradient(115deg, transparent 0%, rgba(227, 182, 95, .08) 42%, transparent 62%),
-    repeating-linear-gradient(
+    linear-gradient(
       180deg,
-      transparent 0px,
-      transparent 26px,
-      rgba(20, 184, 166, .045) 27px,
-      transparent 29px
+      transparent 0%,
+      transparent 58%,
+      rgba(5, 74, 68, .28) 74%,
+      rgba(6, 121, 111, .34) 100%
     );
-  opacity: .75;
+
+  opacity: 1;
+}
+
+.section--hero::after {
+  content: '';
+  position: absolute;
+  left: -8%;
+  right: -8%;
+  bottom: -18px;
+  height: 165px;
+  pointer-events: none;
+  z-index: 0;
+
+  background:
+    radial-gradient(ellipse at center, rgba(17, 164, 151, .28), transparent 68%),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, .04) 0%,
+      rgba(14, 140, 130, .22) 34%,
+      rgba(4, 71, 67, .52) 100%
+    );
+
+  border-top: 1px solid rgba(120, 224, 210, .22);
 }
 
 /* Subtle shoreline/wave glow */
