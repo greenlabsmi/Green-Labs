@@ -561,120 +561,67 @@ header, nav, section, .container, .wrap, .row {
 }
 
 /* =========================================================
-   MASTER HERO SYSTEM (Starry Night + Patriotic Border)
-   ========================================================= */
-
-.section--hero {
-    background-color: #000000 !important;
-    
-    /* 20 Layers of stars using staggered sizes and opacities for density */
-    background-image: 
-        radial-gradient(1px 1px at 10% 20%, white, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 20% 80%, white, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 30% 50%, white, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 40% 10%, white, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 50% 90%, white, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 60% 30%, white, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 70% 70%, white, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 80% 40%, white, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 90% 60%, white, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 15% 45%, white, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 25% 75%, white, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 35% 25%, white, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 45% 65%, white, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 55% 15%, white, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 65% 85%, white, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 75% 35%, white, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 85% 65%, white, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 5% 95%, white, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 95% 5%, white, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 50% 50%, white, rgba(0,0,0,0)) !important;
-
-    /* Sized small to act as a 'repeatable field' of hundreds of dots */
-    background-size: 200px 200px !important;
-    background-repeat: repeat !important;
-    
-    padding-top: 60px !important;
-    padding-bottom: 80px !important;
-    border-bottom: 8px solid transparent !important;
-    border-image: linear-gradient(to right, #c82127, #ffffff, #002868) 1 !important;
-    margin-bottom: 0 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    position: relative;
-}
-
-/* Red/White/Blue top trim */
-.section--hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(to right, #c82127, #ffffff, #002868);
-    opacity: 0.9;
-}
-
-/* 2. Grid & Layout */
-.hero__grid { display: grid; gap: 18px; grid-template-columns: 1fr; align-items: center; }
-
-/* 3. Typography */
-.hero__title { font-family: "Cinzel", serif; font-weight: 900; font-size: clamp(40px, 5.5vw, 72px); line-height: 1.05; letter-spacing: 0.02em; margin: 16px 0; color: #ffffff; }
-.title-small { font-size: 0.55em; font-weight: 700; color: rgba(255, 255, 255, 0.75); }
-.hero__sub { font-size: clamp(16px, 1.5vw, 20px); line-height: 1.5; color: rgba(233, 236, 235, 0.85); margin-bottom: 28px; max-width: 90%; }
-.hero__badge-text { font-weight: 900; letter-spacing: .08em; font-family: "Cinzel", serif; white-space: nowrap; font-size: clamp(9px, 2.5vw, 12px); background: linear-gradient(120deg, rgba(228, 184, 105, 0.95) 0%, rgba(228, 184, 105, 0.95) 45%, #ffffff 50%, rgba(228, 184, 105, 0.95) 55%, rgba(228, 184, 105, 0.95) 100%); background-size: 250% 100%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: textGlisten 6s linear infinite; }
-@keyframes textGlisten { 0% { background-position: 100% 50%; } 15% { background-position: 0% 50%; } 100% { background-position: 0% 50%; } }
-
-/* 4. Media & Image Handling */
-.hero__media { border-radius: var(--radius2); border: none !important; background: transparent !important; overflow: hidden; position: relative; display: block; transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; backface-visibility: hidden; transform: translateZ(0); padding: 0 !important; }
-.hero__media--link { cursor: pointer; }
-.hero__media--link:hover { transform: translateY(-4px) translateZ(0); box-shadow: 0 24px 60px rgba(0,0,0,.45); border-color: rgba(46,248,187,.30); }
-.hero__img { width: 100% !important; height: 100% !important; aspect-ratio: 1548 / 1016; background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important; transition: transform 0.5s ease; backface-visibility: hidden; will-change: transform; transform: scale(1.01) translateZ(0); display: block; margin: 0 !important; }
-.hero__media--link:hover .hero__img { transform: scale(1.03) translateZ(0); }
-.hero__mediaNote { position:absolute; bottom:10px; right:10px; font-size: 12px; font-weight: 800; color: rgba(233,236,235,.78); background: rgba(0,0,0,.35); border: 1px solid rgba(255,255,255,.10); padding: 6px 10px; border-radius: 999px; }
-.hero__mediaNote span { color: var(--brand2); }
-
-/* 5. Trust Chips */
-.trust { margin-top:14px; display:flex; flex-wrap:wrap; gap:10px; }
-.trust__chip { display:inline-flex; gap:8px; align-items:center; padding: 8px 12px; border-radius:999px; border: 1px solid rgba(255,255,255,.10); background: rgba(255,255,255,.03); color: rgba(233,236,235,.92); font-weight: 800; font-size: 13px; }
-.trust__dot { width:10px; height:10px; border-radius:999px; background:#16a34a; box-shadow: 0 0 0 3px rgba(22,163,74,.18); }
-.trust__ico { opacity:.9; }
-
-/* 6. Responsive Overrides */
-@media (min-width: 900px) {
-    .hero__grid { grid-template-columns: 1fr 1.25fr !important; }
-    .hero__media { max-width: 100% !important; width: 100% !important; margin: 0 !important; }
-}
-
-@media (min-width: 1440px) {
-    :root { --container: 1320px; }
-    .hero__title { font-size: clamp(60px, 5vw, 76px); }
-    .hero__sub { font-size: 22px; max-width: 95%; }
-    .hero__grid { gap: 60px; }
-}
-
-@media (max-width: 768px) {
-    .section--hero { padding-top: 40px !important; padding-bottom: 40px !important; min-height: 450px !important; }
-    .hero__grid { gap: 20px !important; }
-    .hero__copy { margin-bottom: 0 !important; }
-    .hero__media { margin-top: 0 !important; }
-    .pillars { margin-top: 0 !important; padding-top: 20px !important; }
-}
-
-
-/* =========================================================
-   HERO FIREWORKS — GOLDEN SPARK PARTICLE VERSION
-   Looks more like real sparkle fireworks than CSS wheels.
+   MASTER HERO SYSTEM — LUNA PIER SUMMER SALE
    ========================================================= */
 
 .section--hero {
   position: relative;
   overflow: hidden;
   isolation: isolate;
+  display: flex !important;
+  flex-direction: column !important;
+
+  padding-top: 60px !important;
+  padding-bottom: 80px !important;
+  margin-bottom: 0 !important;
+
+  background-color: #020807 !important;
+  background-image:
+    radial-gradient(circle at 78% 24%, rgba(0, 168, 137, .28), transparent 30%),
+    radial-gradient(circle at 12% 82%, rgba(217, 144, 37, .24), transparent 28%),
+    radial-gradient(circle at 42% 48%, rgba(255, 255, 255, .06), transparent 34%),
+    linear-gradient(180deg, #020606 0%, #04120f 58%, #061916 100%) !important;
+
+  border-bottom: 8px solid transparent !important;
+  border-image: linear-gradient(to right, #008c78, #f4c66b, #e46d3a, #008c78) 1 !important;
 }
 
-.firework-container {
+/* Summer top trim */
+.section--hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(to right, #008c78, #f4c66b, #e46d3a, #008c78);
+  opacity: .95;
+  z-index: 2;
+}
+
+/* subtle beach texture */
+.section--hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: .25;
+  background-image:
+    radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,.65), rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 30% 70%, rgba(255,255,255,.45), rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 50% 40%, rgba(255,255,255,.5), rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 70% 85%, rgba(255,255,255,.45), rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 90% 35%, rgba(255,255,255,.55), rgba(0,0,0,0));
+  background-size: 180px 180px;
+  background-repeat: repeat;
+}
+
+/* =========================================================
+   SUMMER BACKGROUND ELEMENTS
+   ========================================================= */
+
+.summer-hero-bg {
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -682,371 +629,355 @@ header, nav, section, .container, .wrap, .row {
   overflow: hidden;
 }
 
+.summer-glow {
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  border-radius: 999px;
+  filter: blur(80px);
+  opacity: .25;
+}
+
+.summer-glow--teal {
+  background: #00a889;
+  top: 14%;
+  right: 16%;
+}
+
+.summer-glow--gold {
+  background: #d99025;
+  bottom: 8%;
+  left: 5%;
+}
+
+.summer-wave {
+  position: absolute;
+  left: -10%;
+  width: 120%;
+  height: 90px;
+  border-radius: 50%;
+  border-top: 2px solid rgba(16, 185, 160, .28);
+  opacity: .7;
+}
+
+.summer-wave--one {
+  bottom: 42px;
+}
+
+.summer-wave--two {
+  bottom: 72px;
+  border-top-color: rgba(255, 184, 77, .22);
+}
+
+.summer-sun {
+  position: absolute;
+  top: 16%;
+  left: 42%;
+  font-size: 42px;
+  opacity: .52;
+  filter: drop-shadow(0 0 22px rgba(255, 190, 80, .45));
+}
+
+.summer-palm {
+  position: absolute;
+  font-size: 58px;
+  opacity: .2;
+}
+
+.summer-palm--left {
+  left: 4%;
+  bottom: 16%;
+  transform: rotate(-12deg);
+}
+
+.summer-palm--right {
+  right: 5%;
+  top: 18%;
+  transform: rotate(12deg) scaleX(-1);
+}
+
 .section--hero .container {
   position: relative;
   z-index: 3;
 }
 
-/* One whole firework */
-.fw {
-  --fw-color: #ffd86b;
-  --fw-color-2: #fff2bd;
-  --fw-size: 170px;
-  --fw-time: 4.8s;
+/* =========================================================
+   HERO GRID & LAYOUT
+   ========================================================= */
 
-  position: absolute;
-  width: var(--fw-size);
-  height: var(--fw-size);
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(.2);
-  animation: fwPop var(--fw-time) infinite ease-out;
+.hero__grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 1fr;
+  align-items: center;
+  position: relative;
+  z-index: 3;
 }
 
-/* bright center flash */
-.fw::before {
-  content: "";
+/* =========================================================
+   TYPOGRAPHY
+   ========================================================= */
+
+.hero__title {
+  font-family: "Cinzel", serif;
+  font-weight: 900;
+  font-size: clamp(40px, 5.5vw, 72px);
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  margin: 16px 0;
+  color: #ffffff;
+  text-shadow:
+    0 0 28px rgba(0, 168, 137, .24),
+    0 8px 30px rgba(0,0,0,.55);
+}
+
+.title-small {
+  display: inline-block;
+  font-size: 0.55em;
+  font-weight: 700;
+  color: #e3b65f;
+}
+
+.hero__sub {
+  font-size: clamp(16px, 1.5vw, 20px);
+  line-height: 1.5;
+  color: rgba(233, 236, 235, 0.88);
+  margin-bottom: 28px;
+  max-width: 92%;
+}
+
+.hero__badge-text {
+  font-weight: 900;
+  letter-spacing: .12em;
+  font-family: "Cinzel", serif;
+  white-space: nowrap;
+  font-size: clamp(9px, 2.5vw, 12px);
+  background: linear-gradient(
+    120deg,
+    rgba(228, 184, 105, 0.95) 0%,
+    rgba(228, 184, 105, 0.95) 45%,
+    #ffffff 50%,
+    rgba(228, 184, 105, 0.95) 55%,
+    rgba(228, 184, 105, 0.95) 100%
+  );
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textGlisten 6s linear infinite;
+}
+
+@keyframes textGlisten {
+  0% { background-position: 100% 50%; }
+  15% { background-position: 0% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Deal badge */
+.badge--award {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  padding: 9px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(227, 182, 95, .45);
+  background: rgba(217, 144, 37, .12);
+  color: #f4c66b;
+  font-weight: 900;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.04),
+    0 0 28px rgba(217, 144, 37, .12);
+}
+
+/* =========================================================
+   MEDIA & IMAGE HANDLING
+   ========================================================= */
+
+.hero__media {
+  border-radius: var(--radius2);
+  border: none !important;
+  background: transparent !important;
+  overflow: hidden;
+  position: relative;
+  display: block;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  padding: 0 !important;
+}
+
+.hero__media--link {
+  cursor: pointer;
+}
+
+.hero__media--link:hover {
+  transform: translateY(-4px) translateZ(0);
+  box-shadow:
+    0 24px 60px rgba(0,0,0,.45),
+    0 0 36px rgba(0, 168, 137, .2);
+}
+
+.hero__img {
+  width: 100% !important;
+  height: 100% !important;
+  aspect-ratio: 3530 / 2352;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  transition: transform 0.5s ease;
+  backface-visibility: hidden;
+  will-change: transform;
+  transform: scale(1.01) translateZ(0);
+  display: block;
+  margin: 0 !important;
+}
+
+.hero__img--summer {
+  border-radius: 22px;
+  box-shadow:
+    0 0 0 1px rgba(24, 190, 170, .55),
+    0 18px 50px rgba(0, 0, 0, .42),
+    0 0 36px rgba(0, 168, 137, .18);
+}
+
+.hero__media--link:hover .hero__img {
+  transform: scale(1.03) translateZ(0);
+}
+
+.hero__mediaNote {
   position: absolute;
-  left: 50%;
-  top: 50%;
+  bottom: 10px;
+  right: 10px;
+  font-size: 12px;
+  font-weight: 800;
+  color: rgba(233,236,235,.78);
+  background: rgba(0,0,0,.35);
+  border: 1px solid rgba(255,255,255,.10);
+  padding: 6px 10px;
+  border-radius: 999px;
+}
+
+.hero__mediaNote span {
+  color: var(--brand2);
+}
+
+/* =========================================================
+   TRUST CHIPS
+   ========================================================= */
+
+.trust {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.trust__chip {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.03);
+  color: rgba(233,236,235,.92);
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.trust__dot {
   width: 10px;
   height: 10px;
   border-radius: 999px;
-  transform: translate(-50%, -50%);
-  background: #fff;
-  box-shadow:
-    0 0 12px #fff,
-    0 0 28px var(--fw-color),
-    0 0 48px var(--fw-color);
-  animation: fwCore var(--fw-time) infinite ease-out;
+  background: #16a34a;
+  box-shadow: 0 0 0 3px rgba(22,163,74,.18);
 }
 
-/* launch/smoke trail */
-.fw::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 52%;
-  width: 2px;
-  height: 95px;
-  transform: translateX(-50%);
-  background: linear-gradient(to bottom, rgba(255,255,255,.9), var(--fw-color), transparent);
-  filter: blur(.4px);
-  opacity: 0;
-  animation: fwTrail var(--fw-time) infinite ease-out;
+.trust__ico {
+  opacity: .9;
 }
 
-/* individual sparkle particles */
-.fw span {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 4px;
-  height: 22px;
-  border-radius: 999px;
-  transform-origin: center bottom;
-  background: linear-gradient(to top, transparent, var(--fw-color), #fff);
-  box-shadow:
-    0 0 8px var(--fw-color),
-    0 0 16px rgba(255,255,255,.35);
-  opacity: 0;
-  animation: fwSpark var(--fw-time) infinite cubic-bezier(.17,.67,.2,1);
+/* =========================================================
+   RESPONSIVE OVERRIDES
+   ========================================================= */
+
+@media (min-width: 900px) {
+  .hero__grid {
+    grid-template-columns: 1fr 1.25fr !important;
+  }
+
+  .hero__media {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
 }
 
-/* angles + distances */
-.fw span:nth-child(1)  { --a:   0deg; --d: 84px; }
-.fw span:nth-child(2)  { --a:  24deg; --d: 108px; }
-.fw span:nth-child(3)  { --a:  48deg; --d: 78px; }
-.fw span:nth-child(4)  { --a:  72deg; --d: 118px; }
-.fw span:nth-child(5)  { --a:  96deg; --d: 92px; }
-.fw span:nth-child(6)  { --a: 120deg; --d: 114px; }
-.fw span:nth-child(7)  { --a: 144deg; --d: 82px; }
-.fw span:nth-child(8)  { --a: 168deg; --d: 104px; }
-.fw span:nth-child(9)  { --a: 192deg; --d: 98px; }
-.fw span:nth-child(10) { --a: 216deg; --d: 116px; }
-.fw span:nth-child(11) { --a: 240deg; --d: 88px; }
-.fw span:nth-child(12) { --a: 264deg; --d: 110px; }
-.fw span:nth-child(13) { --a: 288deg; --d: 80px; }
-.fw span:nth-child(14) { --a: 312deg; --d: 120px; }
-.fw span:nth-child(15) { --a: 336deg; --d: 94px; }
-.fw span:nth-child(16) { --a: 352deg; --d: 106px; }
+@media (min-width: 1440px) {
+  :root {
+    --container: 1320px;
+  }
 
-/* color themes */
-.fw--gold {
-  --fw-color: #ffd86b;
-  --fw-color-2: #fff3c4;
-}
+  .hero__title {
+    font-size: clamp(60px, 5vw, 76px);
+  }
 
-.fw--red {
-  --fw-color: #ff4a4a;
-  --fw-color-2: #ffd0d0;
-}
+  .hero__sub {
+    font-size: 22px;
+    max-width: 95%;
+  }
 
-.fw--blue {
-  --fw-color: #5ea0ff;
-  --fw-color-2: #d8e9ff;
-}
-
-.fw--green {
-  --fw-color: #2ef8bb;
-  --fw-color-2: #d7fff3;
-}
-
-/* placement across whole sky */
-.fw--one {
-  top: 18%;
-  left: 18%;
-  --fw-size: 230px;
-  --fw-time: 5.2s;
-  animation-delay: 0s;
-}
-
-.fw--two {
-  top: 20%;
-  left: 54%;
-  --fw-size: 260px;
-  --fw-time: 5.8s;
-  animation-delay: 1.1s;
-}
-
-.fw--three {
-  top: 24%;
-  left: 84%;
-  --fw-size: 230px;
-  --fw-time: 6.1s;
-  animation-delay: 2.2s;
-}
-
-.fw--four {
-  top: 42%;
-  left: 38%;
-  --fw-size: 150px;
-  --fw-time: 4.8s;
-  animation-delay: 2.8s;
-}
-
-.fw--five {
-  top: 39%;
-  left: 72%;
-  --fw-size: 165px;
-  --fw-time: 5.4s;
-  animation-delay: 3.7s;
-}
-
-/* Extra smaller fireworks */
-.fw--six {
-  top: 12%;
-  left: 28%;
-  --fw-size: 120px;
-  --fw-time: 4.6s;
-  animation-delay: 1.9s;
-}
-
-.fw--seven {
-  top: 30%;
-  left: 92%;
-  --fw-size: 115px;
-  --fw-time: 5.1s;
-  animation-delay: 3.1s;
-}
-
-.fw--eight {
-  top: 46%;
-  left: 56%;
-  --fw-size: 95px;
-  --fw-time: 4.3s;
-  animation-delay: 2.6s;
-}
-
-.fw--six span,
-.fw--six::before,
-.fw--six::after {
-  animation-delay: 1.9s;
-  animation-duration: 4.6s;
-}
-
-.fw--seven span,
-.fw--seven::before,
-.fw--seven::after {
-  animation-delay: 3.1s;
-  animation-duration: 5.1s;
-}
-
-.fw--eight span,
-.fw--eight::before,
-.fw--eight::after {
-  animation-delay: 2.6s;
-  animation-duration: 4.3s;
+  .hero__grid {
+    gap: 60px;
+  }
 }
 
 @media (max-width: 768px) {
-  .fw--six,
-  .fw--seven,
-  .fw--eight {
-    display: none;
-  }
-}
-
-/* sync child delays to parent feel */
-.fw--one span, .fw--one::before, .fw--one::after { animation-delay: 0s; }
-.fw--two span, .fw--two::before, .fw--two::after { animation-delay: 1.1s; }
-.fw--three span, .fw--three::before, .fw--three::after { animation-delay: 2.2s; }
-.fw--four span, .fw--four::before, .fw--four::after { animation-delay: 2.8s; }
-.fw--five span, .fw--five::before, .fw--five::after { animation-delay: 3.7s; }
-
-/* stagger spark sizes */
-.fw span:nth-child(odd) {
-  height: 18px;
-  width: 3px;
-}
-
-.fw span:nth-child(3n) {
-  height: 26px;
-  width: 4px;
-}
-
-.fw span:nth-child(4n) {
-  opacity: .75;
-}
-
-/* animation */
-@keyframes fwPop {
-  0%, 10% {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(.15);
+  .section--hero {
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+    min-height: 450px !important;
   }
 
-  16% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(.45);
+  .hero__grid {
+    gap: 20px !important;
   }
 
-  32% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
+  .hero__copy {
+    margin-bottom: 0 !important;
   }
 
-  54% {
-    opacity: .35;
-    transform: translate(-50%, -47%) scale(1.08);
+  .hero__media {
+    margin-top: 0 !important;
   }
 
-  72%, 100% {
-    opacity: 0;
-    transform: translate(-50%, -43%) scale(1.14);
-  }
-}
-
-@keyframes fwCore {
-  0%, 12% {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(.3);
+  .hero__img--summer {
+    border-radius: 16px;
   }
 
-  17% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-  }
-
-  30% {
-    opacity: .35;
-    transform: translate(-50%, -50%) scale(2.2);
-  }
-
-  45%, 100% {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(2.8);
-  }
-}
-
-@keyframes fwSpark {
-  0%, 12% {
-    opacity: 0;
-    transform:
-      rotate(var(--a))
-      translateY(0)
-      scaleY(.25);
-  }
-
-  20% {
-    opacity: 1;
-  }
-
-  38% {
-    opacity: .95;
-    transform:
-      rotate(var(--a))
-      translateY(calc(var(--d) * -1))
-      scaleY(1);
-  }
-
-  58% {
-    opacity: .35;
-    transform:
-      rotate(var(--a))
-      translateY(calc((var(--d) + 14px) * -1))
-      scaleY(.75);
-  }
-
-  75%, 100% {
-    opacity: 0;
-    transform:
-      rotate(var(--a))
-      translateY(calc((var(--d) + 34px) * -1))
-      scaleY(.45);
-  }
-}
-
-@keyframes fwTrail {
-  0%, 18% {
-    opacity: 0;
-    transform: translateX(-50%) translateY(0);
-  }
-
-  30% {
-    opacity: .32;
-    transform: translateX(-50%) translateY(10px);
-  }
-
-  52%, 100% {
-    opacity: 0;
-    transform: translateX(-50%) translateY(48px);
-  }
-}
-
-/* mobile */
-@media (max-width: 768px) {
-  .fw--four,
-  .fw--five {
+  .summer-sun,
+  .summer-palm {
     display: none;
   }
 
-  .fw--one {
-    top: 16%;
-    left: 24%;
-    --fw-size: 150px;
+  .summer-glow {
+    width: 260px;
+    height: 260px;
   }
 
-  .fw--two {
-    top: 22%;
-    left: 58%;
-    --fw-size: 170px;
-  }
-
-  .fw--three {
-    top: 30%;
-    left: 84%;
-    --fw-size: 145px;
+  .pillars {
+    margin-top: 0 !important;
+    padding-top: 20px !important;
   }
 }
 
-/* reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .fw,
-  .fw::before,
-  .fw::after,
-  .fw span {
+  .hero__badge-text {
     animation: none;
-    opacity: .35;
+  }
+
+  .hero__img {
+    transition: none;
   }
 }
 
