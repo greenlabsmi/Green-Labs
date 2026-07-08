@@ -561,24 +561,30 @@ header, nav, section, .container, .wrap, .row {
 }
 
 /* =========================================================
-   MASTER HERO SYSTEM — DTG Summer Coastal Background
-   Keeps original hero copy/layout, removes fireworks.
+   MASTER HERO SYSTEM — The Standard + Subtle Summer Atmosphere
    ========================================================= */
 
 .section--hero {
-  background-color: #020706 !important;
+  background-color: #000000 !important;
   background-image:
-    radial-gradient(circle at 8% 6%, rgba(255, 190, 88, .34), transparent 26%),
-    radial-gradient(circle at 18% 16%, rgba(238, 159, 54, .18), transparent 30%),
-    linear-gradient(180deg, #050807 0%, #061210 44%, #05211f 72%, #043b37 100%) !important;
+    radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,.75), rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 20% 80%, rgba(255,255,255,.55), rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 30% 50%, rgba(255,255,255,.50), rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 40% 10%, rgba(255,255,255,.65), rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 50% 90%, rgba(255,255,255,.45), rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 60% 30%, rgba(255,255,255,.55), rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 70% 70%, rgba(255,255,255,.50), rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 80% 40%, rgba(255,255,255,.60), rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 90% 60%, rgba(255,255,255,.50), rgba(0,0,0,0)),
+    linear-gradient(180deg, #000000 0%, #020b09 58%, #031915 100%) !important;
 
-  background-size: cover !important;
-  background-repeat: no-repeat !important;
+  background-size: 220px 220px, 220px 220px, 220px 220px, 220px 220px, 220px 220px, 220px 220px, 220px 220px, 220px 220px, 220px 220px, cover !important;
+  background-repeat: repeat !important;
 
   padding-top: 60px !important;
   padding-bottom: 80px !important;
   border-bottom: 8px solid transparent !important;
-  border-image: linear-gradient(to right, #0c7f75, #e3b65f, #0f9b8d) 1 !important;
+  border-image: linear-gradient(to right, #0b8f7d, #e3b65f, #0b8f7d) 1 !important;
   margin-bottom: 0 !important;
 
   display: flex !important;
@@ -588,63 +594,90 @@ header, nav, section, .container, .wrap, .row {
   isolation: isolate;
 }
 
+/* Top edge trim */
 .section--hero::before {
   content: '';
   position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(to right, #0b8f7d, #e3b65f, #0b8f7d);
+  opacity: .95;
+  z-index: 2;
+}
+
+/* Atmosphere wrapper */
+.hero-atmosphere {
+  position: absolute;
   inset: 0;
   pointer-events: none;
-  z-index: 0;
-
-  background:
-    linear-gradient(
-      180deg,
-      transparent 0%,
-      transparent 58%,
-      rgba(5, 74, 68, .28) 74%,
-      rgba(6, 121, 111, .34) 100%
-    );
-
-  opacity: 1;
+  overflow: hidden;
+  z-index: 1;
 }
 
-.section--hero::after {
-  content: '';
+/* Warm sun glow from upper-left */
+.sun-glow {
   position: absolute;
-  left: -8%;
-  right: -8%;
-  bottom: -18px;
-  height: 165px;
-  pointer-events: none;
-  z-index: 0;
-
+  top: -180px;
+  left: -160px;
+  width: 620px;
+  height: 620px;
+  border-radius: 999px;
   background:
-    radial-gradient(ellipse at center, rgba(17, 164, 151, .28), transparent 68%),
-    linear-gradient(
-      180deg,
-      rgba(255, 255, 255, .04) 0%,
-      rgba(14, 140, 130, .22) 34%,
-      rgba(4, 71, 67, .52) 100%
-    );
-
-  border-top: 1px solid rgba(120, 224, 210, .22);
+    radial-gradient(circle, rgba(255, 196, 92, .36) 0%, rgba(218, 146, 34, .18) 34%, transparent 68%);
+  filter: blur(10px);
+  opacity: .8;
+  animation: sunBreathe 8s ease-in-out infinite alternate;
 }
 
-/* Subtle shoreline/wave glow */
-.section--hero::after {
-  content: '';
+/* Deep lake blue/green at bottom */
+.lake-glow {
   position: absolute;
   left: -10%;
   right: -10%;
-  bottom: 34px;
-  height: 90px;
-  pointer-events: none;
-  z-index: 0;
-  background: radial-gradient(ellipse at center, rgba(20, 184, 166, .16), transparent 62%);
-  border-top: 1px solid rgba(20, 184, 166, .22);
-  transform: rotate(-1deg);
+  bottom: -90px;
+  height: 260px;
+  background:
+    radial-gradient(ellipse at center, rgba(13, 132, 122, .34), transparent 65%),
+    linear-gradient(180deg, transparent 0%, rgba(4, 78, 72, .34) 56%, rgba(2, 44, 41, .75) 100%);
+  opacity: .9;
 }
 
-/* Keep hero content above background effects */
+/* Soft moving lake reflection lines */
+.lake-shimmer {
+  position: absolute;
+  left: -20%;
+  right: -20%;
+  bottom: 62px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(111, 231, 215, .34), rgba(227, 182, 95, .22), transparent);
+  opacity: .55;
+  animation: shimmerDrift 9s ease-in-out infinite;
+}
+
+.lake-shimmer--two {
+  bottom: 38px;
+  opacity: .35;
+  animation-duration: 13s;
+  animation-delay: -4s;
+}
+
+/* Very subtle dust/light particles */
+.hero-dust {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 12% 34%, rgba(227,182,95,.35), transparent),
+    radial-gradient(1px 1px at 28% 74%, rgba(255,255,255,.25), transparent),
+    radial-gradient(1px 1px at 52% 22%, rgba(46,248,187,.22), transparent),
+    radial-gradient(1px 1px at 74% 64%, rgba(227,182,95,.24), transparent),
+    radial-gradient(1px 1px at 88% 36%, rgba(255,255,255,.22), transparent);
+  background-size: 360px 260px;
+  opacity: .6;
+  animation: dustFloat 18s linear infinite;
+}
+
 .section--hero .container {
   position: relative;
   z-index: 3;
@@ -667,6 +700,7 @@ header, nav, section, .container, .wrap, .row {
   letter-spacing: 0.02em;
   margin: 16px 0;
   color: #ffffff;
+  text-shadow: 0 0 28px rgba(227, 182, 95, .08);
 }
 
 .title-small {
@@ -717,7 +751,7 @@ header, nav, section, .container, .wrap, .row {
   overflow: hidden;
   position: relative;
   display: block;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   backface-visibility: hidden;
   transform: translateZ(0);
   padding: 0 !important;
@@ -730,9 +764,8 @@ header, nav, section, .container, .wrap, .row {
 .hero__media--link:hover {
   transform: translateY(-4px) translateZ(0);
   box-shadow:
-    0 24px 60px rgba(0, 0, 0, .45),
-    0 0 34px rgba(20, 184, 166, .16);
-  border-color: rgba(46, 248, 187, .30);
+    0 24px 60px rgba(0,0,0,.45),
+    0 0 38px rgba(20,184,166,.16);
 }
 
 .hero__img {
@@ -750,29 +783,157 @@ header, nav, section, .container, .wrap, .row {
   margin: 0 !important;
   border-radius: 22px;
   box-shadow:
-    0 0 0 1px rgba(20, 184, 166, .42),
-    0 18px 50px rgba(0, 0, 0, .42);
+    0 0 0 1px rgba(20, 184, 166, .48),
+    0 18px 50px rgba(0, 0, 0, .42),
+    0 0 34px rgba(227, 182, 95, .08);
 }
 
 .hero__media--link:hover .hero__img {
   transform: scale(1.03) translateZ(0);
 }
 
-.hero__mediaNote {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  font-size: 12px;
-  font-weight: 800;
-  color: rgba(233, 236, 235, .78);
-  background: rgba(0, 0, 0, .35);
-  border: 1px solid rgba(255, 255, 255, .10);
-  padding: 6px 10px;
-  border-radius: 999px;
+/* Disable old fireworks if still in HTML */
+.firework-container,
+.fw {
+  display: none !important;
 }
 
-.hero__mediaNote span {
-  color: var(--brand2);
+/* Animations */
+@keyframes sunBreathe {
+  from {
+    opacity: .58;
+    transform: scale(1);
+  }
+  to {
+    opacity: .85;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes shimmerDrift {
+  0% {
+    transform: translateX(-8%);
+  }
+  50% {
+    transform: translateX(8%);
+  }
+  100% {
+    transform: translateX(-8%);
+  }
+}
+
+@keyframes dustFloat {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 360px -260px;
+  }
+}
+
+/* Trust Chips */
+.trust {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.trust__chip {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, .10);
+  background: rgba(255, 255, 255, .03);
+  color: rgba(233, 236, 235, .92);
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.trust__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #16a34a;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, .18);
+}
+
+.trust__ico {
+  opacity: .9;
+}
+
+/* Responsive */
+@media (min-width: 900px) {
+  .hero__grid {
+    grid-template-columns: 1fr 1.25fr !important;
+  }
+
+  .hero__media {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+}
+
+@media (min-width: 1440px) {
+  :root {
+    --container: 1320px;
+  }
+
+  .hero__title {
+    font-size: clamp(60px, 5vw, 76px);
+  }
+
+  .hero__sub {
+    font-size: 22px;
+    max-width: 95%;
+  }
+
+  .hero__grid {
+    gap: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section--hero {
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+    min-height: 450px !important;
+  }
+
+  .hero__grid {
+    gap: 20px !important;
+  }
+
+  .hero__copy {
+    margin-bottom: 0 !important;
+  }
+
+  .hero__media {
+    margin-top: 0 !important;
+  }
+
+  .hero__img {
+    border-radius: 16px;
+  }
+
+  .pillars {
+    margin-top: 0 !important;
+    padding-top: 20px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__badge-text,
+  .hero__img,
+  .sun-glow,
+  .lake-shimmer,
+  .hero-dust {
+    animation: none !important;
+    transition: none !important;
+  }
 }
 
 /* Trust Chips */
