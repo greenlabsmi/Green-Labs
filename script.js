@@ -392,17 +392,6 @@ document.getElementById('close-med-modal')?.addEventListener('click', () => {
 });
 
 document.getElementById('proceed-to-shop')?.addEventListener('click', () => {
-    // Hide the popup and load the Leafly menu right in front of them!
-    document.getElementById('med-promo-modal').hidden = true;
-    openShop(true, 'rec'); 
-});
-
-// POPUP BUTTON LOGIC
-document.getElementById('close-med-modal')?.addEventListener('click', () => {
-    document.getElementById('med-promo-modal').hidden = true;
-});
-
-document.getElementById('proceed-to-shop')?.addEventListener('click', () => {
     // Hide the popup and smoothly scroll them to the Leafly menu!
     document.getElementById('med-promo-modal').hidden = true;
     openShop(true, 'rec'); 
@@ -892,7 +881,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }); // <--- THIS closes the filter buttons loop!
-   });
+  
 
   // 3. Carousel Scroll Arrows
   const deliLeft = document.getElementById('deliArrowLeft');
@@ -1200,50 +1189,7 @@ document.getElementById("art-mode-toggle")?.addEventListener("click", function (
         e.stopPropagation();
         dealJumpWrap.scrollBy({ left: 250, behavior: 'smooth' });
       });
-
-let currentDeliModalImage = "front";
-
-function openDeliModal(strainId) {
-  const strain = deliStrainData[strainId];
-  if (!strain) return;
-
-  document.getElementById("deliModal").dataset.currentStrain = strainId;
-  currentDeliModalImage = "front";
-
-  document.getElementById("deliModalImage").src = strain.budImage;
-  document.getElementById("deliModalImage").alt = strain.name;
-  document.getElementById("deliModalBrand").textContent = strain.brand;
-  document.getElementById("deliModalName").textContent = strain.name;
-  document.getElementById("deliModalType").textContent = strain.type;
-  document.getElementById("deliModalGenetics").textContent = strain.genetics;
-  document.getElementById("deliModalFlavor").textContent = strain.flavor;
-  document.getElementById("deliModalEffects").textContent = strain.effects;
-  document.getElementById("deliModalUse").textContent = strain.use;
-
-  document.getElementById("deliModal").classList.add("is-open");
-}
-
-function closeDeliModal() {
-  document.getElementById("deliModal").classList.remove("is-open");
-}
-
-function flipDeliModalImage() {
-  const strainId = document.getElementById("deliModal").dataset.currentStrain;
-  const strain = deliStrainData[strainId];
-  if (!strain) return;
-
-  const image = document.getElementById("deliModalImage");
-
-  if (currentDeliModalImage === "front") {
-    image.src = strain.artImage;
-    currentDeliModalImage = "back";
-  } else {
-    image.src = strain.budImage;
-    currentDeliModalImage = "front";
-  }
-}
-
-
+    }
 
 
 // =========================================================
