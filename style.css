@@ -2846,6 +2846,116 @@ header, nav, section, .container, .wrap, .row {
   object-fit: cover;
 }
 
+.deli-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+}
+
+.deli-modal.is-open {
+  display: block;
+}
+
+.deli-modal__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.78);
+  backdrop-filter: blur(8px);
+}
+
+.deli-modal__content {
+  position: relative;
+  z-index: 2;
+  width: min(980px, 92vw);
+  max-height: 88vh;
+  overflow-y: auto;
+  margin: 6vh auto;
+  background: #0d0f0d;
+  border: 1px solid rgba(214,164,65,.35);
+  border-radius: 24px;
+  padding: 22px;
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 24px;
+  box-shadow: 0 30px 80px rgba(0,0,0,.6);
+}
+
+.deli-modal__close {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  background: #d6a441;
+  color: #000;
+  border: 0;
+  border-radius: 999px;
+  width: 34px;
+  height: 34px;
+  font-size: 24px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.deli-modal__image img {
+  width: 100%;
+  border-radius: 18px;
+  display: block;
+}
+
+.deli-modal__brand {
+  color: #d6a441;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.deli-modal__info h2 {
+  margin: 4px 0;
+  font-size: clamp(32px, 4vw, 52px);
+  color: #fff;
+}
+
+.deli-modal__type {
+  color: #ccc;
+  font-weight: 800;
+  margin-bottom: 18px;
+}
+
+.deli-modal__section {
+  margin-bottom: 16px;
+}
+
+.deli-modal__section h4 {
+  margin: 0 0 4px;
+  color: #d6a441;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.deli-modal__section p {
+  margin: 0;
+  color: #e7e7e7;
+  line-height: 1.5;
+}
+
+.deli-modal__shop {
+  display: inline-flex;
+  margin-top: 12px;
+  background: #d6a441;
+  color: #000;
+  text-decoration: none;
+  font-weight: 900;
+  padding: 12px 18px;
+  border-radius: 999px;
+}
+
+@media (max-width: 760px) {
+  .deli-modal__content {
+    grid-template-columns: 1fr;
+    margin: 3vh auto;
+  }
+}
+
 /* =========================================================
    Today’s Highlights (NEW SECTION — scoped)
    Paste ABOVE the Reduced motion block
