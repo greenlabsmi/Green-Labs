@@ -1689,7 +1689,7 @@ document.querySelectorAll('[data-guide-card]').forEach(card => {
             // so we just scroll back to the top of the section.
             const section = document.getElementById('learn-before-you-buy');
             if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-    });
-     });
+              }
+      });
+  });
 });
