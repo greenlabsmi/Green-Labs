@@ -963,7 +963,8 @@ const deliStrainData = {
     name: "Sour Chem Banger",
     brand: "Team Death Star",
     type: "50/50 Hybrid • 25.6% THC",
-    image: "https://dutchtouchgenetics.com/assets/img/strains/sour-chem-banger-art.jpg",
+    budImage: "https://dutchtouchgenetics.com/assets/img/strains/sour-chem-banger-art.jpg",
+    artImage: "https://dutchtouchgenetics.com/assets/img/strains/sour-chem-banger-art.jpg",
     genetics: "Peanut Butter Breath x Chem 91 2.0 x Headbanger OG",
     flavor: "Fiercely pungent with an overwhelming stench of sour diesel, fuel, and hints of garlic.",
     effects: "Uplifting and intensely cerebral, instantly boosting mood while delivering deep physical relaxation.",
@@ -973,7 +974,8 @@ const deliStrainData = {
     name: "Afghani #2",
     brand: "Soma Seeds",
     type: "Indica Dominant • 25% THC",
-    image: "https://dutchtouchgenetics.com/assets/img/strains/afghani-art.jpg",
+    budImage: "https://dutchtouchgenetics.com/assets/img/strains/afghani-art.jpg",
+    artImage: "https://dutchtouchgenetics.com/assets/img/strains/afghani-art.jpg",
     genetics: "Pure Afghan landrace",
     flavor: "Earthy, hash-like, spicy, woody, resinous, herbal, pine, and smoky hash notes.",
     effects: "Traditional heavy indica profile with a grounded, relaxing body feel.",
@@ -983,7 +985,8 @@ const deliStrainData = {
     name: "Mule Fuel",
     brand: "Bodhi Seeds",
     type: "Indica • 25% THC",
-    image: "https://dutchtouchgenetics.com/assets/img/strains/mule-fuel-art.jpg",
+    budImage: "https://dutchtouchgenetics.com/assets/img/strains/mule-fuel-art.jpg",
+    artImage: "https://dutchtouchgenetics.com/assets/img/strains/mule-fuel-art.jpg",
     genetics: "Mule Fuel x 88G13HP",
     flavor: "Pungent, skunky, and savory with notes of garlic, ammonia, and earth.",
     effects: "Initial euphoria followed by heavy, sedative, and relaxing body effects.",
@@ -993,7 +996,8 @@ const deliStrainData = {
     name: "Face Off OG",
     brand: "Bodhi Seeds",
     type: "Indica • 27% THC",
-    image: "https://dutchtouchgenetics.com/assets/img/strains/face-off-og-art.jpg",
+    budImage: "https://dutchtouchgenetics.com/assets/img/strains/face-off-og-art.jpg",
+    artImage: "https://dutchtouchgenetics.com/assets/img/strains/face-off-og-art.jpg",
     genetics: "Face Off OG x 88G13HP",
     flavor: "Classic pungent OG aromas with sweet, mossy, earthy hashish flavor.",
     effects: "Heavy-hitting indica-dominant effects with a powerful body-focused finish.",
@@ -1001,11 +1005,16 @@ const deliStrainData = {
   }
 };
 
+let currentDeliModalImage = "front";
+
 function openDeliModal(strainId) {
   const strain = deliStrainData[strainId];
   if (!strain) return;
 
-  document.getElementById("deliModalImage").src = strain.image;
+  document.getElementById("deliModal").dataset.currentStrain = strainId;
+  currentDeliModalImage = "front";
+
+  document.getElementById("deliModalImage").src = strain.budImage;
   document.getElementById("deliModalImage").alt = strain.name;
   document.getElementById("deliModalBrand").textContent = strain.brand;
   document.getElementById("deliModalName").textContent = strain.name;
@@ -1021,6 +1030,25 @@ function openDeliModal(strainId) {
 function closeDeliModal() {
   document.getElementById("deliModal").classList.remove("is-open");
 }
+
+function flipDeliModalImage() {
+  const strainId = document.getElementById("deliModal").dataset.currentStrain;
+  const strain = deliStrainData[strainId];
+  if (!strain) return;
+
+  const image = document.getElementById("deliModalImage");
+
+  if (currentDeliModalImage === "front") {
+    image.src = strain.artImage;
+    currentDeliModalImage = "back";
+  } else {
+    image.src = strain.budImage;
+    currentDeliModalImage = "front";
+  }
+}
+
+
+
 
 // =========================================================
 // DTG DYNAMIC GENETICS & MODAL (Shared with Brand Site)
