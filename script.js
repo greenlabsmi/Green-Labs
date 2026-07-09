@@ -1691,4 +1691,3 @@ document.querySelectorAll('[data-guide-card]').forEach(card => {
             if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
     });
-}); // 
