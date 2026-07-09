@@ -1690,6 +1690,5 @@ document.querySelectorAll('[data-guide-card]').forEach(card => {
             const section = document.getElementById('learn-before-you-buy');
             if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
               }
-      });
   });
 });
