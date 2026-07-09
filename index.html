@@ -847,18 +847,20 @@
     document.getElementById('terpModalTitle').style.color = window.getComputedStyle(btn).color;
     document.getElementById('terpModalDesc').innerText = btn.getAttribute('data-desc');
     document.getElementById('terpModalWrapper').style.display = 'block';
-    document.body.style.overflow = 'hidden'; // Prevents background scrolling while reading
+    document.body.style.overflow = 'hidden';
   }
 
-  // Close when clicking the dark background
-  document.getElementById('terpModalWrapper').addEventListener('click', function(event) {
-    if (event.target === this) {
-      this.style.display = 'none';
-      document.body.style.overflow = '';
-    }
-  });
-  
-  // X button function
+  const terpModalWrapper = document.getElementById('terpModalWrapper');
+
+  if (terpModalWrapper) {
+    terpModalWrapper.addEventListener('click', function(event) {
+      if (event.target === this) {
+        this.style.display = 'none';
+        document.body.style.overflow = '';
+      }
+    });
+  }
+
   function closeTerpModal() {
     document.getElementById('terpModalWrapper').style.display = 'none';
     document.body.style.overflow = '';
