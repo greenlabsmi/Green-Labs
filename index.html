@@ -1198,33 +1198,38 @@
 
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const modal = document.getElementById('promo-modal');
-        
-        // Removed the localStorage check so it runs every time
-        setTimeout(() => {
-            modal.style.display = 'flex';
-        }, 8000); // 8-second delay
-    });
+  document.addEventListener("DOMContentLoaded", function() {
+    const modal = document.getElementById('promo-modal');
 
-    function closePromoModal() {
-        const modal = document.getElementById('promo-modal');
-        modal.style.display = 'none';
-        // Note: localStorage.setItem(...) was removed so it doesn't "remember" the visit
-    }
+    if (!modal) return;
 
-    function handleOverlayClick(event) {
-        if (event.target === document.getElementById('promo-modal')) {
-            closePromoModal();
-        }
-    }
+    setTimeout(() => {
+      modal.style.display = 'flex';
+    }, 8000);
+  });
 
-    function scrollToDeli() {
-        const deliSection = document.getElementById('deli'); 
-        if (deliSection) {
-            deliSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+  function closePromoModal() {
+    const modal = document.getElementById('promo-modal');
+    if (!modal) return;
+
+    modal.style.display = 'none';
+  }
+
+  function handleOverlayClick(event) {
+    const modal = document.getElementById('promo-modal');
+
+    if (modal && event.target === modal) {
+      closePromoModal();
     }
+  }
+
+  function scrollToDeli() {
+    const deliSection = document.getElementById('deli');
+
+    if (deliSection) {
+      deliSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
 </script>
       
       
