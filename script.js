@@ -892,6 +892,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }); // <--- THIS closes the filter buttons loop!
+   });
 
   // 3. Carousel Scroll Arrows
   const deliLeft = document.getElementById('deliArrowLeft');
