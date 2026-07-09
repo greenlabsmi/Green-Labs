@@ -958,6 +958,70 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+const deliStrainData = {
+  "sour-chem-banger": {
+    name: "Sour Chem Banger",
+    brand: "Team Death Star",
+    type: "50/50 Hybrid • 25.6% THC",
+    image: "https://dutchtouchgenetics.com/assets/img/strains/sour-chem-banger-art.jpg",
+    genetics: "Peanut Butter Breath x Chem 91 2.0 x Headbanger OG",
+    flavor: "Fiercely pungent with an overwhelming stench of sour diesel, fuel, and hints of garlic.",
+    effects: "Uplifting and intensely cerebral, instantly boosting mood while delivering deep physical relaxation.",
+    use: "Best used for treating chronic pain and muscle spasms."
+  },
+  "afghani-2": {
+    name: "Afghani #2",
+    brand: "Soma Seeds",
+    type: "Indica Dominant • 25% THC",
+    image: "https://dutchtouchgenetics.com/assets/img/strains/afghani-art.jpg",
+    genetics: "Pure Afghan landrace",
+    flavor: "Earthy, hash-like, spicy, woody, resinous, herbal, pine, and smoky hash notes.",
+    effects: "Traditional heavy indica profile with a grounded, relaxing body feel.",
+    use: "Best for classic indica lovers looking for hash-forward flavor and deep relaxation."
+  },
+  "mule-fuel": {
+    name: "Mule Fuel",
+    brand: "Bodhi Seeds",
+    type: "Indica • 25% THC",
+    image: "https://dutchtouchgenetics.com/assets/img/strains/mule-fuel-art.jpg",
+    genetics: "Mule Fuel x 88G13HP",
+    flavor: "Pungent, skunky, and savory with notes of garlic, ammonia, and earth.",
+    effects: "Initial euphoria followed by heavy, sedative, and relaxing body effects.",
+    use: "Best for evening use, deep relaxation, and heavy indica effects."
+  },
+  "face-off-og": {
+    name: "Face Off OG",
+    brand: "Bodhi Seeds",
+    type: "Indica • 27% THC",
+    image: "https://dutchtouchgenetics.com/assets/img/strains/face-off-og-art.jpg",
+    genetics: "Face Off OG x 88G13HP",
+    flavor: "Classic pungent OG aromas with sweet, mossy, earthy hashish flavor.",
+    effects: "Heavy-hitting indica-dominant effects with a powerful body-focused finish.",
+    use: "Best for experienced indica users looking for strong, full-body effects."
+  }
+};
+
+function openDeliModal(strainId) {
+  const strain = deliStrainData[strainId];
+  if (!strain) return;
+
+  document.getElementById("deliModalImage").src = strain.image;
+  document.getElementById("deliModalImage").alt = strain.name;
+  document.getElementById("deliModalBrand").textContent = strain.brand;
+  document.getElementById("deliModalName").textContent = strain.name;
+  document.getElementById("deliModalType").textContent = strain.type;
+  document.getElementById("deliModalGenetics").textContent = strain.genetics;
+  document.getElementById("deliModalFlavor").textContent = strain.flavor;
+  document.getElementById("deliModalEffects").textContent = strain.effects;
+  document.getElementById("deliModalUse").textContent = strain.use;
+
+  document.getElementById("deliModal").classList.add("is-open");
+}
+
+function closeDeliModal() {
+  document.getElementById("deliModal").classList.remove("is-open");
+}
+
 // =========================================================
 // DTG DYNAMIC GENETICS & MODAL (Shared with Brand Site)
 // =========================================================
