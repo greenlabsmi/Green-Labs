@@ -1199,8 +1199,6 @@ document.getElementById("art-mode-toggle")?.addEventListener("click", function (
         e.stopPropagation();
         dealJumpWrap.scrollBy({ left: 250, behavior: 'smooth' });
       });
-  }
-});
 
 let currentDeliModalImage = "front";
 
