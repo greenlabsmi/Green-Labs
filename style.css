@@ -2764,8 +2764,22 @@ header, nav, section, .container, .wrap, .row {
   font-size: 12px; 
   padding: 8px 14px; 
   border-radius: 12px; 
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3); 
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
+
+.deli-badge-corner--new {
+  top: 0;
+  left: 0;
+  background: #7bd88f;
+  color: #07140a;
+  border: none;
+  font-size: 10px;
+  letter-spacing: 1px;
+  padding: 5px 8px;
+  border-radius: 0 0 8px 0;
+  box-shadow: none;
+}
+
 .badge--mega { background: linear-gradient(135deg, #FFD700, #FFA500); color: #000; border: 1px solid #FFF; }
 .badge--fresh {
     background: #121413; /* Deep premium black/charcoal */
