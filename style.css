@@ -2822,6 +2822,30 @@ header, nav, section, .container, .wrap, .row {
   .deli-card-wrapper { flex: 0 0 240px; } /* Shrunk down from 300px */
 }
 
+.deli-card-preview {
+  border-radius: 18px;
+  overflow: hidden;
+  border: 2px solid rgba(255,255,255,.14);
+  background: #111;
+  aspect-ratio: 4 / 5;
+}
+
+.deli-card-wrapper.is-award .deli-card-preview {
+  border-color: #d6a441;
+  box-shadow: 0 0 22px rgba(214,164,65,.25);
+}
+
+.deli-card-wrapper.is-new .deli-card-preview {
+  border-color: #72df91;
+  box-shadow: 0 0 18px rgba(114,223,145,.18);
+}
+
+.deli-card-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /* =========================================================
    Today’s Highlights (NEW SECTION — scoped)
    Paste ABOVE the Reduced motion block
