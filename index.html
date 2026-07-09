@@ -381,262 +381,210 @@
       <button class="deli-filter" data-filter="sativa">Sativa</button>
       <button class="deli-filter" data-filter="hybrid">Hybrid</button>
       <button class="deli-filter" data-filter="indica">Indica</button>
-      
-      <div class="art-toggle-wrapper" id="art-mode-toggle" style="width: 100%; display: flex; justify-content: center; margin-top: 15px;">
-        <div class="art-toggle-track">
-          <div class="art-toggle-thumb"></div>
-        </div>
-      </div>
+
+      <button id="art-mode-toggle" class="deli-filter" type="button" style="width:100%; max-width:180px; margin-top:15px;">
+        Tap for Label Art
+      </button>
     </div>
 
     <div class="deli-carousel-wrap reveal">
       <div id="deliCarousel" class="strain-grid deli-carousel">
 
-        <div class="deli-card-wrapper" data-category="sativa"> 
-          <div class="deli-card" onclick="this.classList.toggle('is-flipped'); if(typeof triggerHaptic === 'function') triggerHaptic(); event.stopPropagation();">
-            <div class="deli-badge-corner" style="background: #d6a441; color: #000; border: none; font-weight: 900; letter-spacing: 1px;">🏆 CUP WINNER</div>
-            <div class="deli-card__front" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/lilac-diesel-bud.jpg');">
-              <div class="deli-card__hint">Tap for Label Art 🔄</div>
-            </div>
+        <div class="deli-card-wrapper is-award" data-category="sativa" onclick="openDeliModal('lilac-diesel')">
+          <div class="deli-card">
+            <div class="deli-card__front" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/lilac-diesel-bud.jpg');"></div>
             <div class="deli-card__back" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/lilac-diesel-art.jpg');"></div>
           </div>
           <div class="deli-card__label">
-            <div>
-              <h3>Lilac Diesel</h3>
-              <p class="deli-card__genetics">Sativa • 3rd Place Winner</p>
-            </div>
-            <span class="deli-card__price">$110/OZ</span>
+            <h3>Lilac Diesel</h3>
+            <p class="deli-card__genetics">Sativa • 3rd Place Winner</p>
           </div>
         </div>
-        
-         <div class="deli-card-wrapper is-new" data-category="hybrid">
-  <div class="deli-card" onclick="this.classList.toggle('is-flipped'); triggerHaptic()">
-    <div class="deli-card__front" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/sour-chem-banger-art.jpg');">
-      <div class="deli-card__hint">Tap for Label Art 🔄</div>
-    </div>
-    <div class="deli-card__back" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/sour-chem-banger-art.jpg');"></div>
-  </div>
 
-  <div class="deli-card__label" onclick="openDeliModal('sour-chem-banger')">
-    <h3>Sour Chem Banger</h3>
-    <p class="deli-card__genetics">Hybrid • 25.6% THC</p>
-  </div>
-</div>
+        <div class="deli-card-wrapper is-new" data-category="hybrid" onclick="openDeliModal('sour-chem-banger')">
+          <div class="deli-card">
+            <div class="deli-card__front" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/sour-chem-banger-art.jpg');"></div>
+            <div class="deli-card__back" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/sour-chem-banger-art.jpg');"></div>
+          </div>
+          <div class="deli-card__label">
+            <h3>Sour Chem Banger</h3>
+            <p class="deli-card__genetics">Hybrid • 25.6% THC</p>
+          </div>
+        </div>
 
-<div class="deli-card-wrapper is-new" data-category="indica">
-  <div class="deli-card" onclick="this.classList.toggle('is-flipped'); triggerHaptic()">
-    <div class="deli-card__front" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/afghani-art.jpg');">
-      <div class="deli-card__hint">Tap for Label Art 🔄</div>
-    </div>
-    <div class="deli-card__back" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/afghani-art.jpg');"></div>
-  </div>
+        <div class="deli-card-wrapper is-new" data-category="indica" onclick="openDeliModal('afghani-2')">
+          <div class="deli-card">
+            <div class="deli-card__front" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/afghani-art.jpg');"></div>
+            <div class="deli-card__back" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/afghani-art.jpg');"></div>
+          </div>
+          <div class="deli-card__label">
+            <h3>Afghani #2</h3>
+            <p class="deli-card__genetics">Indica • 25% THC</p>
+          </div>
+        </div>
 
-  <div class="deli-card__label" onclick="openDeliModal('afghani-2')">
-    <h3>Afghani #2</h3>
-    <p class="deli-card__genetics">Indica • 25% THC</p>
-  </div>
-</div>
+        <div class="deli-card-wrapper is-new" data-category="indica" onclick="openDeliModal('mule-fuel')">
+          <div class="deli-card">
+            <div class="deli-card__front" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/mule-fuel-art.jpg');"></div>
+            <div class="deli-card__back" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/mule-fuel-art.jpg');"></div>
+          </div>
+          <div class="deli-card__label">
+            <h3>Mule Fuel</h3>
+            <p class="deli-card__genetics">Indica • 25% THC</p>
+          </div>
+        </div>
 
-<div class="deli-card-wrapper is-new" data-category="indica">
-  <div class="deli-card" onclick="this.classList.toggle('is-flipped'); triggerHaptic()">
-    <div class="deli-card__front" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/mule-fuel-art.jpg');">
-      <div class="deli-card__hint">Tap for Label Art 🔄</div>
-    </div>
-    <div class="deli-card__back" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/mule-fuel-art.jpg');"></div>
-  </div>
+        <div class="deli-card-wrapper is-new" data-category="indica" onclick="openDeliModal('face-off-og')">
+          <div class="deli-card">
+            <div class="deli-card__front" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/face-off-og-art.jpg');"></div>
+            <div class="deli-card__back" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/face-off-og-art.jpg');"></div>
+          </div>
+          <div class="deli-card__label">
+            <h3>Face Off OG</h3>
+            <p class="deli-card__genetics">Indica • 27% THC</p>
+          </div>
+        </div>
+<div class="deli-card-wrapper is-award" data-category="sativa" onclick="openDeliModal('space-hippy')">
+          <div class="deli-card">
+            <div class="deli-card__front" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/space-hippy-bud.jpg');"></div>
+            <div class="deli-card__back" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/space-hippy-art.jpg');"></div>
+          </div>
+          <div class="deli-card__label">
+            <h3>Space Hippy</h3>
+            <p class="deli-card__genetics">Sativa • 24.77% THC</p>
+          </div>
+        </div>
 
-  <div class="deli-card__label" onclick="openDeliModal('mule-fuel')">
-    <h3>Mule Fuel</h3>
-    <p class="deli-card__genetics">Indica • 25% THC</p>
-  </div>
-</div>
-
-<div class="deli-card-wrapper is-new" data-category="indica">
-  <div class="deli-card" onclick="this.classList.toggle('is-flipped'); triggerHaptic()">
-    <div class="deli-card__front" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/face-off-og-art.jpg');">
-      <div class="deli-card__hint">Tap for Label Art 🔄</div>
-    </div>
-    <div class="deli-card__back" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/face-off-og-art.jpg');"></div>
-  </div>
-
-  <div class="deli-card__label" onclick="openDeliModal('face-off-og')">
-    <h3>Face Off OG</h3>
-    <p class="deli-card__genetics">Indica • 27% THC</p>
-  </div>
-</div>
-
-        
-<div class="deli-card-wrapper" data-category="sativa"> 
-  <div class="deli-card" onclick="this.classList.toggle('is-flipped'); if(typeof triggerHaptic === 'function') triggerHaptic(); event.stopPropagation();">
-    <div class="deli-badge-corner" style="background: #d6a441; color: #000; border: none; font-weight: 900; letter-spacing: 1px;">🏆 CUP WINNER</div>
-    <div class="deli-card__front" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/space-hippy-bud.jpg');">
-      <div class="deli-card__hint">Tap for Label Art 🔄</div>
-    </div>
-    <div class="deli-card__back" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/space-hippy-art.jpg');"></div>
-  </div>
-  <div class="deli-card__label">
-    <div>
-      <h3>Space Hippy</h3>
-      <p class="deli-card__genetics">Sativa • 24.77</p>
-    </div>
-    <span class="deli-card__price">$90/OZ</span>
-  </div>
-</div>
-
-        <div class="deli-card-wrapper" data-category="concentrate"> 
-          <div class="deli-card" onclick="this.classList.toggle('is-flipped'); triggerHaptic()">
-            <div class="deli-badge-corner" style="background: #e04596; color: #fff; border: none; font-weight: 900; letter-spacing: 1px;">🫧 BUBBLEHASH</div>
-            <div class="deli-card__front" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/chocolate-marshmallow-bubblehash-bud.jpg');">
-              <div class="deli-card__hint">Tap for Label Art 🔄</div>
-            </div>
+        <div class="deli-card-wrapper" data-category="concentrate" onclick="openDeliModal('chocolate-marsh-bubblehash')">
+          <div class="deli-card">
+            <div class="deli-card__front" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/chocolate-marshmallow-bubblehash-bud.jpg');"></div>
             <div class="deli-card__back" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/chocolate-marshmallows-bubblehash-art.jpg');"></div>
           </div>
           <div class="deli-card__label">
-            <div>
-              <h3>Choc. Marsh</h3>
-              <p class="deli-card__genetics">Hash Infused• 51.30% THC</p>
-            </div>
-            <span class="deli-card__price">$30/3.5g</span>
+            <h3>Choc. Marsh</h3>
+            <p class="deli-card__genetics">Hash Infused • 51.30% THC</p>
           </div>
         </div>
-        
-     <div class="deli-card-wrapper" data-category="sativa">
-  <div class="deli-card" onclick="this.classList.toggle('is-flipped'); triggerHaptic()">
-    <div class="deli-card__front" style="background-image: url('assets/img/strains/banana-split-bud.jpg');">
-      <div class="deli-card__hint">Tap for Label Art 🔄</div>
-    </div>
-    <div class="deli-card__back" style="background-image: url('assets/img/strains/banana-split-art.jpg');"></div>
+
+      <div class="deli-card-wrapper" data-category="sativa" onclick="openDeliModal('banana-split')">
+  <div class="deli-card">
+    <div class="deli-card__front" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/banana-split-bud.jpg');"></div>
+    <div class="deli-card__back" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/banana-split-art.jpg');"></div>
   </div>
   <div class="deli-card__label">
-    <div>
-      <h3>Banana Split</h3>
-      <p class="deli-card__genetics">Sativa • 21.67% THC</p>
-    </div>
-    <span class="deli-card__price">$15/8th</span>
+    <h3>Banana Split</h3>
+    <p class="deli-card__genetics">Sativa • 21.67% THC</p>
   </div>
 </div>
 
-
-<div class="deli-card-wrapper" data-category="indica">
-  <div class="deli-card" onclick="this.classList.toggle('is-flipped'); triggerHaptic()">
-    <div class="deli-card__front" style="background-image: url('assets/img/strains/illudium-bud.jpg');"></div>
-    <div class="deli-card__back" style="background-image: url('assets/img/strains/illudium-art.png');"></div>
+<div class="deli-card-wrapper" data-category="indica" onclick="openDeliModal('illudium')">
+  <div class="deli-card">
+    <div class="deli-card__front" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/illudium-bud.jpg');"></div>
+    <div class="deli-card__back" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/illudium-art.png');"></div>
   </div>
   <div class="deli-card__label">
     <h3>Illudium</h3>
     <p class="deli-card__genetics">Indica • 23.70% THC</p>
-    <span class="deli-card__price">$90/OZ</span>
   </div>
 </div>
 
-<div class="deli-card-wrapper" data-category="indica">
-  <div class="deli-card" onclick="this.classList.toggle('is-flipped'); triggerHaptic()">
-    <div class="deli-badge-corner badge--freedom">FREEDOM SALE</div>
-    <div class="deli-card__front" style="background-image: url('assets/img/strains/peanut-butter-n-chocolate-bud.jpg');"></div>
-    <div class="deli-card__back" style="background-image: url('assets/img/strains/peanut-butter-n-chocolate-art.jpg');"></div>
+<div class="deli-card-wrapper" data-category="indica" onclick="openDeliModal('peanut-butter-n-chocolate')">
+  <div class="deli-card">
+    <div class="deli-card__front" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/peanut-butter-n-chocolate-bud.jpg');"></div>
+    <div class="deli-card__back" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/peanut-butter-n-chocolate-art.jpg');"></div>
   </div>
   <div class="deli-card__label">
     <h3>PB N' Choc</h3>
     <p class="deli-card__genetics">Indica • 23.16% THC</p>
-    <span class="deli-card__price">$70/OZ</span>
   </div>
 </div>
 
-<div class="deli-card-wrapper" data-category="indica">
-  <div class="deli-card" onclick="this.classList.toggle('is-flipped'); triggerHaptic()">
-    <div class="deli-badge-corner badge--freedom">FREEDOM SALE</div>
-    <div class="deli-card__front" style="background-image: url('assets/img/strains/spirit-hashplant-bud.jpg');"></div>
-    <div class="deli-card__back" style="background-image: url('assets/img/strains/spirit-hashplant-art.jpg');"></div>
+<div class="deli-card-wrapper" data-category="indica" onclick="openDeliModal('spirit-hashplant')">
+  <div class="deli-card">
+    <div class="deli-card__front" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/spirit-hashplant-bud.jpg');"></div>
+    <div class="deli-card__back" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/spirit-hashplant-art.jpg');"></div>
   </div>
   <div class="deli-card__label">
     <h3>Spirit Hash</h3>
-    <p class="deli-card__genetics">Hybrid • 23.17% THC</p>
-    <span class="deli-card__price">$70/OZ</span>
+    <p class="deli-card__genetics">Indica • 23.17% THC</p>
   </div>
 </div>
 
-<div class="deli-card-wrapper" data-category="indica">
-  <div class="deli-card" onclick="this.classList.toggle('is-flipped'); triggerHaptic()">
-    <div class="deli-badge-corner badge--freedom">FREEDOM SALE</div>
-    <div class="deli-card__front" style="background-image: url('assets/img/strains/dead-prez-bud.jpg');"></div>
-    <div class="deli-card__back" style="background-image: url('assets/img/strains/dead-prez-art.png');"></div>
+<div class="deli-card-wrapper" data-category="indica" onclick="openDeliModal('dead-prez')">
+  <div class="deli-card">
+    <div class="deli-card__front" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/dead-prez-bud.jpg');"></div>
+    <div class="deli-card__back" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/dead-prez-art.png');"></div>
   </div>
   <div class="deli-card__label">
     <h3>Dead Prez</h3>
     <p class="deli-card__genetics">Indica • 26.32% THC</p>
-    <span class="deli-card__price">$22/7g</span>
   </div>
 </div>
 
-<div class="deli-card-wrapper" data-category="indica">
-  <div class="deli-card" onclick="this.classList.toggle('is-flipped'); triggerHaptic()">
-    <div class="deli-badge-corner badge--freedom">FREEDOM SALE</div>
-    <div class="deli-card__front" style="background-image: url('assets/img/strains/garlic-breath-bud.jpg');"></div>
-    <div class="deli-card__back" style="background-image: url('assets/img/strains/garlic-breath-art.jpg');"></div>
+<div class="deli-card-wrapper" data-category="hybrid" onclick="openDeliModal('garlic-breath')">
+  <div class="deli-card">
+    <div class="deli-card__front" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/garlic-breath-bud.jpg');"></div>
+    <div class="deli-card__back" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/garlic-breath-art.jpg');"></div>
   </div>
   <div class="deli-card__label">
     <h3>Garlic Breath</h3>
-    <p class="deli-card__genetics">Indica • 21.55% THC</p>
-    <span class="deli-card__price">$45/14g</span>
+    <p class="deli-card__genetics">Hybrid • 21.55% THC</p>
   </div>
 </div>
 
-<div class="deli-card-wrapper" data-category="hybrid">
-  <div class="deli-card" onclick="this.classList.toggle('is-flipped'); triggerHaptic()">
-    <div class="deli-badge-corner badge--freedom">FREEDOM SALE</div>
-    <div class="deli-card__front" style="background-image: url('assets/img/strains/hash-d-2-bud.jpg');"></div>
-    <div class="deli-card__back" style="background-image: url('assets/img/strains/hash-d-2-art.jpg');"></div>
+<div class="deli-card-wrapper" data-category="indica" onclick="openDeliModal('hash-d')">
+  <div class="deli-card">
+    <div class="deli-card__front" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/hash-d-2-bud.jpg');"></div>
+    <div class="deli-card__back" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/hash-d-2-art.jpg');"></div>
   </div>
   <div class="deli-card__label">
-    <h3>Hash D #2</h3>
-    <p class="deli-card__genetics">Hybrid • 28.71% THC</p>
-    <span class="deli-card__price">$70/OZ</span>
+    <h3>Hash D</h3>
+    <p class="deli-card__genetics">Indica • 28.71% THC</p>
   </div>
 </div>
 
-<div class="deli-card-wrapper" data-category="hybrid">
-  <div class="deli-card" onclick="this.classList.toggle('is-flipped'); triggerHaptic()">
-    <div class="deli-badge-corner badge--freedom">FREEDOM SALE</div>
-    <div class="deli-card__front" style="background-image: url('assets/img/strains/guicy-g-bud.jpg');"></div>
-    <div class="deli-card__back" style="background-image: url('assets/img/strains/guicy-g-art.jpg');"></div>
+<div class="deli-card-wrapper" data-category="hybrid" onclick="openDeliModal('guicy-g')">
+  <div class="deli-card">
+    <div class="deli-card__front" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/guicy-g-bud.jpg');"></div>
+    <div class="deli-card__back" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/guicy-g-art.jpg');"></div>
   </div>
   <div class="deli-card__label">
     <h3>Guicy G</h3>
     <p class="deli-card__genetics">Hybrid • 24.12% THC</p>
-    <span class="deli-card__price">$70/OZ</span>
   </div>
 </div>
 
-<div class="deli-card-wrapper" data-category="hybrid">
-  <div class="deli-card" onclick="this.classList.toggle('is-flipped'); triggerHaptic()">
-    <div class="deli-card__front" style="background-image: url('assets/img/strains/field-trip-bud.jpg');"></div>
-    <div class="deli-card__back" style="background-image: url('assets/img/strains/field-trip-art.jpg');"></div>
+<div class="deli-card-wrapper" data-category="hybrid" onclick="openDeliModal('field-trip')">
+  <div class="deli-card">
+    <div class="deli-card__front" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/field-trip-bud.jpg');"></div>
+    <div class="deli-card__back" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/field-trip-art.jpg');"></div>
   </div>
   <div class="deli-card__label">
     <h3>Field Trip</h3>
     <p class="deli-card__genetics">Hybrid • 25.07% THC</p>
-    <span class="deli-card__price">$15/8th</span>
   </div>
 </div>
 
-<div class="deli-card-wrapper" data-category="hybrid">
-  <div class="deli-card" onclick="this.classList.toggle('is-flipped'); triggerHaptic()">
-    <div class="deli-card__front" style="background-image: url('assets/img/strains/super-silver-hashplant-bud.jpg');"></div>
-    <div class="deli-card__back" style="background-image: url('assets/img/strains/super-silver-hashplant-art.jpg');"></div>
+<div class="deli-card-wrapper" data-category="hybrid" onclick="openDeliModal('super-silver-hashplant')">
+  <div class="deli-card">
+    <div class="deli-card__front" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/super-silver-hashplant-bud.jpg');"></div>
+    <div class="deli-card__back" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/super-silver-hashplant-art.jpg');"></div>
   </div>
   <div class="deli-card__label">
     <h3>Super Silver Hashplant</h3>
     <p class="deli-card__genetics">Hybrid • 17.33% THC</p>
-    <span class="deli-card__price">$15/8th</span>
   </div>
 </div>
 
-      </div> </div> <div class="deli-footer reveal">
+           </div>
+    </div>
+
+    <div class="deli-footer reveal">
       <button class="btn btn--gold" data-open-shop type="button">Order for Pickup</button>
       <p class="deli-note">*Strains rotate daily. All Deli pricing is shown Pre-Tax.</p>
     </div>
-
-  </div> </div> 
+  </div>
+</div>
 
 <div id="deliModal" class="deli-modal">
   <div class="deli-modal__overlay" onclick="closeDeliModal()"></div>
@@ -645,33 +593,33 @@
     <button class="deli-modal__close" onclick="closeDeliModal()">×</button>
 
     <div class="deli-modal__image" onclick="flipDeliModalImage()">
-  <img id="deliModalImage" src="" alt="">
-  <div class="deli-modal__image-hint">Tap for Label Art 🔄</div>
-</div>
+      <img id="deliModalImage" src="" alt="">
+      <div class="deli-modal__image-hint">Tap for Label Art 🔄</div>
+    </div>
 
     <div class="deli-modal__info">
-      <p id="deliModalBrand" class="deli-modal__brand"></p>
+      <p class="deli-modal__brand">Grown by Dutch Touch Genetics</p>
       <h2 id="deliModalName"></h2>
       <p id="deliModalType" class="deli-modal__type"></p>
 
       <div class="deli-modal__section">
-        <h4>Genetics</h4>
+        <h4>Seed Source</h4>
+        <p id="deliModalSeedSource"></p>
+      </div>
+
+      <div class="deli-modal__section">
+        <h4>Lineage</h4>
         <p id="deliModalGenetics"></p>
       </div>
 
       <div class="deli-modal__section">
-        <h4>Aroma / Flavor</h4>
-        <p id="deliModalFlavor"></p>
+        <h4>About</h4>
+        <p id="deliModalAbout"></p>
       </div>
 
       <div class="deli-modal__section">
-        <h4>Effects</h4>
-        <p id="deliModalEffects"></p>
-      </div>
-
-      <div class="deli-modal__section">
-        <h4>Best Used For</h4>
-        <p id="deliModalUse"></p>
+        <h4>Price</h4>
+        <p id="deliModalPrice"></p>
       </div>
 
       <a class="deli-modal__shop" href="https://greenlabsmi.com/order-online" target="_blank">Shop This Strain</a>
