@@ -43,23 +43,122 @@
   "highlights": {
     "layout": {
       "hero": "first-friday",
-      "mid": ["mix-carts", "dtg-disposables"],
-      "scroll": ["mix-gummies", "kshn-pouches", "play-gummies", "fire-styxx", "hash-house-rosin-cart", "premium-gummies", "mix-prerolls"]
+      "mid": [
+        "mix-carts",
+        "dtg-disposables"
+      ],
+      "scroll": [
+        "mix-gummies",
+        "kshn-pouches",
+        "play-gummies",
+        "fire-styxx",
+        "hash-house-rosin-cart",
+        "premium-gummies",
+        "mix-prerolls"
+      ]
     },
     "items": {
-      "mix-carts": { "title": "Mix & Match 1G Carts", "price": "5 for $35", "tag": "VAPES", "details": "Play · Jungle Juice · Crude Boys · Drip", "image": "assets/img/highlights/mixmatch-carts.jpg" },
-      "first-friday": { "title": "First Fridaze - Monthly Event", "price": "Cornhole Tourney 4-8pm", "tag": "EVENT", "details": "Vendors, Food Trucks, Games & Prizes", "image": "assets/img/first-friday-hl.jpg" },
-      "dtg-disposables": { "title": "DTG 1G Disposables", "price": "3 for $45", "tag": "VAPES", "details": "Excludes Mr. Clean Live Terps", "image": "assets/img/deals/dt-disposables.jpg" },
-      "mix-gummies": { "title": "Value Gummies 5 for $18", "image": "assets/img/highlights/hl-gummies.jpg" },
-      "mix-prerolls": { "title": "Mix & Match Pre-Rolls 10 for $35", "image": "assets/img/highlights/hl-prerolls.jpg" },
-      "premium-gummies": { "title": "Premium Gummies 5 for $35", "image": "assets/img/highlights/hl-premium-gummies.jpg" },
-      "kshn-pouches": { "title": "KSHN Pouches 200mg 2 for $25", "image": "assets/img/highlights/hl-kshn.jpg" },
-      "hash-house-rosin-cart": { "title": "Hash House Rosin Cart $15", "image": "assets/img/highlights/hash-house-hl.jpg" },
-      "fire-styxx": { "title": "Fire Styxx - 10 for $55", "image": "assets/img/highlights/hl-fire-styxx.jpg" },
-      "play-gummies": { "title": "Play 200mg Gummies - 10 for $30", "image": "assets/img/highlights/play-gummy-hl.jpg" }
+      "mix-carts": {
+        "title": "Mix & Match 1G Carts",
+        "price": "5 for $35",
+        "tag": "VAPES",
+        "details": "Play · Jungle Juice · Crude Boys · Drip",
+        "image": "assets/img/highlights/mixmatch-carts.jpg"
+      },
+      "first-friday": {
+        "title": "First Fridaze - Monthly Event",
+        "price": "Cornhole Tourney 4-8pm",
+        "tag": "EVENT",
+        "details": "Vendors, Food Trucks, Games & Prizes",
+        "image": "assets/img/first-friday-hl.jpg"
+      },
+      "dtg-disposables": {
+        "title": "DTG 1G Disposables",
+        "price": "3 for $45",
+        "tag": "VAPES",
+        "details": "Excludes Mr. Clean Live Terps",
+        "image": "assets/img/deals/dt-disposables.jpg"
+      },
+      "mix-gummies": {
+        "title": "Value Gummies 5 for $18",
+        "image": "assets/img/highlights/hl-gummies.jpg"
+      },
+      "mix-prerolls": {
+        "title": "Mix & Match Pre-Rolls 10 for $35",
+        "image": "assets/img/highlights/hl-prerolls.jpg"
+      },
+      "premium-gummies": {
+        "title": "Premium Gummies 5 for $35",
+        "image": "assets/img/highlights/hl-premium-gummies.jpg"
+      },
+      "kshn-pouches": {
+        "title": "KSHN Pouches 200mg 2 for $25",
+        "image": "assets/img/highlights/hl-kshn.jpg"
+      },
+      "hash-house-rosin-cart": {
+        "title": "Hash House Rosin Cart $15",
+        "image": "assets/img/highlights/hash-house-hl.jpg"
+      },
+      "fire-styxx": {
+        "title": "Fire Styxx - 10 for $55",
+        "image": "assets/img/highlights/hl-fire-styxx.jpg"
+      },
+      "play-gummies": {
+        "title": "Play 200mg Gummies - 10 for $30",
+        "image": "assets/img/highlights/play-gummy-hl.jpg"
+      }
     }
   },
   "deals": [
+    {
+      "category": "🔥 710 Day Event",
+      "promo": true,
+      "groups": [
+        {
+          "title": "🎁 First 50 Customers",
+          "items": [
+            "Get a FREE 1g Death By Funk Rosin"
+          ]
+        },
+        {
+          "title": "710 Labs",
+          "items": [
+            "1g Live Rosin — $50",
+            "1g Persy — $65",
+            "2g Persy — $150"
+          ]
+        },
+        {
+          "title": "Apex Solventless",
+          "items": [
+            "1g Select Tier — $50",
+            "1g Tier 1 — $45",
+            "2g Thumbprint — $100"
+          ]
+        },
+        {
+          "title": "LightSky Farms",
+          "items": [
+            "1g Solventless — $35",
+            "2g Thumbprint — $70"
+          ]
+        },
+        {
+          "title": "Glacier Cannabis",
+          "items": [
+            "1g Rosin — $30"
+          ]
+        },
+        {
+          "title": "Dutch Touch Genetics",
+          "items": [
+            "1g Rosin — $20",
+            "3.5g Rosin — $60",
+            "14g Rosin — $225"
+          ]
+        }
+      ]
+    },
     {
       "category": "🌿 Flower",
       "promo": false,
@@ -79,7 +178,7 @@
             "Grip Oz Pre-Packed Flower — $25",
             "Angelica and Secret Chief Ounce — $65",
             "Cresco Brand of Flower Ounce — $70",
-            "Lilac Diesel Deli 2 Ounce Special— $200",
+            "Lilac Diesel Deli 2 Ounce Special — $200",
             "Space Hippy Deli Ounce — $90"
           ]
         },
@@ -90,7 +189,7 @@
             "Lilac Diesel Eighths — $35 — Award Winning",
             "Guicy G, Hash D, Solo Walker, and Spirit Hashplant Quarters — $30",
             "Hash D, Chocolate Marshmallow, and Guicy G Half Ounces — $50",
-            "Double Bubble, and Guicy G Ounces — $90",
+            "Double Bubble and Guicy G Ounces — $90",
             "Clusterfunk 3.5g — $30"
           ]
         },
@@ -131,7 +230,7 @@
             "Rove 1g Live Resin Diamond Disposable — $35",
             "Franklin Fields 1g Live Resin Disposal — $25",
             "Franklin Fields 2g Disposal — $25",
-            "Jeeter 1g Diamond infused Disposal — $25",
+            "Jeeter 1g Diamond Infused Disposal — $25",
             "Party Favors 3G Disposable — $30ea",
             "Batch 4G Disposable — $45ea"
           ]
