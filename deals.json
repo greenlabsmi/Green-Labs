@@ -111,15 +111,9 @@
   },
   "deals": [
     {
-      "category": "🔥 710 Day Event",
+      "category": "🔥 Celebrate 710 with the Best",
       "promo": true,
       "groups": [
-        {
-          "title": "🎁 First 50 Customers",
-          "items": [
-            "Get a FREE 1g Death By Funk Rosin"
-          ]
-        },
         {
           "title": "710 Labs",
           "items": [
@@ -134,6 +128,12 @@
             "1g Select Tier — $50",
             "1g Tier 1 — $45",
             "2g Thumbprint — $100"
+          ]
+        },
+        {
+          "title": "Local Grove",
+          "items": [
+            "1g Live Hash Rosin Badder — $40"
           ]
         },
         {
