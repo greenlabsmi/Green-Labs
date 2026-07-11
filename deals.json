@@ -6,11 +6,26 @@
       "color": "#D6A34A",
       "tagline": "Award-Winning Genetics",
       "prices": [
-        ["Gram", "$10"],
-        ["3.5g", "$25"],
-        ["7g", "$40"],
-        ["14g", "$70"],
-        ["28g", "$110"]
+        [
+          "Gram",
+          "$10"
+        ],
+        [
+          "3.5g",
+          "$25"
+        ],
+        [
+          "7g",
+          "$40"
+        ],
+        [
+          "14g",
+          "$70"
+        ],
+        [
+          "28g",
+          "$110"
+        ]
       ]
     },
     {
@@ -19,11 +34,26 @@
       "color": "#1A1A1A",
       "tagline": "Weighed Fresh to Order",
       "prices": [
-        ["Gram", "$8"],
-        ["Eighth (3.5g)", "$15"],
-        ["Quarter (7g)", "$30"],
-        ["Half (14g)", "$50"],
-        ["Ounce (28g)", "$90"]
+        [
+          "Gram",
+          "$8"
+        ],
+        [
+          "Eighth (3.5g)",
+          "$15"
+        ],
+        [
+          "Quarter (7g)",
+          "$30"
+        ],
+        [
+          "Half (14g)",
+          "$50"
+        ],
+        [
+          "Ounce (28g)",
+          "$90"
+        ]
       ]
     },
     {
@@ -32,11 +62,26 @@
       "color": "#708090",
       "tagline": "Everyday Value",
       "prices": [
-        ["Gram", "$6"],
-        ["3.5g", "$12"],
-        ["7g", "$22"],
-        ["14g", "$45"],
-        ["28g", "$70"]
+        [
+          "Gram",
+          "$6"
+        ],
+        [
+          "3.5g",
+          "$12"
+        ],
+        [
+          "7g",
+          "$22"
+        ],
+        [
+          "14g",
+          "$45"
+        ],
+        [
+          "28g",
+          "$70"
+        ]
       ]
     }
   ],
@@ -92,7 +137,7 @@
         "image": "assets/img/highlights/hl-premium-gummies.jpg"
       },
       "kshn-pouches": {
-        "title": "KSHN Pouches 200mg 2 for $25",
+        "title": "KSHN Pouches 200mg $10 July Special",
         "image": "assets/img/highlights/hl-kshn.jpg"
       },
       "hash-house-rosin-cart": {
@@ -167,14 +212,14 @@
           "title": "☀️ Luna Pier Summer Sale",
           "items": [
             "$12 Eighths or $70 Ounces",
-            "Select Deli Flower Strains: Guicy G, Death Z, Hash D, Garlic Breath, Dead Prez"
+            "Select Deli Flower Strains: Hash D, Garlic Breath and Dead Prez"
           ]
         },
         {
           "title": "🔥 Deli Deals & Pre-Packed Flower",
           "items": [
             "Dutch Daylight Flower Ounce — $40 or 2/$60",
-            "Simpler Daze Flower Ounce — $90",
+            "Simpler Daze Flower Ounce — $90 or 2/$150",
             "Grip Oz Pre-Packed Flower — $25",
             "Angelica and Secret Chief Ounce — $65",
             "Cresco Brand of Flower Ounce — $70",
@@ -185,10 +230,10 @@
         {
           "title": "🏆 Dutch Touch Genetics Jarred Flower",
           "items": [
-            "Guicy G, Chocolate Marshmallow #11, Bubblegum, Hash D, Gorilla 88, and Double Bubble Eighths — $15",
+            "Guicy G, Hash D, Gorilla 88, Solo Walker, and Double Bubble Eighths — $15",
             "Lilac Diesel Eighths — $35 — Award Winning",
-            "Guicy G, Hash D, Solo Walker, and Spirit Hashplant Quarters — $30",
-            "Hash D, Chocolate Marshmallow, and Guicy G Half Ounces — $50",
+            "Guicy G, Hash D, and Spirit Hashplant Quarters — $30",
+            "Hash D and Guicy G Half Ounces — $50",
             "Double Bubble and Guicy G Ounces — $90",
             "Clusterfunk 3.5g — $30"
           ]
@@ -196,8 +241,8 @@
         {
           "title": "🏅 Award Winning on Deli",
           "items": [
-            "Check out Space Hippy and Lilac Diesel",
-            "Mr Clean & Lemon Wookie returning soon!"
+            "Check out Mr. Clean, Space Hippy, and Lilac Diesel",
+            "Lemon Wookie returning soon!"
           ]
         }
       ]
@@ -215,6 +260,7 @@
             "Cresco 1g Live Resin Carts — $30ea",
             "Five Star Sugar Sauce Carts — $20ea or 4/$90",
             "Rove 1G Live Resin Cartridges — $25ea",
+            "LightSky Farms 0.5g Live Resin Carts - $15",
             "Hash House Rosin Cart — $15"
           ]
         },
@@ -248,11 +294,10 @@
             "Grip Infused Pre-Rolls — $4ea",
             "Blazer 1g Live Resin Pre-Rolls — $5ea",
             "Fire Styxx and Bonfire Pre-Rolls — $6ea or 10/$55",
-            "Swisher 5-Pack Blunts — $30",
-            "Dutch Touch Infused Pre-Rolls 5-Packs — $30",
+            "Swisher 5-Pack Blunts (Limited Quantity)— $30",
+            "Dutch Touch Infused Pre-Rolls 5-Packs (Death Star with Mr. Clean Sugar) — $30",
             "Dutch Touch 1.25G Rosin Donuts — $12ea — Staff Favorite",
-            "Baby Jeeters — $30",
-            "Jeeter 1G — $15"
+            "Baby Jeeters — $30"
           ]
         },
         {
@@ -320,7 +365,20 @@
             "Death By Funk Live Hash Rosin — $15 for 1G, $45 for 3.5G, or $160 for 14G",
             "Light Sky Farms 1G Rosin — $35",
             "Hash D and Chernobyl 3.5G Rosin — $60",
-            "Dutch Touch Genetics 14G Rosin — $225"
+            "Dutch Touch Genetics 14G Rosin — $225",
+            "710 Labs 1g Live Rosin — $50",
+            "710 Labs 1g Persy — $65",
+            "710 Labs 2g Persy — $150",
+            "Apex Solventless 1g Select Tier — $50",
+            "Apex Solventless 1g Tier 1 — $45",
+            "Apex Solventless 2g Thumbprint — $100",
+            "Local Grove 1g Live Hash Rosin Badder — $40",
+            "LightSky Farms 1g Solventless — $35",
+            "LightSky Farms 2g Thumbprint — $70",
+            "Glacier Cannabis 1g Rosin — $30",
+            "Dutch Touch Genetics 1g Rosin — $20",
+            "Dutch Touch Genetics 3.5g Rosin — $60",
+            "Dutch Touch Genetics 14g Rosin — $225"
           ]
         }
       ]
