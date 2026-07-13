@@ -490,7 +490,7 @@ header, nav, section, .container, .wrap, .row {
 .soc[aria-label="Instagram"]:hover, .soc2[aria-label="Instagram"]:hover { color: #E4405F; border-color: #E4405F; }
 .soc[aria-label="Facebook"]:hover, .soc2[aria-label="Facebook"]:hover { color: #1877F2; border-color: #1877F2; }
 .soc[aria-label="X"]:hover, .soc2[aria-label="X"]:hover { color: #ffffff; border-color: #ffffff; background: #000; }
-.soc[aria-label="TikTok"]:hover, .soc2[aria-label="TikTok"]:hover { color: #EE1D52; border-color: #69C9D0; }
+.soc[aria-label="TikTok"]:hover, .soc2[aria-label="TikTok"]:hover { color: #EE1D52; border-color: #69C9D0; 
 }
 
 .link{
