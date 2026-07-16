@@ -1071,7 +1071,7 @@ const deliStrainData = {
     type: "Indica",
     thc: "23.70% THC",
     budImage: "https://dutchtouchgenetics.com/assets/img/strains/illudium-bud.jpg",
-    artImage: "https://dutchtouchgenetics.com/assets/img/strains/illudium-art.png",
+    artImage: "https://dutchtouchgenetics.com/assets/img/strains/illudium-art.jpg",
     genetics: "Hawaiian Indica × Pre-98 Bubba Kush",
     about: "A legendary, highly sought-after Ohio clone-only strain. Illudium boasts a complex flavor profile of dark coffee and sweet orange rind wrapped in a heavy diesel base."
   },
@@ -1107,7 +1107,7 @@ const deliStrainData = {
     type: "Indica",
     thc: "26.32% THC",
     budImage: "https://dutchtouchgenetics.com/assets/img/strains/dead-prez-bud.jpg",
-    artImage: "https://dutchtouchgenetics.com/assets/img/strains/dead-prez-art.png",
+    artImage: "https://dutchtouchgenetics.com/assets/img/strains/dead-prez-art.jpg",
     genetics: "Death Star × Dread Bread",
     about: "A heavy-hitting in-house cross from Dutch Touch Genetics. Dead Prez commands the room with a sour, aggressive diesel aroma backed by hints of citrus and spice."
   },
@@ -1130,7 +1130,7 @@ const deliStrainData = {
     seedSource: "Bodhi Seeds",
     type: "Indica",
     thc: "28.71% THC",
-    budImage: "https://dutchtouchgenetics.com/assets/img/strains/hash-d-2-bud.jpg",
+    budImage: "https://dutchtouchgenetics.com/assets/img/strains/hash-d-bud.jpg",
     artImage: "https://dutchtouchgenetics.com/assets/img/strains/hash-d-2-art.jpg",
     genetics: "Chem D × 88G13HP",
     about: "Pungent fuel aromas blend with earthy hashish undertones, producing a heavy-hitting body stone and classic Chem character."
