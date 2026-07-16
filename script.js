@@ -902,224 +902,407 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+// =========================================================
+// DUTCH DELI MODAL DATA, TIERS & PRICING
+// =========================================================
+
+const deliTierData = {
+  premium: {
+    badge: "Premium Tier",
+    pricingTitle: "Premium Tier Pricing",
+    prices: [
+      ["Gram", "$10"],
+      ["3.5g", "$25"],
+      ["7g", "$40"],
+      ["14g", "$70"],
+      ["28g", "$110"]
+    ]
+  },
+
+  core: {
+    badge: "Core Tier",
+    pricingTitle: "Core Tier Pricing",
+    prices: [
+      ["Gram", "$8"],
+      ["Eighth (3.5g)", "$15"],
+      ["Quarter (7g)", "$30"],
+      ["Half (14g)", "$50"],
+      ["Ounce (28g)", "$90"]
+    ]
+  },
+
+  value: {
+    badge: "Value Tier",
+    pricingTitle: "Value Tier Pricing",
+    prices: [
+      ["Gram", "$6"],
+      ["3.5g", "$12"],
+      ["7g", "$22"],
+      ["14g", "$45"],
+      ["28g", "$70"]
+    ]
+  },
+
+  bubblehash: {
+    badge: "Bubblehash",
+    pricingTitle: "Bubblehash Pricing",
+    prices: [
+      ["Gram", "$10"],
+      ["3.5g", "$30"],
+      ["14g", "$100"]
+    ]
+  }
+};
+
 const deliStrainData = {
   "mr-clean": {
     name: "Mr. Clean",
+    tier: "premium",
     seedSource: "Exotic Genetics",
     type: "Sativa • 1st Place Winner",
     thc: "N/A",
-    price: "$110/OZ",
     budImage: "https://dutchtouchgenetics.com/assets/img/strains/mr-clean-bud.jpg",
     artImage: "https://dutchtouchgenetics.com/assets/img/strains/mr-clean-art.jpg",
-    genetics: "Lime Skunk x The Cube",
+    genetics: "Lime Skunk × The Cube",
     about: "🏆 1st Place Sativa (High Times Cannabis Cup). Strong citrus (limonene), sour, earthy, and skunky, described as tasting like lemon-pine cleaners. Known for high, energetic, and creative effects. Has the ability to 'clean out' bad moods."
   },
-   "lilac-diesel": {
+
+  "lilac-diesel": {
     name: "Lilac Diesel",
+    tier: "premium",
     seedSource: "Ethos Genetics",
     type: "Sativa • 3rd Place Winner",
     thc: "N/A",
-    price: "$110/OZ",
     budImage: "https://dutchtouchgenetics.com/assets/img/strains/lilac-diesel-bud.jpg",
     artImage: "https://dutchtouchgenetics.com/assets/img/strains/lilac-diesel-art.jpg",
     genetics: "Silver Lemon Haze × Forbidden Fruit × NYC Cherry Pie × Citral Glue",
     about: "🏆 High Times Cannabis Cup 3rd Place Sativa. Big buds have a complex terpene profile, including notes of citrus, sweet berries, earthy pine, and chem. Lilac Diesel is a great afternoon strain for a lackadaisical adventure."
   },
+
   "sour-chem-banger": {
     name: "Sour Chem Banger",
+    tier: "core",
     seedSource: "Team Death Star",
     type: "50/50 Hybrid",
     thc: "25.6% THC",
-    price: "$15/8th",
     budImage: "https://dutchtouchgenetics.com/assets/img/strains/sour-chem-banger-bud.jpg",
     artImage: "https://dutchtouchgenetics.com/assets/img/strains/sour-chem-banger-art.jpg",
     genetics: "Peanut Butter Breath × Chem 91 2.0 × Headbanger OG",
     about: "Fiercely pungent with an overwhelming stench of sour diesel, fuel, and hints of garlic. Uplifting and intensely cerebral, instantly boosting mood while delivering deep physical relaxation."
   },
+
   "afghani-2": {
     name: "Afghani #2",
+    tier: "core",
     seedSource: "Soma Seeds",
     type: "Indica Dominant",
     thc: "25% THC",
-    price: "$15/8th",
     budImage: "https://dutchtouchgenetics.com/assets/img/strains/afghani-2-bud.jpg",
     artImage: "https://dutchtouchgenetics.com/assets/img/strains/afghani-art.jpg",
     genetics: "Pure Afghan Landrace",
     about: "One of the most important traditional indica landraces in modern cannabis breeding. Earthy, hash-like, spicy, woody, resinous, herbal, pine-forward, and smoky with a dry herbal finish."
   },
+
   "mule-fuel": {
     name: "Mule Fuel",
+    tier: "core",
     seedSource: "Bodhi Seeds",
     type: "Indica",
     thc: "25% THC",
-    price: "$15/8th",
     budImage: "https://dutchtouchgenetics.com/assets/img/strains/mule-fuel-art.jpg",
     artImage: "https://dutchtouchgenetics.com/assets/img/strains/mule-fuel-art.jpg",
     genetics: "Mule Fuel × 88G13HP",
     about: "Pungent, skunky, and savory with notes of garlic, ammonia, and earth. Initial euphoria is followed by heavy, sedative, relaxing body effects."
   },
+
   "face-off-og": {
     name: "Face Off OG",
+    tier: "core",
     seedSource: "Bodhi Seeds",
     type: "Indica",
     thc: "27% THC",
-    price: "$15/8th",
-    budImage: "https://dutchtouchgenetics.com/assets/img/strains/face-off-og-art.jpg",
+    budImage: "https://dutchtouchgenetics.com/assets/img/strains/face-off-og-bud.jpg",
     artImage: "https://dutchtouchgenetics.com/assets/img/strains/face-off-og-art.jpg",
     genetics: "Face Off OG × 88G13HP",
     about: "A heavy-hitting indica-dominant hybrid crossing Archive Seed Bank Face Off OG with Bodhi’s 88 G13 Hashplant. Known for pungent OG aromas with sweet, mossy, earthy hashish flavors."
   },
+
   "space-hippy": {
     name: "Space Hippy",
+    tier: "core",
     seedSource: "Dutch Touch Genetics",
     type: "Hybrid",
     thc: "24.77% THC",
-    price: "$90/OZ",
     budImage: "https://dutchtouchgenetics.com/assets/img/strains/space-hippy-bud.jpg",
     artImage: "https://dutchtouchgenetics.com/assets/img/strains/space-hippy-art.jpg",
     genetics: "Apollo 13 × Dread Bread",
     about: "🏆 2nd Place Nug Run Sugar Solvent & 3rd Place Disposable. A High Times Cannabis Cup double-winner and premium DTG exclusive."
   },
+
   "chocolate-marsh-bubblehash": {
     name: "Chocolate Marshmallow Bubblehash",
+    tier: "bubblehash",
     seedSource: "Exotic Genetix",
     type: "Hash Infused",
     thc: "51.30% THC",
-    price: "$30/3.5g",
     budImage: "https://dutchtouchgenetics.com/assets/img/strains/chocolate-marshmallow-bubblehash-bud.jpg",
     artImage: "https://dutchtouchgenetics.com/assets/img/strains/chocolate-marshmallows-bubblehash-art.jpg",
     genetics: "GG4 × Mint Chocolate Chip",
     about: "A heavy-hitting dessert strain with rich, creamy nuttiness on the inhale and a deep, dark cocoa finish that anchors the body."
   },
-   "banana-split": {
-  name: "Banana Split",
-  seedSource: "DNA Genetics",
-  type: "Sativa",
-  thc: "21.67% THC",
-  price: "$15/8th",
-  budImage: "https://dutchtouchgenetics.com/assets/img/strains/banana-split-bud.jpg",
-  artImage: "https://dutchtouchgenetics.com/assets/img/strains/banana-split-art.jpg",
-  genetics: "Tangie × Banana Sherbet",
-  about: "The familiar tangerine burst of Tangie is backed with the bold fruity notes from Banana Sherbet."
-},
 
-"illudium": {
-  name: "Illudium",
-  seedSource: "Legendary Ohio Clone-Only",
-  type: "Indica",
-  thc: "23.70% THC",
-  price: "$90/OZ",
-  budImage: "https://dutchtouchgenetics.com/assets/img/strains/illudium-bud.jpg",
-  artImage: "https://dutchtouchgenetics.com/assets/img/strains/illudium-art.png",
-  genetics: "Hawaiian Indica × Pre-98 Bubba Kush",
-  about: "A legendary, highly sought-after Ohio clone-only strain. Illudium boasts a complex flavor profile of dark coffee and sweet orange rind wrapped in a heavy diesel base."
-},
+  "banana-split": {
+    name: "Banana Split",
+    tier: "core",
+    seedSource: "DNA Genetics",
+    type: "Sativa",
+    thc: "21.67% THC",
+    budImage: "https://dutchtouchgenetics.com/assets/img/strains/banana-split-bud.jpg",
+    artImage: "https://dutchtouchgenetics.com/assets/img/strains/banana-split-art.jpg",
+    genetics: "Tangie × Banana Sherbet",
+    about: "The familiar tangerine burst of Tangie is backed with the bold fruity notes from Banana Sherbet."
+  },
 
-"peanut-butter-n-chocolate": {
-  name: "Peanut Butter N' Chocolate",
-  seedSource: "Dutch Touch Genetics",
-  type: "Indica",
-  thc: "23.16% THC",
-  price: "$70/OZ",
-  budImage: "https://dutchtouchgenetics.com/assets/img/strains/peanut-butter-n-chocolate-bud.jpg",
-  artImage: "https://dutchtouchgenetics.com/assets/img/strains/peanut-butter-n-chocolate-art.jpg",
-  genetics: "Dosidos × Mint Chocolate Chip",
-  about: "A heavy-hitting dessert strain. Rich, creamy nuttiness on the inhale with a deep, dark cocoa finish that anchors the body."
-},
+  "illudium": {
+    name: "Illudium",
+    tier: "core",
+    seedSource: "Legendary Ohio Clone-Only",
+    type: "Indica",
+    thc: "23.70% THC",
+    budImage: "https://dutchtouchgenetics.com/assets/img/strains/illudium-bud.jpg",
+    artImage: "https://dutchtouchgenetics.com/assets/img/strains/illudium-art.png",
+    genetics: "Hawaiian Indica × Pre-98 Bubba Kush",
+    about: "A legendary, highly sought-after Ohio clone-only strain. Illudium boasts a complex flavor profile of dark coffee and sweet orange rind wrapped in a heavy diesel base."
+  },
 
-"spirit-hashplant": {
-  name: "Spirit Hashplant",
-  seedSource: "Bodhi Seeds",
-  type: "Indica",
-  thc: "23.17% THC",
-  price: "$70/OZ",
-  budImage: "https://dutchtouchgenetics.com/assets/img/strains/spirit-hashplant-bud.jpg",
-  artImage: "https://dutchtouchgenetics.com/assets/img/strains/spirit-hashplant-art.jpg",
-  genetics: "Ghost OG × 88G13HP",
-  about: "Strong Ghost OG aromas featuring gassy, earthy, and pine-forward notes with classic Hashplant influence."
-},
+  "peanut-butter-n-chocolate": {
+    name: "Peanut Butter N' Chocolate",
+    tier: "core",
+    seedSource: "Dutch Touch Genetics",
+    type: "Indica",
+    thc: "23.16% THC",
+    budImage: "https://dutchtouchgenetics.com/assets/img/strains/peanut-butter-n-chocolate-bud.jpg",
+    artImage: "https://dutchtouchgenetics.com/assets/img/strains/peanut-butter-n-chocolate-art.jpg",
+    genetics: "Dosidos × Mint Chocolate Chip",
+    about: "A heavy-hitting dessert strain. Rich, creamy nuttiness on the inhale with a deep, dark cocoa finish that anchors the body."
+  },
 
-"dead-prez": {
-  name: "Dead Prez",
-  seedSource: "Dutch Touch Genetics",
-  type: "Indica",
-  thc: "26.32% THC",
-  price: "$22/7g",
-  budImage: "https://dutchtouchgenetics.com/assets/img/strains/dead-prez-bud.jpg",
-  artImage: "https://dutchtouchgenetics.com/assets/img/strains/dead-prez-art.png",
-  genetics: "Death Star × Dread Bread",
-  about: "A heavy-hitting in-house cross from Dutch Touch Genetics. Dead Prez commands the room with a sour, aggressive diesel aroma backed by hints of citrus and spice."
-},
+  "spirit-hashplant": {
+    name: "Spirit Hashplant",
+    tier: "value",
+    seedSource: "Bodhi Seeds",
+    type: "Indica",
+    thc: "23.17% THC",
+    budImage: "https://dutchtouchgenetics.com/assets/img/strains/spirit-hashplant-bud.jpg",
+    artImage: "https://dutchtouchgenetics.com/assets/img/strains/spirit-hashplant-art.jpg",
+    genetics: "Ghost OG × 88G13HP",
+    about: "Strong Ghost OG aromas featuring gassy, earthy, and pine-forward notes with classic Hashplant influence."
+  },
 
-"garlic-breath": {
-  name: "Garlic Breath",
-  seedSource: "ThugPug Genetics",
-  type: "Hybrid",
-  thc: "21.55% THC",
-  price: "$45/14g",
-  budImage: "https://dutchtouchgenetics.com/assets/img/strains/garlic-breath-bud.jpg",
-  artImage: "https://dutchtouchgenetics.com/assets/img/strains/garlic-breath-art.jpg",
-  genetics: "GMO × Mendo Breath",
-  about: "A slightly indica-dominant hybrid known for its extremely funky garlic aroma and savory flavor. Delivers deep body relaxation with an uplifted, euphoric daze."
-},
+  "dead-prez": {
+    name: "Dead Prez",
+    tier: "core",
+    seedSource: "Dutch Touch Genetics",
+    type: "Indica",
+    thc: "26.32% THC",
+    budImage: "https://dutchtouchgenetics.com/assets/img/strains/dead-prez-bud.jpg",
+    artImage: "https://dutchtouchgenetics.com/assets/img/strains/dead-prez-art.png",
+    genetics: "Death Star × Dread Bread",
+    about: "A heavy-hitting in-house cross from Dutch Touch Genetics. Dead Prez commands the room with a sour, aggressive diesel aroma backed by hints of citrus and spice."
+  },
 
-"hash-d": {
-  name: "Hash D",
-  seedSource: "Bodhi Seeds",
-  type: "Indica",
-  thc: "28.71% THC",
-  price: "$70/OZ",
-  budImage: "https://dutchtouchgenetics.com/assets/img/strains/hash-d-2-bud.jpg",
-  artImage: "https://dutchtouchgenetics.com/assets/img/strains/hash-d-2-art.jpg",
-  genetics: "Chem D × 88G13HP",
-  about: "Pungent fuel aromas blend with earthy hashish undertones, producing a heavy-hitting body stone and classic Chem character."
-},
+  "garlic-breath": {
+    name: "Garlic Breath",
+    tier: "value",
+    seedSource: "ThugPug Genetics",
+    type: "Hybrid",
+    thc: "21.55% THC",
+    budImage: "https://dutchtouchgenetics.com/assets/img/strains/garlic-breath-bud.jpg",
+    artImage: "https://dutchtouchgenetics.com/assets/img/strains/garlic-breath-art.jpg",
+    genetics: "GMO × Mendo Breath",
+    about: "A slightly indica-dominant hybrid known for its extremely funky garlic aroma and savory flavor. Delivers deep body relaxation with an uplifted, euphoric daze."
+  },
 
-"guicy-g": {
-  name: "Guicy G",
-  seedSource: "Exotic Genetix",
-  type: "Hybrid",
-  thc: "24.12% THC",
-  price: "$70/OZ",
-  budImage: "https://dutchtouchgenetics.com/assets/img/strains/guicy-g-bud.jpg",
-  artImage: "https://dutchtouchgenetics.com/assets/img/strains/guicy-g-art.jpg",
-  genetics: "The Juice × Triple OG",
-  about: "A bouquet of fresh fruity berries, sugary citrus, and touches of light spice dancing across your tongue."
-},
+  "hash-d": {
+    name: "Hash D",
+    tier: "value",
+    seedSource: "Bodhi Seeds",
+    type: "Indica",
+    thc: "28.71% THC",
+    budImage: "https://dutchtouchgenetics.com/assets/img/strains/hash-d-2-bud.jpg",
+    artImage: "https://dutchtouchgenetics.com/assets/img/strains/hash-d-2-art.jpg",
+    genetics: "Chem D × 88G13HP",
+    about: "Pungent fuel aromas blend with earthy hashish undertones, producing a heavy-hitting body stone and classic Chem character."
+  },
 
-"field-trip": {
-  name: "Field Trip",
-  seedSource: "Dutch Touch Genetics",
-  type: "Hybrid",
-  thc: "25.07% THC",
-  price: "$15/8th",
-  budImage: "https://dutchtouchgenetics.com/assets/img/strains/field-trip-bud.jpg",
-  artImage: "https://dutchtouchgenetics.com/assets/img/strains/field-trip-art.jpg",
-  genetics: "GSC × Sunshine Daydream",
-  about: "Uplifting and nostalgic. This balanced hybrid features classic earthy dough notes with a bright, spacey citrus kick."
-},
+  "guicy-g": {
+    name: "Guicy G",
+    tier: "value",
+    seedSource: "Exotic Genetix",
+    type: "Hybrid",
+    thc: "24.12% THC",
+    budImage: "https://dutchtouchgenetics.com/assets/img/strains/guicy-g-bud.jpg",
+    artImage: "https://dutchtouchgenetics.com/assets/img/strains/guicy-g-art.jpg",
+    genetics: "The Juice × Triple OG",
+    about: "A bouquet of fresh fruity berries, sugary citrus, and touches of light spice dancing across your tongue."
+  },
 
-"super-silver-hashplant": {
-  name: "Super Silver Hashplant",
-  seedSource: "Bodhi Seeds",
-  type: "Hybrid",
-  thc: "17.33% THC",
-  price: "$15/8th",
-  budImage: "https://dutchtouchgenetics.com/assets/img/strains/super-silver-hashplant-bud.jpg",
-  artImage: "https://dutchtouchgenetics.com/assets/img/strains/super-silver-hashplant-art.jpg",
-  genetics: "Super Silver Haze × 88 G13 Hash Plant",
-  about: "Powered by Terpinolene, Beta-Caryophyllene, and Myrcene, this Bodhi Seeds cross offers a clear, motivated, uplifted mental state anchored by a soothing, relaxed body."
-}
+  "field-trip": {
+    name: "Field Trip",
+    tier: "core",
+    seedSource: "Dutch Touch Genetics",
+    type: "Hybrid",
+    thc: "25.07% THC",
+    budImage: "https://dutchtouchgenetics.com/assets/img/strains/field-trip-bud.jpg",
+    artImage: "https://dutchtouchgenetics.com/assets/img/strains/field-trip-art.jpg",
+    genetics: "GSC × Sunshine Daydream",
+    about: "Uplifting and nostalgic. This balanced hybrid features classic earthy dough notes with a bright, spacey citrus kick."
+  },
+
+  "super-silver-hashplant": {
+    name: "Super Silver Hashplant",
+    tier: "core",
+    seedSource: "Bodhi Seeds",
+    type: "Hybrid",
+    thc: "17.33% THC",
+    budImage: "https://dutchtouchgenetics.com/assets/img/strains/super-silver-hashplant-bud.jpg",
+    artImage: "https://dutchtouchgenetics.com/assets/img/strains/super-silver-hashplant-art.jpg",
+    genetics: "Super Silver Haze × 88 G13 Hash Plant",
+    about: "Powered by Terpinolene, Beta-Caryophyllene, and Myrcene, this Bodhi Seeds cross offers a clear, motivated, uplifted mental state anchored by a soothing, relaxed body."
+  }
 };
 
 let currentDeliModalImage = "front";
 
+function renderDeliModalPricing(tierKey) {
+  const tier = deliTierData[tierKey] || deliTierData.core;
+  const pricingMount = document.getElementById("deliModalPricing");
+  const pricingTitle = document.getElementById("deliModalPricingTitle");
+  const tierBadge = document.getElementById("deliModalTier");
+
+  if (pricingTitle) {
+    pricingTitle.textContent = tier.pricingTitle;
+  }
+
+  if (tierBadge) {
+    tierBadge.textContent = tier.badge;
+    tierBadge.className = `deli-modal__tier deli-modal__tier--${tierKey}`;
+  }
+
+  if (pricingMount) {
+    pricingMount.innerHTML = tier.prices
+      .map(([weight, price]) => `
+        <div class="deli-modal__price-row">
+          <span class="deli-modal__price-weight">${weight}</span>
+          <span class="deli-modal__price-dots" aria-hidden="true"></span>
+          <strong class="deli-modal__price-amount">${price}</strong>
+        </div>
+      `)
+      .join("");
+  }
+}
+
 function openDeliModal(strainId) {
   const strain = deliStrainData[strainId];
+  const modal = document.getElementById("deliModal");
+
+  if (!strain || !modal) return;
+
+  modal.dataset.currentStrain = strainId;
+  currentDeliModalImage = "front";
+
+  const modalImage = document.getElementById("deliModalImage");
+  const modalImageHint = document.getElementById("deliModalImageHint");
+
+  if (modalImage) {
+    modalImage.src = strain.budImage;
+    modalImage.alt = `${strain.name} bud`;
+  }
+
+  if (modalImageHint) {
+    modalImageHint.textContent = "Tap for Label Art 🔄";
+  }
+
+  document.getElementById("deliModalName").textContent = strain.name;
+  document.getElementById("deliModalType").textContent =
+    `${strain.type} • ${strain.thc}`;
+  document.getElementById("deliModalSeedSource").textContent =
+    strain.seedSource;
+  document.getElementById("deliModalGenetics").textContent =
+    strain.genetics;
+  document.getElementById("deliModalAbout").textContent =
+    strain.about;
+
+  renderDeliModalPricing(strain.tier || "core");
+
+  modal.classList.add("is-open");
+  modal.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+}
+
+function closeDeliModal() {
+  const modal = document.getElementById("deliModal");
+
+  if (!modal) return;
+
+  modal.classList.remove("is-open");
+  modal.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+}
+
+function flipDeliModalImage() {
+  const modal = document.getElementById("deliModal");
+  const image = document.getElementById("deliModalImage");
+  const imageHint = document.getElementById("deliModalImageHint");
+
+  if (!modal || !image) return;
+
+  const strainId = modal.dataset.currentStrain;
+  const strain = deliStrainData[strainId];
+
   if (!strain) return;
 
-  document.getElementById("deliModal").dataset.currentStrain = strainId;
-  currentDeliModalImage = "front";
+  image.style.opacity = "0.35";
+
+  setTimeout(() => {
+    if (currentDeliModalImage === "front") {
+      image.src = strain.artImage;
+      image.alt = `${strain.name} label artwork`;
+      currentDeliModalImage = "back";
+
+      if (imageHint) {
+        imageHint.textContent = "Tap for Bud Photo 🔄";
+      }
+    } else {
+      image.src = strain.budImage;
+      image.alt = `${strain.name} bud`;
+      currentDeliModalImage = "front";
+
+      if (imageHint) {
+        imageHint.textContent = "Tap for Label Art 🔄";
+      }
+    }
+
+    image.style.opacity = "1";
+  }, 140);
+}
+
+// Close the deli modal with the Escape key.
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeDeliModal();
+  }
+});
+
+// Allow keyboard activation of the modal image toggle.
+document
+  .querySelector(".deli-modal__image")
+  ?.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      flipDeliModalImage();
+    }
+  });
 
   document.getElementById("deliModalImage").src = strain.budImage;
   document.getElementById("deliModalImage").alt = strain.name;
