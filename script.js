@@ -1315,14 +1315,6 @@ if (deliModalImageToggle) {
   });
 }
 
-document.getElementById("art-mode-toggle")?.addEventListener("click", function (event) {
-  event.preventDefault();
-  event.stopPropagation();
-
-  document.querySelectorAll(".deli-card").forEach(card => {
-    card.classList.toggle("is-flipped");
-  });
-});
    
   // ===== DEALS DROPDOWN LOGIC =====
 {
