@@ -1304,38 +1304,6 @@ document
     }
   });
 
-  document.getElementById("deliModalImage").src = strain.budImage;
-  document.getElementById("deliModalImage").alt = strain.name;
-  document.getElementById("deliModalName").textContent = strain.name;
-  document.getElementById("deliModalType").textContent = `${strain.type} • ${strain.thc}`;
-  document.getElementById("deliModalSeedSource").textContent = strain.seedSource;
-  document.getElementById("deliModalGenetics").textContent = strain.genetics;
-  document.getElementById("deliModalAbout").textContent = strain.about;
-  document.getElementById("deliModalPrice").textContent = strain.price;
-
-  document.getElementById("deliModal").classList.add("is-open");
-}
-
-function closeDeliModal() {
-  document.getElementById("deliModal").classList.remove("is-open");
-}
-
-function flipDeliModalImage() {
-  const strainId = document.getElementById("deliModal").dataset.currentStrain;
-  const strain = deliStrainData[strainId];
-  if (!strain) return;
-
-  const image = document.getElementById("deliModalImage");
-
-  if (currentDeliModalImage === "front") {
-    image.src = strain.artImage;
-    currentDeliModalImage = "back";
-  } else {
-    image.src = strain.budImage;
-    currentDeliModalImage = "front";
-  }
-}
-
 document.getElementById("art-mode-toggle")?.addEventListener("click", function () {
   document.querySelectorAll(".deli-card").forEach(card => {
     card.classList.toggle("is-flipped");
