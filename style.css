@@ -2847,113 +2847,401 @@ header, nav, section, .container, .wrap, .row {
   object-fit: cover;
 }
 
+/* =========================================================
+   DUTCH DELI STRAIN MODAL
+   ========================================================= */
+
 .deli-modal {
   display: none;
   position: fixed;
   inset: 0;
   z-index: 9999;
+  padding: 24px;
 }
 
 .deli-modal.is-open {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .deli-modal__overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,.78);
-  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .deli-modal__content {
   position: relative;
   z-index: 2;
-  width: min(980px, 92vw);
-  max-height: 88vh;
+  width: min(1040px, 94vw);
+  max-height: 90vh;
   overflow-y: auto;
-  margin: 6vh auto;
   background: #0d0f0d;
-  border: 1px solid rgba(214,164,65,.35);
+  border: 1px solid rgba(214, 164, 65, 0.45);
   border-radius: 24px;
   padding: 22px;
   display: grid;
-  grid-template-columns: 1fr 1.15fr;
-  gap: 24px;
-  box-shadow: 0 30px 80px rgba(0,0,0,.6);
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.15fr);
+  gap: 26px;
+  box-shadow:
+    0 32px 90px rgba(0, 0, 0, 0.72),
+    0 0 0 1px rgba(255, 255, 255, 0.015) inset;
+}
+
+.deli-modal__content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.deli-modal__content::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.deli-modal__content::-webkit-scrollbar-thumb {
+  background: rgba(214, 164, 65, 0.45);
+  border-radius: 999px;
 }
 
 .deli-modal__close {
   position: absolute;
   top: 14px;
-  right: 18px;
+  right: 16px;
+  z-index: 5;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
   background: #d6a441;
-  color: #000;
+  color: #050505;
   border: 0;
   border-radius: 999px;
-  width: 34px;
-  height: 34px;
-  font-size: 24px;
+  font-size: 27px;
+  line-height: 1;
   font-weight: 900;
   cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease;
+}
+
+.deli-modal__close:hover {
+  transform: scale(1.06);
+  filter: brightness(1.08);
+}
+
+.deli-modal__image {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  background: #050605;
+  border-radius: 19px;
+  cursor: pointer;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
 }
 
 .deli-modal__image img {
   width: 100%;
-  border-radius: 18px;
+  height: 100%;
+  min-height: 560px;
+  object-fit: cover;
   display: block;
+  background: #050605;
+  transition:
+    opacity 0.2s ease,
+    transform 0.25s ease;
+}
+
+.deli-modal__image:hover img {
+  transform: scale(1.01);
+}
+
+.deli-modal__image-hint {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 7px 12px;
+  background: rgba(5, 5, 5, 0.82);
+  color: #f2f2f2;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 850;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.deli-modal__info {
+  min-width: 0;
+  padding: 14px 12px 6px 0;
 }
 
 .deli-modal__brand {
+  margin: 0 52px 10px 0;
   color: #d6a441;
+  font-size: 13px;
+  line-height: 1.3;
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.6px;
+}
+
+.deli-modal__tier {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  min-height: 30px;
+  margin-bottom: 12px;
+  padding: 6px 13px;
+  border-radius: 999px;
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 950;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.deli-modal__tier--premium {
+  color: #080808;
+  background: linear-gradient(135deg, #f2c45d, #d6a441);
+  border: 1px solid rgba(255, 224, 145, 0.7);
+}
+
+.deli-modal__tier--core {
+  color: #f0f0f0;
+  background: #1a1a1a;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.deli-modal__tier--value {
+  color: #ffffff;
+  background: #708090;
+  border: 1px solid rgba(210, 220, 230, 0.45);
+}
+
+.deli-modal__tier--bubblehash {
+  color: #090909;
+  background: linear-gradient(135deg, #e7b84f, #b87921);
+  border: 1px solid rgba(255, 218, 130, 0.65);
 }
 
 .deli-modal__info h2 {
-  margin: 4px 0;
-  font-size: clamp(32px, 4vw, 52px);
-  color: #fff;
+  margin: 0 52px 5px 0;
+  color: #ffffff;
+  font-size: clamp(36px, 4.4vw, 58px);
+  line-height: 1.02;
+  letter-spacing: -1.6px;
 }
 
 .deli-modal__type {
-  color: #ccc;
+  margin: 0 0 23px;
+  color: #c8c8c8;
+  font-size: 16px;
+  line-height: 1.4;
   font-weight: 800;
-  margin-bottom: 18px;
 }
 
 .deli-modal__section {
-  margin-bottom: 16px;
+  margin-bottom: 17px;
 }
 
-.deli-modal__section h4 {
-  margin: 0 0 4px;
+.deli-modal__section h4,
+.deli-modal__pricing-section h4 {
+  margin: 0 0 6px;
   color: #d6a441;
+  font-size: 13px;
+  line-height: 1.3;
+  font-weight: 950;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.25px;
 }
 
 .deli-modal__section p {
   margin: 0;
   color: #e7e7e7;
-  line-height: 1.5;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.deli-modal__pricing-section {
+  margin-top: 23px;
+}
+
+.deli-modal__pricing {
+  overflow: hidden;
+  padding: 7px 14px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(214, 164, 65, 0.055),
+      rgba(255, 255, 255, 0.018)
+    );
+  border: 1px solid rgba(214, 164, 65, 0.3);
+  border-radius: 16px;
+}
+
+.deli-modal__price-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 10px;
+  min-height: 39px;
+  color: #e6e6e6;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.deli-modal__price-row + .deli-modal__price-row {
+  border-top: 1px solid rgba(255, 255, 255, 0.055);
+}
+
+.deli-modal__price-weight {
+  white-space: nowrap;
+}
+
+.deli-modal__price-dots {
+  min-width: 18px;
+  height: 1px;
+  border-bottom: 1px dotted rgba(255, 255, 255, 0.2);
+}
+
+.deli-modal__price-amount {
+  color: #d6a441;
+  font-size: 16px;
+  font-weight: 950;
+  white-space: nowrap;
 }
 
 .deli-modal__shop {
   display: inline-flex;
-  margin-top: 12px;
-  background: #d6a441;
-  color: #000;
-  text-decoration: none;
-  font-weight: 900;
-  padding: 12px 18px;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  margin-top: 20px;
+  padding: 12px 22px;
+  background: linear-gradient(135deg, #efbd50, #d09a32);
+  color: #080808;
+  border: 1px solid rgba(255, 223, 143, 0.5);
   border-radius: 999px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 950;
+  box-shadow: 0 10px 26px rgba(214, 164, 65, 0.15);
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease;
 }
 
-@media (max-width: 760px) {
+.deli-modal__shop:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.06);
+}
+
+@media (max-width: 860px) {
+  .deli-modal {
+    padding: 14px;
+  }
+
   .deli-modal__content {
+    width: min(680px, 96vw);
+    max-height: 94vh;
     grid-template-columns: 1fr;
-    margin: 3vh auto;
+    gap: 18px;
+    padding: 15px;
+    border-radius: 20px;
+  }
+
+  .deli-modal__image img {
+    height: auto;
+    min-height: 0;
+    max-height: 470px;
+    object-fit: cover;
+  }
+
+  .deli-modal__info {
+    padding: 4px 4px 7px;
+  }
+
+  .deli-modal__brand {
+    margin-right: 48px;
+    font-size: 11px;
+  }
+
+  .deli-modal__info h2 {
+    margin-right: 46px;
+    font-size: clamp(34px, 10vw, 48px);
+  }
+}
+
+@media (max-width: 520px) {
+  .deli-modal {
+    padding: 8px;
+  }
+
+  .deli-modal__content {
+    width: 100%;
+    max-height: 96vh;
+    border-radius: 17px;
+    padding: 11px;
+  }
+
+  .deli-modal__close {
+    top: 10px;
+    right: 10px;
+    width: 35px;
+    height: 35px;
+  }
+
+  .deli-modal__image {
+    border-radius: 14px;
+  }
+
+  .deli-modal__image img {
+    max-height: 390px;
+  }
+
+  .deli-modal__image-hint {
+    left: 9px;
+    bottom: 9px;
+    min-height: 30px;
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+
+  .deli-modal__info h2 {
+    font-size: 36px;
+    letter-spacing: -1px;
+  }
+
+  .deli-modal__section p {
+    font-size: 14px;
+  }
+
+  .deli-modal__pricing {
+    padding: 6px 11px;
+  }
+
+  .deli-modal__price-row {
+    min-height: 37px;
+    font-size: 14px;
+  }
+
+  .deli-modal__price-amount {
+    font-size: 15px;
+  }
+
+  .deli-modal__shop {
+    width: 100%;
+    box-sizing: border-box;
   }
 }
 
