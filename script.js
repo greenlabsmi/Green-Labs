@@ -942,7 +942,7 @@ const deliStrainData = {
     type: "Indica Dominant",
     thc: "25% THC",
     price: "$15/8th",
-    budImage: "https://dutchtouchgenetics.com/assets/img/strains/afghani-bud.jpg",
+    budImage: "https://dutchtouchgenetics.com/assets/img/strains/afghani-2-bud.jpg",
     artImage: "https://dutchtouchgenetics.com/assets/img/strains/afghani-art.jpg",
     genetics: "Pure Afghan Landrace",
     about: "One of the most important traditional indica landraces in modern cannabis breeding. Earthy, hash-like, spicy, woody, resinous, herbal, pine-forward, and smoky with a dry herbal finish."
