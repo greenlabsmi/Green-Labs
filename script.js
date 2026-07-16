@@ -1310,48 +1310,59 @@ document.getElementById("art-mode-toggle")?.addEventListener("click", function (
 });
    
   // ===== DEALS DROPDOWN LOGIC =====
-    const dealsDrop = document.getElementById('dealsDrop');
-    const dealsSummary = document.querySelector('.drDrop__summary');
-    const dealsBody = document.querySelector('.drDrop__body');
+{
+  const dealsDropEl = document.getElementById('dealsDrop');
+  const dealsSummaryEl = document.querySelector('.drDrop__summary');
+  const dealsBodyEl = document.querySelector('.drDrop__body');
 
-    if (dealsDrop && dealsSummary && dealsBody) {
-        // 1. Force the HTML to stay "open" so our CSS animation can run smoothly
-        dealsDrop.setAttribute('open', 'true');
+  if (dealsDropEl && dealsSummaryEl && dealsBodyEl) {
+    // Force the HTML to stay open so the CSS animation can run smoothly.
+    dealsDropEl.setAttribute('open', 'true');
 
-        // 2. Summary Click (The Header)
-        dealsSummary.addEventListener('click', (e) => {
-            e.preventDefault(); // Stops the browser's clunky default snap
-            dealsDrop.classList.toggle('is-fully-open');
-        });
+    // Summary click.
+    dealsSummaryEl.addEventListener('click', (e) => {
+      e.preventDefault();
+      dealsDropEl.classList.toggle('is-fully-open');
+    });
 
-        // 3. Body Click (The Peeking Deals)
-        dealsBody.addEventListener('click', (e) => {
-            // If it's closed and they click a deal (but NOT the search bar), open it!
-            if (!dealsDrop.classList.contains('is-fully-open') && !e.target.closest('.drSearch')) {
-                dealsDrop.classList.add('is-fully-open');
-            }
-        });
-    }
-     
-     // Scroll Category Arrows
-    const dealJumpWrap = document.getElementById('dealJumpWrap');
-    const leftArrow = document.getElementById('jumpArrowLeft');
-    const rightArrow = document.getElementById('jumpArrowRight');
+    // Clicking the preview area opens the dropdown.
+    dealsBodyEl.addEventListener('click', (e) => {
+      if (
+        !dealsDropEl.classList.contains('is-fully-open') &&
+        !e.target.closest('.drSearch')
+      ) {
+        dealsDropEl.classList.add('is-fully-open');
+      }
+    });
+  }
 
-    if (dealJumpWrap && leftArrow && rightArrow) {
-      leftArrow.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation(); // Stops dropdown from misbehaving
-        dealJumpWrap.scrollBy({ left: -250, behavior: 'smooth' });
+  // Scroll category arrows.
+  const dealJumpWrapEl = document.getElementById('dealJumpWrap');
+  const leftArrowEl = document.getElementById('jumpArrowLeft');
+  const rightArrowEl = document.getElementById('jumpArrowRight');
+
+  if (dealJumpWrapEl && leftArrowEl && rightArrowEl) {
+    leftArrowEl.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      dealJumpWrapEl.scrollBy({
+        left: -250,
+        behavior: 'smooth'
       });
-      
-      rightArrow.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        dealJumpWrap.scrollBy({ left: 250, behavior: 'smooth' });
-      });
-    }
+    });
 
+    rightArrowEl.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      dealJumpWrapEl.scrollBy({
+        left: 250,
+        behavior: 'smooth'
+      });
+    });
+  }
+}
 
 // =========================================================
 // DTG DYNAMIC GENETICS & MODAL (Shared with Brand Site)
