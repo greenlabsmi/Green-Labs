@@ -931,7 +931,7 @@ const deliStrainData = {
     type: "50/50 Hybrid",
     thc: "25.6% THC",
     price: "$15/8th",
-    budImage: "https://dutchtouchgenetics.com/assets/img/strains/sour-chem-banger-art.jpg",
+    budImage: "https://dutchtouchgenetics.com/assets/img/strains/sour-chem-banger-bud.jpg",
     artImage: "https://dutchtouchgenetics.com/assets/img/strains/sour-chem-banger-art.jpg",
     genetics: "Peanut Butter Breath × Chem 91 2.0 × Headbanger OG",
     about: "Fiercely pungent with an overwhelming stench of sour diesel, fuel, and hints of garlic. Uplifting and intensely cerebral, instantly boosting mood while delivering deep physical relaxation."
@@ -942,7 +942,7 @@ const deliStrainData = {
     type: "Indica Dominant",
     thc: "25% THC",
     price: "$15/8th",
-    budImage: "https://dutchtouchgenetics.com/assets/img/strains/afghani-art.jpg",
+    budImage: "https://dutchtouchgenetics.com/assets/img/strains/afghani-bud.jpg",
     artImage: "https://dutchtouchgenetics.com/assets/img/strains/afghani-art.jpg",
     genetics: "Pure Afghan Landrace",
     about: "One of the most important traditional indica landraces in modern cannabis breeding. Earthy, hash-like, spicy, woody, resinous, herbal, pine-forward, and smoky with a dry herbal finish."
