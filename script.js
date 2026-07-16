@@ -1295,17 +1295,11 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-// Dedicated modal image toggle.
-// Stops the click from reaching the deli-card artwork controls.
+// Keyboard support for the modal image toggle.
+// Mouse/touch clicking is handled directly in the modal HTML.
 const deliModalImageToggle = document.getElementById("deliModalImageToggle");
 
 if (deliModalImageToggle) {
-  deliModalImageToggle.addEventListener("click", (event) => {
-    event.preventDefault();
-    event.stopPropagation();
-    flipDeliModalImage();
-  });
-
   deliModalImageToggle.addEventListener("keydown", (event) => {
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
