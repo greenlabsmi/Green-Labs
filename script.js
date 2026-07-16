@@ -846,7 +846,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // 2. Sticky Quick Filters Logic
-  const filterBtns = document.querySelectorAll('.deli-filter');
+  const filterBtns = document.querySelectorAll('.deli-filter[data-filter]');
   const deliCards = document.querySelectorAll('.deli-card-wrapper');
   const deliCarousel = document.getElementById('deliCarousel');
 
