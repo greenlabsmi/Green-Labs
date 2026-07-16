@@ -1295,17 +1295,30 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-// Allow keyboard activation of the modal image toggle.
-document
-  .querySelector(".deli-modal__image")
-  ?.addEventListener("keydown", (event) => {
+// Dedicated modal image toggle.
+// Stops the click from reaching the deli-card artwork controls.
+const deliModalImageToggle = document.getElementById("deliModalImageToggle");
+
+if (deliModalImageToggle) {
+  deliModalImageToggle.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    flipDeliModalImage();
+  });
+
+  deliModalImageToggle.addEventListener("keydown", (event) => {
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
+      event.stopPropagation();
       flipDeliModalImage();
     }
   });
+}
 
-document.getElementById("art-mode-toggle")?.addEventListener("click", function () {
+document.getElementById("art-mode-toggle")?.addEventListener("click", function (event) {
+  event.preventDefault();
+  event.stopPropagation();
+
   document.querySelectorAll(".deli-card").forEach(card => {
     card.classList.toggle("is-flipped");
   });
