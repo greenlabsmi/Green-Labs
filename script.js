@@ -903,7 +903,18 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 const deliStrainData = {
-  "lilac-diesel": {
+  "mr-clean": {
+    name: "Mr. Clean",
+    seedSource: "Exotic Genetics",
+    type: "Sativa • 1st Place Winner",
+    thc: "N/A",
+    price: "$110/OZ",
+    budImage: "https://dutchtouchgenetics.com/assets/img/strains/mr-clean-bud.jpg",
+    artImage: "https://dutchtouchgenetics.com/assets/img/strains/mr-clean-art.jpg",
+    genetics: "Lime Skunk x The Cube",
+    about: "🏆 1st Place Sativa (High Times Cannabis Cup). Strong citrus (limonene), sour, earthy, and skunky, described as tasting like lemon-pine cleaners. Known for high, energetic, and creative effects. Has the ability to 'clean out' bad moods."
+  },
+   "lilac-diesel": {
     name: "Lilac Diesel",
     seedSource: "Ethos Genetics",
     type: "Sativa • 3rd Place Winner",
