@@ -597,21 +597,56 @@
   </div>
 </div>
 
-<div id="deliModal" class="deli-modal">
-  <div class="deli-modal__overlay" onclick="closeDeliModal()"></div>
+<div id="deliModal" class="deli-modal" aria-hidden="true">
+  <div
+    class="deli-modal__overlay"
+    onclick="closeDeliModal()"
+    aria-hidden="true"
+  ></div>
 
-  <div class="deli-modal__content">
-    <button class="deli-modal__close" onclick="closeDeliModal()">×</button>
+  <div
+    class="deli-modal__content"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="deliModalName"
+  >
+    <button
+      class="deli-modal__close"
+      type="button"
+      onclick="closeDeliModal()"
+      aria-label="Close strain details"
+    >
+      ×
+    </button>
 
-    <div class="deli-modal__image" onclick="flipDeliModalImage()">
+    <div
+      class="deli-modal__image"
+      onclick="flipDeliModalImage()"
+      role="button"
+      tabindex="0"
+      aria-label="Switch between bud image and label artwork"
+    >
       <img id="deliModalImage" src="" alt="">
-      <div class="deli-modal__image-hint">Tap for Label Art 🔄</div>
+
+      <div class="deli-modal__image-hint" id="deliModalImageHint">
+        Tap for Label Art 🔄
+      </div>
     </div>
 
     <div class="deli-modal__info">
       <p class="deli-modal__brand">Grown by Dutch Touch Genetics</p>
+
+      <div
+        id="deliModalTier"
+        class="deli-modal__tier"
+      ></div>
+
       <h2 id="deliModalName"></h2>
-      <p id="deliModalType" class="deli-modal__type"></p>
+
+      <p
+        id="deliModalType"
+        class="deli-modal__type"
+      ></p>
 
       <div class="deli-modal__section">
         <h4>Seed Source</h4>
@@ -628,12 +663,23 @@
         <p id="deliModalAbout"></p>
       </div>
 
-      <div class="deli-modal__section">
-        <h4>Price</h4>
-        <p id="deliModalPrice"></p>
+      <div class="deli-modal__pricing-section">
+        <h4 id="deliModalPricingTitle">Deli Pricing</h4>
+
+        <div
+          id="deliModalPricing"
+          class="deli-modal__pricing"
+        ></div>
       </div>
 
-      <a class="deli-modal__shop" href="https://greenlabsmi.com/order-online" target="_blank">Shop This Strain</a>
+      <a
+        class="deli-modal__shop"
+        href="https://greenlabsmi.com/order-online"
+        target="_blank"
+        rel="noopener"
+      >
+        Shop This Strain
+      </a>
     </div>
   </div>
 </div>
