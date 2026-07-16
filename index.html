@@ -619,12 +619,13 @@
       ×
     </button>
 
-   <div
+  <div
   class="deli-modal__image"
   id="deliModalImageToggle"
   role="button"
   tabindex="0"
   aria-label="Switch between bud image and label artwork"
+  onclick="event.preventDefault(); event.stopPropagation(); flipDeliModalImage();"
 >
       <img id="deliModalImage" src="" alt="">
 
