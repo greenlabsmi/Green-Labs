@@ -832,7 +832,6 @@ function renderHighlightsFromConfig(data, mount) {
         </div>
     `;
 }
-});
 
 document.addEventListener('DOMContentLoaded', () => {
   // ===== DUTCH DELI INTERACTIVITY =====
