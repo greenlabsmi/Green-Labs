@@ -3251,6 +3251,35 @@ header, nav, section, .container, .wrap, .row {
   }
 }
 
+.deli-art-toggle {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.deli-art-toggle:hover {
+  border-color: rgba(214, 164, 65, 0.55);
+  transform: translateY(-1px);
+}
+
+.deli-art-toggle.active {
+  background: #d6a441;
+  border-color: #d6a441;
+  color: #080808;
+}
 /* =========================================================
    Today’s Highlights (NEW SECTION — scoped)
    Paste ABOVE the Reduced motion block
