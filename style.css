@@ -2643,7 +2643,76 @@ header, nav, section, .container, .wrap, .row {
   transform: translateX(16px);
 }
 
-V
+/* Carousel Wrapper for Arrows */
+.deli-carousel-wrap {
+  position: relative;
+}
+
+/* CHANGED: Premium Gold Arrow Buttons */
+.deli-arrow {
+  position: absolute;
+  top: calc(50% - 15px); 
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid rgba(214, 163, 74, 0.3); /* Gold border */
+  color: #D6A34A; /* Gold arrow */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  z-index: 10;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 900;
+  transition: all 0.2s ease;
+}
+
+.deli-arrow:hover {
+  background: #fffdf9; /* Ultra-faint warm tint on hover */
+  box-shadow: 0 6px 20px rgba(214, 163, 74, 0.3); /* Gold glowing shadow */
+  transform: translateY(-50%) scale(1.05); 
+}
+
+/* Position slightly outside the container for a clean frame */
+.deli-arrow--left { left: -20px; }
+.deli-arrow--right { right: -20px; }
+
+/* Hide arrows on mobile */
+@media (max-width: 768px) {
+  .deli-arrow { display: none; }
+}
+
+/* Snap Carousel (Now Edge-to-Edge) */
+.deli-carousel { 
+  display: flex; 
+  gap: 20px; 
+  overflow-x: auto; 
+  padding: 10px 0 40px; 
+  scroll-snap-type: x mandatory; 
+  scrollbar-width: none; 
+  scroll-behavior: smooth; 
+
+  /* Break out of container to fill screen */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  padding-left: 5vw; 
+  padding-right: 5vw;
+}
+.deli-carousel::-webkit-scrollbar { display: none; }
+
+.deli-card-wrapper { 
+  flex: 0 0 65%; /* Dropped from 75% for a smaller footprint */
+  max-width: 250px; /* Shrunk down from 320px */
+  scroll-snap-align: center; 
+  display: flex; 
+  flex-direction: column; 
+  gap: 16px; 
+  transition: opacity 0.4s ease, transform 0.4s ease; 
+}
+.deli-card-wrapper.is-hidden { display: none; }
 
 /* 3D Tap-to-Flip Card */
 .deli-card { 
@@ -5563,5 +5632,4 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
         0 4px 15px rgba(0, 0, 0, 0.9),
         0 0 30px rgba(0, 0, 0, 0.8) !important;
 }
-
 
