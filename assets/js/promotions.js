@@ -24,7 +24,7 @@
   "batchWednesday"
   "thirstyThursday"
   */
-  const MANUAL_CAMPAIGN = null;
+  const MANUAL_CAMPAIGN = "batchWednesday";
 
   const PROMOTIONS = {
     default: {
@@ -93,7 +93,7 @@
       /*
       Leave disabled until its artwork is added.
       */
-      enabled: false,
+      enabled: true,
 
       banner: {
         headline: "🟣 BATCH WEDNESDAY",
