@@ -42,35 +42,36 @@
   ],
   "highlights": {
     "layout": {
-      "hero": "first-friday",
+      "hero": "haha-blast",
       "mid": [
         "mix-carts",
         "dtg-disposables"
       ],
       "scroll": [
         "mix-gummies",
-        "kshn-pouches",
+        "lightsky-carts",
+        "hyman-stylus",
+        "covert-cones",
         "play-gummies",
         "fire-styxx",
         "hash-house-rosin-cart",
-        "premium-gummies",
-        "mix-prerolls"
+        "premium-gummies"
       ]
     },
     "items": {
+      "haha-blast": {
+        "title": "NEW Haha Blast",
+        "price": "$10",
+        "tag": "THC DRINK",
+        "details": "Tropical Soda · 50mg THC · 60mg Caffeine",
+        "image": "assets/img/haha-blast-hl.jpg"
+      },
       "mix-carts": {
         "title": "Mix & Match 1G Carts",
         "price": "5 for $35",
         "tag": "VAPES",
-        "details": "Play · Jungle Juice · Crude Boys · Drip",
+        "details": "PLAY · Jungle Juice · Crude Boys · Drip",
         "image": "assets/img/highlights/mixmatch-carts.jpg"
-      },
-      "first-friday": {
-        "title": "First Fridaze - Monthly Event",
-        "price": "Cornhole Tourney 4-8pm",
-        "tag": "EVENT",
-        "details": "Vendors, Food Trucks, Games & Prizes",
-        "image": "assets/img/first-friday-hl.jpg"
       },
       "dtg-disposables": {
         "title": "DTG 1G Disposables",
@@ -80,31 +81,43 @@
         "image": "assets/img/deals/dt-disposables.jpg"
       },
       "mix-gummies": {
-        "title": "Value Gummies 5 for $18",
+        "title": "Value Gummies",
+        "price": "5 for $18",
         "image": "assets/img/highlights/hl-gummies.jpg"
       },
-      "mix-prerolls": {
-        "title": "Mix & Match Pre-Rolls 10 for $35",
-        "image": "assets/img/highlights/hl-prerolls.jpg"
+      "lightsky-carts": {
+        "title": "LightSky Farms Carts",
+        "price": "$15",
+        "image": "assets/img/highlights/hl-lightsky.jpg"
+      },
+      "hyman-stylus": {
+        "title": "Hyman 1G Live Resin Stylus",
+        "price": "$15",
+        "image": "assets/img/highlights/hyman-stylus-hl.jpg"
+      },
+      "covert-cones": {
+        "title": "Covert Banana Foster Cone",
+        "price": "$8",
+        "image": "assets/img/highlights/covert-cones-hl.jpg"
       },
       "premium-gummies": {
-        "title": "Premium Gummies 5 for $35",
+        "title": "Premium Gummies",
+        "price": "5 for $35",
         "image": "assets/img/highlights/hl-premium-gummies.jpg"
       },
-      "kshn-pouches": {
-        "title": "KSHN Pouches 200mg $10 July Special",
-        "image": "assets/img/highlights/hl-kshn.jpg"
-      },
       "hash-house-rosin-cart": {
-        "title": "Hash House Rosin Cart $15",
+        "title": "Hash House Rosin Cart",
+        "price": "$15",
         "image": "assets/img/highlights/hash-house-hl.jpg"
       },
       "fire-styxx": {
-        "title": "Fire Styxx - 10 for $55",
+        "title": "Fire Styxx",
+        "price": "10 for $55",
         "image": "assets/img/highlights/hl-fire-styxx.jpg"
       },
       "play-gummies": {
-        "title": "Play 200mg Gummies - 10 for $30",
+        "title": "PLAY 200mg Gummies",
+        "price": "10 for $30",
         "image": "assets/img/highlights/play-gummy-hl.jpg"
       }
     }
@@ -224,7 +237,6 @@
             "Premium Infused Gummies — $8ea or 5/$35",
             "Premium Gummies Include Thunder Canna Live Resin and Squishies Hash Rosin Gummies",
             "Redbud Roots Hash Rosin Gummies — $8",
-            "KSHN THC Pouches 200mg — $10",
             "Mojo Chocolates — $12",
             "Covert Cups Rosin Chocolates — $13",
             "Covert Cone Rosin One Hitter — $8",
