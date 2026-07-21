@@ -48,6 +48,7 @@
         "dtg-disposables"
       ],
       "scroll": [
+        "redbud-carts",
         "mix-gummies",
         "lightsky-carts",
         "hyman-stylus",
@@ -80,6 +81,10 @@
         "details": "Includes All Strains",
         "image": "assets/img/deals/dt-disposables.jpg"
       },
+      "redbud-carts": {
+  "title": "Redbud Roots 1G Carts 3 for $25",
+  "image": "assets/img/highlights/hl-redbud.jpg"
+},
       "mix-gummies": {
   "title": "Value Gummies 5 for $18",
   "image": "assets/img/highlights/hl-gummies.jpg"
