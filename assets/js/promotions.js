@@ -24,7 +24,7 @@
   "batchWednesday"
   "thirstyThursday"
   */
-  const MANUAL_CAMPAIGN = "keepItDutchTuesday";
+  const MANUAL_CAMPAIGN = "null";
 
   const PROMOTIONS = {
     default: {
@@ -60,7 +60,7 @@
       Leave disabled until its artwork is added.
       We will change this to true when the image is ready.
       */
-      enabled: true,
+      enabled: false,
 
       banner: {
         headline: "🌿 KEEP IT DUTCH TUESDAY",
