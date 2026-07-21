@@ -7,7 +7,7 @@
   Controls:
   1. Top scrolling banner
   2. Homepage hero
-  3. Promotional popup — connected in the next step
+  3. Promotional popup
 
   Weekly schedule uses America/Detroit time.
   ============================================================
@@ -24,7 +24,7 @@
   "batchWednesday"
   "thirstyThursday"
   */
-  const MANUAL_CAMPAIGN = "null";
+  const MANUAL_CAMPAIGN = null;
 
   const PROMOTIONS = {
     default: {
@@ -44,6 +44,7 @@
       },
 
       popup: {
+        id: "hyman-stylus-july-2026",
         enabled: true,
         type: "image",
         image: "assets/img/highlights/hyman-stylus-hl.jpg",
@@ -76,6 +77,7 @@
       },
 
       popup: {
+        id: "keep-it-dutch-tuesday",
         enabled: true,
         type: "image",
         image: "assets/img/promotions/keep-it-dutch-tuesday.jpg",
@@ -107,6 +109,7 @@
       },
 
       popup: {
+        id: "batch-wednesday",
         enabled: true,
         type: "image",
         image: "assets/img/promotions/batch-wednesday.jpg",
@@ -138,6 +141,7 @@
       },
 
       popup: {
+        id: "thirsty-thursday",
         enabled: true,
         type: "image",
         image: "assets/img/promotions/thirsty-thursday.jpg",
@@ -255,31 +259,132 @@
     }
   }
 
-  function initializePromotionEngine() {
-    const campaignName = getActiveCampaignName();
-    const campaign = PROMOTIONS[campaignName] || PROMOTIONS.default;
+  function updatePopup(popup) {
 
-    updateBanner(campaign.banner);
-    updateHero(campaign.hero);
+  if (!popup) return;
 
-    /*
-    Helpful while building.
-    Open the browser console to see which campaign was selected.
-    */
-    console.info(
-      `[Green Labs Promotions] Active campaign: ${campaignName}`
-    );
+  const link = document.getElementById("weeklyPromoLink");
+  const image = document.getElementById("weeklyPromoImage");
+  const video = document.getElementById("weeklyPromoVideo");
 
-    /*
-    Save the active campaign so the popup system can use it
-    in the next step.
-    */
-    window.GreenLabsPromotion = {
-      name: campaignName,
-      campaign,
-      promotions: PROMOTIONS
-    };
+  if (!link || !image || !video) return;
+
+  link.href = popup.href || "#deals";
+  link.setAttribute("aria-label", popup.ariaLabel || "");
+
+  if (popup.type === "video") {
+
+    image.hidden = true;
+
+    video.hidden = false;
+    video.src = popup.video;
+    video.poster = popup.poster || "";
+    video.play().catch(() => {});
+
+  } else {
+
+    video.pause();
+    video.hidden = true;
+
+    image.hidden = false;
+    image.src = popup.image;
+    image.alt = popup.alt || "";
   }
+
+}
+
+
+  function showPromotionPopup(popup) {
+
+  if (!popup || popup.enabled === false) return;
+
+  const wrapper = document.getElementById("weeklyPromoPopup");
+
+  if (!wrapper) return;
+
+const popupId =
+  popup.id || window.GreenLabsPromotion.name;
+
+const storageKey =
+  `greenLabsWeeklyPromo_${popupId}`;
+
+  if (localStorage.getItem(storageKey)) {
+    return;
+  }
+
+  function actuallyOpen() {
+
+    if (document.body.dataset.popupOpen) {
+
+      setTimeout(actuallyOpen, 3000);
+
+      return;
+
+    }
+
+    wrapper.hidden = false;
+
+    document.body.dataset.popupOpen = "weekly";
+
+    document.body.style.overflow = "hidden";
+
+    localStorage.setItem(storageKey, "1");
+
+  }
+
+  setTimeout(actuallyOpen, 10000);
+
+}
+
+  function initializePopupClose() {
+
+  const wrapper =
+    document.getElementById("weeklyPromoPopup");
+
+  if (!wrapper) return;
+
+  wrapper
+    .querySelectorAll("[data-close-weekly-promo]")
+    .forEach((button) => {
+
+      button.addEventListener("click", () => {
+
+        wrapper.hidden = true;
+
+        document.body.style.overflow = "";
+
+        delete document.body.dataset.popupOpen;
+
+      });
+
+    });
+
+}
+  
+function initializePromotionEngine() {
+  const campaignName = getActiveCampaignName();
+  const campaign = PROMOTIONS[campaignName] || PROMOTIONS.default;
+
+  /*
+  Save the active campaign first so the popup functions
+  can safely read it.
+  */
+  window.GreenLabsPromotion = {
+    name: campaignName,
+    campaign,
+    promotions: PROMOTIONS
+  };
+
+  updateBanner(campaign.banner);
+  updateHero(campaign.hero);
+  updatePopup(campaign.popup);
+  initializePopupClose();
+  showPromotionPopup(campaign.popup);
+
+  console.info(
+    `[Green Labs Promotions] Active campaign: ${campaignName}`
+  );
+}
 
   if (document.readyState === "loading") {
     document.addEventListener(
