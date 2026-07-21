@@ -81,45 +81,37 @@
         "image": "assets/img/deals/dt-disposables.jpg"
       },
       "mix-gummies": {
-        "title": "Value Gummies",
-        "price": "5 for $18",
-        "image": "assets/img/highlights/hl-gummies.jpg"
-      },
-      "lightsky-carts": {
-        "title": "LightSky Farms Carts",
-        "price": "$15",
-        "image": "assets/img/highlights/hl-lightsky.jpg"
-      },
-      "hyman-stylus": {
-        "title": "Hyman 1G Live Resin Stylus",
-        "price": "$15",
-        "image": "assets/img/highlights/hyman-stylus-hl.jpg"
-      },
-      "covert-cones": {
-        "title": "Covert Banana Foster Cone",
-        "price": "$8",
-        "image": "assets/img/highlights/covert-cones-hl.jpg"
-      },
-      "premium-gummies": {
-        "title": "Premium Gummies",
-        "price": "5 for $35",
-        "image": "assets/img/highlights/hl-premium-gummies.jpg"
-      },
-      "hash-house-rosin-cart": {
-        "title": "Hash House Rosin Cart",
-        "price": "$15",
-        "image": "assets/img/highlights/hash-house-hl.jpg"
-      },
-      "fire-styxx": {
-        "title": "Fire Styxx",
-        "price": "10 for $55",
-        "image": "assets/img/highlights/hl-fire-styxx.jpg"
-      },
-      "play-gummies": {
-        "title": "PLAY 200mg Gummies",
-        "price": "10 for $30",
-        "image": "assets/img/highlights/play-gummy-hl.jpg"
-      }
+  "title": "Value Gummies 5 for $18",
+  "image": "assets/img/highlights/hl-gummies.jpg"
+},
+"lightsky-carts": {
+  "title": "LightSky Farms Carts $15",
+  "image": "assets/img/highlights/hl-lightsky.jpg"
+},
+"hyman-stylus": {
+  "title": "Hyman 1G Live Resin Stylus $15",
+  "image": "assets/img/highlights/hyman-stylus-hl.jpg"
+},
+"covert-cones": {
+  "title": "Covert Banana Foster Cone $8",
+  "image": "assets/img/highlights/covert-cones-hl.jpg"
+},
+"play-gummies": {
+  "title": "PLAY 200mg Gummies 10 for $30",
+  "image": "assets/img/highlights/play-gummy-hl.jpg"
+},
+"fire-styxx": {
+  "title": "Fire Styxx 10 for $55",
+  "image": "assets/img/highlights/hl-fire-styxx.jpg"
+},
+"hash-house-rosin-cart": {
+  "title": "Hash House Rosin Cart $15",
+  "image": "assets/img/highlights/hash-house-hl.jpg"
+},
+"premium-gummies": {
+  "title": "Premium Gummies 5 for $35",
+  "image": "assets/img/highlights/hl-premium-gummies.jpg"
+}
     }
   },
   "deals": [
