@@ -138,7 +138,7 @@
       },
 
       hero: {
-        image: "assets/img/promotions/batch-wednesday.jpg",
+        image: "assets/img/promotions/batch-wednesday-hero.jpg",
         position: "center",
         href: "#deals",
         ariaLabel: "Shop Batch Wednesday"
@@ -151,10 +151,10 @@
         delay: 10000,
 
         type: "image",
-        image: "assets/img/promotions/batch-wednesday.jpg",
+        image: "assets/img/promotions/batch-wednesday-popup.jpg",
 
         video: "",
-        poster: "assets/img/promotions/batch-wednesday.jpg",
+        poster: "assets/img/promotions/batch-wednesday-popup.jpg",
 
         alt: "Batch Wednesday promotion",
         href: "#deals",
