@@ -60,7 +60,7 @@
       Leave disabled until its artwork is added.
       We will change this to true when the image is ready.
       */
-      enabled: false,
+      enabled: true,
 
       banner: {
         headline: "🌿 KEEP IT DUTCH TUESDAY",
