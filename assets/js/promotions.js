@@ -24,7 +24,7 @@
   "batchWednesday"
   "thirstyThursday"
   */
-  const MANUAL_CAMPAIGN = null;
+  const MANUAL_CAMPAIGN = "keepItDutchTuesday";
 
   const PROMOTIONS = {
     default: {
