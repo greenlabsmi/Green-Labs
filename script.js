@@ -36,18 +36,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 4. Promo Popup Function
-    function showGiftPopup() {
-        if (!promoModal) return;
-        promoModal.removeAttribute('hidden');
-        
-        const closeBtn = document.getElementById('btnClosePromo');
-        const okBtn = document.getElementById('btnPromoOk');
-        
-        [closeBtn, okBtn].forEach(b => b?.addEventListener('click', () => {
-            promoModal.setAttribute('hidden', 'true');
-            localStorage.setItem('gl_gift_claimed', 'true');
-        }));
-    }
+   function showGiftPopup() {
+    if (!promoModal) return;
+
+    promoModal.removeAttribute('hidden');
+    document.body.dataset.popupOpen = 'gift';
+
+    const closeBtn = document.getElementById('btnClosePromo');
+    const okBtn = document.getElementById('btnPromoOk');
+
+    [closeBtn, okBtn].forEach((button) => {
+        button?.addEventListener(
+            'click',
+            () => {
+                promoModal.setAttribute('hidden', 'true');
+                delete document.body.dataset.popupOpen;
+                localStorage.setItem('gl_gift_claimed', 'true');
+            },
+            { once: true }
+        );
+    });
+}
 
     // 5. Drawer "Safety Net" Button Logic
     document.querySelector('[data-open-promo]')?.addEventListener('click', (e) => {
