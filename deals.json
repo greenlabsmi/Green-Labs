@@ -6,26 +6,11 @@
       "color": "#D6A34A",
       "tagline": "Award-Winning Genetics",
       "prices": [
-        [
-          "Gram",
-          "$10"
-        ],
-        [
-          "3.5g",
-          "$25"
-        ],
-        [
-          "7g",
-          "$40"
-        ],
-        [
-          "14g",
-          "$70"
-        ],
-        [
-          "28g",
-          "$110"
-        ]
+        ["Gram", "$10"],
+        ["3.5g", "$25"],
+        ["7g", "$40"],
+        ["14g", "$70"],
+        ["28g", "$110"]
       ]
     },
     {
@@ -34,26 +19,11 @@
       "color": "#1A1A1A",
       "tagline": "Weighed Fresh to Order",
       "prices": [
-        [
-          "Gram",
-          "$8"
-        ],
-        [
-          "Eighth (3.5g)",
-          "$15"
-        ],
-        [
-          "Quarter (7g)",
-          "$30"
-        ],
-        [
-          "Half (14g)",
-          "$50"
-        ],
-        [
-          "Ounce (28g)",
-          "$90"
-        ]
+        ["Gram", "$8"],
+        ["Eighth (3.5g)", "$15"],
+        ["Quarter (7g)", "$30"],
+        ["Half (14g)", "$50"],
+        ["Ounce (28g)", "$90"]
       ]
     },
     {
@@ -62,26 +32,11 @@
       "color": "#708090",
       "tagline": "Everyday Value",
       "prices": [
-        [
-          "Gram",
-          "$6"
-        ],
-        [
-          "3.5g",
-          "$12"
-        ],
-        [
-          "7g",
-          "$22"
-        ],
-        [
-          "14g",
-          "$45"
-        ],
-        [
-          "28g",
-          "$70"
-        ]
+        ["Gram", "$6"],
+        ["3.5g", "$12"],
+        ["7g", "$22"],
+        ["14g", "$45"],
+        ["28g", "$70"]
       ]
     }
   ],
@@ -121,7 +76,7 @@
         "title": "DTG 1G Disposables",
         "price": "3 for $45",
         "tag": "VAPES",
-        "details": "Excludes Mr. Clean Live Terps",
+        "details": "Includes All Strains",
         "image": "assets/img/deals/dt-disposables.jpg"
       },
       "mix-gummies": {
@@ -156,93 +111,38 @@
   },
   "deals": [
     {
-      "category": "🔥 Celebrate 710 with the Best",
-      "promo": true,
-      "groups": [
-        {
-          "title": "710 Labs",
-          "items": [
-            "1g Live Rosin — $50",
-            "1g Persy — $65",
-            "2g Persy — $150"
-          ]
-        },
-        {
-          "title": "Apex Solventless",
-          "items": [
-            "1g Select Tier — $50",
-            "1g Tier 1 — $45",
-            "2g Thumbprint — $100"
-          ]
-        },
-        {
-          "title": "Local Grove",
-          "items": [
-            "1g Live Hash Rosin Badder — $40"
-          ]
-        },
-        {
-          "title": "LightSky Farms",
-          "items": [
-            "1g Solventless — $35",
-            "2g Thumbprint — $70"
-          ]
-        },
-        {
-          "title": "Glacier Cannabis",
-          "items": [
-            "1g Rosin — $30"
-          ]
-        },
-        {
-          "title": "Dutch Touch Genetics",
-          "items": [
-            "1g Rosin — $20",
-            "3.5g Rosin — $60",
-            "14g Rosin — $225"
-          ]
-        }
-      ]
-    },
-    {
       "category": "🌿 Flower",
       "promo": false,
       "groups": [
         {
-          "title": "☀️ Luna Pier Summer Sale",
-          "items": [
-            "$12 Eighths or $70 Ounces",
-            "Select Deli Flower Strains: Hash D, Garlic Breath and Dead Prez"
-          ]
-        },
-        {
           "title": "🔥 Deli Deals & Pre-Packed Flower",
           "items": [
+            "Grip Pre-Packaged Ounces — $25",
             "Dutch Daylight Flower Ounce — $40 or 2/$60",
+            "Hash D, Field Trip and Spirit Hashplant Ounces — $70",
+            "LightSky Farms Flower Ounce — $90",
+            "Space Hippy Flower Ounce — $90",
             "Simpler Daze Flower Ounce — $90 or 2/$150",
-            "Grip Oz Pre-Packed Flower — $25",
-            "Angelica and Secret Chief Ounce — $65",
-            "Cresco Brand of Flower Ounce — $70",
-            "Lilac Diesel Deli 2 Ounce Special — $200",
-            "Space Hippy Deli Ounce — $90"
+            "Lilac Diesel and Mr. Clean Ounces — $110"
           ]
         },
         {
           "title": "🏆 Dutch Touch Genetics Jarred Flower",
           "items": [
-            "Guicy G, Hash D, Gorilla 88, Solo Walker, and Double Bubble Eighths — $15",
+            "Guicy G, Chocolate Marshmallow, Bubblegum and Hash D Eighths — $15",
             "Lilac Diesel Eighths — $35 — Award Winning",
-            "Guicy G, Hash D, and Spirit Hashplant Quarters — $30",
-            "Hash D and Guicy G Half Ounces — $50",
-            "Double Bubble and Guicy G Ounces — $90",
-            "Clusterfunk 3.5g — $30"
+            "Guicy G, Hash D, Solo Walker and Spirit Hashplant Quarters — $30",
+            "Hash D, Chocolate Marshmallow and Guicy G Half Ounces — $50",
+            "Chocolate Marshmallow, Double Bubble and Guicy G Ounces — $90",
+            "Lilac Diesel Jarred Ounce — $150"
           ]
         },
         {
-          "title": "🏅 Award Winning on Deli",
+          "title": "🏅 Award-Winning Flower",
           "items": [
-            "Check out Mr. Clean, Space Hippy, and Lilac Diesel",
-            "Lemon Wookie returning soon!"
+            "Available Now — Mr. Clean and Space Hippy",
+            "Coming Friday — Lilac Diesel",
+            "Coming Soon — Lemon Wookie"
           ]
         }
       ]
@@ -252,33 +152,30 @@
       "promo": true,
       "groups": [
         {
-          "title": "Cartridges",
+          "title": "Vape Cartridges",
           "items": [
+            "Daily Dose 1G Carts — $7ea or 10/$65",
             "Mix & Match 1G Carts — $9ea, 3/$25 or 5/$35",
-            "Mix & Match Brands Include: Daily Dose, Play, Jungle Juice, Crude Boys, and Drip",
-            "Daily Dose (Redbud Roots Brand) — 10/$65",
-            "Cresco 1g Live Resin Carts — $30ea",
-            "Five Star Sugar Sauce Carts — $20ea or 4/$90",
-            "Rove 1G Live Resin Cartridges — $25ea",
-            "LightSky Farms 0.5g Live Resin Carts - $15",
-            "Hash House Rosin Cart — $15"
+            "Mix & Match Brands Include Party Favors, PLAY Hash Infused, Crude Boys, Drip and Jungle Juice",
+            "Redbud Roots 1G Full Spectrum Carts — $10ea or 3/$25",
+            "LightSky Farms Live Resin and Rosin Cartridges — $15",
+            "Redbud Roots Hash Rosin Cartridges by Hash House — $15"
           ]
         },
         {
           "title": "Disposable Vapes",
           "items": [
             "Dutch Touch Genetics 1G Disposables — $20ea or 3/$45",
-            "Dutch Touch Genetics 1G Disposables Exclude Award Winning Strains",
-            "Glacier 0.5g Rosin Disposable — $20",
+            "Dutch Touch Genetics Disposable Deal Includes All Strains",
+            "Hyman 1G Live Resin Stylus — $15",
             "Superfire 1G Disposables — $15ea or 3/$40",
-            "Grip 2g Live Resin Disposables — $20ea",
-            "Rove 1g Live Resin Diamond Pods — $25",
-            "Rove 1g Live Resin Diamond Disposable — $35",
-            "Franklin Fields 1g Live Resin Disposal — $25",
-            "Franklin Fields 2g Disposal — $25",
-            "Jeeter 1g Diamond Infused Disposal — $25",
-            "Party Favors 3G Disposable — $30ea",
-            "Batch 4G Disposable — $45ea"
+            "Glacier 1G Disposables — $20",
+            "Rove 1G Live Resin Diamond Pods — $25",
+            "Batch 2G Disposables — $25",
+            "Franklin Fields 2G Disposables — $25",
+            "Jeeter 1G Diamond Infused Disposables — $25",
+            "Party Favors 3G Disposables — $30",
+            "710 Labs 1G Rosin Disposable — $65"
           ]
         }
       ]
@@ -290,31 +187,30 @@
         {
           "title": "Infused Pre-Rolls",
           "items": [
-            "Glacier Ice Pick Infused Pre-Rolls — $7ea",
-            "Grip Infused Pre-Rolls — $4ea",
-            "Blazer 1g Live Resin Pre-Rolls — $5ea",
+            "Sin City and Grip 1G Infused Pre-Rolls — $4ea or 10/$35",
+            "Blazer 1G Live Resin Pre-Rolls — $5ea",
             "Fire Styxx and Bonfire Pre-Rolls — $6ea or 10/$55",
-            "Swisher 5-Pack Blunts (Limited Quantity)— $30",
-            "Dutch Touch Infused Pre-Rolls 5-Packs (Death Star with Mr. Clean Sugar) — $30",
-            "Dutch Touch 1.25G Rosin Donuts — $12ea — Staff Favorite",
-            "Baby Jeeters — $30"
+            "Party Favors 50% Infused Pre-Rolls — $8ea or 5/$35",
+            "Dutch Touch Infused Pre-Roll 5-Packs — $30",
+            "Dutch Touch 1.25G Rosin Donuts — $12ea — Staff Favorite"
           ]
         },
         {
           "title": "Non-Infused Pre-Rolls",
           "items": [
-            "Thunder Canna 14-Pack Pre-Rolls — $25",
             "Franklin Fields 28-Pack Pre-Rolls — $50",
-            "Franklin Fields Pre-Rolls — $4ea or 10/$35",
+            "Thunder Canna 14-Pack Pre-Rolls — $25 or 2/$40",
+            "High Supply 1G Pre-Rolls — $4ea",
+            "Franklin Fields 1G Pre-Rolls — $4ea or 10/$35",
             "Sapura 1G Pre-Rolls — $7ea or 3/$20",
-            "Dutch Touch Genetics Full Bud Pre-Roll — $10ea",
+            "Dutch Touch Genetics Full-Bud Pre-Roll — $10ea",
             "Mix and Match Dutch Touch and Sapura Pre-Rolls — 3/$20"
           ]
         }
       ]
     },
     {
-      "category": "🍬 Edibles",
+      "category": "🍬 Edibles & Drinks",
       "promo": false,
       "groups": [
         {
@@ -322,22 +218,27 @@
           "items": [
             "Dutch Touch 200mg Distillate Gummies — $5",
             "Dutch Touch 200mg RSO Gummy Bar — $12",
-            "Wonder Low Dose Mood Edibles 200mg — $15",
-            "El Cheepo Gummies — $3ea",
+            "El Cheepo Gummies — $3ea or 10/$25",
             "Value Gummies Mix & Match — $4ea or 5/$18",
-            "Value Gummies Include: Choice, Mega Chews, Dorks, PLAY, Midwest, True North, Thunder Canna",
+            "Value Gummies Include Choice, Mega Chews, PLAY, Midwest, True North and Thunder Canna",
             "Premium Infused Gummies — $8ea or 5/$35",
-            "KSHN THC Pouches 200mg — $15 or 2/$25 — Staff Favorite",
+            "Premium Gummies Include Thunder Canna Live Resin and Squishies Hash Rosin Gummies",
+            "Redbud Roots Hash Rosin Gummies — $8",
+            "KSHN THC Pouches 200mg — $10",
             "Mojo Chocolates — $12",
+            "Covert Cups Rosin Chocolates — $13",
+            "Covert Cone Rosin One Hitter — $8",
             "PIXILS Candy and PotPots — $15 or 2/$25",
-            "Dead Prez and Milk & Cookies 1G RSO — $12ea or 2/$20"
+            "Wonder Low-Dose 40-Count Gummies — $15",
+            "TreeTown High-Dose Mood Gummies — $15"
           ]
         },
         {
-          "title": "THC Drinks",
+          "title": "🥤 THC Drinks",
           "items": [
             "Full Restock",
-            "Uncle Arnie's, CQ, and Mary Jones Sodas!"
+            "Infused Sodas, Lemonades, Seltzers and Syrups",
+            "NEW Highly Casual Haha Blast Tropical Soda — 50mg THC — $10"
           ]
         }
       ]
@@ -349,11 +250,11 @@
         {
           "title": "Live Resin Concentrates",
           "items": [
-            "Hash D Full Spectrum Resin 1G — $10",
-            "Death By Funk Outdoor Rosin — $45 per 3.5g",
-            "Dutch Touch 3.5G Batter Excludes Award Winning Strains",
-            "Death Star & Guicy G 14g Batter — $80",
-            "Mr. Clean & Hash D #2 14g Batter — $105",
+            "Dutch Touch 3.5G Batter — $40 — Excludes Award-Winning Strains",
+            "Death Star 14G Sugar — $75",
+            "Guicy G 14G Batter — $80",
+            "Hash D 14G Full-Spectrum Batter — $85",
+            "Mr. Clean and Hash D #2 14G Batter — $105",
             "Dutch Touch Genetics 14G Batter — $140"
           ]
         },
@@ -361,24 +262,19 @@
           "title": "Rosin Concentrates",
           "items": [
             "Death by Funk Indoor Rosin — $25 per Gram",
-            "Death By Funk Outdoor Rosin — $45 per 3.5g",
-            "Death By Funk Live Hash Rosin — $15 for 1G, $45 for 3.5G, or $160 for 14G",
-            "Light Sky Farms 1G Rosin — $35",
-            "Hash D and Chernobyl 3.5G Rosin — $60",
-            "Dutch Touch Genetics 14G Rosin — $225",
-            "710 Labs 1g Live Rosin — $50",
-            "710 Labs 1g Persy — $65",
-            "710 Labs 2g Persy — $150",
-            "Apex Solventless 1g Select Tier — $50",
-            "Apex Solventless 1g Tier 1 — $45",
-            "Apex Solventless 2g Thumbprint — $100",
-            "Local Grove 1g Live Hash Rosin Badder — $40",
-            "LightSky Farms 1g Solventless — $35",
-            "LightSky Farms 2g Thumbprint — $70",
-            "Glacier Cannabis 1g Rosin — $30",
-            "Dutch Touch Genetics 1g Rosin — $20",
-            "Dutch Touch Genetics 3.5g Rosin — $60",
-            "Dutch Touch Genetics 14g Rosin — $225"
+            "Death by Funk Outdoor Rosin — $40ea or 3/$100",
+            "Shiskaberry 14G Rosin — $170",
+            "LightSky Farms 1G Rosin — $30ea or 3/$80",
+            "Apex Solventless and 710 Labs Rosin — 3/$110",
+            "Apex and 710 Deal Excludes Thumbprints and Persy"
+          ]
+        },
+        {
+          "title": "RSO 1G Darts",
+          "items": [
+            "Orange Kush Cake 1G RSO Dart — $30",
+            "Mr. Clean 1G RSO Dart — $30",
+            "Big Smooth 1G RSO Dart — $30"
           ]
         }
       ]
