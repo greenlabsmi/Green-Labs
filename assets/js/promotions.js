@@ -167,33 +167,33 @@
 
       banner: {
         headline: "🥤 THIRSTY THURSDAY",
-        products: "SAVE ON PARTICIPATING THC DRINKS",
+        products: "20% OFF INFUSED BEVERAGES & SYRUPS",
         offer: "TODAY ONLY"
       },
 
       hero: {
-        image: "assets/img/promotions/thirsty-thursday.jpg",
+        image: "assets/img/promotions/thirsty-thursday-hero.jpg",
         position: "center",
         href: "#deals",
         ariaLabel: "Shop Thirsty Thursday"
       },
 
-      popup: {
-        id: "thirsty-thursday",
-        enabled: true,
-        frequency: "daily",
-        delay: 10000,
+     popup: {
+  id: "thirsty-thursday",
+  enabled: true,
+  frequency: "daily",
+  delay: 10000,
 
-        type: "image",
-        image: "assets/img/promotions/thirsty-thursday.jpg",
+  type: "image",
+  image: "assets/img/promotions/thirsty-thursday-popup.jpg",
 
-        video: "",
-        poster: "assets/img/promotions/thirsty-thursday.jpg",
+  video: "",
+  poster: "",
 
-        alt: "Thirsty Thursday THC drink promotion",
-        href: "#deals",
-        ariaLabel: "View Thirsty Thursday deals"
-      }
+  alt: "Thirsty Thursday: 20% off infused beverages and syrups",
+  href: "#deals",
+  ariaLabel: "View Thirsty Thursday beverage and syrup deals"
+}
     }
   };
 
