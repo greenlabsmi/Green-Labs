@@ -1750,7 +1750,7 @@ FIRST FRIDAY POPUP CSS
 
 <!-- =========================================================
 FIRST FRIDAY POPUP JAVASCRIPT
-Shows once per event, per browser/device
+Shows every 3 days during the 10-day lead-up window
 ========================================================= -->
 
 <script>
@@ -1760,32 +1760,65 @@ Shows once per event, per browser/device
     if (!popup) return;
 
     /*
-    Change the date inside this key for each new First Friday.
-    That allows the new event to appear once for each customer.
+    EVENT SETTINGS
+    Update these values for each First Friday.
+    Time is Detroit local time.
     */
-    const storageKey = "greenLabsFirstFridaySeen_2026-08-07";
-    const shouldShow = !localStorage.getItem(storageKey);
+    const eventDate = new Date("2026-08-07T16:00:00-04:00");
+    const campaignStart = new Date("2026-07-28T00:00:00-04:00");
+
+    /*
+    Each event gets its own storage key.
+    */
+    const storageKey =
+      "greenLabsFirstFridayLastShown_2026-08-07";
+
+    /*
+    Show no more than once every 3 days.
+    */
+    const repeatDelay =
+      3 * 24 * 60 * 60 * 1000;
+
+    const now = new Date();
+    const lastShown = Number(
+      localStorage.getItem(storageKey) || 0
+    );
+
+    const isCampaignActive =
+      now >= campaignStart &&
+      now < eventDate;
+
+    const enoughTimeHasPassed =
+      Date.now() - lastShown >= repeatDelay;
+
+    const shouldShow =
+      isCampaignActive &&
+      enoughTimeHasPassed;
 
     function openFirstFridayPopup() {
       /*
-      Wait if another popup is already open.
-      This prevents First Friday and the weekly promotion
-      from appearing on top of each other.
+      Wait while another popup is open.
       */
       if (document.body.dataset.popupOpen) {
-        window.setTimeout(openFirstFridayPopup, 3000);
+        window.setTimeout(
+          openFirstFridayPopup,
+          3000
+        );
         return;
       }
 
       popup.hidden = false;
       document.body.style.overflow = "hidden";
-      document.body.dataset.popupOpen = "first-friday";
+      document.body.dataset.popupOpen =
+        "first-friday";
 
       /*
-      Mark this event as seen immediately after it opens.
-      It will not appear again for this event on this browser.
+      Save the time this popup actually opened.
       */
-      localStorage.setItem(storageKey, "true");
+      localStorage.setItem(
+        storageKey,
+        String(Date.now())
+      );
     }
 
     function closeFirstFridayPopup() {
@@ -1795,7 +1828,9 @@ Shows once per event, per browser/device
     }
 
     popup
-      .querySelectorAll("[data-close-first-friday]")
+      .querySelectorAll(
+        "[data-close-first-friday]"
+      )
       .forEach((element) => {
         element.addEventListener(
           "click",
@@ -1803,18 +1838,20 @@ Shows once per event, per browser/device
         );
       });
 
-    document.addEventListener("keydown", (event) => {
-      if (
-        event.key === "Escape" &&
-        !popup.hidden
-      ) {
-        closeFirstFridayPopup();
+    document.addEventListener(
+      "keydown",
+      (event) => {
+        if (
+          event.key === "Escape" &&
+          !popup.hidden
+        ) {
+          closeFirstFridayPopup();
+        }
       }
-    });
+    );
 
     /*
-    Wait 15 seconds before attempting to show it.
-    If the weekly promotion is open, First Friday waits.
+    Wait 15 seconds before attempting to show.
     */
     if (shouldShow) {
       window.setTimeout(
@@ -1824,7 +1861,6 @@ Shows once per event, per browser/device
     }
   })();
 </script>
-
 
 <!-- WEEKLY PROMOTION ENGINE -->
 <script src="assets/js/promotions.js?v=2"></script>
