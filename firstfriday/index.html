@@ -1,0 +1,1351 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="format-detection" content="telephone=no,address=no">
+
+  <title>First Friday at Green Labs | Luna Pier Community Night</title>
+
+  <meta
+    name="description"
+    content="Join Green Labs for First Friday in Luna Pier. Local vendors, yard games, giveaways, Dutch Touch Genetics, Batch, and community fun."
+  />
+
+  <meta name="theme-color" content="#0B7D5A" />
+
+  <link rel="canonical" href="https://greenlabsmi.com/firstfriday/" />
+
+  <meta property="og:title" content="First Friday at Green Labs">
+  <meta
+    property="og:description"
+    content="A free community night featuring local vendors, yard games, giveaways, Dutch Touch Genetics, Batch, and more."
+  >
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://greenlabsmi.com/firstfriday/">
+  <meta
+    property="og:image"
+    content="https://greenlabsmi.com/assets/img/first-friday/first-friday-share.jpg"
+  >
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="First Friday at Green Labs">
+  <meta
+    name="twitter:description"
+    content="Community night in Luna Pier featuring local vendors, games, giveaways, and more."
+  >
+  <meta
+    name="twitter:image"
+    content="https://greenlabsmi.com/assets/img/first-friday/first-friday-share.jpg"
+  >
+
+  <link rel="icon" href="../assets/img/favicon.png" />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@700;900&family=Bebas+Neue&family=Outfit:wght@700;900&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../style.css?v=333">
+
+  <style>
+    :root {
+      --ff-green: #0b7d5a;
+      --ff-green-dark: #075b43;
+      --ff-green-soft: #eaf5f0;
+      --ff-gold: #dc951e;
+      --ff-charcoal: #202522;
+      --ff-muted: #66706b;
+      --ff-border: rgba(11, 125, 90, 0.18);
+      --ff-paper: #fbfcfb;
+      --ff-white: #ffffff;
+      --ff-shadow: 0 18px 50px rgba(15, 39, 30, 0.11);
+      --ff-radius: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ff-charcoal);
+      background:
+        radial-gradient(circle at top left, rgba(11, 125, 90, 0.06), transparent 28rem),
+        var(--ff-paper);
+      font-family: "Inter", sans-serif;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .ff-container {
+      width: min(1120px, calc(100% - 36px));
+      margin-inline: auto;
+    }
+
+    /* Top brand bar */
+
+    .ff-topbar {
+      background: #073f31;
+      color: #fff;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .ff-topbar__inner {
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .ff-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .ff-brand__logo {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+    }
+
+    .ff-brand__name {
+      font-family: "Cinzel", serif;
+      font-size: 1.08rem;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+    }
+
+    .ff-brand__sub {
+      margin-top: 3px;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 0.69rem;
+      letter-spacing: 0.07em;
+    }
+
+    .ff-home-link {
+      color: #fff;
+      font-size: 0.83rem;
+      font-weight: 800;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .ff-home-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Hero */
+
+    .ff-hero {
+      position: relative;
+      overflow: hidden;
+      min-height: 710px;
+      display: flex;
+      align-items: flex-end;
+      color: #fff;
+      background: #193c30;
+    }
+
+    .ff-hero__media {
+      position: absolute;
+      inset: 0;
+    }
+
+    .ff-hero__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 54%;
+    }
+
+    .ff-hero__media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(3, 23, 17, 0.9) 0%,
+          rgba(3, 23, 17, 0.68) 43%,
+          rgba(3, 23, 17, 0.2) 75%
+        ),
+        linear-gradient(
+          0deg,
+          rgba(3, 23, 17, 0.88) 0%,
+          transparent 48%
+        );
+    }
+
+    .ff-hero__content {
+      position: relative;
+      z-index: 2;
+      width: min(1120px, calc(100% - 36px));
+      margin-inline: auto;
+      padding: 120px 0 72px;
+    }
+
+    .ff-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 18px;
+      padding: 9px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 999px;
+      background: rgba(4, 34, 25, 0.46);
+      backdrop-filter: blur(10px);
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .ff-eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #72d6aa;
+      box-shadow: 0 0 0 5px rgba(114, 214, 170, 0.15);
+    }
+
+    .ff-title {
+      max-width: 790px;
+      margin: 0;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: clamp(5rem, 13vw, 9.5rem);
+      line-height: 0.78;
+      letter-spacing: 0.015em;
+      text-transform: uppercase;
+      text-shadow: 0 10px 35px rgba(0, 0, 0, 0.22);
+    }
+
+    .ff-script {
+      display: block;
+      margin-top: 22px;
+      color: #b8efd5;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(1.8rem, 4vw, 3.6rem);
+      font-style: italic;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .ff-hero__intro {
+      max-width: 680px;
+      margin: 25px 0 0;
+      color: rgba(255, 255, 255, 0.87);
+      font-size: clamp(1rem, 2vw, 1.18rem);
+      line-height: 1.7;
+    }
+
+    .ff-hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .ff-button {
+      min-height: 50px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 0 20px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      font: inherit;
+      font-size: 0.87rem;
+      font-weight: 800;
+      text-decoration: none;
+      transition:
+        transform 160ms ease,
+        background 160ms ease,
+        border-color 160ms ease;
+    }
+
+    .ff-button:hover {
+      transform: translateY(-2px);
+    }
+
+    .ff-button--primary {
+      background: #fff;
+      color: var(--ff-green-dark);
+    }
+
+    .ff-button--ghost {
+      border-color: rgba(255, 255, 255, 0.42);
+      background: rgba(255, 255, 255, 0.09);
+      color: #fff;
+      backdrop-filter: blur(10px);
+    }
+
+    /* Event bar */
+
+    .ff-event-bar {
+      position: relative;
+      z-index: 4;
+      margin-top: -28px;
+    }
+
+    .ff-event-bar__inner {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      overflow: hidden;
+      border: 1px solid var(--ff-border);
+      border-radius: 22px;
+      background: var(--ff-white);
+      box-shadow: var(--ff-shadow);
+    }
+
+    .ff-event-detail {
+      min-height: 128px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 25px;
+    }
+
+    .ff-event-detail + .ff-event-detail {
+      border-left: 1px solid var(--ff-border);
+    }
+
+    .ff-event-detail__icon {
+      width: 48px;
+      height: 48px;
+      flex: 0 0 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 15px;
+      background: var(--ff-green-soft);
+      color: var(--ff-green);
+      font-size: 1.35rem;
+    }
+
+    .ff-event-detail__label {
+      color: var(--ff-muted);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .ff-event-detail__value {
+      margin-top: 5px;
+      font-size: 0.98rem;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    /* General sections */
+
+    .ff-section {
+      padding: 92px 0;
+    }
+
+    .ff-section--soft {
+      background: #f1f7f4;
+      border-block: 1px solid var(--ff-border);
+    }
+
+    .ff-section__eyebrow {
+      margin-bottom: 10px;
+      color: var(--ff-green);
+      font-size: 0.73rem;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .ff-section__title {
+      max-width: 780px;
+      margin: 0;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2.25rem, 5vw, 4.2rem);
+      line-height: 1.05;
+    }
+
+    .ff-section__intro {
+      max-width: 760px;
+      margin: 20px 0 0;
+      color: var(--ff-muted);
+      font-size: 1.06rem;
+      line-height: 1.8;
+    }
+
+    /* Feature cards */
+
+    .ff-card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 42px;
+    }
+
+    .ff-card {
+      padding: 28px;
+      border: 1px solid var(--ff-border);
+      border-radius: var(--ff-radius);
+      background: var(--ff-white);
+      box-shadow: 0 12px 32px rgba(26, 69, 52, 0.06);
+    }
+
+    .ff-card__icon {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 20px;
+      border-radius: 16px;
+      background: var(--ff-green-soft);
+      color: var(--ff-green);
+      font-size: 1.4rem;
+    }
+
+    .ff-card h3 {
+      margin: 0;
+      font-size: 1.07rem;
+    }
+
+    .ff-card p {
+      margin: 11px 0 0;
+      color: var(--ff-muted);
+      font-size: 0.92rem;
+      line-height: 1.65;
+    }
+
+    /* Challenge block */
+
+    .ff-challenge {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      overflow: hidden;
+      border-radius: 30px;
+      background: #092f25;
+      color: #fff;
+      box-shadow: var(--ff-shadow);
+    }
+
+    .ff-challenge__content {
+      padding: clamp(34px, 6vw, 66px);
+    }
+
+    .ff-challenge__label {
+      color: #92dcb9;
+      font-size: 0.73rem;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .ff-challenge h2 {
+      max-width: 590px;
+      margin: 12px 0 0;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2rem, 4.5vw, 3.8rem);
+      line-height: 1.08;
+    }
+
+    .ff-challenge p {
+      max-width: 580px;
+      margin: 20px 0 0;
+      color: rgba(255, 255, 255, 0.76);
+      line-height: 1.75;
+    }
+
+    .ff-challenge__note {
+      margin-top: 22px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: rgba(255, 255, 255, 0.64);
+      font-size: 0.78rem;
+    }
+
+    .ff-challenge__image {
+      min-height: 480px;
+    }
+
+    .ff-challenge__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Batch feature */
+
+    .ff-batch {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 24px;
+      padding: 28px;
+      border: 1px solid rgba(220, 149, 30, 0.3);
+      border-radius: 24px;
+      background:
+        linear-gradient(135deg, rgba(220, 149, 30, 0.08), transparent 50%),
+        #fff;
+    }
+
+    .ff-batch__badge {
+      width: 82px;
+      height: 82px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--ff-gold);
+      color: #fff;
+      font-family: "Outfit", sans-serif;
+      font-size: 1.25rem;
+      font-weight: 900;
+      line-height: 1;
+      text-align: center;
+      transform: rotate(-6deg);
+    }
+
+    .ff-batch h3 {
+      margin: 0;
+      font-family: "Playfair Display", serif;
+      font-size: 1.55rem;
+    }
+
+    .ff-batch p {
+      margin: 8px 0 0;
+      color: var(--ff-muted);
+      line-height: 1.65;
+    }
+
+    .ff-batch__tag {
+      color: #a86b08;
+      font-size: 0.75rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    /* Partners */
+
+    .ff-partners {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 42px;
+    }
+
+    .ff-partner {
+      min-height: 220px;
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      padding: 32px;
+      border: 1px solid var(--ff-border);
+      border-radius: var(--ff-radius);
+      background: #fff;
+    }
+
+    .ff-partner__logo {
+      width: 105px;
+      max-height: 105px;
+      object-fit: contain;
+    }
+
+    .ff-partner--dtg {
+      border-color: rgba(220, 149, 30, 0.28);
+    }
+
+    .ff-partner--dtg .ff-partner__logo {
+      width: 92px;
+    }
+
+    .ff-partner__label {
+      color: var(--ff-green);
+      font-size: 0.7rem;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .ff-partner--dtg .ff-partner__label {
+      color: #ad6e09;
+    }
+
+    .ff-partner h3 {
+      margin: 8px 0 0;
+      font-family: "Playfair Display", serif;
+      font-size: 1.45rem;
+    }
+
+    .ff-partner p {
+      margin: 9px 0 0;
+      color: var(--ff-muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    /* Vendor CTA */
+
+    .ff-vendor {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 30px;
+      padding: clamp(34px, 6vw, 64px);
+      border-radius: 30px;
+      background:
+        radial-gradient(circle at 92% 20%, rgba(255, 255, 255, 0.14), transparent 18rem),
+        var(--ff-green);
+      color: #fff;
+    }
+
+    .ff-vendor h2 {
+      margin: 0;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+    }
+
+    .ff-vendor p {
+      max-width: 690px;
+      margin: 16px 0 0;
+      color: rgba(255, 255, 255, 0.82);
+      line-height: 1.75;
+    }
+
+    .ff-vendor .ff-button {
+      background: #fff;
+      color: var(--ff-green-dark);
+      white-space: nowrap;
+    }
+
+    /* FAQ */
+
+    .ff-faq {
+      max-width: 850px;
+      margin-top: 36px;
+    }
+
+    .ff-faq details {
+      border-bottom: 1px solid var(--ff-border);
+    }
+
+    .ff-faq summary {
+      cursor: pointer;
+      padding: 22px 4px;
+      font-weight: 800;
+      list-style: none;
+    }
+
+    .ff-faq summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .ff-faq summary::after {
+      content: "+";
+      float: right;
+      color: var(--ff-green);
+      font-size: 1.3rem;
+    }
+
+    .ff-faq details[open] summary::after {
+      content: "–";
+    }
+
+    .ff-faq p {
+      margin: -6px 0 22px;
+      color: var(--ff-muted);
+      line-height: 1.7;
+    }
+
+    /* Footer */
+
+    .ff-footer {
+      padding: 54px 0;
+      background: #062e23;
+      color: #fff;
+    }
+
+    .ff-footer__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .ff-footer__title {
+      font-family: "Cinzel", serif;
+      font-size: 1.1rem;
+      font-weight: 900;
+      letter-spacing: 0.09em;
+    }
+
+    .ff-footer__sub {
+      margin-top: 6px;
+      color: rgba(255, 255, 255, 0.64);
+      font-size: 0.76rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .ff-footer__links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .ff-footer__links a {
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .ff-footer__links a:hover {
+      text-decoration: underline;
+    }
+
+    /* Mobile */
+
+    @media (max-width: 860px) {
+      .ff-hero {
+        min-height: 670px;
+      }
+
+      .ff-hero__media::after {
+        background:
+          linear-gradient(
+            0deg,
+            rgba(3, 23, 17, 0.94) 0%,
+            rgba(3, 23, 17, 0.58) 58%,
+            rgba(3, 23, 17, 0.25) 100%
+          );
+      }
+
+      .ff-event-bar__inner,
+      .ff-card-grid,
+      .ff-partners {
+        grid-template-columns: 1fr;
+      }
+
+      .ff-event-detail + .ff-event-detail {
+        border-left: 0;
+        border-top: 1px solid var(--ff-border);
+      }
+
+      .ff-challenge {
+        grid-template-columns: 1fr;
+      }
+
+      .ff-challenge__image {
+        min-height: 340px;
+        order: -1;
+      }
+
+      .ff-batch {
+        grid-template-columns: auto 1fr;
+      }
+
+      .ff-batch__tag {
+        grid-column: 1 / -1;
+      }
+
+      .ff-vendor {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .ff-container,
+      .ff-hero__content {
+        width: min(100% - 24px, 1120px);
+      }
+
+      .ff-topbar__inner {
+        min-height: 62px;
+      }
+
+      .ff-brand__sub {
+        display: none;
+      }
+
+      .ff-home-link {
+        font-size: 0.76rem;
+      }
+
+      .ff-hero {
+        min-height: 620px;
+      }
+
+      .ff-hero__content {
+        padding-bottom: 58px;
+      }
+
+      .ff-title {
+        font-size: clamp(4.35rem, 22vw, 6.7rem);
+      }
+
+      .ff-script {
+        margin-top: 17px;
+      }
+
+      .ff-event-detail {
+        min-height: 105px;
+        padding: 20px;
+      }
+
+      .ff-section {
+        padding: 70px 0;
+      }
+
+      .ff-card {
+        padding: 24px;
+      }
+
+      .ff-partner {
+        align-items: flex-start;
+        padding: 25px;
+      }
+
+      .ff-partner__logo {
+        width: 74px;
+      }
+
+      .ff-batch {
+        grid-template-columns: 1fr;
+      }
+
+      .ff-batch__badge {
+        width: 70px;
+        height: 70px;
+      }
+
+      .ff-footer__inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);
+      t.async=1;
+      t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];
+      y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "w5zkqgu1up");
+  </script>
+</head>
+
+<body>
+
+  <!-- Age Gate -->
+  <div id="ageGate" class="age-gate" hidden>
+    <div class="age-gate__box">
+      <img
+        src="../assets/img/greenlabs-logo.png"
+        alt="Green Labs"
+        class="age-gate__logo"
+        style="width:120px; filter:brightness(0) invert(1);"
+      />
+
+      <h2 class="age-gate__title">Welcome to Green Labs</h2>
+
+      <p class="age-gate__sub">
+        Are you 21 years of age or older, or a valid Michigan medical patient?
+      </p>
+
+      <div class="age-gate__actions">
+        <button
+          id="btnAgePass"
+          class="btn btn--primary"
+          style="width:100%;"
+        >
+          Yes, I am
+        </button>
+
+        <button
+          id="btnAgeFail"
+          class="btn btn--ghost"
+          style="width:100%;"
+        >
+          No, I am not
+        </button>
+      </div>
+
+      <p class="age-gate__note">
+        By clicking “Yes,” you agree to our Terms of Service and Privacy Policy.
+      </p>
+    </div>
+  </div>
+
+  <!-- Top Brand Bar -->
+  <header class="ff-topbar">
+    <div class="ff-container ff-topbar__inner">
+
+      <a href="../" class="ff-brand" aria-label="Return to Green Labs homepage">
+        <img
+          src="../assets/img/greenlabs-logo.png"
+          alt=""
+          class="ff-brand__logo"
+        >
+
+        <div>
+          <div class="ff-brand__name">GREEN LABS</div>
+          <div class="ff-brand__sub">
+            Premium cannabis • Powered by Dutch Touch Genetics
+          </div>
+        </div>
+      </a>
+
+      <a href="../" class="ff-home-link">
+        Main Website →
+      </a>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="ff-hero">
+
+      <div class="ff-hero__media">
+        <img
+          src="../assets/img/first-friday/first-friday-hero.jpg"
+          alt="Green Labs and Dutch Touch Genetics cornhole boards outside Green Labs"
+        >
+      </div>
+
+      <div class="ff-hero__content">
+
+        <div class="ff-eyebrow">
+          Free community event
+        </div>
+
+        <h1 class="ff-title">
+          First Friday
+          <span class="ff-script">Community Night in Luna Pier</span>
+        </h1>
+
+        <p class="ff-hero__intro">
+          Spend your Friday evening with Green Labs, Dutch Touch Genetics,
+          Batch, and a growing lineup of local vendors. Stop by for a few
+          minutes or stay for the evening.
+        </p>
+
+        <div class="ff-hero__actions">
+
+          <a
+            class="ff-button ff-button--primary"
+            href="https://www.google.com/maps/search/?api=1&query=10701+Madison+St+Luna+Pier+MI+48157"
+            target="_blank"
+            rel="noopener"
+          >
+            Get Directions
+          </a>
+
+          <a
+            class="ff-button ff-button--ghost"
+            href="#event-details"
+          >
+            Event Details
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Event Summary -->
+    <section class="ff-event-bar" aria-label="Event date, time and location">
+      <div class="ff-container">
+
+        <div class="ff-event-bar__inner">
+
+          <div class="ff-event-detail">
+            <div class="ff-event-detail__icon" aria-hidden="true">📅</div>
+            <div>
+              <div class="ff-event-detail__label">Date</div>
+              <div class="ff-event-detail__value">
+                Friday, August 7
+              </div>
+            </div>
+          </div>
+
+          <div class="ff-event-detail">
+            <div class="ff-event-detail__icon" aria-hidden="true">🕓</div>
+            <div>
+              <div class="ff-event-detail__label">Time</div>
+              <div class="ff-event-detail__value">
+                4:00 PM–8:00 PM
+              </div>
+            </div>
+          </div>
+
+          <div class="ff-event-detail">
+            <div class="ff-event-detail__icon" aria-hidden="true">📍</div>
+            <div>
+              <div class="ff-event-detail__label">Location</div>
+              <div class="ff-event-detail__value">
+                10701 Madison St<br>
+                Luna Pier, MI 48157
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- What to Expect -->
+    <section class="ff-section" id="event-details">
+      <div class="ff-container">
+
+        <div class="ff-section__eyebrow">What to expect</div>
+
+        <h2 class="ff-section__title">
+          A community event hosted by people who live and work here.
+        </h2>
+
+        <p class="ff-section__intro">
+          First Friday brings together local businesses, friendly competition,
+          giveaways, and the Green Labs community. This month is only the
+          beginning, with more vendors and activities being added as details
+          are confirmed.
+        </p>
+
+        <div class="ff-card-grid">
+
+          <article class="ff-card">
+            <div class="ff-card__icon" aria-hidden="true">⛺</div>
+            <h3>Local Vendors</h3>
+            <p>
+              Meet and support a growing lineup of local businesses, makers,
+              creators, and community partners.
+            </p>
+          </article>
+
+          <article class="ff-card">
+            <div class="ff-card__icon" aria-hidden="true">🎯</div>
+            <h3>Yard Games</h3>
+            <p>
+              Challenge the Green Labs or Dutch Touch Genetics crew at
+              cornhole and other outdoor games.
+            </p>
+          </article>
+
+          <article class="ff-card">
+            <div class="ff-card__icon" aria-hidden="true">🎁</div>
+            <h3>Giveaways & Merch</h3>
+            <p>
+              Promotional items, Green Labs merchandise, Dutch Touch Genetics
+              gear, and surprises will be available while supplies last.
+            </p>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Challenge -->
+    <section class="ff-section ff-section--soft">
+      <div class="ff-container">
+
+        <div class="ff-challenge">
+
+          <div class="ff-challenge__content">
+
+            <div class="ff-challenge__label">
+              Think you can beat us?
+            </div>
+
+            <h2>
+              Challenge the crew and play for prizes.
+            </h2>
+
+            <p>
+              Step up to the Green Labs and Dutch Touch Genetics cornhole
+              boards. Beat the crew, participate with featured vendors, and
+              look for opportunities to score promotional merchandise and
+              complimentary items during the event.
+            </p>
+
+            <div class="ff-challenge__note">
+              Offers and promotional items are available while supplies last.
+              Participation requirements may vary.
+            </div>
+
+          </div>
+
+          <div class="ff-challenge__image">
+            <img
+              src="../assets/img/first-friday/cornhole-boards.jpg"
+              alt="Green Labs and Dutch Touch Genetics branded cornhole boards"
+              loading="lazy"
+            >
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Batch -->
+    <section class="ff-section">
+      <div class="ff-container">
+
+        <div class="ff-section__eyebrow">Featured vendor</div>
+
+        <div class="ff-batch">
+
+          <div class="ff-batch__badge">
+            30%<br>OFF
+          </div>
+
+          <div>
+            <h3>Batch joins First Friday</h3>
+            <p>
+              Meet the Batch team during the event and enjoy 30% off Batch
+              products all day at Green Labs.
+            </p>
+          </div>
+
+          <div class="ff-batch__tag">
+            All day special
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Partnership -->
+    <section class="ff-section ff-section--soft">
+      <div class="ff-container">
+
+        <div class="ff-section__eyebrow">The partnership</div>
+
+        <h2 class="ff-section__title">
+          Hosted by Green Labs. Featuring Dutch Touch Genetics.
+        </h2>
+
+        <p class="ff-section__intro">
+          First Friday brings both brands together for a recurring monthly
+          event centered on community, local partnerships, and a relaxed night
+          in Luna Pier.
+        </p>
+
+        <div class="ff-partners">
+
+          <article class="ff-partner">
+
+            <img
+              src="../assets/img/greenlabs-logo.png"
+              alt="Green Labs"
+              class="ff-partner__logo"
+              loading="lazy"
+            >
+
+            <div>
+              <div class="ff-partner__label">Hosted by</div>
+              <h3>Green Labs Provisions</h3>
+              <p>
+                Luna Pier’s home for premium cannabis, community events, and
+                award-winning Dutch Touch Genetics.
+              </p>
+            </div>
+
+          </article>
+
+          <article class="ff-partner ff-partner--dtg">
+
+            <img
+              src="../assets/img/dtg-logo.png"
+              alt="Dutch Touch Genetics"
+              class="ff-partner__logo"
+              loading="lazy"
+            >
+
+            <div>
+              <div class="ff-partner__label">Featuring</div>
+              <h3>Dutch Touch Genetics</h3>
+              <p>
+                Meet the team, play on the cooperative cornhole boards, and
+                connect with the people behind the genetics.
+              </p>
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Vendors -->
+    <section class="ff-section">
+      <div class="ff-container">
+
+        <div class="ff-vendor">
+
+          <div>
+            <h2>Interested in becoming a vendor?</h2>
+
+            <p>
+              First Friday is growing into a recurring community gathering for
+              local businesses, artists, makers, food vendors, creators, and
+              organizations. Tell us what you do and how you would like to be
+              involved.
+            </p>
+          </div>
+
+          <!-- Replace this email address when ready -->
+          <a
+            class="ff-button"
+            href="mailto:YOUR-EMAIL-HERE?subject=First%20Friday%20Vendor%20Interest&body=Business%20name:%0AContact%20name:%0AEmail:%0AInstagram%20or%20website:%0AWhat%20do%20you%20offer:%0A"
+          >
+            Vendor Interest
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="ff-section ff-section--soft">
+      <div class="ff-container">
+
+        <div class="ff-section__eyebrow">Before you visit</div>
+
+        <h2 class="ff-section__title">
+          First Friday questions
+        </h2>
+
+        <div class="ff-faq">
+
+          <details>
+            <summary>Is the event free?</summary>
+            <p>
+              Yes. First Friday is free to attend, and no ticket is required.
+            </p>
+          </details>
+
+          <details>
+            <summary>Do I need to stay for the entire event?</summary>
+            <p>
+              Not at all. Stop by for a few minutes, visit the vendors, play a
+              game, or hang out for the evening.
+            </p>
+          </details>
+
+          <details>
+            <summary>Will there be food?</summary>
+            <p>
+              Food vendors may participate during future events, but food is
+              not guaranteed for this month. Additional details will be posted
+              as they are confirmed.
+            </p>
+          </details>
+
+          <details>
+            <summary>Will more vendors be announced?</summary>
+            <p>
+              Yes. A growing group of local vendors is expected, and more
+              information will be added as it becomes available.
+            </p>
+          </details>
+
+          <details>
+            <summary>Does First Friday happen every month?</summary>
+            <p>
+              Yes. First Friday returns on the first Friday of every month with
+              new vendors, activities, collaborations, and giveaways.
+            </p>
+          </details>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="ff-footer">
+    <div class="ff-container ff-footer__inner">
+
+      <div>
+        <div class="ff-footer__title">
+          FIRST FRIDAY
+        </div>
+
+        <div class="ff-footer__sub">
+          Community • Local • Connected
+        </div>
+      </div>
+
+      <div class="ff-footer__links">
+        <a href="../">Green Labs Home</a>
+
+        <a
+          href="https://www.google.com/maps/search/?api=1&query=10701+Madison+St+Luna+Pier+MI+48157"
+          target="_blank"
+          rel="noopener"
+        >
+          Directions
+        </a>
+
+        <a href="#event-details">
+          Event Details
+        </a>
+      </div>
+
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const ageGate = document.getElementById("ageGate");
+      const passButton = document.getElementById("btnAgePass");
+      const failButton = document.getElementById("btnAgeFail");
+
+      if (!ageGate || !passButton || !failButton) return;
+
+      const hasPassedAgeGate =
+        localStorage.getItem("greenLabsAgeVerified") === "true";
+
+      if (!hasPassedAgeGate) {
+        ageGate.hidden = false;
+      }
+
+      passButton.addEventListener("click", () => {
+        localStorage.setItem("greenLabsAgeVerified", "true");
+        ageGate.hidden = true;
+      });
+
+      failButton.addEventListener("click", () => {
+        window.location.href = "https://www.google.com/";
+      });
+    });
+  </script>
+
+</body>
+</html>
