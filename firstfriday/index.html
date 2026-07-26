@@ -1436,6 +1436,223 @@
   }
 }
 
+    /* Fifth-tap festival mode */
+
+.ff-festival-flash {
+  position: fixed;
+  z-index: 999999;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.ff-festival-flash::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(255, 246, 205, .96) 0%,
+      rgba(240, 178, 75, .82) 20%,
+      rgba(11, 125, 90, .72) 48%,
+      rgba(4, 38, 29, 0) 72%
+    );
+  transform: scale(.2) rotate(-8deg);
+}
+
+.ff-festival-flash__ring {
+  position: absolute;
+  width: min(76vw, 760px);
+  aspect-ratio: 1;
+  border: clamp(8px, 1.2vw, 16px) solid rgba(255, 255, 255, .8);
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.ff-festival-flash__stamp {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: clamp(10px, 2vw, 22px);
+  padding: clamp(16px, 3vw, 30px) clamp(22px, 5vw, 58px);
+  border: clamp(3px, .5vw, 7px) solid #fff;
+  background: #071f18;
+  color: #fff;
+  font-family: "Outfit", sans-serif;
+  font-size: clamp(2rem, 7vw, 6rem);
+  font-weight: 900;
+  line-height: .9;
+  letter-spacing: -.04em;
+  text-align: center;
+  text-transform: uppercase;
+  box-shadow:
+    14px 14px 0 #f0b24b,
+    -14px -14px 0 #0b7d5a;
+  opacity: 0;
+  transform: scale(.4) rotate(-8deg);
+}
+
+.ff-festival-flash__stamp span {
+  color: #f0b24b;
+  font-size: .65em;
+}
+
+.ff-festival-flash.is-active {
+  visibility: visible;
+  animation: ffFestivalLayer 1350ms ease forwards;
+}
+
+.ff-festival-flash.is-active::before {
+  animation: ffFestivalWash 1350ms cubic-bezier(.15, .8, .2, 1) forwards;
+}
+
+.ff-festival-flash.is-active .ff-festival-flash__ring {
+  animation: ffFestivalRing 1050ms ease-out forwards;
+}
+
+.ff-festival-flash.is-active .ff-festival-flash__stamp {
+  animation: ffFestivalStamp 1250ms cubic-bezier(.15, .85, .2, 1) forwards;
+}
+
+@keyframes ffFestivalLayer {
+  0% {
+    opacity: 0;
+  }
+
+  12%,
+  72% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes ffFestivalWash {
+  0% {
+    opacity: 0;
+    transform: scale(.15) rotate(-10deg);
+  }
+
+  28% {
+    opacity: 1;
+    transform: scale(1.15) rotate(3deg);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.6) rotate(8deg);
+  }
+}
+
+@keyframes ffFestivalRing {
+  0% {
+    opacity: 0;
+    transform: scale(.15);
+  }
+
+  35% {
+    opacity: .95;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.7);
+  }
+}
+
+@keyframes ffFestivalStamp {
+  0% {
+    opacity: 0;
+    transform: scale(.35) rotate(-9deg);
+  }
+
+  27% {
+    opacity: 1;
+    transform: scale(1.12) rotate(3deg);
+  }
+
+  48% {
+    opacity: 1;
+    transform: scale(.96) rotate(-1deg);
+  }
+
+  72% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.08) rotate(2deg);
+  }
+}
+
+/* Whole-page response */
+
+body.ff-festival-mode {
+  animation: ffPageFestival 1350ms ease;
+}
+
+body.ff-festival-mode .ff-countdown-poster {
+  animation: ffPosterFestival 1250ms cubic-bezier(.15, .85, .2, 1);
+}
+
+body.ff-festival-mode .ff-culture-strip__track {
+  animation-duration: 5s;
+}
+
+body.ff-festival-mode .ff-topbar,
+body.ff-festival-mode .ff-footer {
+  box-shadow:
+    inset 0 0 70px rgba(240, 178, 75, .3),
+    0 0 45px rgba(11, 125, 90, .25);
+}
+
+@keyframes ffPageFestival {
+  0%,
+  100% {
+    filter: none;
+  }
+
+  28% {
+    filter: saturate(1.35) contrast(1.04);
+  }
+
+  55% {
+    filter: saturate(1.15);
+  }
+}
+
+@keyframes ffPosterFestival {
+  0%,
+  100% {
+    transform: none;
+  }
+
+  24% {
+    transform: translateY(-13px) rotate(-.7deg) scale(1.018);
+    box-shadow:
+      0 40px 100px rgba(11, 125, 90, .38),
+      0 0 80px rgba(240, 178, 75, .35);
+  }
+
+  52% {
+    transform: translateY(3px) rotate(.4deg) scale(.995);
+  }
+
+  76% {
+    transform: translateY(-3px) rotate(-.15deg) scale(1.005);
+  }
+}
     
 /* Expanded buttons */
 
@@ -1500,17 +1717,26 @@
     }
 
     .ff-event-detail {
-      min-height: 128px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      padding: 25px;
-      color: inherit;
-      text-decoration: none;
-      transition:
-        background 180ms ease,
-        transform 180ms ease;
-    }
+  width: 100%;
+  min-height: 128px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 25px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  text-decoration: none;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  transition:
+    background 180ms ease,
+    transform 180ms ease;
+}
 
     .ff-event-detail:hover {
       background: #f8fcfa;
@@ -1558,6 +1784,13 @@
       font-size: .72rem;
       font-weight: 800;
     }
+
+    .ff-event-detail:focus-visible {
+  position: relative;
+  z-index: 2;
+  outline: 3px solid rgba(11, 125, 90, .3);
+  outline-offset: -3px;
+}
 
     /* General sections */
 
@@ -2569,6 +2802,12 @@
 .ff-countdown-actions {
   grid-template-columns: 1fr;
   margin-inline: 8px;
+  padding-top: 27px;
+}
+
+.ff-countdown-actions__close {
+  top: -13px;
+  right: 12px;
 }
       .ff-event-detail {
         min-height: 105px;
@@ -2614,6 +2853,39 @@
       }
     }
 
+    .ff-countdown-actions {
+  position: relative;
+}
+
+.ff-countdown-actions__close {
+  position: absolute;
+  top: -14px;
+  right: 18px;
+  z-index: 3;
+  min-height: 30px;
+  padding: 0 12px;
+  border: 1px solid rgba(11, 125, 90, .2);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ff-green-dark);
+  font: inherit;
+  font-size: .68rem;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 7px 18px rgba(15, 39, 30, .12);
+  transition:
+    transform 160ms ease,
+    background 160ms ease,
+    color 160ms ease;
+}
+
+.ff-countdown-actions__close:hover {
+  background: var(--ff-green-dark);
+  color: #fff;
+  transform: translateY(-2px);
+}
     @media (prefers-reduced-motion: reduce) {
       html {
         scroll-behavior: auto;
@@ -2956,9 +3228,12 @@
         </div>
 
         <div class="ff-countdown-poster__footer">
-          <span>Luna Pier, Michigan</span>
-          <span>Open event actions ↓</span>
-        </div>
+  <span>Luna Pier, Michigan</span>
+
+  <span id="countdownActionPrompt">
+    Open event actions ↓
+  </span>
+</div>
 
         <div class="ff-remix-burst" id="remixBurst" aria-hidden="true">
   <span>✦</span>
@@ -2976,6 +3251,15 @@
         id="countdownActions"
         hidden
       >
+
+        <button
+  type="button"
+  class="ff-countdown-actions__close"
+  id="closeCountdownActions"
+  aria-label="Close event actions"
+>
+  Close ×
+</button>
 
         <button
           type="button"
@@ -3759,6 +4043,12 @@ if (animatedTitle) {
       const countdownCard = document.getElementById("countdownCard");
       const countdownActions = document.getElementById("countdownActions");
 
+      const closeCountdownActions =
+  document.getElementById("closeCountdownActions");
+
+const countdownActionPrompt =
+  document.getElementById("countdownActionPrompt");
+      
       const eventStart = new Date(firstFridayEvent.start);
       const eventEnd = new Date(firstFridayEvent.end);
       const countdownWindowStart = new Date(eventStart);
@@ -3865,8 +4155,23 @@ const seconds = totalSeconds % 60;
     "ff-countdown-poster--theme-5"
   ];
 
+  if (closeCountdownActions) {
+    closeCountdownActions.addEventListener("click", (event) => {
+      event.stopPropagation();
+
+      countdownCard.setAttribute("aria-expanded", "false");
+      countdownActions.hidden = true;
+
+      if (countdownActionPrompt) {
+        countdownActionPrompt.textContent = "Open event actions ↓";
+      }
+    });
+  }
+
   const remixCountElement = document.getElementById("remixCount");
   const remixBurst = document.getElementById("remixBurst");
+        const festivalFlash =
+  document.getElementById("festivalFlash");
   const countdownTiles = [
     ...countdownCard.querySelectorAll(".ff-countdown-tile")
   ];
@@ -3910,13 +4215,46 @@ const seconds = totalSeconds % 60;
     }, 1000);
   };
 
+        const triggerFestivalMode = () => {
+  document.body.classList.remove("ff-festival-mode");
+
+  if (festivalFlash) {
+    festivalFlash.classList.remove("is-active");
+  }
+
+  void document.body.offsetWidth;
+
+  document.body.classList.add("ff-festival-mode");
+
+  if (festivalFlash) {
+    festivalFlash.classList.add("is-active");
+  }
+
+  window.setTimeout(() => {
+    document.body.classList.remove("ff-festival-mode");
+
+    if (festivalFlash) {
+      festivalFlash.classList.remove("is-active");
+    }
+  }, 1400);
+};
+        
   countdownCard.addEventListener("click", () => {
     /*
       Open the event actions on the first tap.
       Additional taps keep them open so users can freely remix.
     */
-    countdownCard.setAttribute("aria-expanded", "true");
-    countdownActions.hidden = false;
+    const actionsAreOpen =
+  countdownCard.getAttribute("aria-expanded") === "true";
+
+if (!actionsAreOpen) {
+  countdownCard.setAttribute("aria-expanded", "true");
+  countdownActions.hidden = false;
+
+  if (countdownActionPrompt) {
+    countdownActionPrompt.textContent = "Event actions open ↑";
+  }
+}
 
     remixCount += 1;
 
@@ -3951,9 +4289,10 @@ const seconds = totalSeconds % 60;
     void countdownCard.offsetWidth;
 
     if (remixCount % 5 === 0) {
-      countdownCard.classList.add("is-full-remix");
-      triggerBurst();
-    } else {
+  countdownCard.classList.add("is-full-remix");
+  triggerBurst();
+  triggerFestivalMode();
+}else {
       countdownCard.classList.add("is-remixing");
     }
 
@@ -4029,6 +4368,19 @@ const seconds = totalSeconds % 60;
       });
     });
   </script>
+
+  <div
+  class="ff-festival-flash"
+  id="festivalFlash"
+  aria-hidden="true"
+>
+  <div class="ff-festival-flash__ring"></div>
+  <div class="ff-festival-flash__stamp">
+    <span>✦</span>
+    FULL REMIX
+    <span>✦</span>
+  </div>
+</div>
 
 </body>
 </html>
