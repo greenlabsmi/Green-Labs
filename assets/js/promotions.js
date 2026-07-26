@@ -65,7 +65,7 @@
 
       banner: {
         headline: "🏆 AWARD WINNING GENETICS",
-        products: "MR. CLEAN, LILAC DIESEL & SPACE HIPPY AVAILABLE NOW",
+        products: "MR. CLEAN, LILAC DIESEL, & SPACE HIPPY AVAILABLE NOW",
         offer: "LEMON WOOKIE COMING SOON"
       },
 
