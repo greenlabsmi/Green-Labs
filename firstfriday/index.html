@@ -518,185 +518,529 @@
 }
     }
 
-    /* Interactive countdown */
+    /* Art-poster countdown */
 
-    .ff-countdown-section {
-      position: relative;
-      z-index: 4;
-      padding: 34px 0 0;
-      background: var(--ff-paper);
-    }
+.ff-countdown-section {
+  position: relative;
+  z-index: 4;
+  padding: 42px 0 8px;
+  background:
+    radial-gradient(
+      circle at 8% 30%,
+      rgba(240, 178, 75, .12),
+      transparent 22rem
+    ),
+    radial-gradient(
+      circle at 92% 10%,
+      rgba(11, 125, 90, .1),
+      transparent 25rem
+    ),
+    var(--ff-paper);
+}
 
-    .ff-countdown-card {
-      width: 100%;
-      display: block;
-      padding: 22px;
-      border: 1px solid rgba(11,125,90,.22);
-      border-radius: 24px;
-      background:
-        radial-gradient(circle at 90% 10%, rgba(220,149,30,.18), transparent 18rem),
-        linear-gradient(135deg, #073f31 0%, #0b5b46 100%);
-      color: #fff;
-      box-shadow: var(--ff-shadow);
-      cursor: pointer;
-      text-align: left;
-      transition:
-        transform 180ms ease,
-        box-shadow 180ms ease;
-    }
+.ff-countdown-poster-wrap {
+  position: relative;
+}
 
-    .ff-countdown-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 24px 64px rgba(15,39,30,.18);
-    }
+.ff-countdown-poster {
+  --poster-yellow: #f2b544;
+  --poster-mint: #b8efd5;
+  --poster-blue: #72b9eb;
+  --poster-dark: #0b3026;
+  --poster-cream: #fff5df;
 
-    .ff-countdown-card:active {
-      transform: translateY(0) scale(.995);
-    }
+  position: relative;
+  width: 100%;
+  display: block;
+  overflow: hidden;
+  padding: clamp(24px, 4vw, 42px);
+  border: 0;
+  border-radius: 34px;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, .025) 0,
+      rgba(0, 0, 0, .025) 1px,
+      transparent 1px,
+      transparent 5px
+    ),
+    var(--poster-cream);
+  color: #101713;
+  text-align: left;
+  cursor: pointer;
+  box-shadow:
+    0 30px 75px rgba(15, 39, 30, .17),
+    inset 0 0 0 1px rgba(0, 0, 0, .06);
+  transition:
+    transform 300ms cubic-bezier(.2, .75, .2, 1),
+    box-shadow 300ms ease,
+    background 400ms ease;
+}
 
-    .ff-countdown-card__top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
+.ff-countdown-poster::before {
+  content: "";
+  position: absolute;
+  width: 290px;
+  height: 290px;
+  top: -165px;
+  right: -100px;
+  border: 2px solid rgba(0, 0, 0, .16);
+  border-radius: 50%;
+  pointer-events: none;
+}
 
-    .ff-status {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-      min-width: 0;
-    }
+.ff-countdown-poster::after {
+  content: "FIRST FRIDAY";
+  position: absolute;
+  right: -46px;
+  bottom: 78px;
+  color: rgba(0, 0, 0, .055);
+  font-family: "Outfit", sans-serif;
+  font-size: clamp(3.5rem, 9vw, 7.5rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -.05em;
+  transform: rotate(-90deg);
+  transform-origin: center;
+  pointer-events: none;
+}
 
-    .ff-status__dot {
-      width: 10px;
-      height: 10px;
-      flex: 0 0 10px;
-      border-radius: 50%;
-      background: #7ce0b4;
-      box-shadow: 0 0 0 6px rgba(124,224,180,.12);
-    }
+.ff-countdown-poster:hover {
+  transform: translateY(-5px) rotate(-.15deg);
+  box-shadow:
+    0 38px 90px rgba(15, 39, 30, .22),
+    inset 0 0 0 1px rgba(0, 0, 0, .06);
+}
 
-    .ff-status__label {
-      font-size: .72rem;
-      font-weight: 900;
-      letter-spacing: .13em;
-      text-transform: uppercase;
-    }
+.ff-countdown-poster:active {
+  transform: translateY(-1px) scale(.995);
+}
 
-    .ff-status__message {
-      margin-top: 3px;
-      color: rgba(255,255,255,.72);
-      font-size: .78rem;
-    }
+.ff-countdown-status-dot {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #0b7d5a;
+  opacity: 0;
+  pointer-events: none;
+}
 
-    .ff-countdown-card__prompt {
-      color: rgba(255,255,255,.65);
-      font-size: .72rem;
-      font-weight: 800;
-      white-space: nowrap;
-    }
+/* Fake poster tape */
 
-    .ff-countdown-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 20px;
-    }
+.ff-countdown-tape {
+  position: absolute;
+  z-index: 5;
+  width: 88px;
+  height: 24px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, .7) 0,
+      rgba(255, 255, 255, .7) 4px,
+      rgba(228, 217, 179, .78) 4px,
+      rgba(228, 217, 179, .78) 8px
+    );
+  opacity: .72;
+  box-shadow: 0 4px 9px rgba(0, 0, 0, .08);
+  pointer-events: none;
+}
 
-    .ff-countdown-unit {
-      min-height: 112px;
-      display: grid;
-      place-items: center;
-      align-content: center;
-      padding: 14px;
-      border: 1px solid rgba(255,255,255,.13);
-      border-radius: 20px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.1), rgba(255,255,255,.045));
-      overflow: hidden;
-    }
+.ff-countdown-tape--left {
+  top: 11px;
+  left: 36px;
+  transform: rotate(-5deg);
+}
 
-    .ff-countdown-number {
-      display: block;
-      font-family: "Outfit", sans-serif;
-      font-size: clamp(2.2rem, 6vw, 4.7rem);
-      font-weight: 900;
-      line-height: .95;
-      letter-spacing: -.04em;
-      text-shadow: 0 8px 25px rgba(0,0,0,.18);
-    }
+.ff-countdown-tape--right {
+  right: 54px;
+  bottom: 11px;
+  transform: rotate(4deg);
+}
 
-    .ff-countdown-number.is-changing {
-      animation: ffNumberFlip 460ms cubic-bezier(.2,.7,.2,1);
-    }
+/* Header */
 
-    .ff-countdown-label {
-      display: block;
-      margin-top: 8px;
-      color: rgba(255,255,255,.6);
-      font-size: .67rem;
-      font-weight: 900;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-    }
+.ff-countdown-poster__header {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  padding-top: 8px;
+}
 
-    @keyframes ffNumberFlip {
-      0% {
-        opacity: .2;
-        transform: translateY(16px) rotateX(-55deg);
-        filter: blur(4px);
-      }
-      60% {
-        opacity: 1;
-        transform: translateY(-3px) rotateX(5deg);
-        filter: blur(0);
-      }
-      100% {
-        opacity: 1;
-        transform: none;
-      }
-    }
+.ff-countdown-poster__eyebrow {
+  font-size: .69rem;
+  font-weight: 900;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
 
-    .ff-countdown-progress {
-      height: 4px;
-      overflow: hidden;
-      margin-top: 18px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.12);
-    }
+.ff-countdown-poster__title {
+  margin-top: 5px;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.65rem, 4vw, 3rem);
+  font-style: italic;
+  font-weight: 900;
+  line-height: 1;
+}
 
-    .ff-countdown-progress span {
-      display: block;
-      width: 0;
-      height: 100%;
-      border-radius: inherit;
-      background: linear-gradient(90deg, #7ce0b4, #f0b24b);
-      transition: width 700ms ease;
-    }
+.ff-countdown-poster__remix {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 13px;
+  border: 1px solid rgba(0, 0, 0, .16);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .58);
+  font-size: .67rem;
+  font-weight: 900;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  box-shadow: 0 5px 14px rgba(0, 0, 0, .07);
+}
 
-    .ff-countdown-actions {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      padding: 14px;
-      border: 1px solid var(--ff-border);
-      border-top: 0;
-      border-radius: 0 0 22px 22px;
-      background: #fff;
-      box-shadow: 0 18px 44px rgba(15,39,30,.1);
-    }
+.ff-countdown-poster__remix span {
+  display: inline-block;
+  font-size: 1rem;
+  transition: transform 600ms cubic-bezier(.2, .8, .2, 1);
+}
 
-    .ff-countdown-actions[hidden] {
-      display: none;
-    }
+.ff-countdown-poster.is-remixing .ff-countdown-poster__remix span {
+  transform: rotate(360deg);
+}
 
-    .ff-button--countdown {
-      min-height: 46px;
-      border-color: var(--ff-border);
-      background: var(--ff-green-soft);
-      color: var(--ff-green-dark);
-    }
+/* Countdown collage */
+
+.ff-countdown-collage {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: clamp(10px, 2vw, 18px);
+  margin-top: 28px;
+}
+
+.ff-countdown-tile {
+  position: relative;
+  min-height: clamp(170px, 23vw, 255px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  padding: clamp(18px, 3vw, 28px);
+  border: 2px solid rgba(0, 0, 0, .11);
+  border-radius: 25px;
+  box-shadow:
+    0 14px 30px rgba(0, 0, 0, .11),
+    inset 0 0 30px rgba(255, 255, 255, .1);
+  transition:
+    transform 700ms cubic-bezier(.2, .8, .2, 1),
+    background 500ms ease,
+    color 500ms ease;
+}
+
+.ff-countdown-tile--days {
+  background: var(--poster-yellow);
+  transform: rotate(-1.2deg) translateY(4px);
+}
+
+.ff-countdown-tile--hours {
+  background: var(--poster-dark);
+  color: #fff;
+  transform: rotate(.8deg) translateY(-3px);
+}
+
+.ff-countdown-tile--minutes {
+  background: var(--poster-blue);
+  transform: rotate(-.5deg) translateY(5px);
+}
+
+.ff-countdown-number {
+  position: relative;
+  z-index: 2;
+  display: block;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(5.2rem, 13vw, 10rem);
+  font-weight: 400;
+  line-height: .68;
+  letter-spacing: -.025em;
+  text-shadow: none;
+}
+
+.ff-countdown-number--serif {
+  font-family: "Playfair Display", serif;
+  font-weight: 900;
+  letter-spacing: -.08em;
+}
+
+.ff-countdown-number--outline {
+  color: transparent;
+  -webkit-text-stroke: clamp(2px, .3vw, 4px) #102639;
+}
+
+.ff-countdown-label {
+  position: relative;
+  z-index: 2;
+  display: block;
+  margin-top: 17px;
+  font-size: .7rem;
+  font-weight: 900;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.ff-countdown-decoration {
+  position: absolute;
+  top: 17px;
+  right: 20px;
+  font-size: clamp(1.4rem, 3vw, 2.3rem);
+  font-weight: 900;
+  opacity: .58;
+}
+
+.ff-countdown-decoration--circle {
+  color: var(--poster-yellow);
+}
+
+.ff-countdown-decoration--spark {
+  color: #102639;
+}
+
+.ff-countdown-scribble {
+  position: absolute;
+  top: 23px;
+  left: 18px;
+  font-family: "Playfair Display", serif;
+  font-size: .72rem;
+  font-style: italic;
+  font-weight: 900;
+  transform: rotate(-7deg);
+  opacity: .7;
+}
+
+.ff-countdown-scribble--dark {
+  color: #102639;
+  transform: rotate(6deg);
+}
+
+.ff-countdown-arrow {
+  position: absolute;
+  right: 17px;
+  bottom: 15px;
+  color: var(--poster-yellow);
+  font-size: 1.6rem;
+  font-weight: 900;
+}
+
+/* Number change */
+
+.ff-countdown-number.is-changing {
+  animation: ffPosterNumberChange 620ms cubic-bezier(.18, .8, .2, 1);
+}
+
+@keyframes ffPosterNumberChange {
+  0% {
+    opacity: .25;
+    transform: translateY(24px) rotate(-3deg) scale(.94);
+    filter: blur(5px);
+  }
+
+  70% {
+    opacity: 1;
+    transform: translateY(-5px) rotate(1deg) scale(1.03);
+    filter: blur(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Date and progress */
+
+.ff-countdown-poster__date {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  margin-top: 26px;
+  padding: 9px 13px;
+  background: #111;
+  color: #fff;
+  font-family: "Outfit", sans-serif;
+  font-size: clamp(.79rem, 2vw, 1rem);
+  font-weight: 900;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  transform: rotate(-.6deg);
+}
+
+.ff-countdown-road {
+  position: relative;
+  z-index: 2;
+  margin-top: 25px;
+}
+
+.ff-countdown-road__label {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 9px;
+  font-size: .64rem;
+  font-weight: 900;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.ff-countdown-progress {
+  height: 8px;
+  overflow: hidden;
+  border: 2px solid #111;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .55);
+}
+
+.ff-countdown-progress span {
+  display: block;
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background:
+    repeating-linear-gradient(
+      135deg,
+      #111 0,
+      #111 10px,
+      var(--poster-green, #0b7d5a) 10px,
+      var(--poster-green, #0b7d5a) 20px
+    );
+  transition: width 800ms cubic-bezier(.2, .75, .2, 1);
+}
+
+.ff-countdown-poster__footer {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 15px;
+  font-size: .64rem;
+  font-weight: 900;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+/* Remix themes */
+
+.ff-countdown-poster--theme-2 {
+  --poster-yellow: #b8efd5;
+  --poster-mint: #f2b544;
+  --poster-blue: #ef9cb5;
+  --poster-dark: #173a62;
+  --poster-cream: #fff1e8;
+}
+
+.ff-countdown-poster--theme-2 .ff-countdown-tile--days {
+  transform: rotate(1deg) translateY(-4px);
+}
+
+.ff-countdown-poster--theme-2 .ff-countdown-tile--hours {
+  transform: rotate(-1.1deg) translateY(5px);
+}
+
+.ff-countdown-poster--theme-2 .ff-countdown-tile--minutes {
+  transform: rotate(.6deg) translateY(-2px);
+}
+
+.ff-countdown-poster--theme-3 {
+  --poster-yellow: #f6e7cf;
+  --poster-mint: #85d9b4;
+  --poster-blue: #f0b24b;
+  --poster-dark: #081f1a;
+  --poster-cream: #ddecff;
+}
+
+.ff-countdown-poster--theme-3 .ff-countdown-tile--days {
+  transform: rotate(-.4deg) translateY(-2px);
+}
+
+.ff-countdown-poster--theme-3 .ff-countdown-tile--hours {
+  transform: rotate(1.2deg) translateY(4px);
+}
+
+.ff-countdown-poster--theme-3 .ff-countdown-tile--minutes {
+  transform: rotate(-1.3deg) translateY(-5px);
+}
+
+.ff-countdown-poster.is-remixing {
+  animation: ffPosterRemix 760ms cubic-bezier(.2, .8, .2, 1);
+}
+
+@keyframes ffPosterRemix {
+  0% {
+    transform: none;
+  }
+
+  30% {
+    transform: rotate(.45deg) scale(1.008);
+  }
+
+  60% {
+    transform: rotate(-.35deg) scale(.997);
+  }
+
+  100% {
+    transform: none;
+  }
+}
+
+/* Expanded buttons */
+
+.ff-countdown-actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  padding: 18px;
+  margin: -8px 14px 0;
+  border: 1px solid var(--ff-border);
+  border-top: 0;
+  border-radius: 0 0 26px 26px;
+  background: #fff;
+  box-shadow: 0 22px 50px rgba(15, 39, 30, .12);
+  animation: ffCountdownActionsIn 350ms cubic-bezier(.2, .75, .2, 1);
+}
+
+.ff-countdown-actions[hidden] {
+  display: none;
+}
+
+@keyframes ffCountdownActionsIn {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.ff-button--countdown {
+  min-height: 49px;
+  border-color: rgba(11, 125, 90, .19);
+  background: var(--ff-green-soft);
+  color: var(--ff-green-dark);
+}
+
+.ff-button--countdown:hover {
+  background: var(--ff-green);
+  color: #fff;
+}
 
     /* Event bar */
 
@@ -1696,19 +2040,96 @@
         margin-top: 17px;
       }
 
-      .ff-countdown-card__top {
-        align-items: flex-start;
-        flex-direction: column;
-      }
+      .ff-countdown-poster {
+  padding: 22px 14px 24px;
+  border-radius: 26px;
+}
 
-      .ff-countdown-card__prompt {
-        white-space: normal;
-      }
+.ff-countdown-poster::after {
+  display: none;
+}
 
-      .ff-countdown-unit {
-        min-height: 92px;
-      }
+.ff-countdown-tape--left {
+  left: 20px;
+}
 
+.ff-countdown-tape--right {
+  right: 24px;
+}
+
+.ff-countdown-poster__header {
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 14px;
+  padding-inline: 7px;
+}
+
+.ff-countdown-poster__remix {
+  align-self: flex-end;
+}
+
+.ff-countdown-collage {
+  gap: 7px;
+  margin-top: 20px;
+}
+
+.ff-countdown-tile {
+  min-height: 138px;
+  padding: 13px 10px;
+  border-radius: 17px;
+}
+
+.ff-countdown-number {
+  font-size: clamp(4rem, 21vw, 5.8rem);
+  line-height: .7;
+}
+
+.ff-countdown-number--outline {
+  -webkit-text-stroke-width: 2px;
+}
+
+.ff-countdown-label {
+  margin-top: 12px;
+  font-size: .57rem;
+  letter-spacing: .12em;
+}
+
+.ff-countdown-decoration {
+  top: 9px;
+  right: 10px;
+  font-size: 1.2rem;
+}
+
+.ff-countdown-scribble,
+.ff-countdown-arrow {
+  display: none;
+}
+
+.ff-countdown-poster__date {
+  margin-left: 5px;
+}
+
+.ff-countdown-road,
+.ff-countdown-poster__footer {
+  margin-inline: 5px;
+}
+
+.ff-countdown-road__label {
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ff-countdown-poster__footer {
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.ff-countdown-actions {
+  grid-template-columns: 1fr;
+  margin-inline: 8px;
+}
       .ff-event-detail {
         min-height: 105px;
         padding: 20px;
@@ -1935,76 +2356,181 @@
       </div>
     </div>
 
-    <!-- Live Event Countdown -->
-    <section class="ff-countdown-section" aria-label="First Friday countdown">
-      <div class="ff-container">
+   <!-- Live Event Countdown -->
+<section class="ff-countdown-section" aria-label="First Friday countdown">
+  <div class="ff-container">
 
-        <button
-          class="ff-countdown-card"
-          id="countdownCard"
-          type="button"
-          aria-expanded="false"
-          aria-controls="countdownActions"
-        >
-          <div class="ff-countdown-card__top">
-            <div class="ff-status">
-              <span class="ff-status__dot" id="eventStatusDot" aria-hidden="true"></span>
-              <div>
-                <div class="ff-status__label" id="eventStatusLabel">Next First Friday</div>
-                <div class="ff-status__message" id="eventStatusMessage">
-                  August 7 from 4:00 PM to 8:00 PM
-                </div>
-              </div>
+    <div class="ff-countdown-poster-wrap">
+
+      <button
+        class="ff-countdown-poster ff-countdown-poster--theme-1"
+        id="countdownCard"
+        type="button"
+        aria-expanded="false"
+        aria-controls="countdownActions"
+      >
+
+        <span
+          class="ff-countdown-status-dot"
+          id="eventStatusDot"
+          aria-hidden="true"
+        ></span>
+
+        <span class="ff-countdown-tape ff-countdown-tape--left" aria-hidden="true"></span>
+        <span class="ff-countdown-tape ff-countdown-tape--right" aria-hidden="true"></span>
+
+        <div class="ff-countdown-poster__header">
+
+          <div>
+            <div class="ff-countdown-poster__eyebrow">
+              The road to
             </div>
 
-            <div class="ff-countdown-card__prompt">
-              Tap for event actions
+            <div
+              class="ff-countdown-poster__title"
+              id="eventStatusLabel"
+            >
+              Next First Friday
             </div>
           </div>
 
-          <div class="ff-countdown-grid" id="eventCountdown" aria-live="polite">
-            <div class="ff-countdown-unit">
-              <span class="ff-countdown-number" id="countdownDays">00</span>
-              <span class="ff-countdown-label">Days</span>
-            </div>
+          <div class="ff-countdown-poster__remix">
+            Tap to remix
+            <span aria-hidden="true">↻</span>
+          </div>
 
-            <div class="ff-countdown-unit">
-              <span class="ff-countdown-number" id="countdownHours">00</span>
-              <span class="ff-countdown-label">Hours</span>
-            </div>
+        </div>
 
-            <div class="ff-countdown-unit">
-              <span class="ff-countdown-number" id="countdownMinutes">00</span>
-              <span class="ff-countdown-label">Minutes</span>
-            </div>
+        <div class="ff-countdown-collage" id="eventCountdown" aria-live="polite">
+
+          <div class="ff-countdown-tile ff-countdown-tile--days">
+            <span class="ff-countdown-decoration ff-countdown-decoration--star" aria-hidden="true">
+              ✦
+            </span>
+
+            <span
+              class="ff-countdown-number"
+              id="countdownDays"
+            >
+              00
+            </span>
+
+            <span class="ff-countdown-label">
+              Days
+            </span>
+
+            <span class="ff-countdown-scribble" aria-hidden="true">
+              almost there
+            </span>
+          </div>
+
+          <div class="ff-countdown-tile ff-countdown-tile--hours">
+            <span class="ff-countdown-decoration ff-countdown-decoration--circle" aria-hidden="true">
+              ●
+            </span>
+
+            <span
+              class="ff-countdown-number ff-countdown-number--serif"
+              id="countdownHours"
+            >
+              00
+            </span>
+
+            <span class="ff-countdown-label">
+              Hours
+            </span>
+
+            <span class="ff-countdown-arrow" aria-hidden="true">
+              ↗
+            </span>
+          </div>
+
+          <div class="ff-countdown-tile ff-countdown-tile--minutes">
+            <span class="ff-countdown-decoration ff-countdown-decoration--spark" aria-hidden="true">
+              ✷
+            </span>
+
+            <span
+              class="ff-countdown-number ff-countdown-number--outline"
+              id="countdownMinutes"
+            >
+              00
+            </span>
+
+            <span class="ff-countdown-label">
+              Minutes
+            </span>
+
+            <span class="ff-countdown-scribble ff-countdown-scribble--dark" aria-hidden="true">
+              keep it moving
+            </span>
+          </div>
+
+        </div>
+
+        <div class="ff-countdown-poster__date" id="eventStatusMessage">
+          August 7 • 4:00 PM–8:00 PM
+        </div>
+
+        <div class="ff-countdown-road">
+
+          <div class="ff-countdown-road__label">
+            <span>The road to Friday</span>
+            <span>Art • Cannabis • Music • Makers</span>
           </div>
 
           <div class="ff-countdown-progress" aria-hidden="true">
             <span id="countdownProgress"></span>
           </div>
-        </button>
 
-        <div class="ff-countdown-actions" id="countdownActions" hidden>
-          <button type="button" class="ff-button ff-button--countdown" id="countdownCalendar">
-            Add to Calendar
-          </button>
-
-          <a
-            class="ff-button ff-button--countdown"
-            href="https://www.google.com/maps/search/?api=1&query=10701+Madison+St+Luna+Pier+MI+48157"
-            target="_blank"
-            rel="noopener"
-          >
-            Get Directions
-          </a>
-
-          <a class="ff-button ff-button--countdown" href="#event-details">
-            Event Details
-          </a>
         </div>
 
+        <div class="ff-countdown-poster__footer">
+          <span>Luna Pier, Michigan</span>
+          <span>Open event actions ↓</span>
+        </div>
+
+      </button>
+
+      <div
+        class="ff-countdown-actions"
+        id="countdownActions"
+        hidden
+      >
+
+        <button
+          type="button"
+          class="ff-button ff-button--countdown"
+          id="countdownCalendar"
+        >
+          <span aria-hidden="true">＋</span>
+          Add to Calendar
+        </button>
+
+        <a
+          class="ff-button ff-button--countdown"
+          href="https://www.google.com/maps/search/?api=1&query=10701+Madison+St+Luna+Pier+MI+48157"
+          target="_blank"
+          rel="noopener"
+        >
+          <span aria-hidden="true">↗</span>
+          Get Directions
+        </a>
+
+        <a
+          class="ff-button ff-button--countdown"
+          href="#event-details"
+        >
+          <span aria-hidden="true">✦</span>
+          Event Details
+        </a>
+
       </div>
-    </section>
+
+    </div>
+
+  </div>
+</section>
 
     <!-- Event Summary -->
     <section class="ff-event-bar" aria-label="Event date, time and location">
@@ -2844,12 +3370,45 @@ if (animatedTitle) {
       };
 
       if (countdownCard && countdownActions) {
-        countdownCard.addEventListener("click", () => {
-          const isOpen = countdownCard.getAttribute("aria-expanded") === "true";
-          countdownCard.setAttribute("aria-expanded", String(!isOpen));
-          countdownActions.hidden = isOpen;
-        });
-      }
+  const countdownThemes = [
+    "ff-countdown-poster--theme-1",
+    "ff-countdown-poster--theme-2",
+    "ff-countdown-poster--theme-3"
+  ];
+
+  let currentCountdownTheme = 0;
+
+  countdownCard.addEventListener("click", () => {
+    const isOpen =
+      countdownCard.getAttribute("aria-expanded") === "true";
+
+    countdownCard.setAttribute(
+      "aria-expanded",
+      String(!isOpen)
+    );
+
+    countdownActions.hidden = isOpen;
+
+    countdownThemes.forEach((themeClass) => {
+      countdownCard.classList.remove(themeClass);
+    });
+
+    currentCountdownTheme =
+      (currentCountdownTheme + 1) % countdownThemes.length;
+
+    countdownCard.classList.add(
+      countdownThemes[currentCountdownTheme]
+    );
+
+    countdownCard.classList.remove("is-remixing");
+    void countdownCard.offsetWidth;
+    countdownCard.classList.add("is-remixing");
+
+    window.setTimeout(() => {
+      countdownCard.classList.remove("is-remixing");
+    }, 800);
+  });
+}
 
       updateEventStatus();
       window.setInterval(updateEventStatus, 60000);
