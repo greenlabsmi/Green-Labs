@@ -337,124 +337,185 @@
 
 
     .ff-title--animated {
-      max-width: 920px;
-      line-height: .8;
-    }
+  max-width: 920px;
+  line-height: .8;
+}
 
-    .ff-word {
-      display: flex;
-      flex-wrap: nowrap;
-      align-items: flex-end;
-      gap: .01em;
-    }
+.ff-word {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+  gap: .01em;
+}
 
-    .ff-word + .ff-word {
-      margin-top: .04em;
-    }
+.ff-word + .ff-word {
+  margin-top: .04em;
+}
 
-    .ff-letter {
-      display: inline-block;
-      font-family: "Bebas Neue", sans-serif;
-      font-size: clamp(4.9rem, 12.5vw, 9.3rem);
-      line-height: .78;
-      letter-spacing: .01em;
-      transform: translateY(42px) rotate(2deg);
-      opacity: 0;
-      animation:
-        ffLetterIn 700ms cubic-bezier(.16,.8,.25,1) forwards,
-        ffLetterShuffle 950ms steps(1,end) 720ms 1;
-      text-shadow: 0 12px 34px rgba(0,0,0,.2);
-    }
+.ff-letter {
+  display: inline-block;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(4.9rem, 12.5vw, 9.3rem);
+  font-weight: 900;
+  line-height: .78;
+  letter-spacing: .01em;
+  opacity: 1;
+  transform: translateY(0) rotate(0deg) scale(1);
+  transform-origin: center bottom;
+  text-shadow: 0 12px 34px rgba(0, 0, 0, .2);
 
-    .ff-word:nth-child(1) .ff-letter:nth-child(1) { animation-delay: 80ms, 800ms; }
-    .ff-word:nth-child(1) .ff-letter:nth-child(2) { animation-delay: 140ms, 860ms; }
-    .ff-word:nth-child(1) .ff-letter:nth-child(3) { animation-delay: 200ms, 920ms; }
-    .ff-word:nth-child(1) .ff-letter:nth-child(4) { animation-delay: 260ms, 980ms; }
-    .ff-word:nth-child(1) .ff-letter:nth-child(5) { animation-delay: 320ms, 1040ms; }
-    .ff-word:nth-child(2) .ff-letter:nth-child(1) { animation-delay: 380ms, 1100ms; }
-    .ff-word:nth-child(2) .ff-letter:nth-child(2) { animation-delay: 440ms, 1160ms; }
-    .ff-word:nth-child(2) .ff-letter:nth-child(3) { animation-delay: 500ms, 1220ms; }
-    .ff-word:nth-child(2) .ff-letter:nth-child(4) { animation-delay: 560ms, 1280ms; }
-    .ff-word:nth-child(2) .ff-letter:nth-child(5) { animation-delay: 620ms, 1340ms; }
-    .ff-word:nth-child(2) .ff-letter:nth-child(6) { animation-delay: 680ms, 1400ms; }
+  transition:
+    transform 520ms cubic-bezier(.2, .75, .2, 1),
+    color 420ms ease,
+    filter 420ms ease,
+    -webkit-text-stroke 420ms ease,
+    text-shadow 420ms ease;
+}
 
-    .ff-letter--green {
-      color: #b8efd5;
-    }
+/* Starting colors */
 
-    .ff-letter--gold {
-      color: #f0b24b;
-    }
+.ff-letter--green {
+  color: #b8efd5;
+}
 
-    .ff-letter--cream {
-      color: #fff7e8;
-    }
+.ff-letter--gold {
+  color: #f0b24b;
+}
 
-    .ff-letter--outline {
-      color: transparent;
-      -webkit-text-stroke: 2px rgba(255,255,255,.94);
-      text-stroke: 2px rgba(255,255,255,.94);
-    }
+.ff-letter--cream {
+  color: #fff7e8;
+}
 
-    .ff-letter--serif {
-      font-family: "Playfair Display", serif;
-      font-weight: 900;
-      transform-origin: center bottom;
-    }
+.ff-letter--outline {
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(255, 255, 255, .94);
+}
 
-    @keyframes ffLetterIn {
-      0% {
-        opacity: 0;
-        transform: translateY(42px) rotate(3deg) scale(.96);
-      }
-      70% {
-        opacity: 1;
-        transform: translateY(-5px) rotate(-1deg) scale(1.02);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0) rotate(0) scale(1);
-      }
-    }
+.ff-letter--serif {
+  font-family: "Playfair Display", serif;
+}
 
-    @keyframes ffLetterShuffle {
-      0% { filter: saturate(1); }
-      25% { font-family: "Cinzel", serif; filter: saturate(1.35); }
-      50% { font-family: "Outfit", sans-serif; filter: saturate(.85); }
-      75% { font-family: "Playfair Display", serif; filter: saturate(1.2); }
-      100% { filter: saturate(1); }
-    }
+/* Opening entrance only */
 
+.ff-title--animated.is-entering .ff-letter {
+  opacity: 0;
+  transform: translateY(42px) rotate(3deg) scale(.96);
+  animation: ffLetterEntrance 720ms cubic-bezier(.16, .8, .25, 1) forwards;
+}
 
-    .ff-title--animated.is-remixing .ff-letter {
-      animation: ffLetterRemix 900ms cubic-bezier(.2,.75,.2,1) both;
-    }
+.ff-title--animated.is-entering .ff-word:nth-child(1) .ff-letter:nth-child(1) {
+  animation-delay: 80ms;
+}
 
-    .ff-title--animated.is-remixing .ff-letter:nth-child(2n) {
-      animation-delay: 60ms;
-    }
+.ff-title--animated.is-entering .ff-word:nth-child(1) .ff-letter:nth-child(2) {
+  animation-delay: 140ms;
+}
 
-    .ff-title--animated.is-remixing .ff-letter:nth-child(3n) {
-      animation-delay: 120ms;
-    }
+.ff-title--animated.is-entering .ff-word:nth-child(1) .ff-letter:nth-child(3) {
+  animation-delay: 200ms;
+}
 
-    @keyframes ffLetterRemix {
-      0%, 100% {
-        transform: none;
-        filter: none;
-      }
-      25% {
-        transform: translateY(-8px) rotate(-2deg) scale(1.025);
-        filter: saturate(1.4);
-      }
-      50% {
-        transform: translateY(3px) rotate(2deg) scale(.985);
-        filter: saturate(.8);
-      }
-      75% {
-        transform: translateY(-2px) rotate(-1deg) scale(1.01);
-        filter: saturate(1.2);
-      }
+.ff-title--animated.is-entering .ff-word:nth-child(1) .ff-letter:nth-child(4) {
+  animation-delay: 260ms;
+}
+
+.ff-title--animated.is-entering .ff-word:nth-child(1) .ff-letter:nth-child(5) {
+  animation-delay: 320ms;
+}
+
+.ff-title--animated.is-entering .ff-word:nth-child(2) .ff-letter:nth-child(1) {
+  animation-delay: 380ms;
+}
+
+.ff-title--animated.is-entering .ff-word:nth-child(2) .ff-letter:nth-child(2) {
+  animation-delay: 440ms;
+}
+
+.ff-title--animated.is-entering .ff-word:nth-child(2) .ff-letter:nth-child(3) {
+  animation-delay: 500ms;
+}
+
+.ff-title--animated.is-entering .ff-word:nth-child(2) .ff-letter:nth-child(4) {
+  animation-delay: 560ms;
+}
+
+.ff-title--animated.is-entering .ff-word:nth-child(2) .ff-letter:nth-child(5) {
+  animation-delay: 620ms;
+}
+
+.ff-title--animated.is-entering .ff-word:nth-child(2) .ff-letter:nth-child(6) {
+  animation-delay: 680ms;
+}
+
+@keyframes ffLetterEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(42px) rotate(3deg) scale(.96);
+  }
+
+  70% {
+    opacity: 1;
+    transform: translateY(-5px) rotate(-1deg) scale(1.02);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+}
+
+/* Living-letter personalities */
+
+.ff-letter.ff-personality-1 {
+  font-family: "Playfair Display", serif;
+  color: #fff7e8;
+  -webkit-text-stroke: 0 transparent;
+  transform: translateY(-6px) rotate(-2deg) scale(1.04);
+}
+
+.ff-letter.ff-personality-2 {
+  font-family: "Cinzel", serif;
+  color: #f0b24b;
+  -webkit-text-stroke: 0 transparent;
+  transform: translateY(3px) rotate(2deg) scale(.98);
+}
+
+.ff-letter.ff-personality-3 {
+  font-family: "Outfit", sans-serif;
+  color: #b8efd5;
+  -webkit-text-stroke: 0 transparent;
+  transform: translateY(-2px) rotate(1deg) scale(1.02);
+}
+
+.ff-letter.ff-personality-4 {
+  font-family: "Bebas Neue", sans-serif;
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(255, 255, 255, .95);
+  transform: translateY(2px) rotate(-1deg) scale(1.01);
+}
+
+.ff-letter.ff-personality-5 {
+  font-family: "Playfair Display", serif;
+  color: #8be1bd;
+  -webkit-text-stroke: 0 transparent;
+  transform: translateY(-7px) rotate(2deg) scale(1.05);
+  filter: saturate(1.2);
+}
+
+.ff-letter.ff-personality-6 {
+  font-family: "Cinzel", serif;
+  color: transparent;
+  -webkit-text-stroke: 2px #f0b24b;
+  transform: translateY(1px) rotate(-2deg) scale(.99);
+}
+
+/* Small breathing motion while letters are active */
+
+.ff-letter.ff-is-dancing {
+  text-shadow:
+    0 12px 34px rgba(0, 0, 0, .2),
+    0 0 24px rgba(184, 239, 213, .13);
+}
     }
 
     /* Interactive countdown */
@@ -1807,7 +1868,7 @@
           Luna Pier’s monthly First Friday
         </div>
 
-        <h1 class="ff-title ff-title--animated" aria-label="First Friday">
+        <h1 class="ff-title ff-title--animated is-entering" aria-label="First Friday">
           <span class="ff-word" aria-hidden="true">
             <span class="ff-letter ff-letter--green">F</span>
             <span class="ff-letter ff-letter--gold ff-letter--serif">I</span>
@@ -2591,20 +2652,95 @@
         revealItems.forEach((item) => item.classList.add("is-visible"));
       }
 
-      /* Repeating title remix */
-      const animatedTitle = document.querySelector(".ff-title--animated");
+     /* Living First Friday title */
+const animatedTitle = document.querySelector(".ff-title--animated");
 
-      if (animatedTitle) {
-        window.setInterval(() => {
-          animatedTitle.classList.remove("is-remixing");
-          void animatedTitle.offsetWidth;
-          animatedTitle.classList.add("is-remixing");
+if (animatedTitle) {
+  const letters = [...animatedTitle.querySelectorAll(".ff-letter")];
 
-          window.setTimeout(() => {
-            animatedTitle.classList.remove("is-remixing");
-          }, 1200);
-        }, 7600);
+  const personalityClasses = [
+    "ff-personality-1",
+    "ff-personality-2",
+    "ff-personality-3",
+    "ff-personality-4",
+    "ff-personality-5",
+    "ff-personality-6"
+  ];
+
+  const clearPersonality = (letter) => {
+    personalityClasses.forEach((className) => {
+      letter.classList.remove(className);
+    });
+
+    letter.classList.remove("ff-is-dancing");
+  };
+
+  const changeRandomLetters = () => {
+    const availableLetters = [...letters];
+    const numberToChange = Math.floor(Math.random() * 3) + 2;
+
+    for (let i = 0; i < numberToChange; i += 1) {
+      if (!availableLetters.length) break;
+
+      const randomIndex = Math.floor(
+        Math.random() * availableLetters.length
+      );
+
+      const letter = availableLetters.splice(randomIndex, 1)[0];
+
+      clearPersonality(letter);
+
+      const randomPersonality =
+        personalityClasses[
+          Math.floor(Math.random() * personalityClasses.length)
+        ];
+
+      letter.classList.add(
+        randomPersonality,
+        "ff-is-dancing"
+      );
+    }
+  };
+
+  let danceTimer;
+  let pauseTimer;
+
+  const startDanceCycle = () => {
+    let danceSteps = 0;
+
+    changeRandomLetters();
+
+    danceTimer = window.setInterval(() => {
+      changeRandomLetters();
+      danceSteps += 1;
+
+      /* Dance for roughly 4–5 seconds */
+      if (danceSteps >= 9) {
+        window.clearInterval(danceTimer);
+
+        /* Stay still for roughly 2.5 seconds */
+        pauseTimer = window.setTimeout(() => {
+          startDanceCycle();
+        }, 2500);
       }
+    }, 480);
+  };
+
+  /*
+    Remove the opening-animation class permanently.
+    This prevents the letters from ever becoming invisible again.
+  */
+  window.setTimeout(() => {
+    animatedTitle.classList.remove("is-entering");
+
+    letters.forEach((letter) => {
+      letter.style.opacity = "1";
+      letter.style.transform = "translateY(0) rotate(0deg) scale(1)";
+    });
+
+    startDanceCycle();
+  }, 1900);
+}
 
       /* Countdown and automatic status */
       const statusLabel = document.getElementById("eventStatusLabel");
