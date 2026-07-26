@@ -425,27 +425,79 @@
       100% { filter: saturate(1); }
     }
 
-    /* Live status */
 
-    .ff-live-strip {
-      position: relative;
-      z-index: 5;
-      margin-top: -22px;
+    .ff-title--animated.is-remixing .ff-letter {
+      animation: ffLetterRemix 900ms cubic-bezier(.2,.75,.2,1) both;
     }
 
-    .ff-live-strip__inner {
+    .ff-title--animated.is-remixing .ff-letter:nth-child(2n) {
+      animation-delay: 60ms;
+    }
+
+    .ff-title--animated.is-remixing .ff-letter:nth-child(3n) {
+      animation-delay: 120ms;
+    }
+
+    @keyframes ffLetterRemix {
+      0%, 100% {
+        transform: none;
+        filter: none;
+      }
+      25% {
+        transform: translateY(-8px) rotate(-2deg) scale(1.025);
+        filter: saturate(1.4);
+      }
+      50% {
+        transform: translateY(3px) rotate(2deg) scale(.985);
+        filter: saturate(.8);
+      }
+      75% {
+        transform: translateY(-2px) rotate(-1deg) scale(1.01);
+        filter: saturate(1.2);
+      }
+    }
+
+    /* Interactive countdown */
+
+    .ff-countdown-section {
+      position: relative;
+      z-index: 4;
+      padding: 34px 0 0;
+      background: var(--ff-paper);
+    }
+
+    .ff-countdown-card {
+      width: 100%;
+      display: block;
+      padding: 22px;
+      border: 1px solid rgba(11,125,90,.22);
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at 90% 10%, rgba(220,149,30,.18), transparent 18rem),
+        linear-gradient(135deg, #073f31 0%, #0b5b46 100%);
+      color: #fff;
+      box-shadow: var(--ff-shadow);
+      cursor: pointer;
+      text-align: left;
+      transition:
+        transform 180ms ease,
+        box-shadow 180ms ease;
+    }
+
+    .ff-countdown-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 24px 64px rgba(15,39,30,.18);
+    }
+
+    .ff-countdown-card:active {
+      transform: translateY(0) scale(.995);
+    }
+
+    .ff-countdown-card__top {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 24px;
-      padding: 17px 22px;
-      border: 1px solid rgba(255,255,255,.2);
-      border-radius: 18px;
-      background:
-        linear-gradient(135deg, rgba(255,255,255,.08), transparent),
-        #073f31;
-      color: #fff;
-      box-shadow: var(--ff-shadow);
+      gap: 20px;
     }
 
     .ff-status {
@@ -477,13 +529,112 @@
       font-size: .78rem;
     }
 
-    .ff-countdown {
-      font-family: "Outfit", sans-serif;
-      font-size: clamp(.9rem, 2vw, 1.12rem);
-      font-weight: 900;
-      letter-spacing: .04em;
-      text-align: right;
+    .ff-countdown-card__prompt {
+      color: rgba(255,255,255,.65);
+      font-size: .72rem;
+      font-weight: 800;
       white-space: nowrap;
+    }
+
+    .ff-countdown-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .ff-countdown-unit {
+      min-height: 112px;
+      display: grid;
+      place-items: center;
+      align-content: center;
+      padding: 14px;
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 20px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.1), rgba(255,255,255,.045));
+      overflow: hidden;
+    }
+
+    .ff-countdown-number {
+      display: block;
+      font-family: "Outfit", sans-serif;
+      font-size: clamp(2.2rem, 6vw, 4.7rem);
+      font-weight: 900;
+      line-height: .95;
+      letter-spacing: -.04em;
+      text-shadow: 0 8px 25px rgba(0,0,0,.18);
+    }
+
+    .ff-countdown-number.is-changing {
+      animation: ffNumberFlip 460ms cubic-bezier(.2,.7,.2,1);
+    }
+
+    .ff-countdown-label {
+      display: block;
+      margin-top: 8px;
+      color: rgba(255,255,255,.6);
+      font-size: .67rem;
+      font-weight: 900;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    @keyframes ffNumberFlip {
+      0% {
+        opacity: .2;
+        transform: translateY(16px) rotateX(-55deg);
+        filter: blur(4px);
+      }
+      60% {
+        opacity: 1;
+        transform: translateY(-3px) rotateX(5deg);
+        filter: blur(0);
+      }
+      100% {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    .ff-countdown-progress {
+      height: 4px;
+      overflow: hidden;
+      margin-top: 18px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.12);
+    }
+
+    .ff-countdown-progress span {
+      display: block;
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #7ce0b4, #f0b24b);
+      transition: width 700ms ease;
+    }
+
+    .ff-countdown-actions {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      padding: 14px;
+      border: 1px solid var(--ff-border);
+      border-top: 0;
+      border-radius: 0 0 22px 22px;
+      background: #fff;
+      box-shadow: 0 18px 44px rgba(15,39,30,.1);
+    }
+
+    .ff-countdown-actions[hidden] {
+      display: none;
+    }
+
+    .ff-button--countdown {
+      min-height: 46px;
+      border-color: var(--ff-border);
+      background: var(--ff-green-soft);
+      color: var(--ff-green-dark);
     }
 
     /* Event bar */
@@ -1414,13 +1565,8 @@
           );
       }
 
-      .ff-live-strip__inner {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .ff-countdown {
-        text-align: left;
+      .ff-countdown-actions {
+        grid-template-columns: 1fr;
       }
 
       .ff-event-bar__inner,
@@ -1487,6 +1633,19 @@
 
       .ff-script {
         margin-top: 17px;
+      }
+
+      .ff-countdown-card__top {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .ff-countdown-card__prompt {
+        white-space: normal;
+      }
+
+      .ff-countdown-unit {
+        min-height: 92px;
       }
 
       .ff-event-detail {
@@ -1715,24 +1874,74 @@
       </div>
     </div>
 
-    <!-- Live Event Status -->
-    <section class="ff-live-strip" aria-label="Live event status">
+    <!-- Live Event Countdown -->
+    <section class="ff-countdown-section" aria-label="First Friday countdown">
       <div class="ff-container">
-        <div class="ff-live-strip__inner">
-          <div class="ff-status">
-            <span class="ff-status__dot" id="eventStatusDot" aria-hidden="true"></span>
-            <div>
-              <div class="ff-status__label" id="eventStatusLabel">Next First Friday</div>
-              <div class="ff-status__message" id="eventStatusMessage">
-                August 7 from 4:00 PM to 8:00 PM
+
+        <button
+          class="ff-countdown-card"
+          id="countdownCard"
+          type="button"
+          aria-expanded="false"
+          aria-controls="countdownActions"
+        >
+          <div class="ff-countdown-card__top">
+            <div class="ff-status">
+              <span class="ff-status__dot" id="eventStatusDot" aria-hidden="true"></span>
+              <div>
+                <div class="ff-status__label" id="eventStatusLabel">Next First Friday</div>
+                <div class="ff-status__message" id="eventStatusMessage">
+                  August 7 from 4:00 PM to 8:00 PM
+                </div>
               </div>
+            </div>
+
+            <div class="ff-countdown-card__prompt">
+              Tap for event actions
             </div>
           </div>
 
-          <div class="ff-countdown" id="eventCountdown" aria-live="polite">
-            Loading countdown…
+          <div class="ff-countdown-grid" id="eventCountdown" aria-live="polite">
+            <div class="ff-countdown-unit">
+              <span class="ff-countdown-number" id="countdownDays">00</span>
+              <span class="ff-countdown-label">Days</span>
+            </div>
+
+            <div class="ff-countdown-unit">
+              <span class="ff-countdown-number" id="countdownHours">00</span>
+              <span class="ff-countdown-label">Hours</span>
+            </div>
+
+            <div class="ff-countdown-unit">
+              <span class="ff-countdown-number" id="countdownMinutes">00</span>
+              <span class="ff-countdown-label">Minutes</span>
+            </div>
           </div>
+
+          <div class="ff-countdown-progress" aria-hidden="true">
+            <span id="countdownProgress"></span>
+          </div>
+        </button>
+
+        <div class="ff-countdown-actions" id="countdownActions" hidden>
+          <button type="button" class="ff-button ff-button--countdown" id="countdownCalendar">
+            Add to Calendar
+          </button>
+
+          <a
+            class="ff-button ff-button--countdown"
+            href="https://www.google.com/maps/search/?api=1&query=10701+Madison+St+Luna+Pier+MI+48157"
+            target="_blank"
+            rel="noopener"
+          >
+            Get Directions
+          </a>
+
+          <a class="ff-button ff-button--countdown" href="#event-details">
+            Event Details
+          </a>
         </div>
+
       </div>
     </section>
 
@@ -1919,7 +2128,7 @@
           <div class="ff-batch-showcase__gallery">
             <figure class="ff-batch-shot ff-batch-shot--main">
               <img
-                src="../assets/img/first-friday/batch/batch-mackinac-bridge.jpg"
+                src="../assets/img/first-friday/Batch/MI_Batch_4GAIO_MackinacBridge-RetailerLogoTopRight.jpg"
                 alt="Batch Extracts product featured above the Mackinac Bridge"
                 loading="lazy"
               >
@@ -1927,7 +2136,7 @@
 
             <figure class="ff-batch-shot">
               <img
-                src="../assets/img/first-friday/batch/batch-avalanche.jpg"
+                src="../assets/img/first-friday/Batch/BATCH_2G_Avalanche_IGStory.jpg"
                 alt="Batch Extracts avalanche campaign artwork"
                 loading="lazy"
               >
@@ -1935,7 +2144,7 @@
 
             <figure class="ff-batch-shot">
               <img
-                src="../assets/img/first-friday/batch/batch-helicopter.jpg"
+                src="../assets/img/first-friday/Batch/BATCH_2G_Helicopter_IGStory.jpg"
                 alt="Batch Extracts helicopter campaign artwork"
                 loading="lazy"
               >
@@ -1944,7 +2153,7 @@
 
           <div class="ff-batch-showcase__content">
             <img
-              src="../assets/img/first-friday/batch/batch-logo.svg"
+              src="../assets/img/first-friday/Batch/Batch_logo_color.svg"
               alt="Batch Extracts"
               class="ff-batch-showcase__logo"
             >
@@ -2248,6 +2457,20 @@
             </div></div>
           </details>
 
+
+          <details>
+            <summary>Is cannabis consumption allowed at First Friday?</summary>
+            <div class="ff-faq__answer"><div>
+              <p>
+                No. First Friday is a community vendor event and is not an
+                onsite cannabis consumption event. Please do not consume
+                cannabis on the event grounds. Cannabis purchases remain
+                inside Green Labs and are available only to legally eligible
+                customers.
+              </p>
+            </div></div>
+          </details>
+
           <details>
             <summary>Does First Friday happen every month?</summary>
             <div class="ff-faq__answer"><div>
@@ -2302,6 +2525,14 @@
         </a>
       </div>
 
+    </div>
+
+    <div class="ff-container" style="margin-top:28px; padding-top:22px; border-top:1px solid rgba(255,255,255,.12);">
+      <p style="margin:0; max-width:900px; color:rgba(255,255,255,.58); font-size:.74rem; line-height:1.65;">
+        First Friday is a community vendor event. No onsite cannabis consumption
+        is permitted. Cannabis products are available only inside Green Labs to
+        customers legally eligible to purchase.
+      </p>
     </div>
   </footer>
 
@@ -2360,65 +2591,138 @@
         revealItems.forEach((item) => item.classList.add("is-visible"));
       }
 
+      /* Repeating title remix */
+      const animatedTitle = document.querySelector(".ff-title--animated");
+
+      if (animatedTitle) {
+        window.setInterval(() => {
+          animatedTitle.classList.remove("is-remixing");
+          void animatedTitle.offsetWidth;
+          animatedTitle.classList.add("is-remixing");
+
+          window.setTimeout(() => {
+            animatedTitle.classList.remove("is-remixing");
+          }, 1200);
+        }, 7600);
+      }
+
       /* Countdown and automatic status */
       const statusLabel = document.getElementById("eventStatusLabel");
       const statusMessage = document.getElementById("eventStatusMessage");
       const statusDot = document.getElementById("eventStatusDot");
-      const countdown = document.getElementById("eventCountdown");
+      const daysElement = document.getElementById("countdownDays");
+      const hoursElement = document.getElementById("countdownHours");
+      const minutesElement = document.getElementById("countdownMinutes");
+      const progressElement = document.getElementById("countdownProgress");
+      const countdownCard = document.getElementById("countdownCard");
+      const countdownActions = document.getElementById("countdownActions");
 
       const eventStart = new Date(firstFridayEvent.start);
       const eventEnd = new Date(firstFridayEvent.end);
+      const countdownWindowStart = new Date(eventStart);
+      countdownWindowStart.setDate(countdownWindowStart.getDate() - 31);
 
-      const formatCountdown = (difference) => {
-        const totalSeconds = Math.max(0, Math.floor(difference / 1000));
-        const days = Math.floor(totalSeconds / 86400);
-        const hours = Math.floor((totalSeconds % 86400) / 3600);
-        const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const padNumber = (value) => String(value).padStart(2, "0");
 
-        if (days > 0) {
-          return `${days} day${days === 1 ? "" : "s"} • ${hours} hour${hours === 1 ? "" : "s"}`;
-        }
+      const animateNumberChange = (element, value) => {
+        if (!element || element.textContent === value) return;
 
-        if (hours > 0) {
-          return `${hours} hour${hours === 1 ? "" : "s"} • ${minutes} minute${minutes === 1 ? "" : "s"}`;
-        }
+        element.textContent = value;
+        element.classList.remove("is-changing");
+        void element.offsetWidth;
+        element.classList.add("is-changing");
 
-        return `${minutes} minute${minutes === 1 ? "" : "s"}`;
+        window.setTimeout(() => {
+          element.classList.remove("is-changing");
+        }, 500);
       };
 
       const updateEventStatus = () => {
         const now = new Date();
 
         if (now < eventStart) {
+          const totalMinutes = Math.max(
+            0,
+            Math.floor((eventStart - now) / 60000)
+          );
+          const days = Math.floor(totalMinutes / 1440);
+          const hours = Math.floor((totalMinutes % 1440) / 60);
+          const minutes = totalMinutes % 60;
+
           statusLabel.textContent = "Next First Friday";
           statusMessage.textContent = "August 7 from 4:00 PM to 8:00 PM";
-          countdown.textContent = `${formatCountdown(eventStart - now)} away`;
           statusDot.style.background = "#7ce0b4";
           statusDot.style.boxShadow = "0 0 0 6px rgba(124,224,180,.12)";
+
+          animateNumberChange(daysElement, padNumber(days));
+          animateNumberChange(hoursElement, padNumber(hours));
+          animateNumberChange(minutesElement, padNumber(minutes));
+
+          const totalWindow = eventStart - countdownWindowStart;
+          const elapsed = now - countdownWindowStart;
+          const progress = Math.max(0, Math.min(100, (elapsed / totalWindow) * 100));
+
+          if (progressElement) {
+            progressElement.style.width = `${progress}%`;
+          }
+
           return;
         }
 
         if (now >= eventStart && now < eventEnd) {
+          const totalMinutes = Math.max(
+            0,
+            Math.floor((eventEnd - now) / 60000)
+          );
+          const hours = Math.floor(totalMinutes / 60);
+          const minutes = totalMinutes % 60;
+
           statusLabel.textContent = "Live now";
           statusMessage.textContent = "First Friday is happening at Green Labs";
-          countdown.textContent = `${formatCountdown(eventEnd - now)} remaining`;
           statusDot.style.background = "#ff6b6b";
           statusDot.style.boxShadow = "0 0 0 6px rgba(255,107,107,.14)";
+
+          animateNumberChange(daysElement, "00");
+          animateNumberChange(hoursElement, padNumber(hours));
+          animateNumberChange(minutesElement, padNumber(minutes));
+
+          if (progressElement) {
+            progressElement.style.width = "100%";
+          }
+
           return;
         }
 
         statusLabel.textContent = "Thanks for coming";
         statusMessage.textContent = "The next First Friday returns next month";
-        countdown.textContent = "See you next First Friday";
         statusDot.style.background = "#dc951e";
         statusDot.style.boxShadow = "0 0 0 6px rgba(220,149,30,.14)";
+
+        animateNumberChange(daysElement, "00");
+        animateNumberChange(hoursElement, "00");
+        animateNumberChange(minutesElement, "00");
+
+        if (progressElement) {
+          progressElement.style.width = "100%";
+        }
       };
+
+      if (countdownCard && countdownActions) {
+        countdownCard.addEventListener("click", () => {
+          const isOpen = countdownCard.getAttribute("aria-expanded") === "true";
+          countdownCard.setAttribute("aria-expanded", String(!isOpen));
+          countdownActions.hidden = isOpen;
+        });
+      }
 
       updateEventStatus();
       window.setInterval(updateEventStatus, 60000);
 
       /* Add to calendar */
-      const calendarButton = document.getElementById("addToCalendar");
+      const calendarButtons = [
+        document.getElementById("addToCalendar"),
+        document.getElementById("countdownCalendar")
+      ].filter(Boolean);
 
       const toICSDate = (dateString) => {
         return new Date(dateString)
@@ -2435,7 +2739,7 @@
           .replace(/;/g, "\\;");
       };
 
-      if (calendarButton) {
+      calendarButtons.forEach((calendarButton) => {
         calendarButton.addEventListener("click", () => {
           const icsContent = [
             "BEGIN:VCALENDAR",
@@ -2471,7 +2775,7 @@
 
           window.setTimeout(() => URL.revokeObjectURL(calendarURL), 1000);
         });
-      }
+      });
     });
   </script>
 
