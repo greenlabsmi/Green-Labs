@@ -2395,9 +2395,16 @@
           </div>
 
           <div class="ff-countdown-poster__remix">
-            Tap to remix
-            <span aria-hidden="true">↻</span>
-          </div>
+  <span class="ff-remix-instruction">Tap to remix</span>
+
+  <span
+    class="ff-remix-count"
+    id="remixCount"
+    aria-live="polite"
+  ></span>
+
+  <span class="ff-remix-icon" aria-hidden="true">↻</span>
+</div>
 
         </div>
 
@@ -2466,6 +2473,29 @@
             </span>
           </div>
 
+          <div class="ff-countdown-tile ff-countdown-tile--seconds">
+  <span
+    class="ff-countdown-decoration ff-countdown-decoration--seconds"
+    aria-hidden="true"
+  >
+    +
+  </span>
+
+  <span
+    class="ff-countdown-number ff-countdown-number--seconds"
+    id="countdownSeconds"
+  >
+    00
+  </span>
+
+  <span class="ff-countdown-label">
+    Seconds
+  </span>
+
+  <span class="ff-countdown-pulse" aria-hidden="true"></span>
+</div>
+          
+
         </div>
 
         <div class="ff-countdown-poster__date" id="eventStatusMessage">
@@ -2490,6 +2520,15 @@
           <span>Open event actions ↓</span>
         </div>
 
+        <div class="ff-remix-burst" id="remixBurst" aria-hidden="true">
+  <span>✦</span>
+  <span>●</span>
+  <span>+</span>
+  <span>↗</span>
+  <span>✷</span>
+  <span>FIRST FRIDAY</span>
+</div>
+        
       </button>
 
       <div
