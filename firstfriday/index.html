@@ -516,7 +516,6 @@
     0 12px 34px rgba(0, 0, 0, .2),
     0 0 24px rgba(184, 239, 213, .13);
 }
-    }
 
     /* Art-poster countdown */
 
@@ -709,8 +708,8 @@
   transition: transform 600ms cubic-bezier(.2, .8, .2, 1);
 }
 
-.ff-countdown-poster.is-remixing .ff-countdown-poster__remix span {
-  transform: rotate(360deg);
+.ff-countdown-poster.is-remixing .ff-remix-icon {
+  transform: rotate(360deg) scale(1.15);
 }
 
 /* Countdown collage */
@@ -719,7 +718,7 @@
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   align-items: stretch;
   gap: clamp(10px, 2vw, 18px);
   margin-top: 28px;
@@ -758,6 +757,51 @@
 .ff-countdown-tile--minutes {
   background: var(--poster-blue);
   transform: rotate(-.5deg) translateY(5px);
+}
+
+.ff-countdown-tile--seconds {
+  background: var(--poster-mint);
+  color: #102d25;
+  transform: rotate(.9deg) translateY(-2px);
+}
+
+.ff-countdown-number--seconds {
+  font-family: "Outfit", sans-serif;
+  font-weight: 900;
+  letter-spacing: -.08em;
+}
+
+.ff-countdown-decoration--seconds {
+  color: rgba(6, 46, 35, .7);
+}
+
+.ff-countdown-pulse {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #0b7d5a;
+  box-shadow: 0 0 0 0 rgba(11, 125, 90, .5);
+  animation: ffSecondPulse 1s ease-out infinite;
+}
+
+@keyframes ffSecondPulse {
+  0% {
+    transform: scale(.9);
+    box-shadow: 0 0 0 0 rgba(11, 125, 90, .5);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(11, 125, 90, 0);
+  }
+
+  100% {
+    transform: scale(.9);
+    box-shadow: 0 0 0 0 rgba(11, 125, 90, 0);
+  }
 }
 
 .ff-countdown-number {
@@ -998,6 +1042,401 @@
   }
 }
 
+.ff-countdown-poster--theme-4 {
+  --poster-yellow: #ef9cb5;
+  --poster-mint: #b8efd5;
+  --poster-blue: #f2b544;
+  --poster-dark: #31224d;
+  --poster-cream: #fff6dd;
+}
+
+.ff-countdown-poster--theme-4 .ff-countdown-tile--days {
+  transform: rotate(1.4deg) translateY(-3px);
+}
+
+.ff-countdown-poster--theme-4 .ff-countdown-tile--hours {
+  transform: rotate(-.5deg) translateY(4px);
+}
+
+.ff-countdown-poster--theme-4 .ff-countdown-tile--minutes {
+  transform: rotate(1deg) translateY(-5px);
+}
+
+.ff-countdown-poster--theme-4 .ff-countdown-tile--seconds {
+  transform: rotate(-1.2deg) translateY(3px);
+}
+
+.ff-countdown-poster--theme-5 {
+  --poster-yellow: #86d6b1;
+  --poster-mint: #f3d765;
+  --poster-blue: #a8c7ff;
+  --poster-dark: #421d28;
+  --poster-cream: #f8eadd;
+}
+
+.ff-countdown-poster--theme-5 .ff-countdown-tile--days {
+  transform: rotate(-.8deg) translateY(5px);
+}
+
+.ff-countdown-poster--theme-5 .ff-countdown-tile--hours {
+  transform: rotate(1.3deg) translateY(-4px);
+}
+
+.ff-countdown-poster--theme-5 .ff-countdown-tile--minutes {
+  transform: rotate(-1.4deg) translateY(2px);
+}
+
+.ff-countdown-poster--theme-5 .ff-countdown-tile--seconds {
+  transform: rotate(.5deg) translateY(-3px);
+}
+
+
+/* Interactive remix toy */
+
+.ff-remix-count {
+  display: inline-block;
+  min-width: 0;
+  color: var(--ff-green-dark);
+  font-family: "Outfit", sans-serif;
+  font-size: .68rem;
+  font-weight: 900;
+  opacity: 0;
+  transform: translateY(4px) scale(.85);
+  transition:
+    opacity 220ms ease,
+    transform 300ms cubic-bezier(.2, .8, .2, 1);
+}
+
+.ff-remix-count.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.ff-remix-icon {
+  display: inline-block;
+  font-size: 1rem;
+  transition: transform 600ms cubic-bezier(.2, .8, .2, 1);
+}
+
+.ff-countdown-poster.is-remixing .ff-remix-icon {
+  transform: rotate(360deg) scale(1.15);
+}
+
+.ff-countdown-poster.is-full-remix .ff-remix-icon {
+  animation: ffFullRemixIcon 900ms cubic-bezier(.2, .8, .2, 1);
+}
+
+@keyframes ffFullRemixIcon {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  45% {
+    transform: rotate(540deg) scale(1.4);
+  }
+
+  100% {
+    transform: rotate(720deg) scale(1);
+  }
+}
+
+/* Each tile receives a different bounce during a tap */
+
+.ff-countdown-poster.is-remixing .ff-countdown-tile:nth-child(1) {
+  animation: ffTileRemixOne 680ms cubic-bezier(.2, .8, .2, 1);
+}
+
+.ff-countdown-poster.is-remixing .ff-countdown-tile:nth-child(2) {
+  animation: ffTileRemixTwo 720ms cubic-bezier(.2, .8, .2, 1);
+}
+
+.ff-countdown-poster.is-remixing .ff-countdown-tile:nth-child(3) {
+  animation: ffTileRemixThree 650ms cubic-bezier(.2, .8, .2, 1);
+}
+
+.ff-countdown-poster.is-remixing .ff-countdown-tile:nth-child(4) {
+  animation: ffTileRemixFour 760ms cubic-bezier(.2, .8, .2, 1);
+}
+
+@keyframes ffTileRemixOne {
+  0%, 100% {
+    filter: none;
+  }
+
+  35% {
+    transform: translateY(-13px) rotate(2deg) scale(1.025);
+    filter: saturate(1.3);
+  }
+}
+
+@keyframes ffTileRemixTwo {
+  0%, 100% {
+    filter: none;
+  }
+
+  42% {
+    transform: translateY(8px) rotate(-2deg) scale(.985);
+    filter: saturate(.8);
+  }
+}
+
+@keyframes ffTileRemixThree {
+  0%, 100% {
+    filter: none;
+  }
+
+  38% {
+    transform: translateX(7px) rotate(2.5deg) scale(1.02);
+    filter: contrast(1.08);
+  }
+}
+
+@keyframes ffTileRemixFour {
+  0%, 100% {
+    filter: none;
+  }
+
+  45% {
+    transform: translateX(-6px) translateY(-8px) rotate(-2deg) scale(1.025);
+    filter: saturate(1.25);
+  }
+}
+
+/* Bigger fifth-tap celebration */
+
+.ff-countdown-poster.is-full-remix {
+  animation: ffFullPosterRemix 950ms cubic-bezier(.2, .8, .2, 1);
+}
+
+@keyframes ffFullPosterRemix {
+  0%,
+  100% {
+    transform: none;
+  }
+
+  20% {
+    transform: rotate(-.6deg) scale(1.008);
+  }
+
+  45% {
+    transform: rotate(.8deg) scale(1.015);
+  }
+
+  70% {
+    transform: rotate(-.3deg) scale(.997);
+  }
+}
+
+.ff-countdown-poster.is-full-remix .ff-countdown-number {
+  animation: ffFullNumberRemix 850ms cubic-bezier(.2, .8, .2, 1);
+}
+
+@keyframes ffFullNumberRemix {
+  0%,
+  100% {
+    transform: none;
+  }
+
+  35% {
+    transform: translateY(-10px) rotate(-3deg) scale(1.08);
+  }
+
+  65% {
+    transform: translateY(3px) rotate(2deg) scale(.98);
+  }
+}
+
+/* Decorative burst */
+
+.ff-remix-burst {
+  position: absolute;
+  z-index: 8;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.ff-remix-burst span {
+  position: absolute;
+  display: block;
+  font-family: "Outfit", sans-serif;
+  font-weight: 900;
+  opacity: 0;
+}
+
+.ff-remix-burst span:nth-child(1) {
+  top: 17%;
+  left: 8%;
+  font-size: 2rem;
+}
+
+.ff-remix-burst span:nth-child(2) {
+  top: 11%;
+  right: 13%;
+  font-size: 1.4rem;
+}
+
+.ff-remix-burst span:nth-child(3) {
+  bottom: 18%;
+  left: 17%;
+  font-size: 2.3rem;
+}
+
+.ff-remix-burst span:nth-child(4) {
+  right: 7%;
+  bottom: 23%;
+  font-size: 2rem;
+}
+
+.ff-remix-burst span:nth-child(5) {
+  top: 49%;
+  left: 49%;
+  font-size: 2.6rem;
+}
+
+.ff-remix-burst span:nth-child(6) {
+  top: 48%;
+  left: 50%;
+  padding: 8px 13px;
+  background: #111;
+  color: #fff;
+  font-size: clamp(1rem, 3vw, 1.8rem);
+  letter-spacing: .1em;
+  white-space: nowrap;
+}
+
+.ff-remix-burst.is-active {
+  opacity: 1;
+}
+
+.ff-remix-burst.is-active span:nth-child(1) {
+  animation: ffBurstOne 850ms ease-out forwards;
+}
+
+.ff-remix-burst.is-active span:nth-child(2) {
+  animation: ffBurstTwo 900ms ease-out forwards;
+}
+
+.ff-remix-burst.is-active span:nth-child(3) {
+  animation: ffBurstThree 820ms ease-out forwards;
+}
+
+.ff-remix-burst.is-active span:nth-child(4) {
+  animation: ffBurstFour 880ms ease-out forwards;
+}
+
+.ff-remix-burst.is-active span:nth-child(5) {
+  animation: ffBurstFive 760ms ease-out forwards;
+}
+
+.ff-remix-burst.is-active span:nth-child(6) {
+  animation: ffBurstTitle 900ms cubic-bezier(.2, .8, .2, 1) forwards;
+}
+
+@keyframes ffBurstOne {
+  0% {
+    opacity: 0;
+    transform: translate(20px, 25px) rotate(0) scale(.4);
+  }
+
+  35% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-30px, -55px) rotate(-45deg) scale(1.4);
+  }
+}
+
+@keyframes ffBurstTwo {
+  0% {
+    opacity: 0;
+    transform: translate(-20px, 30px) scale(.3);
+  }
+
+  40% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(35px, -45px) scale(1.3);
+  }
+}
+
+@keyframes ffBurstThree {
+  0% {
+    opacity: 0;
+    transform: translate(25px, -20px) rotate(0) scale(.4);
+  }
+
+  40% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-45px, 45px) rotate(90deg) scale(1.35);
+  }
+}
+
+@keyframes ffBurstFour {
+  0% {
+    opacity: 0;
+    transform: translate(-20px, -20px) scale(.3);
+  }
+
+  40% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(45px, 45px) rotate(35deg) scale(1.4);
+  }
+}
+
+@keyframes ffBurstFive {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(.2) rotate(0);
+  }
+
+  45% {
+    opacity: .85;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(2.4) rotate(120deg);
+  }
+}
+
+@keyframes ffBurstTitle {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -35%) rotate(-4deg) scale(.5);
+  }
+
+  35% {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(2deg) scale(1.08);
+  }
+
+  70% {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(-1deg) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -65%) rotate(1deg) scale(.92);
+  }
+}
+
+    
 /* Expanded buttons */
 
 .ff-countdown-actions {
@@ -2069,18 +2508,19 @@
 }
 
 .ff-countdown-collage {
-  gap: 7px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
   margin-top: 20px;
 }
 
 .ff-countdown-tile {
-  min-height: 138px;
+  min-height: 145px;
   padding: 13px 10px;
   border-radius: 17px;
 }
 
 .ff-countdown-number {
-  font-size: clamp(4rem, 21vw, 5.8rem);
+  font-size: clamp(4.4rem, 23vw, 6rem);
   line-height: .7;
 }
 
@@ -3314,6 +3754,7 @@ if (animatedTitle) {
       const daysElement = document.getElementById("countdownDays");
       const hoursElement = document.getElementById("countdownHours");
       const minutesElement = document.getElementById("countdownMinutes");
+      const secondsElement = document.getElementById("countdownSeconds");
       const progressElement = document.getElementById("countdownProgress");
       const countdownCard = document.getElementById("countdownCard");
       const countdownActions = document.getElementById("countdownActions");
@@ -3342,13 +3783,15 @@ if (animatedTitle) {
         const now = new Date();
 
         if (now < eventStart) {
-          const totalMinutes = Math.max(
-            0,
-            Math.floor((eventStart - now) / 60000)
-          );
-          const days = Math.floor(totalMinutes / 1440);
-          const hours = Math.floor((totalMinutes % 1440) / 60);
-          const minutes = totalMinutes % 60;
+         const totalSeconds = Math.max(
+  0,
+  Math.floor((eventStart - now) / 1000)
+);
+
+const days = Math.floor(totalSeconds / 86400);
+const hours = Math.floor((totalSeconds % 86400) / 3600);
+const minutes = Math.floor((totalSeconds % 3600) / 60);
+const seconds = totalSeconds % 60;
 
           statusLabel.textContent = "Next First Friday";
           statusMessage.textContent = "August 7 from 4:00 PM to 8:00 PM";
@@ -3358,6 +3801,7 @@ if (animatedTitle) {
           animateNumberChange(daysElement, padNumber(days));
           animateNumberChange(hoursElement, padNumber(hours));
           animateNumberChange(minutesElement, padNumber(minutes));
+          animateNumberChange(secondsElement, padNumber(seconds));
 
           const totalWindow = eventStart - countdownWindowStart;
           const elapsed = now - countdownWindowStart;
@@ -3371,12 +3815,14 @@ if (animatedTitle) {
         }
 
         if (now >= eventStart && now < eventEnd) {
-          const totalMinutes = Math.max(
-            0,
-            Math.floor((eventEnd - now) / 60000)
-          );
-          const hours = Math.floor(totalMinutes / 60);
-          const minutes = totalMinutes % 60;
+          const totalSeconds = Math.max(
+  0,
+  Math.floor((eventEnd - now) / 1000)
+);
+
+const hours = Math.floor(totalSeconds / 3600);
+const minutes = Math.floor((totalSeconds % 3600) / 60);
+const seconds = totalSeconds % 60;
 
           statusLabel.textContent = "Live now";
           statusMessage.textContent = "First Friday is happening at Green Labs";
@@ -3386,6 +3832,7 @@ if (animatedTitle) {
           animateNumberChange(daysElement, "00");
           animateNumberChange(hoursElement, padNumber(hours));
           animateNumberChange(minutesElement, padNumber(minutes));
+          animateNumberChange(secondsElement, padNumber(seconds));
 
           if (progressElement) {
             progressElement.style.width = "100%";
@@ -3402,6 +3849,7 @@ if (animatedTitle) {
         animateNumberChange(daysElement, "00");
         animateNumberChange(hoursElement, "00");
         animateNumberChange(minutesElement, "00");
+        animateNumberChange(secondsElement, "00");
 
         if (progressElement) {
           progressElement.style.width = "100%";
@@ -3412,21 +3860,75 @@ if (animatedTitle) {
   const countdownThemes = [
     "ff-countdown-poster--theme-1",
     "ff-countdown-poster--theme-2",
-    "ff-countdown-poster--theme-3"
+    "ff-countdown-poster--theme-3",
+    "ff-countdown-poster--theme-4",
+    "ff-countdown-poster--theme-5"
+  ];
+
+  const remixCountElement = document.getElementById("remixCount");
+  const remixBurst = document.getElementById("remixBurst");
+  const countdownTiles = [
+    ...countdownCard.querySelectorAll(".ff-countdown-tile")
   ];
 
   let currentCountdownTheme = 0;
+  let remixCount = 0;
+  let remixResetTimer;
 
-  countdownCard.addEventListener("click", () => {
-    const isOpen =
-      countdownCard.getAttribute("aria-expanded") === "true";
-
-    countdownCard.setAttribute(
-      "aria-expanded",
-      String(!isOpen)
+  const shuffleTiles = () => {
+    const shuffledTiles = [...countdownTiles].sort(
+      () => Math.random() - 0.5
     );
 
-    countdownActions.hidden = isOpen;
+    shuffledTiles.forEach((tile, index) => {
+      tile.style.order = String(index);
+    });
+  };
+
+  const showRemixCount = () => {
+    if (!remixCountElement) return;
+
+    remixCountElement.textContent =
+      remixCount % 5 === 0
+        ? "FULL REMIX!"
+        : `REMIX ×${remixCount}`;
+
+    remixCountElement.classList.remove("is-visible");
+    void remixCountElement.offsetWidth;
+    remixCountElement.classList.add("is-visible");
+  };
+
+  const triggerBurst = () => {
+    if (!remixBurst) return;
+
+    remixBurst.classList.remove("is-active");
+    void remixBurst.offsetWidth;
+    remixBurst.classList.add("is-active");
+
+    window.setTimeout(() => {
+      remixBurst.classList.remove("is-active");
+    }, 1000);
+  };
+
+  countdownCard.addEventListener("click", () => {
+    /*
+      Open the event actions on the first tap.
+      Additional taps keep them open so users can freely remix.
+    */
+    countdownCard.setAttribute("aria-expanded", "true");
+    countdownActions.hidden = false;
+
+    remixCount += 1;
+
+    window.clearTimeout(remixResetTimer);
+
+    remixResetTimer = window.setTimeout(() => {
+      remixCount = 0;
+
+      if (remixCountElement) {
+        remixCountElement.classList.remove("is-visible");
+      }
+    }, 3500);
 
     countdownThemes.forEach((themeClass) => {
       countdownCard.classList.remove(themeClass);
@@ -3439,18 +3941,33 @@ if (animatedTitle) {
       countdownThemes[currentCountdownTheme]
     );
 
-    countdownCard.classList.remove("is-remixing");
+    showRemixCount();
+
+    countdownCard.classList.remove(
+      "is-remixing",
+      "is-full-remix"
+    );
+
     void countdownCard.offsetWidth;
-    countdownCard.classList.add("is-remixing");
+
+    if (remixCount % 5 === 0) {
+      countdownCard.classList.add("is-full-remix");
+      triggerBurst();
+    } else {
+      countdownCard.classList.add("is-remixing");
+    }
 
     window.setTimeout(() => {
-      countdownCard.classList.remove("is-remixing");
-    }, 800);
+      countdownCard.classList.remove(
+        "is-remixing",
+        "is-full-remix"
+      );
+    }, 1000);
   });
 }
 
       updateEventStatus();
-      window.setInterval(updateEventStatus, 60000);
+      window.setInterval(updateEventStatus, 1000);
 
       /* Add to calendar */
       const calendarButtons = [
