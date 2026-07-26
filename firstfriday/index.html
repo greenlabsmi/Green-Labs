@@ -46,12 +46,13 @@
     rel="stylesheet"
   >
 
-  <link rel="stylesheet" href="../style.css?v=333">
+  <link rel="stylesheet" href="../style.css?v=334">
 
   <style>
     :root {
       --ff-green: #0b7d5a;
       --ff-green-dark: #075b43;
+      --ff-green-deep: #062e23;
       --ff-green-soft: #eaf5f0;
       --ff-gold: #dc951e;
       --ff-charcoal: #202522;
@@ -60,6 +61,7 @@
       --ff-paper: #fbfcfb;
       --ff-white: #ffffff;
       --ff-shadow: 0 18px 50px rgba(15, 39, 30, 0.11);
+      --ff-shadow-hover: 0 24px 60px rgba(15, 39, 30, 0.16);
       --ff-radius: 24px;
     }
 
@@ -89,10 +91,32 @@
       color: inherit;
     }
 
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
     .ff-container {
       width: min(1120px, calc(100% - 36px));
       margin-inline: auto;
     }
+
+    .ff-reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition:
+        opacity 650ms ease,
+        transform 650ms cubic-bezier(.2,.7,.2,1);
+    }
+
+    .ff-reveal.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    .ff-reveal[data-delay="1"] { transition-delay: 80ms; }
+    .ff-reveal[data-delay="2"] { transition-delay: 160ms; }
+    .ff-reveal[data-delay="3"] { transition-delay: 240ms; }
 
     /* Top brand bar */
 
@@ -172,6 +196,8 @@
       height: 100%;
       object-fit: cover;
       object-position: center 54%;
+      transform: scale(1.02);
+      animation: ffHeroDrift 18s ease-in-out infinite alternate;
     }
 
     .ff-hero__media::after {
@@ -190,6 +216,11 @@
           rgba(3, 23, 17, 0.88) 0%,
           transparent 48%
         );
+    }
+
+    @keyframes ffHeroDrift {
+      from { transform: scale(1.02); }
+      to { transform: scale(1.07); }
     }
 
     .ff-hero__content {
@@ -275,14 +306,21 @@
       font-size: 0.87rem;
       font-weight: 800;
       text-decoration: none;
+      cursor: pointer;
       transition:
         transform 160ms ease,
+        box-shadow 160ms ease,
         background 160ms ease,
         border-color 160ms ease;
     }
 
     .ff-button:hover {
       transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(0,0,0,.14);
+    }
+
+    .ff-button:active {
+      transform: translateY(0) scale(0.985);
     }
 
     .ff-button--primary {
@@ -297,12 +335,163 @@
       backdrop-filter: blur(10px);
     }
 
+
+    .ff-title--animated {
+      max-width: 920px;
+      line-height: .8;
+    }
+
+    .ff-word {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: flex-end;
+      gap: .01em;
+    }
+
+    .ff-word + .ff-word {
+      margin-top: .04em;
+    }
+
+    .ff-letter {
+      display: inline-block;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: clamp(4.9rem, 12.5vw, 9.3rem);
+      line-height: .78;
+      letter-spacing: .01em;
+      transform: translateY(42px) rotate(2deg);
+      opacity: 0;
+      animation:
+        ffLetterIn 700ms cubic-bezier(.16,.8,.25,1) forwards,
+        ffLetterShuffle 950ms steps(1,end) 720ms 1;
+      text-shadow: 0 12px 34px rgba(0,0,0,.2);
+    }
+
+    .ff-word:nth-child(1) .ff-letter:nth-child(1) { animation-delay: 80ms, 800ms; }
+    .ff-word:nth-child(1) .ff-letter:nth-child(2) { animation-delay: 140ms, 860ms; }
+    .ff-word:nth-child(1) .ff-letter:nth-child(3) { animation-delay: 200ms, 920ms; }
+    .ff-word:nth-child(1) .ff-letter:nth-child(4) { animation-delay: 260ms, 980ms; }
+    .ff-word:nth-child(1) .ff-letter:nth-child(5) { animation-delay: 320ms, 1040ms; }
+    .ff-word:nth-child(2) .ff-letter:nth-child(1) { animation-delay: 380ms, 1100ms; }
+    .ff-word:nth-child(2) .ff-letter:nth-child(2) { animation-delay: 440ms, 1160ms; }
+    .ff-word:nth-child(2) .ff-letter:nth-child(3) { animation-delay: 500ms, 1220ms; }
+    .ff-word:nth-child(2) .ff-letter:nth-child(4) { animation-delay: 560ms, 1280ms; }
+    .ff-word:nth-child(2) .ff-letter:nth-child(5) { animation-delay: 620ms, 1340ms; }
+    .ff-word:nth-child(2) .ff-letter:nth-child(6) { animation-delay: 680ms, 1400ms; }
+
+    .ff-letter--green {
+      color: #b8efd5;
+    }
+
+    .ff-letter--gold {
+      color: #f0b24b;
+    }
+
+    .ff-letter--cream {
+      color: #fff7e8;
+    }
+
+    .ff-letter--outline {
+      color: transparent;
+      -webkit-text-stroke: 2px rgba(255,255,255,.94);
+      text-stroke: 2px rgba(255,255,255,.94);
+    }
+
+    .ff-letter--serif {
+      font-family: "Playfair Display", serif;
+      font-weight: 900;
+      transform-origin: center bottom;
+    }
+
+    @keyframes ffLetterIn {
+      0% {
+        opacity: 0;
+        transform: translateY(42px) rotate(3deg) scale(.96);
+      }
+      70% {
+        opacity: 1;
+        transform: translateY(-5px) rotate(-1deg) scale(1.02);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) rotate(0) scale(1);
+      }
+    }
+
+    @keyframes ffLetterShuffle {
+      0% { filter: saturate(1); }
+      25% { font-family: "Cinzel", serif; filter: saturate(1.35); }
+      50% { font-family: "Outfit", sans-serif; filter: saturate(.85); }
+      75% { font-family: "Playfair Display", serif; filter: saturate(1.2); }
+      100% { filter: saturate(1); }
+    }
+
+    /* Live status */
+
+    .ff-live-strip {
+      position: relative;
+      z-index: 5;
+      margin-top: -22px;
+    }
+
+    .ff-live-strip__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 17px 22px;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 18px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.08), transparent),
+        #073f31;
+      color: #fff;
+      box-shadow: var(--ff-shadow);
+    }
+
+    .ff-status {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      min-width: 0;
+    }
+
+    .ff-status__dot {
+      width: 10px;
+      height: 10px;
+      flex: 0 0 10px;
+      border-radius: 50%;
+      background: #7ce0b4;
+      box-shadow: 0 0 0 6px rgba(124,224,180,.12);
+    }
+
+    .ff-status__label {
+      font-size: .72rem;
+      font-weight: 900;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    .ff-status__message {
+      margin-top: 3px;
+      color: rgba(255,255,255,.72);
+      font-size: .78rem;
+    }
+
+    .ff-countdown {
+      font-family: "Outfit", sans-serif;
+      font-size: clamp(.9rem, 2vw, 1.12rem);
+      font-weight: 900;
+      letter-spacing: .04em;
+      text-align: right;
+      white-space: nowrap;
+    }
+
     /* Event bar */
 
     .ff-event-bar {
       position: relative;
       z-index: 4;
-      margin-top: -28px;
+      margin-top: 24px;
     }
 
     .ff-event-bar__inner {
@@ -321,6 +510,19 @@
       align-items: center;
       gap: 16px;
       padding: 25px;
+      color: inherit;
+      text-decoration: none;
+      transition:
+        background 180ms ease,
+        transform 180ms ease;
+    }
+
+    .ff-event-detail:hover {
+      background: #f8fcfa;
+    }
+
+    .ff-event-detail:active {
+      transform: scale(.992);
     }
 
     .ff-event-detail + .ff-event-detail {
@@ -352,6 +554,14 @@
       font-size: 0.98rem;
       font-weight: 800;
       line-height: 1.35;
+    }
+
+    .ff-event-detail__hint {
+      display: block;
+      margin-top: 5px;
+      color: var(--ff-green);
+      font-size: .72rem;
+      font-weight: 800;
     }
 
     /* General sections */
@@ -405,6 +615,16 @@
       border-radius: var(--ff-radius);
       background: var(--ff-white);
       box-shadow: 0 12px 32px rgba(26, 69, 52, 0.06);
+      transition:
+        transform 220ms ease,
+        box-shadow 220ms ease,
+        border-color 220ms ease;
+    }
+
+    .ff-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--ff-shadow-hover);
+      border-color: rgba(11,125,90,.32);
     }
 
     .ff-card__icon {
@@ -480,27 +700,37 @@
 
     .ff-challenge__image {
       min-height: 480px;
+      overflow: hidden;
     }
 
     .ff-challenge__image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: transform 700ms cubic-bezier(.2,.7,.2,1);
+    }
+
+    .ff-challenge:hover .ff-challenge__image img {
+      transform: scale(1.045);
     }
 
     /* Batch feature */
 
     .ff-batch {
+      position: relative;
+      overflow: hidden;
       display: grid;
       grid-template-columns: auto 1fr auto;
       align-items: center;
       gap: 24px;
-      padding: 28px;
+      padding: 30px;
       border: 1px solid rgba(220, 149, 30, 0.3);
       border-radius: 24px;
       background:
+        radial-gradient(circle at 100% 0%, rgba(220,149,30,.14), transparent 20rem),
         linear-gradient(135deg, rgba(220, 149, 30, 0.08), transparent 50%),
         #fff;
+      box-shadow: 0 12px 32px rgba(26, 69, 52, 0.06);
     }
 
     .ff-batch__badge {
@@ -517,18 +747,37 @@
       line-height: 1;
       text-align: center;
       transform: rotate(-6deg);
+      box-shadow: 0 12px 26px rgba(220,149,30,.24);
     }
 
     .ff-batch h3 {
       margin: 0;
       font-family: "Playfair Display", serif;
-      font-size: 1.55rem;
+      font-size: 1.65rem;
     }
 
     .ff-batch p {
       margin: 8px 0 0;
       color: var(--ff-muted);
       line-height: 1.65;
+    }
+
+    .ff-batch__links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .ff-text-link {
+      color: var(--ff-green-dark);
+      font-size: .82rem;
+      font-weight: 900;
+      text-decoration: none;
+    }
+
+    .ff-text-link:hover {
+      text-decoration: underline;
     }
 
     .ff-batch__tag {
@@ -540,63 +789,278 @@
       white-space: nowrap;
     }
 
-    /* Partners */
 
-    .ff-partners {
+    /* Batch featured-brand takeover */
+
+    .ff-batch-feature {
+      background:
+        radial-gradient(circle at 12% 15%, rgba(93,166,231,.18), transparent 24rem),
+        linear-gradient(180deg, #eff7ff 0%, #dceefe 100%);
+      border-block: 1px solid rgba(63,137,199,.2);
+    }
+
+    .ff-batch-showcase {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.12fr .88fr;
+      overflow: hidden;
+      margin-top: 18px;
+      border: 1px solid rgba(28,102,164,.18);
+      border-radius: 32px;
+      background: #0b1f32;
+      box-shadow: 0 28px 70px rgba(18,57,91,.22);
+    }
+
+    .ff-batch-showcase__gallery {
+      min-height: 680px;
+      display: grid;
+      grid-template-columns: 1.22fr .78fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 8px;
+      padding: 8px;
+      background: #dbeeff;
+    }
+
+    .ff-batch-shot {
+      margin: 0;
+      overflow: hidden;
+      border-radius: 20px;
+      background: #b9d8f5;
+    }
+
+    .ff-batch-shot--main {
+      grid-row: 1 / 3;
+    }
+
+    .ff-batch-shot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 700ms cubic-bezier(.2,.7,.2,1);
+    }
+
+    .ff-batch-shot:hover img {
+      transform: scale(1.045);
+    }
+
+    .ff-batch-showcase__content {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(34px, 5vw, 64px);
+      color: #fff;
+      background:
+        radial-gradient(circle at 85% 15%, rgba(88,163,228,.22), transparent 16rem),
+        linear-gradient(160deg, #102c47 0%, #081827 100%);
+    }
+
+    .ff-batch-showcase__logo {
+      width: min(240px, 75%);
+      max-height: 92px;
+      object-fit: contain;
+      object-position: left center;
+      margin-bottom: 26px;
+    }
+
+    .ff-batch-showcase__label {
+      color: #79baf0;
+      font-size: .74rem;
+      font-weight: 900;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .ff-batch-showcase h2 {
+      margin: 12px 0 0;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2.25rem, 4.8vw, 4.4rem);
+      line-height: 1.02;
+    }
+
+    .ff-batch-showcase p {
+      margin: 20px 0 0;
+      color: rgba(255,255,255,.74);
+      line-height: 1.75;
+    }
+
+    .ff-batch-showcase__offer {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 26px;
+      padding: 18px;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 20px;
+      background: rgba(255,255,255,.07);
+      backdrop-filter: blur(8px);
+    }
+
+    .ff-batch-showcase__offer > span {
+      color: #f0b24b;
+      font-family: "Outfit", sans-serif;
+      font-size: 2.6rem;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .ff-batch-showcase__offer strong,
+    .ff-batch-showcase__offer small {
+      display: block;
+    }
+
+    .ff-batch-showcase__offer strong {
+      font-size: .9rem;
+    }
+
+    .ff-batch-showcase__offer small {
+      margin-top: 4px;
+      color: rgba(255,255,255,.6);
+    }
+
+    .ff-batch-showcase__actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 18px;
+      margin-top: 26px;
+    }
+
+    .ff-button--batch {
+      background: #6bb4ef;
+      color: #071726;
+    }
+
+    .ff-text-link--light {
+      color: #fff;
+    }
+
+    .ff-batch-showcase__note {
+      margin-top: 28px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,.12);
+      color: rgba(255,255,255,.52);
+      font-size: .78rem;
+      line-height: 1.6;
+    }
+
+    /* Vendor lineup */
+
+    .ff-lineup {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 18px;
       margin-top: 42px;
     }
 
-    .ff-partner {
-      min-height: 220px;
+    .ff-lineup-card {
+      min-height: 245px;
       display: flex;
-      align-items: center;
-      gap: 25px;
-      padding: 32px;
+      flex-direction: column;
+      padding: 25px;
       border: 1px solid var(--ff-border);
       border-radius: var(--ff-radius);
       background: #fff;
+      box-shadow: 0 12px 32px rgba(26, 69, 52, 0.05);
+      transition:
+        transform 220ms ease,
+        box-shadow 220ms ease;
     }
 
-    .ff-partner__logo {
-      width: 105px;
-      max-height: 105px;
+    .ff-lineup-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--ff-shadow-hover);
+    }
+
+    .ff-lineup-card--gold {
+      border-color: rgba(220,149,30,.3);
+      background:
+        linear-gradient(145deg, rgba(220,149,30,.08), transparent 60%),
+        #fff;
+    }
+
+    .ff-lineup-card--coming {
+      border-style: dashed;
+      background: rgba(255,255,255,.68);
+    }
+
+    .ff-lineup-card__logo-wrap {
+      height: 82px;
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .ff-lineup-card__logo {
+      max-width: 100%;
+      max-height: 78px;
       object-fit: contain;
     }
 
-    .ff-partner--dtg {
-      border-color: rgba(220, 149, 30, 0.28);
-    }
-
-    .ff-partner--dtg .ff-partner__logo {
-      width: 92px;
-    }
-
-    .ff-partner__label {
+    .ff-lineup-card__eyebrow {
       color: var(--ff-green);
-      font-size: 0.7rem;
+      font-size: .68rem;
       font-weight: 900;
-      letter-spacing: 0.14em;
+      letter-spacing: .14em;
       text-transform: uppercase;
     }
 
-    .ff-partner--dtg .ff-partner__label {
-      color: #ad6e09;
+    .ff-lineup-card--gold .ff-lineup-card__eyebrow {
+      color: #a86b08;
     }
 
-    .ff-partner h3 {
+    .ff-lineup-card h3 {
       margin: 8px 0 0;
       font-family: "Playfair Display", serif;
-      font-size: 1.45rem;
+      font-size: 1.35rem;
+      line-height: 1.12;
     }
 
-    .ff-partner p {
-      margin: 9px 0 0;
+    .ff-lineup-card p {
+      margin: 10px 0 0;
       color: var(--ff-muted);
-      font-size: 0.9rem;
+      font-size: .88rem;
       line-height: 1.6;
+    }
+
+    .ff-lineup-card .ff-text-link {
+      margin-top: auto;
+      padding-top: 18px;
+    }
+
+    /* Timeline */
+
+    .ff-timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 42px;
+    }
+
+    .ff-timeline__item {
+      position: relative;
+      padding: 24px;
+      border: 1px solid var(--ff-border);
+      border-radius: 22px;
+      background: #fff;
+    }
+
+    .ff-timeline__time {
+      color: var(--ff-green);
+      font-family: "Outfit", sans-serif;
+      font-size: 1.35rem;
+      font-weight: 900;
+    }
+
+    .ff-timeline__item h3 {
+      margin: 9px 0 0;
+      font-size: 1rem;
+    }
+
+    .ff-timeline__item p {
+      margin: 8px 0 0;
+      color: var(--ff-muted);
+      font-size: .85rem;
+      line-height: 1.55;
     }
 
     /* Vendor CTA */
@@ -612,6 +1076,7 @@
         radial-gradient(circle at 92% 20%, rgba(255, 255, 255, 0.14), transparent 18rem),
         var(--ff-green);
       color: #fff;
+      box-shadow: var(--ff-shadow);
     }
 
     .ff-vendor h2 {
@@ -631,6 +1096,44 @@
       background: #fff;
       color: var(--ff-green-dark);
       white-space: nowrap;
+    }
+
+    /* Playlist teaser */
+
+    .ff-playlist {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 24px;
+      align-items: center;
+      padding: 30px;
+      border: 1px solid var(--ff-border);
+      border-radius: var(--ff-radius);
+      background:
+        radial-gradient(circle at 0% 0%, rgba(11,125,90,.11), transparent 18rem),
+        #fff;
+    }
+
+    .ff-playlist__icon {
+      width: 74px;
+      height: 74px;
+      display: grid;
+      place-items: center;
+      border-radius: 22px;
+      background: var(--ff-green-deep);
+      color: #fff;
+      font-size: 1.8rem;
+    }
+
+    .ff-playlist h3 {
+      margin: 0;
+      font-family: "Playfair Display", serif;
+      font-size: 1.5rem;
+    }
+
+    .ff-playlist p {
+      margin: 8px 0 0;
+      color: var(--ff-muted);
+      line-height: 1.6;
     }
 
     /* FAQ */
@@ -660,10 +1163,26 @@
       float: right;
       color: var(--ff-green);
       font-size: 1.3rem;
+      transition: transform 180ms ease;
     }
 
     .ff-faq details[open] summary::after {
       content: "–";
+      transform: rotate(180deg);
+    }
+
+    .ff-faq__answer {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 260ms ease;
+    }
+
+    .ff-faq details[open] .ff-faq__answer {
+      grid-template-rows: 1fr;
+    }
+
+    .ff-faq__answer > div {
+      overflow: hidden;
     }
 
     .ff-faq p {
@@ -719,7 +1238,166 @@
       text-decoration: underline;
     }
 
+
+    /* Culture strip */
+
+    .ff-culture-strip {
+      overflow: hidden;
+      border-block: 1px solid rgba(255,255,255,.16);
+      background:
+        linear-gradient(90deg, #0b7d5a 0%, #15906c 32%, #dc951e 68%, #efb34d 100%);
+      color: #fff;
+    }
+
+    .ff-culture-strip__track {
+      width: max-content;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      padding: 15px 0;
+      animation: ffMarquee 24s linear infinite;
+    }
+
+    .ff-culture-strip__item {
+      display: inline-flex;
+      align-items: center;
+      gap: 28px;
+      font-family: "Outfit", sans-serif;
+      font-size: clamp(.86rem, 2vw, 1.05rem);
+      font-weight: 900;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .ff-culture-strip__item::after {
+      content: "✦";
+      color: rgba(255,255,255,.84);
+    }
+
+    @keyframes ffMarquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .ff-art-panel {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(42px, 7vw, 78px);
+      border-radius: 34px;
+      background:
+        radial-gradient(circle at 14% 20%, rgba(255,255,255,.22), transparent 11rem),
+        radial-gradient(circle at 88% 76%, rgba(255,255,255,.16), transparent 13rem),
+        linear-gradient(135deg, #0b7d5a 0%, #0f9670 45%, #dc951e 100%);
+      color: #fff;
+      box-shadow: var(--ff-shadow);
+    }
+
+    .ff-art-panel::before,
+    .ff-art-panel::after {
+      content: "";
+      position: absolute;
+      border: 2px solid rgba(255,255,255,.28);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .ff-art-panel::before {
+      width: 260px;
+      height: 260px;
+      right: -80px;
+      top: -90px;
+    }
+
+    .ff-art-panel::after {
+      width: 160px;
+      height: 160px;
+      left: -55px;
+      bottom: -65px;
+    }
+
+    .ff-art-panel__kicker {
+      position: relative;
+      z-index: 1;
+      font-size: .75rem;
+      font-weight: 900;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .ff-art-panel h2 {
+      position: relative;
+      z-index: 1;
+      max-width: 820px;
+      margin: 14px 0 0;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2.6rem, 7vw, 5.7rem);
+      line-height: .98;
+    }
+
+    .ff-art-panel p {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+      margin: 22px 0 0;
+      color: rgba(255,255,255,.84);
+      font-size: 1.03rem;
+      line-height: 1.75;
+    }
+
+    .ff-art-tags {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .ff-art-tag {
+      padding: 10px 14px;
+      border: 1px solid rgba(255,255,255,.34);
+      border-radius: 999px;
+      background: rgba(255,255,255,.1);
+      backdrop-filter: blur(8px);
+      font-size: .76rem;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .ff-lineup-card:nth-child(1) {
+      box-shadow: inset 0 5px 0 #0b7d5a, 0 12px 32px rgba(26,69,52,.05);
+    }
+
+    .ff-lineup-card:nth-child(2) {
+      box-shadow: inset 0 5px 0 #dc951e, 0 12px 32px rgba(26,69,52,.05);
+    }
+
+    .ff-lineup-card:nth-child(3) {
+      box-shadow: inset 0 5px 0 #efb34d, 0 12px 32px rgba(26,69,52,.05);
+    }
+
+    .ff-lineup-card:nth-child(4) {
+      box-shadow: inset 0 5px 0 #2d9f7d, 0 12px 32px rgba(26,69,52,.05);
+    }
+
     /* Mobile */
+
+    @media (max-width: 980px) {
+      .ff-batch-showcase {
+        grid-template-columns: 1fr;
+      }
+
+      .ff-batch-showcase__gallery {
+        min-height: 560px;
+      }
+
+      .ff-lineup,
+      .ff-timeline {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
 
     @media (max-width: 860px) {
       .ff-hero {
@@ -736,9 +1414,17 @@
           );
       }
 
+      .ff-live-strip__inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .ff-countdown {
+        text-align: left;
+      }
+
       .ff-event-bar__inner,
-      .ff-card-grid,
-      .ff-partners {
+      .ff-card-grid {
         grid-template-columns: 1fr;
       }
 
@@ -816,16 +1502,19 @@
         padding: 24px;
       }
 
-      .ff-partner {
-        align-items: flex-start;
-        padding: 25px;
+      .ff-batch-showcase__gallery {
+        min-height: 780px;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1.25fr .8fr .8fr;
       }
 
-      .ff-partner__logo {
-        width: 74px;
+      .ff-batch-shot--main {
+        grid-row: auto;
       }
 
-      .ff-batch {
+      .ff-batch,
+      .ff-lineup,
+      .ff-timeline {
         grid-template-columns: 1fr;
       }
 
@@ -834,9 +1523,37 @@
         height: 70px;
       }
 
+      .ff-playlist {
+        grid-template-columns: 1fr;
+      }
+
       .ff-footer__inner {
         align-items: flex-start;
         flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .ff-reveal {
+        opacity: 1;
+        transform: none;
+      }
+
+      .ff-letter {
+        opacity: 1;
+        transform: none;
       }
     }
   </style>
@@ -872,19 +1589,11 @@
       </p>
 
       <div class="age-gate__actions">
-        <button
-          id="btnAgePass"
-          class="btn btn--primary"
-          style="width:100%;"
-        >
+        <button id="btnAgePass" class="btn btn--primary" style="width:100%;">
           Yes, I am
         </button>
 
-        <button
-          id="btnAgeFail"
-          class="btn btn--ghost"
-          style="width:100%;"
-        >
+        <button id="btnAgeFail" class="btn btn--ghost" style="width:100%;">
           No, I am not
         </button>
       </div>
@@ -936,18 +1645,32 @@
       <div class="ff-hero__content">
 
         <div class="ff-eyebrow">
-          Free community event
+          Luna Pier’s monthly First Friday
         </div>
 
-        <h1 class="ff-title">
-          First Friday
-          <span class="ff-script">Community Night in Luna Pier</span>
+        <h1 class="ff-title ff-title--animated" aria-label="First Friday">
+          <span class="ff-word" aria-hidden="true">
+            <span class="ff-letter ff-letter--green">F</span>
+            <span class="ff-letter ff-letter--gold ff-letter--serif">I</span>
+            <span class="ff-letter ff-letter--outline">R</span>
+            <span class="ff-letter ff-letter--cream ff-letter--serif">S</span>
+            <span class="ff-letter ff-letter--green">T</span>
+          </span>
+          <span class="ff-word" aria-hidden="true">
+            <span class="ff-letter ff-letter--gold">F</span>
+            <span class="ff-letter ff-letter--cream ff-letter--serif">R</span>
+            <span class="ff-letter ff-letter--green">I</span>
+            <span class="ff-letter ff-letter--outline ff-letter--serif">D</span>
+            <span class="ff-letter ff-letter--gold">A</span>
+            <span class="ff-letter ff-letter--cream ff-letter--serif">Y</span>
+          </span>
+          <span class="ff-script">Cannabis. Art. Music. Makers. Luna Pier.</span>
         </h1>
 
         <p class="ff-hero__intro">
-          Spend your Friday evening with Green Labs, Dutch Touch Genetics,
-          Batch, and a growing lineup of local vendors. Stop by for a few
-          minutes or stay for the evening.
+          A monthly collision of cannabis, art, local makers, music, games, and good
+          people. Pull up for a few minutes, meet the brands, challenge the crew,
+          discover something new, or stay for the whole evening.
         </p>
 
         <div class="ff-hero__actions">
@@ -973,21 +1696,67 @@
       </div>
     </section>
 
+
+    <!-- Culture Marquee -->
+    <div class="ff-culture-strip" aria-hidden="true">
+      <div class="ff-culture-strip__track">
+        <span class="ff-culture-strip__item">Art</span>
+        <span class="ff-culture-strip__item">Cannabis</span>
+        <span class="ff-culture-strip__item">Community</span>
+        <span class="ff-culture-strip__item">Music</span>
+        <span class="ff-culture-strip__item">Local Makers</span>
+        <span class="ff-culture-strip__item">Good Energy</span>
+        <span class="ff-culture-strip__item">Art</span>
+        <span class="ff-culture-strip__item">Cannabis</span>
+        <span class="ff-culture-strip__item">Community</span>
+        <span class="ff-culture-strip__item">Music</span>
+        <span class="ff-culture-strip__item">Local Makers</span>
+        <span class="ff-culture-strip__item">Good Energy</span>
+      </div>
+    </div>
+
+    <!-- Live Event Status -->
+    <section class="ff-live-strip" aria-label="Live event status">
+      <div class="ff-container">
+        <div class="ff-live-strip__inner">
+          <div class="ff-status">
+            <span class="ff-status__dot" id="eventStatusDot" aria-hidden="true"></span>
+            <div>
+              <div class="ff-status__label" id="eventStatusLabel">Next First Friday</div>
+              <div class="ff-status__message" id="eventStatusMessage">
+                August 7 from 4:00 PM to 8:00 PM
+              </div>
+            </div>
+          </div>
+
+          <div class="ff-countdown" id="eventCountdown" aria-live="polite">
+            Loading countdown…
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Event Summary -->
     <section class="ff-event-bar" aria-label="Event date, time and location">
       <div class="ff-container">
 
         <div class="ff-event-bar__inner">
 
-          <div class="ff-event-detail">
+          <button
+            type="button"
+            class="ff-event-detail"
+            id="addToCalendar"
+            aria-label="Add First Friday to your calendar"
+          >
             <div class="ff-event-detail__icon" aria-hidden="true">📅</div>
             <div>
               <div class="ff-event-detail__label">Date</div>
               <div class="ff-event-detail__value">
                 Friday, August 7
               </div>
+              <span class="ff-event-detail__hint">Tap to add to calendar</span>
             </div>
-          </div>
+          </button>
 
           <div class="ff-event-detail">
             <div class="ff-event-detail__icon" aria-hidden="true">🕓</div>
@@ -999,7 +1768,13 @@
             </div>
           </div>
 
-          <div class="ff-event-detail">
+          <a
+            class="ff-event-detail"
+            href="https://www.google.com/maps/search/?api=1&query=10701+Madison+St+Luna+Pier+MI+48157"
+            target="_blank"
+            rel="noopener"
+            aria-label="Open 10701 Madison Street in maps"
+          >
             <div class="ff-event-detail__icon" aria-hidden="true">📍</div>
             <div>
               <div class="ff-event-detail__label">Location</div>
@@ -1007,8 +1782,9 @@
                 10701 Madison St<br>
                 Luna Pier, MI 48157
               </div>
+              <span class="ff-event-detail__hint">Tap to open maps</span>
             </div>
-          </div>
+          </a>
 
         </div>
       </div>
@@ -1018,45 +1794,45 @@
     <section class="ff-section" id="event-details">
       <div class="ff-container">
 
-        <div class="ff-section__eyebrow">What to expect</div>
+        <div class="ff-section__eyebrow ff-reveal">What to expect</div>
 
-        <h2 class="ff-section__title">
-          A community event hosted by people who live and work here.
+        <h2 class="ff-section__title ff-reveal" data-delay="1">
+          A community event with local flavor, real people, and something new every month.
         </h2>
 
-        <p class="ff-section__intro">
+        <p class="ff-section__intro ff-reveal" data-delay="2">
           First Friday brings together local businesses, friendly competition,
-          giveaways, and the Green Labs community. This month is only the
-          beginning, with more vendors and activities being added as details
-          are confirmed.
+          free Green Labs giveaways, water, and a relaxed evening in Luna Pier.
+          The local lineup includes glass art, handmade jewelry, and more,
+          with additional vendors and details still being added.
         </p>
 
         <div class="ff-card-grid">
 
-          <article class="ff-card">
+          <article class="ff-card ff-reveal">
             <div class="ff-card__icon" aria-hidden="true">⛺</div>
             <h3>Local Vendors</h3>
             <p>
-              Meet and support a growing lineup of local businesses, makers,
-              creators, and community partners.
+              Meet local makers, artists, creators, and small businesses,
+              including glass art and handmade jewelry.
             </p>
           </article>
 
-          <article class="ff-card">
+          <article class="ff-card ff-reveal" data-delay="1">
             <div class="ff-card__icon" aria-hidden="true">🎯</div>
-            <h3>Yard Games</h3>
+            <h3>Games & Challenges</h3>
             <p>
               Challenge the Green Labs or Dutch Touch Genetics crew at
-              cornhole and other outdoor games.
+              cornhole and a rotating selection of outdoor games.
             </p>
           </article>
 
-          <article class="ff-card">
+          <article class="ff-card ff-reveal" data-delay="2">
             <div class="ff-card__icon" aria-hidden="true">🎁</div>
-            <h3>Giveaways & Merch</h3>
+            <h3>Free Stuff & Surprises</h3>
             <p>
-              Promotional items, Green Labs merchandise, Dutch Touch Genetics
-              gear, and surprises will be available while supplies last.
+              Beat the crew, join event challenges, and keep an eye out for
+              Green Labs merchandise, complimentary items, and surprises.
             </p>
           </article>
 
@@ -1069,7 +1845,7 @@
     <section class="ff-section ff-section--soft">
       <div class="ff-container">
 
-        <div class="ff-challenge">
+        <div class="ff-challenge ff-reveal">
 
           <div class="ff-challenge__content">
 
@@ -1078,19 +1854,19 @@
             </div>
 
             <h2>
-              Challenge the crew and play for prizes.
+              Challenge the crew. Earn the bragging rights.
             </h2>
 
             <p>
               Step up to the Green Labs and Dutch Touch Genetics cornhole
-              boards. Beat the crew, participate with featured vendors, and
-              look for opportunities to score promotional merchandise and
-              complimentary items during the event.
+              boards or test your skills at one of the other games in rotation.
+              Beat the crew and you may walk away with free Green Labs gear,
+              complimentary items, or another event surprise.
             </p>
 
             <div class="ff-challenge__note">
-              Offers and promotional items are available while supplies last.
-              Participation requirements may vary.
+              Green Labs promotional items and event activities are available
+              while supplies last. Participation requirements may vary.
             </div>
 
           </div>
@@ -1108,28 +1884,112 @@
       </div>
     </section>
 
-    <!-- Batch -->
+
+    <!-- Culture Statement -->
     <section class="ff-section">
       <div class="ff-container">
+        <div class="ff-art-panel ff-reveal">
+          <div class="ff-art-panel__kicker">More than a vendor night</div>
+          <h2>Art, cannabis, music, makers, and the people shaping local culture.</h2>
+          <p>
+            First Friday is where premium cannabis meets creative energy.
+            Expect glass, jewelry, local art, brand activations, games, music,
+            and a rotating lineup that gives every month its own personality.
+          </p>
+          <div class="ff-art-tags" aria-label="First Friday culture">
+            <span class="ff-art-tag">Glass Art</span>
+            <span class="ff-art-tag">Handmade Jewelry</span>
+            <span class="ff-art-tag">Cannabis Culture</span>
+            <span class="ff-art-tag">Local Creators</span>
+            <span class="ff-art-tag">Music</span>
+            <span class="ff-art-tag">Community</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <div class="ff-section__eyebrow">Featured vendor</div>
+    <!-- Batch -->
+    <section class="ff-section ff-batch-feature">
+      <div class="ff-container">
 
-        <div class="ff-batch">
+        <div class="ff-section__eyebrow ff-reveal">Featured brand</div>
 
-          <div class="ff-batch__badge">
-            30%<br>OFF
+        <div class="ff-batch-showcase ff-reveal" data-delay="1">
+
+          <div class="ff-batch-showcase__gallery">
+            <figure class="ff-batch-shot ff-batch-shot--main">
+              <img
+                src="../assets/img/first-friday/batch/batch-mackinac-bridge.jpg"
+                alt="Batch Extracts product featured above the Mackinac Bridge"
+                loading="lazy"
+              >
+            </figure>
+
+            <figure class="ff-batch-shot">
+              <img
+                src="../assets/img/first-friday/batch/batch-avalanche.jpg"
+                alt="Batch Extracts avalanche campaign artwork"
+                loading="lazy"
+              >
+            </figure>
+
+            <figure class="ff-batch-shot">
+              <img
+                src="../assets/img/first-friday/batch/batch-helicopter.jpg"
+                alt="Batch Extracts helicopter campaign artwork"
+                loading="lazy"
+              >
+            </figure>
           </div>
 
-          <div>
-            <h3>Batch joins First Friday</h3>
+          <div class="ff-batch-showcase__content">
+            <img
+              src="../assets/img/first-friday/batch/batch-logo.svg"
+              alt="Batch Extracts"
+              class="ff-batch-showcase__logo"
+            >
+
+            <div class="ff-batch-showcase__label">August spotlight</div>
+
+            <h2>Featured Brand: Batch Extracts</h2>
+
             <p>
-              Meet the Batch team during the event and enjoy 30% off Batch
-              products all day at Green Labs.
+              Batch Extracts takes over the featured-brand spotlight for
+              August. Meet the team during First Friday, connect with the
+              people behind the brand, and explore their lineup at Green Labs.
             </p>
-          </div>
 
-          <div class="ff-batch__tag">
-            All day special
+            <div class="ff-batch-showcase__offer">
+              <span>30%</span>
+              <div>
+                <strong>Featured discount</strong>
+                <small>Batch products at Green Labs</small>
+              </div>
+            </div>
+
+            <div class="ff-batch-showcase__actions">
+              <a
+                class="ff-button ff-button--batch"
+                href="https://www.instagram.com/batchextracts/"
+                target="_blank"
+                rel="noopener"
+              >
+                Follow @batchextracts
+              </a>
+
+              <a
+                class="ff-text-link ff-text-link--light"
+                href="#event-details"
+              >
+                Meet Batch at First Friday →
+              </a>
+            </div>
+
+            <div class="ff-batch-showcase__note">
+              First Friday gives featured brands a place to connect directly
+              with the Green Labs community through events, creative promotion,
+              and in-store visibility.
+            </div>
           </div>
 
         </div>
@@ -1137,66 +1997,164 @@
       </div>
     </section>
 
-    <!-- Partnership -->
+    <!-- Lineup -->
     <section class="ff-section ff-section--soft">
       <div class="ff-container">
 
-        <div class="ff-section__eyebrow">The partnership</div>
+        <div class="ff-section__eyebrow ff-reveal">Who’s bringing the energy?</div>
 
-        <h2 class="ff-section__title">
-          Hosted by Green Labs. Featuring Dutch Touch Genetics.
+        <h2 class="ff-section__title ff-reveal" data-delay="1">
+          The brands, makers, and people shaping this month’s First Friday.
         </h2>
 
-        <p class="ff-section__intro">
-          First Friday brings both brands together for a recurring monthly
-          event centered on community, local partnerships, and a relaxed night
-          in Luna Pier.
+        <p class="ff-section__intro ff-reveal" data-delay="2">
+          Every month brings a different mix of featured brands, local creators,
+          small businesses, and new collaborations. Vendor profiles and full
+          details will be added as they are ready.
         </p>
 
-        <div class="ff-partners">
+        <div class="ff-lineup">
 
-          <article class="ff-partner">
-
-            <img
-              src="../assets/img/greenlabs-logo.png"
-              alt="Green Labs"
-              class="ff-partner__logo"
-              loading="lazy"
-            >
-
-            <div>
-              <div class="ff-partner__label">Hosted by</div>
-              <h3>Green Labs Provisions</h3>
-              <p>
-                Luna Pier’s home for premium cannabis, community events, and
-                award-winning Dutch Touch Genetics.
-              </p>
+          <article class="ff-lineup-card ff-reveal">
+            <div class="ff-lineup-card__logo-wrap">
+              <img
+                src="../assets/img/greenlabs-logo.png"
+                alt="Green Labs"
+                class="ff-lineup-card__logo"
+                loading="lazy"
+              >
             </div>
-
+            <div class="ff-lineup-card__eyebrow">Host</div>
+            <h3>Green Labs Provisions</h3>
+            <p>
+              Games, giveaways, water, community, and a place for local brands
+              and makers to connect with Luna Pier.
+            </p>
+            <a
+              class="ff-text-link"
+              href="https://www.instagram.com/greenlabsmi/"
+              target="_blank"
+              rel="noopener"
+            >
+              Follow @greenlabsmi →
+            </a>
           </article>
 
-          <article class="ff-partner ff-partner--dtg">
-
-            <img
-              src="../assets/img/dtg-logo.png"
-              alt="Dutch Touch Genetics"
-              class="ff-partner__logo"
-              loading="lazy"
-            >
-
-            <div>
-              <div class="ff-partner__label">Featuring</div>
-              <h3>Dutch Touch Genetics</h3>
-              <p>
-                Meet the team, play on the cooperative cornhole boards, and
-                connect with the people behind the genetics.
-              </p>
+          <article class="ff-lineup-card ff-lineup-card--gold ff-reveal" data-delay="1">
+            <div class="ff-lineup-card__logo-wrap">
+              <img
+                src="../assets/img/Dutch_Touch_Lion_Logo.png"
+                alt="Dutch Touch Genetics"
+                class="ff-lineup-card__logo"
+                loading="lazy"
+              >
             </div>
+            <div class="ff-lineup-card__eyebrow">Featured brand</div>
+            <h3>Dutch Touch Genetics</h3>
+            <p>
+              Meet the people behind the genetics and take your shot on the
+              cooperative Green Labs and Dutch Touch cornhole boards.
+            </p>
+          </article>
 
+          <article class="ff-lineup-card ff-lineup-card--gold ff-reveal" data-delay="2">
+            <div class="ff-lineup-card__logo-wrap">
+              <div class="ff-batch__badge" aria-hidden="true">30%<br>OFF</div>
+            </div>
+            <div class="ff-lineup-card__eyebrow">August featured vendor</div>
+            <h3>Batch Extracts</h3>
+            <p>
+              Meet the Batch team and enjoy a featured 30% discount on Batch
+              products at Green Labs.
+            </p>
+            <a
+              class="ff-text-link"
+              href="https://www.instagram.com/batchextracts/"
+              target="_blank"
+              rel="noopener"
+            >
+              Follow @batchextracts →
+            </a>
+          </article>
+
+          <article class="ff-lineup-card ff-lineup-card--coming ff-reveal" data-delay="3">
+            <div class="ff-lineup-card__logo-wrap" aria-hidden="true" style="font-size:2rem;">
+              ✦
+            </div>
+            <div class="ff-lineup-card__eyebrow">Local lineup</div>
+            <h3>Growing local lineup</h3>
+            <p>
+              Glass art, handmade jewelry, local makers, and more. New profiles
+              and vendor details will be announced as they are finalized.
+            </p>
           </article>
 
         </div>
 
+      </div>
+    </section>
+
+    <!-- Event Flow -->
+    <section class="ff-section">
+      <div class="ff-container">
+
+        <div class="ff-section__eyebrow ff-reveal">How the night flows</div>
+
+        <h2 class="ff-section__title ff-reveal" data-delay="1">
+          No rigid schedule. Just show up and make the night your own.
+        </h2>
+
+        <p class="ff-section__intro ff-reveal" data-delay="2">
+          Stop by for ten minutes or stay for the full evening. Games, vendor
+          conversations, giveaways, and community activity will continue
+          throughout the event.
+        </p>
+
+        <div class="ff-timeline">
+
+          <article class="ff-timeline__item ff-reveal">
+            <div class="ff-timeline__time">4:00 PM</div>
+            <h3>First Friday begins</h3>
+            <p>Vendors are set up and the games are open.</p>
+          </article>
+
+          <article class="ff-timeline__item ff-reveal" data-delay="1">
+            <div class="ff-timeline__time">All Evening</div>
+            <h3>Meet the vendors</h3>
+            <p>Browse, ask questions, connect, and support local creators.</p>
+          </article>
+
+          <article class="ff-timeline__item ff-reveal" data-delay="2">
+            <div class="ff-timeline__time">All Evening</div>
+            <h3>Challenge the crew</h3>
+            <p>Play cornhole and other games for bragging rights and free stuff.</p>
+          </article>
+
+          <article class="ff-timeline__item ff-reveal" data-delay="3">
+            <div class="ff-timeline__time">8:00 PM</div>
+            <h3>Wrap up</h3>
+            <p>Thanks for coming. The next First Friday follows the next month.</p>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Playlist -->
+    <section class="ff-section ff-section--soft">
+      <div class="ff-container">
+        <div class="ff-playlist ff-reveal">
+          <div class="ff-playlist__icon" aria-hidden="true">♫</div>
+          <div>
+            <h3>The First Friday soundtrack is coming.</h3>
+            <p>
+              We are building a monthly Spotify playlist to give every event its
+              own sound and personality. The playlist link will appear here once
+              it is ready.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1204,23 +2162,21 @@
     <section class="ff-section">
       <div class="ff-container">
 
-        <div class="ff-vendor">
+        <div class="ff-vendor ff-reveal">
 
           <div>
             <h2>Interested in becoming a vendor?</h2>
 
             <p>
               First Friday is growing into a recurring community gathering for
-              local businesses, artists, makers, food vendors, creators, and
-              organizations. Tell us what you do and how you would like to be
-              involved.
+              local businesses, artists, makers, creators, and organizations.
+              Tell us what you do and how you would like to be involved.
             </p>
           </div>
 
-          <!-- Replace this email address when ready -->
           <a
             class="ff-button"
-            href="mailto:YOUR-EMAIL-HERE?subject=First%20Friday%20Vendor%20Interest&body=Business%20name:%0AContact%20name:%0AEmail:%0AInstagram%20or%20website:%0AWhat%20do%20you%20offer:%0A"
+            href="mailto:dane@greenlabsmi.com?subject=First%20Friday%20Vendor%20Interest&body=Business%20name:%0AContact%20name:%0AEmail:%0AInstagram%20or%20website:%0AWhat%20do%20you%20offer:%0AHow%20would%20you%20like%20to%20participate:%0A"
           >
             Vendor Interest
           </a>
@@ -1234,52 +2190,72 @@
     <section class="ff-section ff-section--soft">
       <div class="ff-container">
 
-        <div class="ff-section__eyebrow">Before you visit</div>
+        <div class="ff-section__eyebrow ff-reveal">Before you visit</div>
 
-        <h2 class="ff-section__title">
+        <h2 class="ff-section__title ff-reveal" data-delay="1">
           First Friday questions
         </h2>
 
-        <div class="ff-faq">
+        <div class="ff-faq ff-reveal" data-delay="2">
 
           <details>
             <summary>Is the event free?</summary>
-            <p>
-              Yes. First Friday is free to attend, and no ticket is required.
-            </p>
+            <div class="ff-faq__answer"><div>
+              <p>
+                Yes. First Friday is free to attend, and no ticket is required.
+              </p>
+            </div></div>
           </details>
 
           <details>
             <summary>Do I need to stay for the entire event?</summary>
-            <p>
-              Not at all. Stop by for a few minutes, visit the vendors, play a
-              game, or hang out for the evening.
-            </p>
+            <div class="ff-faq__answer"><div>
+              <p>
+                Not at all. Stop by for a few minutes, visit the vendors, play a
+                game, or hang out for the evening.
+              </p>
+            </div></div>
           </details>
 
           <details>
-            <summary>Will there be food?</summary>
-            <p>
-              Food vendors may participate during future events, but food is
-              not guaranteed for this month. Additional details will be posted
-              as they are confirmed.
-            </p>
+            <summary>Will there be food or drinks?</summary>
+            <div class="ff-faq__answer"><div>
+              <p>
+                Food and drink vendors are not currently confirmed for this
+                month. Green Labs will have water available during the event.
+              </p>
+            </div></div>
           </details>
 
           <details>
-            <summary>Will more vendors be announced?</summary>
-            <p>
-              Yes. A growing group of local vendors is expected, and more
-              information will be added as it becomes available.
-            </p>
+            <summary>What kinds of vendors will be there?</summary>
+            <div class="ff-faq__answer"><div>
+              <p>
+                The lineup includes glass art, handmade jewelry, and other local
+                makers, with more details and vendor profiles added as they are finalized.
+              </p>
+            </div></div>
+          </details>
+
+          <details>
+            <summary>Will there be giveaways?</summary>
+            <div class="ff-faq__answer"><div>
+              <p>
+                Yes. Green Labs will be giving away promotional merchandise
+                and complimentary items, especially through games and event
+                challenges. Offers are available while supplies last.
+              </p>
+            </div></div>
           </details>
 
           <details>
             <summary>Does First Friday happen every month?</summary>
-            <p>
-              Yes. First Friday returns on the first Friday of every month with
-              new vendors, activities, collaborations, and giveaways.
-            </p>
+            <div class="ff-faq__answer"><div>
+              <p>
+                Yes. First Friday returns on the first Friday of every month with
+                new vendors, activities, collaborations, and surprises.
+              </p>
+            </div></div>
           </details>
 
         </div>
@@ -1306,6 +2282,14 @@
         <a href="../">Green Labs Home</a>
 
         <a
+          href="https://www.instagram.com/greenlabsmi/"
+          target="_blank"
+          rel="noopener"
+        >
+          Instagram
+        </a>
+
+        <a
           href="https://www.google.com/maps/search/?api=1&query=10701+Madison+St+Luna+Pier+MI+48157"
           target="_blank"
           rel="noopener"
@@ -1323,27 +2307,171 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
+      const firstFridayEvent = {
+        title: "First Friday at Green Labs",
+        start: "2026-08-07T16:00:00-04:00",
+        end: "2026-08-07T20:00:00-04:00",
+        location: "10701 Madison St, Luna Pier, MI 48157",
+        description:
+          "Join Green Labs, Dutch Touch Genetics, Batch, and local vendors for First Friday in Luna Pier. Enjoy games, vendor experiences, Green Labs giveaways, water, and community activities.",
+        url: "https://greenlabsmi.com/firstfriday/"
+      };
+
+      /* Age gate */
       const ageGate = document.getElementById("ageGate");
       const passButton = document.getElementById("btnAgePass");
       const failButton = document.getElementById("btnAgeFail");
 
-      if (!ageGate || !passButton || !failButton) return;
+      if (ageGate && passButton && failButton) {
+        const hasPassedAgeGate =
+          localStorage.getItem("greenLabsAgeVerified") === "true";
 
-      const hasPassedAgeGate =
-        localStorage.getItem("greenLabsAgeVerified") === "true";
+        if (!hasPassedAgeGate) {
+          ageGate.hidden = false;
+        }
 
-      if (!hasPassedAgeGate) {
-        ageGate.hidden = false;
+        passButton.addEventListener("click", () => {
+          localStorage.setItem("greenLabsAgeVerified", "true");
+          ageGate.hidden = true;
+        });
+
+        failButton.addEventListener("click", () => {
+          window.location.href = "https://www.google.com/";
+        });
       }
 
-      passButton.addEventListener("click", () => {
-        localStorage.setItem("greenLabsAgeVerified", "true");
-        ageGate.hidden = true;
-      });
+      /* Scroll reveal */
+      const revealItems = document.querySelectorAll(".ff-reveal");
 
-      failButton.addEventListener("click", () => {
-        window.location.href = "https://www.google.com/";
-      });
+      if ("IntersectionObserver" in window) {
+        const revealObserver = new IntersectionObserver(
+          (entries, observer) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            });
+          },
+          { threshold: 0.14 }
+        );
+
+        revealItems.forEach((item) => revealObserver.observe(item));
+      } else {
+        revealItems.forEach((item) => item.classList.add("is-visible"));
+      }
+
+      /* Countdown and automatic status */
+      const statusLabel = document.getElementById("eventStatusLabel");
+      const statusMessage = document.getElementById("eventStatusMessage");
+      const statusDot = document.getElementById("eventStatusDot");
+      const countdown = document.getElementById("eventCountdown");
+
+      const eventStart = new Date(firstFridayEvent.start);
+      const eventEnd = new Date(firstFridayEvent.end);
+
+      const formatCountdown = (difference) => {
+        const totalSeconds = Math.max(0, Math.floor(difference / 1000));
+        const days = Math.floor(totalSeconds / 86400);
+        const hours = Math.floor((totalSeconds % 86400) / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+
+        if (days > 0) {
+          return `${days} day${days === 1 ? "" : "s"} • ${hours} hour${hours === 1 ? "" : "s"}`;
+        }
+
+        if (hours > 0) {
+          return `${hours} hour${hours === 1 ? "" : "s"} • ${minutes} minute${minutes === 1 ? "" : "s"}`;
+        }
+
+        return `${minutes} minute${minutes === 1 ? "" : "s"}`;
+      };
+
+      const updateEventStatus = () => {
+        const now = new Date();
+
+        if (now < eventStart) {
+          statusLabel.textContent = "Next First Friday";
+          statusMessage.textContent = "August 7 from 4:00 PM to 8:00 PM";
+          countdown.textContent = `${formatCountdown(eventStart - now)} away`;
+          statusDot.style.background = "#7ce0b4";
+          statusDot.style.boxShadow = "0 0 0 6px rgba(124,224,180,.12)";
+          return;
+        }
+
+        if (now >= eventStart && now < eventEnd) {
+          statusLabel.textContent = "Live now";
+          statusMessage.textContent = "First Friday is happening at Green Labs";
+          countdown.textContent = `${formatCountdown(eventEnd - now)} remaining`;
+          statusDot.style.background = "#ff6b6b";
+          statusDot.style.boxShadow = "0 0 0 6px rgba(255,107,107,.14)";
+          return;
+        }
+
+        statusLabel.textContent = "Thanks for coming";
+        statusMessage.textContent = "The next First Friday returns next month";
+        countdown.textContent = "See you next First Friday";
+        statusDot.style.background = "#dc951e";
+        statusDot.style.boxShadow = "0 0 0 6px rgba(220,149,30,.14)";
+      };
+
+      updateEventStatus();
+      window.setInterval(updateEventStatus, 60000);
+
+      /* Add to calendar */
+      const calendarButton = document.getElementById("addToCalendar");
+
+      const toICSDate = (dateString) => {
+        return new Date(dateString)
+          .toISOString()
+          .replace(/[-:]/g, "")
+          .replace(/\.\d{3}Z$/, "Z");
+      };
+
+      const escapeICS = (value) => {
+        return String(value)
+          .replace(/\\/g, "\\\\")
+          .replace(/\n/g, "\\n")
+          .replace(/,/g, "\\,")
+          .replace(/;/g, "\\;");
+      };
+
+      if (calendarButton) {
+        calendarButton.addEventListener("click", () => {
+          const icsContent = [
+            "BEGIN:VCALENDAR",
+            "VERSION:2.0",
+            "PRODID:-//Green Labs//First Friday//EN",
+            "CALSCALE:GREGORIAN",
+            "METHOD:PUBLISH",
+            "BEGIN:VEVENT",
+            `UID:first-friday-2026-08-07@greenlabsmi.com`,
+            `DTSTAMP:${toICSDate(new Date().toISOString())}`,
+            `DTSTART:${toICSDate(firstFridayEvent.start)}`,
+            `DTEND:${toICSDate(firstFridayEvent.end)}`,
+            `SUMMARY:${escapeICS(firstFridayEvent.title)}`,
+            `DESCRIPTION:${escapeICS(firstFridayEvent.description + "\\n\\n" + firstFridayEvent.url)}`,
+            `LOCATION:${escapeICS(firstFridayEvent.location)}`,
+            `URL:${firstFridayEvent.url}`,
+            "END:VEVENT",
+            "END:VCALENDAR"
+          ].join("\r\n");
+
+          const blob = new Blob([icsContent], {
+            type: "text/calendar;charset=utf-8"
+          });
+
+          const calendarURL = URL.createObjectURL(blob);
+          const downloadLink = document.createElement("a");
+
+          downloadLink.href = calendarURL;
+          downloadLink.download = "first-friday-green-labs.ics";
+          document.body.appendChild(downloadLink);
+          downloadLink.click();
+          downloadLink.remove();
+
+          window.setTimeout(() => URL.revokeObjectURL(calendarURL), 1000);
+        });
+      }
     });
   </script>
 
