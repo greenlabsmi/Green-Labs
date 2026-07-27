@@ -1503,6 +1503,109 @@
   font-size: .65em;
 }
 
+    /* Festival confetti */
+
+.ff-confetti {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.ff-confetti span {
+  position: absolute;
+  top: -12%;
+  width: 11px;
+  height: 25px;
+  border-radius: 2px;
+  background: #f0b24b;
+  opacity: 0;
+}
+
+.ff-confetti span:nth-child(3n) {
+  background: #0b7d5a;
+}
+
+.ff-confetti span:nth-child(3n + 1) {
+  background: #ffffff;
+}
+
+.ff-confetti span:nth-child(4n) {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+}
+
+.ff-confetti span:nth-child(5n) {
+  background: #72b9eb;
+}
+
+.ff-confetti span:nth-child(1)  { left: 3%; }
+.ff-confetti span:nth-child(2)  { left: 9%; }
+.ff-confetti span:nth-child(3)  { left: 15%; }
+.ff-confetti span:nth-child(4)  { left: 21%; }
+.ff-confetti span:nth-child(5)  { left: 27%; }
+.ff-confetti span:nth-child(6)  { left: 33%; }
+.ff-confetti span:nth-child(7)  { left: 39%; }
+.ff-confetti span:nth-child(8)  { left: 45%; }
+.ff-confetti span:nth-child(9)  { left: 51%; }
+.ff-confetti span:nth-child(10) { left: 57%; }
+.ff-confetti span:nth-child(11) { left: 63%; }
+.ff-confetti span:nth-child(12) { left: 69%; }
+.ff-confetti span:nth-child(13) { left: 75%; }
+.ff-confetti span:nth-child(14) { left: 81%; }
+.ff-confetti span:nth-child(15) { left: 87%; }
+.ff-confetti span:nth-child(16) { left: 92%; }
+.ff-confetti span:nth-child(17) { left: 96%; }
+.ff-confetti span:nth-child(18) { left: 99%; }
+
+.ff-festival-flash.is-active .ff-confetti span {
+  animation: ffConfettiFall 1700ms ease-out forwards;
+}
+
+.ff-festival-flash.is-active .ff-confetti span:nth-child(2n) {
+  animation-delay: 70ms;
+}
+
+.ff-festival-flash.is-active .ff-confetti span:nth-child(3n) {
+  animation-delay: 140ms;
+}
+
+.ff-festival-flash.is-active .ff-confetti span:nth-child(5n) {
+  animation-delay: 220ms;
+}
+
+@keyframes ffConfettiFall {
+  0% {
+    opacity: 0;
+    transform:
+      translate3d(0, -12vh, 0)
+      rotate(0deg)
+      scale(.65);
+  }
+
+  12% {
+    opacity: 1;
+  }
+
+  55% {
+    opacity: 1;
+    transform:
+      translate3d(30px, 58vh, 0)
+      rotate(420deg)
+      scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform:
+      translate3d(-25px, 118vh, 0)
+      rotate(920deg)
+      scale(.8);
+  }
+}
+    
 .ff-festival-flash.is-active {
   visibility: visible;
   animation: ffFestivalLayer 1350ms ease forwards;
@@ -1595,6 +1698,142 @@
     transform: scale(1.08) rotate(2deg);
   }
 }
+
+    /* Permanent Festival Mode unlock */
+
+body.ff-festival-unlocked {
+  background:
+    radial-gradient(
+      circle at 12% 8%,
+      rgba(240, 178, 75, .24),
+      transparent 30rem
+    ),
+    radial-gradient(
+      circle at 88% 18%,
+      rgba(11, 125, 90, .22),
+      transparent 34rem
+    ),
+    linear-gradient(
+      180deg,
+      #fff8e8 0%,
+      #eef8f2 45%,
+      #fff3da 100%
+    );
+}
+
+body.ff-festival-unlocked .ff-topbar {
+  background:
+    linear-gradient(
+      90deg,
+      #062e23 0%,
+      #0b7d5a 52%,
+      #8a5a0d 100%
+    );
+}
+
+body.ff-festival-unlocked .ff-countdown-section {
+  background:
+    radial-gradient(
+      circle at 10% 25%,
+      rgba(240, 178, 75, .2),
+      transparent 25rem
+    ),
+    radial-gradient(
+      circle at 90% 15%,
+      rgba(11, 125, 90, .18),
+      transparent 28rem
+    ),
+    linear-gradient(
+      180deg,
+      #fff6df,
+      #edf8f2
+    );
+}
+
+body.ff-festival-unlocked .ff-countdown-poster {
+  box-shadow:
+    0 38px 100px rgba(11, 125, 90, .28),
+    0 0 0 4px rgba(240, 178, 75, .28),
+    0 0 70px rgba(240, 178, 75, .18),
+    inset 0 0 0 1px rgba(0, 0, 0, .06);
+}
+
+body.ff-festival-unlocked .ff-countdown-poster__remix {
+  background: #071f18;
+  color: #fff;
+  border-color: rgba(240, 178, 75, .65);
+  box-shadow:
+    0 8px 24px rgba(7, 31, 24, .25),
+    0 0 0 4px rgba(240, 178, 75, .13);
+}
+
+body.ff-festival-unlocked .ff-remix-count {
+  color: #f0b24b;
+}
+
+body.ff-festival-unlocked .ff-culture-strip {
+  background:
+    linear-gradient(
+      90deg,
+      #062e23,
+      #0b7d5a,
+      #dc951e,
+      #0b7d5a,
+      #062e23
+    );
+}
+
+body.ff-festival-unlocked .ff-culture-strip__track {
+  animation-duration: 10s;
+}
+
+body.ff-festival-unlocked .ff-section--soft {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(184, 239, 213, .46),
+      rgba(255, 243, 218, .78)
+    );
+}
+
+body.ff-festival-unlocked .ff-event-bar__inner {
+  box-shadow:
+    0 20px 55px rgba(11, 125, 90, .17),
+    0 0 0 2px rgba(240, 178, 75, .12);
+}
+
+body.ff-festival-unlocked .ff-countdown-pulse {
+  background: #f0b24b;
+  animation-name: ffFestivalPulse;
+}
+
+body.ff-festival-unlocked .ff-footer {
+  background:
+    linear-gradient(
+      120deg,
+      #062e23,
+      #0b5f46,
+      #6f4809
+    );
+}
+
+@keyframes ffFestivalPulse {
+  0% {
+    transform: scale(.9);
+    box-shadow: 0 0 0 0 rgba(240, 178, 75, .65);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 12px rgba(240, 178, 75, 0);
+  }
+
+  100% {
+    transform: scale(.9);
+    box-shadow: 0 0 0 0 rgba(240, 178, 75, 0);
+  }
+}
+    
 
 /* Whole-page response */
 
@@ -2886,6 +3125,18 @@ body.ff-festival-mode .ff-footer {
   color: #fff;
   transform: translateY(-2px);
 }
+
+    @media (max-width: 620px) {
+  .ff-countdown-actions {
+    padding-top: 27px;
+  }
+
+  .ff-countdown-actions__close {
+    top: -13px;
+    right: 12px;
+  }
+}
+    
     @media (prefers-reduced-motion: reduce) {
       html {
         scroll-behavior: auto;
@@ -4193,10 +4444,17 @@ const seconds = totalSeconds % 60;
   const showRemixCount = () => {
     if (!remixCountElement) return;
 
-    remixCountElement.textContent =
-      remixCount % 5 === 0
-        ? "FULL REMIX!"
-        : `REMIX ×${remixCount}`;
+if (remixCount === 5) {
+  remixCountElement.textContent = "FESTIVAL MODE!";
+} else if (remixCount === 15) {
+  remixCountElement.textContent = "FESTIVAL ENCORE!";
+} else if (remixCount === 30) {
+  remixCountElement.textContent = "MEGA REMIX!";
+} else if (remixCount === 50) {
+  remixCountElement.textContent = "SELF-DESTRUCT!";
+} else {
+  remixCountElement.textContent = `REMIX ×${remixCount}`;
+}
 
     remixCountElement.classList.remove("is-visible");
     void remixCountElement.offsetWidth;
@@ -4216,12 +4474,21 @@ const seconds = totalSeconds % 60;
   };
 
         const triggerFestivalMode = () => {
+  /*
+    Festival unlocked remains permanently.
+    Festival mode is only the temporary movie effect.
+  */
+  document.body.classList.add("ff-festival-unlocked");
   document.body.classList.remove("ff-festival-mode");
 
   if (festivalFlash) {
     festivalFlash.classList.remove("is-active");
   }
 
+  /*
+    Force the browser to restart the animations,
+    including when the effect replays at click 15.
+  */
   void document.body.offsetWidth;
 
   document.body.classList.add("ff-festival-mode");
@@ -4230,14 +4497,118 @@ const seconds = totalSeconds % 60;
     festivalFlash.classList.add("is-active");
   }
 
+  if (remixCountElement) {
+    remixCountElement.textContent = "UNLOCKED";
+    remixCountElement.classList.add("is-visible");
+  }
+
+  const remixInstruction =
+    document.querySelector(".ff-remix-instruction");
+
+  if (remixInstruction) {
+    remixInstruction.textContent = "Festival mode";
+  }
+
   window.setTimeout(() => {
     document.body.classList.remove("ff-festival-mode");
 
     if (festivalFlash) {
       festivalFlash.classList.remove("is-active");
     }
-  }, 1400);
+  }, 1750);
 };
+  
+
+const triggerMegaRemix = () => {
+  document.body.classList.remove("ff-mega-remix");
+  void document.body.offsetWidth;
+  document.body.classList.add("ff-mega-remix");
+
+  if (festivalFlash) {
+    festivalFlash.classList.remove("is-active");
+    void festivalFlash.offsetWidth;
+    festivalFlash.classList.add("is-active");
+  }
+
+  if (remixCountElement) {
+    remixCountElement.textContent = "MEGA REMIX ×30";
+    remixCountElement.classList.add("is-visible");
+  }
+
+  const festivalStamp = document.querySelector(
+    ".ff-festival-flash__stamp"
+  );
+
+  if (festivalStamp) {
+    festivalStamp.innerHTML =
+      "<span>✦</span> MEGA REMIX <span>✦</span>";
+  }
+
+  window.setTimeout(() => {
+    document.body.classList.remove("ff-mega-remix");
+
+    if (festivalFlash) {
+      festivalFlash.classList.remove("is-active");
+    }
+
+    if (festivalStamp) {
+      festivalStamp.innerHTML =
+        "<span>✦</span> FESTIVAL MODE <span>✦</span>";
+    }
+  }, 2200);
+};
+
+const triggerSelfDestruct = () => {
+  document.body.classList.remove("ff-self-destruct");
+  void document.body.offsetWidth;
+  document.body.classList.add("ff-self-destruct");
+
+  if (remixCountElement) {
+    remixCountElement.textContent = "SELF-DESTRUCT!";
+    remixCountElement.classList.add("is-visible");
+  }
+
+  const festivalStamp = document.querySelector(
+    ".ff-festival-flash__stamp"
+  );
+
+  if (festivalStamp) {
+    festivalStamp.innerHTML =
+      "<span>⚠</span> SELF-DESTRUCT <span>⚠</span>";
+  }
+
+  if (festivalFlash) {
+    festivalFlash.classList.remove("is-active");
+    void festivalFlash.offsetWidth;
+    festivalFlash.classList.add("is-active");
+  }
+
+  window.setTimeout(() => {
+    document.body.classList.add("ff-screen-destroyed");
+  }, 1450);
+
+  window.setTimeout(() => {
+    document.body.classList.remove(
+      "ff-self-destruct",
+      "ff-screen-destroyed"
+    );
+
+    if (festivalFlash) {
+      festivalFlash.classList.remove("is-active");
+    }
+
+    if (festivalStamp) {
+      festivalStamp.innerHTML =
+        "<span>✦</span> FESTIVAL MODE <span>✦</span>";
+    }
+
+    if (remixCountElement) {
+      remixCountElement.textContent = "SYSTEM RESTORED";
+      remixCountElement.classList.add("is-visible");
+    }
+  }, 5000);
+};
+
         
   countdownCard.addEventListener("click", () => {
     /*
@@ -4260,13 +4631,21 @@ if (!actionsAreOpen) {
 
     window.clearTimeout(remixResetTimer);
 
-    remixResetTimer = window.setTimeout(() => {
-      remixCount = 0;
+   /*
+  Hide the ordinary click counter after a short pause,
+  but never reset the actual lifetime click total.
+*/
+remixResetTimer = window.setTimeout(() => {
+  if (!remixCountElement) return;
 
-      if (remixCountElement) {
-        remixCountElement.classList.remove("is-visible");
-      }
-    }, 3500);
+  if (document.body.classList.contains("ff-festival-unlocked")) {
+    remixCountElement.textContent = `REMIX ×${remixCount}`;
+    remixCountElement.classList.add("is-visible");
+    return;
+  }
+
+  remixCountElement.classList.remove("is-visible");
+}, 3500);
 
     countdownThemes.forEach((themeClass) => {
       countdownCard.classList.remove(themeClass);
@@ -4288,13 +4667,51 @@ if (!actionsAreOpen) {
 
     void countdownCard.offsetWidth;
 
-    if (remixCount % 5 === 0) {
+    const festivalAlreadyUnlocked =
+  document.body.classList.contains("ff-festival-unlocked");
+
+if (remixCount === 5 && !festivalAlreadyUnlocked) {
+  /*
+    First major reward:
+    permanently unlock Festival Mode.
+  */
   countdownCard.classList.add("is-full-remix");
   triggerBurst();
   triggerFestivalMode();
-}else {
-      countdownCard.classList.add("is-remixing");
-    }
+
+} else if (remixCount === 15) {
+  /*
+    Festival encore:
+    replay the cinematic celebration.
+  */
+  countdownCard.classList.add("is-full-remix");
+  triggerBurst();
+  triggerFestivalMode();
+
+  if (remixCountElement) {
+    remixCountElement.textContent = "FESTIVAL ENCORE!";
+    remixCountElement.classList.add("is-visible");
+  }
+
+} else if (remixCount === 30) {
+  /*
+    Larger milestone.
+    We will add triggerMegaRemix() next.
+  */
+  countdownCard.classList.add("is-full-remix");
+  triggerBurst();
+  triggerMegaRemix();
+
+} else if (remixCount === 50) {
+  /*
+    Fake self-destruct sequence.
+    We will add triggerSelfDestruct() next.
+  */
+  triggerSelfDestruct();
+
+} else {
+  countdownCard.classList.add("is-remixing");
+}
 
     window.setTimeout(() => {
       countdownCard.classList.remove(
@@ -4375,9 +4792,31 @@ if (!actionsAreOpen) {
   aria-hidden="true"
 >
   <div class="ff-festival-flash__ring"></div>
+
+  <div class="ff-confetti" aria-hidden="true">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
   <div class="ff-festival-flash__stamp">
     <span>✦</span>
-    FULL REMIX
+    FESTIVAL MODE
     <span>✦</span>
   </div>
 </div>
