@@ -1892,6 +1892,350 @@ body.ff-festival-mode .ff-footer {
     transform: translateY(-3px) rotate(-.15deg) scale(1.005);
   }
 }
+
+/* =========================================================
+   50-CLICK SELF-DESTRUCT SEQUENCE
+   ========================================================= */
+
+/* Red emergency wash over the entire page */
+body.ff-self-destruct::before {
+  content: "";
+  position: fixed;
+  z-index: 999990;
+  inset: 0;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.035) 0,
+      rgba(255, 255, 255, 0.035) 1px,
+      transparent 1px,
+      transparent 4px
+    ),
+    radial-gradient(
+      circle at center,
+      rgba(255, 50, 35, 0.08),
+      rgba(120, 0, 0, 0.48)
+    );
+  animation: ffEmergencyFlash 420ms steps(2, end) infinite;
+}
+
+/* Moving warning stripes */
+body.ff-self-destruct::after {
+  content: "";
+  position: fixed;
+  z-index: 999991;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.28;
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      transparent 0,
+      transparent 34px,
+      rgba(255, 208, 0, 0.55) 34px,
+      rgba(255, 208, 0, 0.55) 48px,
+      rgba(0, 0, 0, 0.3) 48px,
+      rgba(0, 0, 0, 0.3) 62px
+    );
+  animation: ffWarningStripes 900ms linear infinite;
+}
+
+/* Shake everything except the fullscreen message */
+body.ff-self-destruct > *:not(.ff-festival-flash) {
+  animation: ffSystemShake 110ms linear infinite;
+}
+
+/* Keep the fullscreen layer visible for the whole sequence */
+body.ff-self-destruct .ff-festival-flash.is-active {
+  visibility: visible;
+  opacity: 1;
+  animation: ffSelfDestructOverlay 5400ms linear forwards;
+}
+
+/* Turn the normal green/gold flash into an emergency red flash */
+body.ff-self-destruct .ff-festival-flash::before {
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(255, 245, 205, 0.98) 0%,
+      rgba(255, 70, 35, 0.92) 24%,
+      rgba(115, 0, 0, 0.9) 52%,
+      rgba(0, 0, 0, 0.96) 78%
+    );
+  animation: ffCriticalWash 5400ms ease-in-out forwards;
+}
+
+/* Red alert ring */
+body.ff-self-destruct .ff-festival-flash__ring {
+  border-color: rgba(255, 55, 35, 0.95);
+  box-shadow:
+    0 0 40px rgba(255, 35, 20, 0.8),
+    inset 0 0 40px rgba(255, 35, 20, 0.45);
+  animation: ffCriticalRing 800ms ease-out infinite;
+}
+
+/* Emergency message box */
+body.ff-self-destruct .ff-festival-flash__stamp {
+  max-width: min(92vw, 940px);
+  border-color: #ff3b25;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      #150000 0,
+      #150000 3px,
+      #260000 3px,
+      #260000 6px
+    );
+  color: #fff;
+  box-shadow:
+    14px 14px 0 #ff3b25,
+    -14px -14px 0 #ffd54a,
+    0 0 80px rgba(255, 35, 20, 0.75);
+  text-shadow:
+    3px 0 #ff3b25,
+    -3px 0 #28d7ff;
+  opacity: 1;
+  transform: scale(1);
+  animation: ffCriticalStamp 180ms steps(2, end) infinite;
+}
+
+body.ff-self-destruct .ff-festival-flash__stamp span {
+  color: #ffd54a;
+}
+
+/* The actual fake screen shutdown */
+body.ff-screen-destroyed {
+  overflow: hidden;
+  background: #000;
+}
+
+body.ff-screen-destroyed > *:not(.ff-festival-flash) {
+  pointer-events: none;
+  animation: ffScreenCollapse 900ms cubic-bezier(.7, 0, .3, 1) forwards;
+  transform-origin: center center;
+}
+
+/* Blackout after the screen collapses */
+body.ff-screen-destroyed::before {
+  background: #000;
+  opacity: 1;
+  animation: none;
+}
+
+body.ff-screen-destroyed::after {
+  content: "SYSTEM OFFLINE";
+  display: grid;
+  place-items: center;
+  color: rgba(255, 255, 255, 0.7);
+  background: #000;
+  opacity: 1;
+  font-family: "Outfit", sans-serif;
+  font-size: clamp(1rem, 3vw, 2rem);
+  font-weight: 900;
+  letter-spacing: 0.35em;
+  animation: ffOfflineMessage 1300ms ease forwards;
+}
+
+/* Reboot effect */
+body.ff-system-rebooting > *:not(.ff-festival-flash) {
+  animation: ffSystemReboot 950ms cubic-bezier(.2, .8, .2, 1);
+}
+
+@keyframes ffEmergencyFlash {
+  0% {
+    opacity: 0.28;
+  }
+
+  100% {
+    opacity: 0.72;
+  }
+}
+
+@keyframes ffWarningStripes {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 88px 88px;
+  }
+}
+
+@keyframes ffSystemShake {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  25% {
+    transform: translate(-3px, 2px);
+  }
+
+  50% {
+    transform: translate(3px, -2px);
+  }
+
+  75% {
+    transform: translate(-2px, -1px);
+  }
+
+  100% {
+    transform: translate(2px, 2px);
+  }
+}
+
+@keyframes ffSelfDestructOverlay {
+  0% {
+    visibility: visible;
+    opacity: 0;
+  }
+
+  4%,
+  72% {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  88% {
+    visibility: visible;
+    opacity: 0;
+  }
+
+  100% {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+@keyframes ffCriticalWash {
+  0% {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+
+  12% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  55% {
+    opacity: 0.9;
+    transform: scale(1.3);
+  }
+
+  78% {
+    opacity: 1;
+    transform: scale(2);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(2.3);
+  }
+}
+
+@keyframes ffCriticalRing {
+  0% {
+    opacity: 0.15;
+    transform: scale(0.65);
+  }
+
+  55% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.45);
+  }
+}
+
+@keyframes ffCriticalStamp {
+  0% {
+    transform: translate(-3px, 1px) rotate(-0.4deg);
+  }
+
+  50% {
+    transform: translate(3px, -1px) rotate(0.4deg);
+  }
+
+  100% {
+    transform: translate(-1px, -2px) rotate(0deg);
+  }
+}
+
+@keyframes ffScreenCollapse {
+  0% {
+    opacity: 1;
+    filter: brightness(1);
+    transform: scale(1, 1);
+  }
+
+  58% {
+    opacity: 1;
+    filter: brightness(2.8) contrast(2);
+    transform: scale(1, 0.025);
+  }
+
+  78% {
+    opacity: 1;
+    filter: brightness(5);
+    transform: scale(0.18, 0.012);
+  }
+
+  100% {
+    opacity: 0;
+    filter: brightness(0);
+    transform: scale(0, 0);
+  }
+}
+
+@keyframes ffOfflineMessage {
+  0%,
+  32% {
+    color: transparent;
+  }
+
+  38%,
+  44% {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  45%,
+  62% {
+    color: transparent;
+  }
+
+  63%,
+  100% {
+    color: rgba(255, 255, 255, 0.72);
+  }
+}
+
+@keyframes ffSystemReboot {
+  0% {
+    opacity: 0;
+    filter: brightness(3) saturate(0);
+    transform: scaleY(0.02);
+  }
+
+  45% {
+    opacity: 1;
+    filter: brightness(1.8) saturate(0.4);
+    transform: scaleY(1.02);
+  }
+
+  70% {
+    filter: brightness(1.15) saturate(1.25);
+    transform: scaleY(0.99);
+  }
+
+  100% {
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
+}
     
 /* Expanded buttons */
 
@@ -4559,18 +4903,112 @@ const triggerMegaRemix = () => {
 };
 
 const triggerSelfDestruct = () => {
-  document.body.classList.remove("ff-self-destruct");
-  void document.body.offsetWidth;
-  document.body.classList.add("ff-self-destruct");
-
-  if (remixCountElement) {
-    remixCountElement.textContent = "SELF-DESTRUCT!";
-    remixCountElement.classList.add("is-visible");
-  }
-
   const festivalStamp = document.querySelector(
     ".ff-festival-flash__stamp"
   );
+
+  const setDestructMessage = (message) => {
+    if (!festivalStamp) return;
+
+    festivalStamp.innerHTML =
+      `<span>⚠</span> ${message} <span>⚠</span>`;
+  };
+
+  /*
+    Clear any unfinished effects first so the sequence
+    always starts cleanly.
+  */
+  document.body.classList.remove(
+    "ff-self-destruct",
+    "ff-screen-destroyed",
+    "ff-system-rebooting"
+  );
+
+  if (festivalFlash) {
+    festivalFlash.classList.remove("is-active");
+  }
+
+  void document.body.offsetWidth;
+
+  document.body.classList.add("ff-self-destruct");
+
+  if (festivalFlash) {
+    festivalFlash.classList.add("is-active");
+  }
+
+  if (remixCountElement) {
+    remixCountElement.textContent = "SELF-DESTRUCT ARMED";
+    remixCountElement.classList.add("is-visible");
+  }
+
+  setDestructMessage("SELF-DESTRUCT ARMED");
+
+  window.setTimeout(() => {
+    setDestructMessage("3");
+  }, 700);
+
+  window.setTimeout(() => {
+    setDestructMessage("2");
+  }, 1400);
+
+  window.setTimeout(() => {
+    setDestructMessage("1");
+  }, 2100);
+
+  window.setTimeout(() => {
+    setDestructMessage("CRITICAL FAILURE");
+  }, 2800);
+
+  /*
+    Collapse the visible website into a thin line,
+    then completely black it out.
+  */
+  window.setTimeout(() => {
+    document.body.classList.add("ff-screen-destroyed");
+
+    if (festivalFlash) {
+      festivalFlash.classList.remove("is-active");
+    }
+  }, 3400);
+
+  /*
+    Begin restoring the website.
+  */
+  window.setTimeout(() => {
+    document.body.classList.remove(
+      "ff-self-destruct",
+      "ff-screen-destroyed"
+    );
+
+    document.body.classList.add("ff-system-rebooting");
+
+    if (remixCountElement) {
+      remixCountElement.textContent = "SYSTEM REBOOTING…";
+      remixCountElement.classList.add("is-visible");
+    }
+  }, 5400);
+
+  /*
+    Finish the reboot and return the overlay to its normal text.
+  */
+  window.setTimeout(() => {
+    document.body.classList.remove("ff-system-rebooting");
+
+    if (festivalFlash) {
+      festivalFlash.classList.remove("is-active");
+    }
+
+    if (festivalStamp) {
+      festivalStamp.innerHTML =
+        "<span>✦</span> FESTIVAL MODE <span>✦</span>";
+    }
+
+    if (remixCountElement) {
+      remixCountElement.textContent = "SYSTEM RESTORED";
+      remixCountElement.classList.add("is-visible");
+    }
+  }, 6500);
+};
 
   if (festivalStamp) {
     festivalStamp.innerHTML =
