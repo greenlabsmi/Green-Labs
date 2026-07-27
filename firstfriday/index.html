@@ -2622,32 +2622,44 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
     }
 
     .ff-batch-showcase__gallery {
-      min-height: 680px;
-      display: grid;
-      grid-template-columns: 1.22fr .78fr;
-      grid-template-rows: 1fr 1fr;
-      gap: 8px;
-      padding: 8px;
-      background: #dbeeff;
-    }
+  min-height: 560px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(220px, .65fr);
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  padding: 8px;
+  background: #dbeeff;
+}
 
-    .ff-batch-shot {
-      margin: 0;
-      overflow: hidden;
-      border-radius: 20px;
-      background: #b9d8f5;
-    }
+  .ff-batch-shot {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #b9d8f5;
+}
 
     .ff-batch-shot--main {
       grid-row: 1 / 3;
     }
 
     .ff-batch-shot img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 700ms cubic-bezier(.2,.7,.2,1);
-    }
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 700ms cubic-bezier(.2,.7,.2,1);
+}
+
+.ff-batch-shot--main img {
+  object-position: center;
+}
+
+.ff-batch-shot:not(.ff-batch-shot--main) img {
+  object-position: center 42%;
+}
 
     .ff-batch-shot:hover img {
       transform: scale(1.045);
@@ -3201,8 +3213,9 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       }
 
       .ff-batch-showcase__gallery {
-        min-height: 560px;
-      }
+  min-height: 520px;
+  grid-template-columns: 1.25fr .75fr;
+}
 
       .ff-lineup,
       .ff-timeline {
@@ -3405,15 +3418,40 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
         padding: 24px;
       }
 
-      .ff-batch-showcase__gallery {
-        min-height: 780px;
-        grid-template-columns: 1fr;
-        grid-template-rows: 1.25fr .8fr .8fr;
-      }
+      .ff-batch-showcase {
+  border-radius: 24px;
+}
 
-      .ff-batch-shot--main {
-        grid-row: auto;
-      }
+.ff-batch-showcase__gallery {
+  min-height: 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: 310px 220px;
+}
+
+.ff-batch-shot--main {
+  grid-column: 1 / -1;
+  grid-row: 1;
+}
+
+.ff-batch-shot:not(.ff-batch-shot--main) {
+  grid-row: 2;
+}
+
+.ff-batch-showcase__content {
+  padding: 30px 24px 34px;
+}
+
+.ff-batch-showcase h2 {
+  font-size: clamp(2rem, 11vw, 3rem);
+}
+
+.ff-batch-showcase__offer {
+  align-items: flex-start;
+}
+
+.ff-batch-showcase__offer > span {
+  font-size: 2.15rem;
+}
 
       .ff-batch,
       .ff-lineup,
@@ -5008,43 +5046,6 @@ const triggerSelfDestruct = () => {
       remixCountElement.classList.add("is-visible");
     }
   }, 6500);
-};
-
-  if (festivalStamp) {
-    festivalStamp.innerHTML =
-      "<span>⚠</span> SELF-DESTRUCT <span>⚠</span>";
-  }
-
-  if (festivalFlash) {
-    festivalFlash.classList.remove("is-active");
-    void festivalFlash.offsetWidth;
-    festivalFlash.classList.add("is-active");
-  }
-
-  window.setTimeout(() => {
-    document.body.classList.add("ff-screen-destroyed");
-  }, 1450);
-
-  window.setTimeout(() => {
-    document.body.classList.remove(
-      "ff-self-destruct",
-      "ff-screen-destroyed"
-    );
-
-    if (festivalFlash) {
-      festivalFlash.classList.remove("is-active");
-    }
-
-    if (festivalStamp) {
-      festivalStamp.innerHTML =
-        "<span>✦</span> FESTIVAL MODE <span>✦</span>";
-    }
-
-    if (remixCountElement) {
-      remixCountElement.textContent = "SYSTEM RESTORED";
-      remixCountElement.classList.add("is-visible");
-    }
-  }, 5000);
 };
 
         
