@@ -104,7 +104,7 @@
       },
 
       hero: {
-        image: "assets/img/promotions/keep-it-dutch-tuesday.jpg",
+        image: "assets/img/promotions/keep-it-dutch-tuesday-hero.jpg",
         position: "center",
         href: "#deli",
         ariaLabel: "Shop Keep It Dutch Tuesday"
@@ -117,7 +117,7 @@
         delay: 10000,
 
         type: "image",
-        image: "assets/img/promotions/keep-it-dutch-tuesday.jpg",
+        image: "assets/img/promotions/keep-it-dutch-tuesday-popup.jpg",
 
         video: "",
         poster: "assets/img/promotions/keep-it-dutch-tuesday.jpg",
