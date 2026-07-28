@@ -1408,7 +1408,10 @@ Paste this BEFORE the closing </body> tag
   aria-labelledby="firstFridayPopupTitle"
   hidden
 >
-  <div class="ff-popup__backdrop" data-close-first-friday></div>
+  <div
+    class="ff-popup__backdrop"
+    data-close-first-friday
+  ></div>
 
   <div class="ff-popup__modal">
     <button
@@ -1420,30 +1423,34 @@ Paste this BEFORE the closing </body> tag
       ×
     </button>
 
-    <h2 id="firstFridayPopupTitle" class="sr-only">
+    <h2
+      id="firstFridayPopupTitle"
+      class="sr-only"
+    >
       Green Labs First Friday
     </h2>
 
-    <div class="ff-popup__image-wrap">
+    <a
+      class="ff-popup__image-wrap"
+      href="/firstfriday/"
+      aria-label="View Green Labs First Friday event details"
+    >
       <img
         class="ff-popup__image"
         src="assets/img/first-friday-pop-up.jpg"
-        alt="Green Labs First Friday featuring food trucks, local vendors, games, and giveaways."
+        alt="Green Labs First Friday featuring art, music, makers, and community."
       >
 
       <div class="ff-popup__date">
-        <span class="ff-popup__date-label">Next Event</span>
+        <span class="ff-popup__date-label">
+          Next Event
+        </span>
+
         <strong>August 7th</strong>
+
         <span>4PM–8PM</span>
       </div>
-
-      <a
-        class="ff-popup__contact-hotspot"
-        href="mailto:dane.greenlabs@gmail.com?subject=First%20Friday%20Vendor%20Inquiry"
-        aria-label="Contact Green Labs about becoming a First Friday vendor"
-        title="Contact us about becoming a vendor"
-      ></a>
-    </div>
+    </a>
   </div>
 </div>
 
@@ -1614,6 +1621,10 @@ FIRST FRIDAY POPUP CSS
 
   .ff-popup__image-wrap {
     position: relative;
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
     width: 100%;
     overflow: hidden;
     border: 1px solid rgba(105, 190, 67, 0.65);
