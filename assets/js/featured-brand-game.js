@@ -1,13 +1,6 @@
 (() => {
   "use strict";
 
-  /*
-  ============================================================
-  FEATURED BRAND GAME CONFIGURATION
-  Change this object when the featured company changes.
-  ============================================================
-  */
-
   const CONFIG = {
     brand: "Batch",
 
@@ -15,99 +8,63 @@
     stageSelector: ".ff-batch-showcase__gallery",
     logoSelector: ".ff-batch-showcase__logo",
     offerSelector: ".ff-batch-showcase__offer",
-    productSelector: ".ff-batch-shot--main",
+
+    helicopterImage:
+      "../assets/img/first-friday/Batch/BATCH_2G_Helicopter_IGStory.jpg",
 
     total: 4,
 
     rewardText:
       "Show Green Labs staff to claim this month’s Easter-egg reward.",
 
-    acceptedAnswers: [
-      "firstfriday"
-    ],
-
-    secondAcceptedAnswers: [
-      "friday"
-    ],
+    acceptedAnswers: ["firstfriday"],
+    secondAcceptedAnswers: ["friday"],
 
     clues: [
       {
         key: "logo",
         host: "logo",
         className: "fb-clue--logo",
-        label:
-          "Catch the suspicious eyes behind the Batch logo",
+        label: "Catch the suspicious eyes behind the Batch logo",
         html: ""
       },
       {
-        key: "shark",
+        key: "helicopter",
         host: "stage",
-        className: "fb-clue--shark",
-        label:
-          "Catch the shark swimming through the water",
-        html: "🦈"
+        className: "fb-clue--helicopter",
+        label: "Catch the helicopter flying over the bridge",
+        html: "🚁"
       },
       {
         key: "honey",
-        host: "product",
+        host: "stage",
         className: "fb-clue--honey",
-        label:
-          "Press the glowing yellow center",
+        label: "Press the glowing gold window on the disposable",
         html: ""
       },
       {
         key: "sparkle",
         host: "offer",
         className: "fb-clue--sparkle",
-        label:
-          "Catch the wandering sparkle",
+        label: "Catch the wandering sparkle",
         html: "✦"
       }
     ],
 
     messages: {
-      logo:
-        "The logo was absolutely hiding something.",
-
-      shark:
-        "That shark was holding.",
-
-      honey:
-        "Forbidden honey button pressed.",
-
-      sparkle:
-        "You caught the wandering sparkle."
+      logo: "The logo was absolutely hiding something.",
+      helicopter: "Air support secured. Nobody ask what it cost.",
+      honey: "Forbidden honey button pressed.",
+      sparkle: "You caught the wandering sparkle."
     }
   };
 
-  /*
-  ============================================================
-  REQUIRED PAGE ELEMENTS
-  ============================================================
-  */
+  const host = document.querySelector(CONFIG.hostSelector);
+  const stage = document.querySelector(CONFIG.stageSelector);
+  const logo = document.querySelector(CONFIG.logoSelector);
+  const offer = document.querySelector(CONFIG.offerSelector);
 
-  const host =
-    document.querySelector(CONFIG.hostSelector);
-
-  const stage =
-    document.querySelector(CONFIG.stageSelector);
-
-  const logo =
-    document.querySelector(CONFIG.logoSelector);
-
-  const offer =
-    document.querySelector(CONFIG.offerSelector);
-
-  const product =
-    document.querySelector(CONFIG.productSelector);
-
-  if (
-    !host ||
-    !stage ||
-    !logo ||
-    !offer ||
-    !product
-  ) {
+  if (!host || !stage || !logo || !offer) {
     console.warn(
       "Featured Brand Game did not start because one or more required elements were not found."
     );
@@ -116,25 +73,24 @@
   }
 
   host.classList.add("fb-game-host");
-  logo.classList.add("fb-logo-alive");
 
-  /*
-  ============================================================
-  GAME STATE
-  ============================================================
-  */
+  const logoWrap = document.createElement("span");
+
+  logoWrap.className = "fb-logo-wrap is-alive";
+
+  logo.parentNode.insertBefore(
+    logoWrap,
+    logo
+  );
+
+  logoWrap.appendChild(logo);
 
   const found = new Set();
   const clueElements = new Map();
 
-  /*
-  ============================================================
-  COUNTER
-  ============================================================
-  */
+  let gameFinished = false;
 
-  const counter =
-    document.createElement("div");
+  const counter = document.createElement("div");
 
   counter.className = "fb-game-counter";
 
@@ -145,21 +101,12 @@
 
   counter.innerHTML = `
     <span>Hidden ${CONFIG.brand}</span>
-    <strong>
-      0G / ${CONFIG.total}G FOUND
-    </strong>
+    <strong>0G / ${CONFIG.total}G FOUND</strong>
   `;
 
   host.appendChild(counter);
 
-  /*
-  ============================================================
-  DISCOVERY TOAST
-  ============================================================
-  */
-
-  const toast =
-    document.createElement("div");
+  const toast = document.createElement("div");
 
   toast.className = "fb-toast";
 
@@ -170,39 +117,21 @@
 
   document.body.appendChild(toast);
 
-  /*
-  ============================================================
-  CLUE HOST LOCATIONS
-  ============================================================
-  */
-
   const hosts = {
     host,
     stage,
-    logo: logo.parentElement,
-    offer,
-    product
+    logo: logoWrap,
+    offer
   };
-
-  /*
-  ============================================================
-  CREATE CLUES
-  ============================================================
-  */
 
   CONFIG.clues.forEach((clue) => {
     const clueHost = hosts[clue.host];
 
     if (!clueHost) {
-      console.warn(
-        `Featured Brand clue host not found: ${clue.host}`
-      );
-
       return;
     }
 
-    const button =
-      document.createElement("button");
+    const button = document.createElement("button");
 
     button.type = "button";
 
@@ -239,14 +168,11 @@
     );
   });
 
-  /*
-  ============================================================
-  COLLECT A HIDDEN GRAM
-  ============================================================
-  */
-
   function collect(key, source) {
-    if (found.has(key)) {
+    if (
+      gameFinished ||
+      found.has(key)
+    ) {
       return;
     }
 
@@ -279,16 +205,10 @@
     ) {
       setTimeout(
         openChallenge,
-        1500
+        1600
       );
     }
   }
-
-  /*
-  ============================================================
-  DISCOVERY MESSAGE
-  ============================================================
-  */
 
   function showToast(text) {
     toast.textContent = text;
@@ -303,12 +223,6 @@
       "is-showing"
     );
   }
-
-  /*
-  ============================================================
-  CONFETTI BURST
-  ============================================================
-  */
 
   function burst(source, count) {
     const rect =
@@ -360,12 +274,6 @@
     }
   }
 
-  /*
-  ============================================================
-  ANSWER NORMALIZATION
-  ============================================================
-  */
-
   function normalize(value) {
     return value
       .trim()
@@ -376,14 +284,9 @@
       );
   }
 
-  /*
-  ============================================================
-  OPEN CHALLENGE
-  ============================================================
-  */
-
-  function openChallenge() {
+   function openChallenge() {
     if (
+      gameFinished ||
       document.querySelector(
         ".fb-game-modal"
       )
@@ -415,7 +318,10 @@
         </button>
 
         <div class="fb-game-art">
-          4G
+          <img
+            src="${CONFIG.helicopterImage}"
+            alt="Batch helicopter campaign artwork"
+          >
         </div>
 
         <div class="fb-game-copy">
@@ -549,12 +455,6 @@
       );
   }
 
-  /*
-  ============================================================
-  FIRST WRONG ANSWER
-  ============================================================
-  */
-
   function firstWrongAnswer(
     modal,
     input
@@ -582,7 +482,7 @@
     input.value = "";
 
     input.placeholder =
-      "Please save the tiny shark";
+      "Air support is losing patience";
 
     const card =
       modal.querySelector(
@@ -605,17 +505,13 @@
           "is-wrong"
         );
       },
-      1100
+      1200
     );
   }
 
-  /*
-  ============================================================
-  WINNER SCREEN
-  ============================================================
-  */
-
   function win(modal) {
+    gameFinished = true;
+
     const code =
       `${CONFIG.brand.toUpperCase()}-` +
       Math.random()
@@ -675,9 +571,13 @@
 
         <p>
           One reward per person.
-          Staff may ask where the shark was hiding.
+          Staff may ask where the helicopter was hiding.
         </p>
       `;
+
+    counter.classList.remove(
+      "is-visible"
+    );
 
     for (
       let round = 0;
@@ -698,23 +598,19 @@
     }
   }
 
-  /*
-  ============================================================
-  SECOND WRONG ANSWER
-  ============================================================
-  */
-
-  function failSpectacularly(
+   function failSpectacularly(
     modal
   ) {
+    gameFinished = true;
+
     modal
       .querySelector(
         ".fb-game-feedback"
       )
       .innerHTML = `
-        <strong>OH NO.</strong>
+        <strong>DANGER.</strong>
         <br>
-        You have disappointed the tiny shark.
+        Air support has interpreted that answer as a cry for help.
       `;
 
     modal
@@ -725,55 +621,75 @@
         "is-doomed"
       );
 
-    const countdown =
+    const emergency =
       document.createElement("div");
 
-    countdown.className =
-      "fb-game-countdown";
+    emergency.className =
+      "fb-emergency";
 
     document.body.appendChild(
-      countdown
+      emergency
     );
 
-    const beats = [
-      "3",
-      "2",
-      "1—JUST KIDDING. THE SHARK ATE IT.",
-      "RELEASING THE EMERGENCY HOTBOX"
+    const sequence = [
+      {
+        delay: 1200,
+        text: "DANGER. DANGER."
+      },
+      {
+        delay: 3600,
+        text:
+          "EMERGENCY HOTBOX DEPLOYMENT IN 3"
+      },
+      {
+        delay: 6200,
+        text: "2"
+      },
+      {
+        delay: 8500,
+        text: "",
+        className: "is-blackout"
+      },
+      {
+        delay: 10600,
+        text: "what is happening?",
+        className:
+          "is-blackout is-confused"
+      },
+      {
+        delay: 13200,
+        text: "",
+        className: "is-fire"
+      }
     ];
 
-    beats.forEach(
-      (beat, index) => {
-        setTimeout(
-          () => {
-            countdown.textContent =
-              beat;
-          },
-          900 + index * 1300
-        );
-      }
-    );
+    sequence.forEach((step) => {
+      setTimeout(
+        () => {
+          emergency.className =
+            `fb-emergency ${step.className || ""}`.trim();
+
+          emergency.textContent =
+            step.text;
+        },
+        step.delay
+      );
+    });
 
     setTimeout(
       () => {
-        startSmokeReset(
+        startSmokeFinale(
           modal,
-          countdown
+          emergency
         );
       },
-      6500
+      15100
     );
   }
 
-  /*
-  ============================================================
-  SMOKE RESET
-  ============================================================
-  */
-
-  function startSmokeReset(
+  function startSmokeFinale(
     modal,
-    countdown
+    emergency
   ) {
     const smoke =
       document.createElement("div");
@@ -827,7 +743,7 @@
             positions[index].top;
 
           cloud.style.animationDelay =
-            `${index * 120}ms`;
+            `${index * 160}ms`;
         }
       );
 
@@ -844,31 +760,27 @@
     setTimeout(
       () => {
         modal.remove();
-        countdown.remove();
+        emergency.remove();
 
         smoke.classList.add(
           "is-clearing"
         );
 
-        resetGame();
+        counter.classList.remove(
+          "is-visible"
+        );
 
         document.body.style.overflow =
           "";
 
         setTimeout(
           () => smoke.remove(),
-          2300
+          3100
         );
       },
-      2600
+      3600
     );
   }
-
-  /*
-  ============================================================
-  CLOSE MODAL
-  ============================================================
-  */
 
   function closeModal(modal) {
     modal.classList.remove(
@@ -881,33 +793,6 @@
     setTimeout(
       () => modal.remove(),
       500
-    );
-  }
-
-  /*
-  ============================================================
-  RESET GAME
-  ============================================================
-  */
-
-  function resetGame() {
-    found.clear();
-
-    counter
-      .querySelector("strong")
-      .textContent =
-        `0G / ${CONFIG.total}G FOUND`;
-
-    counter.classList.remove(
-      "is-visible"
-    );
-
-    clueElements.forEach(
-      (element) => {
-        element.classList.remove(
-          "is-found"
-        );
-      }
     );
   }
 })();
