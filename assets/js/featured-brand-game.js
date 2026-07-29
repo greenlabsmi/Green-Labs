@@ -31,17 +31,20 @@
   }
 
   const state = {
+    activated: false,
     completed: new Set(),
     airliftStarted: false,
     airliftComplete: false,
     challengeOpened: false,
     gameFinished: false,
     smokeCleared: false,
-    drawingSmoke: false
+    drawingSmoke: false,
+    eyesIndex: 0,
+    eyesTimer: null
   };
 
   stage.innerHTML = `
-    <figure class="ff-batch-airlift" data-batch-airlift aria-label="Interactive Batch airlift mission over the Mackinac Bridge">
+    <figure class="ff-batch-airlift is-locked" data-batch-airlift aria-label="Interactive Batch airlift mission over the Mackinac Bridge">
       <img
         class="ff-batch-airlift__bridge"
         src="${CONFIG.paths.bridge}"
@@ -61,6 +64,7 @@
         type="button"
         aria-label="Inspect the tiny car crossing the bridge"
         data-airlift-trigger
+        disabled
       ></button>
 
       <button
@@ -68,6 +72,7 @@
         type="button"
         aria-label="Catch the eyes peeking from the side of the advertisement"
         data-objective="eyes"
+        disabled
       >👀</button>
 
       <button
@@ -75,6 +80,7 @@
         type="button"
         aria-label="Catch the Batch power spark"
         data-objective="spark"
+        disabled
       >✦</button>
 
       <div class="fb-lungs-zone" data-lungs-zone>
@@ -93,16 +99,23 @@
       </div>
 
       <div class="fb-mission-hud" aria-live="polite">
-        <div class="fb-mission-title">OPERATION BIG AF · FIND THE TINY CAR</div>
         <div class="fb-airlift-message" data-airlift-message></div>
       </div>
 
-      <div class="fb-mission-counter" aria-live="polite">
+      <div class="fb-mission-counter is-dormant" aria-live="polite">
         <span>Mission systems</span>
-        <strong data-mission-count>0 / ${CONFIG.objectiveCount} SECURED</strong>
+        <strong data-mission-count>STANDBY</strong>
       </div>
     </figure>
   `;
+
+  const content = host.querySelector(".ff-batch-showcase__content");
+  const activateButton = document.createElement("button");
+  activateButton.className = "fb-operation-button";
+  activateButton.type = "button";
+  activateButton.textContent = "DON’T PUSH";
+  activateButton.setAttribute("aria-label", "Activate Operation Big AF");
+  content?.appendChild(activateButton);
 
   const airlift = stage.querySelector("[data-batch-airlift]");
   const flightLayer = stage.querySelector("[data-flight-layer]");
@@ -115,32 +128,84 @@
   const lungsButton = stage.querySelector('[data-objective="lungs"]');
   const smokeCanvas = stage.querySelector("[data-lungs-smoke]");
 
+  const missionIntro = document.createElement("div");
+  missionIntro.className = "fb-mission-intro";
+  missionIntro.setAttribute("aria-live", "assertive");
+  missionIntro.innerHTML = "<strong>OPERATION BIG AF ACTIVATED</strong><span>Mission: Clear the bridge before it collapses.</span>";
+  document.body.appendChild(missionIntro);
+
   const toast = document.createElement("div");
   toast.className = "fb-toast";
   toast.setAttribute("aria-live", "polite");
   document.body.appendChild(toast);
 
+  activateButton?.addEventListener("click", activateMission, { once: true });
   trigger.addEventListener("click", startAirlift, { once: true });
 
   eyes.addEventListener("click", () => {
+    if (!state.activated || !eyes.classList.contains("is-visible")) return;
+    window.clearTimeout(state.eyesTimer);
     eyes.classList.add("is-found");
     completeObjective("eyes", "👀 I SEE IT. IT’S BIG AF!");
   });
 
   spark.addEventListener("click", () => {
+    if (!state.activated) return;
     spark.classList.add("is-found");
     completeObjective("spark", "⚡ GET THAT SPARK, BATCH! POWER SUPPLY SECURED.");
   });
 
   lungsButton.addEventListener("click", () => {
+    if (!state.activated || !state.smokeCleared) return;
     lungsZone.classList.add("is-found");
     completeObjective("lungs", "🫁 BIG BOY LUNGS SECURED. INHALE SYSTEMS ONLINE.");
   });
 
   setupScratchSmoke();
 
+  function activateMission() {
+    state.activated = true;
+    host.classList.add("fb-operation-active");
+    airlift.classList.remove("is-locked");
+    activateButton.classList.add("is-activated");
+    activateButton.textContent = "ACTIVE";
+    counter.classList.remove("is-dormant");
+    count.textContent = `0 / ${CONFIG.objectiveCount} SECURED`;
+    spark.disabled = false;
+    eyes.disabled = false;
+    smokeCanvas.style.pointerEvents = "auto";
+    missionIntro.classList.add("is-visible");
+    window.setTimeout(() => missionIntro.classList.remove("is-visible"), 4300);
+    window.setTimeout(() => scheduleEyesPeek(700), 900);
+  }
+
+  function scheduleEyesPeek(delay = 1800) {
+    if (!state.activated || state.completed.has("eyes") || state.gameFinished) return;
+    state.eyesTimer = window.setTimeout(() => {
+      const positions = [
+        { side: "right", top: "30%" },
+        { side: "left", top: "42%" },
+        { side: "right", top: "57%" },
+        { side: "left", top: "67%" }
+      ];
+      const position = positions[state.eyesIndex % positions.length];
+      state.eyesIndex += 1;
+      eyes.classList.remove("is-visible", "is-left", "is-right");
+      eyes.style.top = position.top;
+      eyes.classList.add(position.side === "left" ? "is-left" : "is-right");
+      requestAnimationFrame(() => eyes.classList.add("is-visible"));
+      window.setTimeout(() => {
+        if (state.completed.has("eyes")) return;
+        eyes.classList.remove("is-visible");
+        scheduleEyesPeek(1600);
+      }, 2600);
+    }, delay);
+  }
+
+
   function startAirlift() {
-    if (state.airliftStarted || state.gameFinished) {
+    if (!state.activated || state.airliftStarted || state.gameFinished ||
+        !["eyes", "spark", "lungs"].every((key) => state.completed.has(key))) {
       return;
     }
 
@@ -188,6 +253,7 @@
       state.airliftComplete = true;
       completeObjective("airlift", "🚁 AIRLIFT COMPLETE. BRIDGE REOPENED.");
       showMessage("AIRLIFT COMPLETE. BRIDGE REOPENED.", 0);
+      window.setTimeout(openChallenge, 2200);
     }, 30600);
   }
 
@@ -195,10 +261,9 @@
     const helicopters = [];
 
     for (let index = 1; index <= 4; index += 1) {
-      const helicopter = document.createElement("img");
+      const helicopter = document.createElement("span");
       helicopter.className = `fb-helicopter fb-helicopter--${index}`;
-      helicopter.src = CONFIG.paths.helicopter;
-      helicopter.alt = "";
+      helicopter.innerHTML = `<img src="${CONFIG.paths.helicopter}" alt="">`;
       helicopter.setAttribute("aria-hidden", "true");
       helicopter.style.setProperty("--hover-time", `${3.2 + index * 0.35}s`);
 
@@ -233,8 +298,11 @@
     count.textContent = `${state.completed.size} / ${CONFIG.objectiveCount} SECURED`;
     showToast(text);
 
-    if (state.completed.size === CONFIG.objectiveCount) {
-      window.setTimeout(openChallenge, 2000);
+    if (["eyes", "spark", "lungs"].every((item) => state.completed.has(item)) && !state.airliftStarted) {
+      trigger.disabled = false;
+      airlift.classList.add("is-car-ready");
+      showMessage("MISSION SYSTEMS ONLINE. FIND THE TINY CAR.", 700);
+      showToast("🚗 SYSTEMS ONLINE. FIND THE TINY CAR AND CALL AIR SUPPORT.");
     }
   }
 
@@ -269,7 +337,7 @@
     };
 
     const erase = (event) => {
-      if (state.smokeCleared) {
+      if (!state.activated || state.smokeCleared) {
         return;
       }
 
@@ -280,13 +348,20 @@
 
       context.save();
       context.globalCompositeOperation = "destination-out";
+      const radius = Math.max(20, rect.width * 0.16);
+      const gradient = context.createRadialGradient(x, y, 2, x, y, radius);
+      gradient.addColorStop(0, "rgba(0,0,0,1)");
+      gradient.addColorStop(.72, "rgba(0,0,0,.9)");
+      gradient.addColorStop(1, "rgba(0,0,0,0)");
+      context.fillStyle = gradient;
       context.beginPath();
-      context.arc(x, y, Math.max(18, rect.width * 0.13), 0, Math.PI * 2);
+      context.arc(x, y, radius, 0, Math.PI * 2);
       context.fill();
       context.restore();
     };
 
     smokeCanvas.addEventListener("pointerdown", (event) => {
+      if (!state.activated) return;
       state.drawingSmoke = true;
       smokeCanvas.setPointerCapture?.(event.pointerId);
       erase(event);
@@ -317,33 +392,25 @@
 
   function drawSmoke(context, width, height) {
     context.clearRect(0, 0, width, height);
-
-    const gradient = context.createRadialGradient(
-      width * 0.5,
-      height * 0.52,
-      width * 0.05,
-      width * 0.5,
-      height * 0.52,
-      width * 0.75
-    );
-
-    gradient.addColorStop(0, "rgba(244, 248, 251, .98)");
-    gradient.addColorStop(0.48, "rgba(190, 205, 215, .96)");
-    gradient.addColorStop(1, "rgba(77, 96, 109, .94)");
-
-    context.fillStyle = gradient;
-    context.fillRect(0, 0, width, height);
-
-    for (let index = 0; index < 18; index += 1) {
-      const x = Math.random() * width;
-      const y = Math.random() * height;
-      const radius = width * (0.1 + Math.random() * 0.18);
-
+    const clouds = [
+      [.18, .57, .24, .76], [.34, .38, .28, .82], [.52, .52, .33, .88],
+      [.68, .35, .23, .76], [.79, .58, .27, .82], [.47, .72, .28, .74],
+      [.25, .76, .22, .68], [.66, .76, .20, .66]
+    ];
+    clouds.forEach(([x, y, radius, alpha]) => {
+      const gradient = context.createRadialGradient(
+        width * x, height * y, 1,
+        width * x, height * y, width * radius
+      );
+      gradient.addColorStop(0, `rgba(247,250,252,${alpha})`);
+      gradient.addColorStop(.48, `rgba(205,216,224,${alpha * .82})`);
+      gradient.addColorStop(.78, `rgba(111,130,143,${alpha * .36})`);
+      gradient.addColorStop(1, "rgba(111,130,143,0)");
+      context.fillStyle = gradient;
       context.beginPath();
-      context.fillStyle = `rgba(255,255,255,${0.1 + Math.random() * 0.22})`;
-      context.arc(x, y, radius, 0, Math.PI * 2);
+      context.arc(width * x, height * y, width * radius, 0, Math.PI * 2);
       context.fill();
-    }
+    });
   }
 
   function evaluateSmoke(context) {
@@ -365,7 +432,7 @@
 
     const clearedRatio = 1 - visible / Math.max(samples, 1);
 
-    if (clearedRatio >= 0.48) {
+    if (clearedRatio >= 0.46) {
       state.smokeCleared = true;
       lungsZone.classList.add("is-cleared");
       lungsButton.disabled = false;
@@ -496,11 +563,13 @@
 
     [
       { delay: 1200, text: "DANGER. DANGER." },
-      { delay: 3900, text: "EMERGENCY HOTBOX DEPLOYMENT IN 3" },
-      { delay: 7000, text: "2" },
-      { delay: 9700, text: "", className: "is-blackout" },
-      { delay: 12100, text: "what is happening?", className: "is-blackout is-confused" },
-      { delay: 15100, text: "", className: "is-fire" }
+      { delay: 3800, text: "EMERGENCY HOTBOX DEPLOYMENT IN" },
+      { delay: 6100, text: "3" },
+      { delay: 7900, text: "2" },
+      { delay: 9700, text: "1" },
+      { delay: 11600, text: "", className: "is-blackout" },
+      { delay: 13900, text: "what is happening?", className: "is-blackout is-confused" },
+      { delay: 16800, text: "", className: "is-fire" }
     ].forEach((step) => {
       window.setTimeout(() => {
         emergency.className = `fb-emergency ${step.className || ""}`.trim();
@@ -508,7 +577,7 @@
       }, step.delay);
     });
 
-    window.setTimeout(() => startSmokeFinale(modal, emergency), 17500);
+    window.setTimeout(() => startSmokeFinale(modal, emergency), 19100);
   }
 
   function startSmokeFinale(modal, emergency) {
