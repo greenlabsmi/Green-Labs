@@ -2885,159 +2885,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
     }
 
     
-    /* Batch 4G Signal Hunt */
-
-    .ff-batch-game-trigger {
-      cursor: pointer;
-      outline: none;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .ff-batch-game-trigger:focus-visible {
-      border-radius: 18px;
-      box-shadow: 0 0 0 4px rgba(255,255,255,.92), 0 0 0 8px rgba(34,112,178,.42);
-    }
-
-    .ff-batch-game-trigger.is-pulsing img {
-      animation: ffBatchSignalPulse 480ms cubic-bezier(.2,.8,.2,1), ffBatchFloat 6s ease-in-out 480ms infinite;
-    }
-
-    @keyframes ffBatchSignalPulse {
-      0% { filter: drop-shadow(0 28px 32px rgba(10,42,70,.28)); }
-      45% { transform: translateY(-10px) scale(1.035); filter: drop-shadow(0 0 28px rgba(66,170,255,.9)); }
-      100% { filter: drop-shadow(0 28px 32px rgba(10,42,70,.28)); }
-    }
-
-    .ff-batch-signal {
-      position: absolute;
-      left: 26px;
-      bottom: 25px;
-      z-index: 5;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 13px;
-      border: 1px solid rgba(20,70,110,.18);
-      border-radius: 999px;
-      background: rgba(235,247,255,.78);
-      box-shadow: 0 10px 28px rgba(21,64,101,.14);
-      color: #143e61;
-      opacity: 0;
-      transform: translateY(10px) scale(.96);
-      pointer-events: none;
-      backdrop-filter: blur(12px);
-      transition: opacity 220ms ease, transform 220ms ease, background 220ms ease;
-    }
-
-    .ff-batch-signal.is-visible { opacity: 1; transform: none; }
-    .ff-batch-signal.is-complete { color: #fff; background: rgba(12,43,69,.92); }
-
-    .ff-batch-signal__label {
-      font-size: .59rem;
-      font-weight: 900;
-      letter-spacing: .13em;
-      text-transform: uppercase;
-    }
-
-    .ff-batch-signal__bars { display: flex; align-items: flex-end; gap: 3px; height: 18px; }
-    .ff-batch-signal__bars i { width: 4px; border-radius: 4px; background: rgba(25,68,103,.2); transition: 180ms ease; }
-    .ff-batch-signal__bars i:nth-child(1) { height: 6px; }
-    .ff-batch-signal__bars i:nth-child(2) { height: 10px; }
-    .ff-batch-signal__bars i:nth-child(3) { height: 14px; }
-    .ff-batch-signal__bars i:nth-child(4) { height: 18px; }
-    .ff-batch-signal__bars i.is-on { background: #e8194f; box-shadow: 0 0 10px rgba(232,25,79,.6); }
-    .ff-batch-signal strong { min-width: 25px; font-family: "Outfit", sans-serif; font-size: .72rem; }
-
-    body.ff-batch-game-open { overflow: hidden; }
-
-    .ff-batch-game[hidden] { display: none; }
-    .ff-batch-game { position: fixed; inset: 0; z-index: 9999; display: grid; place-items: center; padding: 18px; opacity: 0; transition: opacity 220ms ease; }
-    .ff-batch-game.is-open { opacity: 1; }
-    .ff-batch-game__backdrop { position: absolute; inset: 0; background: rgba(3,12,22,.82); backdrop-filter: blur(12px); }
-
-    .ff-batch-game__card {
-      position: relative;
-      width: min(620px, 100%);
-      overflow: hidden;
-      padding: clamp(30px, 6vw, 54px);
-      border: 1px solid rgba(127,193,245,.34);
-      border-radius: 30px;
-      background: radial-gradient(circle at 85% 8%, rgba(64,155,226,.28), transparent 16rem), linear-gradient(145deg, #123653 0%, #061522 74%);
-      box-shadow: 0 36px 100px rgba(0,0,0,.48), inset 0 1px 0 rgba(255,255,255,.12);
-      color: #fff;
-      transform: translateY(18px) scale(.97);
-      transition: transform 280ms cubic-bezier(.2,.8,.2,1);
-    }
-
-    .ff-batch-game.is-open .ff-batch-game__card { transform: none; }
-    .ff-batch-game__card.is-wrong { animation: ffBatchWrong 360ms ease; }
-    @keyframes ffBatchWrong { 20%, 60% { transform: translateX(-8px); } 40%, 80% { transform: translateX(8px); } }
-
-    .ff-batch-game__scan {
-      position: absolute;
-      inset: -30% 0 auto;
-      height: 42%;
-      background: linear-gradient(180deg, transparent, rgba(96,190,255,.16), transparent);
-      pointer-events: none;
-      animation: ffBatchScan 4.5s linear infinite;
-    }
-    @keyframes ffBatchScan { to { transform: translateY(420%); } }
-
-    .ff-batch-game__close {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      z-index: 3;
-      width: 42px;
-      height: 42px;
-      border: 1px solid rgba(255,255,255,.14);
-      border-radius: 50%;
-      background: rgba(255,255,255,.07);
-      color: #fff;
-      font: 400 1.7rem/1 sans-serif;
-      cursor: pointer;
-    }
-
-    .ff-batch-game__badge, .ff-batch-game__kicker {
-      color: #75bff7;
-      font-size: .67rem;
-      font-weight: 900;
-      letter-spacing: .17em;
-      text-transform: uppercase;
-    }
-
-    .ff-batch-game h2 { margin: 13px 0 0; font-family: "Playfair Display", serif; font-size: clamp(2.25rem, 7vw, 4rem); line-height: 1; }
-    .ff-batch-game__riddle, .ff-batch-game__prize > p { margin: 22px 0 0; color: rgba(255,255,255,.76); font-size: 1rem; line-height: 1.75; }
-    .ff-batch-game__form { margin-top: 28px; }
-    .ff-batch-game__form label { display: block; margin-bottom: 9px; font-size: .72rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
-    .ff-batch-game__answer-row { display: grid; grid-template-columns: 1fr auto; gap: 9px; }
-    .ff-batch-game__answer-row input { min-width: 0; min-height: 52px; padding: 0 17px; border: 1px solid rgba(255,255,255,.18); border-radius: 14px; background: rgba(255,255,255,.08); color: #fff; font: inherit; outline: none; }
-    .ff-batch-game__answer-row input:focus { border-color: #75bff7; box-shadow: 0 0 0 3px rgba(117,191,247,.16); }
-    .ff-batch-game__answer-row input::placeholder { color: rgba(255,255,255,.38); }
-    .ff-batch-game__answer-row button { min-height: 52px; padding: 0 20px; border: 0; border-radius: 14px; background: #75bff7; color: #071726; font: 900 .78rem/1 "Inter", sans-serif; letter-spacing: .06em; text-transform: uppercase; cursor: pointer; }
-    .ff-batch-game__feedback { min-height: 22px; margin: 10px 0 0; color: #ffb1c4; font-size: .78rem; }
-
-    .ff-batch-game__prize { text-align: center; }
-    .ff-batch-game__burst { width: 76px; height: 76px; display: grid; place-items: center; margin: 0 auto 22px; border-radius: 50%; background: #e8194f; box-shadow: 0 0 0 12px rgba(232,25,79,.1), 0 0 48px rgba(232,25,79,.45); font-size: 2rem; animation: ffBatchBurst 2.4s ease-in-out infinite; }
-    @keyframes ffBatchBurst { 50% { transform: rotate(14deg) scale(1.08); } }
-    .ff-batch-game__pass { margin-top: 26px; padding: 22px; border: 1px dashed rgba(255,255,255,.32); border-radius: 19px; background: rgba(255,255,255,.07); }
-    .ff-batch-game__pass span, .ff-batch-game__pass small { display: block; color: rgba(255,255,255,.58); font-size: .66rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
-    .ff-batch-game__pass strong { display: block; margin: 10px 0; color: #75bff7; font-family: "Outfit", sans-serif; font-size: clamp(2rem, 9vw, 3.6rem); letter-spacing: .06em; }
-    .ff-batch-game__terms { font-size: .68rem !important; color: rgba(255,255,255,.42) !important; }
-
-    @media (max-width: 620px) {
-      .ff-batch-signal { left: 14px; bottom: 14px; }
-      .ff-batch-signal__label { display: none; }
-      .ff-batch-game__answer-row { grid-template-columns: 1fr; }
-      .ff-batch-game__answer-row button { width: 100%; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .ff-batch-game__scan, .ff-batch-game__burst { animation: none !important; }
-      .ff-batch-game-trigger.is-pulsing img { animation: none !important; }
-    }
-
-
     /* Batch 4G hidden-object game */
     .ff-batch-game { position: relative; }
     .ff-gram-counter { position:absolute; z-index:9; left:18px; bottom:18px; display:flex; gap:10px; align-items:center; padding:10px 14px; border:1px solid rgba(255,255,255,.5); border-radius:999px; background:rgba(8,24,39,.78); color:#fff; box-shadow:0 12px 30px rgba(0,0,0,.18); backdrop-filter:blur(12px); opacity:0; transform:translateY(8px); transition:.3s ease; pointer-events:none; }
@@ -3115,6 +2962,28 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
     @media (prefers-reduced-motion: reduce) {
       .ff-gram-clue,.ff-batch-challenge__card,.ff-batch-smoke i { animation:none !important; }
     }
+
+
+    /* Batch 4G hunt fixes */
+    body.ff-batch-hunt-open { overflow: hidden; }
+    .ff-batch-showcase { position: relative; }
+    .ff-batch-showcase__logo { animation: ffBatchWholeLogoWiggle 11s ease-in-out infinite; transform-origin: center; }
+    @keyframes ffBatchWholeLogoWiggle { 0%,86%,100%{transform:none} 89%{transform:rotate(-2deg) translateX(-4px)} 92%{transform:rotate(2.5deg) translateX(5px)} 95%{transform:rotate(-1deg) translateX(-2px)} }
+    .ff-gram-clue--b { top:clamp(55px,8vw,112px); left:auto; right:clamp(28px,5vw,68px); width:clamp(150px,25%,230px); height:90px; border-radius:22px; animation:none; }
+    .ff-gram-clue--b::after { content:'👀'; position:absolute; left:8%; bottom:-2px; font-size:1.35rem; opacity:0; transform:translateY(10px); animation:ffBatchCreep 11s ease-in-out infinite; }
+    @keyframes ffBatchCreep { 0%,82%,100%{opacity:0;transform:translateY(10px)} 87%,94%{opacity:1;transform:translateY(0)} }
+    .ff-gram-clue--shark { font-size:2.35rem; animation-duration:18s; }
+    .ff-gram-clue--honey { animation-duration:7s; }
+    .ff-gram-clue--sparkle { font-size:1.45rem; animation-duration:8s; }
+    .ff-batch-toast.is-showing { animation-duration:4.2s; }
+    .ff-batch-challenge { position:fixed !important; inset:0 !important; z-index:10000 !important; display:grid !important; place-items:center !important; padding:clamp(16px,4vw,40px) !important; opacity:0; visibility:hidden; }
+    .ff-batch-challenge.is-open { opacity:1; visibility:visible; }
+    .ff-batch-challenge__card { width:min(820px,100%); max-height:calc(100vh - 34px); overflow:auto; transform:translateY(42px) scale(.9) rotate(-1deg); transition:transform .7s cubic-bezier(.16,.85,.2,1); }
+    .ff-batch-challenge.is-open .ff-batch-challenge__card { transform:none; }
+    .ff-batch-challenge__card.is-wrong { animation:ffBatchWrongBig 1s ease; }
+    @keyframes ffBatchWrongBig { 15%,45%,75%{transform:translateX(-18px) rotate(-1deg)} 30%,60%,90%{transform:translateX(18px) rotate(1deg)} }
+    .ff-batch-countdown { position:fixed; inset:0; z-index:10070; display:grid; place-items:center; padding:25px; background:rgba(0,0,0,.35); color:#fff; font-family:'Outfit',sans-serif; font-size:clamp(3rem,12vw,8rem); font-weight:900; text-align:center; text-shadow:0 8px 40px #000; pointer-events:none; }
+    .ff-batch-smoke { position:fixed; inset:-20%; z-index:10080; overflow:hidden; pointer-events:none; }
 
 /* Vendor lineup */
 
@@ -5601,150 +5470,7 @@ if (remixCount === 5 && !festivalAlreadyUnlocked) {
 </div>
 
 
-  <script>
-    (() => {
-      const product = document.querySelector('.ff-batch-shot--main');
-      const gallery = document.querySelector('.ff-batch-showcase__gallery');
-      if (!product || !gallery) return;
-
-      product.classList.add('ff-batch-game-trigger');
-      product.setAttribute('role', 'button');
-      product.setAttribute('tabindex', '0');
-      product.setAttribute('aria-label', 'Batch product. Tap four times to charge the hidden 4G signal.');
-
-      const meter = document.createElement('div');
-      meter.className = 'ff-batch-signal';
-      meter.setAttribute('aria-live', 'polite');
-      meter.innerHTML = `
-        <span class="ff-batch-signal__label">4G signal</span>
-        <span class="ff-batch-signal__bars" aria-hidden="true">
-          <i></i><i></i><i></i><i></i>
-        </span>
-        <strong>0/4</strong>
-      `;
-      gallery.appendChild(meter);
-
-      const modal = document.createElement('div');
-      modal.className = 'ff-batch-game';
-      modal.hidden = true;
-      modal.innerHTML = `
-        <div class="ff-batch-game__backdrop" data-batch-close></div>
-        <section class="ff-batch-game__card" role="dialog" aria-modal="true" aria-labelledby="batchGameTitle">
-          <button class="ff-batch-game__close" type="button" data-batch-close aria-label="Close challenge">×</button>
-          <div class="ff-batch-game__scan" aria-hidden="true"></div>
-          <div class="ff-batch-game__badge">BATCH // 4G SIGNAL FOUND</div>
-          <div class="ff-batch-game__challenge">
-            <p class="ff-batch-game__kicker">Secret challenge unlocked</p>
-            <h2 id="batchGameTitle">Crack the First Friday frequency.</h2>
-            <p class="ff-batch-game__riddle">I arrive after Thursday, but only lead the month once. Brands, neighbors, games, and makers all meet when I come. What am I?</p>
-            <form class="ff-batch-game__form">
-              <label for="batchGameAnswer">Enter the answer</label>
-              <div class="ff-batch-game__answer-row">
-                <input id="batchGameAnswer" autocomplete="off" placeholder="Your answer" required>
-                <button type="submit">Transmit</button>
-              </div>
-              <p class="ff-batch-game__feedback" aria-live="polite"></p>
-            </form>
-          </div>
-          <div class="ff-batch-game__prize" hidden>
-            <div class="ff-batch-game__burst" aria-hidden="true">✦</div>
-            <p class="ff-batch-game__kicker">Signal verified</p>
-            <h2>You found the Batch Easter egg.</h2>
-            <p>Screenshot this pass and bring it to Green Labs to spin the prize wheel.</p>
-            <div class="ff-batch-game__pass">
-              <span>BATCH SIGNAL PASS</span>
-              <strong class="ff-batch-game__code"></strong>
-              <small class="ff-batch-game__stamp"></small>
-            </div>
-            <p class="ff-batch-game__terms">One wheel spin per person. While supplies last. Must present this screen to Green Labs staff.</p>
-          </div>
-        </section>
-      `;
-      document.body.appendChild(modal);
-
-      const bars = [...meter.querySelectorAll('i')];
-      const countText = meter.querySelector('strong');
-      const card = modal.querySelector('.ff-batch-game__card');
-      const form = modal.querySelector('.ff-batch-game__form');
-      const input = modal.querySelector('#batchGameAnswer');
-      const feedback = modal.querySelector('.ff-batch-game__feedback');
-      const challenge = modal.querySelector('.ff-batch-game__challenge');
-      const prize = modal.querySelector('.ff-batch-game__prize');
-      let count = 0;
-      let lastFocus = null;
-
-      const openGame = () => {
-        lastFocus = document.activeElement;
-        modal.hidden = false;
-        document.body.classList.add('ff-batch-game-open');
-        requestAnimationFrame(() => modal.classList.add('is-open'));
-        setTimeout(() => input.focus(), 220);
-      };
-
-      const closeGame = () => {
-        modal.classList.remove('is-open');
-        document.body.classList.remove('ff-batch-game-open');
-        setTimeout(() => { modal.hidden = true; }, 220);
-        if (lastFocus) lastFocus.focus();
-      };
-
-      const charge = () => {
-        if (count >= 4) return openGame();
-        count += 1;
-        meter.classList.add('is-visible');
-        bars.forEach((bar, index) => bar.classList.toggle('is-on', index < count));
-        countText.textContent = `${count}/4`;
-        product.classList.remove('is-pulsing');
-        void product.offsetWidth;
-        product.classList.add('is-pulsing');
-        if (count === 4) {
-          meter.classList.add('is-complete');
-          setTimeout(openGame, 480);
-        }
-      };
-
-      product.addEventListener('click', charge);
-      product.addEventListener('keydown', event => {
-        if (event.key === 'Enter' || event.key === ' ') {
-          event.preventDefault();
-          charge();
-        }
-      });
-
-      modal.addEventListener('click', event => {
-        if (event.target.closest('[data-batch-close]')) closeGame();
-      });
-      document.addEventListener('keydown', event => {
-        if (event.key === 'Escape' && !modal.hidden) closeGame();
-      });
-
-      form.addEventListener('submit', event => {
-        event.preventDefault();
-        const answer = input.value.toLowerCase().replace(/[^a-z]/g, '');
-        if (answer !== 'firstfriday') {
-          feedback.textContent = 'Signal scrambled. Think about the first Friday of the month.';
-          card.classList.remove('is-wrong');
-          void card.offsetWidth;
-          card.classList.add('is-wrong');
-          input.select();
-          return;
-        }
-
-        const now = new Date();
-        const savedCode = localStorage.getItem('ffBatchSignalCode');
-        const code = savedCode || `B4G-${Math.random().toString(36).slice(2, 6).toUpperCase()}`;
-        localStorage.setItem('ffBatchSignalCode', code);
-        modal.querySelector('.ff-batch-game__code').textContent = code;
-        modal.querySelector('.ff-batch-game__stamp').textContent = `Unlocked ${now.toLocaleDateString('en-US')} at ${now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}`;
-        challenge.hidden = true;
-        prize.hidden = false;
-        card.classList.add('is-winner');
-      });
-    })();
-  </script>
-
-
-<script>
+  
 (() => {
   const stage = document.querySelector('.ff-batch-showcase__gallery');
   const card = document.querySelector('.ff-batch-showcase');
@@ -5753,7 +5479,6 @@ if (remixCount === 5 && !festivalAlreadyUnlocked) {
   const product = document.querySelector('.ff-batch-shot--main');
   if (!stage || !card || !logo || !offer || !product) return;
 
-  card.classList.add('ff-batch-game');
   const found = new Set();
   const messages = {
     b: 'The B was acting suspicious.',
@@ -5799,7 +5524,7 @@ if (remixCount === 5 && !festivalAlreadyUnlocked) {
     counter.querySelector('strong').textContent = `${found.size}G / 4G FOUND`;
     showToast(`${found.size}G FOUND — ${messages[key]}`);
     confetti(button, 12);
-    if (found.size === 4) setTimeout(openChallenge, 850);
+    if (found.size === 4) setTimeout(openChallenge, 1800);
   }
 
   function showToast(text) {
@@ -5848,6 +5573,7 @@ if (remixCount === 5 && !festivalAlreadyUnlocked) {
         </div>
       </section>`;
     document.body.appendChild(modal);
+    document.body.classList.add('ff-batch-hunt-open');
     requestAnimationFrame(() => modal.classList.add('is-open'));
     modal.querySelector('input').focus();
     modal.querySelector('.ff-batch-challenge__close').onclick = () => closeModal(modal);
@@ -5896,8 +5622,8 @@ if (remixCount === 5 && !festivalAlreadyUnlocked) {
     const countdown = document.createElement('div');
     countdown.className = 'ff-batch-countdown';
     document.body.appendChild(countdown);
-    const beats = ['3','2','…wait, where is 1?','EXTREMELY UNNECESSARY SELF-DESTRUCT'];
-    beats.forEach((beat,i) => setTimeout(() => countdown.textContent = beat, 600 + i*800));
+    const beats = ['3','2','…WAIT. WHERE IS 1?','EXTREMELY UNNECESSARY SELF-DESTRUCT'];
+    beats.forEach((beat,i) => setTimeout(() => countdown.textContent = beat, 900 + i*1300));
     setTimeout(() => {
       const smoke = document.createElement('div');
       smoke.className = 'ff-batch-smoke';
@@ -5908,13 +5634,15 @@ if (remixCount === 5 && !festivalAlreadyUnlocked) {
         modal.remove(); countdown.remove();
         smoke.classList.add('is-clearing');
         resetGame();
-        setTimeout(() => smoke.remove(), 1800);
+        document.body.classList.remove('ff-batch-hunt-open');
+        setTimeout(() => smoke.remove(), 2300);
       }, 2300);
-    }, 3700);
+    }, 6500);
   }
 
   function closeModal(modal) {
     modal.classList.remove('is-open');
+    document.body.classList.remove('ff-batch-hunt-open');
     setTimeout(() => modal.remove(), 300);
   }
 
