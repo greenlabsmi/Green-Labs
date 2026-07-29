@@ -169,7 +169,7 @@
     airlift.classList.remove("is-locked");
     activateButton.classList.add("is-activated");
     activateButton.textContent = "ACTIVE";
-    counter.classList.remove("is-dormant");
+    stage.querySelector(".fb-mission-counter")?.classList.remove("is-dormant");
     count.textContent = `0 / ${CONFIG.objectiveCount} SECURED`;
     spark.disabled = false;
     eyes.disabled = false;
