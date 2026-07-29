@@ -5,21 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="format-detection" content="telephone=no,address=no">
 
-
   <title>First Friday at Green Labs | Luna Pier Community Night</title>
-
 
   <meta
     name="description"
     content="Join Green Labs for First Friday in Luna Pier. Local vendors, yard games, giveaways, Dutch Touch Genetics, Batch, and community fun."
   />
 
-
   <meta name="theme-color" content="#0B7D5A" />
 
-
   <link rel="canonical" href="https://greenlabsmi.com/firstfriday/" />
-
 
   <meta property="og:title" content="First Friday at Green Labs">
   <meta
@@ -33,7 +28,6 @@
     content="https://greenlabsmi.com/assets/img/first-friday/first-friday-share.jpg"
   >
 
-
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="First Friday at Green Labs">
   <meta
@@ -45,19 +39,14 @@
     content="https://greenlabsmi.com/assets/img/first-friday/first-friday-share.jpg"
   >
 
-
   <link rel="icon" href="../assets/img/favicon.png" />
-
 
   <link
     href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@700;900&family=Bebas+Neue&family=Outfit:wght@700;900&display=swap"
     rel="stylesheet"
   >
 
-
   <link rel="stylesheet" href="../style.css?v=334">
-  <link rel="stylesheet" href="../assets/css/featured-brand-game.css?v=1">
-
 
   <style>
     :root {
@@ -76,16 +65,13 @@
       --ff-radius: 24px;
     }
 
-
     * {
       box-sizing: border-box;
     }
 
-
     html {
       scroll-behavior: smooth;
     }
-
 
     body {
       margin: 0;
@@ -96,29 +82,24 @@
       font-family: "Inter", sans-serif;
     }
 
-
     img {
       display: block;
       max-width: 100%;
     }
 
-
     a {
       color: inherit;
     }
-
 
     button,
     a {
       -webkit-tap-highlight-color: transparent;
     }
 
-
     .ff-container {
       width: min(1120px, calc(100% - 36px));
       margin-inline: auto;
     }
-
 
     .ff-reveal {
       opacity: 0;
@@ -128,27 +109,22 @@
         transform 650ms cubic-bezier(.2,.7,.2,1);
     }
 
-
     .ff-reveal.is-visible {
       opacity: 1;
       transform: none;
     }
 
-
     .ff-reveal[data-delay="1"] { transition-delay: 80ms; }
     .ff-reveal[data-delay="2"] { transition-delay: 160ms; }
     .ff-reveal[data-delay="3"] { transition-delay: 240ms; }
 
-
     /* Top brand bar */
-
 
     .ff-topbar {
       background: #073f31;
       color: #fff;
       border-bottom: 1px solid rgba(255, 255, 255, 0.12);
     }
-
 
     .ff-topbar__inner {
       min-height: 68px;
@@ -158,14 +134,12 @@
       gap: 20px;
     }
 
-
     .ff-brand {
       display: flex;
       align-items: center;
       gap: 12px;
       text-decoration: none;
     }
-
 
     .ff-brand__logo {
       width: 42px;
@@ -174,7 +148,6 @@
       filter: brightness(0) invert(1);
     }
 
-
     .ff-brand__name {
       font-family: "Cinzel", serif;
       font-size: 1.08rem;
@@ -182,14 +155,12 @@
       letter-spacing: 0.1em;
     }
 
-
     .ff-brand__sub {
       margin-top: 3px;
       color: rgba(255, 255, 255, 0.72);
       font-size: 0.69rem;
       letter-spacing: 0.07em;
     }
-
 
     .ff-home-link {
       color: #fff;
@@ -199,14 +170,11 @@
       white-space: nowrap;
     }
 
-
     .ff-home-link:hover {
       text-decoration: underline;
     }
 
-
     /* Hero */
-
 
     .ff-hero {
       position: relative;
@@ -218,12 +186,10 @@
       background: #193c30;
     }
 
-
     .ff-hero__media {
       position: absolute;
       inset: 0;
     }
-
 
     .ff-hero__media img {
       width: 100%;
@@ -233,7 +199,6 @@
       transform: scale(1.02);
       animation: ffHeroDrift 18s ease-in-out infinite alternate;
     }
-
 
     .ff-hero__media::after {
       content: "";
@@ -253,12 +218,10 @@
         );
     }
 
-
     @keyframes ffHeroDrift {
       from { transform: scale(1.02); }
       to { transform: scale(1.07); }
     }
-
 
     .ff-hero__content {
       position: relative;
@@ -267,7 +230,6 @@
       margin-inline: auto;
       padding: 120px 0 72px;
     }
-
 
     .ff-eyebrow {
       display: inline-flex;
@@ -285,7 +247,6 @@
       text-transform: uppercase;
     }
 
-
     .ff-eyebrow::before {
       content: "";
       width: 8px;
@@ -294,7 +255,6 @@
       background: #72d6aa;
       box-shadow: 0 0 0 5px rgba(114, 214, 170, 0.15);
     }
-
 
     .ff-title {
       max-width: 790px;
@@ -307,7 +267,6 @@
       text-shadow: 0 10px 35px rgba(0, 0, 0, 0.22);
     }
 
-
     .ff-script {
       display: block;
       margin-top: 22px;
@@ -319,7 +278,6 @@
       line-height: 1;
     }
 
-
     .ff-hero__intro {
       max-width: 680px;
       margin: 25px 0 0;
@@ -328,14 +286,12 @@
       line-height: 1.7;
     }
 
-
     .ff-hero__actions {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
       margin-top: 30px;
     }
-
 
     .ff-button {
       min-height: 50px;
@@ -358,23 +314,19 @@
         border-color 160ms ease;
     }
 
-
     .ff-button:hover {
       transform: translateY(-2px);
       box-shadow: 0 10px 24px rgba(0,0,0,.14);
     }
 
-
     .ff-button:active {
       transform: translateY(0) scale(0.985);
     }
-
 
     .ff-button--primary {
       background: #fff;
       color: var(--ff-green-dark);
     }
-
 
     .ff-button--ghost {
       border-color: rgba(255, 255, 255, 0.42);
@@ -384,13 +336,10 @@
     }
 
 
-
-
     .ff-title--animated {
   max-width: 920px;
   line-height: .8;
 }
-
 
 .ff-word {
   display: flex;
@@ -399,11 +348,9 @@
   gap: .01em;
 }
 
-
 .ff-word + .ff-word {
   margin-top: .04em;
 }
-
 
 .ff-letter {
   display: inline-block;
@@ -417,7 +364,6 @@
   transform-origin: center bottom;
   text-shadow: 0 12px 34px rgba(0, 0, 0, .2);
 
-
   transition:
     transform 520ms cubic-bezier(.2, .75, .2, 1),
     color 420ms ease,
@@ -426,38 +372,30 @@
     text-shadow 420ms ease;
 }
 
-
 /* Starting colors */
-
 
 .ff-letter--green {
   color: #b8efd5;
 }
 
-
 .ff-letter--gold {
   color: #f0b24b;
 }
 
-
 .ff-letter--cream {
   color: #fff7e8;
 }
-
 
 .ff-letter--outline {
   color: transparent;
   -webkit-text-stroke: 2px rgba(255, 255, 255, .94);
 }
 
-
 .ff-letter--serif {
   font-family: "Playfair Display", serif;
 }
 
-
 /* Opening entrance only */
-
 
 .ff-title--animated.is-entering .ff-letter {
   opacity: 0;
@@ -465,61 +403,49 @@
   animation: ffLetterEntrance 720ms cubic-bezier(.16, .8, .25, 1) forwards;
 }
 
-
 .ff-title--animated.is-entering .ff-word:nth-child(1) .ff-letter:nth-child(1) {
   animation-delay: 80ms;
 }
-
 
 .ff-title--animated.is-entering .ff-word:nth-child(1) .ff-letter:nth-child(2) {
   animation-delay: 140ms;
 }
 
-
 .ff-title--animated.is-entering .ff-word:nth-child(1) .ff-letter:nth-child(3) {
   animation-delay: 200ms;
 }
-
 
 .ff-title--animated.is-entering .ff-word:nth-child(1) .ff-letter:nth-child(4) {
   animation-delay: 260ms;
 }
 
-
 .ff-title--animated.is-entering .ff-word:nth-child(1) .ff-letter:nth-child(5) {
   animation-delay: 320ms;
 }
-
 
 .ff-title--animated.is-entering .ff-word:nth-child(2) .ff-letter:nth-child(1) {
   animation-delay: 380ms;
 }
 
-
 .ff-title--animated.is-entering .ff-word:nth-child(2) .ff-letter:nth-child(2) {
   animation-delay: 440ms;
 }
-
 
 .ff-title--animated.is-entering .ff-word:nth-child(2) .ff-letter:nth-child(3) {
   animation-delay: 500ms;
 }
 
-
 .ff-title--animated.is-entering .ff-word:nth-child(2) .ff-letter:nth-child(4) {
   animation-delay: 560ms;
 }
-
 
 .ff-title--animated.is-entering .ff-word:nth-child(2) .ff-letter:nth-child(5) {
   animation-delay: 620ms;
 }
 
-
 .ff-title--animated.is-entering .ff-word:nth-child(2) .ff-letter:nth-child(6) {
   animation-delay: 680ms;
 }
-
 
 @keyframes ffLetterEntrance {
   0% {
@@ -527,12 +453,10 @@
     transform: translateY(42px) rotate(3deg) scale(.96);
   }
 
-
   70% {
     opacity: 1;
     transform: translateY(-5px) rotate(-1deg) scale(1.02);
   }
-
 
   100% {
     opacity: 1;
@@ -540,9 +464,7 @@
   }
 }
 
-
 /* Living-letter personalities */
-
 
 .ff-letter.ff-personality-1 {
   font-family: "Playfair Display", serif;
@@ -551,14 +473,12 @@
   transform: translateY(-6px) rotate(-2deg) scale(1.04);
 }
 
-
 .ff-letter.ff-personality-2 {
   font-family: "Cinzel", serif;
   color: #f0b24b;
   -webkit-text-stroke: 0 transparent;
   transform: translateY(3px) rotate(2deg) scale(.98);
 }
-
 
 .ff-letter.ff-personality-3 {
   font-family: "Outfit", sans-serif;
@@ -567,14 +487,12 @@
   transform: translateY(-2px) rotate(1deg) scale(1.02);
 }
 
-
 .ff-letter.ff-personality-4 {
   font-family: "Bebas Neue", sans-serif;
   color: transparent;
   -webkit-text-stroke: 2px rgba(255, 255, 255, .95);
   transform: translateY(2px) rotate(-1deg) scale(1.01);
 }
-
 
 .ff-letter.ff-personality-5 {
   font-family: "Playfair Display", serif;
@@ -584,7 +502,6 @@
   filter: saturate(1.2);
 }
 
-
 .ff-letter.ff-personality-6 {
   font-family: "Cinzel", serif;
   color: transparent;
@@ -592,9 +509,7 @@
   transform: translateY(1px) rotate(-2deg) scale(.99);
 }
 
-
 /* Small breathing motion while letters are active */
-
 
 .ff-letter.ff-is-dancing {
   text-shadow:
@@ -602,9 +517,7 @@
     0 0 24px rgba(184, 239, 213, .13);
 }
 
-
     /* Art-poster countdown */
-
 
 .ff-countdown-section {
   position: relative;
@@ -624,11 +537,9 @@
     var(--ff-paper);
 }
 
-
 .ff-countdown-poster-wrap {
   position: relative;
 }
-
 
 .ff-countdown-poster {
   --poster-yellow: #f2b544;
@@ -636,7 +547,6 @@
   --poster-blue: #72b9eb;
   --poster-dark: #0b3026;
   --poster-cream: #fff5df;
-
 
   position: relative;
   width: 100%;
@@ -666,7 +576,6 @@
     background 400ms ease;
 }
 
-
 .ff-countdown-poster::before {
   content: "";
   position: absolute;
@@ -678,7 +587,6 @@
   border-radius: 50%;
   pointer-events: none;
 }
-
 
 .ff-countdown-poster::after {
   content: "FIRST FRIDAY";
@@ -696,7 +604,6 @@
   pointer-events: none;
 }
 
-
 .ff-countdown-poster:hover {
   transform: translateY(-5px) rotate(-.15deg);
   box-shadow:
@@ -704,11 +611,9 @@
     inset 0 0 0 1px rgba(0, 0, 0, .06);
 }
 
-
 .ff-countdown-poster:active {
   transform: translateY(-1px) scale(.995);
 }
-
 
 .ff-countdown-status-dot {
   position: absolute;
@@ -722,9 +627,7 @@
   pointer-events: none;
 }
 
-
 /* Fake poster tape */
-
 
 .ff-countdown-tape {
   position: absolute;
@@ -744,13 +647,11 @@
   pointer-events: none;
 }
 
-
 .ff-countdown-tape--left {
   top: 11px;
   left: 36px;
   transform: rotate(-5deg);
 }
-
 
 .ff-countdown-tape--right {
   right: 54px;
@@ -758,9 +659,7 @@
   transform: rotate(4deg);
 }
 
-
 /* Header */
-
 
 .ff-countdown-poster__header {
   position: relative;
@@ -772,14 +671,12 @@
   padding-top: 8px;
 }
 
-
 .ff-countdown-poster__eyebrow {
   font-size: .69rem;
   font-weight: 900;
   letter-spacing: .18em;
   text-transform: uppercase;
 }
-
 
 .ff-countdown-poster__title {
   margin-top: 5px;
@@ -789,7 +686,6 @@
   font-weight: 900;
   line-height: 1;
 }
-
 
 .ff-countdown-poster__remix {
   display: inline-flex;
@@ -806,21 +702,17 @@
   box-shadow: 0 5px 14px rgba(0, 0, 0, .07);
 }
 
-
 .ff-countdown-poster__remix span {
   display: inline-block;
   font-size: 1rem;
   transition: transform 600ms cubic-bezier(.2, .8, .2, 1);
 }
 
-
 .ff-countdown-poster.is-remixing .ff-remix-icon {
   transform: rotate(360deg) scale(1.15);
 }
 
-
 /* Countdown collage */
-
 
 .ff-countdown-collage {
   position: relative;
@@ -831,7 +723,6 @@
   gap: clamp(10px, 2vw, 18px);
   margin-top: 28px;
 }
-
 
 .ff-countdown-tile {
   position: relative;
@@ -852,12 +743,10 @@
     color 500ms ease;
 }
 
-
 .ff-countdown-tile--days {
   background: var(--poster-yellow);
   transform: rotate(-1.2deg) translateY(4px);
 }
-
 
 .ff-countdown-tile--hours {
   background: var(--poster-dark);
@@ -865,12 +754,10 @@
   transform: rotate(.8deg) translateY(-3px);
 }
 
-
 .ff-countdown-tile--minutes {
   background: var(--poster-blue);
   transform: rotate(-.5deg) translateY(5px);
 }
-
 
 .ff-countdown-tile--seconds {
   background: var(--poster-mint);
@@ -878,18 +765,15 @@
   transform: rotate(.9deg) translateY(-2px);
 }
 
-
 .ff-countdown-number--seconds {
   font-family: "Outfit", sans-serif;
   font-weight: 900;
   letter-spacing: -.08em;
 }
 
-
 .ff-countdown-decoration--seconds {
   color: rgba(6, 46, 35, .7);
 }
-
 
 .ff-countdown-pulse {
   position: absolute;
@@ -903,26 +787,22 @@
   animation: ffSecondPulse 1s ease-out infinite;
 }
 
-
 @keyframes ffSecondPulse {
   0% {
     transform: scale(.9);
     box-shadow: 0 0 0 0 rgba(11, 125, 90, .5);
   }
 
-
   70% {
     transform: scale(1);
     box-shadow: 0 0 0 10px rgba(11, 125, 90, 0);
   }
-
 
   100% {
     transform: scale(.9);
     box-shadow: 0 0 0 0 rgba(11, 125, 90, 0);
   }
 }
-
 
 .ff-countdown-number {
   position: relative;
@@ -936,19 +816,16 @@
   text-shadow: none;
 }
 
-
 .ff-countdown-number--serif {
   font-family: "Playfair Display", serif;
   font-weight: 900;
   letter-spacing: -.08em;
 }
 
-
 .ff-countdown-number--outline {
   color: transparent;
   -webkit-text-stroke: clamp(2px, .3vw, 4px) #102639;
 }
-
 
 .ff-countdown-label {
   position: relative;
@@ -961,7 +838,6 @@
   text-transform: uppercase;
 }
 
-
 .ff-countdown-decoration {
   position: absolute;
   top: 17px;
@@ -971,16 +847,13 @@
   opacity: .58;
 }
 
-
 .ff-countdown-decoration--circle {
   color: var(--poster-yellow);
 }
 
-
 .ff-countdown-decoration--spark {
   color: #102639;
 }
-
 
 .ff-countdown-scribble {
   position: absolute;
@@ -994,12 +867,10 @@
   opacity: .7;
 }
 
-
 .ff-countdown-scribble--dark {
   color: #102639;
   transform: rotate(6deg);
 }
-
 
 .ff-countdown-arrow {
   position: absolute;
@@ -1010,14 +881,11 @@
   font-weight: 900;
 }
 
-
 /* Number change */
-
 
 .ff-countdown-number.is-changing {
   animation: ffPosterNumberChange 620ms cubic-bezier(.18, .8, .2, 1);
 }
-
 
 @keyframes ffPosterNumberChange {
   0% {
@@ -1026,13 +894,11 @@
     filter: blur(5px);
   }
 
-
   70% {
     opacity: 1;
     transform: translateY(-5px) rotate(1deg) scale(1.03);
     filter: blur(0);
   }
-
 
   100% {
     opacity: 1;
@@ -1040,9 +906,7 @@
   }
 }
 
-
 /* Date and progress */
-
 
 .ff-countdown-poster__date {
   position: relative;
@@ -1060,13 +924,11 @@
   transform: rotate(-.6deg);
 }
 
-
 .ff-countdown-road {
   position: relative;
   z-index: 2;
   margin-top: 25px;
 }
-
 
 .ff-countdown-road__label {
   display: flex;
@@ -1079,7 +941,6 @@
   text-transform: uppercase;
 }
 
-
 .ff-countdown-progress {
   height: 8px;
   overflow: hidden;
@@ -1087,7 +948,6 @@
   border-radius: 999px;
   background: rgba(255, 255, 255, .55);
 }
-
 
 .ff-countdown-progress span {
   display: block;
@@ -1105,7 +965,6 @@
   transition: width 800ms cubic-bezier(.2, .75, .2, 1);
 }
 
-
 .ff-countdown-poster__footer {
   position: relative;
   z-index: 2;
@@ -1119,9 +978,7 @@
   text-transform: uppercase;
 }
 
-
 /* Remix themes */
-
 
 .ff-countdown-poster--theme-2 {
   --poster-yellow: #b8efd5;
@@ -1131,21 +988,17 @@
   --poster-cream: #fff1e8;
 }
 
-
 .ff-countdown-poster--theme-2 .ff-countdown-tile--days {
   transform: rotate(1deg) translateY(-4px);
 }
-
 
 .ff-countdown-poster--theme-2 .ff-countdown-tile--hours {
   transform: rotate(-1.1deg) translateY(5px);
 }
 
-
 .ff-countdown-poster--theme-2 .ff-countdown-tile--minutes {
   transform: rotate(.6deg) translateY(-2px);
 }
-
 
 .ff-countdown-poster--theme-3 {
   --poster-yellow: #f6e7cf;
@@ -1155,48 +1008,39 @@
   --poster-cream: #ddecff;
 }
 
-
 .ff-countdown-poster--theme-3 .ff-countdown-tile--days {
   transform: rotate(-.4deg) translateY(-2px);
 }
-
 
 .ff-countdown-poster--theme-3 .ff-countdown-tile--hours {
   transform: rotate(1.2deg) translateY(4px);
 }
 
-
 .ff-countdown-poster--theme-3 .ff-countdown-tile--minutes {
   transform: rotate(-1.3deg) translateY(-5px);
 }
 
-
 .ff-countdown-poster.is-remixing {
   animation: ffPosterRemix 760ms cubic-bezier(.2, .8, .2, 1);
 }
-
 
 @keyframes ffPosterRemix {
   0% {
     transform: none;
   }
 
-
   30% {
     transform: rotate(.45deg) scale(1.008);
   }
-
 
   60% {
     transform: rotate(-.35deg) scale(.997);
   }
 
-
   100% {
     transform: none;
   }
 }
-
 
 .ff-countdown-poster--theme-4 {
   --poster-yellow: #ef9cb5;
@@ -1206,26 +1050,21 @@
   --poster-cream: #fff6dd;
 }
 
-
 .ff-countdown-poster--theme-4 .ff-countdown-tile--days {
   transform: rotate(1.4deg) translateY(-3px);
 }
-
 
 .ff-countdown-poster--theme-4 .ff-countdown-tile--hours {
   transform: rotate(-.5deg) translateY(4px);
 }
 
-
 .ff-countdown-poster--theme-4 .ff-countdown-tile--minutes {
   transform: rotate(1deg) translateY(-5px);
 }
 
-
 .ff-countdown-poster--theme-4 .ff-countdown-tile--seconds {
   transform: rotate(-1.2deg) translateY(3px);
 }
-
 
 .ff-countdown-poster--theme-5 {
   --poster-yellow: #86d6b1;
@@ -1235,31 +1074,24 @@
   --poster-cream: #f8eadd;
 }
 
-
 .ff-countdown-poster--theme-5 .ff-countdown-tile--days {
   transform: rotate(-.8deg) translateY(5px);
 }
-
 
 .ff-countdown-poster--theme-5 .ff-countdown-tile--hours {
   transform: rotate(1.3deg) translateY(-4px);
 }
 
-
 .ff-countdown-poster--theme-5 .ff-countdown-tile--minutes {
   transform: rotate(-1.4deg) translateY(2px);
 }
-
 
 .ff-countdown-poster--theme-5 .ff-countdown-tile--seconds {
   transform: rotate(.5deg) translateY(-3px);
 }
 
 
-
-
 /* Interactive remix toy */
-
 
 .ff-remix-count {
   display: inline-block;
@@ -1275,12 +1107,10 @@
     transform 300ms cubic-bezier(.2, .8, .2, 1);
 }
 
-
 .ff-remix-count.is-visible {
   opacity: 1;
   transform: none;
 }
-
 
 .ff-remix-icon {
   display: inline-block;
@@ -1288,62 +1118,50 @@
   transition: transform 600ms cubic-bezier(.2, .8, .2, 1);
 }
 
-
 .ff-countdown-poster.is-remixing .ff-remix-icon {
   transform: rotate(360deg) scale(1.15);
 }
 
-
 .ff-countdown-poster.is-full-remix .ff-remix-icon {
   animation: ffFullRemixIcon 900ms cubic-bezier(.2, .8, .2, 1);
 }
-
 
 @keyframes ffFullRemixIcon {
   0% {
     transform: rotate(0deg) scale(1);
   }
 
-
   45% {
     transform: rotate(540deg) scale(1.4);
   }
-
 
   100% {
     transform: rotate(720deg) scale(1);
   }
 }
 
-
 /* Each tile receives a different bounce during a tap */
-
 
 .ff-countdown-poster.is-remixing .ff-countdown-tile:nth-child(1) {
   animation: ffTileRemixOne 680ms cubic-bezier(.2, .8, .2, 1);
 }
 
-
 .ff-countdown-poster.is-remixing .ff-countdown-tile:nth-child(2) {
   animation: ffTileRemixTwo 720ms cubic-bezier(.2, .8, .2, 1);
 }
-
 
 .ff-countdown-poster.is-remixing .ff-countdown-tile:nth-child(3) {
   animation: ffTileRemixThree 650ms cubic-bezier(.2, .8, .2, 1);
 }
 
-
 .ff-countdown-poster.is-remixing .ff-countdown-tile:nth-child(4) {
   animation: ffTileRemixFour 760ms cubic-bezier(.2, .8, .2, 1);
 }
-
 
 @keyframes ffTileRemixOne {
   0%, 100% {
     filter: none;
   }
-
 
   35% {
     transform: translateY(-13px) rotate(2deg) scale(1.025);
@@ -1351,12 +1169,10 @@
   }
 }
 
-
 @keyframes ffTileRemixTwo {
   0%, 100% {
     filter: none;
   }
-
 
   42% {
     transform: translateY(8px) rotate(-2deg) scale(.985);
@@ -1364,12 +1180,10 @@
   }
 }
 
-
 @keyframes ffTileRemixThree {
   0%, 100% {
     filter: none;
   }
-
 
   38% {
     transform: translateX(7px) rotate(2.5deg) scale(1.02);
@@ -1377,12 +1191,10 @@
   }
 }
 
-
 @keyframes ffTileRemixFour {
   0%, 100% {
     filter: none;
   }
-
 
   45% {
     transform: translateX(-6px) translateY(-8px) rotate(-2deg) scale(1.025);
@@ -1390,14 +1202,11 @@
   }
 }
 
-
 /* Bigger fifth-tap celebration */
-
 
 .ff-countdown-poster.is-full-remix {
   animation: ffFullPosterRemix 950ms cubic-bezier(.2, .8, .2, 1);
 }
-
 
 @keyframes ffFullPosterRemix {
   0%,
@@ -1405,27 +1214,22 @@
     transform: none;
   }
 
-
   20% {
     transform: rotate(-.6deg) scale(1.008);
   }
 
-
   45% {
     transform: rotate(.8deg) scale(1.015);
   }
-
 
   70% {
     transform: rotate(-.3deg) scale(.997);
   }
 }
 
-
 .ff-countdown-poster.is-full-remix .ff-countdown-number {
   animation: ffFullNumberRemix 850ms cubic-bezier(.2, .8, .2, 1);
 }
-
 
 @keyframes ffFullNumberRemix {
   0%,
@@ -1433,20 +1237,16 @@
     transform: none;
   }
 
-
   35% {
     transform: translateY(-10px) rotate(-3deg) scale(1.08);
   }
-
 
   65% {
     transform: translateY(3px) rotate(2deg) scale(.98);
   }
 }
 
-
 /* Decorative burst */
-
 
 .ff-remix-burst {
   position: absolute;
@@ -1457,7 +1257,6 @@
   opacity: 0;
 }
 
-
 .ff-remix-burst span {
   position: absolute;
   display: block;
@@ -1466,13 +1265,11 @@
   opacity: 0;
 }
 
-
 .ff-remix-burst span:nth-child(1) {
   top: 17%;
   left: 8%;
   font-size: 2rem;
 }
-
 
 .ff-remix-burst span:nth-child(2) {
   top: 11%;
@@ -1480,13 +1277,11 @@
   font-size: 1.4rem;
 }
 
-
 .ff-remix-burst span:nth-child(3) {
   bottom: 18%;
   left: 17%;
   font-size: 2.3rem;
 }
-
 
 .ff-remix-burst span:nth-child(4) {
   right: 7%;
@@ -1494,13 +1289,11 @@
   font-size: 2rem;
 }
 
-
 .ff-remix-burst span:nth-child(5) {
   top: 49%;
   left: 49%;
   font-size: 2.6rem;
 }
-
 
 .ff-remix-burst span:nth-child(6) {
   top: 48%;
@@ -1513,41 +1306,33 @@
   white-space: nowrap;
 }
 
-
 .ff-remix-burst.is-active {
   opacity: 1;
 }
-
 
 .ff-remix-burst.is-active span:nth-child(1) {
   animation: ffBurstOne 850ms ease-out forwards;
 }
 
-
 .ff-remix-burst.is-active span:nth-child(2) {
   animation: ffBurstTwo 900ms ease-out forwards;
 }
-
 
 .ff-remix-burst.is-active span:nth-child(3) {
   animation: ffBurstThree 820ms ease-out forwards;
 }
 
-
 .ff-remix-burst.is-active span:nth-child(4) {
   animation: ffBurstFour 880ms ease-out forwards;
 }
-
 
 .ff-remix-burst.is-active span:nth-child(5) {
   animation: ffBurstFive 760ms ease-out forwards;
 }
 
-
 .ff-remix-burst.is-active span:nth-child(6) {
   animation: ffBurstTitle 900ms cubic-bezier(.2, .8, .2, 1) forwards;
 }
-
 
 @keyframes ffBurstOne {
   0% {
@@ -1555,11 +1340,9 @@
     transform: translate(20px, 25px) rotate(0) scale(.4);
   }
 
-
   35% {
     opacity: 1;
   }
-
 
   100% {
     opacity: 0;
@@ -1567,18 +1350,15 @@
   }
 }
 
-
 @keyframes ffBurstTwo {
   0% {
     opacity: 0;
     transform: translate(-20px, 30px) scale(.3);
   }
 
-
   40% {
     opacity: 1;
   }
-
 
   100% {
     opacity: 0;
@@ -1586,18 +1366,15 @@
   }
 }
 
-
 @keyframes ffBurstThree {
   0% {
     opacity: 0;
     transform: translate(25px, -20px) rotate(0) scale(.4);
   }
 
-
   40% {
     opacity: 1;
   }
-
 
   100% {
     opacity: 0;
@@ -1605,18 +1382,15 @@
   }
 }
 
-
 @keyframes ffBurstFour {
   0% {
     opacity: 0;
     transform: translate(-20px, -20px) scale(.3);
   }
 
-
   40% {
     opacity: 1;
   }
-
 
   100% {
     opacity: 0;
@@ -1624,18 +1398,15 @@
   }
 }
 
-
 @keyframes ffBurstFive {
   0% {
     opacity: 0;
     transform: translate(-50%, -50%) scale(.2) rotate(0);
   }
 
-
   45% {
     opacity: .85;
   }
-
 
   100% {
     opacity: 0;
@@ -1643,25 +1414,21 @@
   }
 }
 
-
 @keyframes ffBurstTitle {
   0% {
     opacity: 0;
     transform: translate(-50%, -35%) rotate(-4deg) scale(.5);
   }
 
-
   35% {
     opacity: 1;
     transform: translate(-50%, -50%) rotate(2deg) scale(1.08);
   }
 
-
   70% {
     opacity: 1;
     transform: translate(-50%, -50%) rotate(-1deg) scale(1);
   }
-
 
   100% {
     opacity: 0;
@@ -1669,9 +1436,7 @@
   }
 }
 
-
     /* Fifth-tap festival mode */
-
 
 .ff-festival-flash {
   position: fixed;
@@ -1684,7 +1449,6 @@
   visibility: hidden;
   opacity: 0;
 }
-
 
 .ff-festival-flash::before {
   content: "";
@@ -1701,7 +1465,6 @@
   transform: scale(.2) rotate(-8deg);
 }
 
-
 .ff-festival-flash__ring {
   position: absolute;
   width: min(76vw, 760px);
@@ -1710,7 +1473,6 @@
   border-radius: 50%;
   opacity: 0;
 }
-
 
 .ff-festival-flash__stamp {
   position: relative;
@@ -1736,15 +1498,12 @@
   transform: scale(.4) rotate(-8deg);
 }
 
-
 .ff-festival-flash__stamp span {
   color: #f0b24b;
   font-size: .65em;
 }
 
-
     /* Festival confetti */
-
 
 .ff-confetti {
   position: absolute;
@@ -1753,7 +1512,6 @@
   overflow: hidden;
   pointer-events: none;
 }
-
 
 .ff-confetti span {
   position: absolute;
@@ -1765,16 +1523,13 @@
   opacity: 0;
 }
 
-
 .ff-confetti span:nth-child(3n) {
   background: #0b7d5a;
 }
 
-
 .ff-confetti span:nth-child(3n + 1) {
   background: #ffffff;
 }
-
 
 .ff-confetti span:nth-child(4n) {
   width: 16px;
@@ -1782,11 +1537,9 @@
   border-radius: 50%;
 }
 
-
 .ff-confetti span:nth-child(5n) {
   background: #72b9eb;
 }
-
 
 .ff-confetti span:nth-child(1)  { left: 3%; }
 .ff-confetti span:nth-child(2)  { left: 9%; }
@@ -1807,26 +1560,21 @@
 .ff-confetti span:nth-child(17) { left: 96%; }
 .ff-confetti span:nth-child(18) { left: 99%; }
 
-
 .ff-festival-flash.is-active .ff-confetti span {
   animation: ffConfettiFall 1700ms ease-out forwards;
 }
-
 
 .ff-festival-flash.is-active .ff-confetti span:nth-child(2n) {
   animation-delay: 70ms;
 }
 
-
 .ff-festival-flash.is-active .ff-confetti span:nth-child(3n) {
   animation-delay: 140ms;
 }
 
-
 .ff-festival-flash.is-active .ff-confetti span:nth-child(5n) {
   animation-delay: 220ms;
 }
-
 
 @keyframes ffConfettiFall {
   0% {
@@ -1837,11 +1585,9 @@
       scale(.65);
   }
 
-
   12% {
     opacity: 1;
   }
-
 
   55% {
     opacity: 1;
@@ -1850,7 +1596,6 @@
       rotate(420deg)
       scale(1);
   }
-
 
   100% {
     opacity: 0;
@@ -1866,33 +1611,27 @@
   animation: ffFestivalLayer 1350ms ease forwards;
 }
 
-
 .ff-festival-flash.is-active::before {
   animation: ffFestivalWash 1350ms cubic-bezier(.15, .8, .2, 1) forwards;
 }
-
 
 .ff-festival-flash.is-active .ff-festival-flash__ring {
   animation: ffFestivalRing 1050ms ease-out forwards;
 }
 
-
 .ff-festival-flash.is-active .ff-festival-flash__stamp {
   animation: ffFestivalStamp 1250ms cubic-bezier(.15, .85, .2, 1) forwards;
 }
-
 
 @keyframes ffFestivalLayer {
   0% {
     opacity: 0;
   }
 
-
   12%,
   72% {
     opacity: 1;
   }
-
 
   100% {
     opacity: 0;
@@ -1900,19 +1639,16 @@
   }
 }
 
-
 @keyframes ffFestivalWash {
   0% {
     opacity: 0;
     transform: scale(.15) rotate(-10deg);
   }
 
-
   28% {
     opacity: 1;
     transform: scale(1.15) rotate(3deg);
   }
-
 
   100% {
     opacity: 0;
@@ -1920,18 +1656,15 @@
   }
 }
 
-
 @keyframes ffFestivalRing {
   0% {
     opacity: 0;
     transform: scale(.15);
   }
 
-
   35% {
     opacity: .95;
   }
-
 
   100% {
     opacity: 0;
@@ -1939,31 +1672,26 @@
   }
 }
 
-
 @keyframes ffFestivalStamp {
   0% {
     opacity: 0;
     transform: scale(.35) rotate(-9deg);
   }
 
-
   27% {
     opacity: 1;
     transform: scale(1.12) rotate(3deg);
   }
-
 
   48% {
     opacity: 1;
     transform: scale(.96) rotate(-1deg);
   }
 
-
   72% {
     opacity: 1;
     transform: scale(1) rotate(0deg);
   }
-
 
   100% {
     opacity: 0;
@@ -1971,9 +1699,7 @@
   }
 }
 
-
     /* Permanent Festival Mode unlock */
-
 
 body.ff-festival-unlocked {
   background:
@@ -1995,7 +1721,6 @@ body.ff-festival-unlocked {
     );
 }
 
-
 body.ff-festival-unlocked .ff-topbar {
   background:
     linear-gradient(
@@ -2005,7 +1730,6 @@ body.ff-festival-unlocked .ff-topbar {
       #8a5a0d 100%
     );
 }
-
 
 body.ff-festival-unlocked .ff-countdown-section {
   background:
@@ -2026,7 +1750,6 @@ body.ff-festival-unlocked .ff-countdown-section {
     );
 }
 
-
 body.ff-festival-unlocked .ff-countdown-poster {
   box-shadow:
     0 38px 100px rgba(11, 125, 90, .28),
@@ -2034,7 +1757,6 @@ body.ff-festival-unlocked .ff-countdown-poster {
     0 0 70px rgba(240, 178, 75, .18),
     inset 0 0 0 1px rgba(0, 0, 0, .06);
 }
-
 
 body.ff-festival-unlocked .ff-countdown-poster__remix {
   background: #071f18;
@@ -2045,11 +1767,9 @@ body.ff-festival-unlocked .ff-countdown-poster__remix {
     0 0 0 4px rgba(240, 178, 75, .13);
 }
 
-
 body.ff-festival-unlocked .ff-remix-count {
   color: #f0b24b;
 }
-
 
 body.ff-festival-unlocked .ff-culture-strip {
   background:
@@ -2063,11 +1783,9 @@ body.ff-festival-unlocked .ff-culture-strip {
     );
 }
 
-
 body.ff-festival-unlocked .ff-culture-strip__track {
   animation-duration: 10s;
 }
-
 
 body.ff-festival-unlocked .ff-section--soft {
   background:
@@ -2078,19 +1796,16 @@ body.ff-festival-unlocked .ff-section--soft {
     );
 }
 
-
 body.ff-festival-unlocked .ff-event-bar__inner {
   box-shadow:
     0 20px 55px rgba(11, 125, 90, .17),
     0 0 0 2px rgba(240, 178, 75, .12);
 }
 
-
 body.ff-festival-unlocked .ff-countdown-pulse {
   background: #f0b24b;
   animation-name: ffFestivalPulse;
 }
-
 
 body.ff-festival-unlocked .ff-footer {
   background:
@@ -2102,19 +1817,16 @@ body.ff-festival-unlocked .ff-footer {
     );
 }
 
-
 @keyframes ffFestivalPulse {
   0% {
     transform: scale(.9);
     box-shadow: 0 0 0 0 rgba(240, 178, 75, .65);
   }
 
-
   70% {
     transform: scale(1);
     box-shadow: 0 0 0 12px rgba(240, 178, 75, 0);
   }
-
 
   100% {
     transform: scale(.9);
@@ -2123,24 +1835,19 @@ body.ff-festival-unlocked .ff-footer {
 }
     
 
-
 /* Whole-page response */
-
 
 body.ff-festival-mode {
   animation: ffPageFestival 1350ms ease;
 }
 
-
 body.ff-festival-mode .ff-countdown-poster {
   animation: ffPosterFestival 1250ms cubic-bezier(.15, .85, .2, 1);
 }
 
-
 body.ff-festival-mode .ff-culture-strip__track {
   animation-duration: 5s;
 }
-
 
 body.ff-festival-mode .ff-topbar,
 body.ff-festival-mode .ff-footer {
@@ -2149,31 +1856,26 @@ body.ff-festival-mode .ff-footer {
     0 0 45px rgba(11, 125, 90, .25);
 }
 
-
 @keyframes ffPageFestival {
   0%,
   100% {
     filter: none;
   }
 
-
   28% {
     filter: saturate(1.35) contrast(1.04);
   }
-
 
   55% {
     filter: saturate(1.15);
   }
 }
 
-
 @keyframes ffPosterFestival {
   0%,
   100% {
     transform: none;
   }
-
 
   24% {
     transform: translateY(-13px) rotate(-.7deg) scale(1.018);
@@ -2182,22 +1884,18 @@ body.ff-festival-mode .ff-footer {
       0 0 80px rgba(240, 178, 75, .35);
   }
 
-
   52% {
     transform: translateY(3px) rotate(.4deg) scale(.995);
   }
-
 
   76% {
     transform: translateY(-3px) rotate(-.15deg) scale(1.005);
   }
 }
 
-
 /* =========================================================
    50-CLICK SELF-DESTRUCT SEQUENCE
    ========================================================= */
-
 
 /* Red emergency wash over the entire page */
 body.ff-self-destruct::before {
@@ -2222,7 +1920,6 @@ body.ff-self-destruct::before {
   animation: ffEmergencyFlash 420ms steps(2, end) infinite;
 }
 
-
 /* Moving warning stripes */
 body.ff-self-destruct::after {
   content: "";
@@ -2244,12 +1941,10 @@ body.ff-self-destruct::after {
   animation: ffWarningStripes 900ms linear infinite;
 }
 
-
 /* Shake everything except the fullscreen message */
 body.ff-self-destruct > *:not(.ff-festival-flash) {
   animation: ffSystemShake 110ms linear infinite;
 }
-
 
 /* Keep the fullscreen layer visible for the whole sequence */
 body.ff-self-destruct .ff-festival-flash.is-active {
@@ -2257,7 +1952,6 @@ body.ff-self-destruct .ff-festival-flash.is-active {
   opacity: 1;
   animation: ffSelfDestructOverlay 5400ms linear forwards;
 }
-
 
 /* Turn the normal green/gold flash into an emergency red flash */
 body.ff-self-destruct .ff-festival-flash::before {
@@ -2272,7 +1966,6 @@ body.ff-self-destruct .ff-festival-flash::before {
   animation: ffCriticalWash 5400ms ease-in-out forwards;
 }
 
-
 /* Red alert ring */
 body.ff-self-destruct .ff-festival-flash__ring {
   border-color: rgba(255, 55, 35, 0.95);
@@ -2281,7 +1974,6 @@ body.ff-self-destruct .ff-festival-flash__ring {
     inset 0 0 40px rgba(255, 35, 20, 0.45);
   animation: ffCriticalRing 800ms ease-out infinite;
 }
-
 
 /* Emergency message box */
 body.ff-self-destruct .ff-festival-flash.is-active .ff-festival-flash__stamp {
@@ -2308,11 +2000,9 @@ body.ff-self-destruct .ff-festival-flash.is-active .ff-festival-flash__stamp {
   animation: ffCriticalStamp 180ms steps(2, end) infinite;
 }
 
-
 body.ff-self-destruct .ff-festival-flash.is-active .ff-festival-flash__stamp span {
   color: #ffd54a;
 }
-
 
 /* The actual fake screen shutdown */
 body.ff-screen-destroyed {
@@ -2320,13 +2010,11 @@ body.ff-screen-destroyed {
   background: #000;
 }
 
-
 body.ff-screen-destroyed > *:not(.ff-festival-flash) {
   pointer-events: none;
   animation: ffScreenCollapse 900ms cubic-bezier(.7, 0, .3, 1) forwards;
   transform-origin: center center;
 }
-
 
 /* Blackout after the screen collapses */
 body.ff-screen-destroyed::before {
@@ -2334,7 +2022,6 @@ body.ff-screen-destroyed::before {
   opacity: 1;
   animation: none;
 }
-
 
 body.ff-screen-destroyed::after {
   content: "SYSTEM OFFLINE";
@@ -2350,63 +2037,52 @@ body.ff-screen-destroyed::after {
   animation: ffOfflineMessage 1300ms ease forwards;
 }
 
-
 /* Reboot effect */
 body.ff-system-rebooting > *:not(.ff-festival-flash) {
   animation: ffSystemReboot 950ms cubic-bezier(.2, .8, .2, 1);
 }
-
 
 @keyframes ffEmergencyFlash {
   0% {
     opacity: 0.28;
   }
 
-
   100% {
     opacity: 0.72;
   }
 }
-
 
 @keyframes ffWarningStripes {
   from {
     background-position: 0 0;
   }
 
-
   to {
     background-position: 88px 88px;
   }
 }
-
 
 @keyframes ffSystemShake {
   0% {
     transform: translate(0, 0);
   }
 
-
   25% {
     transform: translate(-3px, 2px);
   }
-
 
   50% {
     transform: translate(3px, -2px);
   }
 
-
   75% {
     transform: translate(-2px, -1px);
   }
-
 
   100% {
     transform: translate(2px, 2px);
   }
 }
-
 
 @keyframes ffSelfDestructOverlay {
   0% {
@@ -2414,19 +2090,16 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
     opacity: 0;
   }
 
-
   4%,
   72% {
     visibility: visible;
     opacity: 1;
   }
 
-
   88% {
     visibility: visible;
     opacity: 0;
   }
-
 
   100% {
     visibility: hidden;
@@ -2434,31 +2107,26 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
   }
 }
 
-
 @keyframes ffCriticalWash {
   0% {
     opacity: 0;
     transform: scale(0.2);
   }
 
-
   12% {
     opacity: 1;
     transform: scale(1);
   }
-
 
   55% {
     opacity: 0.9;
     transform: scale(1.3);
   }
 
-
   78% {
     opacity: 1;
     transform: scale(2);
   }
-
 
   100% {
     opacity: 0;
@@ -2466,18 +2134,15 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
   }
 }
 
-
 @keyframes ffCriticalRing {
   0% {
     opacity: 0.15;
     transform: scale(0.65);
   }
 
-
   55% {
     opacity: 1;
   }
-
 
   100% {
     opacity: 0;
@@ -2485,23 +2150,19 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
   }
 }
 
-
 @keyframes ffCriticalStamp {
   0% {
     transform: translate(-3px, 1px) rotate(-0.4deg);
   }
 
-
   50% {
     transform: translate(3px, -1px) rotate(0.4deg);
   }
-
 
   100% {
     transform: translate(-1px, -2px) rotate(0deg);
   }
 }
-
 
 @keyframes ffScreenCollapse {
   0% {
@@ -2510,20 +2171,17 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
     transform: scale(1, 1);
   }
 
-
   58% {
     opacity: 1;
     filter: brightness(2.8) contrast(2);
     transform: scale(1, 0.025);
   }
 
-
   78% {
     opacity: 1;
     filter: brightness(5);
     transform: scale(0.18, 0.012);
   }
-
 
   100% {
     opacity: 0;
@@ -2532,32 +2190,27 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
   }
 }
 
-
 @keyframes ffOfflineMessage {
   0%,
   32% {
     color: transparent;
   }
 
-
   38%,
   44% {
     color: rgba(255, 255, 255, 0.8);
   }
-
 
   45%,
   62% {
     color: transparent;
   }
 
-
   63%,
   100% {
     color: rgba(255, 255, 255, 0.72);
   }
 }
-
 
 @keyframes ffSystemReboot {
   0% {
@@ -2566,19 +2219,16 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
     transform: scaleY(0.02);
   }
 
-
   45% {
     opacity: 1;
     filter: brightness(1.8) saturate(0.4);
     transform: scaleY(1.02);
   }
 
-
   70% {
     filter: brightness(1.15) saturate(1.25);
     transform: scaleY(0.99);
   }
-
 
   100% {
     opacity: 1;
@@ -2588,7 +2238,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
 }
     
 /* Expanded buttons */
-
 
 .ff-countdown-actions {
   display: grid;
@@ -2604,11 +2253,9 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
   animation: ffCountdownActionsIn 350ms cubic-bezier(.2, .75, .2, 1);
 }
 
-
 .ff-countdown-actions[hidden] {
   display: none;
 }
-
 
 @keyframes ffCountdownActionsIn {
   from {
@@ -2616,13 +2263,11 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
     transform: translateY(-12px);
   }
 
-
   to {
     opacity: 1;
     transform: none;
   }
 }
-
 
 .ff-button--countdown {
   min-height: 49px;
@@ -2631,22 +2276,18 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
   color: var(--ff-green-dark);
 }
 
-
 .ff-button--countdown:hover {
   background: var(--ff-green);
   color: #fff;
 }
 
-
     /* Event bar */
-
 
     .ff-event-bar {
       position: relative;
       z-index: 4;
       margin-top: 24px;
     }
-
 
     .ff-event-bar__inner {
       display: grid;
@@ -2657,7 +2298,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       background: var(--ff-white);
       box-shadow: var(--ff-shadow);
     }
-
 
     .ff-event-detail {
   width: 100%;
@@ -2681,21 +2321,17 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
     transform 180ms ease;
 }
 
-
     .ff-event-detail:hover {
       background: #f8fcfa;
     }
-
 
     .ff-event-detail:active {
       transform: scale(.992);
     }
 
-
     .ff-event-detail + .ff-event-detail {
       border-left: 1px solid var(--ff-border);
     }
-
 
     .ff-event-detail__icon {
       width: 48px;
@@ -2709,7 +2345,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       font-size: 1.35rem;
     }
 
-
     .ff-event-detail__label {
       color: var(--ff-muted);
       font-size: 0.7rem;
@@ -2718,14 +2353,12 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       text-transform: uppercase;
     }
 
-
     .ff-event-detail__value {
       margin-top: 5px;
       font-size: 0.98rem;
       font-weight: 800;
       line-height: 1.35;
     }
-
 
     .ff-event-detail__hint {
       display: block;
@@ -2735,7 +2368,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       font-weight: 800;
     }
 
-
     .ff-event-detail:focus-visible {
   position: relative;
   z-index: 2;
@@ -2743,20 +2375,16 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
   outline-offset: -3px;
 }
 
-
     /* General sections */
-
 
     .ff-section {
       padding: 92px 0;
     }
 
-
     .ff-section--soft {
       background: #f1f7f4;
       border-block: 1px solid var(--ff-border);
     }
-
 
     .ff-section__eyebrow {
       margin-bottom: 10px;
@@ -2767,7 +2395,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       text-transform: uppercase;
     }
 
-
     .ff-section__title {
       max-width: 780px;
       margin: 0;
@@ -2775,7 +2402,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       font-size: clamp(2.25rem, 5vw, 4.2rem);
       line-height: 1.05;
     }
-
 
     .ff-section__intro {
       max-width: 760px;
@@ -2785,9 +2411,7 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       line-height: 1.8;
     }
 
-
     /* Feature cards */
-
 
     .ff-card-grid {
       display: grid;
@@ -2795,7 +2419,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       gap: 18px;
       margin-top: 42px;
     }
-
 
     .ff-card {
       padding: 28px;
@@ -2809,13 +2432,11 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
         border-color 220ms ease;
     }
 
-
     .ff-card:hover {
       transform: translateY(-5px);
       box-shadow: var(--ff-shadow-hover);
       border-color: rgba(11,125,90,.32);
     }
-
 
     .ff-card__icon {
       width: 52px;
@@ -2829,12 +2450,10 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       font-size: 1.4rem;
     }
 
-
     .ff-card h3 {
       margin: 0;
       font-size: 1.07rem;
     }
-
 
     .ff-card p {
       margin: 11px 0 0;
@@ -2843,9 +2462,7 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       line-height: 1.65;
     }
 
-
     /* Challenge block */
-
 
     .ff-challenge {
       display: grid;
@@ -2857,11 +2474,9 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       box-shadow: var(--ff-shadow);
     }
 
-
     .ff-challenge__content {
       padding: clamp(34px, 6vw, 66px);
     }
-
 
     .ff-challenge__label {
       color: #92dcb9;
@@ -2871,7 +2486,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       text-transform: uppercase;
     }
 
-
     .ff-challenge h2 {
       max-width: 590px;
       margin: 12px 0 0;
@@ -2880,14 +2494,12 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       line-height: 1.08;
     }
 
-
     .ff-challenge p {
       max-width: 580px;
       margin: 20px 0 0;
       color: rgba(255, 255, 255, 0.76);
       line-height: 1.75;
     }
-
 
     .ff-challenge__note {
       margin-top: 22px;
@@ -2897,12 +2509,10 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       font-size: 0.78rem;
     }
 
-
     .ff-challenge__image {
       min-height: 480px;
       overflow: hidden;
     }
-
 
     .ff-challenge__image img {
       width: 100%;
@@ -2911,14 +2521,11 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       transition: transform 700ms cubic-bezier(.2,.7,.2,1);
     }
 
-
     .ff-challenge:hover .ff-challenge__image img {
       transform: scale(1.045);
     }
 
-
     /* Batch feature */
-
 
     .ff-batch {
       position: relative;
@@ -2937,7 +2544,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       box-shadow: 0 12px 32px rgba(26, 69, 52, 0.06);
     }
 
-
     .ff-batch__badge {
       width: 82px;
       height: 82px;
@@ -2955,20 +2561,17 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       box-shadow: 0 12px 26px rgba(220,149,30,.24);
     }
 
-
     .ff-batch h3 {
       margin: 0;
       font-family: "Playfair Display", serif;
       font-size: 1.65rem;
     }
 
-
     .ff-batch p {
       margin: 8px 0 0;
       color: var(--ff-muted);
       line-height: 1.65;
     }
-
 
     .ff-batch__links {
       display: flex;
@@ -2977,7 +2580,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       margin-top: 14px;
     }
 
-
     .ff-text-link {
       color: var(--ff-green-dark);
       font-size: .82rem;
@@ -2985,11 +2587,9 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       text-decoration: none;
     }
 
-
     .ff-text-link:hover {
       text-decoration: underline;
     }
-
 
     .ff-batch__tag {
       color: #a86b08;
@@ -3001,10 +2601,7 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
     }
 
 
-
-
     /* Batch featured-brand takeover */
-
 
     .ff-batch-feature {
       background:
@@ -3012,7 +2609,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
         linear-gradient(180deg, #eff7ff 0%, #dceefe 100%);
       border-block: 1px solid rgba(63,137,199,.2);
     }
-
 
     .ff-batch-showcase {
       display: grid;
@@ -3024,7 +2620,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       background: #0b1f32;
       box-shadow: 0 28px 70px rgba(18,57,91,.22);
     }
-
 
     .ff-batch-showcase .ff-batch-showcase__gallery {
       position: relative;
@@ -3040,7 +2635,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
         radial-gradient(circle at 50% 45%, rgba(255,255,255,.94) 0 15%, rgba(206,230,251,.65) 42%, transparent 70%),
         linear-gradient(145deg, #d9edff 0%, #a9cff1 48%, #e8f5ff 100%);
     }
-
 
     .ff-batch-showcase__gallery::before {
       content: "";
@@ -3059,7 +2653,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       z-index: -1;
     }
 
-
     .ff-batch-showcase__gallery::after {
       content: "";
       position: absolute;
@@ -3070,7 +2663,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       filter: blur(18px);
       z-index: -1;
     }
-
 
     .ff-batch-shot,
     .ff-batch-shot--main {
@@ -3087,7 +2679,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       z-index: 2;
     }
 
-
     .ff-batch-shot img,
     .ff-batch-shot--main img {
       width: 100%;
@@ -3099,17 +2690,14 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       animation: ffBatchFloat 6s ease-in-out infinite;
     }
 
-
     .ff-batch-shot:hover img {
       transform: translateY(-7px) scale(1.018);
     }
-
 
     @keyframes ffBatchFloat {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-9px); }
     }
-
 
     .ff-batch-showcase__media-copy {
       position: absolute;
@@ -3120,7 +2708,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       pointer-events: none;
     }
 
-
     .ff-batch-showcase__media-copy span {
       display: block;
       font-size: .68rem;
@@ -3128,7 +2715,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       letter-spacing: .16em;
       text-transform: uppercase;
     }
-
 
     .ff-batch-showcase__media-copy strong {
       display: block;
@@ -3140,7 +2726,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       text-transform: uppercase;
     }
 
-
     .ff-batch-showcase__stage-logo {
       position: absolute;
       right: 32px;
@@ -3151,7 +2736,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       object-fit: contain;
       opacity: .9;
     }
-
 
     .ff-batch-showcase__content {
       position: relative;
@@ -3165,7 +2749,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
         linear-gradient(160deg, #102c47 0%, #081827 100%);
     }
 
-
     .ff-batch-showcase__logo {
       width: min(220px, 68%);
       max-height: 82px;
@@ -3173,7 +2756,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       object-position: left center;
       margin-bottom: 26px;
     }
-
 
     .ff-batch-showcase__label {
       color: #79baf0;
@@ -3183,7 +2765,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       text-transform: uppercase;
     }
 
-
     .ff-batch-showcase h2 {
       margin: 12px 0 0;
       font-family: "Playfair Display", serif;
@@ -3191,13 +2772,11 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       line-height: 1.02;
     }
 
-
     .ff-batch-showcase p {
       margin: 20px 0 0;
       color: rgba(255,255,255,.74);
       line-height: 1.75;
     }
-
 
     .ff-batch-showcase__offer {
       display: flex;
@@ -3211,7 +2790,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       backdrop-filter: blur(8px);
     }
 
-
     .ff-batch-showcase__offer > span {
       color: #f0b24b;
       font-family: "Outfit", sans-serif;
@@ -3220,23 +2798,19 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       line-height: 1;
     }
 
-
     .ff-batch-showcase__offer strong,
     .ff-batch-showcase__offer small {
       display: block;
     }
 
-
     .ff-batch-showcase__offer strong {
       font-size: .9rem;
     }
-
 
     .ff-batch-showcase__offer small {
       margin-top: 4px;
       color: rgba(255,255,255,.6);
     }
-
 
     .ff-batch-showcase__actions {
       display: flex;
@@ -3246,17 +2820,14 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       margin-top: 26px;
     }
 
-
     .ff-button--batch {
       background: #6bb4ef;
       color: #071726;
     }
 
-
     .ff-text-link--light {
       color: #fff;
     }
-
 
     .ff-batch-showcase__note {
       margin-top: 28px;
@@ -3267,25 +2838,21 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       line-height: 1.6;
     }
 
-
     @media (max-width: 980px) {
       .ff-batch-showcase {
         grid-template-columns: 1fr;
       }
-
 
       .ff-batch-showcase .ff-batch-showcase__gallery {
         min-height: 570px;
       }
     }
 
-
     @media (max-width: 620px) {
       .ff-batch-showcase .ff-batch-showcase__gallery {
         min-height: 470px;
         padding: 76px 20px 46px;
       }
-
 
       .ff-batch-shot,
       .ff-batch-shot--main {
@@ -3294,17 +2861,14 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
         min-height: 350px;
       }
 
-
       .ff-batch-showcase__media-copy {
         top: 24px;
         left: 24px;
       }
 
-
       .ff-batch-showcase__media-copy strong {
         font-size: 1.65rem;
       }
-
 
       .ff-batch-showcase__stage-logo {
         right: 22px;
@@ -3313,7 +2877,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       }
     }
 
-
     @media (prefers-reduced-motion: reduce) {
       .ff-batch-shot img,
       .ff-batch-shot--main img {
@@ -3321,10 +2884,108 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       }
     }
 
-
     
-    /* Vendor lineup */
+    /* Batch 4G hidden-object game */
+    .ff-batch-game { position: relative; }
+    .ff-gram-counter { position:absolute; z-index:9; left:18px; bottom:18px; display:flex; gap:10px; align-items:center; padding:10px 14px; border:1px solid rgba(255,255,255,.5); border-radius:999px; background:rgba(8,24,39,.78); color:#fff; box-shadow:0 12px 30px rgba(0,0,0,.18); backdrop-filter:blur(12px); opacity:0; transform:translateY(8px); transition:.3s ease; pointer-events:none; }
+    .ff-gram-counter.is-visible { opacity:1; transform:none; }
+    .ff-gram-counter span { color:#8bc7f6; font-size:.6rem; font-weight:900; letter-spacing:.14em; text-transform:uppercase; }
+    .ff-gram-counter strong { font-size:.75rem; }
+    .ff-gram-clue { position:absolute; z-index:8; border:0; background:transparent; cursor:pointer; padding:0; }
+    .ff-gram-clue.is-found { pointer-events:none; animation:ffGramVanish .6s forwards; }
+    .ff-gram-clue--b { top:clamp(38px,5vw,70px); left:clamp(34px,5vw,68px); width:46px; height:62px; color:transparent; animation:ffBWiggle 7s ease-in-out infinite; }
+    .ff-gram-clue--b span { display:block; width:100%; height:100%; }
+    .ff-gram-clue--shark { left:-70px; bottom:15%; font-size:1.9rem; animation:ffSharkSwim 11s linear infinite; filter:drop-shadow(0 4px 3px rgba(0,0,0,.25)); }
+    .ff-gram-clue--shark i { position:absolute; left:4px; right:4px; bottom:-3px; height:5px; border-radius:50%; background:rgba(255,255,255,.65); filter:blur(2px); }
+    .ff-gram-clue--honey { left:53%; top:46%; width:15%; height:18%; border-radius:50%; animation:ffHoneyGlow 4.5s ease-in-out infinite; }
+    .ff-gram-clue--sparkle { right:16px; top:12px; font-size:1.15rem; color:#ffd570; text-shadow:0 0 12px #fff; animation:ffSparkleDrift 5s ease-in-out infinite; }
+    .ff-batch-toast { position:fixed; z-index:10020; left:50%; bottom:28px; max-width:min(90vw,520px); padding:14px 20px; border-radius:999px; background:#081827; color:#fff; font-weight:800; box-shadow:0 18px 45px rgba(0,0,0,.3); opacity:0; transform:translate(-50%,25px) scale(.94); pointer-events:none; }
+    .ff-batch-toast.is-showing { animation:ffToast 2.8s ease both; }
+    .ff-mini-confetti { position:fixed; z-index:10050; color:#f1b33f; font-size:16px; pointer-events:none; animation:ffMiniConfetti 1.05s ease-out forwards; }
+    .ff-batch-game.is-gram-pop { animation:ffCardPop .45s ease; }
 
+    .ff-batch-challenge { position:fixed; inset:0; z-index:10000; display:grid; place-items:center; padding:22px; opacity:0; pointer-events:none; transition:.3s ease; }
+    .ff-batch-challenge.is-open { opacity:1; pointer-events:auto; }
+    .ff-batch-challenge__backdrop { position:absolute; inset:0; background:rgba(2,12,20,.84); backdrop-filter:blur(14px); }
+    .ff-batch-challenge__card { position:relative; z-index:1; width:min(900px,96vw); min-height:520px; display:grid; grid-template-columns:.7fr 1.3fr; overflow:hidden; border:1px solid rgba(255,255,255,.2); border-radius:34px; background:linear-gradient(145deg,#cae5fb,#86bce8 42%,#0b2033 42%); color:#fff; box-shadow:0 35px 100px rgba(0,0,0,.5); transform:translateY(24px) scale(.96) rotate(-.5deg); transition:.45s cubic-bezier(.2,.8,.2,1); }
+    .ff-batch-challenge.is-open .ff-batch-challenge__card { transform:none; }
+    .ff-batch-challenge__close { position:absolute; z-index:4; right:16px; top:14px; width:42px; height:42px; border:1px solid rgba(255,255,255,.25); border-radius:50%; background:rgba(255,255,255,.1); color:#fff; font-size:1.5rem; cursor:pointer; }
+    .ff-batch-challenge__art { display:grid; place-items:center; color:#103a5d; font:900 clamp(5rem,14vw,10rem)/1 "Outfit",sans-serif; text-shadow:0 10px 0 rgba(255,255,255,.35); transform:rotate(-7deg); }
+    .ff-batch-challenge__copy { display:flex; flex-direction:column; justify-content:center; padding:clamp(34px,6vw,70px); background:radial-gradient(circle at 90% 5%,rgba(104,181,239,.24),transparent 15rem),linear-gradient(160deg,#102c47,#06131f); }
+    .ff-batch-challenge__kicker { color:#79baf0; font-size:.72rem; font-weight:900; letter-spacing:.16em; text-transform:uppercase; }
+    .ff-batch-challenge h2 { margin:13px 0 0; font:900 clamp(2rem,5vw,4rem)/.98 "Playfair Display",serif; }
+    .ff-batch-challenge p { color:rgba(255,255,255,.74); line-height:1.65; }
+    .ff-batch-question { margin-top:16px; padding-top:18px; border-top:1px solid rgba(255,255,255,.14); }
+    .ff-batch-answer { display:flex; gap:10px; margin-top:18px; }
+    .ff-batch-answer input { min-width:0; flex:1; min-height:50px; padding:0 17px; border:1px solid rgba(255,255,255,.22); border-radius:999px; background:rgba(255,255,255,.08); color:#fff; font:inherit; outline:none; }
+    .ff-batch-answer button { min-height:50px; padding:0 20px; border:0; border-radius:999px; background:#70b9f1; color:#071726; font-weight:900; cursor:pointer; }
+    .ff-batch-feedback { min-height:24px; margin-top:14px; color:#ffca71; font-weight:800; }
+    .ff-batch-challenge__card.is-wrong { animation:ffWrong .6s ease; }
+    .ff-batch-challenge__card.is-doomed { animation:ffDoomed .22s linear infinite; }
+    .ff-batch-challenge__card.is-winner { background:linear-gradient(145deg,#ffe08a,#ef9e29 42%,#0b2033 42%); }
+    .ff-batch-pass { margin-top:22px; padding:22px; border:1px dashed rgba(255,255,255,.5); border-radius:22px; background:rgba(255,255,255,.08); }
+    .ff-batch-pass strong,.ff-batch-pass span,.ff-batch-pass b,.ff-batch-pass small { display:block; }
+    .ff-batch-pass strong { color:#ffd175; letter-spacing:.12em; }
+    .ff-batch-pass span { margin-top:8px; color:#fff; }
+    .ff-batch-pass b { margin-top:18px; font:900 1.35rem "Outfit",sans-serif; }
+    .ff-batch-pass small { margin-top:5px; color:rgba(255,255,255,.55); }
+    .ff-batch-pass-note { font-size:.78rem; }
+    .ff-batch-countdown { position:fixed; inset:0; z-index:10030; display:grid; place-items:center; padding:20px; color:#fff; font:900 clamp(3rem,10vw,8rem)/.9 "Outfit",sans-serif; text-align:center; text-shadow:0 8px 40px #000; pointer-events:none; }
+    .ff-batch-smoke { position:fixed; inset:0; z-index:10040; overflow:hidden; pointer-events:none; }
+    .ff-batch-smoke i { position:absolute; width:52vw; aspect-ratio:1; border-radius:50%; background:radial-gradient(circle,rgba(245,249,252,.98),rgba(165,183,195,.88) 45%,transparent 72%); filter:blur(18px); opacity:0; transform:scale(.2); }
+    .ff-batch-smoke i:nth-child(1){left:-12%;bottom:-20%}.ff-batch-smoke i:nth-child(2){left:18%;bottom:-30%;animation-delay:.1s}.ff-batch-smoke i:nth-child(3){right:-8%;bottom:-18%;animation-delay:.2s}.ff-batch-smoke i:nth-child(4){left:-15%;top:-20%;animation-delay:.3s}.ff-batch-smoke i:nth-child(5){left:30%;top:-25%;animation-delay:.4s}.ff-batch-smoke i:nth-child(6){right:-10%;top:-15%;animation-delay:.5s}
+    .ff-batch-smoke.is-active i { animation:ffSmokeIn 1.35s ease forwards; }
+    .ff-batch-smoke.is-clearing { animation:ffSmokeClear 1.7s ease forwards; }
+
+    @keyframes ffBWiggle { 0%,88%,100%{transform:none} 90%{transform:rotate(-8deg) scale(1.08)} 93%{transform:rotate(8deg) scale(.96)} 96%{transform:rotate(-4deg)} }
+    @keyframes ffSharkSwim { from{left:-70px;transform:translateY(0)} 45%{transform:translateY(-8px)} to{left:calc(100% + 70px);transform:translateY(0)} }
+    @keyframes ffHoneyGlow { 0%,80%,100%{box-shadow:none} 88%{box-shadow:0 0 0 8px rgba(255,211,71,.15),0 0 30px 12px rgba(255,211,71,.55)} }
+    @keyframes ffSparkleDrift { 0%,100%{transform:translate(0,0) rotate(0)} 35%{transform:translate(-28px,12px) rotate(120deg)} 70%{transform:translate(-9px,28px) rotate(240deg)} }
+    @keyframes ffGramVanish { 50%{transform:scale(1.8) rotate(25deg);opacity:1} 100%{transform:scale(.1);opacity:0} }
+    @keyframes ffToast { 0%{opacity:0;transform:translate(-50%,25px) scale(.94)} 12%,75%{opacity:1;transform:translate(-50%,0) scale(1)} 100%{opacity:0;transform:translate(-50%,-12px)} }
+    @keyframes ffMiniConfetti { to{transform:translate(var(--x),var(--y)) rotate(var(--r));opacity:0} }
+    @keyframes ffCardPop { 50%{transform:scale(1.012)} }
+    @keyframes ffWrong { 20%,60%{transform:translateX(-14px) rotate(-1deg)} 40%,80%{transform:translateX(14px) rotate(1deg)} }
+    @keyframes ffDoomed { 50%{transform:translate(3px,-2px) rotate(.3deg);filter:hue-rotate(30deg)} }
+    @keyframes ffSmokeIn { to{opacity:1;transform:scale(2.5)} }
+    @keyframes ffSmokeClear { to{opacity:0;filter:blur(45px)} }
+
+    @media (max-width:700px) {
+      .ff-batch-challenge__card { grid-template-columns:1fr; background:linear-gradient(180deg,#bfe0fa 0 26%,#0b2033 26%); }
+      .ff-batch-challenge__art { min-height:145px; font-size:5rem; }
+      .ff-batch-challenge__copy { padding:28px 22px 34px; }
+      .ff-batch-answer { flex-direction:column; }
+      .ff-gram-counter { left:10px; bottom:10px; }
+      .ff-gram-clue--b { top:30px; left:28px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ff-gram-clue,.ff-batch-challenge__card,.ff-batch-smoke i { animation:none !important; }
+    }
+
+
+    /* Batch 4G hunt fixes */
+    body.ff-batch-hunt-open { overflow: hidden; }
+    .ff-batch-showcase { position: relative; }
+    .ff-batch-showcase__logo { animation: ffBatchWholeLogoWiggle 11s ease-in-out infinite; transform-origin: center; }
+    @keyframes ffBatchWholeLogoWiggle { 0%,86%,100%{transform:none} 89%{transform:rotate(-2deg) translateX(-4px)} 92%{transform:rotate(2.5deg) translateX(5px)} 95%{transform:rotate(-1deg) translateX(-2px)} }
+    .ff-gram-clue--b { top:clamp(55px,8vw,112px); left:auto; right:clamp(28px,5vw,68px); width:clamp(150px,25%,230px); height:90px; border-radius:22px; animation:none; }
+    .ff-gram-clue--b::after { content:'👀'; position:absolute; left:8%; bottom:-2px; font-size:1.35rem; opacity:0; transform:translateY(10px); animation:ffBatchCreep 11s ease-in-out infinite; }
+    @keyframes ffBatchCreep { 0%,82%,100%{opacity:0;transform:translateY(10px)} 87%,94%{opacity:1;transform:translateY(0)} }
+    .ff-gram-clue--shark { font-size:2.35rem; animation-duration:18s; }
+    .ff-gram-clue--honey { animation-duration:7s; }
+    .ff-gram-clue--sparkle { font-size:1.45rem; animation-duration:8s; }
+    .ff-batch-toast.is-showing { animation-duration:4.2s; }
+    .ff-batch-challenge { position:fixed !important; inset:0 !important; z-index:10000 !important; display:grid !important; place-items:center !important; padding:clamp(16px,4vw,40px) !important; opacity:0; visibility:hidden; }
+    .ff-batch-challenge.is-open { opacity:1; visibility:visible; }
+    .ff-batch-challenge__card { width:min(820px,100%); max-height:calc(100vh - 34px); overflow:auto; transform:translateY(42px) scale(.9) rotate(-1deg); transition:transform .7s cubic-bezier(.16,.85,.2,1); }
+    .ff-batch-challenge.is-open .ff-batch-challenge__card { transform:none; }
+    .ff-batch-challenge__card.is-wrong { animation:ffBatchWrongBig 1s ease; }
+    @keyframes ffBatchWrongBig { 15%,45%,75%{transform:translateX(-18px) rotate(-1deg)} 30%,60%,90%{transform:translateX(18px) rotate(1deg)} }
+    .ff-batch-countdown { position:fixed; inset:0; z-index:10070; display:grid; place-items:center; padding:25px; background:rgba(0,0,0,.35); color:#fff; font-family:'Outfit',sans-serif; font-size:clamp(3rem,12vw,8rem); font-weight:900; text-align:center; text-shadow:0 8px 40px #000; pointer-events:none; }
+    .ff-batch-smoke { position:fixed; inset:-20%; z-index:10080; overflow:hidden; pointer-events:none; }
+
+/* Vendor lineup */
 
     .ff-lineup {
       display: grid;
@@ -3332,7 +2993,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       gap: 18px;
       margin-top: 42px;
     }
-
 
     .ff-lineup-card {
       min-height: 245px;
@@ -3348,12 +3008,10 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
         box-shadow 220ms ease;
     }
 
-
     .ff-lineup-card:hover {
       transform: translateY(-5px);
       box-shadow: var(--ff-shadow-hover);
     }
-
 
     .ff-lineup-card--gold {
       border-color: rgba(220,149,30,.3);
@@ -3362,12 +3020,10 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
         #fff;
     }
 
-
     .ff-lineup-card--coming {
       border-style: dashed;
       background: rgba(255,255,255,.68);
     }
-
 
     .ff-lineup-card__logo-wrap {
       height: 82px;
@@ -3376,13 +3032,11 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       margin-bottom: 20px;
     }
 
-
     .ff-lineup-card__logo {
       max-width: 100%;
       max-height: 78px;
       object-fit: contain;
     }
-
 
     .ff-lineup-card__eyebrow {
       color: var(--ff-green);
@@ -3392,11 +3046,9 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       text-transform: uppercase;
     }
 
-
     .ff-lineup-card--gold .ff-lineup-card__eyebrow {
       color: #a86b08;
     }
-
 
     .ff-lineup-card h3 {
       margin: 8px 0 0;
@@ -3405,7 +3057,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       line-height: 1.12;
     }
 
-
     .ff-lineup-card p {
       margin: 10px 0 0;
       color: var(--ff-muted);
@@ -3413,15 +3064,12 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       line-height: 1.6;
     }
 
-
     .ff-lineup-card .ff-text-link {
       margin-top: auto;
       padding-top: 18px;
     }
 
-
     /* Timeline */
-
 
     .ff-timeline {
       display: grid;
@@ -3429,7 +3077,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       gap: 16px;
       margin-top: 42px;
     }
-
 
     .ff-timeline__item {
       position: relative;
@@ -3439,7 +3086,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       background: #fff;
     }
 
-
     .ff-timeline__time {
       color: var(--ff-green);
       font-family: "Outfit", sans-serif;
@@ -3447,12 +3093,10 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       font-weight: 900;
     }
 
-
     .ff-timeline__item h3 {
       margin: 9px 0 0;
       font-size: 1rem;
     }
-
 
     .ff-timeline__item p {
       margin: 8px 0 0;
@@ -3461,9 +3105,7 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       line-height: 1.55;
     }
 
-
     /* Vendor CTA */
-
 
     .ff-vendor {
       display: grid;
@@ -3479,13 +3121,11 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       box-shadow: var(--ff-shadow);
     }
 
-
     .ff-vendor h2 {
       margin: 0;
       font-family: "Playfair Display", serif;
       font-size: clamp(2rem, 4vw, 3.5rem);
     }
-
 
     .ff-vendor p {
       max-width: 690px;
@@ -3494,16 +3134,13 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       line-height: 1.75;
     }
 
-
     .ff-vendor .ff-button {
       background: #fff;
       color: var(--ff-green-dark);
       white-space: nowrap;
     }
 
-
     /* Playlist teaser */
-
 
     .ff-playlist {
       display: grid;
@@ -3518,7 +3155,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
         #fff;
     }
 
-
     .ff-playlist__icon {
       width: 74px;
       height: 74px;
@@ -3530,13 +3166,11 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       font-size: 1.8rem;
     }
 
-
     .ff-playlist h3 {
       margin: 0;
       font-family: "Playfair Display", serif;
       font-size: 1.5rem;
     }
-
 
     .ff-playlist p {
       margin: 8px 0 0;
@@ -3544,20 +3178,16 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       line-height: 1.6;
     }
 
-
     /* FAQ */
-
 
     .ff-faq {
       max-width: 850px;
       margin-top: 36px;
     }
 
-
     .ff-faq details {
       border-bottom: 1px solid var(--ff-border);
     }
-
 
     .ff-faq summary {
       cursor: pointer;
@@ -3566,11 +3196,9 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       list-style: none;
     }
 
-
     .ff-faq summary::-webkit-details-marker {
       display: none;
     }
-
 
     .ff-faq summary::after {
       content: "+";
@@ -3580,12 +3208,10 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       transition: transform 180ms ease;
     }
 
-
     .ff-faq details[open] summary::after {
       content: "–";
       transform: rotate(180deg);
     }
-
 
     .ff-faq__answer {
       display: grid;
@@ -3593,16 +3219,173 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       transition: grid-template-rows 260ms ease;
     }
 
-
     .ff-faq details[open] .ff-faq__answer {
-      grid-template-rows: 1fr;
+      grid-temp
+
+    /* Batch 4G Hunt — theatrical animation override */
+    .ff-batch-logo-alive {
+      transform-origin: 42% 60%;
+      animation: ffBatchLogoAlive 10s ease-in-out infinite !important;
+      will-change: transform, filter;
     }
 
+    .ff-gram-clue--b {
+      top: 52px !important;
+      left: 44px !important;
+      width: 68px !important;
+      height: 54px !important;
+      display: grid !important;
+      place-items: center !important;
+      color: inherit !important;
+      font-size: 1.55rem !important;
+      opacity: 0;
+      transform: translate(-24px, 8px) rotate(-8deg) scale(.7);
+      animation: ffCreepingEyes 10s ease-in-out infinite !important;
+      filter: drop-shadow(0 5px 7px rgba(0,0,0,.28));
+    }
+
+    .ff-gram-clue--b span {
+      width: auto !important;
+      height: auto !important;
+      display: block !important;
+    }
+
+    .ff-gram-clue--shark {
+      left: -90px !important;
+      bottom: 14% !important;
+      font-size: 2.8rem !important;
+      animation: ffSharkSwimBig 18s linear infinite !important;
+      will-change: transform;
+    }
+
+    .ff-gram-clue--honey {
+      left: 51% !important;
+      top: 43% !important;
+      width: 18% !important;
+      height: 22% !important;
+      border: 2px solid rgba(255,214,70,.12) !important;
+      box-shadow: 0 0 0 0 rgba(255,210,40,0);
+      animation: ffHoneyBeacon 5.8s ease-in-out infinite !important;
+    }
+
+    .ff-gram-clue--sparkle {
+      right: 18px !important;
+      top: 14px !important;
+      font-size: 1.8rem !important;
+      animation: ffSparkleWander 7.5s ease-in-out infinite !important;
+      filter: drop-shadow(0 0 8px #fff4b8);
+    }
+
+    .ff-batch-toast.is-showing {
+      animation: ffToastLong 4.2s ease both !important;
+    }
+
+    .ff-batch-challenge {
+      z-index: 2147483000 !important;
+      position: fixed !important;
+      inset: 0 !important;
+      min-height: 100dvh;
+      place-items: center !important;
+    }
+
+    .ff-batch-challenge__card {
+      width: min(900px, calc(100vw - 32px));
+      max-height: calc(100dvh - 32px);
+      overflow: auto;
+      transform: translateY(42px) rotate(-1.5deg) scale(.9);
+      transition: transform .85s cubic-bezier(.16,.85,.22,1), opacity .6s ease !important;
+    }
+
+    .ff-batch-challenge.is-open .ff-batch-challenge__card {
+      transform: translateY(0) rotate(0) scale(1) !important;
+    }
+
+    .ff-batch-challenge__card.is-wrong {
+      animation: ffWrongBig .9s cubic-bezier(.36,.07,.19,.97) both !important;
+    }
+
+    .ff-batch-challenge__card.is-doomed {
+      animation: ffDoomedCard 2.8s ease-in-out infinite !important;
+    }
+
+    .ff-batch-countdown {
+      z-index: 2147483600 !important;
+      font-size: clamp(2.3rem, 8vw, 7rem) !important;
+      max-width: 1100px;
+      padding: 28px;
+      text-align: center;
+      line-height: .95;
+      text-shadow: 0 8px 32px rgba(0,0,0,.65);
+    }
+
+    .ff-batch-smoke { z-index: 2147483640 !important; }
+
+    @keyframes ffBatchLogoAlive {
+      0%, 72%, 100% { transform: rotate(0deg) translateX(0) scale(1); filter: none; }
+      76% { transform: rotate(-5deg) translateX(-5px) scale(1.025); filter: drop-shadow(0 0 6px rgba(255,35,95,.25)); }
+      80% { transform: rotate(5deg) translateX(5px) scale(1.04); }
+      84% { transform: rotate(-3deg) translateX(-3px) scale(1.02); }
+      88% { transform: rotate(2deg) translateX(2px) scale(1.01); }
+      92% { transform: rotate(0deg) translateX(0) scale(1); filter: none; }
+    }
+
+    @keyframes ffCreepingEyes {
+      0%, 58%, 100% { opacity: 0; transform: translate(-26px, 9px) rotate(-10deg) scale(.65); }
+      64% { opacity: 1; transform: translate(-2px, 4px) rotate(-4deg) scale(.9); }
+      72%, 82% { opacity: 1; transform: translate(8px, 0) rotate(0deg) scale(1.08); }
+      88% { opacity: 0; transform: translate(-18px, 8px) rotate(-8deg) scale(.72); }
+    }
+
+    @keyframes ffSharkSwimBig {
+      0% { transform: translateX(0) translateY(2px) rotate(-4deg); }
+      18% { transform: translateX(190px) translateY(-8px) rotate(2deg); }
+      42% { transform: translateX(390px) translateY(5px) rotate(-2deg); }
+      68% { transform: translateX(610px) translateY(-7px) rotate(3deg); }
+      100% { transform: translateX(850px) translateY(2px) rotate(-3deg); }
+    }
+
+    @keyframes ffHoneyBeacon {
+      0%, 54%, 100% { transform: scale(.82); opacity: .12; box-shadow: 0 0 0 0 rgba(255,210,40,0); }
+      65% { transform: scale(1); opacity: .8; box-shadow: 0 0 0 8px rgba(255,210,40,.18), 0 0 34px 12px rgba(255,210,40,.38); }
+      78% { transform: scale(1.12); opacity: 1; box-shadow: 0 0 0 18px rgba(255,210,40,0), 0 0 48px 18px rgba(255,210,40,.22); }
+      88% { transform: scale(.92); opacity: .3; }
+    }
+
+    @keyframes ffSparkleWander {
+      0%, 100% { transform: translate(0,0) rotate(0) scale(.8); opacity: .4; }
+      20% { transform: translate(-38px,14px) rotate(90deg) scale(1.15); opacity: 1; }
+      45% { transform: translate(-10px,30px) rotate(190deg) scale(.9); opacity: .75; }
+      70% { transform: translate(-58px,8px) rotate(280deg) scale(1.3); opacity: 1; }
+    }
+
+    @keyframes ffToastLong {
+      0% { opacity:0; transform:translate(-50%,30px) scale(.88); }
+      12%, 72% { opacity:1; transform:translate(-50%,0) scale(1); }
+      100% { opacity:0; transform:translate(-50%,-12px) scale(.96); }
+    }
+
+    @keyframes ffWrongBig {
+      0%,100% { transform:translateX(0) rotate(0); }
+      15% { transform:translateX(-18px) rotate(-1.4deg); }
+      30% { transform:translateX(16px) rotate(1.2deg); }
+      45% { transform:translateX(-12px) rotate(-.8deg); }
+      60% { transform:translateX(9px) rotate(.6deg); }
+      75% { transform:translateX(-5px) rotate(-.3deg); }
+    }
+
+    @keyframes ffDoomedCard {
+      0%,100% { transform: rotate(-1deg) scale(1); filter: saturate(1); }
+      25% { transform: rotate(1.5deg) scale(1.015); filter: saturate(1.5) contrast(1.08); }
+      50% { transform: rotate(-2deg) scale(.99); filter: hue-rotate(18deg) saturate(1.8); }
+      75% { transform: rotate(1deg) scale(1.01); filter: hue-rotate(-18deg) saturate(1.4); }
+    }
+
+late-rows: 1fr;
+    }
 
     .ff-faq__answer > div {
       overflow: hidden;
     }
-
 
     .ff-faq p {
       margin: -6px 0 22px;
@@ -3610,16 +3393,13 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       line-height: 1.7;
     }
 
-
     /* Footer */
-
 
     .ff-footer {
       padding: 54px 0;
       background: #062e23;
       color: #fff;
     }
-
 
     .ff-footer__inner {
       display: flex;
@@ -3628,14 +3408,12 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       gap: 28px;
     }
 
-
     .ff-footer__title {
       font-family: "Cinzel", serif;
       font-size: 1.1rem;
       font-weight: 900;
       letter-spacing: 0.09em;
     }
-
 
     .ff-footer__sub {
       margin-top: 6px;
@@ -3645,13 +3423,11 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       text-transform: uppercase;
     }
 
-
     .ff-footer__links {
       display: flex;
       flex-wrap: wrap;
       gap: 18px;
     }
-
 
     .ff-footer__links a {
       color: #fff;
@@ -3660,16 +3436,12 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       text-decoration: none;
     }
 
-
     .ff-footer__links a:hover {
       text-decoration: underline;
     }
 
 
-
-
     /* Culture strip */
-
 
     .ff-culture-strip {
       overflow: hidden;
@@ -3679,7 +3451,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       color: #fff;
     }
 
-
     .ff-culture-strip__track {
       width: max-content;
       display: flex;
@@ -3688,7 +3459,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       padding: 15px 0;
       animation: ffMarquee 24s linear infinite;
     }
-
 
     .ff-culture-strip__item {
       display: inline-flex;
@@ -3702,18 +3472,15 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       white-space: nowrap;
     }
 
-
     .ff-culture-strip__item::after {
       content: "✦";
       color: rgba(255,255,255,.84);
     }
 
-
     @keyframes ffMarquee {
       from { transform: translateX(0); }
       to { transform: translateX(-50%); }
     }
-
 
     .ff-art-panel {
       position: relative;
@@ -3728,7 +3495,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       box-shadow: var(--ff-shadow);
     }
 
-
     .ff-art-panel::before,
     .ff-art-panel::after {
       content: "";
@@ -3738,7 +3504,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       pointer-events: none;
     }
 
-
     .ff-art-panel::before {
       width: 260px;
       height: 260px;
@@ -3746,14 +3511,12 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       top: -90px;
     }
 
-
     .ff-art-panel::after {
       width: 160px;
       height: 160px;
       left: -55px;
       bottom: -65px;
     }
-
 
     .ff-art-panel__kicker {
       position: relative;
@@ -3763,7 +3526,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       letter-spacing: .16em;
       text-transform: uppercase;
     }
-
 
     .ff-art-panel h2 {
       position: relative;
@@ -3775,7 +3537,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       line-height: .98;
     }
 
-
     .ff-art-panel p {
       position: relative;
       z-index: 1;
@@ -3786,7 +3547,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       line-height: 1.75;
     }
 
-
     .ff-art-tags {
       position: relative;
       z-index: 1;
@@ -3795,7 +3555,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       gap: 10px;
       margin-top: 28px;
     }
-
 
     .ff-art-tag {
       padding: 10px 14px;
@@ -3809,41 +3568,33 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       text-transform: uppercase;
     }
 
-
     .ff-lineup-card:nth-child(1) {
       box-shadow: inset 0 5px 0 #0b7d5a, 0 12px 32px rgba(26,69,52,.05);
     }
-
 
     .ff-lineup-card:nth-child(2) {
       box-shadow: inset 0 5px 0 #dc951e, 0 12px 32px rgba(26,69,52,.05);
     }
 
-
     .ff-lineup-card:nth-child(3) {
       box-shadow: inset 0 5px 0 #efb34d, 0 12px 32px rgba(26,69,52,.05);
     }
-
 
     .ff-lineup-card:nth-child(4) {
       box-shadow: inset 0 5px 0 #2d9f7d, 0 12px 32px rgba(26,69,52,.05);
     }
 
-
     /* Mobile */
-
 
     @media (max-width: 980px) {
       .ff-batch-showcase {
         grid-template-columns: 1fr;
       }
 
-
       .ff-batch-showcase__gallery {
   min-height: 520px;
   grid-template-columns: 1.25fr .75fr;
 }
-
 
       .ff-lineup,
       .ff-timeline {
@@ -3851,12 +3602,10 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       }
     }
 
-
     @media (max-width: 860px) {
       .ff-hero {
         min-height: 670px;
       }
-
 
       .ff-hero__media::after {
         background:
@@ -3868,50 +3617,41 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
           );
       }
 
-
       .ff-countdown-actions {
         grid-template-columns: 1fr;
       }
-
 
       .ff-event-bar__inner,
       .ff-card-grid {
         grid-template-columns: 1fr;
       }
 
-
       .ff-event-detail + .ff-event-detail {
         border-left: 0;
         border-top: 1px solid var(--ff-border);
       }
 
-
       .ff-challenge {
         grid-template-columns: 1fr;
       }
-
 
       .ff-challenge__image {
         min-height: 340px;
         order: -1;
       }
 
-
       .ff-batch {
         grid-template-columns: auto 1fr;
       }
-
 
       .ff-batch__tag {
         grid-column: 1 / -1;
       }
 
-
       .ff-vendor {
         grid-template-columns: 1fr;
       }
     }
-
 
     @media (max-width: 620px) {
       .ff-container,
@@ -3919,62 +3659,50 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
         width: min(100% - 24px, 1120px);
       }
 
-
       .ff-topbar__inner {
         min-height: 62px;
       }
-
 
       .ff-brand__sub {
         display: none;
       }
 
-
       .ff-home-link {
         font-size: 0.76rem;
       }
-
 
       .ff-hero {
         min-height: 620px;
       }
 
-
       .ff-hero__content {
         padding-bottom: 58px;
       }
-
 
       .ff-title {
         font-size: clamp(4.35rem, 22vw, 6.7rem);
       }
 
-
       .ff-script {
         margin-top: 17px;
       }
-
 
       .ff-countdown-poster {
   padding: 22px 14px 24px;
   border-radius: 26px;
 }
 
-
 .ff-countdown-poster::after {
   display: none;
 }
-
 
 .ff-countdown-tape--left {
   left: 20px;
 }
 
-
 .ff-countdown-tape--right {
   right: 24px;
 }
-
 
 .ff-countdown-poster__header {
   align-items: flex-start;
@@ -3983,11 +3711,9 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
   padding-inline: 7px;
 }
 
-
 .ff-countdown-poster__remix {
   align-self: flex-end;
 }
-
 
 .ff-countdown-collage {
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -3995,24 +3721,20 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
   margin-top: 20px;
 }
 
-
 .ff-countdown-tile {
   min-height: 145px;
   padding: 13px 10px;
   border-radius: 17px;
 }
 
-
 .ff-countdown-number {
   font-size: clamp(4.4rem, 23vw, 6rem);
   line-height: .7;
 }
 
-
 .ff-countdown-number--outline {
   -webkit-text-stroke-width: 2px;
 }
-
 
 .ff-countdown-label {
   margin-top: 12px;
@@ -4020,30 +3742,25 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
   letter-spacing: .12em;
 }
 
-
 .ff-countdown-decoration {
   top: 9px;
   right: 10px;
   font-size: 1.2rem;
 }
 
-
 .ff-countdown-scribble,
 .ff-countdown-arrow {
   display: none;
 }
 
-
 .ff-countdown-poster__date {
   margin-left: 5px;
 }
-
 
 .ff-countdown-road,
 .ff-countdown-poster__footer {
   margin-inline: 5px;
 }
-
 
 .ff-countdown-road__label {
   align-items: flex-start;
@@ -4051,20 +3768,17 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
   gap: 4px;
 }
 
-
 .ff-countdown-poster__footer {
   align-items: flex-start;
   flex-direction: column;
   gap: 5px;
 }
 
-
 .ff-countdown-actions {
   grid-template-columns: 1fr;
   margin-inline: 8px;
   padding-top: 27px;
 }
-
 
 .ff-countdown-actions__close {
   top: -13px;
@@ -4075,21 +3789,17 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
         padding: 20px;
       }
 
-
       .ff-section {
         padding: 70px 0;
       }
-
 
       .ff-card {
         padding: 24px;
       }
 
-
       .ff-batch-showcase {
   border-radius: 24px;
 }
-
 
 .ff-batch-showcase__gallery {
   min-height: 0;
@@ -4097,37 +3807,30 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
   grid-template-rows: 310px 220px;
 }
 
-
 .ff-batch-shot--main {
   grid-column: 1 / -1;
   grid-row: 1;
 }
 
-
 .ff-batch-shot:not(.ff-batch-shot--main) {
   grid-row: 2;
 }
-
 
 .ff-batch-showcase__content {
   padding: 30px 24px 34px;
 }
 
-
 .ff-batch-showcase h2 {
   font-size: clamp(2rem, 11vw, 3rem);
 }
-
 
 .ff-batch-showcase__offer {
   align-items: flex-start;
 }
 
-
 .ff-batch-showcase__offer > span {
   font-size: 2.15rem;
 }
-
 
       .ff-batch,
       .ff-lineup,
@@ -4135,17 +3838,14 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
         grid-template-columns: 1fr;
       }
 
-
       .ff-batch__badge {
         width: 70px;
         height: 70px;
       }
 
-
       .ff-playlist {
         grid-template-columns: 1fr;
       }
-
 
       .ff-footer__inner {
         align-items: flex-start;
@@ -4153,11 +3853,9 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       }
     }
 
-
     .ff-countdown-actions {
   position: relative;
 }
-
 
 .ff-countdown-actions__close {
   position: absolute;
@@ -4183,19 +3881,16 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
     color 160ms ease;
 }
 
-
 .ff-countdown-actions__close:hover {
   background: var(--ff-green-dark);
   color: #fff;
   transform: translateY(-2px);
 }
 
-
     @media (max-width: 620px) {
   .ff-countdown-actions {
     padding-top: 27px;
   }
-
 
   .ff-countdown-actions__close {
     top: -13px;
@@ -4208,7 +3903,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
         scroll-behavior: auto;
       }
 
-
       *,
       *::before,
       *::after {
@@ -4217,12 +3911,10 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
         transition-duration: 0.01ms !important;
       }
 
-
       .ff-reveal {
         opacity: 1;
         transform: none;
       }
-
 
       .ff-letter {
         opacity: 1;
@@ -4230,7 +3922,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       }
     }
   </style>
-
 
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -4242,11 +3933,10 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "w5zkqgu1up");
   </script>
+  <link rel="stylesheet" href="../assets/css/featured-brand-game.css">
 </head>
 
-
 <body>
-
 
   <!-- Age Gate -->
   <div id="ageGate" class="age-gate" hidden>
@@ -4258,26 +3948,21 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
         style="width:120px; filter:brightness(0) invert(1);"
       />
 
-
       <h2 class="age-gate__title">Welcome to Green Labs</h2>
-
 
       <p class="age-gate__sub">
         Are you 21 years of age or older, or a valid Michigan medical patient?
       </p>
-
 
       <div class="age-gate__actions">
         <button id="btnAgePass" class="btn btn--primary" style="width:100%;">
           Yes, I am
         </button>
 
-
         <button id="btnAgeFail" class="btn btn--ghost" style="width:100%;">
           No, I am not
         </button>
       </div>
-
 
       <p class="age-gate__note">
         By clicking “Yes,” you agree to our Terms of Service and Privacy Policy.
@@ -4285,11 +3970,9 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
     </div>
   </div>
 
-
   <!-- Top Brand Bar -->
   <header class="ff-topbar">
     <div class="ff-container ff-topbar__inner">
-
 
       <a href="../" class="ff-brand" aria-label="Return to Green Labs homepage">
         <img
@@ -4297,7 +3980,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
           alt=""
           class="ff-brand__logo"
         >
-
 
         <div>
           <div class="ff-brand__name">GREEN LABS</div>
@@ -4307,22 +3989,17 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
         </div>
       </a>
 
-
       <a href="../" class="ff-home-link">
         Main Website →
       </a>
 
-
     </div>
   </header>
 
-
   <main>
-
 
     <!-- Hero -->
     <section class="ff-hero">
-
 
       <div class="ff-hero__media">
         <img
@@ -4331,14 +4008,11 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
         >
       </div>
 
-
       <div class="ff-hero__content">
-
 
         <div class="ff-eyebrow">
           Luna Pier’s monthly First Friday
         </div>
-
 
         <h1 class="ff-title ff-title--animated is-entering" aria-label="First Friday">
           <span class="ff-word" aria-hidden="true">
@@ -4359,16 +4033,13 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
           <span class="ff-script">Cannabis. Art. Music. Makers. Luna Pier.</span>
         </h1>
 
-
         <p class="ff-hero__intro">
           A monthly collision of cannabis, art, local makers, music, games, and good
           people. Pull up for a few minutes, meet the brands, challenge the crew,
           discover something new, or stay for the whole evening.
         </p>
 
-
         <div class="ff-hero__actions">
-
 
           <a
             class="ff-button ff-button--primary"
@@ -4379,7 +4050,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
             Get Directions
           </a>
 
-
           <a
             class="ff-button ff-button--ghost"
             href="#event-details"
@@ -4387,14 +4057,10 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
             Event Details
           </a>
 
-
         </div>
-
 
       </div>
     </section>
-
-
 
 
     <!-- Culture Marquee -->
@@ -4415,14 +4081,11 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       </div>
     </div>
 
-
    <!-- Live Event Countdown -->
 <section class="ff-countdown-section" aria-label="First Friday countdown">
   <div class="ff-container">
 
-
     <div class="ff-countdown-poster-wrap">
-
 
       <button
         class="ff-countdown-poster ff-countdown-poster--theme-1"
@@ -4432,26 +4095,21 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
         aria-controls="countdownActions"
       >
 
-
         <span
           class="ff-countdown-status-dot"
           id="eventStatusDot"
           aria-hidden="true"
         ></span>
 
-
         <span class="ff-countdown-tape ff-countdown-tape--left" aria-hidden="true"></span>
         <span class="ff-countdown-tape ff-countdown-tape--right" aria-hidden="true"></span>
 
-
         <div class="ff-countdown-poster__header">
-
 
           <div>
             <div class="ff-countdown-poster__eyebrow">
               The road to
             </div>
-
 
             <div
               class="ff-countdown-poster__title"
@@ -4461,10 +4119,8 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
             </div>
           </div>
 
-
           <div class="ff-countdown-poster__remix">
   <span class="ff-remix-instruction">Tap to remix</span>
-
 
   <span
     class="ff-remix-count"
@@ -4472,22 +4128,17 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
     aria-live="polite"
   ></span>
 
-
   <span class="ff-remix-icon" aria-hidden="true">↻</span>
 </div>
 
-
         </div>
 
-
         <div class="ff-countdown-collage" id="eventCountdown" aria-live="polite">
-
 
           <div class="ff-countdown-tile ff-countdown-tile--days">
             <span class="ff-countdown-decoration ff-countdown-decoration--star" aria-hidden="true">
               ✦
             </span>
-
 
             <span
               class="ff-countdown-number"
@@ -4496,23 +4147,19 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
               00
             </span>
 
-
             <span class="ff-countdown-label">
               Days
             </span>
-
 
             <span class="ff-countdown-scribble" aria-hidden="true">
               almost there
             </span>
           </div>
 
-
           <div class="ff-countdown-tile ff-countdown-tile--hours">
             <span class="ff-countdown-decoration ff-countdown-decoration--circle" aria-hidden="true">
               ●
             </span>
-
 
             <span
               class="ff-countdown-number ff-countdown-number--serif"
@@ -4521,23 +4168,19 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
               00
             </span>
 
-
             <span class="ff-countdown-label">
               Hours
             </span>
-
 
             <span class="ff-countdown-arrow" aria-hidden="true">
               ↗
             </span>
           </div>
 
-
           <div class="ff-countdown-tile ff-countdown-tile--minutes">
             <span class="ff-countdown-decoration ff-countdown-decoration--spark" aria-hidden="true">
               ✷
             </span>
-
 
             <span
               class="ff-countdown-number ff-countdown-number--outline"
@@ -4546,17 +4189,14 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
               00
             </span>
 
-
             <span class="ff-countdown-label">
               Minutes
             </span>
-
 
             <span class="ff-countdown-scribble ff-countdown-scribble--dark" aria-hidden="true">
               keep it moving
             </span>
           </div>
-
 
           <div class="ff-countdown-tile ff-countdown-tile--seconds">
   <span
@@ -4566,7 +4206,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
     +
   </span>
 
-
   <span
     class="ff-countdown-number ff-countdown-number--seconds"
     id="countdownSeconds"
@@ -4574,51 +4213,40 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
     00
   </span>
 
-
   <span class="ff-countdown-label">
     Seconds
   </span>
-
 
   <span class="ff-countdown-pulse" aria-hidden="true"></span>
 </div>
           
 
-
         </div>
-
 
         <div class="ff-countdown-poster__date" id="eventStatusMessage">
           August 7 • 4:00 PM–8:00 PM
         </div>
 
-
         <div class="ff-countdown-road">
-
 
           <div class="ff-countdown-road__label">
             <span>The road to Friday</span>
             <span>Art • Cannabis • Music • Makers</span>
           </div>
 
-
           <div class="ff-countdown-progress" aria-hidden="true">
             <span id="countdownProgress"></span>
           </div>
 
-
         </div>
-
 
         <div class="ff-countdown-poster__footer">
   <span>Luna Pier, Michigan</span>
-
 
   <span id="countdownActionPrompt">
     Open event actions ↓
   </span>
 </div>
-
 
         <div class="ff-remix-burst" id="remixBurst" aria-hidden="true">
   <span>✦</span>
@@ -4631,13 +4259,11 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
         
       </button>
 
-
       <div
         class="ff-countdown-actions"
         id="countdownActions"
         hidden
       >
-
 
         <button
   type="button"
@@ -4648,7 +4274,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
   Close ×
 </button>
 
-
         <button
           type="button"
           class="ff-button ff-button--countdown"
@@ -4657,7 +4282,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
           <span aria-hidden="true">＋</span>
           Add to Calendar
         </button>
-
 
         <a
           class="ff-button ff-button--countdown"
@@ -4669,7 +4293,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
           Get Directions
         </a>
 
-
         <a
           class="ff-button ff-button--countdown"
           href="#event-details"
@@ -4678,24 +4301,18 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
           Event Details
         </a>
 
-
       </div>
-
 
     </div>
 
-
   </div>
 </section>
-
 
     <!-- Event Summary -->
     <section class="ff-event-bar" aria-label="Event date, time and location">
       <div class="ff-container">
 
-
         <div class="ff-event-bar__inner">
-
 
           <button
             type="button"
@@ -4713,7 +4330,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
             </div>
           </button>
 
-
           <div class="ff-event-detail">
             <div class="ff-event-detail__icon" aria-hidden="true">🕓</div>
             <div>
@@ -4723,7 +4339,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
               </div>
             </div>
           </div>
-
 
           <a
             class="ff-event-detail"
@@ -4743,24 +4358,19 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
             </div>
           </a>
 
-
         </div>
       </div>
     </section>
-
 
     <!-- What to Expect -->
     <section class="ff-section" id="event-details">
       <div class="ff-container">
 
-
         <div class="ff-section__eyebrow ff-reveal">What to expect</div>
-
 
         <h2 class="ff-section__title ff-reveal" data-delay="1">
           A community event with local flavor, real people, and something new every month.
         </h2>
-
 
         <p class="ff-section__intro ff-reveal" data-delay="2">
           First Friday brings together local businesses, friendly competition,
@@ -4769,9 +4379,7 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
           with additional vendors and details still being added.
         </p>
 
-
         <div class="ff-card-grid">
-
 
           <article class="ff-card ff-reveal">
             <div class="ff-card__icon" aria-hidden="true">⛺</div>
@@ -4782,7 +4390,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
             </p>
           </article>
 
-
           <article class="ff-card ff-reveal" data-delay="1">
             <div class="ff-card__icon" aria-hidden="true">🎯</div>
             <h3>Games & Challenges</h3>
@@ -4791,7 +4398,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
               cornhole and a rotating selection of outdoor games.
             </p>
           </article>
-
 
           <article class="ff-card ff-reveal" data-delay="2">
             <div class="ff-card__icon" aria-hidden="true">🎁</div>
@@ -4802,34 +4408,26 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
             </p>
           </article>
 
-
         </div>
-
 
       </div>
     </section>
-
 
     <!-- Challenge -->
     <section class="ff-section ff-section--soft">
       <div class="ff-container">
 
-
         <div class="ff-challenge ff-reveal">
 
-
           <div class="ff-challenge__content">
-
 
             <div class="ff-challenge__label">
               Think you can beat us?
             </div>
 
-
             <h2>
               Challenge the crew. Earn the bragging rights.
             </h2>
-
 
             <p>
               Step up to the Green Labs and Dutch Touch Genetics cornhole
@@ -4838,15 +4436,12 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
               complimentary items, or another event surprise.
             </p>
 
-
             <div class="ff-challenge__note">
               Green Labs promotional items and event activities are available
               while supplies last. Participation requirements may vary.
             </div>
 
-
           </div>
-
 
           <div class="ff-challenge__image">
             <img
@@ -4856,14 +4451,10 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
             >
           </div>
 
-
         </div>
-
 
       </div>
     </section>
-
-
 
 
     <!-- Culture Statement -->
@@ -4889,12 +4480,10 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       </div>
     </section>
 
-
     <!-- Batch -->
     <section class="ff-section ff-batch-feature">
       <div class="ff-container">
         <div class="ff-section__eyebrow ff-reveal">Featured brand</div>
-
 
         <div class="ff-batch-showcase ff-reveal" data-delay="1">
           <div class="ff-batch-showcase__gallery" aria-label="Batch Extracts featured product">
@@ -4902,7 +4491,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
               <span>August featured brand</span>
               <strong>Go big.<br>Stay original.</strong>
             </div>
-
 
             <figure class="ff-batch-shot ff-batch-shot--main">
               <img
@@ -4912,7 +4500,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
               >
             </figure>
 
-
             <img
               src="../assets/img/first-friday/Batch/Batch_logo_color.svg"
               alt=""
@@ -4921,7 +4508,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
             >
           </div>
 
-
           <div class="ff-batch-showcase__content">
             <img
               src="../assets/img/first-friday/Batch/Batch_logo_color.svg"
@@ -4929,17 +4515,14 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
               class="ff-batch-showcase__logo"
             >
 
-
             <div class="ff-batch-showcase__label">August spotlight</div>
             <h2>Featured Brand:<br>Batch Extracts</h2>
-
 
             <p>
               Meet the people behind Batch during First Friday, explore their
               lineup, and connect directly with one of August’s featured brands
               at Green Labs.
             </p>
-
 
             <div class="ff-batch-showcase__offer">
               <span>30%</span>
@@ -4948,7 +4531,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
                 <small>Batch products at Green Labs</small>
               </div>
             </div>
-
 
             <div class="ff-batch-showcase__actions">
               <a
@@ -4960,7 +4542,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
                 Follow @batchextracts
               </a>
 
-
               <a
                 class="ff-text-link ff-text-link--light"
                 href="#event-details"
@@ -4968,7 +4549,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
                 Meet Batch at First Friday →
               </a>
             </div>
-
 
             <div class="ff-batch-showcase__note">
               Each First Friday gives one featured brand a premium space to meet
@@ -4979,19 +4559,15 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       </div>
     </section>
 
-
     <!-- Lineup -->
     <section class="ff-section ff-section--soft">
       <div class="ff-container">
 
-
         <div class="ff-section__eyebrow ff-reveal">Who’s bringing the energy?</div>
-
 
         <h2 class="ff-section__title ff-reveal" data-delay="1">
           The brands, makers, and people shaping this month’s First Friday.
         </h2>
-
 
         <p class="ff-section__intro ff-reveal" data-delay="2">
           Every month brings a different mix of featured brands, local creators,
@@ -4999,9 +4575,7 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
           details will be added as they are ready.
         </p>
 
-
         <div class="ff-lineup">
-
 
           <article class="ff-lineup-card ff-reveal">
             <div class="ff-lineup-card__logo-wrap">
@@ -5028,7 +4602,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
             </a>
           </article>
 
-
           <article class="ff-lineup-card ff-lineup-card--gold ff-reveal" data-delay="1">
             <div class="ff-lineup-card__logo-wrap">
               <img
@@ -5045,7 +4618,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
               cooperative Green Labs and Dutch Touch cornhole boards.
             </p>
           </article>
-
 
           <article class="ff-lineup-card ff-lineup-card--gold ff-reveal" data-delay="2">
             <div class="ff-lineup-card__logo-wrap">
@@ -5067,7 +4639,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
             </a>
           </article>
 
-
           <article class="ff-lineup-card ff-lineup-card--coming ff-reveal" data-delay="3">
             <div class="ff-lineup-card__logo-wrap" aria-hidden="true" style="font-size:2rem;">
               ✦
@@ -5080,26 +4651,20 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
             </p>
           </article>
 
-
         </div>
-
 
       </div>
     </section>
-
 
     <!-- Event Flow -->
     <section class="ff-section">
       <div class="ff-container">
 
-
         <div class="ff-section__eyebrow ff-reveal">How the night flows</div>
-
 
         <h2 class="ff-section__title ff-reveal" data-delay="1">
           No rigid schedule. Just show up and make the night your own.
         </h2>
-
 
         <p class="ff-section__intro ff-reveal" data-delay="2">
           Stop by for ten minutes or stay for the full evening. Games, vendor
@@ -5107,9 +4672,7 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
           throughout the event.
         </p>
 
-
         <div class="ff-timeline">
-
 
           <article class="ff-timeline__item ff-reveal">
             <div class="ff-timeline__time">4:00 PM</div>
@@ -5117,13 +4680,11 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
             <p>Vendors are set up and the games are open.</p>
           </article>
 
-
           <article class="ff-timeline__item ff-reveal" data-delay="1">
             <div class="ff-timeline__time">All Evening</div>
             <h3>Meet the vendors</h3>
             <p>Browse, ask questions, connect, and support local creators.</p>
           </article>
-
 
           <article class="ff-timeline__item ff-reveal" data-delay="2">
             <div class="ff-timeline__time">All Evening</div>
@@ -5131,20 +4692,16 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
             <p>Play cornhole and other games for bragging rights and free stuff.</p>
           </article>
 
-
           <article class="ff-timeline__item ff-reveal" data-delay="3">
             <div class="ff-timeline__time">8:00 PM</div>
             <h3>Wrap up</h3>
             <p>Thanks for coming. The next First Friday follows the next month.</p>
           </article>
 
-
         </div>
-
 
       </div>
     </section>
-
 
     <!-- Playlist -->
     <section class="ff-section ff-section--soft">
@@ -5163,18 +4720,14 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       </div>
     </section>
 
-
     <!-- Vendors -->
     <section class="ff-section">
       <div class="ff-container">
 
-
         <div class="ff-vendor ff-reveal">
-
 
           <div>
             <h2>Interested in becoming a vendor?</h2>
-
 
             <p>
               First Friday is growing into a recurring community gathering for
@@ -5183,7 +4736,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
             </p>
           </div>
 
-
           <a
             class="ff-button"
             href="mailto:dane@greenlabsmi.com?subject=First%20Friday%20Vendor%20Interest&body=Business%20name:%0AContact%20name:%0AEmail:%0AInstagram%20or%20website:%0AWhat%20do%20you%20offer:%0AHow%20would%20you%20like%20to%20participate:%0A"
@@ -5191,29 +4743,22 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
             Vendor Interest
           </a>
 
-
         </div>
-
 
       </div>
     </section>
-
 
     <!-- FAQ -->
     <section class="ff-section ff-section--soft">
       <div class="ff-container">
 
-
         <div class="ff-section__eyebrow ff-reveal">Before you visit</div>
-
 
         <h2 class="ff-section__title ff-reveal" data-delay="1">
           First Friday questions
         </h2>
 
-
         <div class="ff-faq ff-reveal" data-delay="2">
-
 
           <details>
             <summary>Is the event free?</summary>
@@ -5223,7 +4768,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
               </p>
             </div></div>
           </details>
-
 
           <details>
             <summary>Do I need to stay for the entire event?</summary>
@@ -5235,7 +4779,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
             </div></div>
           </details>
 
-
           <details>
             <summary>Will there be food or drinks?</summary>
             <div class="ff-faq__answer"><div>
@@ -5245,7 +4788,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
               </p>
             </div></div>
           </details>
-
 
           <details>
             <summary>What kinds of vendors will be there?</summary>
@@ -5257,7 +4799,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
             </div></div>
           </details>
 
-
           <details>
             <summary>Will there be giveaways?</summary>
             <div class="ff-faq__answer"><div>
@@ -5268,8 +4809,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
               </p>
             </div></div>
           </details>
-
-
 
 
           <details>
@@ -5285,7 +4824,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
             </div></div>
           </details>
 
-
           <details>
             <summary>Does First Friday happen every month?</summary>
             <div class="ff-faq__answer"><div>
@@ -5296,36 +4834,28 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
             </div></div>
           </details>
 
-
         </div>
-
 
       </div>
     </section>
 
-
   </main>
-
 
   <footer class="ff-footer">
     <div class="ff-container ff-footer__inner">
-
 
       <div>
         <div class="ff-footer__title">
           FIRST FRIDAY
         </div>
 
-
         <div class="ff-footer__sub">
           Community • Local • Connected
         </div>
       </div>
 
-
       <div class="ff-footer__links">
         <a href="../">Green Labs Home</a>
-
 
         <a
           href="https://www.instagram.com/greenlabsmi/"
@@ -5335,7 +4865,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
           Instagram
         </a>
 
-
         <a
           href="https://www.google.com/maps/search/?api=1&query=10701+Madison+St+Luna+Pier+MI+48157"
           target="_blank"
@@ -5344,15 +4873,12 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
           Directions
         </a>
 
-
         <a href="#event-details">
           Event Details
         </a>
       </div>
 
-
     </div>
-
 
     <div class="ff-container" style="margin-top:28px; padding-top:22px; border-top:1px solid rgba(255,255,255,.12);">
       <p style="margin:0; max-width:900px; color:rgba(255,255,255,.58); font-size:.74rem; line-height:1.65;">
@@ -5362,7 +4888,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       </p>
     </div>
   </footer>
-
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -5376,38 +4901,31 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
         url: "https://greenlabsmi.com/firstfriday/"
       };
 
-
       /* Age gate */
       const ageGate = document.getElementById("ageGate");
       const passButton = document.getElementById("btnAgePass");
       const failButton = document.getElementById("btnAgeFail");
 
-
       if (ageGate && passButton && failButton) {
         const hasPassedAgeGate =
           localStorage.getItem("greenLabsAgeVerified") === "true";
 
-
         if (!hasPassedAgeGate) {
           ageGate.hidden = false;
         }
-
 
         passButton.addEventListener("click", () => {
           localStorage.setItem("greenLabsAgeVerified", "true");
           ageGate.hidden = true;
         });
 
-
         failButton.addEventListener("click", () => {
           window.location.href = "https://www.google.com/";
         });
       }
 
-
       /* Scroll reveal */
       const revealItems = document.querySelectorAll(".ff-reveal");
-
 
       if ("IntersectionObserver" in window) {
         const revealObserver = new IntersectionObserver(
@@ -5421,20 +4939,16 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
           { threshold: 0.14 }
         );
 
-
         revealItems.forEach((item) => revealObserver.observe(item));
       } else {
         revealItems.forEach((item) => item.classList.add("is-visible"));
       }
 
-
      /* Living First Friday title */
 const animatedTitle = document.querySelector(".ff-title--animated");
 
-
 if (animatedTitle) {
   const letters = [...animatedTitle.querySelectorAll(".ff-letter")];
-
 
   const personalityClasses = [
     "ff-personality-1",
@@ -5445,42 +4959,33 @@ if (animatedTitle) {
     "ff-personality-6"
   ];
 
-
   const clearPersonality = (letter) => {
     personalityClasses.forEach((className) => {
       letter.classList.remove(className);
     });
 
-
     letter.classList.remove("ff-is-dancing");
   };
-
 
   const changeRandomLetters = () => {
     const availableLetters = [...letters];
     const numberToChange = Math.floor(Math.random() * 3) + 2;
 
-
     for (let i = 0; i < numberToChange; i += 1) {
       if (!availableLetters.length) break;
-
 
       const randomIndex = Math.floor(
         Math.random() * availableLetters.length
       );
 
-
       const letter = availableLetters.splice(randomIndex, 1)[0];
 
-
       clearPersonality(letter);
-
 
       const randomPersonality =
         personalityClasses[
           Math.floor(Math.random() * personalityClasses.length)
         ];
-
 
       letter.classList.add(
         randomPersonality,
@@ -5489,27 +4994,21 @@ if (animatedTitle) {
     }
   };
 
-
   let danceTimer;
   let pauseTimer;
-
 
   const startDanceCycle = () => {
     let danceSteps = 0;
 
-
     changeRandomLetters();
-
 
     danceTimer = window.setInterval(() => {
       changeRandomLetters();
       danceSteps += 1;
 
-
       /* Dance for roughly 4–5 seconds */
       if (danceSteps >= 9) {
         window.clearInterval(danceTimer);
-
 
         /* Stay still for roughly 2.5 seconds */
         pauseTimer = window.setTimeout(() => {
@@ -5519,7 +5018,6 @@ if (animatedTitle) {
     }, 480);
   };
 
-
   /*
     Remove the opening-animation class permanently.
     This prevents the letters from ever becoming invisible again.
@@ -5527,17 +5025,14 @@ if (animatedTitle) {
   window.setTimeout(() => {
     animatedTitle.classList.remove("is-entering");
 
-
     letters.forEach((letter) => {
       letter.style.opacity = "1";
       letter.style.transform = "translateY(0) rotate(0deg) scale(1)";
     });
 
-
     startDanceCycle();
   }, 1900);
 }
-
 
       /* Countdown and automatic status */
       const statusLabel = document.getElementById("eventStatusLabel");
@@ -5551,10 +5046,8 @@ if (animatedTitle) {
       const countdownCard = document.getElementById("countdownCard");
       const countdownActions = document.getElementById("countdownActions");
 
-
       const closeCountdownActions =
   document.getElementById("closeCountdownActions");
-
 
 const countdownActionPrompt =
   document.getElementById("countdownActionPrompt");
@@ -5564,29 +5057,23 @@ const countdownActionPrompt =
       const countdownWindowStart = new Date(eventStart);
       countdownWindowStart.setDate(countdownWindowStart.getDate() - 31);
 
-
       const padNumber = (value) => String(value).padStart(2, "0");
-
 
       const animateNumberChange = (element, value) => {
         if (!element || element.textContent === value) return;
-
 
         element.textContent = value;
         element.classList.remove("is-changing");
         void element.offsetWidth;
         element.classList.add("is-changing");
 
-
         window.setTimeout(() => {
           element.classList.remove("is-changing");
         }, 500);
       };
 
-
       const updateEventStatus = () => {
         const now = new Date();
-
 
         if (now < eventStart) {
          const totalSeconds = Math.max(
@@ -5594,38 +5081,31 @@ const countdownActionPrompt =
   Math.floor((eventStart - now) / 1000)
 );
 
-
 const days = Math.floor(totalSeconds / 86400);
 const hours = Math.floor((totalSeconds % 86400) / 3600);
 const minutes = Math.floor((totalSeconds % 3600) / 60);
 const seconds = totalSeconds % 60;
-
 
           statusLabel.textContent = "Next First Friday";
           statusMessage.textContent = "August 7 from 4:00 PM to 8:00 PM";
           statusDot.style.background = "#7ce0b4";
           statusDot.style.boxShadow = "0 0 0 6px rgba(124,224,180,.12)";
 
-
           animateNumberChange(daysElement, padNumber(days));
           animateNumberChange(hoursElement, padNumber(hours));
           animateNumberChange(minutesElement, padNumber(minutes));
           animateNumberChange(secondsElement, padNumber(seconds));
 
-
           const totalWindow = eventStart - countdownWindowStart;
           const elapsed = now - countdownWindowStart;
           const progress = Math.max(0, Math.min(100, (elapsed / totalWindow) * 100));
-
 
           if (progressElement) {
             progressElement.style.width = `${progress}%`;
           }
 
-
           return;
         }
-
 
         if (now >= eventStart && now < eventEnd) {
           const totalSeconds = Math.max(
@@ -5633,50 +5113,41 @@ const seconds = totalSeconds % 60;
   Math.floor((eventEnd - now) / 1000)
 );
 
-
 const hours = Math.floor(totalSeconds / 3600);
 const minutes = Math.floor((totalSeconds % 3600) / 60);
 const seconds = totalSeconds % 60;
-
 
           statusLabel.textContent = "Live now";
           statusMessage.textContent = "First Friday is happening at Green Labs";
           statusDot.style.background = "#ff6b6b";
           statusDot.style.boxShadow = "0 0 0 6px rgba(255,107,107,.14)";
 
-
           animateNumberChange(daysElement, "00");
           animateNumberChange(hoursElement, padNumber(hours));
           animateNumberChange(minutesElement, padNumber(minutes));
           animateNumberChange(secondsElement, padNumber(seconds));
 
-
           if (progressElement) {
             progressElement.style.width = "100%";
           }
 
-
           return;
         }
-
 
         statusLabel.textContent = "Thanks for coming";
         statusMessage.textContent = "The next First Friday returns next month";
         statusDot.style.background = "#dc951e";
         statusDot.style.boxShadow = "0 0 0 6px rgba(220,149,30,.14)";
 
-
         animateNumberChange(daysElement, "00");
         animateNumberChange(hoursElement, "00");
         animateNumberChange(minutesElement, "00");
         animateNumberChange(secondsElement, "00");
 
-
         if (progressElement) {
           progressElement.style.width = "100%";
         }
       };
-
 
       if (countdownCard && countdownActions) {
   const countdownThemes = [
@@ -5687,22 +5158,18 @@ const seconds = totalSeconds % 60;
     "ff-countdown-poster--theme-5"
   ];
 
-
   if (closeCountdownActions) {
     closeCountdownActions.addEventListener("click", (event) => {
       event.stopPropagation();
 
-
       countdownCard.setAttribute("aria-expanded", "false");
       countdownActions.hidden = true;
-
 
       if (countdownActionPrompt) {
         countdownActionPrompt.textContent = "Open event actions ↓";
       }
     });
   }
-
 
   const remixCountElement = document.getElementById("remixCount");
   const remixBurst = document.getElementById("remixBurst");
@@ -5712,27 +5179,22 @@ const seconds = totalSeconds % 60;
     ...countdownCard.querySelectorAll(".ff-countdown-tile")
   ];
 
-
   let currentCountdownTheme = 0;
   let remixCount = 0;
   let remixResetTimer;
-
 
   const shuffleTiles = () => {
     const shuffledTiles = [...countdownTiles].sort(
       () => Math.random() - 0.5
     );
 
-
     shuffledTiles.forEach((tile, index) => {
       tile.style.order = String(index);
     });
   };
 
-
   const showRemixCount = () => {
     if (!remixCountElement) return;
-
 
 if (remixCount === 5) {
   remixCountElement.textContent = "FESTIVAL MODE!";
@@ -5746,27 +5208,22 @@ if (remixCount === 5) {
   remixCountElement.textContent = `REMIX ×${remixCount}`;
 }
 
-
     remixCountElement.classList.remove("is-visible");
     void remixCountElement.offsetWidth;
     remixCountElement.classList.add("is-visible");
   };
 
-
   const triggerBurst = () => {
     if (!remixBurst) return;
-
 
     remixBurst.classList.remove("is-active");
     void remixBurst.offsetWidth;
     remixBurst.classList.add("is-active");
 
-
     window.setTimeout(() => {
       remixBurst.classList.remove("is-active");
     }, 1000);
   };
-
 
         const triggerFestivalMode = () => {
   /*
@@ -5776,11 +5233,9 @@ if (remixCount === 5) {
   document.body.classList.add("ff-festival-unlocked");
   document.body.classList.remove("ff-festival-mode");
 
-
   if (festivalFlash) {
     festivalFlash.classList.remove("is-active");
   }
-
 
   /*
     Force the browser to restart the animations,
@@ -5788,33 +5243,26 @@ if (remixCount === 5) {
   */
   void document.body.offsetWidth;
 
-
   document.body.classList.add("ff-festival-mode");
-
 
   if (festivalFlash) {
     festivalFlash.classList.add("is-active");
   }
-
 
   if (remixCountElement) {
     remixCountElement.textContent = "UNLOCKED";
     remixCountElement.classList.add("is-visible");
   }
 
-
   const remixInstruction =
     document.querySelector(".ff-remix-instruction");
-
 
   if (remixInstruction) {
     remixInstruction.textContent = "Festival mode";
   }
 
-
   window.setTimeout(() => {
     document.body.classList.remove("ff-festival-mode");
-
 
     if (festivalFlash) {
       festivalFlash.classList.remove("is-active");
@@ -5823,12 +5271,10 @@ if (remixCount === 5) {
 };
   
 
-
 const triggerMegaRemix = () => {
   document.body.classList.remove("ff-mega-remix");
   void document.body.offsetWidth;
   document.body.classList.add("ff-mega-remix");
-
 
   if (festivalFlash) {
     festivalFlash.classList.remove("is-active");
@@ -5836,32 +5282,26 @@ const triggerMegaRemix = () => {
     festivalFlash.classList.add("is-active");
   }
 
-
   if (remixCountElement) {
     remixCountElement.textContent = "MEGA REMIX ×30";
     remixCountElement.classList.add("is-visible");
   }
 
-
   const festivalStamp = document.querySelector(
     ".ff-festival-flash__stamp"
   );
-
 
   if (festivalStamp) {
     festivalStamp.innerHTML =
       "<span>✦</span> MEGA REMIX <span>✦</span>";
   }
 
-
   window.setTimeout(() => {
     document.body.classList.remove("ff-mega-remix");
-
 
     if (festivalFlash) {
       festivalFlash.classList.remove("is-active");
     }
-
 
     if (festivalStamp) {
       festivalStamp.innerHTML =
@@ -5870,21 +5310,17 @@ const triggerMegaRemix = () => {
   }, 2200);
 };
 
-
 const triggerSelfDestruct = () => {
   const festivalStamp = document.querySelector(
     ".ff-festival-flash__stamp"
   );
 
-
   const setDestructMessage = (message) => {
     if (!festivalStamp) return;
-
 
     festivalStamp.innerHTML =
       `<span>⚠</span> ${message} <span>⚠</span>`;
   };
-
 
   /*
     Clear any unfinished effects first so the sequence
@@ -5896,51 +5332,40 @@ const triggerSelfDestruct = () => {
     "ff-system-rebooting"
   );
 
-
   if (festivalFlash) {
     festivalFlash.classList.remove("is-active");
   }
 
-
   void document.body.offsetWidth;
 
-
   document.body.classList.add("ff-self-destruct");
-
 
   if (festivalFlash) {
     festivalFlash.classList.add("is-active");
   }
-
 
   if (remixCountElement) {
     remixCountElement.textContent = "SELF-DESTRUCT ARMED";
     remixCountElement.classList.add("is-visible");
   }
 
-
   setDestructMessage("SELF-DESTRUCT ARMED");
-
 
   window.setTimeout(() => {
     setDestructMessage("3");
   }, 700);
 
-
   window.setTimeout(() => {
     setDestructMessage("2");
   }, 1400);
-
 
   window.setTimeout(() => {
     setDestructMessage("1");
   }, 2100);
 
-
   window.setTimeout(() => {
     setDestructMessage("CRITICAL FAILURE");
   }, 2800);
-
 
   /*
     Collapse the visible website into a thin line,
@@ -5949,12 +5374,10 @@ const triggerSelfDestruct = () => {
   window.setTimeout(() => {
     document.body.classList.add("ff-screen-destroyed");
 
-
     if (festivalFlash) {
       festivalFlash.classList.remove("is-active");
     }
   }, 3400);
-
 
   /*
     Begin restoring the website.
@@ -5965,9 +5388,7 @@ const triggerSelfDestruct = () => {
       "ff-screen-destroyed"
     );
 
-
     document.body.classList.add("ff-system-rebooting");
-
 
     if (remixCountElement) {
       remixCountElement.textContent = "SYSTEM REBOOTING…";
@@ -5975,24 +5396,20 @@ const triggerSelfDestruct = () => {
     }
   }, 5400);
 
-
   /*
     Finish the reboot and return the overlay to its normal text.
   */
   window.setTimeout(() => {
     document.body.classList.remove("ff-system-rebooting");
 
-
     if (festivalFlash) {
       festivalFlash.classList.remove("is-active");
     }
-
 
     if (festivalStamp) {
       festivalStamp.innerHTML =
         "<span>✦</span> FESTIVAL MODE <span>✦</span>";
     }
-
 
     if (remixCountElement) {
       remixCountElement.textContent = "SYSTEM RESTORED";
@@ -6000,7 +5417,6 @@ const triggerSelfDestruct = () => {
     }
   }, 6500);
 };
-
 
         
   countdownCard.addEventListener("click", () => {
@@ -6011,23 +5427,18 @@ const triggerSelfDestruct = () => {
     const actionsAreOpen =
   countdownCard.getAttribute("aria-expanded") === "true";
 
-
 if (!actionsAreOpen) {
   countdownCard.setAttribute("aria-expanded", "true");
   countdownActions.hidden = false;
-
 
   if (countdownActionPrompt) {
     countdownActionPrompt.textContent = "Event actions open ↑";
   }
 }
 
-
     remixCount += 1;
 
-
     window.clearTimeout(remixResetTimer);
-
 
    /*
   Hide the ordinary click counter after a short pause,
@@ -6036,47 +5447,37 @@ if (!actionsAreOpen) {
 remixResetTimer = window.setTimeout(() => {
   if (!remixCountElement) return;
 
-
   if (document.body.classList.contains("ff-festival-unlocked")) {
     remixCountElement.textContent = `REMIX ×${remixCount}`;
     remixCountElement.classList.add("is-visible");
     return;
   }
 
-
   remixCountElement.classList.remove("is-visible");
 }, 3500);
-
 
     countdownThemes.forEach((themeClass) => {
       countdownCard.classList.remove(themeClass);
     });
 
-
     currentCountdownTheme =
       (currentCountdownTheme + 1) % countdownThemes.length;
-
 
     countdownCard.classList.add(
       countdownThemes[currentCountdownTheme]
     );
 
-
     showRemixCount();
-
 
     countdownCard.classList.remove(
       "is-remixing",
       "is-full-remix"
     );
 
-
     void countdownCard.offsetWidth;
-
 
     const festivalAlreadyUnlocked =
   document.body.classList.contains("ff-festival-unlocked");
-
 
 if (remixCount === 5 && !festivalAlreadyUnlocked) {
   /*
@@ -6087,7 +5488,6 @@ if (remixCount === 5 && !festivalAlreadyUnlocked) {
   triggerBurst();
   triggerFestivalMode();
 
-
 } else if (remixCount === 15) {
   /*
     Festival encore:
@@ -6097,12 +5497,10 @@ if (remixCount === 5 && !festivalAlreadyUnlocked) {
   triggerBurst();
   triggerFestivalMode();
 
-
   if (remixCountElement) {
     remixCountElement.textContent = "FESTIVAL ENCORE!";
     remixCountElement.classList.add("is-visible");
   }
-
 
 } else if (remixCount === 30) {
   /*
@@ -6113,7 +5511,6 @@ if (remixCount === 5 && !festivalAlreadyUnlocked) {
   triggerBurst();
   triggerMegaRemix();
 
-
 } else if (remixCount === 50) {
   /*
     Fake self-destruct sequence.
@@ -6121,11 +5518,9 @@ if (remixCount === 5 && !festivalAlreadyUnlocked) {
   */
   triggerSelfDestruct();
 
-
 } else {
   countdownCard.classList.add("is-remixing");
 }
-
 
     window.setTimeout(() => {
       countdownCard.classList.remove(
@@ -6136,17 +5531,14 @@ if (remixCount === 5 && !festivalAlreadyUnlocked) {
   });
 }
 
-
       updateEventStatus();
       window.setInterval(updateEventStatus, 1000);
-
 
       /* Add to calendar */
       const calendarButtons = [
         document.getElementById("addToCalendar"),
         document.getElementById("countdownCalendar")
       ].filter(Boolean);
-
 
       const toICSDate = (dateString) => {
         return new Date(dateString)
@@ -6155,7 +5547,6 @@ if (remixCount === 5 && !festivalAlreadyUnlocked) {
           .replace(/\.\d{3}Z$/, "Z");
       };
 
-
       const escapeICS = (value) => {
         return String(value)
           .replace(/\\/g, "\\\\")
@@ -6163,7 +5554,6 @@ if (remixCount === 5 && !festivalAlreadyUnlocked) {
           .replace(/,/g, "\\,")
           .replace(/;/g, "\\;");
       };
-
 
       calendarButtons.forEach((calendarButton) => {
         calendarButton.addEventListener("click", () => {
@@ -6186,15 +5576,12 @@ if (remixCount === 5 && !festivalAlreadyUnlocked) {
             "END:VCALENDAR"
           ].join("\r\n");
 
-
           const blob = new Blob([icsContent], {
             type: "text/calendar;charset=utf-8"
           });
 
-
           const calendarURL = URL.createObjectURL(blob);
           const downloadLink = document.createElement("a");
-
 
           downloadLink.href = calendarURL;
           downloadLink.download = "first-friday-green-labs.ics";
@@ -6202,13 +5589,11 @@ if (remixCount === 5 && !festivalAlreadyUnlocked) {
           downloadLink.click();
           downloadLink.remove();
 
-
           window.setTimeout(() => URL.revokeObjectURL(calendarURL), 1000);
         });
       });
     });
   </script>
-
 
   <div
   class="ff-festival-flash"
@@ -6216,7 +5601,6 @@ if (remixCount === 5 && !festivalAlreadyUnlocked) {
   aria-hidden="true"
 >
   <div class="ff-festival-flash__ring"></div>
-
 
   <div class="ff-confetti" aria-hidden="true">
     <span></span>
@@ -6239,7 +5623,6 @@ if (remixCount === 5 && !festivalAlreadyUnlocked) {
     <span></span>
   </div>
 
-
   <div class="ff-festival-flash__stamp">
     <span>✦</span>
     FESTIVAL MODE
@@ -6248,8 +5631,196 @@ if (remixCount === 5 && !festivalAlreadyUnlocked) {
 </div>
 
 
+  
+(() => {
+  const stage = document.querySelector('.ff-batch-showcase__gallery');
+  const card = document.querySelector('.ff-batch-showcase');
+  const logo = document.querySelector('.ff-batch-showcase__logo');
+  const offer = document.querySelector('.ff-batch-showcase__offer');
+  const product = document.querySelector('.ff-batch-shot--main');
+  if (!stage || !card || !logo || !offer || !product) return;
 
+  const found = new Set();
+  const messages = {
+    b: 'The B was acting suspicious.',
+    shark: 'That shark was holding.',
+    honey: 'Forbidden honey button pressed.',
+    sparkle: 'You caught the wandering sparkle.'
+  };
 
-  <script src="../assets/js/featured-brand-game.js?v=1" defer></script>
+  const counter = document.createElement('div');
+  counter.className = 'ff-gram-counter';
+  counter.innerHTML = '<span>Hidden Batch</span><strong>0G / 4G FOUND</strong>';
+  card.appendChild(counter);
+
+  const toast = document.createElement('div');
+  toast.className = 'ff-batch-toast';
+  toast.setAttribute('aria-live','polite');
+  document.body.appendChild(toast);
+
+  const addHotspot = (key, host, className, label, html = '') => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = `ff-gram-clue ${className}`;
+    button.setAttribute('aria-label', label);
+    button.dataset.gram = key;
+    button.innerHTML = html;
+    host.appendChild(button);
+    button.addEventListener('click', event => {
+      event.preventDefault();
+      event.stopPropagation();
+      collect(key, button);
+    });
+    return button;
+  };
+
+  const logoClue = addHotspot('b', logo.parentElement, 'ff-gram-clue--b', 'Catch the suspicious eyes hiding behind the Batch logo', '<span>👀</span>');
+  logo.classList.add('ff-batch-logo-alive');
+  const shark = addHotspot('shark', stage, 'ff-gram-clue--shark', 'Catch the shark swimming in the water', '<span>🦈</span><i></i>');
+  const honey = addHotspot('honey', product, 'ff-gram-clue--honey', 'Press the glowing yellow center', '<span></span>');
+  const sparkle = addHotspot('sparkle', offer, 'ff-gram-clue--sparkle', 'Catch the tiny drifting sparkle', '✦');
+
+  function collect(key, button) {
+    if (found.has(key)) return;
+    found.add(key);
+    button.classList.add('is-found');
+    card.classList.add('is-gram-pop');
+    setTimeout(() => card.classList.remove('is-gram-pop'), 500);
+    counter.classList.add('is-visible');
+    counter.querySelector('strong').textContent = `${found.size}G / 4G FOUND`;
+    showToast(`${found.size}G FOUND — ${messages[key]}`);
+    confetti(button, 12);
+    if (found.size === 4) setTimeout(openChallenge, 1800);
+  }
+
+  function showToast(text) {
+    toast.textContent = text;
+    toast.classList.remove('is-showing');
+    void toast.offsetWidth;
+    toast.classList.add('is-showing');
+  }
+
+  function confetti(source, count) {
+    const r = source.getBoundingClientRect();
+    for (let i = 0; i < count; i++) {
+      const bit = document.createElement('span');
+      bit.className = 'ff-mini-confetti';
+      bit.textContent = ['✦','●','◆','★'][i % 4];
+      bit.style.left = `${r.left + r.width / 2}px`;
+      bit.style.top = `${r.top + r.height / 2}px`;
+      bit.style.setProperty('--x', `${(Math.random() - .5) * 170}px`);
+      bit.style.setProperty('--y', `${-45 - Math.random() * 120}px`);
+      bit.style.setProperty('--r', `${Math.random() * 540 - 270}deg`);
+      document.body.appendChild(bit);
+      setTimeout(() => bit.remove(), 1100);
+    }
+  }
+
+  function openChallenge() {
+    const modal = document.createElement('div');
+    modal.className = 'ff-batch-challenge';
+    modal.innerHTML = `
+      <div class="ff-batch-challenge__backdrop"></div>
+      <section class="ff-batch-challenge__card" role="dialog" aria-modal="true" aria-labelledby="ffBatchGameTitle">
+        <button class="ff-batch-challenge__close" type="button" aria-label="Close">×</button>
+        <div class="ff-batch-challenge__art">4G</div>
+        <div class="ff-batch-challenge__copy">
+          <div class="ff-batch-challenge__kicker">You found the full Batch</div>
+          <h2 id="ffBatchGameTitle">The last gram has become emotionally unavailable.</h2>
+          <p>Answer correctly and it may agree to become a prize pass.</p>
+          <div class="ff-batch-question">
+            <p>Once a month, Green Labs fills up with brands, artists, games, giveaways, and at least one person treating cornhole like the Olympics. What event is it?</p>
+            <form class="ff-batch-answer">
+              <input autocomplete="off" placeholder="Your answer" aria-label="Your answer">
+              <button type="submit">Lock it in</button>
+            </form>
+            <div class="ff-batch-feedback" aria-live="polite"></div>
+          </div>
+        </div>
+      </section>`;
+    document.body.appendChild(modal);
+    document.body.classList.add('ff-batch-hunt-open');
+    requestAnimationFrame(() => modal.classList.add('is-open'));
+    modal.querySelector('input').focus();
+    modal.querySelector('.ff-batch-challenge__close').onclick = () => closeModal(modal);
+    modal.querySelector('.ff-batch-challenge__backdrop').onclick = () => closeModal(modal);
+    let attempts = 0;
+    modal.querySelector('form').addEventListener('submit', e => {
+      e.preventDefault();
+      const input = modal.querySelector('input');
+      const answer = input.value.trim().toLowerCase().replace(/[^a-z]/g,'');
+      if (answer === 'firstfriday' || (attempts > 0 && answer === 'friday')) return win(modal);
+      attempts++;
+      if (attempts === 1) {
+        modal.querySelector('.ff-batch-feedback').textContent = 'Absolutely not. That answer had the structural integrity of a gas-station pre-roll.';
+        modal.querySelector('.ff-batch-question p').innerHTML = 'One more try. Complete the event name:<br><strong>FIRST ________</strong>';
+        input.value = '';
+        input.placeholder = 'Please save the tiny shark';
+        modal.querySelector('.ff-batch-challenge__card').classList.add('is-wrong');
+        setTimeout(() => modal.querySelector('.ff-batch-challenge__card').classList.remove('is-wrong'), 650);
+      } else {
+        failSpectacularly(modal);
+      }
+    });
+  }
+
+  function win(modal) {
+    const code = `BATCH-${Math.random().toString(36).slice(2,7).toUpperCase()}`;
+    const stamp = new Date().toLocaleString('en-US', {month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'});
+    modal.querySelector('.ff-batch-challenge__card').classList.add('is-winner');
+    modal.querySelector('.ff-batch-challenge__copy').innerHTML = `
+      <div class="ff-batch-challenge__kicker">FULL BATCH UNLOCKED</div>
+      <h2>You found all four hidden grams.</h2>
+      <p>And answered a question that was, respectfully, not that difficult.</p>
+      <div class="ff-batch-pass">
+        <strong>SCREENSHOT THIS PASS</strong>
+        <span>Show Green Labs staff to claim this month’s Easter-egg reward.</span>
+        <b>${code}</b><small>${stamp}</small>
+      </div>
+      <p class="ff-batch-pass-note">One reward per person. Staff may ask where the shark was hiding.</p>`;
+    for (let i=0;i<7;i++) setTimeout(() => confetti(modal.querySelector('.ff-batch-challenge__card'), 18), i*180);
+  }
+
+  function failSpectacularly(modal) {
+    const feedback = modal.querySelector('.ff-batch-feedback');
+    feedback.innerHTML = '<strong>OH NO.</strong><br>You have disappointed the tiny shark.';
+    modal.querySelector('.ff-batch-challenge__card').classList.add('is-doomed');
+    const countdown = document.createElement('div');
+    countdown.className = 'ff-batch-countdown';
+    document.body.appendChild(countdown);
+    const beats = ['3','2','…WAIT. WHERE IS 1?','RELEASING THE EMERGENCY HOTBOX'];
+    beats.forEach((beat,i) => setTimeout(() => countdown.textContent = beat, 900 + i*1300));
+    setTimeout(() => {
+      const smoke = document.createElement('div');
+      smoke.className = 'ff-batch-smoke';
+      smoke.innerHTML = '<i></i><i></i><i></i><i></i><i></i><i></i>';
+      document.body.appendChild(smoke);
+      requestAnimationFrame(() => smoke.classList.add('is-active'));
+      setTimeout(() => {
+        modal.remove(); countdown.remove();
+        smoke.classList.add('is-clearing');
+        resetGame();
+        document.body.classList.remove('ff-batch-hunt-open');
+        setTimeout(() => smoke.remove(), 2300);
+      }, 2300);
+    }, 6500);
+  }
+
+  function closeModal(modal) {
+    modal.classList.remove('is-open');
+    document.body.classList.remove('ff-batch-hunt-open');
+    setTimeout(() => modal.remove(), 300);
+  }
+
+  function resetGame() {
+    found.clear();
+    counter.querySelector('strong').textContent = '0G / 4G FOUND';
+    counter.classList.remove('is-visible');
+    document.querySelectorAll('.ff-gram-clue').forEach(el => el.classList.remove('is-found'));
+  }
+})();
+</script>
+  <script src="../assets/js/featured-brand-game.js" defer></script>
 </body>
 </html>
+
