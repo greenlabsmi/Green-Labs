@@ -3037,6 +3037,85 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       .ff-batch-game-trigger.is-pulsing img { animation: none !important; }
     }
 
+
+    /* Batch 4G hidden-object game */
+    .ff-batch-game { position: relative; }
+    .ff-gram-counter { position:absolute; z-index:9; left:18px; bottom:18px; display:flex; gap:10px; align-items:center; padding:10px 14px; border:1px solid rgba(255,255,255,.5); border-radius:999px; background:rgba(8,24,39,.78); color:#fff; box-shadow:0 12px 30px rgba(0,0,0,.18); backdrop-filter:blur(12px); opacity:0; transform:translateY(8px); transition:.3s ease; pointer-events:none; }
+    .ff-gram-counter.is-visible { opacity:1; transform:none; }
+    .ff-gram-counter span { color:#8bc7f6; font-size:.6rem; font-weight:900; letter-spacing:.14em; text-transform:uppercase; }
+    .ff-gram-counter strong { font-size:.75rem; }
+    .ff-gram-clue { position:absolute; z-index:8; border:0; background:transparent; cursor:pointer; padding:0; }
+    .ff-gram-clue.is-found { pointer-events:none; animation:ffGramVanish .6s forwards; }
+    .ff-gram-clue--b { top:clamp(38px,5vw,70px); left:clamp(34px,5vw,68px); width:46px; height:62px; color:transparent; animation:ffBWiggle 7s ease-in-out infinite; }
+    .ff-gram-clue--b span { display:block; width:100%; height:100%; }
+    .ff-gram-clue--shark { left:-70px; bottom:15%; font-size:1.9rem; animation:ffSharkSwim 11s linear infinite; filter:drop-shadow(0 4px 3px rgba(0,0,0,.25)); }
+    .ff-gram-clue--shark i { position:absolute; left:4px; right:4px; bottom:-3px; height:5px; border-radius:50%; background:rgba(255,255,255,.65); filter:blur(2px); }
+    .ff-gram-clue--honey { left:53%; top:46%; width:15%; height:18%; border-radius:50%; animation:ffHoneyGlow 4.5s ease-in-out infinite; }
+    .ff-gram-clue--sparkle { right:16px; top:12px; font-size:1.15rem; color:#ffd570; text-shadow:0 0 12px #fff; animation:ffSparkleDrift 5s ease-in-out infinite; }
+    .ff-batch-toast { position:fixed; z-index:10020; left:50%; bottom:28px; max-width:min(90vw,520px); padding:14px 20px; border-radius:999px; background:#081827; color:#fff; font-weight:800; box-shadow:0 18px 45px rgba(0,0,0,.3); opacity:0; transform:translate(-50%,25px) scale(.94); pointer-events:none; }
+    .ff-batch-toast.is-showing { animation:ffToast 2.8s ease both; }
+    .ff-mini-confetti { position:fixed; z-index:10050; color:#f1b33f; font-size:16px; pointer-events:none; animation:ffMiniConfetti 1.05s ease-out forwards; }
+    .ff-batch-game.is-gram-pop { animation:ffCardPop .45s ease; }
+
+    .ff-batch-challenge { position:fixed; inset:0; z-index:10000; display:grid; place-items:center; padding:22px; opacity:0; pointer-events:none; transition:.3s ease; }
+    .ff-batch-challenge.is-open { opacity:1; pointer-events:auto; }
+    .ff-batch-challenge__backdrop { position:absolute; inset:0; background:rgba(2,12,20,.84); backdrop-filter:blur(14px); }
+    .ff-batch-challenge__card { position:relative; z-index:1; width:min(900px,96vw); min-height:520px; display:grid; grid-template-columns:.7fr 1.3fr; overflow:hidden; border:1px solid rgba(255,255,255,.2); border-radius:34px; background:linear-gradient(145deg,#cae5fb,#86bce8 42%,#0b2033 42%); color:#fff; box-shadow:0 35px 100px rgba(0,0,0,.5); transform:translateY(24px) scale(.96) rotate(-.5deg); transition:.45s cubic-bezier(.2,.8,.2,1); }
+    .ff-batch-challenge.is-open .ff-batch-challenge__card { transform:none; }
+    .ff-batch-challenge__close { position:absolute; z-index:4; right:16px; top:14px; width:42px; height:42px; border:1px solid rgba(255,255,255,.25); border-radius:50%; background:rgba(255,255,255,.1); color:#fff; font-size:1.5rem; cursor:pointer; }
+    .ff-batch-challenge__art { display:grid; place-items:center; color:#103a5d; font:900 clamp(5rem,14vw,10rem)/1 "Outfit",sans-serif; text-shadow:0 10px 0 rgba(255,255,255,.35); transform:rotate(-7deg); }
+    .ff-batch-challenge__copy { display:flex; flex-direction:column; justify-content:center; padding:clamp(34px,6vw,70px); background:radial-gradient(circle at 90% 5%,rgba(104,181,239,.24),transparent 15rem),linear-gradient(160deg,#102c47,#06131f); }
+    .ff-batch-challenge__kicker { color:#79baf0; font-size:.72rem; font-weight:900; letter-spacing:.16em; text-transform:uppercase; }
+    .ff-batch-challenge h2 { margin:13px 0 0; font:900 clamp(2rem,5vw,4rem)/.98 "Playfair Display",serif; }
+    .ff-batch-challenge p { color:rgba(255,255,255,.74); line-height:1.65; }
+    .ff-batch-question { margin-top:16px; padding-top:18px; border-top:1px solid rgba(255,255,255,.14); }
+    .ff-batch-answer { display:flex; gap:10px; margin-top:18px; }
+    .ff-batch-answer input { min-width:0; flex:1; min-height:50px; padding:0 17px; border:1px solid rgba(255,255,255,.22); border-radius:999px; background:rgba(255,255,255,.08); color:#fff; font:inherit; outline:none; }
+    .ff-batch-answer button { min-height:50px; padding:0 20px; border:0; border-radius:999px; background:#70b9f1; color:#071726; font-weight:900; cursor:pointer; }
+    .ff-batch-feedback { min-height:24px; margin-top:14px; color:#ffca71; font-weight:800; }
+    .ff-batch-challenge__card.is-wrong { animation:ffWrong .6s ease; }
+    .ff-batch-challenge__card.is-doomed { animation:ffDoomed .22s linear infinite; }
+    .ff-batch-challenge__card.is-winner { background:linear-gradient(145deg,#ffe08a,#ef9e29 42%,#0b2033 42%); }
+    .ff-batch-pass { margin-top:22px; padding:22px; border:1px dashed rgba(255,255,255,.5); border-radius:22px; background:rgba(255,255,255,.08); }
+    .ff-batch-pass strong,.ff-batch-pass span,.ff-batch-pass b,.ff-batch-pass small { display:block; }
+    .ff-batch-pass strong { color:#ffd175; letter-spacing:.12em; }
+    .ff-batch-pass span { margin-top:8px; color:#fff; }
+    .ff-batch-pass b { margin-top:18px; font:900 1.35rem "Outfit",sans-serif; }
+    .ff-batch-pass small { margin-top:5px; color:rgba(255,255,255,.55); }
+    .ff-batch-pass-note { font-size:.78rem; }
+    .ff-batch-countdown { position:fixed; inset:0; z-index:10030; display:grid; place-items:center; padding:20px; color:#fff; font:900 clamp(3rem,10vw,8rem)/.9 "Outfit",sans-serif; text-align:center; text-shadow:0 8px 40px #000; pointer-events:none; }
+    .ff-batch-smoke { position:fixed; inset:0; z-index:10040; overflow:hidden; pointer-events:none; }
+    .ff-batch-smoke i { position:absolute; width:52vw; aspect-ratio:1; border-radius:50%; background:radial-gradient(circle,rgba(245,249,252,.98),rgba(165,183,195,.88) 45%,transparent 72%); filter:blur(18px); opacity:0; transform:scale(.2); }
+    .ff-batch-smoke i:nth-child(1){left:-12%;bottom:-20%}.ff-batch-smoke i:nth-child(2){left:18%;bottom:-30%;animation-delay:.1s}.ff-batch-smoke i:nth-child(3){right:-8%;bottom:-18%;animation-delay:.2s}.ff-batch-smoke i:nth-child(4){left:-15%;top:-20%;animation-delay:.3s}.ff-batch-smoke i:nth-child(5){left:30%;top:-25%;animation-delay:.4s}.ff-batch-smoke i:nth-child(6){right:-10%;top:-15%;animation-delay:.5s}
+    .ff-batch-smoke.is-active i { animation:ffSmokeIn 1.35s ease forwards; }
+    .ff-batch-smoke.is-clearing { animation:ffSmokeClear 1.7s ease forwards; }
+
+    @keyframes ffBWiggle { 0%,88%,100%{transform:none} 90%{transform:rotate(-8deg) scale(1.08)} 93%{transform:rotate(8deg) scale(.96)} 96%{transform:rotate(-4deg)} }
+    @keyframes ffSharkSwim { from{left:-70px;transform:translateY(0)} 45%{transform:translateY(-8px)} to{left:calc(100% + 70px);transform:translateY(0)} }
+    @keyframes ffHoneyGlow { 0%,80%,100%{box-shadow:none} 88%{box-shadow:0 0 0 8px rgba(255,211,71,.15),0 0 30px 12px rgba(255,211,71,.55)} }
+    @keyframes ffSparkleDrift { 0%,100%{transform:translate(0,0) rotate(0)} 35%{transform:translate(-28px,12px) rotate(120deg)} 70%{transform:translate(-9px,28px) rotate(240deg)} }
+    @keyframes ffGramVanish { 50%{transform:scale(1.8) rotate(25deg);opacity:1} 100%{transform:scale(.1);opacity:0} }
+    @keyframes ffToast { 0%{opacity:0;transform:translate(-50%,25px) scale(.94)} 12%,75%{opacity:1;transform:translate(-50%,0) scale(1)} 100%{opacity:0;transform:translate(-50%,-12px)} }
+    @keyframes ffMiniConfetti { to{transform:translate(var(--x),var(--y)) rotate(var(--r));opacity:0} }
+    @keyframes ffCardPop { 50%{transform:scale(1.012)} }
+    @keyframes ffWrong { 20%,60%{transform:translateX(-14px) rotate(-1deg)} 40%,80%{transform:translateX(14px) rotate(1deg)} }
+    @keyframes ffDoomed { 50%{transform:translate(3px,-2px) rotate(.3deg);filter:hue-rotate(30deg)} }
+    @keyframes ffSmokeIn { to{opacity:1;transform:scale(2.5)} }
+    @keyframes ffSmokeClear { to{opacity:0;filter:blur(45px)} }
+
+    @media (max-width:700px) {
+      .ff-batch-challenge__card { grid-template-columns:1fr; background:linear-gradient(180deg,#bfe0fa 0 26%,#0b2033 26%); }
+      .ff-batch-challenge__art { min-height:145px; font-size:5rem; }
+      .ff-batch-challenge__copy { padding:28px 22px 34px; }
+      .ff-batch-answer { flex-direction:column; }
+      .ff-gram-counter { left:10px; bottom:10px; }
+      .ff-gram-clue--b { top:30px; left:28px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ff-gram-clue,.ff-batch-challenge__card,.ff-batch-smoke i { animation:none !important; }
+    }
+
 /* Vendor lineup */
 
     .ff-lineup {
@@ -5664,5 +5743,188 @@ if (remixCount === 5 && !festivalAlreadyUnlocked) {
     })();
   </script>
 
+
+<script>
+(() => {
+  const stage = document.querySelector('.ff-batch-showcase__gallery');
+  const card = document.querySelector('.ff-batch-showcase');
+  const logo = document.querySelector('.ff-batch-showcase__logo');
+  const offer = document.querySelector('.ff-batch-showcase__offer');
+  const product = document.querySelector('.ff-batch-shot--main');
+  if (!stage || !card || !logo || !offer || !product) return;
+
+  card.classList.add('ff-batch-game');
+  const found = new Set();
+  const messages = {
+    b: 'The B was acting suspicious.',
+    shark: 'That shark was holding.',
+    honey: 'Forbidden honey button pressed.',
+    sparkle: 'You caught the wandering sparkle.'
+  };
+
+  const counter = document.createElement('div');
+  counter.className = 'ff-gram-counter';
+  counter.innerHTML = '<span>Hidden Batch</span><strong>0G / 4G FOUND</strong>';
+  card.appendChild(counter);
+
+  const toast = document.createElement('div');
+  toast.className = 'ff-batch-toast';
+  toast.setAttribute('aria-live','polite');
+  document.body.appendChild(toast);
+
+  const addHotspot = (key, host, className, label, html = '') => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = `ff-gram-clue ${className}`;
+    button.setAttribute('aria-label', label);
+    button.dataset.gram = key;
+    button.innerHTML = html;
+    host.appendChild(button);
+    button.addEventListener('click', () => collect(key, button));
+    return button;
+  };
+
+  const logoClue = addHotspot('b', logo.parentElement, 'ff-gram-clue--b', 'Catch the wiggling Batch B', '<span>B</span>');
+  const shark = addHotspot('shark', stage, 'ff-gram-clue--shark', 'Catch the shark swimming in the water', '<span>🦈</span><i></i>');
+  const honey = addHotspot('honey', product, 'ff-gram-clue--honey', 'Press the glowing yellow center', '<span></span>');
+  const sparkle = addHotspot('sparkle', offer, 'ff-gram-clue--sparkle', 'Catch the tiny drifting sparkle', '✦');
+
+  function collect(key, button) {
+    if (found.has(key)) return;
+    found.add(key);
+    button.classList.add('is-found');
+    card.classList.add('is-gram-pop');
+    setTimeout(() => card.classList.remove('is-gram-pop'), 500);
+    counter.classList.add('is-visible');
+    counter.querySelector('strong').textContent = `${found.size}G / 4G FOUND`;
+    showToast(`${found.size}G FOUND — ${messages[key]}`);
+    confetti(button, 12);
+    if (found.size === 4) setTimeout(openChallenge, 850);
+  }
+
+  function showToast(text) {
+    toast.textContent = text;
+    toast.classList.remove('is-showing');
+    void toast.offsetWidth;
+    toast.classList.add('is-showing');
+  }
+
+  function confetti(source, count) {
+    const r = source.getBoundingClientRect();
+    for (let i = 0; i < count; i++) {
+      const bit = document.createElement('span');
+      bit.className = 'ff-mini-confetti';
+      bit.textContent = ['✦','●','◆','★'][i % 4];
+      bit.style.left = `${r.left + r.width / 2}px`;
+      bit.style.top = `${r.top + r.height / 2}px`;
+      bit.style.setProperty('--x', `${(Math.random() - .5) * 170}px`);
+      bit.style.setProperty('--y', `${-45 - Math.random() * 120}px`);
+      bit.style.setProperty('--r', `${Math.random() * 540 - 270}deg`);
+      document.body.appendChild(bit);
+      setTimeout(() => bit.remove(), 1100);
+    }
+  }
+
+  function openChallenge() {
+    const modal = document.createElement('div');
+    modal.className = 'ff-batch-challenge';
+    modal.innerHTML = `
+      <div class="ff-batch-challenge__backdrop"></div>
+      <section class="ff-batch-challenge__card" role="dialog" aria-modal="true" aria-labelledby="ffBatchGameTitle">
+        <button class="ff-batch-challenge__close" type="button" aria-label="Close">×</button>
+        <div class="ff-batch-challenge__art">4G</div>
+        <div class="ff-batch-challenge__copy">
+          <div class="ff-batch-challenge__kicker">You found the full Batch</div>
+          <h2 id="ffBatchGameTitle">The last gram has become emotionally unavailable.</h2>
+          <p>Answer correctly and it may agree to become a prize pass.</p>
+          <div class="ff-batch-question">
+            <p>Once a month, Green Labs fills up with brands, artists, games, giveaways, and at least one person treating cornhole like the Olympics. What event is it?</p>
+            <form class="ff-batch-answer">
+              <input autocomplete="off" placeholder="Your answer" aria-label="Your answer">
+              <button type="submit">Lock it in</button>
+            </form>
+            <div class="ff-batch-feedback" aria-live="polite"></div>
+          </div>
+        </div>
+      </section>`;
+    document.body.appendChild(modal);
+    requestAnimationFrame(() => modal.classList.add('is-open'));
+    modal.querySelector('input').focus();
+    modal.querySelector('.ff-batch-challenge__close').onclick = () => closeModal(modal);
+    modal.querySelector('.ff-batch-challenge__backdrop').onclick = () => closeModal(modal);
+    let attempts = 0;
+    modal.querySelector('form').addEventListener('submit', e => {
+      e.preventDefault();
+      const input = modal.querySelector('input');
+      const answer = input.value.trim().toLowerCase().replace(/[^a-z]/g,'');
+      if (answer === 'firstfriday' || (attempts > 0 && answer === 'friday')) return win(modal);
+      attempts++;
+      if (attempts === 1) {
+        modal.querySelector('.ff-batch-feedback').textContent = 'Absolutely not. That answer had the structural integrity of a gas-station pre-roll.';
+        modal.querySelector('.ff-batch-question p').innerHTML = 'One more try. Complete the event name:<br><strong>FIRST ________</strong>';
+        input.value = '';
+        input.placeholder = 'Please save the tiny shark';
+        modal.querySelector('.ff-batch-challenge__card').classList.add('is-wrong');
+        setTimeout(() => modal.querySelector('.ff-batch-challenge__card').classList.remove('is-wrong'), 650);
+      } else {
+        failSpectacularly(modal);
+      }
+    });
+  }
+
+  function win(modal) {
+    const code = `BATCH-${Math.random().toString(36).slice(2,7).toUpperCase()}`;
+    const stamp = new Date().toLocaleString('en-US', {month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'});
+    modal.querySelector('.ff-batch-challenge__card').classList.add('is-winner');
+    modal.querySelector('.ff-batch-challenge__copy').innerHTML = `
+      <div class="ff-batch-challenge__kicker">FULL BATCH UNLOCKED</div>
+      <h2>You found all four hidden grams.</h2>
+      <p>And answered a question that was, respectfully, not that difficult.</p>
+      <div class="ff-batch-pass">
+        <strong>SCREENSHOT THIS PASS</strong>
+        <span>Show Green Labs staff to claim this month’s Easter-egg reward.</span>
+        <b>${code}</b><small>${stamp}</small>
+      </div>
+      <p class="ff-batch-pass-note">One reward per person. Staff may ask where the shark was hiding.</p>`;
+    for (let i=0;i<7;i++) setTimeout(() => confetti(modal.querySelector('.ff-batch-challenge__card'), 18), i*180);
+  }
+
+  function failSpectacularly(modal) {
+    const feedback = modal.querySelector('.ff-batch-feedback');
+    feedback.innerHTML = '<strong>OH NO.</strong><br>You have disappointed the tiny shark.';
+    modal.querySelector('.ff-batch-challenge__card').classList.add('is-doomed');
+    const countdown = document.createElement('div');
+    countdown.className = 'ff-batch-countdown';
+    document.body.appendChild(countdown);
+    const beats = ['3','2','…wait, where is 1?','EXTREMELY UNNECESSARY SELF-DESTRUCT'];
+    beats.forEach((beat,i) => setTimeout(() => countdown.textContent = beat, 600 + i*800));
+    setTimeout(() => {
+      const smoke = document.createElement('div');
+      smoke.className = 'ff-batch-smoke';
+      smoke.innerHTML = '<i></i><i></i><i></i><i></i><i></i><i></i>';
+      document.body.appendChild(smoke);
+      requestAnimationFrame(() => smoke.classList.add('is-active'));
+      setTimeout(() => {
+        modal.remove(); countdown.remove();
+        smoke.classList.add('is-clearing');
+        resetGame();
+        setTimeout(() => smoke.remove(), 1800);
+      }, 2300);
+    }, 3700);
+  }
+
+  function closeModal(modal) {
+    modal.classList.remove('is-open');
+    setTimeout(() => modal.remove(), 300);
+  }
+
+  function resetGame() {
+    found.clear();
+    counter.querySelector('strong').textContent = '0G / 4G FOUND';
+    counter.classList.remove('is-visible');
+    document.querySelectorAll('.ff-gram-clue').forEach(el => el.classList.remove('is-found'));
+  }
+})();
+</script>
 </body>
 </html>
