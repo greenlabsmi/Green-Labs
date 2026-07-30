@@ -174,8 +174,8 @@
     spark.disabled = false;
     eyes.disabled = false;
     smokeCanvas.style.pointerEvents = "auto";
-    missionIntro.classList.add("is-visible");
-    window.setTimeout(() => missionIntro.classList.remove("is-visible"), 4300);
+    missionIntro.classList.add("fb-mission-intro--visible");
+    window.setTimeout(() => missionIntro.classList.remove("fb-mission-intro--visible"), 4300);
     window.setTimeout(() => scheduleEyesPeek(700), 900);
   }
 
@@ -528,6 +528,28 @@
   function win(modal) {
     state.gameFinished = true;
 
+    const victory = document.createElement("div");
+    victory.className = "fb-victory-celebration";
+    victory.innerHTML = `
+      <div class="fb-victory-celebration__burst" aria-hidden="true"></div>
+      <strong>MISSION PASS UNLOCKED</strong>
+      <span>OPERATION BIG AF COMPLETE</span>
+    `;
+    document.body.appendChild(victory);
+    requestAnimationFrame(() => victory.classList.add("is-live"));
+    window.setTimeout(() => victory.classList.add("is-clearing"), 2200);
+    window.setTimeout(() => victory.remove(), 3300);
+
+    for (let index = 0; index < 34; index += 1) {
+      const spark = document.createElement("i");
+      spark.className = "fb-victory-spark";
+      spark.textContent = ["✦", "★", "◆", "●"][index % 4];
+      spark.style.setProperty("--angle", `${(360 / 34) * index}deg`);
+      spark.style.setProperty("--distance", `${120 + Math.random() * 210}px`);
+      spark.style.setProperty("--delay", `${Math.random() * 260}ms`);
+      victory.appendChild(spark);
+    }
+
     const code = `BATCH-${Math.random().toString(36).slice(2, 7).toUpperCase()}`;
     const stamp = new Date().toLocaleString("en-US", {
       month: "short",
@@ -547,7 +569,7 @@
         <b>${code}</b>
         <small>${stamp}</small>
       </div>
-      <p>One reward per person. Staff may ask what was driving across the bridge.</p>
+      <p>One reward per person. Staff may ask how high you had to be to find this promo code.</p>
     `;
   }
 
@@ -568,7 +590,7 @@
       { delay: 7900, text: "2" },
       { delay: 9700, text: "1" },
       { delay: 11600, text: "", className: "is-blackout" },
-      { delay: 13900, text: "what is happening?", className: "is-blackout is-confused" },
+      { delay: 13900, text: "BATCH… WHO’S GOT THE LIGHT?", className: "is-blackout is-confused" },
       { delay: 16800, text: "", className: "is-fire" }
     ].forEach((step) => {
       window.setTimeout(() => {
@@ -596,15 +618,29 @@
       cloud.style.animationDelay = `${index * 160}ms`;
     });
 
-    document.body.appendChild(smoke);
-    requestAnimationFrame(() => smoke.classList.add("is-active"));
+    const hotboxStatus = document.createElement("div");
+    hotboxStatus.className = "fb-hotbox-status";
+    hotboxStatus.innerHTML = "<strong>HOTBOX ACTIVATED.</strong><span>Clear your head. Then try again—if you remember the question.</span>";
+
+    document.body.append(smoke, hotboxStatus);
+    requestAnimationFrame(() => {
+      smoke.classList.add("is-active");
+      hotboxStatus.classList.add("is-visible");
+    });
 
     window.setTimeout(() => {
       modal.remove();
       emergency.remove();
+      hotboxStatus.classList.add("is-clearing");
       smoke.classList.add("is-clearing");
       document.body.style.overflow = "";
-      window.setTimeout(() => smoke.remove(), 3100);
+      state.gameFinished = false;
+      state.challengeOpened = false;
+      window.setTimeout(() => {
+        smoke.remove();
+        hotboxStatus.remove();
+        openChallenge();
+      }, 3100);
     }, 3900);
   }
 
