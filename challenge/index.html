@@ -21,6 +21,21 @@
     @media(min-width:901px){.board .card:nth-child(n+6){margin-top:10px}}
     @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}.card-inner{transition:none}}
   </style>
+  <!-- Microsoft Clarity: Green Labs project -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window,document,"clarity","script","w5zkqgu1up");
+    window.glTrack=function(eventName,tags){
+      try{
+        if(typeof window.clarity!=="function")return;
+        if(tags)Object.entries(tags).forEach(([key,value])=>window.clarity("set",key,String(value)));
+        window.clarity("event",eventName);
+      }catch(error){console.warn("Clarity tracking skipped",error)}
+    };
+  </script>
 </head>
 <body>
   <main class="wrap">
@@ -110,6 +125,51 @@
     function win(){if(storageOK)localStorage.setItem(storageKeys.unlock,"true");save();showResult(true)}function lose(){save();showResult(false)}
     function restoreOrStart(){cards=makeDeck();const status=storageOK?localStorage.getItem(storageKeys.status):null;const state=load();if(state){mistakesLeft=Number.isFinite(state.mistakesLeft)?state.mistakesLeft:GAME_CONFIG.maxMistakes;matched=new Set(state.matched||[]);const map=new Map(cards.map(c=>[c.uid,c]));cards=(state.order||[]).map(id=>map.get(id)).filter(Boolean);if(cards.length!==10)cards=makeDeck()}render();document.querySelectorAll(".card").forEach(c=>{if(matched.has(c.dataset.pair))c.classList.add("matched","flipped");else c.classList.remove("flipped","preview-pair")});if(status==="won"){showResult(true);return}if(status==="lost"){showResult(false);return}if(status==="in-progress"&&state){phase="play";locked=false;startPanel.classList.add("hidden");notice.textContent="Your saved attempt has been restored.";notice.classList.add("show");updateHud();return}phase="ready";locked=true;notice.textContent="Read the directions, then press Start Challenge when you are ready.";notice.classList.add("show");updateHud();startButton.addEventListener("click",intro,{once:true})}
     restoreOrStart();
+  </script>
+  <script>
+    // =========================================================
+    // MICROSOFT CLARITY — WEEKLY CHALLENGE ENGAGEMENT TRACKING
+    // =========================================================
+    (()=>{
+      const track=(name,tags)=>window.glTrack&&window.glTrack(name,tags);
+      const once=new Set();
+      const trackOnce=(name,tags)=>{if(once.has(name))return;once.add(name);track(name,tags)};
+      const params=new URLSearchParams(location.search);
+      track("challenge_open",{
+        challenge_id:typeof GAME_CONFIG!=="undefined"?GAME_CONFIG.challengeId:"unknown",
+        source:params.get("utm_source")||params.get("source")||"direct",
+        campaign:params.get("utm_campaign")||"none"
+      });
+      document.getElementById("startButton")?.addEventListener("click",()=>track("challenge_started",{challenge_id:GAME_CONFIG.challengeId}));
+      document.getElementById("board")?.addEventListener("click",()=>trackOnce("challenge_first_card_flip",{challenge_id:GAME_CONFIG.challengeId}));
+      const phase=document.getElementById("phaseText");
+      if(phase){
+        new MutationObserver(()=>{
+          const value=phase.textContent.trim().toLowerCase();
+          if(value==="preview")trackOnce("challenge_memorize_started",{challenge_id:GAME_CONFIG.challengeId});
+          if(value==="play")trackOnce("challenge_gameplay_started",{challenge_id:GAME_CONFIG.challengeId});
+          if(value==="won"){
+            trackOnce("challenge_completed",{challenge_id:GAME_CONFIG.challengeId});
+            trackOnce("wheel_unlocked",{challenge_id:GAME_CONFIG.challengeId});
+          }
+          if(value==="lost")trackOnce("challenge_failed",{challenge_id:GAME_CONFIG.challengeId});
+        }).observe(phase,{childList:true,characterData:true,subtree:true});
+      }
+      const matches=document.getElementById("matchCount");
+      if(matches){
+        let previous="0";
+        new MutationObserver(()=>{
+          const current=matches.textContent.split("/")[0].trim();
+          if(current!==previous){track("challenge_match_made",{challenge_id:GAME_CONFIG.challengeId,matches:current});previous=current}
+        }).observe(matches,{childList:true,characterData:true,subtree:true});
+      }
+      document.getElementById("resultActions")?.addEventListener("click",event=>{
+        const link=event.target.closest("a");
+        if(!link)return;
+        if(link.getAttribute("href")===GAME_CONFIG.wheelUrl)track("challenge_spin_wheel_clicked",{challenge_id:GAME_CONFIG.challengeId});
+        else track("challenge_exit_clicked",{challenge_id:GAME_CONFIG.challengeId});
+      });
+    })();
   </script>
 </body>
 </html>
