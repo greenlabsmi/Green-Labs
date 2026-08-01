@@ -1,122 +1,1493 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Green Labs Prize Wheel</title>
-<style>
-:root{--bg:#030503;--panel:#0b100c;--green:#08c970;--green2:#087b49;--gold:#d8aa49;--white:#f7f7f4;--muted:#aab2ab;--danger:#ff666c}*{box-sizing:border-box}html{background:var(--bg);color:var(--white);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}body{margin:0;min-height:100vh;background:radial-gradient(circle at 20% 0%,rgba(8,201,112,.12),transparent 34%),radial-gradient(circle at 80% 5%,rgba(216,170,73,.1),transparent 32%),linear-gradient(180deg,#020402,#080b08 70%,#020402)}button,a{font:inherit}.wrap{width:min(1120px,94vw);margin:auto;padding:24px 0 56px}.brand{display:flex;align-items:center;justify-content:space-between;padding-bottom:22px}.brand-left{display:flex;align-items:center;gap:14px}.logo{width:76px;height:76px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(8,201,112,.95)) drop-shadow(0 0 22px rgba(8,201,112,.5));animation:logoPulse 3.2s ease-in-out infinite}@keyframes logoPulse{0%,100%{filter:drop-shadow(0 0 7px rgba(8,201,112,.8)) drop-shadow(0 0 18px rgba(8,201,112,.4))}50%{filter:drop-shadow(0 0 12px rgba(8,201,112,1)) drop-shadow(0 0 30px rgba(8,201,112,.65))}}h1{margin:0;font-size:clamp(1.1rem,3vw,1.55rem);letter-spacing:.12em}.brand small{display:block;color:var(--muted);letter-spacing:.15em;margin-top:4px}.hero{text-align:center;padding:10px 16px 24px}.eyebrow{color:var(--green);font-weight:900;letter-spacing:.18em;text-transform:uppercase;font-size:.8rem}.hero h2{font-size:clamp(2.2rem,8vw,5.4rem);line-height:.92;margin:.25em 0 .18em;text-transform:uppercase}.hero p{color:var(--muted);max-width:720px;margin:auto;line-height:1.6}.grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(320px,.9fr);gap:28px;align-items:center}.wheel-card,.info-card{background:linear-gradient(180deg,rgba(14,20,15,.98),rgba(6,9,7,.98));border:1px solid rgba(8,201,112,.22);border-radius:28px;padding:clamp(18px,3vw,28px);box-shadow:0 24px 70px rgba(0,0,0,.5)}.wheel-wrap{position:relative;width:min(620px,88vw);aspect-ratio:1;margin:auto}.pointer{position:absolute;z-index:5;left:50%;top:-12px;transform:translateX(-50%);width:0;height:0;border-left:24px solid transparent;border-right:24px solid transparent;border-top:52px solid var(--gold);filter:drop-shadow(0 5px 8px rgba(0,0,0,.5))}.wheel{position:absolute;inset:0;border-radius:50%;border:12px solid #0d120e;box-shadow:0 0 0 3px var(--gold),0 0 36px rgba(8,201,112,.3),inset 0 0 36px rgba(0,0,0,.65);overflow:hidden;transform:rotate(0deg);will-change:transform}.wheel:after{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle,transparent 0 43%,rgba(255,255,255,.06) 44% 45%,transparent 46%),linear-gradient(120deg,rgba(255,255,255,.09),transparent 25% 70%,rgba(255,255,255,.05));pointer-events:none}.labels{position:absolute;inset:0;border-radius:50%}.slice-label{position:absolute;left:50%;top:50%;width:44%;transform-origin:0 0;font-size:clamp(.76rem,1.75vw,1.16rem);font-weight:1000;text-align:right;padding-right:22px;line-height:1.02;letter-spacing:.02em;text-transform:uppercase;text-shadow:0 2px 5px #000,0 0 8px rgba(0,0,0,.85)}.hub{position:absolute;z-index:4;left:50%;top:50%;transform:translate(-50%,-50%);width:26%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff 0 4%,#d8d8d2 5% 14%,#8a8e89 35%,#222823 68%,#080b09 100%);border:4px solid var(--gold);box-shadow:0 0 0 7px #0a0e0b,0 0 22px rgba(216,170,73,.4);display:grid;place-items:center;color:#07120b;font-size:clamp(.8rem,2.4vw,1.4rem);font-weight:1000}.wheel-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:24px auto 0}.spin-btn,.stop-btn{display:flex;width:min(300px,100%);min-height:60px;align-items:center;justify-content:center;border-radius:16px;font-size:1.08rem;font-weight:1000;cursor:pointer}.spin-btn{border:1px solid rgba(8,201,112,.6);background:linear-gradient(180deg,#0dcc73,#07894e);color:#fff;box-shadow:0 0 32px rgba(8,201,112,.25)}.stop-btn{border:1px solid rgba(216,170,73,.7);background:linear-gradient(180deg,#d8aa49,#8e681f);color:#100d05;box-shadow:0 0 28px rgba(216,170,73,.18)}.spin-btn:disabled,.stop-btn:disabled{opacity:.42;cursor:not-allowed}.info-card h3{font-size:1.6rem;margin:0 0 12px}.info-card p{color:var(--muted);line-height:1.6}.list{display:grid;gap:10px;margin-top:18px}.list div{display:flex;justify-content:space-between;gap:12px;padding:12px 14px;border:1px solid rgba(255,255,255,.08);border-radius:12px;background:rgba(255,255,255,.025)}.list strong{font-size:.9rem}.list span{color:var(--muted);font-size:.86rem}.access{display:none;text-align:center;padding:40px 20px}.access.show{display:block}.access h2{font-size:clamp(2rem,7vw,4rem);margin:.2em 0}.cta{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 24px;border-radius:14px;background:linear-gradient(180deg,#0dcc73,#07894e);color:#fff;text-decoration:none;font-weight:900}.overlay{position:fixed;inset:0;display:none;place-items:center;padding:20px;background:rgba(0,0,0,.84);backdrop-filter:blur(10px);z-index:20}.overlay.show{display:grid}.modal{width:min(620px,94vw);background:linear-gradient(180deg,#101610,#070a08);border:1px solid rgba(8,201,112,.3);border-radius:28px;padding:30px;text-align:center;box-shadow:0 28px 90px rgba(0,0,0,.7)}.modal h3{font-size:clamp(2.2rem,8vw,4.8rem);line-height:.94;margin:.2em 0}.modal .prize{font-size:clamp(1.5rem,6vw,3rem);font-weight:1000;color:var(--gold);margin:14px 0}.modal p{color:var(--muted);line-height:1.6}.claim{display:inline-block;padding:12px 16px;border-radius:12px;border:1px dashed var(--gold);font:900 1.25rem ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.08em;color:#fff;background:rgba(216,170,73,.08)}.screenshot-note{margin:18px auto 10px;padding:16px 18px;max-width:500px;border:1px solid rgba(8,201,112,.55);border-radius:16px;background:rgba(8,201,112,.1);box-shadow:0 0 26px rgba(8,201,112,.12)}.screenshot-note strong{display:block;color:#fff;font-size:1.15rem;letter-spacing:.08em}.screenshot-note span{display:block;margin-top:6px;color:#c9d3cb;line-height:1.45}.actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:20px}.secondary{background:#101510;border:1px solid rgba(255,255,255,.14)}.redeem{margin-top:18px;padding-top:18px;border-top:1px solid rgba(255,255,255,.08)}.redeemed{color:#78e3aa;font-weight:900}.warning{display:none;color:#ffd39a;margin-top:10px}.warning.show{display:block}.confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:30}.confetti i{position:absolute;width:9px;height:16px;top:-20px;animation:fall 2.7s linear forwards}@keyframes fall{to{transform:translate3d(var(--x),110vh,0) rotate(900deg);opacity:.9}}@media(max-width:900px){.grid{grid-template-columns:1fr}.info-card{order:2}.wheel-card{order:1}.brand{align-items:flex-start}.wheel-wrap{width:min(560px,88vw)}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}}
-</style>
-  <!-- Microsoft Clarity: Green Labs project -->
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window,document,"clarity","script","w5zkqgu1up");
-    window.glTrack=function(eventName,tags){
-      try{
-        if(typeof window.clarity!=="function")return;
-        if(tags)Object.entries(tags).forEach(([key,value])=>window.clarity("set",key,String(value)));
-        window.clarity("event",eventName);
-      }catch(error){console.warn("Clarity tracking skipped",error)}
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Green Labs Prize Wheel</title>
+  <meta
+    name="description"
+    content="Spin the Green Labs weekly prize wheel after completing Match Your Dutch."
+  />
+
+  <style>
+    :root {
+      --bg: #020402;
+      --panel: #0b110c;
+      --green: #08c970;
+      --green-dark: #067c47;
+      --gold: #d8aa49;
+      --gold-dark: #8b661f;
+      --white: #f7f8f4;
+      --muted: #aab3ab;
+      --danger: #ff646c;
+      --shadow: 0 28px 85px rgba(0, 0, 0, 0.58);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: var(--bg);
+      color: var(--white);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at 18% 0%, rgba(8, 201, 112, 0.14), transparent 34%),
+        radial-gradient(circle at 85% 8%, rgba(216, 170, 73, 0.1), transparent 32%),
+        linear-gradient(180deg, #020402, #080b08 72%, #020402);
+    }
+
+    button,
+    a {
+      font: inherit;
+    }
+
+    button {
+      touch-action: manipulation;
+    }
+
+    .wrap {
+      width: min(1120px, 94vw);
+      margin: auto;
+      padding: 18px 0 52px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 4px 0 14px;
+    }
+
+    .brand-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo {
+      width: 74px;
+      height: 74px;
+      object-fit: contain;
+      filter:
+        drop-shadow(0 0 8px rgba(8, 201, 112, 0.95))
+        drop-shadow(0 0 24px rgba(8, 201, 112, 0.52));
+      animation: logoPulse 3.2s ease-in-out infinite;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: clamp(1.05rem, 3vw, 1.55rem);
+      letter-spacing: 0.13em;
+    }
+
+    .brand small {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+    }
+
+    .status-chip {
+      padding: 8px 12px;
+      border: 1px solid rgba(216, 170, 73, 0.45);
+      border-radius: 999px;
+      background: rgba(216, 170, 73, 0.07);
+      color: var(--gold);
+      font-size: 0.76rem;
+      font-weight: 1000;
+      letter-spacing: 0.09em;
+    }
+
+    .hero {
+      padding: 10px 16px 22px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      color: var(--green);
+      font-size: 0.78rem;
+      font-weight: 1000;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .hero h2 {
+      margin: 0.24em 0 0.16em;
+      font-size: clamp(2.35rem, 8vw, 5.5rem);
+      line-height: 0.92;
+      text-transform: uppercase;
+    }
+
+    .hero p {
+      max-width: 720px;
+      margin: auto;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(310px, 0.85fr);
+      gap: 28px;
+      align-items: center;
+    }
+
+    .wheel-card,
+    .info-card {
+      border: 1px solid rgba(8, 201, 112, 0.22);
+      border-radius: 28px;
+      background: linear-gradient(180deg, rgba(14, 20, 15, 0.98), rgba(6, 9, 7, 0.99));
+      box-shadow: var(--shadow);
+    }
+
+    .wheel-card {
+      padding: clamp(16px, 3vw, 28px);
+    }
+
+    .info-card {
+      padding: clamp(20px, 3vw, 28px);
+    }
+
+    .wheel-wrap {
+      position: relative;
+      width: min(620px, 88vw);
+      aspect-ratio: 1;
+      margin: auto;
+      isolation: isolate;
+    }
+
+    .wheel-wrap::before {
+      content: "";
+      position: absolute;
+      inset: 8%;
+      z-index: -1;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(8, 201, 112, 0.18), transparent 64%);
+      filter: blur(18px);
+    }
+
+    .pointer {
+      position: absolute;
+      top: -11px;
+      left: 50%;
+      z-index: 8;
+      width: 0;
+      height: 0;
+      transform: translateX(-50%);
+      border-right: 24px solid transparent;
+      border-left: 24px solid transparent;
+      border-top: 54px solid var(--gold);
+      filter: drop-shadow(0 6px 9px rgba(0, 0, 0, 0.62));
+      transform-origin: 50% 0;
+    }
+
+    .pointer.tick {
+      animation: pointerTick 90ms ease-out;
+    }
+
+    .wheel {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      border: 12px solid #0d120e;
+      border-radius: 50%;
+      box-shadow:
+        0 0 0 3px var(--gold),
+        0 0 42px rgba(8, 201, 112, 0.28),
+        inset 0 0 42px rgba(0, 0, 0, 0.72);
+      transform: rotate(0deg);
+      will-change: transform;
+    }
+
+    .wheel::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, transparent 0 42%, rgba(255, 255, 255, 0.06) 43% 44%, transparent 45%),
+        linear-gradient(120deg, rgba(255, 255, 255, 0.1), transparent 25% 70%, rgba(255, 255, 255, 0.04));
+      pointer-events: none;
+    }
+
+    .labels {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+    }
+
+    .slice-label {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 44%;
+      padding-right: 18px;
+      transform-origin: 0 0;
+      color: white;
+      font-size: clamp(0.76rem, 1.72vw, 1.14rem);
+      font-weight: 1000;
+      line-height: 1;
+      text-align: right;
+      text-shadow:
+        0 2px 5px #000,
+        0 0 8px rgba(0, 0, 0, 0.9);
+      text-transform: uppercase;
+      pointer-events: none;
+    }
+
+    .hub {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 7;
+      display: grid;
+      width: 25%;
+      aspect-ratio: 1;
+      place-items: center;
+      transform: translate(-50%, -50%);
+      border: 4px solid var(--gold);
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 35% 30%, #fff 0 4%, #d8d8d2 5% 14%, #8a8e89 35%, #222823 68%, #080b09 100%);
+      box-shadow:
+        0 0 0 7px #0a0e0b,
+        0 0 24px rgba(216, 170, 73, 0.44);
+      color: #07120b;
+      font-size: clamp(0.82rem, 2.4vw, 1.45rem);
+      font-weight: 1000;
+      text-align: center;
+    }
+
+    .wheel-status {
+      min-height: 27px;
+      margin-top: 14px;
+      color: #f6e4b1;
+      font-size: 0.9rem;
+      font-weight: 900;
+      text-align: center;
+    }
+
+    .wheel-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 14px auto 0;
+    }
+
+    .spin-btn,
+    .stop-btn {
+      display: flex;
+      width: min(300px, 100%);
+      min-height: 60px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 16px;
+      font-size: 1.08rem;
+      font-weight: 1000;
+      cursor: pointer;
+      transition:
+        transform 0.18s ease,
+        filter 0.18s ease,
+        opacity 0.18s ease;
+    }
+
+    .spin-btn {
+      border: 1px solid rgba(8, 201, 112, 0.62);
+      background: linear-gradient(180deg, #0dcc73, #07894e);
+      box-shadow: 0 0 34px rgba(8, 201, 112, 0.26);
+      color: white;
+    }
+
+    .stop-btn {
+      border: 1px solid rgba(216, 170, 73, 0.74);
+      background: linear-gradient(180deg, #e0b455, #8e681f);
+      box-shadow: 0 0 28px rgba(216, 170, 73, 0.18);
+      color: #130e04;
+    }
+
+    .spin-btn:not(:disabled):hover,
+    .stop-btn:not(:disabled):hover {
+      transform: translateY(-2px);
+      filter: brightness(1.06);
+    }
+
+    .spin-btn:disabled,
+    .stop-btn:disabled {
+      opacity: 0.42;
+      cursor: not-allowed;
+    }
+
+    .info-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.7rem;
+    }
+
+    .info-card p {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .how-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .how-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 12px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 13px;
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+    .how-item b {
+      color: var(--gold);
+      font-size: 1.2rem;
+    }
+
+    .how-item span {
+      color: #dce4dd;
+      line-height: 1.4;
+    }
+
+    .details-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .details-list div {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 11px 13px;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .details-list strong {
+      font-size: 0.88rem;
+    }
+
+    .details-list span {
+      color: var(--muted);
+      font-size: 0.84rem;
+      text-align: right;
+    }
+
+    .access {
+      display: none;
+      padding: 42px 20px;
+      text-align: center;
+    }
+
+    .access.show {
+      display: block;
+    }
+
+    .access h2 {
+      margin: 0.2em 0;
+      font-size: clamp(2rem, 7vw, 4rem);
+    }
+
+    .cta {
+      display: inline-flex;
+      min-height: 52px;
+      align-items: center;
+      justify-content: center;
+      padding: 0 24px;
+      border: 1px solid rgba(8, 201, 112, 0.5);
+      border-radius: 14px;
+      background: linear-gradient(180deg, #0dcc73, #07894e);
+      color: white;
+      font-weight: 1000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .cta.secondary {
+      border-color: rgba(255, 255, 255, 0.15);
+      background: #101510;
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 30;
+      display: none;
+      place-items: center;
+      padding: 18px;
+      overflow-y: auto;
+      background: rgba(0, 0, 0, 0.86);
+      backdrop-filter: blur(10px);
+    }
+
+    .overlay.show {
+      display: grid;
+    }
+
+    .modal {
+      width: min(650px, 95vw);
+      margin: auto;
+      padding: clamp(24px, 4vw, 34px);
+      border: 1px solid rgba(8, 201, 112, 0.32);
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(8, 201, 112, 0.13), transparent 35%),
+        linear-gradient(180deg, #101710, #070a08);
+      box-shadow: 0 28px 90px rgba(0, 0, 0, 0.72);
+      text-align: center;
+    }
+
+    .modal h3 {
+      margin: 0.2em 0;
+      font-size: clamp(2.3rem, 9vw, 5rem);
+      line-height: 0.92;
+      text-transform: uppercase;
+    }
+
+    .prize-card {
+      margin: 18px auto;
+      padding: 18px;
+      border: 2px solid var(--gold);
+      border-radius: 20px;
+      background:
+        radial-gradient(circle at 50% 20%, rgba(216, 170, 73, 0.16), transparent 34%),
+        linear-gradient(145deg, #111913, #040705);
+      box-shadow:
+        0 0 40px rgba(216, 170, 73, 0.18),
+        inset 0 0 30px rgba(8, 201, 112, 0.05);
+    }
+
+    .prize-icon {
+      font-size: 2.6rem;
+      line-height: 1;
+    }
+
+    .prize {
+      margin: 10px 0 4px;
+      color: var(--gold);
+      font-size: clamp(1.6rem, 6vw, 3.2rem);
+      font-weight: 1000;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .modal p {
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .claim {
+      display: inline-block;
+      padding: 11px 15px;
+      border: 1px dashed var(--gold);
+      border-radius: 12px;
+      background: rgba(216, 170, 73, 0.08);
+      color: white;
+      font: 900 1.18rem ui-monospace, SFMono-Regular, Menlo, monospace;
+      letter-spacing: 0.08em;
+    }
+
+    .proof-grid {
+      display: grid;
+      gap: 8px;
+      margin: 14px 0;
+      text-align: left;
+    }
+
+    .proof-grid div {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 10px 12px;
+      border-radius: 11px;
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .proof-grid strong {
+      color: white;
+      font-size: 0.84rem;
+    }
+
+    .proof-grid span {
+      color: var(--muted);
+      font-size: 0.84rem;
+      text-align: right;
+    }
+
+    .screenshot-note {
+      margin: 18px auto 10px;
+      padding: 16px 18px;
+      border: 1px solid rgba(8, 201, 112, 0.58);
+      border-radius: 16px;
+      background: rgba(8, 201, 112, 0.1);
+      box-shadow: 0 0 28px rgba(8, 201, 112, 0.12);
+    }
+
+    .screenshot-note strong {
+      display: block;
+      color: white;
+      font-size: 1.15rem;
+      letter-spacing: 0.07em;
+    }
+
+    .screenshot-note span {
+      display: block;
+      margin-top: 6px;
+      color: #cbd5cd;
+      line-height: 1.45;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .redeem {
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .redeemed {
+      color: #7ce7ad;
+      font-weight: 1000;
+    }
+
+    .warning {
+      display: none;
+      margin-top: 10px;
+      color: #ffd39a;
+      text-align: center;
+    }
+
+    .warning.show {
+      display: block;
+    }
+
+    .confetti {
+      position: fixed;
+      inset: 0;
+      z-index: 40;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .confetti i {
+      position: absolute;
+      top: -20px;
+      width: 9px;
+      height: 16px;
+      animation: fall 2.8s linear forwards;
+    }
+
+    @keyframes logoPulse {
+      0%,
+      100% {
+        filter:
+          drop-shadow(0 0 7px rgba(8, 201, 112, 0.8))
+          drop-shadow(0 0 18px rgba(8, 201, 112, 0.4));
+      }
+
+      50% {
+        filter:
+          drop-shadow(0 0 12px rgba(8, 201, 112, 1))
+          drop-shadow(0 0 30px rgba(8, 201, 112, 0.66));
+      }
+    }
+
+    @keyframes pointerTick {
+      50% {
+        transform: translateX(-50%) rotate(-7deg);
+      }
+    }
+
+    @keyframes fall {
+      to {
+        transform: translate3d(var(--x), 110vh, 0) rotate(900deg);
+        opacity: 0.9;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .wheel-card {
+        order: 1;
+      }
+
+      .info-card {
+        order: 2;
+      }
+
+      .wheel-wrap {
+        width: min(560px, 88vw);
+      }
+    }
+
+    @media (max-width: 560px) {
+      .wrap {
+        width: min(96vw, 520px);
+        padding-top: 8px;
+      }
+
+      .logo {
+        width: 58px;
+        height: 58px;
+      }
+
+      .status-chip {
+        display: none;
+      }
+
+      .hero {
+        padding: 2px 8px 16px;
+      }
+
+      .wheel-card {
+        padding: 12px 8px 16px;
+        border-radius: 22px;
+      }
+
+      .wheel-wrap {
+        width: min(92vw, 470px);
+      }
+
+      .pointer {
+        top: -8px;
+        border-right-width: 18px;
+        border-left-width: 18px;
+        border-top-width: 43px;
+      }
+
+      .slice-label {
+        padding-right: 11px;
+        font-size: clamp(0.55rem, 2.8vw, 0.78rem);
+      }
+
+      .hub {
+        width: 27%;
+        font-size: 0.8rem;
+      }
+
+      .spin-btn,
+      .stop-btn {
+        width: 100%;
+        min-height: 56px;
+      }
+
+      .modal {
+        padding: 22px 16px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+      }
+    }
+  </style>
+
+  <script>
+    (function (c, l, a, r, i, t, y) {
+      c[a] = c[a] || function () {
+        (c[a].q = c[a].q || []).push(arguments);
+      };
+      t = l.createElement(r);
+      t.async = 1;
+      t.src = "https://www.clarity.ms/tag/" + i;
+      y = l.getElementsByTagName(r)[0];
+      y.parentNode.insertBefore(t, y);
+    })(window, document, "clarity", "script", "w5zkqgu1up");
+
+    window.glTrack = function (eventName, tags) {
+      try {
+        if (typeof window.clarity !== "function") return;
+
+        if (tags) {
+          Object.entries(tags).forEach(([key, value]) => {
+            window.clarity("set", key, String(value));
+          });
+        }
+
+        window.clarity("event", eventName);
+      } catch (error) {
+        console.warn("Clarity tracking skipped", error);
+      }
     };
   </script>
 </head>
+
 <body>
-<main class="wrap" id="mainContent">
-<header class="brand"><div class="brand-left"><img class="logo" src="../assets/img/greenlabs-logo.png" alt="Green Labs logo"><div><h1>GREEN LABS</h1><small>LUNA PIER, MICHIGAN</small></div></div></header>
-<section class="hero"><div class="eyebrow">Weekly Challenge Reward</div><h2>You Earned a Spin</h2><p>Spin once to reveal your Green Labs prize. Save a screenshot of the complete result screen for in-store redemption.</p></section>
-<section id="accessGate" class="access"><div class="eyebrow">Prize Wheel Locked</div><h2>Complete This Week’s Challenge First</h2><p>Finish the Green Labs Weekly Challenge to unlock your spin.</p><a class="cta" href="./">PLAY THE CHALLENGE</a></section>
-<section id="wheelSection" class="grid">
-<div class="wheel-card"><div class="wheel-wrap"><div class="pointer" aria-hidden="true"></div><div id="wheel" class="wheel" aria-label="Green Labs prize wheel"><div id="labels" class="labels"></div></div><div class="hub">SPIN</div></div><div class="wheel-actions"><button id="spinButton" class="spin-btn" type="button">SPIN THE WHEEL</button><button id="stopButton" class="stop-btn" type="button" disabled>STOP THE WHEEL</button></div><p id="warning" class="warning">Browser storage is unavailable, so repeat-spin protection may not persist.</p></div>
-<aside class="info-card"><div class="eyebrow">How It Works</div><h3>Spin it. Stop it. Claim it.</h3><p>Spin the wheel when you’re ready, then press Stop when you’re feeling lucky. Results are random, saved to this browser, and limited to one spin per customer each week.</p><div class="list"><div><strong>Valid Through</strong><span id="expiresText"></span></div><div><strong>Challenge</strong><span id="challengeText"></span></div><div><strong>Redemption</strong><span>In store only</span></div></div></aside>
-</section>
-</main>
-<div id="overlay" class="overlay" role="dialog" aria-modal="true" aria-labelledby="resultTitle"><div class="modal"><div class="eyebrow">Green Labs Prize Wheel</div><h3 id="resultTitle">You Won</h3><div id="prizeName" class="prize"></div><p id="prizeDetail"></p><div id="claimCode" class="claim"></div><p id="spinTime"></p><p id="expirationLine"></p><div class="screenshot-note"><strong>TAKE A SCREENSHOT NOW</strong><span>Save a picture of this entire prize screen and show it in store to redeem. The screenshot must include the prize, claim code, spin time, and expiration date.</span></div><p>A claim code by itself is not valid for redemption.<br>One prize per customer. While supplies last. Other restrictions may apply.</p><div class="actions"><a class="cta" href="https://greenlabsmi.com/">SHOP GREEN LABS</a><button id="closeButton" class="cta secondary" type="button">CLOSE</button></div><div class="redeem"><button id="redeemButton" class="cta secondary" type="button">STAFF: MARK REDEEMED</button><p id="redeemedText" class="redeemed" hidden>REDEEMED</p></div></div></div>
-<div id="confetti" class="confetti" aria-hidden="true"></div>
-<script>
-// =========================================================
-// EDITABLE PRIZE CONFIGURATION — CHANGE ONLY THIS SECTION
-// =========================================================
-const WHEEL_CONFIG={
-  challengeId:"2026-08-week-1",
-  expiration:"August 7, 2026",
-  prizes:[
-    {id:"free-preroll",label:"FREE PRE-ROLL",detail:"Select promotional pre-roll",weight:32},
-    {id:"free-pipe",label:"FREE PIPE",detail:"Select styles while supplies last",weight:20},
-    {id:"free-edible",label:"FREE EDIBLE",detail:"Select promotional edible",weight:18},
-    {id:"ten-percent",label:"10% OFF",detail:"One regularly priced item not already on sale",weight:17},
-    {id:"free-lighter",label:"FREE LIGHTER",detail:"Select styles while supplies last",weight:5},
-    {id:"free-ashtray",label:"FREE ASHTRAY",detail:"Select styles while supplies last",weight:3},
-    {id:"merch-discount",label:"30% OFF MERCH",detail:"One regularly priced merchandise item",weight:2},
-    {id:"free-grinder",label:"FREE GRINDER",detail:"Select styles while supplies last",weight:1.5},
-    {id:"free-eighth",label:"FREE 3.5G",detail:"Select promotional flower",weight:1},
-    {id:"free-ounce",label:"FREE OUNCE",detail:"Select promotional flower",weight:.5},
-    {id:"free-bong",label:"FREE BONG",detail:"Locked for this month",weight:0}
-  ]
-};
-// =========================================================
-// WHEEL ENGINE — DO NOT EDIT FOR NORMAL WEEKLY UPDATES
-// =========================================================
-const $=s=>document.querySelector(s),wheel=$("#wheel"),labels=$("#labels"),spinButton=$("#spinButton"),stopButton=$("#stopButton"),overlay=$("#overlay"),prizeName=$("#prizeName"),prizeDetail=$("#prizeDetail"),claimCode=$("#claimCode"),spinTime=$("#spinTime"),expirationLine=$("#expirationLine"),redeemButton=$("#redeemButton"),redeemedText=$("#redeemedText"),accessGate=$("#accessGate"),wheelSection=$("#wheelSection"),warning=$("#warning"),confetti=$("#confetti");
-const keys={unlock:`gl-wheel-unlock-${WHEEL_CONFIG.challengeId}`,result:`gl-wheel-result-${WHEEL_CONFIG.challengeId}`,redeemed:`gl-wheel-redeemed-${WHEEL_CONFIG.challengeId}`};let storageOK=true;try{localStorage.setItem("__gl_test","1");localStorage.removeItem("__gl_test")}catch(e){storageOK=false}
-function validate(){if(!Array.isArray(WHEEL_CONFIG.prizes)||!WHEEL_CONFIG.prizes.length)throw new Error("No wheel prizes configured.");for(const p of WHEEL_CONFIG.prizes){if(typeof p.weight!=="number"||p.weight<0)throw new Error(`Invalid weight for ${p.label}`)}const total=WHEEL_CONFIG.prizes.reduce((s,p)=>s+p.weight,0);if(total<=0)throw new Error("At least one prize must have a positive weight.");return total}
-const totalWeight=validate(),count=WHEEL_CONFIG.prizes.length,step=360/count,palette=["#0b6d45","#d6a64a","#173d2b","#94712f","#0a9258","#b68a3f","#143624","#7c602d","#087a49","#c49a46","#1a2f23"];
-wheel.style.background=`conic-gradient(${WHEEL_CONFIG.prizes.map((p,i)=>`${palette[i%palette.length]} ${i*step}deg ${(i+1)*step}deg`).join(",")})`;
-WHEEL_CONFIG.prizes.forEach((p,i)=>{const d=document.createElement("div");d.className="slice-label";d.style.transform=`rotate(${i*step+step/2-90}deg) translate(7%,-50%)`;d.innerHTML=p.label.replace(/ /g,"<br>");labels.appendChild(d)});
-$("#expiresText").textContent=WHEEL_CONFIG.expiration;$("#challengeText").textContent=WHEEL_CONFIG.challengeId;warning.classList.toggle("show",!storageOK);
-function weightedPick(){let r=Math.random()*totalWeight;for(let i=0;i<WHEEL_CONFIG.prizes.length;i++){const p=WHEEL_CONFIG.prizes[i];if(p.weight<=0)continue;r-=p.weight;if(r<0)return {prize:p,index:i}}return {prize:WHEEL_CONFIG.prizes.find(p=>p.weight>0),index:WHEEL_CONFIG.prizes.findIndex(p=>p.weight>0)}}
-function code(){const chars="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";let out="GL-";for(let i=0;i<6;i++)out+=chars[Math.floor(Math.random()*chars.length)];return out}
-function saveResult(obj){if(storageOK)localStorage.setItem(keys.result,JSON.stringify(obj))}function loadResult(){if(!storageOK)return null;try{return JSON.parse(localStorage.getItem(keys.result)||"null")}catch{return null}}
-function showResult(result){prizeName.textContent=result.label;prizeDetail.textContent=result.detail;claimCode.textContent=`Claim Code: ${result.claimCode}`;spinTime.textContent=`Spun: ${new Date(result.timestamp).toLocaleString()}`;expirationLine.textContent=`Valid through ${WHEEL_CONFIG.expiration}`;overlay.classList.add("show");document.body.style.overflow="hidden";const redeemed=storageOK&&localStorage.getItem(keys.redeemed)==="true";redeemButton.hidden=redeemed;redeemedText.hidden=!redeemed}
-function burst(){for(let i=0;i<90;i++){const p=document.createElement("i");p.style.left=Math.random()*100+"vw";p.style.setProperty("--x",(Math.random()*260-130)+"px");p.style.animationDelay=(Math.random()*.8)+"s";p.style.background=i%3===0?"var(--gold)":i%3===1?"var(--green)":"#fff";confetti.appendChild(p);setTimeout(()=>p.remove(),3800)}}
-function gate(){const unlocked=storageOK?localStorage.getItem(keys.unlock)==="true":false;if(!unlocked){accessGate.classList.add("show");wheelSection.style.display="none";return false}return true}
-let spinning=false,currentRotation=0,spinFrame=null,autoStopTimer=null,pendingPick=null,lastFrameTime=0;
-function prizeIndexAtPointer(rotation){const normalized=((rotation%360)+360)%360;const angleOnWheel=(360-normalized)%360;return Math.floor(angleOnWheel/step)%count}
-function finishSpin(){if(!spinning||!pendingPick)return;cancelAnimationFrame(spinFrame);clearTimeout(autoStopTimer);stopButton.disabled=true;const targetIndex=pendingPick.index;const sliceCenter=targetIndex*step+step/2;const normalized=((currentRotation%360)+360)%360;const targetRotation=(360-sliceCenter)%360;let delta=(targetRotation-normalized+360)%360;delta+=360*2;const startRotation=currentRotation;const finalRotation=startRotation+delta;const cruisingSpeed=.42;const duration=Math.max(3200,(3*delta)/cruisingSpeed);const startedAt=performance.now();wheel.style.transition="none";function slowDown(now){const t=Math.min(1,(now-startedAt)/duration);const eased=1-Math.pow(1-t,3);currentRotation=startRotation+delta*eased;wheel.style.transform=`rotate(${currentRotation}deg)`;if(t<1){spinFrame=requestAnimationFrame(slowDown);return}currentRotation=finalRotation;wheel.style.transform=`rotate(${finalRotation}deg)`;const landedIndex=prizeIndexAtPointer(finalRotation);const landedPrize=WHEEL_CONFIG.prizes[landedIndex];if(landedIndex!==targetIndex)console.error("Wheel alignment mismatch",{targetIndex,landedIndex,finalRotation});const result={id:landedPrize.id,label:landedPrize.label,detail:landedPrize.detail,claimCode:code(),timestamp:new Date().toISOString(),challengeId:WHEEL_CONFIG.challengeId,landedIndex};saveResult(result);showResult(result);burst();spinning=false;pendingPick=null;spinButton.textContent="VIEW YOUR PRIZE";spinButton.disabled=false}spinFrame=requestAnimationFrame(slowDown)}
-function animateSpin(time){if(!spinning)return;if(!lastFrameTime)lastFrameTime=time;const dt=Math.min(40,time-lastFrameTime);lastFrameTime=time;currentRotation+=dt*.42;wheel.style.transform=`rotate(${currentRotation}deg)`;spinFrame=requestAnimationFrame(animateSpin)}
-spinButton.addEventListener("click",()=>{if(spinning)return;const existing=loadResult();if(existing){showResult(existing);return}spinning=true;pendingPick=weightedPick();lastFrameTime=0;wheel.style.transition="none";spinButton.disabled=true;stopButton.disabled=false;stopButton.textContent="STOP THE WHEEL";spinFrame=requestAnimationFrame(animateSpin);autoStopTimer=setTimeout(finishSpin,40000)});
-stopButton.addEventListener("click",finishSpin);
-$("#closeButton").addEventListener("click",()=>{overlay.classList.remove("show");document.body.style.overflow=""});redeemButton.addEventListener("click",()=>{if(!confirm("Mark this prize as redeemed? This cannot be undone on this browser."))return;if(storageOK)localStorage.setItem(keys.redeemed,"true");redeemButton.hidden=true;redeemedText.hidden=false});
-if(gate()){const existing=loadResult();if(existing){spinButton.textContent="VIEW YOUR PRIZE";stopButton.disabled=true;showResult(existing)}}
-</script>
-<script>
-  // =========================================================
-  // MICROSOFT CLARITY — PRIZE WHEEL ENGAGEMENT TRACKING
-  // =========================================================
-  (()=>{
-    const track=(name,tags)=>window.glTrack&&window.glTrack(name,tags);
-    const once=new Set();
-    const trackOnce=(name,tags)=>{if(once.has(name))return;once.add(name);track(name,tags)};
-    const params=new URLSearchParams(location.search);
-    track("wheel_open",{
-      challenge_id:typeof WHEEL_CONFIG!=="undefined"?WHEEL_CONFIG.challengeId:"unknown",
-      source:params.get("utm_source")||params.get("source")||"challenge",
-      campaign:params.get("utm_campaign")||"none"
-    });
-    const gate=document.getElementById("accessGate");
-    requestAnimationFrame(()=>{
-      if(gate?.classList.contains("show"))trackOnce("wheel_access_blocked",{challenge_id:WHEEL_CONFIG.challengeId});
-      else trackOnce("wheel_access_granted",{challenge_id:WHEEL_CONFIG.challengeId});
-    });
-    document.getElementById("spinButton")?.addEventListener("click",()=>{
-      if(document.getElementById("spinButton")?.textContent.includes("VIEW"))track("wheel_saved_prize_viewed",{challenge_id:WHEEL_CONFIG.challengeId});
-      else trackOnce("wheel_spin_started",{challenge_id:WHEEL_CONFIG.challengeId});
-    });
-    document.getElementById("stopButton")?.addEventListener("click",()=>trackOnce("wheel_stop_pressed",{challenge_id:WHEEL_CONFIG.challengeId}));
-    const overlay=document.getElementById("overlay");
-    if(overlay){
-      new MutationObserver(()=>{
-        if(!overlay.classList.contains("show"))return;
-        const prize=document.getElementById("prizeName")?.textContent.trim()||"unknown";
-        trackOnce("wheel_prize_revealed",{challenge_id:WHEEL_CONFIG.challengeId,prize});
-      }).observe(overlay,{attributes:true,attributeFilter:["class"]});
+  <main class="wrap" id="mainContent">
+    <header class="brand">
+      <div class="brand-left">
+        <img
+          class="logo"
+          src="../assets/img/greenlabs-logo.png"
+          alt="Green Labs logo"
+        />
+        <div>
+          <h1>GREEN LABS</h1>
+          <small>LUNA PIER, MICHIGAN</small>
+        </div>
+      </div>
+
+      <div class="status-chip">WHEEL UNLOCKED</div>
+    </header>
+
+    <section class="hero">
+      <div class="eyebrow">Match Your Dutch Reward</div>
+      <h2>You Earned a Spin</h2>
+      <p>
+        Spin when you are ready. Stop it when you are feeling lucky.
+        Whatever sits under the pointer is exactly what you win.
+      </p>
+    </section>
+
+    <section id="accessGate" class="access">
+      <div class="eyebrow">Prize Wheel Locked</div>
+      <h2>Beat the Challenge First</h2>
+      <p>Complete this week’s Match Your Dutch game to unlock the wheel.</p>
+      <a class="cta" href="./">PLAY THE CHALLENGE</a>
+    </section>
+
+    <section id="wheelSection" class="grid">
+      <div class="wheel-card">
+        <div class="wheel-wrap">
+          <div id="pointer" class="pointer" aria-hidden="true"></div>
+
+          <div id="wheel" class="wheel" aria-label="Green Labs prize wheel">
+            <div id="labels" class="labels"></div>
+          </div>
+
+          <div class="hub">LET IT<br />RIDE</div>
+        </div>
+
+        <div id="wheelStatus" class="wheel-status" aria-live="polite">
+          One spin. No pressure. Definitely no pressure.
+        </div>
+
+        <div class="wheel-actions">
+          <button id="spinButton" class="spin-btn" type="button">
+            SPIN THE WHEEL
+          </button>
+
+          <button id="stopButton" class="stop-btn" type="button" disabled>
+            STOP THE WHEEL
+          </button>
+        </div>
+
+        <p id="warning" class="warning">
+          Browser storage is unavailable, so repeat-spin protection may not persist.
+        </p>
+      </div>
+
+      <aside class="info-card">
+        <div class="eyebrow">How It Works</div>
+        <h3>Spin it. Stop it. Claim it.</h3>
+        <p>
+          Spin the wheel when you’re ready, then press Stop when you’re feeling lucky.
+          Results are random, saved to this browser, and limited to one weekly prize attempt.
+        </p>
+
+        <div class="how-list">
+          <div class="how-item">
+            <b>1</b>
+            <span>Press Spin and let the wheel cruise.</span>
+          </div>
+
+          <div class="how-item">
+            <b>2</b>
+            <span>Press Stop whenever your instincts start yelling.</span>
+          </div>
+
+          <div class="how-item">
+            <b>3</b>
+            <span>Screenshot the full prize screen before leaving.</span>
+          </div>
+        </div>
+
+        <div class="details-list">
+          <div>
+            <strong>Valid Through</strong>
+            <span id="expiresText"></span>
+          </div>
+
+          <div>
+            <strong>Challenge</strong>
+            <span id="challengeText"></span>
+          </div>
+
+          <div>
+            <strong>Redemption</strong>
+            <span>In store only</span>
+          </div>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <div
+    id="overlay"
+    class="overlay"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="resultTitle"
+  >
+    <div class="modal">
+      <div class="eyebrow">Green Labs Prize Wheel</div>
+      <h3 id="resultTitle">You Won</h3>
+
+      <div class="prize-card">
+        <div id="prizeIcon" class="prize-icon">🎁</div>
+        <div id="prizeName" class="prize"></div>
+        <p id="prizeDetail"></p>
+      </div>
+
+      <div id="claimCode" class="claim"></div>
+
+      <div class="proof-grid">
+        <div>
+          <strong>SPIN TIME</strong>
+          <span id="spinTime"></span>
+        </div>
+
+        <div>
+          <strong>VALID THROUGH</strong>
+          <span id="expirationLine"></span>
+        </div>
+      </div>
+
+      <div class="screenshot-note">
+        <strong>TAKE A SCREENSHOT NOW</strong>
+        <span>
+          Save this entire screen and show it in store. The screenshot must include
+          the prize, claim code, spin time, and expiration date.
+        </span>
+      </div>
+
+      <p>
+        A claim code by itself is not valid for redemption.<br />
+        One weekly prize attempt. While supplies last. Other restrictions may apply.
+      </p>
+
+      <div class="actions">
+        <a class="cta" href="https://greenlabsmi.com/">SHOP GREEN LABS</a>
+        <button id="closeButton" class="cta secondary" type="button">CLOSE</button>
+      </div>
+
+      <div class="redeem">
+        <button id="redeemButton" class="cta secondary" type="button">
+          STAFF: MARK REDEEMED
+        </button>
+
+        <p id="redeemedText" class="redeemed" hidden>REDEEMED ✓</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="confetti" class="confetti" aria-hidden="true"></div>
+
+  <script>
+    // =========================================================
+    // EDITABLE PRIZE CONFIGURATION — CHANGE ONLY THIS SECTION
+    // =========================================================
+
+    const WHEEL_CONFIG = {
+      challengeId: "2026-08-week-1",
+      expiration: "August 7, 2026",
+      maxCruiseSeconds: 40,
+      cruiseSpeedDegreesPerMs: 0.42,
+      stopDurationMs: 5200,
+
+      prizes: [
+        {
+          id: "free-preroll",
+          label: "FREE PRE-ROLL",
+          detail: "Select promotional pre-roll",
+          icon: "🌿",
+          weight: 32
+        },
+        {
+          id: "free-pipe",
+          label: "FREE PIPE",
+          detail: "Select styles while supplies last",
+          icon: "🛍️",
+          weight: 20
+        },
+        {
+          id: "free-edible",
+          label: "FREE EDIBLE",
+          detail: "Select promotional edible",
+          icon: "🍬",
+          weight: 18
+        },
+        {
+          id: "ten-percent",
+          label: "10% OFF",
+          detail: "One regularly priced item not already on sale",
+          icon: "🏷️",
+          weight: 17
+        },
+        {
+          id: "free-lighter",
+          label: "FREE LIGHTER",
+          detail: "Select styles while supplies last",
+          icon: "🔥",
+          weight: 5
+        },
+        {
+          id: "free-ashtray",
+          label: "FREE ASHTRAY",
+          detail: "Select styles while supplies last",
+          icon: "✨",
+          weight: 3
+        },
+        {
+          id: "merch-discount",
+          label: "30% OFF MERCH",
+          detail: "One regularly priced merchandise item",
+          icon: "👕",
+          weight: 2
+        },
+        {
+          id: "free-grinder",
+          label: "FREE GRINDER",
+          detail: "Select styles while supplies last",
+          icon: "⚙️",
+          weight: 1.5
+        },
+        {
+          id: "free-eighth",
+          label: "FREE 3.5G",
+          detail: "Select promotional flower",
+          icon: "🏆",
+          weight: 1
+        },
+        {
+          id: "free-ounce",
+          label: "FREE OUNCE",
+          detail: "Select promotional flower",
+          icon: "👑",
+          weight: 0.5
+        },
+        {
+          id: "free-bong",
+          label: "FREE BONG",
+          detail: "Locked for this month",
+          icon: "🔒",
+          weight: 0
+        }
+      ]
+    };
+
+    // =========================================================
+    // WHEEL ENGINE — DO NOT EDIT FOR NORMAL WEEKLY UPDATES
+    // =========================================================
+
+    const $ = (selector) => document.querySelector(selector);
+
+    const wheel = $("#wheel");
+    const labels = $("#labels");
+    const pointer = $("#pointer");
+    const spinButton = $("#spinButton");
+    const stopButton = $("#stopButton");
+    const wheelStatus = $("#wheelStatus");
+    const overlay = $("#overlay");
+    const prizeIcon = $("#prizeIcon");
+    const prizeName = $("#prizeName");
+    const prizeDetail = $("#prizeDetail");
+    const claimCode = $("#claimCode");
+    const spinTime = $("#spinTime");
+    const expirationLine = $("#expirationLine");
+    const redeemButton = $("#redeemButton");
+    const redeemedText = $("#redeemedText");
+    const accessGate = $("#accessGate");
+    const wheelSection = $("#wheelSection");
+    const warning = $("#warning");
+    const confetti = $("#confetti");
+
+    const storageKeys = {
+      unlock: `gl-wheel-unlock-${WHEEL_CONFIG.challengeId}`,
+      result: `gl-wheel-result-${WHEEL_CONFIG.challengeId}`,
+      redeemed: `gl-wheel-redeemed-${WHEEL_CONFIG.challengeId}`
+    };
+
+    const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    let storageOK = true;
+
+    try {
+      localStorage.setItem("__gl_test", "1");
+      localStorage.removeItem("__gl_test");
+    } catch (error) {
+      storageOK = false;
     }
-    document.querySelector('a[href="https://greenlabsmi.com/"]')?.addEventListener("click",()=>track("wheel_shop_clicked",{challenge_id:WHEEL_CONFIG.challengeId,prize:document.getElementById("prizeName")?.textContent.trim()||"unknown"}));
-    document.getElementById("closeButton")?.addEventListener("click",()=>track("wheel_result_closed",{challenge_id:WHEEL_CONFIG.challengeId}));
-    document.getElementById("redeemButton")?.addEventListener("click",()=>track("wheel_staff_redeem_clicked",{challenge_id:WHEEL_CONFIG.challengeId,prize:document.getElementById("prizeName")?.textContent.trim()||"unknown"}));
-    document.querySelector('#accessGate a[href="./"]')?.addEventListener("click",()=>track("wheel_return_to_challenge",{challenge_id:WHEEL_CONFIG.challengeId}));
-  })();
-</script>
+
+    function track(name, tags = {}) {
+      window.glTrack?.(name, {
+        challenge_id: WHEEL_CONFIG.challengeId,
+        ...tags
+      });
+    }
+
+    function validateConfig() {
+      if (!Array.isArray(WHEEL_CONFIG.prizes) || !WHEEL_CONFIG.prizes.length) {
+        throw new Error("No wheel prizes configured.");
+      }
+
+      for (const prize of WHEEL_CONFIG.prizes) {
+        if (typeof prize.weight !== "number" || prize.weight < 0) {
+          throw new Error(`Invalid weight for ${prize.label}`);
+        }
+      }
+
+      const total = WHEEL_CONFIG.prizes.reduce((sum, prize) => sum + prize.weight, 0);
+
+      if (total <= 0) {
+        throw new Error("At least one prize must have a positive weight.");
+      }
+
+      return total;
+    }
+
+    const totalWeight = validateConfig();
+    const prizeCount = WHEEL_CONFIG.prizes.length;
+    const sliceStep = 360 / prizeCount;
+
+    const palette = [
+      "#0b6d45",
+      "#d6a64a",
+      "#173d2b",
+      "#94712f",
+      "#0a9258",
+      "#b68a3f",
+      "#143624",
+      "#7c602d",
+      "#087a49",
+      "#c49a46",
+      "#1a2f23"
+    ];
+
+    function buildWheel() {
+      wheel.style.background = `conic-gradient(${
+        WHEEL_CONFIG.prizes
+          .map((prize, index) => {
+            const start = index * sliceStep;
+            const end = (index + 1) * sliceStep;
+            return `${palette[index % palette.length]} ${start}deg ${end}deg`;
+          })
+          .join(",")
+      })`;
+
+      labels.innerHTML = "";
+
+      WHEEL_CONFIG.prizes.forEach((prize, index) => {
+        const label = document.createElement("div");
+        label.className = "slice-label";
+        label.style.transform =
+          `rotate(${index * sliceStep + sliceStep / 2 - 90}deg) translate(7%,-50%)`;
+        label.innerHTML = prize.label.replace(/ /g, "<br>");
+        labels.appendChild(label);
+      });
+    }
+
+    function weightedPick() {
+      let random = Math.random() * totalWeight;
+
+      for (let index = 0; index < WHEEL_CONFIG.prizes.length; index += 1) {
+        const prize = WHEEL_CONFIG.prizes[index];
+
+        if (prize.weight <= 0) continue;
+
+        random -= prize.weight;
+
+        if (random < 0) {
+          return { prize, index };
+        }
+      }
+
+      const index = WHEEL_CONFIG.prizes.findIndex((prize) => prize.weight > 0);
+
+      return {
+        prize: WHEEL_CONFIG.prizes[index],
+        index
+      };
+    }
+
+    function generateClaimCode() {
+      const characters = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+      let output = "GL-";
+
+      for (let index = 0; index < 6; index += 1) {
+        output += characters[Math.floor(Math.random() * characters.length)];
+      }
+
+      return output;
+    }
+
+    function saveResult(result) {
+      if (!storageOK) return;
+      localStorage.setItem(storageKeys.result, JSON.stringify(result));
+    }
+
+    function loadResult() {
+      if (!storageOK) return null;
+
+      try {
+        return JSON.parse(localStorage.getItem(storageKeys.result) || "null");
+      } catch (error) {
+        return null;
+      }
+    }
+
+    function showResult(result, fromSavedResult = false) {
+      prizeIcon.textContent = result.icon || "🎁";
+      prizeName.textContent = result.label;
+      prizeDetail.textContent = result.detail;
+      claimCode.textContent = `Claim Code: ${result.claimCode}`;
+      spinTime.textContent = new Date(result.timestamp).toLocaleString();
+      expirationLine.textContent = WHEEL_CONFIG.expiration;
+
+      overlay.classList.add("show");
+      document.body.style.overflow = "hidden";
+
+      const redeemed =
+        storageOK && localStorage.getItem(storageKeys.redeemed) === "true";
+
+      redeemButton.hidden = redeemed;
+      redeemedText.hidden = !redeemed;
+
+      if (fromSavedResult) {
+        track("wheel_saved_prize_viewed", { prize: result.label });
+      } else {
+        track("wheel_prize_revealed", { prize: result.label });
+      }
+    }
+
+    function burst() {
+      for (let index = 0; index < 100; index += 1) {
+        const piece = document.createElement("i");
+        piece.style.left = `${Math.random() * 100}vw`;
+        piece.style.setProperty("--x", `${Math.random() * 280 - 140}px`);
+        piece.style.animationDelay = `${Math.random() * 0.8}s`;
+        piece.style.background =
+          index % 3 === 0 ? "var(--gold)" : index % 3 === 1 ? "var(--green)" : "#fff";
+        confetti.appendChild(piece);
+        setTimeout(() => piece.remove(), 3900);
+      }
+    }
+
+    function gateAccess() {
+      const unlocked =
+        storageOK && localStorage.getItem(storageKeys.unlock) === "true";
+
+      if (!unlocked) {
+        accessGate.classList.add("show");
+        wheelSection.style.display = "none";
+        track("wheel_access_blocked");
+        return false;
+      }
+
+      track("wheel_access_granted");
+      return true;
+    }
+
+    function normalizeDegrees(value) {
+      return ((value % 360) + 360) % 360;
+    }
+
+    function prizeIndexAtPointer(rotation) {
+      const normalizedRotation = normalizeDegrees(rotation);
+      const angleOnWheel = normalizeDegrees(360 - normalizedRotation);
+      return Math.floor(angleOnWheel / sliceStep) % prizeCount;
+    }
+
+    function rotationForPrizeCenter(index) {
+      const sliceCenter = index * sliceStep + sliceStep / 2;
+      return normalizeDegrees(360 - sliceCenter);
+    }
+
+    function distanceForward(fromRotation, toNormalizedRotation) {
+      const fromNormalized = normalizeDegrees(fromRotation);
+      return normalizeDegrees(toNormalizedRotation - fromNormalized);
+    }
+
+    function setWheelRotation(rotation) {
+      currentRotation = rotation;
+      wheel.style.transform = `rotate(${rotation}deg)`;
+    }
+
+    function tickPointerIfNeeded() {
+      const currentIndex = prizeIndexAtPointer(currentRotation);
+
+      if (currentIndex === lastPointerIndex) return;
+
+      lastPointerIndex = currentIndex;
+      pointer.classList.remove("tick");
+      void pointer.offsetWidth;
+      pointer.classList.add("tick");
+    }
+
+    let spinning = false;
+    let stopping = false;
+    let currentRotation = 0;
+    let animationFrame = null;
+    let autoStopTimer = null;
+    let pendingPick = null;
+    let lastFrameTime = 0;
+    let lastPointerIndex = prizeIndexAtPointer(0);
+
+    function animateCruise(time) {
+      if (!spinning || stopping) return;
+
+      if (!lastFrameTime) {
+        lastFrameTime = time;
+      }
+
+      const deltaTime = Math.min(40, time - lastFrameTime);
+      lastFrameTime = time;
+
+      setWheelRotation(
+        currentRotation + deltaTime * WHEEL_CONFIG.cruiseSpeedDegreesPerMs
+      );
+
+      tickPointerIfNeeded();
+      animationFrame = requestAnimationFrame(animateCruise);
+    }
+
+    function completeSpin() {
+      const landedIndex = prizeIndexAtPointer(currentRotation);
+      const landedPrize = WHEEL_CONFIG.prizes[landedIndex];
+
+      if (!landedPrize || landedPrize.weight <= 0) {
+        console.error("Wheel landed on an invalid prize slice.", {
+          landedIndex,
+          currentRotation
+        });
+        return;
+      }
+
+      const result = {
+        id: landedPrize.id,
+        label: landedPrize.label,
+        detail: landedPrize.detail,
+        icon: landedPrize.icon,
+        claimCode: generateClaimCode(),
+        timestamp: new Date().toISOString(),
+        challengeId: WHEEL_CONFIG.challengeId,
+        landedIndex
+      };
+
+      saveResult(result);
+      showResult(result);
+      burst();
+
+      spinning = false;
+      stopping = false;
+      pendingPick = null;
+
+      spinButton.textContent = "VIEW YOUR PRIZE";
+      spinButton.disabled = false;
+      stopButton.disabled = true;
+      wheelStatus.textContent = "The Dutch have decided.";
+    }
+
+    function beginStop() {
+      if (!spinning || stopping || !pendingPick) return;
+
+      stopping = true;
+      clearTimeout(autoStopTimer);
+      cancelAnimationFrame(animationFrame);
+
+      stopButton.disabled = true;
+      wheelStatus.textContent = "Easy... easy... let it settle.";
+
+      track("wheel_stop_pressed");
+
+      const targetNormalizedRotation = rotationForPrizeCenter(pendingPick.index);
+      let forwardDistance = distanceForward(
+        currentRotation,
+        targetNormalizedRotation
+      );
+
+      const minimumExtraTurns = 2;
+      forwardDistance += minimumExtraTurns * 360;
+
+      const startRotation = currentRotation;
+      const finalRotation = startRotation + forwardDistance;
+      const startTime = performance.now();
+
+      const duration = reducedMotion
+        ? 80
+        : Math.max(
+            3600,
+            WHEEL_CONFIG.stopDurationMs,
+            forwardDistance / WHEEL_CONFIG.cruiseSpeedDegreesPerMs
+          );
+
+      const initialVelocity = WHEEL_CONFIG.cruiseSpeedDegreesPerMs;
+
+      function decelerate(time) {
+        const elapsed = Math.min(duration, time - startTime);
+        const progress = elapsed / duration;
+
+        // Hermite-style easing:
+        // starts at the wheel's exact cruising velocity,
+        // then smoothly reaches zero without speeding up first.
+        const distanceRatio =
+          progress +
+          (initialVelocity * duration / forwardDistance - 1) *
+            progress *
+            Math.pow(1 - progress, 2);
+
+        const clampedRatio = Math.min(1, Math.max(0, distanceRatio));
+
+        setWheelRotation(startRotation + forwardDistance * clampedRatio);
+        tickPointerIfNeeded();
+
+        if (progress < 1) {
+          animationFrame = requestAnimationFrame(decelerate);
+          return;
+        }
+
+        setWheelRotation(finalRotation);
+
+        const landedIndex = prizeIndexAtPointer(finalRotation);
+
+        if (landedIndex !== pendingPick.index) {
+          console.error("Wheel alignment mismatch.", {
+            intendedIndex: pendingPick.index,
+            landedIndex,
+            finalRotation
+          });
+        }
+
+        completeSpin();
+      }
+
+      animationFrame = requestAnimationFrame(decelerate);
+    }
+
+    spinButton.addEventListener("click", () => {
+      if (spinning) return;
+
+      const existingResult = loadResult();
+
+      if (existingResult) {
+        showResult(existingResult, true);
+        return;
+      }
+
+      spinning = true;
+      stopping = false;
+      pendingPick = weightedPick();
+      lastFrameTime = 0;
+
+      spinButton.disabled = true;
+      stopButton.disabled = false;
+      wheelStatus.textContent = "It is officially someone else's problem now.";
+
+      track("wheel_spin_started");
+
+      animationFrame = requestAnimationFrame(animateCruise);
+
+      autoStopTimer = setTimeout(
+        beginStop,
+        WHEEL_CONFIG.maxCruiseSeconds * 1000
+      );
+    });
+
+    stopButton.addEventListener("click", beginStop);
+
+    $("#closeButton").addEventListener("click", () => {
+      overlay.classList.remove("show");
+      document.body.style.overflow = "";
+      track("wheel_result_closed");
+    });
+
+    redeemButton.addEventListener("click", () => {
+      const confirmed = confirm(
+        "Mark this prize as redeemed? This cannot be undone on this browser."
+      );
+
+      if (!confirmed) return;
+
+      if (storageOK) {
+        localStorage.setItem(storageKeys.redeemed, "true");
+      }
+
+      redeemButton.hidden = true;
+      redeemedText.hidden = false;
+
+      track("wheel_staff_redeem_clicked", {
+        prize: prizeName.textContent.trim() || "unknown"
+      });
+    });
+
+    document
+      .querySelector('a[href="https://greenlabsmi.com/"]')
+      ?.addEventListener("click", () => {
+        track("wheel_shop_clicked", {
+          prize: prizeName.textContent.trim() || "unknown"
+        });
+      });
+
+    document
+      .querySelector('#accessGate a[href="./"]')
+      ?.addEventListener("click", () => {
+        track("wheel_return_to_challenge");
+      });
+
+    $("#expiresText").textContent = WHEEL_CONFIG.expiration;
+    $("#challengeText").textContent = WHEEL_CONFIG.challengeId;
+    warning.classList.toggle("show", !storageOK);
+
+    buildWheel();
+
+    const parameters = new URLSearchParams(location.search);
+
+    track("wheel_open", {
+      source: parameters.get("utm_source") || parameters.get("source") || "challenge",
+      campaign: parameters.get("utm_campaign") || "none"
+    });
+
+    if (gateAccess()) {
+      const existingResult = loadResult();
+
+      if (existingResult) {
+        spinButton.textContent = "VIEW YOUR PRIZE";
+        stopButton.disabled = true;
+        showResult(existingResult, true);
+      }
+    }
+  </script>
 </body>
 </html>
+
 
