@@ -26,6 +26,15 @@
     * {
       box-sizing: border-box;
     }
+    html, body {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      overscroll-behavior-x: none;
+    }
+    img, svg, canvas {
+      max-width: 100%;
+    }
 
     html {
       background: var(--bg);
@@ -37,6 +46,9 @@
       margin: 0;
       min-height: 100vh;
       overflow-x: hidden;
+      width: 100%;
+      max-width: 100vw;
+      overscroll-behavior-x: none;
       background:
         radial-gradient(circle at 18% 0%, rgba(8, 201, 112, 0.14), transparent 34%),
         radial-gradient(circle at 85% 8%, rgba(216, 170, 73, 0.1), transparent 32%),
@@ -237,6 +249,8 @@
       font-weight: 1000;
       line-height: 1;
       text-align: right;
+      min-width: 0;
+      overflow-wrap: anywhere;
       text-shadow:
         0 2px 5px #000,
         0 0 8px rgba(0, 0, 0, 0.9);
@@ -387,6 +401,8 @@
       color: var(--muted);
       font-size: 0.84rem;
       text-align: right;
+      min-width: 0;
+      overflow-wrap: anywhere;
     }
 
     .access {
@@ -441,7 +457,9 @@
     }
 
     .modal {
-      width: min(650px, 95vw);
+      width: min(650px, calc(100vw - 28px));
+      max-width: calc(100vw - 28px);
+      overflow: hidden;
       margin: auto;
       padding: clamp(24px, 4vw, 34px);
       border: 1px solid rgba(8, 201, 112, 0.32);
@@ -499,7 +517,10 @@
       border-radius: 12px;
       background: rgba(216, 170, 73, 0.08);
       color: white;
-      font: 900 1.18rem ui-monospace, SFMono-Regular, Menlo, monospace;
+      font: 900 clamp(.82rem, 4vw, 1.18rem) ui-monospace, SFMono-Regular, Menlo, monospace;
+      max-width: 100%;
+      overflow-wrap: anywhere;
+      word-break: break-word;
       letter-spacing: 0.08em;
     }
 
@@ -528,6 +549,8 @@
       color: var(--muted);
       font-size: 0.84rem;
       text-align: right;
+      min-width: 0;
+      overflow-wrap: anywhere;
     }
 
     .screenshot-note {
@@ -766,7 +789,7 @@
       <div class="eyebrow">Match Your Dutch Reward</div>
       <h2>Take Your Shot</h2>
       <p>
-        Flick or drag the wheel. Keep adding momentum, then let it settle.
+        Spin the wheel and let it ride.
       </p>
     </section>
 
@@ -790,12 +813,12 @@
         </div>
 
         <div id="wheelStatus" class="wheel-status" aria-live="polite">
-          One spin. No pressure. Definitely no pressure.
+          Spin the wheel and let it ride.
         </div>
 
         <div class="wheel-actions">
           <button id="spinButton" class="spin-btn" type="button">
-            FLICK OR TAP TO SPIN
+            SPIN THE WHEEL
           </button>
 
           <button id="stopButton" class="stop-btn" type="button" disabled>
@@ -810,25 +833,25 @@
 
       <aside class="info-card">
         <div class="eyebrow">How It Works</div>
-        <h3>Flick it. Feed it. Let it ride.</h3>
+        <h3>Spin it. Let it ride.</h3>
         <p>
-          Swipe on your phone or click and drag on desktop. Add momentum as often as you like, then wait for the wheel to settle. One saved prize per weekly challenge.
+          Tap the button or spin the wheel, then let it settle. One prize attempt per weekly challenge.
         </p>
 
         <div class="how-list">
           <div class="how-item">
             <b>1</b>
-            <span>Flick, drag or tap to start the wheel.</span>
+            <span>Spin the wheel.</span>
           </div>
 
           <div class="how-item">
             <b>2</b>
-            <span>Add more momentum while it is moving.</span>
+            <span>Let it ride until it stops.</span>
           </div>
 
           <div class="how-item">
             <b>3</b>
-            <span>Let it settle, then save the full prize screen.</span>
+            <span>Save the full prize screen.</span>
           </div>
         </div>
 
@@ -886,11 +909,11 @@
 
       <div class="screenshot-note">
         <strong>SCREENSHOT OR SHOW THIS SCREEN</strong>
-        <span>Show your budtender the prize, code word, claim code, timestamp and expiration date. A purchase is required to redeem; no minimum purchase.</span>
+        <span>Claim this prize with any purchase before the expiration time shown. You must be a Green Labs loyalty member. Show your budtender this full screen or a screenshot with the prize, code word, claim code, timestamp and expiration visible.</span>
       </div>
 
       <p>
-        Full prize screen required. Purchase necessary to redeem; no minimum purchase. One weekly attempt. While supplies last.
+        Loyalty membership required. Any purchase qualifies; no minimum purchase. Redeem within the allotted time. One weekly attempt. While supplies last.
       </p>
 
       <div class="actions">
