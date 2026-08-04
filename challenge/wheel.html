@@ -711,7 +711,7 @@
       }
     }
     .stop-btn{display:none!important}
-    .wheel{touch-action:none;user-select:none}.wheel-wrap.overclocked{animation:wheelRock .18s linear infinite}.wheel-wrap.wheel-ejected .wheel{animation:wheelEscape 2.4s cubic-bezier(.25,.8,.3,1) forwards}.wheel-wrap.axle-fallen .hub{animation:axleDrop 1.3s ease-in forwards}.wheel-wrap.wheel-ejected .pointer{opacity:.35}@keyframes wheelRock{0%,100%{transform:translateY(0) rotate(0)}25%{transform:translateY(-5px) rotate(-1deg)}75%{transform:translateY(5px) rotate(1deg)}}@keyframes wheelEscape{0%{transform:rotate(var(--wheel-angle,0deg)) translate(0,0);opacity:1}25%{transform:rotate(140deg) translate(25px,-45px)}100%{transform:rotate(900deg) translate(130vw,70vh);opacity:.1}}@keyframes axleDrop{0%{transform:translate(-50%,-50%) rotate(0);opacity:1}45%{transform:translate(-50%,-50%) rotate(18deg)}100%{transform:translate(-50%,130vh) rotate(120deg);opacity:0}}.hero h2{font-family:Impact,Haettenschweiler,'Arial Narrow Bold',sans-serif;letter-spacing:.025em}.proof-grid div:first-child+div{border-color:rgba(216,170,73,.28)}
+    .wheel{touch-action:none;user-select:none}.wheel-wrap.settled .wheel{box-shadow:0 0 0 3px var(--gold),0 0 60px rgba(8,201,112,.58),0 0 90px rgba(216,170,73,.42),inset 0 0 42px rgba(0,0,0,.72)}.wheel-wrap.settled .pointer{filter:drop-shadow(0 0 12px rgba(216,170,73,.95)) drop-shadow(0 6px 9px rgba(0,0,0,.62))}.wheel-wrap.overclocked{animation:wheelRock .18s linear infinite}.wheel-wrap.wheel-ejected .wheel{animation:wheelEscape 2.4s cubic-bezier(.25,.8,.3,1) forwards}.wheel-wrap.axle-fallen .hub{animation:axleDrop 1.3s ease-in forwards}.wheel-wrap.wheel-ejected .pointer{opacity:.35}@keyframes wheelRock{0%,100%{transform:translateY(0) rotate(0)}25%{transform:translateY(-5px) rotate(-1deg)}75%{transform:translateY(5px) rotate(1deg)}}@keyframes wheelEscape{0%{transform:rotate(var(--wheel-angle,0deg)) translate(0,0);opacity:1}25%{transform:rotate(140deg) translate(25px,-45px)}100%{transform:rotate(900deg) translate(130vw,70vh);opacity:.1}}@keyframes axleDrop{0%{transform:translate(-50%,-50%) rotate(0);opacity:1}45%{transform:translate(-50%,-50%) rotate(18deg)}100%{transform:translate(-50%,130vh) rotate(120deg);opacity:0}}.hero h2{font-family:Impact,Haettenschweiler,'Arial Narrow Bold',sans-serif;letter-spacing:.025em}.proof-grid div:first-child+div{border-color:rgba(216,170,73,.28)}
   </style>
 
   <script>
@@ -886,11 +886,11 @@
 
       <div class="screenshot-note">
         <strong>SCREENSHOT OR SHOW THIS SCREEN</strong>
-        <span>Show your budtender the prize, code word, claim code, timestamp and expiration date.</span>
+        <span>Show your budtender the prize, code word, claim code, timestamp and expiration date. A purchase is required to redeem; no minimum purchase.</span>
       </div>
 
       <p>
-        Full prize screen required. One weekly attempt. While supplies last.
+        Full prize screen required. Purchase necessary to redeem; no minimum purchase. One weekly attempt. While supplies last.
       </p>
 
       <div class="actions">
@@ -918,91 +918,19 @@
     const WHEEL_CONFIG = {
       challengeId: "2026-08-week-1",
       expiration: "August 7, 2026",
-      maxCruiseSeconds: 40,
-      cruiseSpeedDegreesPerMs: 0.42,
-      stopDurationMs: 5200,
-
       prizes: [
-        {
-          id: "free-preroll",
-          label: "FREE PRE-ROLL",
-          detail: "Select promotional pre-roll",
-          icon: "🌿",
-          weight: 32
-        },
-        {
-          id: "free-pipe",
-          label: "FREE PIPE",
-          detail: "Select styles while supplies last",
-          icon: "🛍️",
-          weight: 20
-        },
-        {
-          id: "free-edible",
-          label: "FREE EDIBLE",
-          detail: "Select promotional edible",
-          icon: "🍬",
-          weight: 18
-        },
-        {
-          id: "ten-percent",
-          label: "10% OFF",
-          detail: "One regularly priced item not already on sale",
-          icon: "🏷️",
-          weight: 17
-        },
-        {
-          id: "free-lighter",
-          label: "FREE LIGHTER",
-          detail: "Select styles while supplies last",
-          icon: "🔥",
-          weight: 5
-        },
-        {
-          id: "free-ashtray",
-          label: "FREE ASHTRAY",
-          detail: "Select styles while supplies last",
-          icon: "✨",
-          weight: 3
-        },
-        {
-          id: "merch-discount",
-          label: "30% OFF MERCH",
-          detail: "One regularly priced merchandise item",
-          icon: "👕",
-          weight: 2
-        },
-        {
-          id: "free-grinder",
-          label: "FREE GRINDER",
-          detail: "Select styles while supplies last",
-          icon: "⚙️",
-          weight: 1.5
-        },
-        {
-          id: "free-eighth",
-          label: "FREE 3.5G",
-          detail: "Select promotional flower",
-          icon: "🏆",
-          weight: 1
-        },
-        {
-          id: "free-ounce",
-          label: "FREE OUNCE",
-          detail: "Select promotional flower",
-          icon: "👑",
-          weight: 0.5
-        },
-        {
-          id: "free-bong",
-          label: "FREE BONG",
-          detail: "Locked for this month",
-          icon: "🔒",
-          weight: 0
-        }
+        {id:"free-preroll",label:"FREE PRE-ROLL",detail:"Select promotional pre-roll",icon:"🌿"},
+        {id:"free-edible",label:"FREE EDIBLE",detail:"Select promotional edible",icon:"🍬"},
+        {id:"free-lighter",label:"FREE LIGHTER",detail:"Select styles while supplies last",icon:"🔥"},
+        {id:"free-ashtray",label:"FREE ASH TRAY",detail:"Select styles while supplies last",icon:"✨"},
+        {id:"free-glass-bowl",label:"FREE GLASS BOWL",detail:"Select promotional glass bowl while supplies last",icon:"🫧"},
+        {id:"100-points",label:"100 LOYALTY POINTS",detail:"Added to the winner’s Green Labs loyalty account",icon:"💯"},
+        {id:"150-points",label:"150 LOYALTY POINTS",detail:"Added to the winner’s Green Labs loyalty account",icon:"⭐"},
+        {id:"ten-percent",label:"10% OFF ANY ITEM",detail:"One regularly priced item not already on sale",icon:"🏷️"},
+        {id:"merch-discount",label:"20% OFF MERCH",detail:"One regularly priced merchandise item",icon:"👕"},
+        {id:"free-core-eighth",label:"FREE CORE DELI EIGHTH",detail:"One promotional Core-tier deli eighth",icon:"🏆"}
       ]
     };
-
     // =========================================================
 // WHEEL ENGINE — DO NOT EDIT FOR NORMAL WEEKLY UPDATES
     // =========================================================
@@ -1016,31 +944,32 @@
     const weeklyWord=WEEKLY_WORDS[weekNumber()%WEEKLY_WORDS.length];
     function normalize(v){return((v%360)+360)%360}function indexAt(rotation){return Math.floor(normalize(360-normalize(rotation))/sliceStep)%prizeCount}function centerFor(i){return normalize(360-(i*sliceStep+sliceStep/2))}
     function buildWheel(){wheel.style.background=`conic-gradient(${WHEEL_CONFIG.prizes.map((p,i)=>`${palette[i%palette.length]} ${i*sliceStep}deg ${(i+1)*sliceStep}deg`).join(",")})`;labels.innerHTML="";WHEEL_CONFIG.prizes.forEach((p,i)=>{const e=document.createElement("div");e.className="slice-label";e.style.transform=`rotate(${i*sliceStep+sliceStep/2-90}deg) translate(7%,-50%)`;e.innerHTML=p.label.replace(/ /g,"<br>");labels.appendChild(e)})}
-    function weightedPick(){let total=WHEEL_CONFIG.prizes.reduce((s,p)=>s+Math.max(0,p.weight),0),r=Math.random()*total;for(let i=0;i<prizeCount;i++){const p=WHEEL_CONFIG.prizes[i];r-=Math.max(0,p.weight);if(r<0)return{prize:p,index:i}}return{prize:WHEEL_CONFIG.prizes[0],index:0}}
+    function randomPick(){const index=Math.floor(Math.random()*prizeCount);return{prize:WHEEL_CONFIG.prizes[index],index}}
     function generateClaimCode(){const chars="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";let out="GL-";for(let i=0;i<6;i++)out+=chars[Math.floor(Math.random()*chars.length)];return out}
     function saveResult(r){if(storageOK)localStorage.setItem(storageKeys.result,JSON.stringify(r))}function loadResult(){try{return storageOK?JSON.parse(localStorage.getItem(storageKeys.result)||"null"):null}catch{return null}}
     function burst(){for(let i=0;i<100;i++){const p=document.createElement("i");p.style.left=Math.random()*100+"vw";p.style.setProperty("--x",Math.random()*280-140+"px");p.style.animationDelay=Math.random()*.8+"s";p.style.background=i%3===0?"var(--gold)":i%3===1?"var(--green)":"#fff";confetti.appendChild(p);setTimeout(()=>p.remove(),3900)}}
     function showResult(r,saved=false){prizeIcon.textContent=r.icon||"🎁";prizeName.textContent=r.label;prizeDetail.textContent=r.detail;claimCode.textContent=`Claim Code: ${r.claimCode}`;spinTime.textContent=new Date(r.timestamp).toLocaleString();expirationLine.textContent=WHEEL_CONFIG.expiration;weeklyWordEl.textContent=r.weeklyWord||weeklyWord;overlay.classList.add("show");document.body.style.overflow="hidden";const redeemed=storageOK&&localStorage.getItem(storageKeys.redeemed)==="true";redeemButton.hidden=redeemed;redeemedText.hidden=!redeemed;track(saved?"wheel_saved_prize_viewed":"wheel_prize_revealed",{prize:r.label,weekly_word:r.weeklyWord||weeklyWord})}
     function gateAccess(){const ok=storageOK&&localStorage.getItem(storageKeys.unlock)==="true";if(!ok){accessGate.classList.add("show");wheelSection.style.display="none";track("wheel_access_blocked");return false}track("wheel_access_granted");return true}
-    let rotation=0,velocity=0,last=0,raf=null,dragging=false,lastAngle=0,lastDragTime=0,pick=null,settling=false,boosts=0,maxHits=0,easter=false;
+    let rotation=Math.random()*360,velocity=0,last=0,raf=null,dragging=false,lastAngle=0,lastDragTime=0,settling=false,boosts=0,easter=false;
     const maxVelocity=1.45,friction=.9935;
     function setRotation(v){rotation=v;wheel.style.transform=`rotate(${v}deg)`;const idx=indexAt(v);if(idx!==setRotation.last){setRotation.last=idx;pointer.classList.remove("tick");void pointer.offsetWidth;pointer.classList.add("tick")}}
     function pointAngle(e){const r=wheel.getBoundingClientRect(),x=(e.clientX??e.touches?.[0]?.clientX)-r.left-r.width/2,y=(e.clientY??e.touches?.[0]?.clientY)-r.top-r.height/2;return Math.atan2(y,x)*180/Math.PI}
-    function ensurePick(){if(!pick)pick=weightedPick()}
-    function addMomentum(amount=.55){if(loadResult())return showResult(loadResult(),true);ensurePick();velocity=Math.min(maxVelocity,velocity+amount);boosts++;if(velocity>maxVelocity*.88){maxHits++;track("wheel_max_speed_reached",{count:maxHits});if(maxHits>=10&&!easter)return triggerEasterEgg()}wheelStatus.textContent=velocity>1.1?"The wheel has absolutely no chill.":velocity>.65?"Keep feeding it momentum.":"Let it ride.";track("wheel_speed_boosted",{boosts,max_hits:maxHits});startLoop()}
+    function ensurePick(){return randomPick()}
+    function addMomentum(amount=.55){if(loadResult())return showResult(loadResult(),true);velocity=Math.min(maxVelocity,velocity+amount+Math.random()*.16);boosts++;wheelStatus.textContent=velocity>1.1?"The wheel has absolutely no chill.":velocity>.65?"Keep feeding it momentum.":"Let it ride.";track("wheel_speed_boosted",{boosts});startLoop()}
     function startLoop(){if(raf||settling)return;last=performance.now();raf=requestAnimationFrame(loop)}
-    function loop(t){const dt=Math.min(34,t-last);last=t;rotation+=velocity*dt;setRotation(rotation);if(!dragging)velocity*=Math.pow(friction,dt/16.67);if(!dragging&&velocity<.018&&pick){raf=null;return settleToPrize()}raf=requestAnimationFrame(loop)}
-    function settleToPrize(){if(settling)return;settling=true;const start=rotation,targetNorm=centerFor(pick.index),delta=normalize(targetNorm-normalize(start))+720,finish=start+delta,duration=reducedMotion?80:2100,t0=performance.now();wheelStatus.textContent="Easy... the Dutch are deciding.";function frame(t){const p=Math.min(1,(t-t0)/duration),ease=1-Math.pow(1-p,4);setRotation(start+delta*ease);if(p<1)return requestAnimationFrame(frame);setRotation(finish);setTimeout(completeSpin,900)}requestAnimationFrame(frame)}
-    function completeSpin(){const landed=indexAt(rotation),prize=WHEEL_CONFIG.prizes[landed];if(!prize||prize.weight<=0){pick=weightedPick();settling=false;return settleToPrize()}const result={id:prize.id,label:prize.label,detail:prize.detail,icon:prize.icon,claimCode:generateClaimCode(),weeklyWord,timestamp:new Date().toISOString(),challengeId:WHEEL_CONFIG.challengeId,landedIndex:landed};saveResult(result);burst();showResult(result);spinButton.textContent="VIEW YOUR PRIZE";wheelStatus.textContent="The Dutch have decided.";track("wheel_settled",{prize:prize.label,boosts,easter});pick=null;settling=false;velocity=0}
-    function triggerEasterEgg(){easter=true;track("wheel_easter_egg_triggered");velocity=0;if(raf){cancelAnimationFrame(raf);raf=null}wheelStatus.textContent="You broke it. Honestly impressive.";const wrap=wheel.closest(".wheel-wrap");wrap.classList.add("overclocked");setTimeout(()=>wrap.classList.add("wheel-ejected"),900);setTimeout(()=>wrap.classList.add("axle-fallen"),3400);setTimeout(()=>{wrap.classList.remove("overclocked","wheel-ejected","axle-fallen");wheel.style.opacity="1";wheel.style.transform=`rotate(${rotation}deg)`;settling=false;settleToPrize()},5200)}
+    function loop(t){const dt=Math.min(34,t-last);last=t;rotation+=velocity*dt;setRotation(rotation);if(!dragging)velocity*=Math.pow(friction,dt/16.67);if(!dragging&&velocity<.018&&boosts>0){raf=null;velocity=0;return settleNaturally()}raf=requestAnimationFrame(loop)}
+    function playDing(){try{const AudioCtx=window.AudioContext||window.webkitAudioContext;if(!AudioCtx)return;const ctx=new AudioCtx(),osc=ctx.createOscillator(),gain=ctx.createGain();osc.type="sine";osc.frequency.setValueAtTime(880,ctx.currentTime);gain.gain.setValueAtTime(.0001,ctx.currentTime);gain.gain.exponentialRampToValueAtTime(.16,ctx.currentTime+.02);gain.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+.42);osc.connect(gain);gain.connect(ctx.destination);osc.start();osc.stop(ctx.currentTime+.45)}catch(e){}}
+    function settleNaturally(){if(settling)return;settling=true;wheelStatus.textContent="Easy... let it land.";const wrap=wheel.closest(".wheel-wrap");wrap.classList.add("settled");playDing();setTimeout(()=>{wrap.classList.remove("settled");completeSpin()},650)}
+    function completeSpin(){const landed=indexAt(rotation),prize=WHEEL_CONFIG.prizes[landed];const result={id:prize.id,label:prize.label,detail:prize.detail,icon:prize.icon,claimCode:generateClaimCode(),weeklyWord,timestamp:new Date().toISOString(),challengeId:WHEEL_CONFIG.challengeId,landedIndex:landed};saveResult(result);burst();showResult(result);spinButton.textContent="VIEW YOUR PRIZE";wheelStatus.textContent="The Dutch have decided.";track("wheel_settled",{prize:prize.label,boosts,easter:false});settling=false;velocity=0}
+    function triggerEasterEgg(){return}
     spinButton.addEventListener("click",()=>addMomentum(.72));
-    wheel.addEventListener("pointerdown",e=>{if(loadResult())return showResult(loadResult(),true);ensurePick();dragging=true;wheel.setPointerCapture(e.pointerId);lastAngle=pointAngle(e);lastDragTime=performance.now();track("wheel_flick_started")});
+    wheel.addEventListener("pointerdown",e=>{if(loadResult())return showResult(loadResult(),true);dragging=true;wheel.setPointerCapture(e.pointerId);lastAngle=pointAngle(e);lastDragTime=performance.now();track("wheel_flick_started")});
     wheel.addEventListener("pointermove",e=>{if(!dragging)return;const a=pointAngle(e),now=performance.now(),d=((a-lastAngle+540)%360)-180,dt=Math.max(8,now-lastDragTime);rotation+=d;velocity=Math.max(-maxVelocity,Math.min(maxVelocity,d/dt));setRotation(rotation);lastAngle=a;lastDragTime=now});
-    function release(){if(!dragging)return;dragging=false;velocity=Math.abs(velocity)<.18?.48:Math.min(maxVelocity,Math.abs(velocity));boosts++;if(velocity>maxVelocity*.88){maxHits++;if(maxHits>=10&&!easter)return triggerEasterEgg()}wheelStatus.textContent="Let it ride.";track("wheel_flicked",{boosts,max_hits:maxHits});startLoop()}
+    function release(){if(!dragging)return;dragging=false;velocity=Math.abs(velocity)<.18?.48+Math.random()*.12:Math.min(maxVelocity,Math.abs(velocity));boosts++;wheelStatus.textContent="Let it ride.";track("wheel_flicked",{boosts});startLoop()}
     wheel.addEventListener("pointerup",release);wheel.addEventListener("pointercancel",release);
     $("#closeButton").addEventListener("click",()=>{overlay.classList.remove("show");document.body.style.overflow="";track("wheel_result_closed")});
     redeemButton.addEventListener("click",()=>{if(!confirm("Mark this prize as redeemed? This cannot be undone on this browser."))return;if(storageOK)localStorage.setItem(storageKeys.redeemed,"true");redeemButton.hidden=true;redeemedText.hidden=false;track("wheel_staff_redeem_clicked",{prize:prizeName.textContent.trim()||"unknown"})});
-    $("#expiresText").textContent=WHEEL_CONFIG.expiration;$("#challengeText").textContent=WHEEL_CONFIG.challengeId;warning.classList.toggle("show",!storageOK);buildWheel();
+    $("#expiresText").textContent=WHEEL_CONFIG.expiration;$("#challengeText").textContent=WHEEL_CONFIG.challengeId;warning.classList.toggle("show",!storageOK);buildWheel();setRotation(rotation);
     const parameters=new URLSearchParams(location.search);track("wheel_open",{source:parameters.get("utm_source")||parameters.get("source")||"challenge",campaign:parameters.get("utm_campaign")||"none"});if(gateAccess()){const existing=loadResult();if(existing){spinButton.textContent="VIEW YOUR PRIZE";showResult(existing,true)}}
   </script>
 </body>
