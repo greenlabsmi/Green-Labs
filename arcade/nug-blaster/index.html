@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no" />
+<meta name="theme-color" content="#020805" />
+<title>Nug Blaster | Green Labs Arcade</title>
+<style>
+:root{--green:#00e58b;--green2:#007c4f;--gold:#e5b64a;--ink:#020805;--panel:#07110b;--white:#f5f7f4;--muted:#aab6af;--danger:#ff5f68}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#000;color:var(--white);font-family:Arial,Helvetica,sans-serif;touch-action:none;overscroll-behavior:none}
+body{display:grid;place-items:center;background:radial-gradient(circle at 50% 15%,#043622 0,#010704 48%,#000 100%)}
+button{font:inherit}
+#app{position:relative;width:min(100vw,520px);height:100dvh;max-height:1000px;overflow:hidden;background:#020805;border-inline:1px solid rgba(0,229,139,.18);isolation:isolate}
+#game{display:block;width:100%;height:100%;background:#020805}
+.scanlines{position:absolute;inset:0;pointer-events:none;z-index:8;opacity:.17;background:repeating-linear-gradient(to bottom,rgba(255,255,255,.05) 0,rgba(255,255,255,.05) 1px,transparent 2px,transparent 4px);mix-blend-mode:overlay}
+.vignette{position:absolute;inset:0;pointer-events:none;z-index:7;box-shadow:inset 0 0 100px #000}
+.hud{position:absolute;inset:0 0 auto;z-index:10;padding:max(12px,env(safe-area-inset-top)) 14px 0;display:grid;grid-template-columns:1fr auto 1fr;align-items:start;gap:10px;pointer-events:none;text-shadow:0 2px 0 #000}
+.hudBlock small{display:block;color:var(--green);font-weight:900;letter-spacing:.15em;font-size:10px}.hudBlock strong{font-size:20px;letter-spacing:.04em}.hudBlock.right{text-align:right}.lives{color:var(--danger);letter-spacing:.1em}.combo{margin:auto;padding:7px 12px;border:1px solid rgba(229,182,74,.45);border-radius:999px;background:rgba(0,0,0,.45);font-weight:900;color:var(--gold);opacity:0;transform:scale(.8);transition:.2s}.combo.show{opacity:1;transform:scale(1)}
+.overlay{position:absolute;inset:0;z-index:30;display:grid;place-items:center;padding:24px 20px max(24px,env(safe-area-inset-bottom));background:radial-gradient(circle at 50% 25%,rgba(0,80,49,.88),rgba(0,0,0,.96) 60%);overflow-y:auto}.overlay[hidden]{display:none}
+.card{width:min(100%,430px);border:1px solid rgba(0,229,139,.35);border-radius:28px;background:linear-gradient(180deg,rgba(10,27,17,.98),rgba(2,8,5,.98));padding:24px;text-align:center;box-shadow:0 22px 80px rgba(0,0,0,.7),0 0 40px rgba(0,229,139,.12)}
+.logo{width:88px;height:88px;object-fit:contain;filter:drop-shadow(0 0 16px rgba(0,229,139,.55));margin-bottom:10px}.eyebrow{color:var(--green);font-size:12px;font-weight:900;letter-spacing:.22em}.title{margin:8px 0 0;font-family:Impact,Arial Black,sans-serif;font-size:clamp(54px,14vw,84px);line-height:.82;letter-spacing:.02em;text-transform:uppercase}.subtitle{color:var(--gold);font-weight:900;letter-spacing:.18em;margin:14px 0}.bodycopy{color:var(--muted);line-height:1.5;font-size:15px}.chips{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:18px 0}.chip{padding:10px 6px;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.035);font-size:12px;font-weight:900}.primary,.secondary{width:100%;border:0;border-radius:16px;padding:16px 18px;font-weight:1000;letter-spacing:.04em;cursor:pointer}.primary{background:linear-gradient(180deg,#16ef97,#00a864);color:#001f12;box-shadow:0 12px 28px rgba(0,229,139,.22)}.secondary{margin-top:10px;background:#121713;color:#fff;border:1px solid rgba(255,255,255,.14)}.legal{font-size:11px;color:#7f8c84;line-height:1.45;margin-top:16px}.blink{animation:blink 1s steps(2,end) infinite}@keyframes blink{50%{opacity:.25}}
+#countdown{position:absolute;inset:0;z-index:20;display:grid;place-items:center;background:rgba(0,0,0,.76);font-family:Impact,Arial Black,sans-serif;font-size:34vw;color:#fff;text-shadow:0 0 24px var(--green)}#countdown[hidden]{display:none}
+.toast{position:absolute;z-index:16;left:50%;top:20%;transform:translate(-50%,-10px) scale(.92);opacity:0;padding:11px 18px;border-radius:999px;background:rgba(0,0,0,.78);border:1px solid rgba(229,182,74,.5);font-weight:1000;color:var(--gold);white-space:nowrap;transition:.18s}.toast.show{opacity:1;transform:translate(-50%,0) scale(1)}
+.resultScore{font-family:Impact,Arial Black,sans-serif;font-size:64px;color:var(--gold);line-height:1;margin:12px 0}.rank{font-size:24px;font-weight:1000;color:var(--green);margin:6px 0 18px}.meter{height:14px;background:#101611;border-radius:999px;overflow:hidden;margin:14px 0}.meter span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--green),var(--gold));transition:1s ease}.thresholds{text-align:left;display:grid;gap:8px;margin:16px 0}.threshold{display:flex;justify-content:space-between;gap:12px;padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.04);color:var(--muted);font-size:13px}.threshold.hit{border:1px solid rgba(0,229,139,.35);color:#fff}.debug{position:absolute;right:8px;bottom:calc(8px + env(safe-area-inset-bottom));z-index:50;font-size:10px;color:#617069;pointer-events:none}
+@media (min-width:700px){#app{height:min(100vh,900px);border:1px solid rgba(0,229,139,.25);border-radius:26px}.title{font-size:80px}}
+</style>
+</head>
+<body>
+<main id="app">
+<canvas id="game" aria-label="Nug Blaster arcade game"></canvas>
+<div class="hud" id="hud" hidden>
+  <div class="hudBlock"><small>SCORE</small><strong id="scoreText">000000</strong></div>
+  <div class="combo" id="comboText">x2 COMBO</div>
+  <div class="hudBlock right"><small>LIVES</small><strong class="lives" id="livesText">◆◆◆</strong></div>
+</div>
+<div class="toast" id="toast"></div>
+<div id="countdown" hidden>3</div>
+<div class="scanlines"></div><div class="vignette"></div>
+
+<section class="overlay" id="welcome">
+  <div class="card">
+    <img class="logo" src="../../assets/img/greenlabs-logo.png" alt="Green Labs" onerror="this.style.display='none'" />
+    <div class="eyebrow">GREEN LABS ARCADE // CABINET 002</div>
+    <h1 class="title">NUG<br>BLASTER</h1>
+    <div class="subtitle blink">PRESS START</div>
+    <p class="bodycopy">Drag your ship. Dodge the mids. Blast everything else. Build combos and chase the weekly high score.</p>
+    <div class="chips"><div class="chip">ONE THUMB</div><div class="chip">60 SECONDS</div><div class="chip">BIG COMBOS</div></div>
+    <button class="primary" id="startBtn">START TEST RUN</button>
+    <button class="secondary" id="howBtn">HOW TO PLAY</button>
+    <p class="legal">Prototype mode. No live prize is issued from this test build. Final eligibility, age gate, loyalty, redemption and promotional terms will be added before launch.</p>
+  </div>
+</section>
+
+<section class="overlay" id="how" hidden>
+  <div class="card">
+    <div class="eyebrow">PILOT BRIEFING</div><h2 class="title" style="font-size:54px">HOW TO<br>BLAST</h2>
+    <p class="bodycopy"><b>Drag anywhere on the lower half</b> to move. Your ship auto-fires. Chain hits without taking damage to raise the multiplier. Grab glowing power-ups. Survive the final rush.</p>
+    <div class="thresholds"><div class="threshold"><span>Wheel Qualifier</span><b>12,000</b></div><div class="threshold"><span>Arcade Ace</span><b>30,000</b></div><div class="threshold"><span>Dutch Legend</span><b>50,000</b></div></div>
+    <button class="primary" id="howStartBtn">LET'S BLAST</button><button class="secondary" id="howBackBtn">BACK</button>
+  </div>
+</section>
+
+<section class="overlay" id="results" hidden>
+  <div class="card">
+    <div class="eyebrow">RUN COMPLETE</div><h2 class="title" style="font-size:58px">FINAL<br>SCORE</h2>
+    <div class="resultScore" id="finalScore">0</div><div class="rank" id="rankText">CADET</div>
+    <div class="meter"><span id="scoreMeter"></span></div>
+    <div class="thresholds" id="resultThresholds"></div>
+    <p class="bodycopy" id="rewardCopy"></p>
+    <button class="primary" id="retryBtn">PLAY AGAIN</button><button class="secondary" id="exitBtn">BACK TO ARCADE</button>
+  </div>
+</section>
+<div class="debug">NUG-BLASTER-TEST-V1</div>
+</main>
+<script>
+'use strict';
+const CONFIG={
+  gameId:'nug-blaster-test-v1',duration:60,lives:3,
+  rewardTiers:[
+    {score:12000,id:'wheel',label:'WHEEL QUALIFIER',reward:'Unlock the weekly prize wheel.'},
+    {score:30000,id:'ace',label:'ARCADE ACE',reward:'Wheel + 50 loyalty-point bonus candidate.'},
+    {score:50000,id:'legend',label:'DUTCH LEGEND',reward:'Premium weekly reward tier candidate.'}
+  ],
+  clarity:true
+};
+const $=s=>document.querySelector(s);
+const canvas=$('#game'),ctx=canvas.getContext('2d');
+const ui={welcome:$('#welcome'),how:$('#how'),results:$('#results'),hud:$('#hud'),countdown:$('#countdown'),score:$('#scoreText'),lives:$('#livesText'),combo:$('#comboText'),toast:$('#toast'),final:$('#finalScore'),rank:$('#rankText'),meter:$('#scoreMeter'),thresholds:$('#resultThresholds'),reward:$('#rewardCopy')};
+let W=0,H=0,dpr=1,state='menu',last=0,elapsed=0,spawnClock=0,powerClock=0,shake=0,score=0,lives=CONFIG.lives,combo=0,multiplier=1,shots=[],enemies=[],particles=[],powerups=[],stars=[],pointer={active:false,x:0,y:0};
+let player={x:0,y:0,w:34,h:42,speed:700,fire:0,rapid:0,shield:0};
+function clarityEvent(name){try{if(CONFIG.clarity&&window.clarity)window.clarity('event',name)}catch(e){}}
+function clarityTag(k,v){try{if(CONFIG.clarity&&window.clarity)window.clarity('set',k,String(v))}catch(e){}}
+function resize(){dpr=Math.min(devicePixelRatio||1,2);W=canvas.clientWidth;H=canvas.clientHeight;canvas.width=W*dpr;canvas.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);if(!player.x){player.x=W/2;player.y=H*.82}makeStars()}
+function makeStars(){stars=Array.from({length:70},()=>({x:Math.random()*W,y:Math.random()*H,s:.3+Math.random()*1.7,v:15+Math.random()*55}))}
+addEventListener('resize',resize,{passive:true});resize();
+function reset(){score=0;lives=CONFIG.lives;combo=0;multiplier=1;elapsed=0;spawnClock=0;powerClock=0;shots=[];enemies=[];particles=[];powerups=[];player={x:W/2,y:H*.82,w:34,h:42,speed:700,fire:0,rapid:0,shield:0};updateHUD()}
+function show(id){[ui.welcome,ui.how,ui.results].forEach(x=>x.hidden=true);if(id)id.hidden=false}
+function startCountdown(){show(null);ui.hud.hidden=false;reset();let n=3;ui.countdown.hidden=false;ui.countdown.textContent=n;const t=setInterval(()=>{n--;if(n>0)ui.countdown.textContent=n;else if(n===0)ui.countdown.textContent='BLAST!';else{clearInterval(t);ui.countdown.hidden=true;state='playing';last=performance.now();clarityEvent('nug_blaster_started');requestAnimationFrame(loop)}},650)}
+function updateHUD(){ui.score.textContent=String(Math.floor(score)).padStart(6,'0');ui.lives.textContent='◆'.repeat(Math.max(0,lives))+'◇'.repeat(Math.max(0,CONFIG.lives-lives));ui.combo.textContent=`x${multiplier} COMBO`;ui.combo.classList.toggle('show',multiplier>1)}
+function toast(msg){ui.toast.textContent=msg;ui.toast.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>ui.toast.classList.remove('show'),900)}
+function spawnEnemy(){const r=Math.random();const type=r<.58?'mid':r<.85?'jar':'bosslet';const size=type==='mid'?18+Math.random()*10:type==='jar'?24:32;enemies.push({type,x:20+Math.random()*(W-40),y:-40,w:size,h:size,hp:type==='bosslet'?4:type==='jar'?2:1,v:110+Math.random()*110+elapsed*1.2,drift:(Math.random()-.5)*70,phase:Math.random()*6.28,points:type==='bosslet'?900:type==='jar'?350:180})}
+function spawnPower(){powerups.push({x:30+Math.random()*(W-60),y:-30,r:14,v:130,type:Math.random()<.5?'rapid':'shield',spin:0})}
+function fire(){shots.push({x:player.x,y:player.y-player.h/2,v:650,r:3});if(player.rapid>0){shots.push({x:player.x-10,y:player.y-player.h/2+4,v:620,r:3},{x:player.x+10,y:player.y-player.h/2+4,v:620,r:3})}}
+function hit(a,b){return Math.abs(a.x-b.x)<(a.w||a.r||4)+(b.w||b.r||4) && Math.abs(a.y-b.y)<(a.h||a.r||4)+(b.h||b.r||4)}
+function burst(x,y,color,count=12){for(let i=0;i<count;i++)particles.push({x,y,vx:(Math.random()-.5)*260,vy:(Math.random()-.5)*260,life:.4+Math.random()*.5,color,r:1+Math.random()*3})}
+function damage(){if(player.shield>0){player.shield=0;toast('SHIELD SAVED YOU');burst(player.x,player.y,'#00e58b',22);return}lives--;combo=0;multiplier=1;shake=10;burst(player.x,player.y,'#ff5f68',30);toast(lives?'COMBO BROKEN':'SHIP DOWN');updateHUD();if(lives<=0)endGame()}
+function addHit(points){combo++;multiplier=Math.min(8,1+Math.floor(combo/6));score+=points*multiplier;updateHUD();if(combo===6||combo===18||combo===36)toast(`COMBO x${multiplier}`)}
+function update(dt){elapsed+=dt;spawnClock-=dt;powerClock-=dt;player.fire-=dt;player.rapid=Math.max(0,player.rapid-dt);player.shield=Math.max(0,player.shield-dt);if(pointer.active){player.x+=(pointer.x-player.x)*Math.min(1,dt*14);player.y+=(pointer.y-player.y)*Math.min(1,dt*14)}player.x=Math.max(22,Math.min(W-22,player.x));player.y=Math.max(H*.48,Math.min(H-34,player.y));if(player.fire<=0){fire();player.fire=player.rapid>0?.09:.18}if(spawnClock<=0){spawnEnemy();spawnClock=Math.max(.14,.52-elapsed*.004)}if(powerClock<=0){spawnPower();powerClock=8+Math.random()*7}
+stars.forEach(s=>{s.y+=s.v*dt;if(s.y>H){s.y=0;s.x=Math.random()*W}});shots.forEach(s=>s.y-=s.v*dt);shots=shots.filter(s=>s.y>-30);enemies.forEach(e=>{e.y+=e.v*dt;e.x+=Math.sin(elapsed*2+e.phase)*e.drift*dt});powerups.forEach(p=>{p.y+=p.v*dt;p.spin+=dt*4});
+for(let i=enemies.length-1;i>=0;i--){const e=enemies[i];if(hit(e,player)){enemies.splice(i,1);damage();continue}if(e.y>H+40){enemies.splice(i,1);combo=0;multiplier=1;updateHUD();continue}for(let j=shots.length-1;j>=0;j--){if(hit(e,shots[j])){shots.splice(j,1);e.hp--;burst(shots[j]?.x||e.x,shots[j]?.y||e.y,'#e5b64a',5);if(e.hp<=0){enemies.splice(i,1);addHit(e.points);burst(e.x,e.y,e.type==='mid'?'#9bcf73':'#e5b64a',16)}break}}}
+for(let i=powerups.length-1;i>=0;i--){const p=powerups[i];if(hit(p,player)){powerups.splice(i,1);if(p.type==='rapid'){player.rapid=7;toast('TRIPLE TERP FIRE')}else{player.shield=12;toast('EMERALD SHIELD')}score+=500;burst(p.x,p.y,'#00e58b',22)}else if(p.y>H+30)powerups.splice(i,1)}
+particles.forEach(p=>{p.x+=p.vx*dt;p.y+=p.vy*dt;p.vx*=.97;p.vy*=.97;p.life-=dt});particles=particles.filter(p=>p.life>0);if(elapsed>=CONFIG.duration)endGame()}
+function draw(){ctx.save();if(shake){ctx.translate((Math.random()-.5)*shake,(Math.random()-.5)*shake);shake*=.86}const g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,'#00150d');g.addColorStop(.55,'#020805');g.addColorStop(1,'#000');ctx.fillStyle=g;ctx.fillRect(0,0,W,H);ctx.fillStyle='#b9ffe0';stars.forEach(s=>{ctx.globalAlpha=.2+s.s*.22;ctx.fillRect(s.x,s.y,s.s,s.s)});ctx.globalAlpha=1;
+shots.forEach(s=>{ctx.fillStyle='#e5b64a';ctx.shadowBlur=12;ctx.shadowColor='#e5b64a';ctx.fillRect(s.x-2,s.y-9,4,14)});ctx.shadowBlur=0;
+enemies.forEach(e=>drawEnemy(e));powerups.forEach(p=>drawPower(p));drawPlayer();particles.forEach(p=>{ctx.globalAlpha=Math.max(0,p.life);ctx.fillStyle=p.color;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill()});ctx.globalAlpha=1;ctx.restore()}
+function drawPlayer(){ctx.save();ctx.translate(player.x,player.y);if(player.shield>0){ctx.strokeStyle='rgba(0,229,139,.7)';ctx.lineWidth=3;ctx.shadowBlur=14;ctx.shadowColor='#00e58b';ctx.beginPath();ctx.arc(0,0,30+Math.sin(elapsed*6)*2,0,Math.PI*2);ctx.stroke();ctx.shadowBlur=0}ctx.fillStyle='#0bd584';ctx.beginPath();ctx.moveTo(0,-22);ctx.lineTo(17,17);ctx.lineTo(5,12);ctx.lineTo(0,23);ctx.lineTo(-5,12);ctx.lineTo(-17,17);ctx.closePath();ctx.fill();ctx.fillStyle='#e5b64a';ctx.fillRect(-3,-4,6,15);ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(0,-8,3,0,Math.PI*2);ctx.fill();ctx.fillStyle='#ff8b31';ctx.beginPath();ctx.moveTo(-5,21);ctx.lineTo(0,31+Math.random()*8);ctx.lineTo(5,21);ctx.fill();ctx.restore()}
+function drawEnemy(e){ctx.save();ctx.translate(e.x,e.y);ctx.rotate(Math.sin(elapsed+e.phase)*.2);if(e.type==='mid'){ctx.fillStyle='#7ea66a';for(let i=0;i<6;i++){ctx.rotate(Math.PI/3);ctx.beginPath();ctx.ellipse(0,-e.h*.55,e.w*.28,e.h*.45,0,0,Math.PI*2);ctx.fill()}ctx.fillStyle='#42573a';ctx.beginPath();ctx.arc(0,0,e.w*.5,0,Math.PI*2);ctx.fill()}else if(e.type==='jar'){ctx.fillStyle='#a6d5c2';ctx.globalAlpha=.75;ctx.fillRect(-e.w*.45,-e.h*.45,e.w*.9,e.h*.8);ctx.globalAlpha=1;ctx.fillStyle='#e5b64a';ctx.fillRect(-e.w*.5,-e.h*.55,e.w,e.h*.18);ctx.fillStyle='#00a864';ctx.fillRect(-e.w*.35,-2,e.w*.7,e.h*.22)}else{ctx.fillStyle='#ff5f68';ctx.beginPath();ctx.moveTo(0,-e.h);ctx.lineTo(e.w,e.h*.7);ctx.lineTo(0,e.h*.25);ctx.lineTo(-e.w,e.h*.7);ctx.closePath();ctx.fill();ctx.fillStyle='#fff';ctx.fillRect(-7,-5,14,5)}ctx.restore()}
+function drawPower(p){ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.spin);ctx.strokeStyle=p.type==='rapid'?'#e5b64a':'#00e58b';ctx.fillStyle='rgba(0,0,0,.55)';ctx.lineWidth=3;ctx.shadowBlur=18;ctx.shadowColor=ctx.strokeStyle;ctx.beginPath();for(let i=0;i<8;i++){const a=i*Math.PI/4,r=i%2?9:15;ctx.lineTo(Math.cos(a)*r,Math.sin(a)*r)}ctx.closePath();ctx.fill();ctx.stroke();ctx.shadowBlur=0;ctx.restore()}
+function loop(t){if(state!=='playing')return;const dt=Math.min(.033,(t-last)/1000||0);last=t;update(dt);draw();requestAnimationFrame(loop)}
+function endGame(){if(state!=='playing')return;state='ended';ui.hud.hidden=true;clarityEvent('nug_blaster_completed');clarityTag('nug_blaster_score',Math.floor(score));renderResults()}
+function tierFor(s){let hit=null;CONFIG.rewardTiers.forEach(t=>{if(s>=t.score)hit=t});return hit}
+function renderResults(){show(ui.results);const n=Math.floor(score),tier=tierFor(n);ui.final.textContent=n.toLocaleString();ui.rank.textContent=n>=50000?'DUTCH LEGEND':n>=30000?'ARCADE ACE':n>=12000?'WHEEL QUALIFIER':n>=6000?'NUG CADET':'CABINET WARM-UP';ui.meter.style.width=`${Math.min(100,n/50000*100)}%`;ui.thresholds.innerHTML=CONFIG.rewardTiers.map(t=>`<div class="threshold ${n>=t.score?'hit':''}"><span>${n>=t.score?'✓':'○'} ${t.label}</span><b>${t.score.toLocaleString()}</b></div>`).join('');ui.reward.textContent=tier?tier.reward:'Reach 12,000 to qualify for the wheel in the live build.';localStorage.setItem('gl_arcade_nug_blaster_high_score',String(Math.max(n,+(localStorage.getItem('gl_arcade_nug_blaster_high_score')||0))));clarityTag('nug_blaster_tier',tier?.id||'none')}
+function pointerPos(e){const r=canvas.getBoundingClientRect(),p=e.touches?e.touches[0]:e;return{x:p.clientX-r.left,y:p.clientY-r.top}}
+canvas.addEventListener('pointerdown',e=>{if(state!=='playing')return;pointer.active=true;Object.assign(pointer,pointerPos(e));canvas.setPointerCapture?.(e.pointerId)});canvas.addEventListener('pointermove',e=>{if(!pointer.active||state!=='playing')return;Object.assign(pointer,pointerPos(e))});canvas.addEventListener('pointerup',()=>pointer.active=false);canvas.addEventListener('pointercancel',()=>pointer.active=false);
+$('#startBtn').onclick=startCountdown;$('#howStartBtn').onclick=startCountdown;$('#howBtn').onclick=()=>show(ui.how);$('#howBackBtn').onclick=()=>show(ui.welcome);$('#retryBtn').onclick=startCountdown;$('#exitBtn').onclick=()=>{state='menu';show(ui.welcome)};
+clarityTag('page_type','arcade_game');clarityTag('game_id',CONFIG.gameId);clarityEvent('nug_blaster_open');
+</script>
+</body>
+</html>
+
