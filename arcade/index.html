@@ -41,7 +41,7 @@ button,input{font:inherit}
 </head>
 <body>
 <main id="app">
-<div class="fullscreen-note">GREEN LABS ARCADE OS v1.0</div>
+<div class="fullscreen-note">GREEN LABS ARCADE OS v1.0.1 VERIFIED</div>
 <section id="attract" class="screen active"><div class="card attract"><img id="staffLogo" class="logo" src="/assets/img/greenlabs-logo.png" alt="Green Labs" onerror="this.style.display='none'"><div class="eyebrow">GREEN LABS ARCADE</div><h1 class="title">PRESS<br>START</h1><div class="sub">Featured Cabinet · Nug Blaster</div><p class="copy">Play to score. Earn a prize wheel spin. Chase this month’s leaderboard.</p><div id="attractBoard" class="scoreboard"></div><div class="press">TOUCH TO PLAY</div><div class="marquee"><span>INFINITE TRIES · TOP 10 ENTER INITIALS · TOP 5 MAY ENTER A LOYALTY PHONE NUMBER · MONTHLY TOP 3 WIN FEATURED PRIZES</span></div></div></section>
 <section id="menu" class="screen"><div class="card"><div class="eyebrow">GREEN LABS ARCADE</div><h2 class="title" style="font-size:72px">SELECT</h2><div class="grid two"><button id="playGame" class="btn primary">PLAY NUG BLASTER</button><button id="showBoards" class="btn secondary">LEADERBOARDS</button><button id="howWin" class="btn secondary">HOW TO WIN</button><button id="aboutBtn" class="btn secondary">ABOUT THE ARCADE</button></div><button id="backAttract" class="btn warn">RETURN TO ATTRACT MODE</button></div></section>
 <section id="boards" class="screen"><div class="card"><div class="eyebrow">HIGH SCORES</div><h2 class="title" style="font-size:64px">LEADERS</h2><div class="tabs"><button class="tab active" data-board="monthly">THIS MONTH</button><button class="tab" data-board="alltime">ALL-TIME LEGENDS</button></div><div id="boardList" class="scoreboard"></div><button class="btn secondary backMenu">BACK</button></div></section>
@@ -57,7 +57,7 @@ button,input{font:inherit}
 'use strict';
 const STORAGE='gl_arcade_os_v1';
 const DEFAULT={settings:{pin:'4200',prizeScore:100000,featuredGame:'Nug Blaster'},monthlyKey:'',monthly:[],alltime:[],stats:{plays:0,wheelWins:0,totalScore:0,highestScore:0,pilots:{}},pending:null};
-const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],staffLogo=$('#staffLogo');
 let data=load();let idleTimer=null;let logoTaps=0;let initials=['A','A','A'];let phoneDigits='';let activeBoard='monthly';
 function monthKey(){const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`}
 function load(){try{const d=JSON.parse(localStorage.getItem(STORAGE)||'null');return d?Object.assign(structuredClone(DEFAULT),d):structuredClone(DEFAULT)}catch(e){return structuredClone(DEFAULT)}}
@@ -66,7 +66,7 @@ function ensureMonth(){const key=monthKey();if(data.monthlyKey!==key){data.month
 function show(id){$$('.screen').forEach(x=>x.classList.remove('active'));$('#'+id).classList.add('active');resetIdle();if(id==='attract')renderAttract();if(id==='boards')renderBoards();if(id==='staff')renderStaff()}
 function resetIdle(){clearTimeout(idleTimer);idleTimer=setTimeout(()=>show('attract'),60000)}
 ['pointerdown','touchstart','keydown'].forEach(ev=>document.addEventListener(ev,resetIdle,{passive:true}));
-async function goFullscreen(){const el=document.documentElement;try{if(!document.fullscreenElement&&el.requestFullscreen)await el.requestFullscreen()}catch(e){} }
+async function goFullscreen(){const el=document.documentElement;try{if(document.fullscreenElement)return;if(el.requestFullscreen)await el.requestFullscreen();else if(el.webkitRequestFullscreen)await el.webkitRequestFullscreen()}catch(e){} }
 function fmt(n){return Number(n||0).toLocaleString()}
 function sortScores(arr){return arr.sort((a,b)=>b.score-a.score||a.date.localeCompare(b.date))}
 function renderRows(arr,limit=5,privateMode=false){if(!arr.length)return '<div class="panel center"><span class="small">NO SCORES YET</span></div>';return arr.slice(0,limit).map((e,i)=>`<div class="score-row ${i<3?'top':''}"><div class="ranknum">#${i+1}</div><div><div class="initials">${escapeHtml(e.initials||'???')}</div><div class="small">${escapeHtml(e.pilot||'NUG BLASTER')}</div>${privateMode&&e.phone?'<div class="small">PHONE ON FILE ✓</div>':''}</div><div class="score">${fmt(e.score)}</div></div>`).join('')}
