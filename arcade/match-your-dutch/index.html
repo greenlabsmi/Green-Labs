@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#020402">
+<title>Match Your Dutch | Green Labs Arcade</title>
+<style>
+:root{--bg:#020402;--panel:#09110c;--green:#08c970;--gold:#d9a941;--cyan:#28e7ff;--purple:#8d5cff;--white:#f6f7f3;--muted:#aeb7af;--danger:#ff6470}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#000;color:var(--white);font-family:Arial,Helvetica,sans-serif;touch-action:manipulation;overscroll-behavior:none;user-select:none}button{font:inherit}
+body{background:radial-gradient(circle at 50% 0,#311055,#07140d 48%,#000)}
+#app{position:relative;width:100vw;height:100dvh;overflow:hidden;isolation:isolate}.scan,.vig{position:absolute;inset:0;pointer-events:none}.scan{z-index:60;opacity:.14;background:repeating-linear-gradient(to bottom,#ffffff0a 0,#ffffff0a 1px,transparent 2px,transparent 4px)}.vig{z-index:59;box-shadow:inset 0 0 120px #000}
+.screen{position:absolute;inset:0;display:none;align-items:center;justify-content:center;padding:clamp(12px,2.5vw,28px);overflow:auto}.screen.active{display:flex}.card-panel{width:min(100%,980px);background:linear-gradient(180deg,#101710f7,#030604fb);border:1px solid #08c97044;border-radius:26px;padding:clamp(18px,3vw,34px);box-shadow:0 24px 80px #000c,0 0 42px #8d5cff22}.eyebrow{color:var(--green);font-size:12px;font-weight:1000;letter-spacing:.22em;text-transform:uppercase}.title{margin:6px 0 10px;font:1000 clamp(52px,10vw,104px)/.82 Impact,Arial Black,sans-serif;text-transform:uppercase;text-shadow:4px 4px var(--purple),-3px -3px #28e7ff88}.copy{color:var(--muted);line-height:1.5}.btn{border:0;border-radius:14px;padding:15px 18px;font-weight:1000;letter-spacing:.05em;cursor:pointer}.btn.primary{background:linear-gradient(#18ef96,#048f53);color:#001b10;box-shadow:0 10px 28px #08c97033}.btn.secondary{background:#111611;color:#fff;border:1px solid #ffffff1d}.btn.warn{background:#281217;color:#fff;border:1px solid #ff647044}.grid{display:grid;gap:12px}.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+#landing{background:radial-gradient(circle at 50% 18%,#311055aa,#06150e 58%,#000)}#landing .card-panel{text-align:center}.logo{width:100px;height:100px;object-fit:contain;filter:drop-shadow(0 0 22px #08c97099)}.hero-note{color:var(--gold);font-weight:1000;letter-spacing:.08em;text-transform:uppercase}.mini-rules{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}.mini-rules div{padding:13px;border-radius:14px;background:#ffffff08;border:1px solid #ffffff12}.mini-rules b{display:block;color:var(--gold)}
+#game{padding:8px;background:linear-gradient(180deg,#030604,#08100b)}.game-shell{width:100%;height:100%;display:flex;flex-direction:column;gap:8px}.hud{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px}.hud-item{padding:8px 10px;background:#071009;border:1px solid #08c97022;border-radius:11px;text-align:center}.hud-item span{display:block;font-size:10px;color:var(--muted);letter-spacing:.08em}.hud-item b{font-size:18px;color:var(--gold)}.notice{min-height:36px;display:grid;place-items:center;padding:7px 10px;background:#d9a94112;border:1px solid #d9a94133;border-radius:11px;color:#f5e5b5;font-weight:900;text-align:center}.board{flex:1;min-height:0;display:grid;gap:7px;align-content:stretch}.memory-card{position:relative;border:0;background:none;padding:0;perspective:900px;cursor:pointer;min-width:0;min-height:0}.memory-card-inner{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .5s cubic-bezier(.2,.8,.2,1)}.memory-card.flipped .memory-card-inner,.memory-card.matched .memory-card-inner{transform:rotateY(180deg)}.face{position:absolute;inset:0;border-radius:12px;overflow:hidden;backface-visibility:hidden;border:1px solid #ffffff18;box-shadow:0 8px 20px #0008}.back{background:#08100b radial-gradient(circle,#08c97022,transparent 52%)}.back:before{content:"DTG";position:absolute;inset:0;display:grid;place-items:center;font:1000 clamp(24px,4vw,54px)/1 Georgia,serif;color:var(--gold);text-shadow:0 0 16px #d9a94166}.front{transform:rotateY(180deg);background:#101410;display:flex;flex-direction:column}.front img{width:100%;height:calc(100% - 34px);object-fit:contain;background:#111}.art-card .front img{height:100%}.meta{height:34px;display:grid;place-items:center;padding:3px 5px;background:#030403;border-top:2px solid var(--gold);font-size:clamp(8px,1.3vw,14px);font-weight:1000;text-align:center;text-transform:uppercase}.memory-card.matched .face{border-color:var(--gold);box-shadow:0 0 0 2px #08c97088,0 0 24px #d9a94155}.memory-card.shake{animation:shake .34s linear}@keyframes shake{25%{transform:translateX(-6px)}50%{transform:translateX(5px)}75%{transform:translateX(-3px)}}
+.overlay{position:absolute;inset:0;z-index:80;display:none;align-items:center;justify-content:center;padding:20px;background:#000d;backdrop-filter:blur(8px)}.overlay.show{display:flex}.modal{width:min(620px,100%);padding:28px;border-radius:24px;background:linear-gradient(180deg,#101710,#040604);border:1px solid #08c97044;text-align:center}.modal h3{font:1000 clamp(42px,9vw,84px)/.88 Impact,Arial Black,sans-serif;margin:.15em 0;text-transform:uppercase;text-shadow:4px 4px var(--purple)}
+@media(max-width:760px){.grid.two{grid-template-columns:1fr}.mini-rules{grid-template-columns:1fr}.hud{grid-template-columns:repeat(3,minmax(0,1fr))}.hud-item:nth-child(4),.hud-item:nth-child(5){grid-column:span 1}.title{font-size:58px}}
+</style>
+</head>
+<body>
+<main id="app">
+<section id="landing" class="screen active"><div class="card-panel"><img class="logo" src="/assets/img/greenlabs-logo.png" alt="Green Labs"><div class="eyebrow">CABINET 002 · DUTCH TOUCH GENETICS</div><h1 class="title">MATCH YOUR<br>DUTCH</h1><p class="hero-note">A different strain shuffle every run</p><p class="copy">Study the flower and artwork pairs, survive four escalating rounds, and chase the monthly leaderboard.</p><div class="mini-rules"><div><b>ROUND 1</b>4 random strains</div><div><b>ROUND 2</b>5 random strains</div><div><b>ROUND 3</b>6 random strains</div></div><div class="grid two"><button id="startGame" class="btn primary">START ARCADE RUN</button><button id="returnArcade" class="btn secondary">RETURN TO ARCADE</button></div></div></section>
+<section id="game" class="screen"><div class="game-shell"><div class="hud"><div class="hud-item"><span>ROUND</span><b id="roundValue">1 / 4</b></div><div class="hud-item"><span>SCORE</span><b id="scoreValue">0</b></div><div class="hud-item"><span>TIME</span><b id="timeValue">0</b></div><div class="hud-item"><span>MATCHES</span><b id="matchValue">0 / 4</b></div><div class="hud-item"><span>MISTAKES</span><b id="mistakeValue">0 / 3</b></div></div><div id="notice" class="notice">Get ready.</div><div id="board" class="board"></div></div></section>
+<div id="result" class="overlay"><div class="modal"><div class="eyebrow">ARCADE RUN COMPLETE</div><h3 id="resultTitle">RUN OVER</h3><p id="resultCopy" class="copy"></p><div class="grid two"><button id="playAgain" class="btn primary">PLAY AGAIN</button><button id="backArcade" class="btn secondary">RETURN TO ARCADE</button></div></div></div>
+<div class="scan"></div><div class="vig"></div>
+</main>
+<script>
+'use strict';
+const ASSET_BASE='https://dutchtouchgenetics.com/assets/img/strains/';
+const STRAINS=[
+{id:'afghani',name:'Afghani',art:'afghani-art.jpg',bud:'afghani-2-bud.jpg'},
+{id:'banana-split',name:'Banana Split',art:'banana-split-art.jpg',bud:'banana-split-bud.jpg'},
+{id:'chocolate-marshmallow-14',name:'Chocolate Marshmallow #14',art:'chocolate-marshmallow-14-art.jpg',bud:'chocolate-marshmallow-14-bud.jpg'},
+{id:'clusterfunk',name:'Clusterfunk',art:'clusterfunk-art.jpg',bud:'clusterfunk-bud.jpg'},
+{id:'cobra-lips',name:'Cobra Lips',art:'cobra-lips-art.jpg',bud:'cobra-lips-bud.jpg'},
+{id:'dead-prez',name:'Dead Prez',art:'dead-prez-art.jpg',bud:'dead-prez-bud.jpg'},
+{id:'death-by-funk',name:'Death By Funk',art:'death-by-funk-art.jpg',bud:'death-by-funk-bud.jpg'},
+{id:'face-off-og',name:'Face Off OG',art:'face-off-og-art.jpg',bud:'face-off-og-bud.jpg'},
+{id:'field-trip',name:'Field Trip',art:'field-trip-art.jpg',bud:'field-trip-bud.jpg'},
+{id:'garlic-breath',name:'Garlic Breath',art:'garlic-breath-art.jpg',bud:'garlic-breath-bud.jpg'},
+{id:'guicy-g',name:'Guicy G',art:'guicy-g-art.jpg',bud:'guicy-g-bud.jpg'},
+{id:'hash-d',name:'Hash D',art:'hash-d-2-art.jpg',bud:'hash-d-bud.jpg'},
+{id:'illudium',name:'Illudium',art:'illudium-art.jpg',bud:'illudium-bud.jpg'},
+{id:'lemon-wookie',name:'Lemon Wookie #4',art:'lemon-wookie-art.jpg',bud:'lemon-wookie-4.png'},
+{id:'lilac-diesel',name:'Lilac Diesel',art:'lilac-diesel-art.jpg',bud:'lilac-diesel-bud.jpg'},
+{id:'mr-clean',name:'Mr. Clean',art:'mr-clean-art.jpg',bud:'mr-clean-bud.jpg'},
+{id:'peanut-butter-n-chocolate',name:'Peanut Butter N’ Chocolate',art:'peanut-butter-n-chocolate-art.jpg',bud:'peanut-butter-n-chocolate-bud.jpg'},
+{id:'sin-city-grapes',name:'Sin City Grapes',art:'sin-city-grapes-art.jpg',bud:'sin-city-grapes-bud.jpg'},
+{id:'sour-chem-banger',name:'Sour Chem Banger',art:'sour-chem-banger-art.jpg',bud:'sour-chem-banger-bud.jpg'},
+{id:'space-hippy',name:'Space Hippy',art:'space-hippy-art.jpg',bud:'space-hippy-bud.jpg'},
+{id:'spirit-hashplant',name:'Spirit Hashplant',art:'spirit-hashplant-art.jpg',bud:'spirit-hashplant-bud.jpg'},
+{id:'super-silver-hashplant',name:'Super Silver Hashplant',art:'super-silver-hashplant-art.jpg',bud:'super-silver-hashplant-bud.jpg'},
+{id:'13-layer-cake',name:'13 Layer Cake',art:'13-layer-cake-art.jpg',bud:'13-layer-cake-bud.jpg'},
+{id:'gorilla-88',name:'Gorilla 88',art:'gorilla-88-art.jpg',bud:'gorilla-88-bud.jpg'},
+{id:'orange-kush-cake',name:'Orange Kush Cake',art:'orange-kush-cake-art.jpg',bud:'orange-kush-cake-bud.jpg'},
+{id:'solo-walker',name:'Solo Walker',art:'solo-walker-art.jpg',bud:'solo-walker-bud.jpg'},
+{id:'sticky-trap',name:'Sticky Trap',art:'sticky-trap-art.jpg',bud:'sticky-trap-bud.jpg'},
+{id:'strawberry-daiquiri',name:'Strawberry Daiquiri',art:'strawberry-daiquiri-art.jpg',bud:'strawberry-daiquiri-bud.jpg'},
+{id:'pina-rita',name:'Pina Rita',art:'pina-rita-art.jpg',bud:'pina-rita.png'},
+{id:'vortex',name:'Vortex',art:'vortex-art.jpg',bud:'vortex-bud.jpg'}
+];
+const ROUNDS=[{pairs:4,preview:8,time:40,maxMistakes:3},{pairs:5,preview:7,time:45,maxMistakes:3},{pairs:6,preview:6,time:50,maxMistakes:3},{pairs:7,preview:5,time:55,maxMistakes:3}];
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];let roundIndex=0,score=0,roundPool=[],deck=[],selected=[],matched=new Set(),mistakes=0,timeLeft=0,timer=null,locked=true,used=new Set();
+function shuffle(arr){for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]]}return arr}
+function fmt(n){return Math.max(0,Math.round(n)).toLocaleString()}
+function show(id){$$('.screen').forEach(s=>s.classList.remove('active'));$('#'+id).classList.add('active')}
+function chooseStrains(count){let available=STRAINS.filter(s=>!used.has(s.id));if(available.length<count){used.clear();available=[...STRAINS]}const picks=shuffle([...available]).slice(0,count);picks.forEach(s=>used.add(s.id));return picks}
+function makeDeck(pool){return shuffle(pool.flatMap(s=>[{uid:s.id+'-art',pair:s.id,kind:'art',name:s.name,src:ASSET_BASE+s.art},{uid:s.id+'-bud',pair:s.id,kind:'bud',name:s.name,src:ASSET_BASE+s.bud}]))}
+function setGrid(count){const cols=count<=4?4:count<=6?5:7;$('#board').style.gridTemplateColumns=`repeat(${cols},minmax(0,1fr))`;$('#board').style.gridTemplateRows='repeat(2,minmax(0,1fr))'}
+function cardElement(card){const b=document.createElement('button');b.className='memory-card '+(card.kind==='art'?'art-card':'bud-card');b.type='button';b.dataset.uid=card.uid;b.dataset.pair=card.pair;b.innerHTML=`<span class="memory-card-inner"><span class="face back"></span><span class="face front"><img src="${card.src}" alt="${card.name}">${card.kind==='bud'?`<span class="meta">${card.name}</span>`:''}</span></span>`;b.onclick=()=>pickCard(b,card);b.querySelector('img').onerror=e=>{e.currentTarget.style.display='none';if(card.kind==='bud')b.querySelector('.meta').textContent=card.name+' · image missing'};return b}
+function renderBoard(){const board=$('#board');board.innerHTML='';deck.forEach(c=>board.appendChild(cardElement(c)));setGrid(roundPool.length);updateHud()}
+function updateHud(){$('#roundValue').textContent=`${roundIndex+1} / ${ROUNDS.length}`;$('#scoreValue').textContent=fmt(score);$('#timeValue').textContent=timeLeft;$('#matchValue').textContent=`${matched.size} / ${roundPool.length}`;$('#mistakeValue').textContent=`${mistakes} / ${ROUNDS[roundIndex].maxMistakes}`}
+async function sleep(ms){return new Promise(r=>setTimeout(r,ms))}
+async function startRound(){clearInterval(timer);const cfg=ROUNDS[roundIndex];roundPool=chooseStrains(cfg.pairs);deck=makeDeck(roundPool);selected=[];matched.clear();mistakes=0;timeLeft=cfg.time;locked=true;renderBoard();show('game');$('#notice').textContent=`ROUND ${roundIndex+1}: STUDY THE DUTCH`;await sleep(350);$$('.memory-card').forEach((c,i)=>setTimeout(()=>c.classList.add('flipped'),i*35));for(let n=cfg.preview;n>0;n--){$('#notice').textContent=`MEMORIZE · ${n}`;await sleep(1000)}$$('.memory-card').forEach((c,i)=>setTimeout(()=>c.classList.remove('flipped'),i*24));await sleep(450);locked=false;$('#notice').textContent='MATCH THE ART TO THE FLOWER';timer=setInterval(()=>{timeLeft--;updateHud();if(timeLeft<=10&&timeLeft>0)$('#notice').textContent=`CLOCK BURNING · ${timeLeft}`;if(timeLeft<=0)failRun('Time ran out.')},1000)}
+async function pickCard(el,card){if(locked||el.classList.contains('flipped')||el.classList.contains('matched'))return;el.classList.add('flipped');selected.push({el,card});if(selected.length<2)return;locked=true;const[a,b]=selected;if(a.card.pair===b.card.pair&&a.card.kind!==b.card.kind){await sleep(320);a.el.classList.add('matched');b.el.classList.add('matched');matched.add(a.card.pair);score+=10000+(timeLeft*250)+(Math.max(0,ROUNDS[roundIndex].maxMistakes-mistakes)*1000);selected=[];locked=false;updateHud();$('#notice').textContent=`MATCHED · ${a.card.name}`;if(matched.size===roundPool.length)completeRound()}else{mistakes++;score=Math.max(0,score-2500);a.el.classList.add('shake');b.el.classList.add('shake');updateHud();await sleep(650);a.el.classList.remove('flipped','shake');b.el.classList.remove('flipped','shake');selected=[];locked=false;if(mistakes>=ROUNDS[roundIndex].maxMistakes)failRun('Too many mismatches.')}}
+async function completeRound(){clearInterval(timer);locked=true;const bonus=50000+(timeLeft*1000)+(Math.max(0,ROUNDS[roundIndex].maxMistakes-mistakes)*10000);score+=bonus;updateHud();$('#notice').textContent=`ROUND ${roundIndex+1} CLEAR · +${fmt(bonus)}`;await sleep(1200);roundIndex++;if(roundIndex>=ROUNDS.length)finishRun(true);else startRound()}
+function failRun(reason){if($('#result').classList.contains('show'))return;clearInterval(timer);locked=true;finishRun(false,reason)}
+function finishRun(completed,reason=''){const bosses=completed?ROUNDS.length:roundIndex;const finalScore=Math.max(0,Math.round(score));$('#resultTitle').textContent=completed?'DUTCH MASTER':'RUN OVER';$('#resultCopy').innerHTML=completed?`You cleared all four rounds with <strong>${fmt(finalScore)}</strong> points.`:`${reason}<br>You finished with <strong>${fmt(finalScore)}</strong> points.`;$('#result').classList.add('show');sessionStorage.setItem('gl_arcade_last_result',JSON.stringify({game:'match-your-dutch',score:finalScore,pilot:'Match Your Dutch',bosses}));}
+function returnToArcade(){const stored=sessionStorage.getItem('gl_arcade_last_result');if(stored){try{const r=JSON.parse(stored);sessionStorage.removeItem('gl_arcade_last_result');location.href=`/arcade/?score=${encodeURIComponent(r.score)}&pilot=${encodeURIComponent(r.pilot)}&bosses=${encodeURIComponent(r.bosses)}&game=${encodeURIComponent(r.game)}`;return}catch(e){}}location.href='/arcade/'}
+function beginRun(){roundIndex=0;score=0;used.clear();$('#result').classList.remove('show');startRound()}
+$('#startGame').onclick=beginRun;$('#playAgain').onclick=beginRun;$('#returnArcade').onclick=()=>location.href='/arcade/';$('#backArcade').onclick=returnToArcade;
+</script>
+</body>
+</html>
+
