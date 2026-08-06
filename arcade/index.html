@@ -101,11 +101,38 @@ body{font-family:var(--arcade);letter-spacing:.02em}
   .cabinet-copy{font-size:17px;margin-bottom:16px}
   .cabinet-grid{grid-template-columns:1fr;gap:22px}
 }
+
+/* ===== GREEN LABS ARCADE v1.3 CLEAN CONSOLE POLISH ===== */
+#attract .title{font-family:var(--pixel);font-size:clamp(50px,12.2vw,118px)!important;line-height:1!important;letter-spacing:-.055em!important;color:#fff8e8!important;text-shadow:0 5px 0 #11162a,5px 9px 0 #6948b8!important;filter:none!important;max-width:940px!important;margin:0 auto!important}
+#attract .title span{display:block!important;white-space:nowrap!important}
+#attract .eyebrow{color:#10e697!important;text-shadow:0 2px 0 #00170d!important}
+#attract .sub{font-family:Arial,Helvetica,sans-serif!important;font-size:clamp(18px,2.7vw,31px)!important;font-weight:1000!important;letter-spacing:.11em!important;color:#f3c958!important;text-shadow:0 2px 0 #000!important}
+#attract .copy{font-family:Arial,Helvetica,sans-serif!important;color:#d7ded9!important}
+.cabinet-title{font-family:var(--pixel)!important;font-size:clamp(36px,6vw,66px)!important;line-height:1.05!important;letter-spacing:-.04em!important;color:#fff8e8!important;text-shadow:0 4px 0 #11162a,4px 7px 0 #6948b8!important}
+.cabinet-name{font-size:clamp(13px,1.8vw,21px)!important;text-shadow:0 3px 0 #25194b!important}
+.cover-fallback{font-size:clamp(22px,3.6vw,48px)!important;line-height:1.08!important;text-shadow:0 4px 0 #050508,4px 7px 0 #5d43a5!important}
+@media(max-width:760px){
+  .screen{padding:calc(env(safe-area-inset-top) + 22px) 14px calc(env(safe-area-inset-bottom) + 28px)!important}
+  #attract{padding:0!important}
+  #attract .card{padding:calc(env(safe-area-inset-top) + 24px) 18px calc(env(safe-area-inset-bottom) + 22px)!important;gap:12px!important}
+  #attract .logo{width:104px!important;height:104px!important}
+  #attract .title{font-size:clamp(48px,13.4vw,74px)!important;line-height:1!important;letter-spacing:-.06em!important}
+  #attract .title span{white-space:nowrap!important}
+  #attract .sub{font-size:17px!important;line-height:1.2!important;margin-top:4px!important}
+  #attract .copy{font-size:17px!important;line-height:1.35!important;margin:2px auto!important}
+  #startArcade{width:94%!important;font-size:32px!important}
+  .cabinet-screen{padding-top:calc(env(safe-area-inset-top) + 26px)!important}
+  .cabinet-shell{margin:0 auto!important;width:94vw!important;padding:18px 14px 30px!important}
+  .pixel-eyebrow{margin-top:0!important}
+  .cabinet-title{font-size:34px!important;margin:8px 0 10px!important}
+  .cabinet-copy{font-size:16px!important;margin:0 auto 16px!important}
+  .cabinet-grid{grid-template-columns:1fr!important;gap:24px!important}
+}
 </style>
 </head>
 <body>
 <main id="app">
-<div class="fullscreen-note">GREEN LABS ARCADE OS v1.2.2 CLEAN PIXEL POLISH</div>
+<div class="fullscreen-note">GREEN LABS ARCADE OS v1.3 CLEAN CONSOLE POLISH</div>
 <section id="attract" class="screen active"><div class="card attract"><img id="staffLogo" class="logo" src="/assets/img/greenlabs-logo.png" alt="Green Labs" onerror="this.style.display='none'"><div class="eyebrow">GREEN LABS ARCADE</div><h1 class="title">READY<br><span>PLAYER ONE?</span></h1><div class="sub">Featured Game · Nug Blaster</div><p class="copy">Blast for the leaderboard. Score enough and win a Green Labs Prize Wheel spin.</p><div id="attractBoard" class="scoreboard"></div><button id="startArcade" type="button">PRESS START</button><div class="marquee"><span>INFINITE TRIES · TOP 10 ENTER INITIALS · TOP 5 MAY ENTER A LOYALTY PHONE NUMBER · MONTHLY TOP 3 WIN FEATURED PRIZES</span></div></div></section>
 <section id="menu" class="screen cabinet-screen"><div class="card cabinet-shell"><div class="eyebrow pixel-eyebrow">GREEN LABS ARCADE</div><h2 class="title cabinet-title">CHOOSE YOUR GAME</h2><p class="copy cabinet-copy">Pick a game. Each one has its own monthly leaderboard.</p><div class="cabinet-grid"><button id="playGame" class="cabinet-card" type="button"><span class="cabinet-number">GAME 01</span><span class="cover-frame"><img src="/assets/img/arcade/covers/nug-blaster-cover.png" alt="Nug Blaster arcade cover" onerror="this.style.display='none'"><span class="cover-fallback nug-cover">NUG<br>BLASTER</span></span><span class="cabinet-name">NUG BLASTER</span><span class="cabinet-genre">NEON SHOOTER · BOSS RUSH</span><span class="cabinet-play">▶ PRESS START</span></button><button id="playMatch" class="cabinet-card" type="button"><span class="cabinet-number">GAME 02</span><span class="cover-frame"><img src="/assets/img/arcade/covers/match-your-dutch-cover.png" alt="Match Your Dutch arcade cover" onerror="this.style.display='none'"><span class="cover-fallback match-cover">MATCH<br>YOUR<br>DUTCH</span></span><span class="cabinet-name">MATCH YOUR DUTCH</span><span class="cabinet-genre">MEMORY QUEST · STRAIN SHUFFLE</span><span class="cabinet-play">▶ PRESS START</span></button></div><div class="utility-grid"><button id="showBoards" class="btn secondary">🏆 LEADERBOARDS</button><button id="howWin" class="btn secondary">? HOW TO WIN</button><button id="aboutBtn" class="btn secondary">ⓘ ABOUT THE ARCADE</button><button id="installHelp" class="btn secondary">▣ IPAD ARCADE MODE</button></div><button id="backAttract" class="btn warn">← RETURN TO ATTRACT MODE</button></div></section>
 <section id="boards" class="screen"><div class="card"><div class="eyebrow">HIGH SCORES</div><h2 class="title" style="font-size:64px">LEADERS</h2><div class="tabs"><button class="tab active" data-board="monthly">THIS MONTH</button><button class="tab" data-board="alltime">ALL-TIME LEGENDS</button></div><div id="boardList" class="scoreboard"></div><button class="btn secondary backMenu">BACK</button></div></section>
@@ -127,7 +154,7 @@ function monthKey(){const d=new Date();return `${d.getFullYear()}-${String(d.get
 function load(){try{const d=JSON.parse(localStorage.getItem(STORAGE)||'null');return d?Object.assign(structuredClone(DEFAULT),d):structuredClone(DEFAULT)}catch(e){return structuredClone(DEFAULT)}}
 function save(){localStorage.setItem(STORAGE,JSON.stringify(data))}
 function ensureMonth(){const key=monthKey();if(data.monthlyKey!==key){data.monthlyKey=key;data.monthly=[];save()}}
-function show(id){$$('.screen').forEach(x=>x.classList.remove('active'));$('#'+id).classList.add('active');resetIdle();if(id==='attract')renderAttract();if(id==='boards')renderBoards();if(id==='staff')renderStaff()}
+function show(id){$$('.screen').forEach(x=>x.classList.remove('active'));const next=$('#'+id);next.classList.add('active');next.scrollTop=0;resetIdle();if(id==='attract')renderAttract();if(id==='boards')renderBoards();if(id==='staff')renderStaff()}
 function resetIdle(){clearTimeout(idleTimer);idleTimer=setTimeout(()=>show('attract'),60000)}
 ['pointerdown','touchstart','keydown'].forEach(ev=>document.addEventListener(ev,resetIdle,{passive:true}));
 async function goFullscreen(){const isiPad=/iPad|iPhone|iPod/.test(navigator.userAgent)||navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1;const standalone=window.matchMedia?.('(display-mode: standalone)').matches||navigator.standalone===true;if(isiPad||standalone)return;const el=document.documentElement;try{if(document.fullscreenElement)return;if(el.requestFullscreen)await el.requestFullscreen();else if(el.webkitRequestFullscreen)await el.webkitRequestFullscreen()}catch(e){} }
