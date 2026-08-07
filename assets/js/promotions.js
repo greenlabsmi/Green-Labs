@@ -27,6 +27,7 @@
   "keepItDutchTuesday"
   "batchWednesday"
   "thirstyThursday"
+  "firstFriday"
 
   Example:
   const MANUAL_CAMPAIGN = "batchWednesday";
@@ -91,6 +92,34 @@
         alt: "Hyman live resin stylus promotion",
         href: "#deals",
         ariaLabel: "View the Hyman live resin stylus promotion"
+      }
+    },
+
+    firstFriday: {
+      enabled: true,
+      banner: {
+        headline: "🎪 FIRST FRIDAY IS TODAY",
+        products: "4–8 PM · DEALS ALL DAY",
+        offer: "CORNHOLE · GIVEAWAYS · VENDORS · GIVEAWAYS"
+      },
+      hero: {
+        image: "assets/img/first-friday/first-friday-event-hero.jpg",
+        position: "center",
+        href: "/firstfriday/",
+        ariaLabel: "View Green Labs First Friday"
+      },
+      popup: {
+        id: "first-friday-2026-08-07",
+        enabled: true,
+        frequency: "daily",
+        delay: 4000,
+        type: "image",
+        image: "assets/img/first-friday/first-friday-event-popup.jpg",
+        video: "",
+        poster: "assets/img/first-friday/first-friday-event-popup.jpg",
+        alt: "Green Labs First Friday — today from 4 to 8 PM",
+        href: "/firstfriday/",
+        ariaLabel: "View Green Labs First Friday event details"
       }
     },
 
@@ -215,6 +244,10 @@
   ============================================================
   */
 
+  const SPECIAL_DATES = {
+    "2026-08-07": "firstFriday"
+  };
+
   const WEEKLY_SCHEDULE = {
     2: "keepItDutchTuesday",
     3: "batchWednesday",
@@ -272,6 +305,14 @@
       PROMOTIONS[MANUAL_CAMPAIGN].enabled
     ) {
       return MANUAL_CAMPAIGN;
+    }
+
+    const today = getDetroitDateKey();
+    const specialCampaignName = SPECIAL_DATES[today];
+    const specialCampaign = PROMOTIONS[specialCampaignName];
+
+    if (specialCampaign && specialCampaign.enabled) {
+      return specialCampaignName;
     }
 
     const weekday = getDetroitWeekday();
@@ -630,3 +671,4 @@
     initializePromotionEngine();
   }
 })();
+
