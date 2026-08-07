@@ -112,7 +112,7 @@
         id: "first-friday-2026-08-07",
         enabled: true,
         frequency: "daily",
-        delay: 4000,
+        delay: 15000,
         type: "image",
         image: "assets/img/first-friday/first-friday-event-popup.jpg",
         video: "",
