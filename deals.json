@@ -52,7 +52,6 @@
         "redbud-carts",
         "mix-gummies",
         "lightsky-carts",
-        "hyman-stylus",
         "covert-cones",
         "play-gummies",
         "fire-styxx",
@@ -99,11 +98,6 @@
       "lightsky-carts": {
         "title": "LightSky Farms Live Resin Carts $15",
         "image": "assets/img/highlights/hl-lightsky.jpg"
-      },
-
-      "hyman-stylus": {
-        "title": "Hyman 1G Live Resin Stylus $15",
-        "image": "assets/img/highlights/hyman-stylus-hl.jpg"
       },
 
       "covert-cones": {
@@ -190,8 +184,7 @@
         {
           "title": "Disposable Vapes",
           "items": [
-            "Hyman 1G Live Resin Disposables — $15ea",
-            "Dutch Touch Genetics 1G Disposables — $20ea or 3/$45",
+            "Dutch Touch Genetics Live Terps 1G Disposables — $20ea or 3/$45",
             "Dutch Touch Genetics Disposable Deal Includes All Strains",
             "Grip 2G Live Resin Disposables — $20",
             "Superfire 1G Disposables — $15ea or 3/$40",
