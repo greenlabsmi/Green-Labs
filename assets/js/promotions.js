@@ -65,21 +65,21 @@
       enabled: true,
 
       banner: {
-        headline: "🏆 AWARD WINNING GENETICS",
-        products: "MR. CLEAN, LILAC DIESEL, & SPACE HIPPY AVAILABLE NOW",
-        offer: "LEMON WOOKIE COMING SOON"
+        headline: "🌿 FRESH DELI DROP", 
+        products: "AWARD-WINNING LEMON WOOKIE AVAILABLE NOW", 
+        offer: "NEW SPACE HIPPY BUBBLE HASH INFUSED BUDS"
       },
 
       hero: {
-        image: "assets/img/lp-weekend-hero.jpg",
+        image: "assets/img/deli-drop-aug-hero.jpg",
         position: "center",
-        href: "#deals",
-        ariaLabel: "Shop Green Labs Summer Vibes promotions"
+        href: "#deli",
+        ariaLabel: "Shop the latest Green Labs deli flower drop"
       },
 
       popup: {
         id: "hyman-stylus-july-2026",
-        enabled: true,
+        enabled: false,
         frequency: "campaign",
         delay: 10000,
 
@@ -90,7 +90,7 @@
         poster: "assets/img/highlights/hyman-stylus-hl.jpg",
 
         alt: "Hyman live resin stylus promotion",
-        href: "#deals",
+        href: "#deli",
         ariaLabel: "View the Hyman live resin stylus promotion"
       }
     },
@@ -112,7 +112,7 @@
         id: "first-friday-2026-08-07",
         enabled: true,
         frequency: "daily",
-        delay: 15000,
+        delay: 4000,
         type: "image",
         image: "assets/img/first-friday/first-friday-event-popup.jpg",
         video: "",
