@@ -976,7 +976,7 @@ const deliStrainData = {
     genetics: "Lime Skunk × The Cube",
     about: "🏆 1st Place Sativa (High Times Cannabis Cup). Strong citrus (limonene), sour, earthy, and skunky, described as tasting like lemon-pine cleaners. Known for high, energetic, and creative effects. Has the ability to 'clean out' bad moods."
   },
-
+   
   "lilac-diesel": {
     name: "Lilac Diesel",
     tier: "premium",
@@ -1320,86 +1320,284 @@ function renderDeliModalPricing(tierKey) {
   }
 }
 
+function ensureDeliTerpeneMount() {
+  let mount = document.getElementById("deliModalTerpenes");
+
+  if (mount) return mount;
+
+  const aboutEl = document.getElementById("deliModalAbout");
+  const geneticsEl = document.getElementById("deliModalGenetics");
+
+  mount = document.createElement("div");
+
+  mount.id = "deliModalTerpenes";
+  mount.className = "deli-modal__terpenes";
+  mount.hidden = true;
+
+  mount.style.cssText = `
+    margin: 14px 0;
+    padding: 12px 14px;
+    border: 1px solid rgba(214, 163, 74, 0.35);
+    border-radius: 10px;
+    background: rgba(214, 163, 74, 0.06);
+  `;
+
+  if (aboutEl && aboutEl.parentNode) {
+    aboutEl.parentNode.insertBefore(mount, aboutEl);
+  } else if (geneticsEl && geneticsEl.parentNode) {
+    geneticsEl.parentNode.insertBefore(mount, geneticsEl.nextSibling);
+  }
+
+  return mount;
+}
+
+function renderDeliModalTerpenes(strain) {
+  const mount = ensureDeliTerpeneMount();
+
+  if (!mount) return;
+
+  const terpenes =
+    Array.isArray(strain.terpenes)
+      ? strain.terpenes
+      : [];
+
+  // Old strains without terpene data show nothing.
+  if (!terpenes.length) {
+    mount.hidden = true;
+    mount.innerHTML = "";
+    return;
+  }
+
+  mount.hidden = false;
+
+  mount.innerHTML = `
+    <div
+      style="
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #D6A34A;
+        font-weight: 800;
+        margin-bottom: 8px;
+      "
+    >
+      Top Terpenes
+    </div>
+
+    <div style="display: grid; gap: 6px;">
+      ${terpenes.map((terp) => `
+        <div
+          style="
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 12px;
+            align-items: center;
+            font-size: 13px;
+          "
+        >
+          <span style="color: #fff; font-weight: 700;">
+            ${terp.name}
+          </span>
+
+          <span
+            style="
+              color: rgba(255,255,255,0.72);
+              white-space: nowrap;
+            "
+          >
+            ${terp.percent}${terp.mg ? ` • ${terp.mg}` : ""}
+          </span>
+        </div>
+      `).join("")}
+    </div>
+  `;
+}
+
+function setDeliModalImage(strain, preferBud = true) {
+  const image = document.getElementById("deliModalImage");
+  const hint = document.getElementById("deliModalImageHint");
+
+  if (!image) return;
+
+  const hasBud =
+    Boolean(strain.budImage && strain.budImage.trim());
+
+  const hasArt =
+    Boolean(strain.artImage && strain.artImage.trim());
+
+  if (preferBud && hasBud) {
+    image.src = strain.budImage;
+    image.alt = `${strain.name} bud`;
+
+    currentDeliModalImage = "front";
+  } else if (hasArt) {
+    image.src = strain.artImage;
+    image.alt = `${strain.name} label artwork`;
+
+    currentDeliModalImage = "back";
+  } else if (hasBud) {
+    image.src = strain.budImage;
+    image.alt = `${strain.name} bud`;
+
+    currentDeliModalImage = "front";
+  } else {
+    image.removeAttribute("src");
+    image.alt = `${strain.name} image unavailable`;
+
+    currentDeliModalImage = "front";
+  }
+
+  if (hint) {
+    const canFlip =
+      hasBud &&
+      hasArt &&
+      strain.budImage !== strain.artImage;
+
+    hint.hidden = !canFlip;
+
+    if (canFlip) {
+      hint.textContent =
+        currentDeliModalImage === "front"
+          ? "Tap for Label Art 🔄"
+          : "Tap for Bud Photo 🔄";
+    } else {
+      hint.textContent = "";
+    }
+  }
+}
+
 function openDeliModal(strainId) {
   const strain = deliStrainData[strainId];
   const modal = document.getElementById("deliModal");
 
-  if (!strain || !modal) return;
+  if (!strain || !modal) {
+    console.warn(
+      "[Dutch Deli] Missing strain or modal:",
+      strainId
+    );
+    return;
+  }
 
   modal.dataset.currentStrain = strainId;
-  currentDeliModalImage = "front";
 
-  const modalImage = document.getElementById("deliModalImage");
-  const modalImageHint = document.getElementById("deliModalImageHint");
+  // Automatically uses art if no bud image exists.
+  setDeliModalImage(strain, true);
 
-  if (modalImage) {
-    modalImage.src = strain.budImage;
-    modalImage.alt = `${strain.name} bud`;
+  const nameEl =
+    document.getElementById("deliModalName");
+
+  const typeEl =
+    document.getElementById("deliModalType");
+
+  const seedEl =
+    document.getElementById("deliModalSeedSource");
+
+  const geneticsEl =
+    document.getElementById("deliModalGenetics");
+
+  const aboutEl =
+    document.getElementById("deliModalAbout");
+
+  if (nameEl) {
+    nameEl.textContent = strain.name;
   }
 
-  if (modalImageHint) {
-    modalImageHint.textContent = "Tap for Label Art 🔄";
+  if (typeEl) {
+    typeEl.textContent =
+      `${strain.type} • ${strain.thc}`;
   }
 
-  document.getElementById("deliModalName").textContent = strain.name;
-  document.getElementById("deliModalType").textContent =
-    `${strain.type} • ${strain.thc}`;
-  document.getElementById("deliModalSeedSource").textContent =
-    strain.seedSource;
-  document.getElementById("deliModalGenetics").textContent =
-    strain.genetics;
-  document.getElementById("deliModalAbout").textContent =
-    strain.about;
+  if (seedEl) {
+    seedEl.textContent = strain.seedSource;
+  }
 
-  renderDeliModalPricing(strain.tier || "core");
+  if (geneticsEl) {
+    geneticsEl.textContent = strain.genetics;
+  }
+
+  if (aboutEl) {
+    aboutEl.textContent = strain.about;
+  }
+
+  // Only appears when terpenes exist for this strain.
+  renderDeliModalTerpenes(strain);
+
+  renderDeliModalPricing(
+    strain.tier || "core"
+  );
 
   modal.classList.add("is-open");
-  modal.setAttribute("aria-hidden", "false");
-  document.body.style.overflow = "hidden";
+  modal.setAttribute(
+    "aria-hidden",
+    "false"
+  );
+
+  document.body.style.overflow =
+    "hidden";
 }
 
 function closeDeliModal() {
-  const modal = document.getElementById("deliModal");
+  const modal =
+    document.getElementById("deliModal");
 
   if (!modal) return;
 
   modal.classList.remove("is-open");
-  modal.setAttribute("aria-hidden", "true");
+
+  modal.setAttribute(
+    "aria-hidden",
+    "true"
+  );
+
   document.body.style.overflow = "";
 }
 
 function flipDeliModalImage() {
-  const modal = document.getElementById("deliModal");
-  const image = document.getElementById("deliModalImage");
-  const imageHint = document.getElementById("deliModalImageHint");
+  const modal =
+    document.getElementById("deliModal");
+
+  const image =
+    document.getElementById("deliModalImage");
 
   if (!modal || !image) return;
 
-  const strainId = modal.dataset.currentStrain;
-  const strain = deliStrainData[strainId];
+  const strain =
+    deliStrainData[
+      modal.dataset.currentStrain
+    ];
 
   if (!strain) return;
+
+  const hasBud =
+    Boolean(
+      strain.budImage &&
+      strain.budImage.trim()
+    );
+
+  const hasArt =
+    Boolean(
+      strain.artImage &&
+      strain.artImage.trim()
+    );
+
+  // Prevent art-only strains from flipping to blank.
+  if (
+    !(hasBud && hasArt) ||
+    strain.budImage === strain.artImage
+  ) {
+    return;
+  }
 
   image.style.opacity = "0.35";
 
   setTimeout(() => {
-    if (currentDeliModalImage === "front") {
-      image.src = strain.artImage;
-      image.alt = `${strain.name} label artwork`;
-      currentDeliModalImage = "back";
+    const preferBud =
+      currentDeliModalImage !== "front";
 
-      if (imageHint) {
-        imageHint.textContent = "Tap for Bud Photo 🔄";
-      }
-    } else {
-      image.src = strain.budImage;
-      image.alt = `${strain.name} bud`;
-      currentDeliModalImage = "front";
-
-      if (imageHint) {
-        imageHint.textContent = "Tap for Label Art 🔄";
-      }
-    }
+    setDeliModalImage(
+      strain,
+      preferBud
+    );
 
     image.style.opacity = "1";
   }, 140);
