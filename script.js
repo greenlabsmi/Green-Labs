@@ -1352,60 +1352,56 @@ function ensureDeliTerpeneMount() {
 }
 
 function renderDeliModalTerpenes(strain) {
-  const mount = ensureDeliTerpeneMount();
+  const section = document.getElementById("deliModalTerpenesSection");
+  const mount = document.getElementById("deliModalTerpenes");
 
-  if (!mount) return;
+  if (!section || !mount) return;
 
   const terpenes =
     Array.isArray(strain.terpenes)
       ? strain.terpenes
       : [];
 
-  // Old strains without terpene data show nothing.
   if (!terpenes.length) {
-    mount.hidden = true;
+    section.hidden = true;
     mount.innerHTML = "";
     return;
   }
 
-  mount.hidden = false;
+  section.hidden = false;
 
   mount.innerHTML = `
-    <div
-      style="
-        font-size: 11px;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: #D6A34A;
-        font-weight: 800;
-        margin-bottom: 8px;
-      "
-    >
-      Top Terpenes
-    </div>
-
-    <div style="display: grid; gap: 6px;">
+    <div style="display:grid; gap:8px;">
       ${terpenes.map((terp) => `
         <div
           style="
-            display: grid;
-            grid-template-columns: minmax(0, 1fr) auto;
-            gap: 12px;
-            align-items: center;
-            font-size: 13px;
+            display:grid;
+            grid-template-columns:minmax(0,1fr) auto;
+            gap:14px;
+            align-items:center;
+            padding:7px 0;
+            border-bottom:1px solid rgba(255,255,255,0.08);
           "
         >
-          <span style="color: #fff; font-weight: 700;">
+          <strong
+            style="
+              color:#fff;
+              font-size:13px;
+              font-weight:800;
+            "
+          >
             ${terp.name}
-          </span>
+          </strong>
 
           <span
             style="
-              color: rgba(255,255,255,0.72);
-              white-space: nowrap;
+              color:#D6A34A;
+              font-size:13px;
+              font-weight:800;
+              white-space:nowrap;
             "
           >
-            ${terp.percent}${terp.mg ? ` • ${terp.mg}` : ""}
+            ${terp.percent}
           </span>
         </div>
       `).join("")}
