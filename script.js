@@ -1024,8 +1024,8 @@ const deliStrainData = {
   about: "Bubble hash infused Dutch Touch Genetics flower with a boosted full-spectrum profile. A potent, terpene-rich Space Hippy release."
 },
 
-  "lemon-wookie-4": {
-    name: "Lemon Wookie #4",
+  "lemon-wookie": {
+    name: "Lemon Wookie",
     tier: "premium",
     seedSource: "Dutch Touch Genetics",
     type: "Hybrid • 2nd Place Best in Grass",
