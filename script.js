@@ -989,6 +989,126 @@ const deliStrainData = {
     about: "🏆 High Times Cannabis Cup 3rd Place Sativa. Big buds have a complex terpene profile, including notes of citrus, sweet berries, earthy pine, and chem. Lilac Diesel is a great afternoon strain for a lackadaisical adventure."
   },
 
+     "afghani-2": {
+    name: "Afghani #3",
+    tier: "core",
+    seedSource: "Soma Seeds",
+    type: "Indica Dominant",
+    thc: "25.14% THC",
+    budImage: "",
+    artImage: "https://dutchtouchgenetics.com/assets/img/strains/afghani-3-art.jpg",
+    genetics: "Pure Afghan Landrace",
+    terpenes: [
+      { name: "α-Terpinene", percent: "1.507%", mg: "15.07 mg/g" },
+      { name: "Nerolidol", percent: "0.278%", mg: "2.78 mg/g" },
+      { name: "β-Pinene", percent: "0.203%", mg: "2.03 mg/g" }
+    ],
+    about: "One of the most important traditional indica landraces in modern cannabis breeding. Earthy, hash-like, spicy, woody, resinous, herbal, pine-forward, and smoky with a dry herbal finish."
+  },
+
+ "space-hippy-bubblehash": {
+  name: "Space Hippy Bubble Hash Infused",
+  tier: "core",
+  seedSource: "Dutch Touch Genetics",
+  type: "Bubble Hash Infused Flower • Hybrid",
+  thc: "28.72% THC",
+  budImage: "",
+  artImage: "https://dutchtouchgenetics.com/assets/img/strains/space-hippy-bubblehash-art.jpg",
+  genetics: "Apollo 13 × Dread Bread",
+  terpenes: [
+    { name: "β-Myrcene", percent: "0.526%", mg: "5.26 mg/g" },
+    { name: "α-Pinene", percent: "0.186%", mg: "1.86 mg/g" },
+    { name: "β-Pinene", percent: "0.131%", mg: "1.31 mg/g" },
+    { name: "Limonene", percent: "0.125%", mg: "1.25 mg/g" }
+  ],
+  about: "Bubble hash infused Dutch Touch Genetics flower with a boosted full-spectrum profile. A potent, terpene-rich Space Hippy release."
+},
+
+  "lemon-wookie-4": {
+    name: "Lemon Wookie #4",
+    tier: "premium",
+    seedSource: "Dutch Touch Genetics",
+    type: "Hybrid • 2nd Place Best in Grass",
+    thc: "N/A",
+    budImage: "",
+    artImage: "https://dutchtouchgenetics.com/assets/img/strains/lemon-wookie-art.jpg",
+    genetics: "Lemon G × Wookie",
+    terpenes: [
+      { name: "α-Terpinene", percent: "0.399%", mg: "3.99 mg/g" },
+      { name: "Nerolidol", percent: "0.253%", mg: "2.53 mg/g" },
+      { name: "α-Bisabolol", percent: "0.214%", mg: "2.14 mg/g" }
+    ],
+    about: "🏆 2nd Place — Best in Grass 2025. Sharp lemon and diesel funk with energetic daytime vibes."
+  },
+
+  "astro-taffy": {
+    name: "Astro Taffy",
+    tier: "premium",
+    seedSource: "Dutch Touch Genetics",
+    type: "Sativa Dominant",
+    thc: "25.53% THC",
+    budImage: "",
+    artImage: "https://dutchtouchgenetics.com/assets/img/strains/astro-taffy-art.jpg",
+    genetics: "Apollo 13 × Lazy Lightning",
+    terpenes: [
+      { name: "α-Terpinene", percent: "0.537%", mg: "5.37 mg/g" },
+      { name: "β-Caryophyllene", percent: "0.377%", mg: "3.77 mg/g" },
+      { name: "Nerolidol", percent: "0.166%", mg: "1.66 mg/g" }
+    ],
+    about: "A euphoric, energizing sativa with sweet candy notes and a clear, uplifting head high. Perfect for creative days and good vibes."
+  },
+
+  "white-lightning": {
+    name: "White Lightning",
+    tier: "premium",
+    seedSource: "Dutch Touch Genetics",
+    type: "Indica Dominant",
+    thc: "25.88% THC",
+    budImage: "",
+    artImage: "https://dutchtouchgenetics.com/assets/img/strains/white-lightning-art.jpg",
+    genetics: "The White × '88 G13/HP",
+    terpenes: [
+      { name: "α-Terpinene", percent: "0.352%", mg: "3.52 mg/g" },
+      { name: "β-Caryophyllene", percent: "0.240%", mg: "2.40 mg/g" },
+      { name: "β-Myrcene", percent: "0.208%", mg: "2.08 mg/g" }
+    ],
+    about: "Hash-heavy and deeply earthy, with rich soil, spice and subtle pine. Bold, grounded old-school flavor."
+  },
+
+  "palpatine": {
+    name: "Palpatine",
+    tier: "premium",
+    seedSource: "Dutch Touch Genetics",
+    type: "Indica Dominant",
+    thc: "25.63% THC",
+    budImage: "",
+    artImage: "https://dutchtouchgenetics.com/assets/img/strains/palpatine-art.jpg",
+    genetics: "Death Star × Lazy Lightning",
+    terpenes: [
+      { name: "α-Terpinene", percent: "0.343%", mg: "3.43 mg/g" },
+      { name: "β-Caryophyllene", percent: "0.332%", mg: "3.32 mg/g" },
+      { name: "β-Myrcene", percent: "0.224%", mg: "2.24 mg/g" }
+    ],
+    about: "A powerful indica with deep relaxation and heavy nighttime vibes. Rich, smooth, and perfect for unwinding after dark."
+  },
+
+  "lazy-lightning": {
+    name: "Lazy Lightning",
+    tier: "premium",
+    seedSource: "Dutch Touch Genetics",
+    type: "Indica-Dominant Hybrid • 60% Indica / 40% Sativa",
+    thc: "25.95% THC",
+    budImage: "",
+    artImage: "https://dutchtouchgenetics.com/assets/img/strains/lazy-lightning-art.jpg",
+    genetics: "Headband Loompa × '88 G13/HP",
+    terpenes: [
+      { name: "α-Terpinene", percent: "0.644%", mg: "6.44 mg/g" },
+      { name: "β-Myrcene", percent: "0.207%", mg: "2.07 mg/g" },
+      { name: "β-Pinene", percent: "0.106%", mg: "1.06 mg/g" }
+    ],
+    about: "Earthy hash and OG Kush flavors layered with bright lemon and pine. Relaxing, soothing and deeply grounded."
+  },
+   
   "sour-chem-banger": {
     name: "Sour Chem Banger",
     tier: "core",
@@ -999,18 +1119,6 @@ const deliStrainData = {
     artImage: "https://dutchtouchgenetics.com/assets/img/strains/sour-chem-banger-art.jpg",
     genetics: "Peanut Butter Breath × Chem 91 2.0 × Headbanger OG",
     about: "Fiercely pungent with an overwhelming stench of sour diesel, fuel, and hints of garlic. Uplifting and intensely cerebral, instantly boosting mood while delivering deep physical relaxation."
-  },
-
-  "afghani-2": {
-    name: "Afghani #2",
-    tier: "core",
-    seedSource: "Soma Seeds",
-    type: "Indica Dominant",
-    thc: "25% THC",
-    budImage: "https://dutchtouchgenetics.com/assets/img/strains/afghani-2-bud.jpg",
-    artImage: "https://dutchtouchgenetics.com/assets/img/strains/afghani-art.jpg",
-    genetics: "Pure Afghan Landrace",
-    about: "One of the most important traditional indica landraces in modern cannabis breeding. Earthy, hash-like, spicy, woody, resinous, herbal, pine-forward, and smoky with a dry herbal finish."
   },
 
   "mule-fuel": {
