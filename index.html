@@ -99,581 +99,6 @@
       </div> </div> 
 
 
-<div class="deli-banner">
-  <div class="deli-banner__track">
-    <div class="deli-banner__content">
-      <span data-promo-banner-part="headline">
-        🏆 AWARD WINNING GENETICS
-      </span>
-
-      <span class="deli-banner__divider">•</span>
-
-      <span data-promo-banner-part="products">
-        MR. CLEAN, LILAC DIESEL & SPACE HIPPY AVAILABLE NOW
-      </span>
-
-      <span class="deli-banner__divider">•</span>
-
-      <span
-        class="deli-banner__price"
-        data-promo-banner-part="offer"
-      >
-        LEMON WOOKIE COMING SOON
-      </span>
-
-      <span class="deli-banner__divider">•</span>
-
-      <span
-        data-promo-banner-part="headline"
-        aria-hidden="true"
-      >
-        🏆 AWARD WINNING GENETICS
-      </span>
-
-      <span
-        class="deli-banner__divider"
-        aria-hidden="true"
-      >
-        •
-      </span>
-
-      <span
-        data-promo-banner-part="products"
-        aria-hidden="true"
-      >
-        MR. CLEAN, LILAC DIESEL & SPACE HIPPY AVAILABLE NOW
-      </span>
-
-      <span
-        class="deli-banner__divider"
-        aria-hidden="true"
-      >
-        •
-      </span>
-
-      <span
-        class="deli-banner__price"
-        data-promo-banner-part="offer"
-        aria-hidden="true"
-      >
-        LEMON WOOKIE COMING SOON
-      </span>
-    </div>
-  </div>
-</div>
-
-<style>
-  .deli-banner {
-    width: 100%;
-    background: #050505;
-    border-top: 1px solid #333;
-    border-bottom: 1px solid #333;
-    overflow: hidden;
-    padding: 12px 0;
-    white-space: nowrap;
-  }
-
-  .deli-banner__track {
-    display: inline-block;
-    animation: marquee 25s linear infinite;
-  }
-
-  .deli-banner__content {
-    display: inline-block;
-    font-family: 'Inter', sans-serif;
-    font-weight: 700;
-    font-size: 14px;
-    letter-spacing: 2px;
-    color: #fff;
-    text-transform: uppercase;
-  }
-
-  .deli-banner__price { color: #d6a441; }
-  .deli-banner__divider { margin: 0 20px; color: #333; }
-
-  @keyframes marquee {
-    0% { transform: translate(0, 0); }
-    100% { transform: translate(-50%, 0); }
-  }
-</style>
-    
-
-
-    <!-- Status strip -->
-    <a href="https://www.google.com/maps/dir/?api=1&destination=10701+Madison+St,+Luna+Pier,+MI+48157" target="_blank" rel="noopener" class="status-strip" id="statusStrip" aria-label="Get directions to Green Labs">
-    <div class="container status-strip__inner">
-      <span class="dot" id="statusDot" aria-hidden="true"></span>
-      <span class="status-text" id="statusText">Open daily 9am–9pm</span>
-      <span class="status-sep" aria-hidden="true">•</span>
-      <span class="status-addr" id="statusAddr" style="text-decoration: underline; text-underline-offset: 3px;">10701 Madison St, Luna Pier</span>
-    </div>
-  </a>
-  </header>
-
-  <!-- Drawer overlay -->
-  <div id="menuOverlay" class="overlay" hidden></div>
-
-  <!-- Drawer -->
-  <aside id="navDrawer" class="drawer" role="dialog" aria-modal="false" hidden>
-    <div class="drawer__head">
-      <img src="assets/img/greenlabs-logo.png" alt="Green Labs" class="drawer__logo" />
-      <button class="icon icon--close" data-close-menu type="button" aria-label="Close menu">×</button>
-    </div>
-
-<nav class="drawer__nav" aria-label="Site">
-  <button class="drawer__link" data-open-shop="rec" type="button">Shop Rec</button>
-  <button class="drawer__link" data-open-shop="med" type="button" style="color: #2ef8bb;">Shop Med</button>
-  <button class="drawer__link" data-open-deals type="button">Today’s Deals</button>
-      <button class="drawer__link" data-scroll="#deli" type="button">The Dutch Deli</button>
-      <button class="drawer__link" data-scroll="#learn-before-you-buy" type="button">Learn</button>
-      <button class="drawer__link" data-scroll="#visit" type="button">Visit / Contact</button>
-      <button class="drawer__link" data-scroll="#our-story" type="button">About Us</button>
-      <button class="drawer__link" data-scroll="#dtg" type="button">Keep It Dutch</button>
-      <button class="drawer__link" data-scroll="#strain-library" type="button">Strain Library</button>
-  <button class="drawer__link" data-open-promo style="color: #D6A34A; font-size: 18px; margin-top: 10px;">🎁 First-Timer Gift</button>
-    </nav>
-    <div class="drawer__footer">
-      <div class="drawer__meta">
-        <div><strong>Open daily</strong> 9am–9pm</div>
-        <div><a class="link" href="tel:+17348000024">(734) 800-0024</a></div>
-        <div class="drawer__addr">
-          <a href="https://www.google.com/maps/dir/?api=1&destination=10701+Madison+St,+Luna+Pier,+MI+48157" target="_blank" rel="noopener" style="color:inherit; text-decoration:underline; text-underline-offset:2px;">10701 Madison St, Luna Pier, MI</a>
-        </div>
-      </div>
-
-      <div class="drawer__social">
-          <a class="soc" href="https://www.instagram.com/greenlabsmi/" target="_blank" rel="noopener" aria-label="Instagram">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-          </a>
-          <a class="soc" href="https://www.facebook.com/greenlabsmi" target="_blank" rel="noopener" aria-label="Facebook">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-          </a>
-          <a class="soc" href="https://x.com/GreenLabsMi" target="_blank" rel="noopener" aria-label="X">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg>
-          </a>
-          <a class="soc" href="https://www.tiktok.com/@greenlabsmi" target="_blank" rel="noopener" aria-label="TikTok">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
-          </a>
-        </div>
-    </div>
-  </aside>
-
-  <main id="home">
-
-    <!-- =====================================================
-      HERO (Brand-first, no carousel)
-      Replace hero image by dropping an image at:
-      assets/img/hero.jpg  (recommended: deli jar / weighed flower / warm light)
-    ====================================================== -->
-<section class="hero section section--hero">
-
-  <div class="hero-atmosphere" aria-hidden="true">
-    <span class="sun-glow"></span>
-    <span class="lake-glow"></span>
-    <span class="lake-shimmer lake-shimmer--one"></span>
-    <span class="lake-shimmer lake-shimmer--two"></span>
-    <span class="hero-dust"></span>
-  </div>
-
-  <div class="container">
-    <div class="hero__grid reveal">
-
-      <div class="hero__copy">
-        <div class="hero__badge">
-          <span class="hero__badge-text">CRAFT CANNABIS & CURATED BRANDS</span>
-        </div>
-
-        <h1 class="hero__title">
-          <span class="title-small">The</span> Standard <span class="title-small">of</span> Michigan Cannabis.
-        </h1>
-
-        <a href="#strain-mr-clean" data-scroll="#strain-mr-clean" class="badge--award" style="text-decoration: none; cursor: pointer;">
-          <span class="award-icon" aria-hidden="true">🏆</span> 1st Place High Times Cannabis Cup Winner — Mr. Clean
-        </a>
-
-        <p class="hero__sub">
-          Home to our award-winning Dutch Touch Genetics, plus a hand-picked menu of the state's most trusted brands. Fresh deli flower, daily deals, and expert guidance for every type of shopper.
-        </p>
-
-        <div class="hero__cta" style="display: flex; gap: 10px; flex-wrap: wrap;">
-          <button class="btn btn--primary hero__btn" data-open-shop="rec" type="button">Shop Rec</button>
-          <button class="btn btn--med hero__btn" data-open-shop="med" type="button">Shop Med</button>
-          <button class="btn btn--ghost hero__btn" data-open-deals type="button">Today's Deals</button>
-        </div>
-      </div>
-
-    <a
-  id="promoHeroLink"
-  href="#deals"
-  data-open-deals
-  class="hero__media hero__media--link"
-  aria-label="Shop Green Labs promotions"
-  style="position: relative;"
->
-  <div
-    id="promoHeroImage"
-    class="hero__img"
-    style="
-      background-image: url('assets/img/lp-weekend-hero.jpg');
-      background-position: center;
-    "
-    role="img"
-    aria-label="Green Labs featured promotion"
-  ></div>
-</a>
-
-    </div>
-  </div>
-</section>
-
-    
-        <!-- ===== PILLAR CARDS (CLICKABLE NAV) ===== -->
-<div class="pillars reveal">
-
-  <a href="#learn-before-you-buy" class="pillar pillar--edu">
-    <div class="pillar__icon" aria-hidden="true">🧪</div>
-    <div class="pillar__content">
-  <h3>Education First</h3>
-  <p>Expert advice, zero pressure. We help you navigate terpenes to find your perfect effect.</p>
-</div>
-    <div class="pillar__arrow">→</div>
-  </a>
-
- <a href="#deli" class="pillar pillar--deli">
-  <div class="pillar__icon" aria-hidden="true">
-    <img
-      src="assets/img/Dutch_Touch_Lion_Logo.png"
-      alt="DTG Lion"
-      class="deli-hero-img"
-    />
-  </div>
-          <div class="pillar__content">
-            <h3>The Dutch Deli</h3>
-            <p>See the quality. Smell the freshness. Weighed fresh to order.</p>
-          </div>
-          <div class="pillar__arrow">→</div>
-        </a>
-
-  <a href="#dtg" class="pillar pillar--dtg">
-    <div class="pillar__icon" aria-hidden="true">🏆</div>
-    <div class="pillar__content">
-      <h3>DTG Standard</h3>
-      <p>Award-winning genetics and consistency you can trust.</p>
-    </div>
-    <div class="pillar__arrow">→</div>
-  </a>
-
-</div>
-    
-
-<!-- ===== Today’s Highlights (AUTO FROM deals.json) ===== -->
-<section id="todays-highlights" class="thSection" aria-label="Today’s Highlights">
-  <div class="thWrap">
-    <header class="thHeader thReveal">
-      <h2 class="thTitle">Today’s Highlights</h2>
-      <p class="thSub">Standout strains, fresh drops, and unbeatable daily deals.</p>
-    </header>
-
-    <!-- JS injects HERO + MID + SCROLL here -->
-    <div id="highlightsMount"></div>
-  </div>
-</section>
-<!-- ===== /Today’s Highlights ===== -->
-
-<!-- ===== DEALS (Upgraded searchable dropdown) ===== -->
-<section class="section section--light">
-  <div id="deals" class="container reveal">
-
-    <div id="deliBoardMount"></div>
-
-    <details class="drDrop" id="dealsDrop" open>
-      <summary class="drDrop__summary">
-        <span class="drDrop__title">TODAY’S DEALS</span>
-        <span class="drDrop__chev" aria-hidden="true">▾</span>
-      </summary>
-
-      <div class="drDrop__body">
-            <div class="drTools">
-              <div class="drSearchWrap">
-                <input id="dealSearch" class="drSearch" type="search" placeholder="Search deals, categories, ounce, deli, carts..." aria-label="Search deals" />
-              </div>
-              <div class="drJumpContainer">
-                <button class="drArrowBtn drArrowBtn--left" id="jumpArrowLeft">❮</button>
-                <div class="drJumpWrap" id="dealJumpWrap"></div>
-                <button class="drArrowBtn drArrowBtn--right" id="jumpArrowRight">❯</button>
-              </div>
-            </div> <div class="drSearchMeta" id="dealSearchMeta" hidden></div>
-
-            <div id="dealList" class="drDeals"></div>
-
-            <button class="drBackTop" id="drBackTop" type="button"> Back to top ↑ </button>
-          </div>
-    </details>
-    
-    <button class="drShopBtn" data-open-shop type="button" style="margin-top: 24px;">SHOP ONLINE</button>
-    
-  </div>
-</section>
-
-
-<section id="shop" class="section section--light" hidden style="padding-top: 40px; padding-bottom: 40px;">
-  <div class="container">
-    <div class="fancy-header" style="margin-bottom: 20px;">
-      <h2 class="fancy-title" style="color: #0B7D5A;">Shop Menu</h2>
-      <p style="color: #4a5d56; font-weight: 700; margin-top: 10px; font-size: 15px;">Live inventory. Order online for quick pickup.</p>
-    </div>
-
-    <div id="leafly-embed-wrapper" style="width:100%; min-height:70vh; position: relative; z-index: 1;"></div>
-
-  </div>
-</section>
-    
-    <!-- ===== DELI ===== -->
-<div class="gl-strains-section" style="padding-top: 20px;">
-  <div class="container">
-    <div id="deli" class="fancy-header reveal">
-      <div class="dtgbadge" style="background: rgba(214, 163, 74, 0.15); color: #D6A34A; border-color: rgba(214, 163, 74, 0.3);">
-        POWERED BY DUTCH TOUCH GENETICS
-      </div>
-      <h2 class="fancy-title" style="color: #fff; text-shadow: 0 0 30px rgba(255, 255, 255, 0.1);">The Dutch Deli</h2>
-      <p style="color: rgba(255,255,255,0.6); font-weight: 700; margin-top: 10px; font-size: 15px;">Fresh from the grow. Weighed right in front of you.</p>
-    </div>
-
-   <div
-  class="filters reveal"
-  style="display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; flex-wrap: wrap;"
->
-  <button class="deli-filter is-active" data-filter="all" type="button">
-    All Strains
-  </button>
-
-  <button class="deli-filter" data-filter="mega" type="button">
-    Mega Deals 💥
-  </button>
-
-  <button class="deli-filter" data-filter="sativa" type="button">
-    Sativa
-  </button>
-
-  <button class="deli-filter" data-filter="hybrid" type="button">
-    Hybrid
-  </button>
-
-  <button class="deli-filter" data-filter="indica" type="button">
-    Indica
-  </button>
-
-  <button
-    id="art-mode-toggle"
-    class="deli-art-toggle"
-    type="button"
-  >
-    Tap for Label ArtSTATUS: LOADED
-REAL FILE PATH:
-LAST UPDATED: 8.13.26
-GITHUB REPOSITORY:
-NOTES: Dutch Deli updated: 5 new strains; Afghani #3 + Space Hippy updated; top terpenes added; new strains art-only until bud photos arrive; Chocolate Marshmallow Bubblehash, Spirit Hashplant, and Banana Split retired.
-
-================ COMPLETE CURRENT FILE BELOW ================
-
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="format-detection" content="telephone=no,address=no">
-
-  <title>Green Labs • Premium cannabis</title>
-  <meta name="description" content="Premium cannabis in Luna Pier — powered by Dutch Touch Genetics. Award-winning genetics. Consistent quality. Easy shopping." />
-  <meta name="theme-color" content="#0B7D5A" />
-
-  <meta property="og:title" content="Green Labs | The Standard of Michigan Cannabis">
-  <meta property="og:description" content="Award-winning Dutch Touch Genetics, premium deli flower, and exclusive daily deals. Visit Green Labs in Luna Pier.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://greenlabsmi.com/">
-  <meta property="og:image" content="https://greenlabsmi.com/assets/img/tpromo-terpene.jpg">
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Green Labs | The Standard of Michigan Cannabis">
-  <meta name="twitter:description" content="Award-winning Dutch Touch Genetics, premium deli flower, and exclusive daily deals.">
-  <meta name="twitter:image" content="https://greenlabsmi.com/assets/img/promo-terpene.jpg">
-
-  <link rel="icon" href="assets/img/favicon.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@700;900&family=Bebas+Neue&family=Outfit:wght@700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=333">
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "w5zkqgu1up");
-</script>
-</head>
-
-<body>
-  
-<div id="ageGate" class="age-gate" hidden>
-    <div class="age-gate__box">
-      <img src="assets/img/greenlabs-logo.png" alt="Green Labs" class="age-gate__logo" style="width: 120px; filter: brightness(0) invert(1);" />
-      <h2 class="age-gate__title">Welcome to Green Labs</h2>
-      <p class="age-gate__sub">Are you 21 years of age or older, or a valid Michigan medical patient?</p>
-      <div class="age-gate__actions">
-        <button id="btnAgePass" class="btn btn--primary" style="width: 100%;">Yes, I am</button>
-        <button id="btnAgeFail" class="btn btn--ghost" style="width: 100%;">No, I am not</button>
-      </div>
-      <p class="age-gate__note">By clicking "Yes", you agree to our Terms of Service and Privacy Policy.</p>
-    </div>
-  </div>
-  
-  <!-- ===== Top Brand Bar (NOT sticky) ===== -->
-  <header class="topbar">
-    <div class="container topbar__inner">
-      <div class="brandmark">
-        <span class="sprig" aria-hidden="true">✦</span>
-        <div class="brandmark__stack">
-          <div class="brandmark__name">GREEN LABS</div>
-          <div class="brandmark__sub">Premium cannabis • Powered by Dutch Touch Genetics</div>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <!-- ===== Sticky Header (stays) ===== -->
-  <header class="sticky">
-    <div class="container sticky__inner">
-      <a class="sticky__logo" href="#home" aria-label="Green Labs home">
-        <img src="assets/img/greenlabs-logo.png" alt="Green Labs logo" />
-      </a>
-
-      <!-- Desktop tabs + Desktop hamburger -->
-      <nav class="tabs" aria-label="Primary navigation">
-        <a class="tab tab--cta" href="#shop" data-open-shop>Shop Online</a>
-        <a class="tab" href="#deals" data-open-deals>Deals</a>
-        <a class="tab" href="#visit" data-scroll="#visit">Visit</a>
-        <a class="tab shimmer-text" href="#dtg" data-scroll="#dtg">Keep It Dutch</a>
-
-        <button class="icon icon--menu" data-open-menu aria-label="Open menu" type="button">
-          <span aria-hidden="true">☰</span>
-        </button>
-      </nav>
-
-      <!-- Mobile actions -->
-      <div class="actions">
-        <button class="btn btn--ghost btn--shop" data-open-shop type="button" aria-label="Shop now">
-          <span class="glowLabel">SHOP</span>
-        </button>
-
-        <button class="btn btn--ghost btn--deals" data-open-deals type="button" aria-label="View deals">
-          <span class="glowLabel">DEALS</span>
-        </button>
-
-        <button class="btn btn--ghost btn--kid" data-scroll="#dtg" type="button" aria-label="Keep It Dutch">
-          <span class="kidLabel">KEEP IT DUTCH</span>
-        </button>
-
-        <button class="icon icon--menu" data-open-menu aria-label="Open menu" type="button">
-          <span aria-hidden="true">☰</span>
-        </button>
-      </div> </div> 
-
-
-<div class="deli-banner">
-  <div class="deli-banner__track">
-    <div class="deli-banner__content">
-      <span data-promo-banner-part="headline">
-        🏆 AWARD WINNING GENETICS
-      </span>
-
-      <span class="deli-banner__divider">•</span>
-
-      <span data-promo-banner-part="products">
-        MR. CLEAN, LILAC DIESEL & SPACE HIPPY AVAILABLE NOW
-      </span>
-
-      <span class="deli-banner__divider">•</span>
-
-      <span
-        class="deli-banner__price"
-        data-promo-banner-part="offer"
-      >
-        LEMON WOOKIE COMING SOON
-      </span>
-
-      <span class="deli-banner__divider">•</span>
-
-      <span
-        data-promo-banner-part="headline"
-        aria-hidden="true"
-      >
-        🏆 AWARD WINNING GENETICS
-      </span>
-
-      <span
-        class="deli-banner__divider"
-        aria-hidden="true"
-      >
-        •
-      </span>
-
-      <span
-        data-promo-banner-part="products"
-        aria-hidden="true"
-      >
-        MR. CLEAN, LILAC DIESEL & SPACE HIPPY AVAILABLE NOW
-      </span>
-
-      <span
-        class="deli-banner__divider"
-        aria-hidden="true"
-      >
-        •
-      </span>
-
-      <span
-        class="deli-banner__price"
-        data-promo-banner-part="offer"
-        aria-hidden="true"
-      >
-        LEMON WOOKIE COMING SOON
-      </span>
-    </div>
-  </div>
-</div>
-
-<style>
-  .deli-banner {
-    width: 100%;
-    background: #050505;
-    border-top: 1px solid #333;
-    border-bottom: 1px solid #333;
-    overflow: hidden;
-    padding: 12px 0;
-    white-space: nowrap;
-  }
-
-  .deli-banner__track {
-    display: inline-block;
-    animation: marquee 25s linear infinite;
-  }
-
-  .deli-banner__content {
-    display: inline-block;
-    font-family: 'Inter', sans-serif;
-    font-weight: 700;
-    font-size: 14px;
-    letter-spacing: 2px;
-    color: #fff;
-    text-transform: uppercase;
-  }
-
-  .deli-banner__price { color: #d6a441; }
-  .deli-banner__divider { margin: 0 20px; color: #333; }
-
-  @keyframes marquee {
-    0% { transform: translate(0, 0); }
-    100% { transform: translate(-50%, 0); }
-  }
-</style>
     
 
 
@@ -959,58 +384,14 @@ NOTES: Dutch Deli updated: 5 new strains; Afghani #3 + Space Hippy updated; top 
       
       <div id="deliCarousel" class="strain-grid deli-carousel">
 
-       <div class="deli-card-wrapper is-award is-new" data-category="hybrid" onclick="openDeliModal('lemon-wookie-4')">
+        <div class="deli-card-wrapper is-award" data-category="sativa" onclick="openDeliModal('mr-clean')">
           <div class="deli-card">
-            <div class="deli-card__front" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/lemon-wookie-4-art.jpg');"></div>
-            <div class="deli-card__back" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/lemon-wookie-4-art.jpg');"></div>
+            <div class="deli-card__front" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/mr-clean-bud.jpg');"></div>
+            <div class="deli-card__back" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/mr-clean-art.jpg');"></div>
           </div>
           <div class="deli-card__label">
-            <h3>Lemon Wookie #4</h3>
-            <p class="deli-card__genetics">Hybrid • Award Winner</p>
-          </div>
-        </div>
-
-        <div class="deli-card-wrapper is-new" data-category="sativa" onclick="openDeliModal('astro-taffy')">
-          <div class="deli-card">
-            <div class="deli-card__front" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/astro-taffy-art.jpg');"></div>
-            <div class="deli-card__back" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/astro-taffy-art.jpg');"></div>
-          </div>
-          <div class="deli-card__label">
-            <h3>Astro Taffy</h3>
-            <p class="deli-card__genetics">Sativa Dominant • 25.53% THC</p>
-          </div>
-        </div>
-
-        <div class="deli-card-wrapper is-new" data-category="indica" onclick="openDeliModal('white-lightning')">
-          <div class="deli-card">
-            <div class="deli-card__front" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/white-lightning-art.jpg');"></div>
-            <div class="deli-card__back" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/white-lightning-art.jpg');"></div>
-          </div>
-          <div class="deli-card__label">
-            <h3>White Lightning</h3>
-            <p class="deli-card__genetics">Indica Dominant • 25.88% THC</p>
-          </div>
-        </div>
-
-        <div class="deli-card-wrapper is-new" data-category="indica" onclick="openDeliModal('palpatine')">
-          <div class="deli-card">
-            <div class="deli-card__front" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/palpatine-art.jpg');"></div>
-            <div class="deli-card__back" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/palpatine-art.jpg');"></div>
-          </div>
-          <div class="deli-card__label">
-            <h3>Palpatine</h3>
-            <p class="deli-card__genetics">Indica Dominant • 25.63% THC</p>
-          </div>
-        </div>
-
-        <div class="deli-card-wrapper is-new" data-category="indica" onclick="openDeliModal('lazy-lightning')">
-          <div class="deli-card">
-            <div class="deli-card__front" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/lazy-lightning-art.jpg');"></div>
-            <div class="deli-card__back" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/lazy-lightning-art.jpg');"></div>
-          </div>
-          <div class="deli-card__label">
-            <h3>Lazy Lightning</h3>
-            <p class="deli-card__genetics">Indica-Dominant Hybrid • 25.95% THC</p>
+            <h3>Mr. Clean</h3>
+            <p class="deli-card__genetics">Sativa • 25.57</p>
           </div>
         </div>
         
@@ -1068,14 +449,74 @@ NOTES: Dutch Deli updated: 5 new strains; Afghani #3 + Space Hippy updated; top 
             <p class="deli-card__genetics">Indica • 27% THC</p>
           </div>
         </div>
-        <div class="deli-card-wrapper is-new" data-category="hybrid" onclick="openDeliModal('space-hippy')">
+        <div class="deli-card-wrapper is-new" data-category="hybrid" onclick="openDeliModal('space-hippy-bubblehash')">
           <div class="deli-card">
-            <div class="deli-card__front" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/space-hippy-art.jpg');"></div>
-            <div class="deli-card__back" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/space-hippy-art.jpg');"></div>
+            <div class="deli-card__front" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/space-hippy-bubblehash-art.jpg');"></div>
+            <div class="deli-card__back" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/space-hippy-bubblehash-art.jpg');"></div>
           </div>
           <div class="deli-card__label">
             <h3>Space Hippy</h3>
             <p class="deli-card__genetics">Bubble Hash Infused • 28.72% THC</p>
+          </div>
+        </div>
+
+
+
+
+
+
+<div class="deli-card-wrapper is-award is-new" data-category="hybrid" onclick="openDeliModal('lemon-wookie')">
+          <div class="deli-card">
+            <div class="deli-card__front" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/lemon-wookie-art.jpg');"></div>
+            <div class="deli-card__back" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/lemon-wookie-art.jpg');"></div>
+          </div>
+          <div class="deli-card__label">
+            <h3>Lemon Wookie</h3>
+            <p class="deli-card__genetics">Hybrid • Award Winner</p>
+          </div>
+        </div>
+
+        <div class="deli-card-wrapper is-new" data-category="sativa" onclick="openDeliModal('astro-taffy')">
+          <div class="deli-card">
+            <div class="deli-card__front" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/astro-taffy-art.jpg');"></div>
+            <div class="deli-card__back" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/astro-taffy-art.jpg');"></div>
+          </div>
+          <div class="deli-card__label">
+            <h3>Astro Taffy</h3>
+            <p class="deli-card__genetics">Sativa Dominant • 25.53% THC</p>
+          </div>
+        </div>
+
+        <div class="deli-card-wrapper is-new" data-category="indica" onclick="openDeliModal('white-lightning')">
+          <div class="deli-card">
+            <div class="deli-card__front" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/white-lightning-art.jpg');"></div>
+            <div class="deli-card__back" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/white-lightning-art.jpg');"></div>
+          </div>
+          <div class="deli-card__label">
+            <h3>White Lightning</h3>
+            <p class="deli-card__genetics">Indica Dominant • 25.88% THC</p>
+          </div>
+        </div>
+
+        <div class="deli-card-wrapper is-new" data-category="indica" onclick="openDeliModal('palpatine')">
+          <div class="deli-card">
+            <div class="deli-card__front" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/palpatine-art.jpg');"></div>
+            <div class="deli-card__back" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/palpatine-art.jpg');"></div>
+          </div>
+          <div class="deli-card__label">
+            <h3>Palpatine</h3>
+            <p class="deli-card__genetics">Indica Dominant • 25.63% THC</p>
+          </div>
+        </div>
+
+        <div class="deli-card-wrapper is-new" data-category="indica" onclick="openDeliModal('lazy-lightning')">
+          <div class="deli-card">
+            <div class="deli-card__front" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/lazy-lightning-art.jpg');"></div>
+            <div class="deli-card__back" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/lazy-lightning-art.jpg');"></div>
+          </div>
+          <div class="deli-card__label">
+            <h3>Lazy Lightning</h3>
+            <p class="deli-card__genetics">Indica-Dominant Hybrid • 25.95% THC</p>
           </div>
         </div>
 
