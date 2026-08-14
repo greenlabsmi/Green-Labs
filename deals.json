@@ -43,15 +43,17 @@
 
   "highlights": {
     "layout": {
-      "hero": "lemon-wookie-award",
+      "hero": "haha-blast",
       "mid": [
         "mix-carts",
         "dtg-disposables"
       ],
       "scroll": [
-        "party-favors-carts",
-        "play-gummies",
+        "redbud-carts",
+        "mix-gummies",
         "lightsky-carts",
+        "covert-cones",
+        "play-gummies",
         "fire-styxx",
         "hash-house-rosin-cart",
         "premium-gummies"
@@ -59,19 +61,19 @@
     },
 
     "items": {
-      "lemon-wookie-award": {
-        "title": "Lemon Wookie — 2nd Place Best in Grass",
-        "price": "AWARD WINNER",
-        "tag": "DUTCH TOUCH GENETICS",
-        "details": "2nd Place Award · Lemon Wookie Glass Tip Pre-Roll",
-        "image": "assets/img/highlights/hl-lemon-wookie.jpg"
+      "haha-blast": {
+        "title": "NEW Haha Blast",
+        "price": "$10",
+        "tag": "THC DRINK",
+        "details": "Tropical Soda · 50mg THC · 60mg Caffeine",
+        "image": "assets/img/haha-blast-hl.jpg"
       },
 
       "mix-carts": {
         "title": "Mix & Match 1G Carts",
         "price": "5 for $35",
         "tag": "VAPES",
-        "details": "Party Favors · Crude Boys · Daily Dose · PLAY Hash Rosin",
+        "details": "Party Favors · PLAY · Crude Boys · Drip",
         "image": "assets/img/highlights/mixmatch-carts.jpg"
       },
 
@@ -79,37 +81,47 @@
         "title": "DTG 1G Disposables",
         "price": "3 for $45",
         "tag": "VAPES",
-        "details": "$20ea · 3/$45 · 7/$100",
+        "details": "Includes All Strains",
         "image": "assets/img/deals/dt-disposables.jpg"
       },
 
-      "party-favors-carts": {
-        "title": "Party Favors 1G Carts — 15/$80",
-        "image": "assets/img/highlights/hl-party-favors.jpg"
+      "redbud-carts": {
+        "title": "Redbud Roots 1G Carts 3 for $25",
+        "image": "assets/img/highlights/hl-redbud.jpg"
       },
 
-      "play-gummies": {
-        "title": "PLAY 200mg Gummies — $3ea or 10/$20",
-        "image": "assets/img/highlights/play-gummy-hl.jpg"
+      "mix-gummies": {
+        "title": "Value Gummies 5 for $18",
+        "image": "assets/img/highlights/hl-gummies.jpg"
       },
 
       "lightsky-carts": {
-        "title": "LightSky Farms Live Resin Carts — $15",
+        "title": "LightSky Farms Live Resin Carts $15",
         "image": "assets/img/highlights/hl-lightsky.jpg"
       },
 
+      "covert-cones": {
+        "title": "Covert Banana Foster Cone $8",
+        "image": "assets/img/highlights/covert-cones-hl.jpg"
+      },
+
+      "play-gummies": {
+        "title": "PLAY 200mg Gummies 10 for $20",
+        "image": "assets/img/highlights/play-gummy-hl.jpg"
+      },
+
       "fire-styxx": {
-        "title": "Fire Styxx — $6ea or 10/$55",
+        "title": "Fire Styxx 10 for $55",
         "image": "assets/img/highlights/hl-fire-styxx.jpg"
       },
 
       "hash-house-rosin-cart": {
-        "title": "Redbud Roots Hash Rosin Cartridges — $15",
+        "title": "Hash House Rosin Cart $15",
         "image": "assets/img/highlights/hash-house-hl.jpg"
       },
 
       "premium-gummies": {
-        "title": "Squishy & Boujee Hash Rosin Gummies — $8 or 5/$35",
+        "title": "Premium Gummies 5 for $35",
         "image": "assets/img/highlights/hl-premium-gummies.jpg"
       }
     }
@@ -152,15 +164,16 @@
           "title": "Vape Cartridges",
           "items": [
             "Party Favors 1G Carts — 15/$80 — Bulk",
-            "PLAY 1G Hash Rosin Infused Carts — 10/$55",
+            "PLAY 1G Hash Rosin Infused Cart — 10/$55",
             "Mix & Match 1G Carts — $9ea, 3/$25 or 5/$35",
-            "Mix & Match Brands Include Party Favors, Crude Boys, Daily Dose and PLAY Hash Rosin Cartridges",
+            "Mix & Match Brands Include Party Favors, Crude Boys and Drip",
             "Redbud Roots 1G Full Spectrum Carts — $10ea or 3/$25",
             "LightSky Farms Live Resin Carts — $15",
             "Redbud Roots Hash Rosin Cartridges (Hash House) — $15",
             "Cresco 1G Live Resin Cartridges — $30ea, 2/$55 or 4/$100"
           ]
         },
+
         {
           "title": "Disposable Vapes",
           "items": [
@@ -201,6 +214,7 @@
             "Jeeter 1G — $15"
           ]
         },
+
         {
           "title": "Non-Infused Pre-Rolls",
           "items": [
@@ -223,7 +237,7 @@
       "promo": false,
       "groups": [
         {
-          "title": "Gummies & Chocolates",
+          "title": "Gummies, Chocolates & Pouches",
           "items": [
             "PLAY 200mg Gummies (4x50mg) — $3ea or 10/$20",
             "True North & PLAY One Hitters — $4ea or 10/$30",
@@ -241,6 +255,7 @@
             "Hippie Bliss 20-Count THC Cookies — $15"
           ]
         },
+
         {
           "title": "🥤 THC Drinks",
           "items": [
@@ -269,6 +284,7 @@
             "Dutch Touch 14G Diamonds — $200"
           ]
         },
+
         {
           "title": "Rosin Concentrates",
           "items": [
@@ -298,6 +314,7 @@
             "Dutch Touch Bubble Hash 7G Jar — $150"
           ]
         },
+
         {
           "title": "Third-Party Hash",
           "items": [
@@ -322,6 +339,7 @@
             "Green Labs Beanie — $18"
           ]
         },
+
         {
           "title": "Accessories",
           "items": [
