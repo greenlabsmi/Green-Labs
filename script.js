@@ -875,7 +875,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // Handle multiple categories separated by spaces
         const categories = card.getAttribute('data-category').split(' ');
         
-        if (filterVal === 'all' || categories.includes(filterVal)) {
+        const shouldShow =
+          filterVal === 'all' || categories.includes(filterVal);
+
+        if (shouldShow) {
           card.classList.remove('is-hidden');
           // Add a tiny animation reset for a clean reveal
           card.style.opacity = '0';
@@ -1289,6 +1292,598 @@ const deliStrainData = {
     about: "Powered by Terpinolene, Beta-Caryophyllene, and Myrcene, this Bodhi Seeds cross offers a clear, motivated, uplifted mental state anchored by a soothing, relaxed body."
   }
 };
+
+// =========================================================
+// CURATED BRAND DELI MODAL
+// One carousel tile per outside brand. Brand modal can show
+// strain artwork when supplied, or a clean strain list when not.
+// =========================================================
+const curatedBrandData = {
+  glacier: {
+    name: "Glacier Cannabis",
+    shortName: "Glacier",
+    eyebrow: "Curated Partner",
+    accent: "#69AEE7",
+    tileBackground: "radial-gradient(circle at 50% 28%, rgba(105,174,231,.30), transparent 34%), linear-gradient(155deg, #071018 0%, #0b1720 46%, #030506 100%)",
+    logoImage: "./assets/img/brands/glacier/glacier-logo.png",
+    intro: "Hand-trimmed premium flower from one of our curated Michigan partners.",
+    strains: [
+      {
+        name: "Blast Chiller",
+        image: "./assets/img/brands/glacier/blast-chiller.png"
+      },
+      {
+        name: "Green Crack",
+        image: "./assets/img/brands/glacier/green-crack.png"
+      }
+    ]
+  },
+
+  redbud: {
+    name: "Redbud Roots",
+    shortName: "Redbud Roots",
+    eyebrow: "Curated Partner",
+    accent: "#244C72",
+    tileBackground: "radial-gradient(circle at 50% 28%, rgba(36,76,114,.30), transparent 36%), linear-gradient(155deg, #07101a 0%, #0b1520 50%, #030506 100%)",
+    logoImage: "./assets/img/brands/redbud-roots/redbud-roots-logo.png",
+    intro: "A rotating selection of Redbud Roots deli flower, curated by Green Labs.",
+    strains: [
+      { name: "Glitter Bomb" },
+      { name: "Macflurry" },
+      { name: "Red Nerdz" },
+      { name: "Sherb Cream Pie" },
+      { name: "Whompz" },
+      { name: "Zereals" }
+    ]
+  },
+
+  sapura: {
+    name: "Sapura",
+    shortName: "Sapura",
+    eyebrow: "Curated Partner",
+    accent: "#E94A9D",
+    tileBackground: "radial-gradient(circle at 48% 30%, rgba(233,74,157,.28), transparent 34%), radial-gradient(circle at 72% 68%, rgba(54,186,166,.16), transparent 30%), linear-gradient(155deg, #160817 0%, #0b0a12 54%, #030405 100%)",
+    logoImage: "./assets/img/brands/sapura/sapura-logo.png",
+    intro: "A rotating selection of Sapura deli flower, curated by Green Labs.",
+    strains: [
+      { name: "Apple Gas" },
+      { name: "Super Boof" },
+      { name: "Tongue Splasher" }
+    ]
+  }
+};
+
+let currentCuratedBrandId = null;
+let currentCuratedSlide = 0;
+
+function ensureCuratedBrandModal() {
+  let modal = document.getElementById("curatedBrandModal");
+  if (modal) return modal;
+
+  document.body.insertAdjacentHTML("beforeend", `
+    <div
+      id="curatedBrandModal"
+      aria-hidden="true"
+      style="
+        position:fixed;
+        inset:0;
+        z-index:10050;
+        display:none;
+        align-items:center;
+        justify-content:center;
+        padding:18px;
+        box-sizing:border-box;
+      "
+    >
+      <div
+        data-curated-close
+        aria-hidden="true"
+        style="
+          position:absolute;
+          inset:0;
+          background:rgba(0,0,0,.84);
+          backdrop-filter:blur(8px);
+        "
+      ></div>
+
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="curatedBrandModalName"
+        style="
+          position:relative;
+          width:min(760px, 100%);
+          max-height:92vh;
+          overflow-y:auto;
+          background:#0b0e0d;
+          border:1px solid rgba(255,255,255,.14);
+          border-radius:18px;
+          box-shadow:0 30px 90px rgba(0,0,0,.7);
+          color:#fff;
+          padding:22px;
+          box-sizing:border-box;
+        "
+      >
+        <button
+          id="curatedBrandModalClose"
+          type="button"
+          aria-label="Close curated brand details"
+          style="
+            position:absolute;
+            top:12px;
+            right:12px;
+            z-index:4;
+            width:42px;
+            height:42px;
+            border-radius:50%;
+            border:1px solid rgba(255,255,255,.18);
+            background:rgba(0,0,0,.62);
+            color:#fff;
+            font-size:28px;
+            line-height:1;
+            cursor:pointer;
+          "
+        >×</button>
+
+        <div style="text-align:center; padding:8px 42px 18px;">
+          <div
+            id="curatedBrandModalEyebrow"
+            style="
+              color:#D6A34A;
+              font-size:10px;
+              font-weight:900;
+              letter-spacing:.16em;
+              text-transform:uppercase;
+              margin-bottom:8px;
+            "
+          ></div>
+
+          <img
+            id="curatedBrandModalLogo"
+            src=""
+            alt=""
+            style="
+              display:none;
+              width:min(180px, 55%);
+              max-height:120px;
+              object-fit:contain;
+              margin:0 auto 12px;
+            "
+          >
+
+          <h2
+            id="curatedBrandModalName"
+            style="margin:0; font-size:clamp(28px, 7vw, 44px); line-height:1;"
+          ></h2>
+
+          <p
+            id="curatedBrandModalIntro"
+            style="
+              margin:12px auto 0;
+              max-width:560px;
+              color:rgba(255,255,255,.68);
+              font-size:14px;
+              line-height:1.55;
+            "
+          ></p>
+        </div>
+
+        <div id="curatedBrandGalleryWrap" hidden>
+          <div style="position:relative;">
+            <button
+              id="curatedBrandPrev"
+              type="button"
+              aria-label="Previous strain"
+              style="
+                position:absolute;
+                left:8px;
+                top:50%;
+                transform:translateY(-50%);
+                z-index:3;
+                width:40px;
+                height:40px;
+                border-radius:50%;
+                border:1px solid rgba(255,255,255,.2);
+                background:rgba(0,0,0,.68);
+                color:#fff;
+                font-size:24px;
+                cursor:pointer;
+              "
+            >‹</button>
+
+            <div
+              id="curatedBrandGallery"
+              style="
+                display:flex;
+                gap:14px;
+                overflow-x:auto;
+                scroll-snap-type:x mandatory;
+                scroll-behavior:smooth;
+                scrollbar-width:none;
+                padding:2px 1px 8px;
+              "
+            ></div>
+
+            <button
+              id="curatedBrandNext"
+              type="button"
+              aria-label="Next strain"
+              style="
+                position:absolute;
+                right:8px;
+                top:50%;
+                transform:translateY(-50%);
+                z-index:3;
+                width:40px;
+                height:40px;
+                border-radius:50%;
+                border:1px solid rgba(255,255,255,.2);
+                background:rgba(0,0,0,.68);
+                color:#fff;
+                font-size:24px;
+                cursor:pointer;
+              "
+            >›</button>
+          </div>
+
+          <div
+            id="curatedBrandDots"
+            aria-label="Strain gallery position"
+            style="display:flex; justify-content:center; gap:7px; padding:8px 0 4px;"
+          ></div>
+        </div>
+
+        <div
+          id="curatedBrandListWrap"
+          style="
+            margin-top:14px;
+            padding:18px;
+            border:1px solid rgba(255,255,255,.10);
+            border-radius:14px;
+            background:rgba(255,255,255,.035);
+          "
+        >
+          <div
+            style="
+              color:#D6A34A;
+              font-size:10px;
+              font-weight:900;
+              letter-spacing:.16em;
+              text-transform:uppercase;
+              margin-bottom:12px;
+            "
+          >Available Deli Strains</div>
+
+          <div
+            id="curatedBrandStrainList"
+            style="display:flex; flex-wrap:wrap; gap:8px;"
+          ></div>
+        </div>
+
+        <a
+          href="https://greenlabsmi.com/order-online"
+          target="_blank"
+          rel="noopener"
+          style="
+            display:block;
+            margin-top:18px;
+            padding:13px 18px;
+            border-radius:10px;
+            background:#D6A34A;
+            color:#111;
+            text-decoration:none;
+            text-align:center;
+            font-weight:900;
+            letter-spacing:.03em;
+          "
+        >Order for Pickup</a>
+      </div>
+    </div>
+  `);
+
+  modal = document.getElementById("curatedBrandModal");
+
+  document.getElementById("curatedBrandModalClose")?.addEventListener("click", closeCuratedBrandModal);
+  modal.querySelector("[data-curated-close]")?.addEventListener("click", closeCuratedBrandModal);
+  document.getElementById("curatedBrandPrev")?.addEventListener("click", () => moveCuratedBrandSlide(-1));
+  document.getElementById("curatedBrandNext")?.addEventListener("click", () => moveCuratedBrandSlide(1));
+
+  const gallery = document.getElementById("curatedBrandGallery");
+  gallery?.addEventListener("scroll", () => {
+    const slides = [...gallery.children];
+    if (!slides.length) return;
+
+    let closestIndex = 0;
+    let closestDistance = Infinity;
+
+    slides.forEach((slide, index) => {
+      const distance = Math.abs(slide.offsetLeft - gallery.scrollLeft);
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestIndex = index;
+      }
+    });
+
+    if (closestIndex !== currentCuratedSlide) {
+      currentCuratedSlide = closestIndex;
+      updateCuratedBrandDots();
+    }
+  }, { passive: true });
+
+  return modal;
+}
+
+function updateCuratedBrandDots() {
+  const dots = document.getElementById("curatedBrandDots");
+  if (!dots) return;
+
+  [...dots.children].forEach((dot, index) => {
+    dot.style.opacity = index === currentCuratedSlide ? "1" : ".32";
+    dot.style.transform = index === currentCuratedSlide ? "scale(1.18)" : "scale(1)";
+  });
+}
+
+function moveCuratedBrandSlide(direction) {
+  const gallery = document.getElementById("curatedBrandGallery");
+  if (!gallery) return;
+
+  const slides = [...gallery.children];
+  if (!slides.length) return;
+
+  currentCuratedSlide = Math.max(
+    0,
+    Math.min(slides.length - 1, currentCuratedSlide + direction)
+  );
+
+  slides[currentCuratedSlide].scrollIntoView({
+    behavior: "smooth",
+    block: "nearest",
+    inline: "start"
+  });
+
+  updateCuratedBrandDots();
+}
+
+function openCuratedBrandModal(brandId) {
+  const brand = curatedBrandData[brandId];
+  if (!brand) return;
+
+  const modal = ensureCuratedBrandModal();
+  currentCuratedBrandId = brandId;
+  currentCuratedSlide = 0;
+
+  const nameEl = document.getElementById("curatedBrandModalName");
+  const eyebrowEl = document.getElementById("curatedBrandModalEyebrow");
+  const introEl = document.getElementById("curatedBrandModalIntro");
+  const logoEl = document.getElementById("curatedBrandModalLogo");
+  const galleryWrap = document.getElementById("curatedBrandGalleryWrap");
+  const gallery = document.getElementById("curatedBrandGallery");
+  const dots = document.getElementById("curatedBrandDots");
+  const list = document.getElementById("curatedBrandStrainList");
+
+  if (nameEl) nameEl.textContent = brand.name;
+  if (eyebrowEl) eyebrowEl.textContent = brand.eyebrow || "Curated Partner";
+  if (introEl) introEl.textContent = brand.intro || "";
+
+  if (logoEl) {
+    if (brand.logoImage) {
+      logoEl.src = brand.logoImage;
+      logoEl.alt = `${brand.name} logo`;
+      logoEl.style.display = "block";
+      logoEl.onerror = () => {
+        logoEl.style.display = "none";
+      };
+    } else {
+      logoEl.removeAttribute("src");
+      logoEl.style.display = "none";
+    }
+  }
+
+  const artStrains = brand.strains.filter(strain => Boolean(strain.image));
+
+  if (gallery && galleryWrap && dots) {
+    if (artStrains.length) {
+      galleryWrap.hidden = false;
+      gallery.innerHTML = artStrains.map((strain) => `
+        <article
+          style="
+            flex:0 0 100%;
+            scroll-snap-align:start;
+            border-radius:14px;
+            overflow:hidden;
+            background:#050606;
+            border:1px solid rgba(255,255,255,.10);
+          "
+        >
+          <div style="aspect-ratio:1/1; background:#050606; display:flex; align-items:center; justify-content:center;">
+            <img
+              src="${strain.image}"
+              alt="${strain.name} by ${brand.name}"
+              loading="eager"
+              style="width:100%; height:100%; object-fit:contain; display:block;"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            >
+            <div
+              style="
+                display:none;
+                width:100%;
+                height:100%;
+                align-items:center;
+                justify-content:center;
+                color:rgba(255,255,255,.55);
+                font-weight:800;
+              "
+            >Artwork coming soon</div>
+          </div>
+          <div style="padding:12px 14px; font-size:18px; font-weight:900; text-align:center;">
+            ${strain.name}
+          </div>
+        </article>
+      `).join("");
+
+      dots.innerHTML = artStrains.map((_, index) => `
+        <button
+          type="button"
+          aria-label="Show strain ${index + 1}"
+          data-curated-dot="${index}"
+          style="
+            width:8px;
+            height:8px;
+            padding:0;
+            border:0;
+            border-radius:50%;
+            background:#fff;
+            opacity:${index === 0 ? "1" : ".32"};
+            cursor:pointer;
+            transition:.2s ease;
+          "
+        ></button>
+      `).join("");
+
+      dots.querySelectorAll("[data-curated-dot]").forEach(dot => {
+        dot.addEventListener("click", () => {
+          currentCuratedSlide = Number(dot.dataset.curatedDot) || 0;
+          const target = gallery.children[currentCuratedSlide];
+          target?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" });
+          updateCuratedBrandDots();
+        });
+      });
+
+      const prev = document.getElementById("curatedBrandPrev");
+      const next = document.getElementById("curatedBrandNext");
+      const showArrows = artStrains.length > 1;
+      if (prev) prev.style.display = showArrows ? "block" : "none";
+      if (next) next.style.display = showArrows ? "block" : "none";
+    } else {
+      galleryWrap.hidden = true;
+      gallery.innerHTML = "";
+      dots.innerHTML = "";
+    }
+  }
+
+  if (list) {
+    list.innerHTML = brand.strains.map((strain) => `
+      <span
+        style="
+          padding:8px 10px;
+          border-radius:999px;
+          background:rgba(255,255,255,.07);
+          border:1px solid rgba(255,255,255,.10);
+          color:rgba(255,255,255,.88);
+          font-size:12px;
+          font-weight:800;
+        "
+      >${strain.name}</span>
+    `).join("");
+  }
+
+  modal.style.display = "flex";
+  modal.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+
+  requestAnimationFrame(() => {
+    if (gallery) gallery.scrollLeft = 0;
+    updateCuratedBrandDots();
+  });
+}
+
+function closeCuratedBrandModal() {
+  const modal = document.getElementById("curatedBrandModal");
+  if (!modal) return;
+
+  modal.style.display = "none";
+  modal.setAttribute("aria-hidden", "true");
+  currentCuratedBrandId = null;
+  currentCuratedSlide = 0;
+  document.body.style.overflow = "";
+}
+
+function initCuratedBrandDeli() {
+  document.querySelectorAll(".curated-brand-card").forEach(card => {
+    const brandMarker = card.querySelector("[data-curated-brand]");
+    const brandId = brandMarker?.dataset.curatedBrand;
+    const brand = curatedBrandData[brandId];
+
+    if (!brand) return;
+
+    card.style.cursor = "pointer";
+    card.setAttribute("role", "button");
+    card.setAttribute("tabindex", "0");
+    card.setAttribute("aria-label", `Explore ${brand.name} deli strains`);
+
+    const openBrand = (event) => {
+      event?.preventDefault();
+      event?.stopPropagation();
+      if (typeof triggerHaptic === "function") triggerHaptic();
+      openCuratedBrandModal(brandId);
+    };
+
+    card.addEventListener("click", openBrand);
+    card.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        openBrand(event);
+      }
+    });
+
+    // Build every curated partner tile from the official logo + a coded brand background.
+    // This keeps the main carousel clean and avoids needing a separate tall poster asset.
+    const front = card.querySelector(".deli-card__front");
+    if (front) {
+      front.style.background = brand.tileBackground || "linear-gradient(155deg, #101413, #050606)";
+      front.style.position = "relative";
+      front.style.display = "flex";
+      front.style.alignItems = "center";
+      front.style.justifyContent = "center";
+      front.style.padding = "18px";
+      front.style.boxSizing = "border-box";
+      front.style.overflow = "hidden";
+      front.style.boxShadow = `inset 0 0 0 1px ${brand.accent || "rgba(255,255,255,.14)"}`;
+
+      const temporaryText = front.firstElementChild;
+      if (temporaryText) temporaryText.style.display = "none";
+
+      if (brand.logoImage) {
+        let logo = front.querySelector(".curated-brand-card__logo");
+        if (!logo) {
+          logo = document.createElement("img");
+          logo.className = "curated-brand-card__logo";
+          front.appendChild(logo);
+        }
+
+        logo.src = brand.logoImage;
+        logo.alt = `${brand.name} logo`;
+        logo.loading = "eager";
+        logo.style.cssText = `
+          display:block;
+          width:88%;
+          max-width:240px;
+          max-height:72%;
+          object-fit:contain;
+          position:relative;
+          z-index:2;
+          filter:drop-shadow(0 12px 24px rgba(0,0,0,.55));
+        `;
+
+        logo.onerror = () => {
+          logo.style.display = "none";
+          if (temporaryText) temporaryText.style.display = "block";
+        };
+      }
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeCuratedBrandModal();
+    }
+  });
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initCuratedBrandDeli);
+} else {
+  initCuratedBrandDeli();
+}
 
 let currentDeliModalImage = "front";
 
@@ -1944,46 +2539,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
-/* --- ARTWORK TOGGLE "WIND" EFFECT --- */
-document.addEventListener('DOMContentLoaded', () => {
-  const artToggleBtn = document.getElementById('art-mode-toggle');
-  const deliCards = document.querySelectorAll('.deli-card'); 
-
-  if (!artToggleBtn || deliCards.length === 0) return;
-
-  artToggleBtn.addEventListener('click', () => {
-    artToggleBtn.classList.toggle('active');
-    const isArtMode = artToggleBtn.classList.contains('active');
-
-    deliCards.forEach(card => {
-      // Find where this specific card is on the screen
-      const rect = card.getBoundingClientRect();
-      const delay = Math.max(0, rect.left) * 0.6; 
-      
-      // THE FIX: Target the front and back panels directly!
-      const frontFace = card.querySelector('.deli-card__front');
-      const backFace = card.querySelector('.deli-card__back');
-
-      // Apply the staggered delay to the faces
-      if (frontFace) frontFace.style.transitionDelay = `${delay}ms`;
-      if (backFace) backFace.style.transitionDelay = `${delay}ms`;
-
-      // Trigger the flip
-      if (isArtMode) {
-        card.classList.add('is-flipped');
-      } else {
-        card.classList.remove('is-flipped');
-      }
-      
-      // Clean up the delay after the wave finishes so normal clicking is instant
-      setTimeout(() => {
-        if (frontFace) frontFace.style.transitionDelay = '0ms';
-        if (backFace) backFace.style.transitionDelay = '0ms';
-      }, delay + 800); 
-    });
-  });
-});
-
 // ===== SMART MAP LINK (Aggressive Catch-All for ALL map links) =====
 // This searches for the smart-map class, plus EVERY known variation of a Google Maps link
 const mapSelectors = '.smart-map, a[href*="google.com/maps"], a[href*="maps.google"], a[href*="maps.app.goo.gl"], a[href*="goo.gl/maps"]';
@@ -2123,3 +2678,5 @@ document.querySelectorAll('[data-guide-card]').forEach(card => {
               }
   });
 });
+
+
