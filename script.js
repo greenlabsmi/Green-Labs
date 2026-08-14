@@ -1304,17 +1304,22 @@ const curatedBrandData = {
     shortName: "Glacier",
     eyebrow: "Curated Partner",
     accent: "#69AEE7",
+    accentSoft: "rgba(105,174,231,.18)",
     tileBackground: "radial-gradient(circle at 50% 28%, rgba(105,174,231,.30), transparent 34%), linear-gradient(155deg, #071018 0%, #0b1720 46%, #030506 100%)",
     logoImage: "./assets/img/brands/glacier/glacier-logo.png",
     intro: "Hand-trimmed premium flower from one of our curated Michigan partners.",
     strains: [
       {
         name: "Blast Chiller",
-        image: "./assets/img/brands/glacier/blast-chiller.png"
+        image: "./assets/img/brands/glacier/blast-chiller-deli.png"
       },
       {
         name: "Green Crack",
-        image: "./assets/img/brands/glacier/green-crack.png"
+        image: "./assets/img/brands/glacier/green-crack-deli.png"
+      },
+      {
+        name: "Super Boof",
+        image: "./assets/img/brands/glacier/super-boof-deli.png"
       }
     ]
   },
@@ -1323,7 +1328,8 @@ const curatedBrandData = {
     name: "Redbud Roots",
     shortName: "Redbud Roots",
     eyebrow: "Curated Partner",
-    accent: "#244C72",
+    accent: "#E56B5D",
+    accentSoft: "rgba(229,107,93,.17)",
     tileBackground: "radial-gradient(circle at 50% 28%, rgba(36,76,114,.30), transparent 36%), linear-gradient(155deg, #07101a 0%, #0b1520 50%, #030506 100%)",
     logoImage: "./assets/img/brands/redbud-roots/redbud-roots-logo.png",
     intro: "A rotating selection of Redbud Roots deli flower, curated by Green Labs.",
@@ -1342,6 +1348,7 @@ const curatedBrandData = {
     shortName: "Sapura",
     eyebrow: "Curated Partner",
     accent: "#E94A9D",
+    accentSoft: "rgba(233,74,157,.17)",
     tileBackground: "radial-gradient(circle at 48% 30%, rgba(233,74,157,.28), transparent 34%), radial-gradient(circle at 72% 68%, rgba(54,186,166,.16), transparent 30%), linear-gradient(155deg, #160817 0%, #0b0a12 54%, #030405 100%)",
     logoImage: "./assets/img/brands/sapura/sapura-logo.png",
     intro: "A rotating selection of Sapura deli flower, curated by Green Labs.",
@@ -1649,6 +1656,8 @@ function openCuratedBrandModal(brandId) {
   if (!brand) return;
 
   const modal = ensureCuratedBrandModal();
+  modal.style.setProperty("--brand-accent", brand.accent || "#D6A34A");
+  modal.style.setProperty("--brand-accent-soft", brand.accentSoft || "rgba(214,163,74,.16)");
   currentCuratedBrandId = brandId;
   currentCuratedSlide = 0;
 
@@ -1799,7 +1808,14 @@ function closeCuratedBrandModal() {
 }
 
 function initCuratedBrandDeli() {
-  document.querySelectorAll(".curated-brand-card").forEach(card => {
+  // Curated partners belong inside the SAME horizontal Dutch Deli carousel.
+  const deliCarousel = document.getElementById("deliCarousel");
+  const curatedCards = [...document.querySelectorAll(".curated-brand-card")];
+  if (deliCarousel) {
+    curatedCards.forEach(card => deliCarousel.appendChild(card));
+  }
+
+  curatedCards.forEach(card => {
     const brandMarker = card.querySelector("[data-curated-brand]");
     const brandId = brandMarker?.dataset.curatedBrand;
     const brand = curatedBrandData[brandId];
@@ -2637,6 +2653,54 @@ document.addEventListener('click', (e) => {
 });
 
 // ============================================================
+// ===== CURATED PARTNER VISUAL UPGRADE =====
+document.addEventListener('DOMContentLoaded', () => {
+  if (!document.getElementById('curatedBrandModalStyles')) {
+    document.head.insertAdjacentHTML('beforeend', `
+      <style id="curatedBrandModalStyles">
+        #curatedBrandModal [role="dialog"]{width:min(840px,100%)!important;padding:24px!important;background:radial-gradient(circle at 50% -10%,var(--brand-accent-soft,rgba(214,163,74,.16)),transparent 38%),linear-gradient(180deg,#101412 0%,#080a09 100%)!important;border:1px solid var(--brand-accent,#D6A34A)!important;box-shadow:0 32px 110px rgba(0,0,0,.82),inset 0 1px 0 rgba(255,255,255,.05)!important;}
+        #curatedBrandModalEyebrow{color:var(--brand-accent,#D6A34A)!important;}
+        #curatedBrandModalLogo{width:min(190px,48%)!important;max-height:105px!important;margin-bottom:10px!important;filter:drop-shadow(0 12px 30px rgba(0,0,0,.48));}
+        #curatedBrandModalName{font-family:'Cinzel',serif!important;font-size:clamp(28px,6vw,46px)!important;letter-spacing:-.025em;}
+        #curatedBrandModalIntro{max-width:620px!important;color:rgba(255,255,255,.72)!important;}
+        #curatedBrandGalleryWrap{margin-top:4px;padding:14px;border:1px solid rgba(255,255,255,.08);border-radius:18px;background:rgba(0,0,0,.24);}
+        #curatedBrandGallery article{position:relative;border-color:rgba(255,255,255,.12)!important;border-radius:16px!important;background:#050606!important;box-shadow:0 18px 48px rgba(0,0,0,.38);}
+        #curatedBrandGallery article>div:first-child{aspect-ratio:1/1!important;max-height:min(58vh,560px);background:radial-gradient(circle at 50% 42%,var(--brand-accent-soft,rgba(214,163,74,.12)),transparent 46%),#050606!important;}
+        #curatedBrandGallery img{width:100%!important;height:100%!important;object-fit:contain!important;display:block!important;}
+        #curatedBrandGallery article>div:last-child{position:absolute;left:14px;bottom:14px;width:auto!important;padding:8px 13px!important;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(0,0,0,.72);backdrop-filter:blur(8px);font-family:'Inter',sans-serif;font-size:14px!important;letter-spacing:.02em;}
+        #curatedBrandPrev,#curatedBrandNext{border-color:var(--brand-accent,#D6A34A)!important;background:rgba(0,0,0,.76)!important;box-shadow:0 8px 24px rgba(0,0,0,.35);}
+        #curatedBrandDots button{background:var(--brand-accent,#D6A34A)!important;}
+        #curatedBrandListWrap{border-color:rgba(255,255,255,.12)!important;background:linear-gradient(135deg,var(--brand-accent-soft,rgba(214,163,74,.08)),rgba(255,255,255,.025))!important;}
+        #curatedBrandListWrap>div:first-child{color:var(--brand-accent,#D6A34A)!important;}
+        #curatedBrandStrainList span{padding:9px 12px!important;border-color:rgba(255,255,255,.14)!important;background:rgba(255,255,255,.075)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.04);}
+        #curatedBrandModal a[href*="order-online"]{background:linear-gradient(135deg,#D6A34A,#efbd55)!important;box-shadow:0 10px 28px rgba(214,163,74,.18);}
+        .curated-brand-card .deli-card__front{position:relative!important;}
+        .curated-brand-card__pill{position:absolute;top:12px;left:12px;z-index:3;padding:6px 9px;border-radius:999px;font:900 9px/1 'Inter',sans-serif;letter-spacing:.12em;color:#fff;background:rgba(0,0,0,.62);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(6px);}
+        @media(max-width:700px){#curatedBrandModal{padding:10px!important;}#curatedBrandModal [role="dialog"]{padding:16px!important;border-radius:16px!important;}#curatedBrandGalleryWrap{padding:8px;}#curatedBrandGallery article>div:first-child{max-height:54vh;}}
+      </style>
+    `);
+  }
+
+  document.querySelectorAll('.curated-brand-card').forEach(card => {
+    const brandId = card.querySelector('[data-curated-brand]')?.dataset.curatedBrand;
+    const brand = curatedBrandData[brandId];
+    if (!brand) return;
+    const meta = card.querySelector('.deli-card__genetics');
+    if (meta) {
+      const count = brand.strains.length;
+      meta.textContent = `Curated Partner • ${count} Strain${count === 1 ? '' : 's'}`;
+    }
+    const front = card.querySelector('.deli-card__front');
+    if (front && !front.querySelector('.curated-brand-card__pill')) {
+      const pill = document.createElement('span');
+      pill.className = 'curated-brand-card__pill';
+      pill.textContent = 'CURATED PARTNER';
+      pill.style.borderColor = brand.accent || 'rgba(255,255,255,.22)';
+      front.appendChild(pill);
+    }
+  });
+});
+
 // MASTER EDUCATION TILE LOGIC (GLITCH-FREE)
 // ============================================================
 document.querySelectorAll('[data-guide-card]').forEach(card => {
