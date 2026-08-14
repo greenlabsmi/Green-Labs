@@ -999,7 +999,7 @@ const deliStrainData = {
     type: "Indica Dominant",
     thc: "25.14% THC",
     budImage: "",
-    artImage: "https://dutchtouchgenetics.com/assets/img/strains/afghani-3-art.jpg",
+    artImage: "https://dutchtouchgenetics.com/assets/img/strains/afghani-art.jpg",
     genetics: "Pure Afghan Landrace",
     terpenes: [
       { name: "α-Terpinene", percent: "1.507%", mg: "15.07 mg/g" },
