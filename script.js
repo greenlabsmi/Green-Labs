@@ -1300,7 +1300,7 @@ const deliStrainData = {
 // =========================================================
 const curatedBrandData = {
   glacier: {
-    name: "Glacier Cannabis",
+    name: "Glacier",
     shortName: "Glacier",
     eyebrow: "Curated Partner",
     accent: "#69AEE7",
@@ -1316,10 +1316,6 @@ const curatedBrandData = {
       {
         name: "Green Crack",
         image: "./assets/img/brands/glacier/green-crack-deli.png"
-      },
-      {
-        name: "Super Boof",
-        image: "./assets/img/brands/glacier/super-boof-deli.png"
       }
     ]
   },
@@ -1771,19 +1767,34 @@ function openCuratedBrandModal(brandId) {
   }
 
   if (list) {
-    list.innerHTML = brand.strains.map((strain) => `
-      <span
-        style="
-          padding:8px 10px;
-          border-radius:999px;
-          background:rgba(255,255,255,.07);
-          border:1px solid rgba(255,255,255,.10);
-          color:rgba(255,255,255,.88);
-          font-size:12px;
-          font-weight:800;
-        "
-      >${strain.name}</span>
-    `).join("");
+    list.innerHTML = brand.strains.map((strain) => {
+      const artIndex = artStrains.findIndex(artStrain => artStrain.name === strain.name);
+      return `
+        <button
+          type="button"
+          ${artIndex >= 0 ? `data-curated-strain-index="${artIndex}"` : "disabled"}
+          style="
+            padding:9px 12px;
+            border-radius:999px;
+            background:rgba(255,255,255,.07);
+            border:1px solid rgba(255,255,255,.10);
+            color:rgba(255,255,255,.88);
+            font-size:12px;
+            font-weight:800;
+            cursor:${artIndex >= 0 ? "pointer" : "default"};
+          "
+        >${strain.name}</button>
+      `;
+    }).join("");
+
+    list.querySelectorAll("[data-curated-strain-index]").forEach(button => {
+      button.addEventListener("click", () => {
+        currentCuratedSlide = Number(button.dataset.curatedStrainIndex) || 0;
+        const target = gallery?.children[currentCuratedSlide];
+        target?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" });
+        updateCuratedBrandDots();
+      });
+    });
   }
 
   modal.style.display = "flex";
@@ -1813,6 +1824,27 @@ function initCuratedBrandDeli() {
   const curatedCards = [...document.querySelectorAll(".curated-brand-card")];
   if (deliCarousel) {
     curatedCards.forEach(card => deliCarousel.appendChild(card));
+
+    // Keep the newest DTG drops at the very front of the deli on every page load.
+    const newDropOrder = [
+      "lemon-wookie",
+      "astro-taffy",
+      "white-lightning",
+      "palpatine",
+      "lazy-lightning",
+      "afghani-2",
+      "space-hippy-bubblehash"
+    ];
+
+    [...newDropOrder].reverse().forEach(strainId => {
+      const card = [...deliCarousel.querySelectorAll(".deli-card-wrapper")].find(item => {
+        const action = item.getAttribute("onclick") || "";
+        return action.includes(`'${strainId}'`) || action.includes(`\"${strainId}\"`);
+      });
+      if (card) deliCarousel.prepend(card);
+    });
+
+    deliCarousel.scrollLeft = 0;
   }
 
   curatedCards.forEach(card => {
@@ -1853,7 +1885,7 @@ function initCuratedBrandDeli() {
       front.style.padding = "18px";
       front.style.boxSizing = "border-box";
       front.style.overflow = "hidden";
-      front.style.boxShadow = `inset 0 0 0 1px ${brand.accent || "rgba(255,255,255,.14)"}`;
+      front.style.boxShadow = "inset 0 0 0 1px rgba(255,255,255,.12)";
 
       const temporaryText = front.firstElementChild;
       if (temporaryText) temporaryText.style.display = "none";
@@ -2658,25 +2690,26 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!document.getElementById('curatedBrandModalStyles')) {
     document.head.insertAdjacentHTML('beforeend', `
       <style id="curatedBrandModalStyles">
-        #curatedBrandModal [role="dialog"]{width:min(840px,100%)!important;padding:24px!important;background:radial-gradient(circle at 50% -10%,var(--brand-accent-soft,rgba(214,163,74,.16)),transparent 38%),linear-gradient(180deg,#101412 0%,#080a09 100%)!important;border:1px solid var(--brand-accent,#D6A34A)!important;box-shadow:0 32px 110px rgba(0,0,0,.82),inset 0 1px 0 rgba(255,255,255,.05)!important;}
-        #curatedBrandModalEyebrow{color:var(--brand-accent,#D6A34A)!important;}
-        #curatedBrandModalLogo{width:min(190px,48%)!important;max-height:105px!important;margin-bottom:10px!important;filter:drop-shadow(0 12px 30px rgba(0,0,0,.48));}
-        #curatedBrandModalName{font-family:'Cinzel',serif!important;font-size:clamp(28px,6vw,46px)!important;letter-spacing:-.025em;}
-        #curatedBrandModalIntro{max-width:620px!important;color:rgba(255,255,255,.72)!important;}
-        #curatedBrandGalleryWrap{margin-top:4px;padding:14px;border:1px solid rgba(255,255,255,.08);border-radius:18px;background:rgba(0,0,0,.24);}
+        #curatedBrandModal [role="dialog"]{width:min(760px,100%)!important;padding:18px!important;background:radial-gradient(circle at 50% -10%,var(--brand-accent-soft,rgba(214,163,74,.12)),transparent 34%),linear-gradient(180deg,#101412 0%,#080a09 100%)!important;border:1px solid rgba(255,255,255,.16)!important;box-shadow:0 28px 90px rgba(0,0,0,.82),inset 0 1px 0 rgba(255,255,255,.05)!important;}
+        #curatedBrandModalEyebrow{display:none!important;}
+        #curatedBrandModalLogo{width:min(125px,32%)!important;max-height:78px!important;margin-bottom:7px!important;filter:drop-shadow(0 10px 24px rgba(0,0,0,.48));}
+        #curatedBrandModalName{font-family:'Cinzel',serif!important;font-size:clamp(26px,5vw,38px)!important;letter-spacing:-.025em;}
+        #curatedBrandModalIntro{max-width:560px!important;margin-top:8px!important;color:rgba(255,255,255,.68)!important;}
+        #curatedBrandGalleryWrap{width:min(640px,100%);box-sizing:border-box;margin:2px auto 0!important;padding:10px!important;border:1px solid rgba(255,255,255,.10);border-radius:16px;background:rgba(255,255,255,.025);}
         #curatedBrandGallery article{position:relative;border-color:rgba(255,255,255,.12)!important;border-radius:16px!important;background:#050606!important;box-shadow:0 18px 48px rgba(0,0,0,.38);}
-        #curatedBrandGallery article>div:first-child{aspect-ratio:1/1!important;max-height:min(58vh,560px);background:radial-gradient(circle at 50% 42%,var(--brand-accent-soft,rgba(214,163,74,.12)),transparent 46%),#050606!important;}
+        #curatedBrandGallery article>div:first-child{aspect-ratio:1/1!important;max-height:min(62vh,600px);background:#080a09!important;}
         #curatedBrandGallery img{width:100%!important;height:100%!important;object-fit:contain!important;display:block!important;}
         #curatedBrandGallery article>div:last-child{position:absolute;left:14px;bottom:14px;width:auto!important;padding:8px 13px!important;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(0,0,0,.72);backdrop-filter:blur(8px);font-family:'Inter',sans-serif;font-size:14px!important;letter-spacing:.02em;}
-        #curatedBrandPrev,#curatedBrandNext{border-color:var(--brand-accent,#D6A34A)!important;background:rgba(0,0,0,.76)!important;box-shadow:0 8px 24px rgba(0,0,0,.35);}
+        #curatedBrandPrev{left:-18px!important;}#curatedBrandNext{right:-18px!important;}#curatedBrandPrev,#curatedBrandNext{border-color:rgba(255,255,255,.28)!important;background:rgba(0,0,0,.82)!important;box-shadow:0 8px 24px rgba(0,0,0,.35);}
         #curatedBrandDots button{background:var(--brand-accent,#D6A34A)!important;}
-        #curatedBrandListWrap{border-color:rgba(255,255,255,.12)!important;background:linear-gradient(135deg,var(--brand-accent-soft,rgba(214,163,74,.08)),rgba(255,255,255,.025))!important;}
-        #curatedBrandListWrap>div:first-child{color:var(--brand-accent,#D6A34A)!important;}
-        #curatedBrandStrainList span{padding:9px 12px!important;border-color:rgba(255,255,255,.14)!important;background:rgba(255,255,255,.075)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.04);}
-        #curatedBrandModal a[href*="order-online"]{background:linear-gradient(135deg,#D6A34A,#efbd55)!important;box-shadow:0 10px 28px rgba(214,163,74,.18);}
-        .curated-brand-card .deli-card__front{position:relative!important;}
-        .curated-brand-card__pill{position:absolute;top:12px;left:12px;z-index:3;padding:6px 9px;border-radius:999px;font:900 9px/1 'Inter',sans-serif;letter-spacing:.12em;color:#fff;background:rgba(0,0,0,.62);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(6px);}
-        @media(max-width:700px){#curatedBrandModal{padding:10px!important;}#curatedBrandModal [role="dialog"]{padding:16px!important;border-radius:16px!important;}#curatedBrandGalleryWrap{padding:8px;}#curatedBrandGallery article>div:first-child{max-height:54vh;}}
+        #curatedBrandListWrap{width:min(640px,100%);box-sizing:border-box;margin:12px auto 0!important;padding:14px!important;border-color:rgba(255,255,255,.12)!important;background:rgba(255,255,255,.035)!important;}
+        #curatedBrandListWrap>div:first-child{color:rgba(255,255,255,.62)!important;margin-bottom:9px!important;}
+        #curatedBrandStrainList button{appearance:none;-webkit-appearance:none;padding:9px 12px!important;border-color:rgba(255,255,255,.14)!important;background:rgba(255,255,255,.07)!important;color:#fff!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.04);transition:transform .16s ease,border-color .16s ease,background .16s ease;}#curatedBrandStrainList button:not(:disabled):hover{transform:translateY(-1px);border-color:var(--brand-accent,#D6A34A)!important;background:rgba(255,255,255,.11)!important;}#curatedBrandStrainList button:disabled{opacity:.72;}
+        #curatedBrandModal a[href*="order-online"]{width:min(640px,100%);box-sizing:border-box;margin:14px auto 0!important;background:linear-gradient(135deg,#D6A34A,#efbd55)!important;box-shadow:0 10px 28px rgba(214,163,74,.18);}
+        .curated-brand-card .deli-card{border-color:rgba(255,255,255,.12)!important;box-shadow:none!important;}
+        .curated-brand-card .deli-card__front{position:relative!important;box-shadow:inset 0 0 0 1px rgba(255,255,255,.10)!important;}
+        .curated-brand-card__pill{display:none!important;}
+        @media(max-width:700px){#curatedBrandModal{padding:10px!important;}#curatedBrandModal [role="dialog"]{padding:14px!important;border-radius:16px!important;}#curatedBrandGalleryWrap{padding:7px!important;}#curatedBrandPrev{left:4px!important;}#curatedBrandNext{right:4px!important;}#curatedBrandGallery article>div:first-child{max-height:58vh;}#curatedBrandModalLogo{width:min(110px,34%)!important;}}
       </style>
     `);
   }
@@ -2688,7 +2721,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const meta = card.querySelector('.deli-card__genetics');
     if (meta) {
       const count = brand.strains.length;
-      meta.textContent = `Curated Partner • ${count} Strain${count === 1 ? '' : 's'}`;
+      meta.textContent = `${count} Strain${count === 1 ? '' : 's'}`;
     }
     const front = card.querySelector('.deli-card__front');
     if (front && !front.querySelector('.curated-brand-card__pill')) {
