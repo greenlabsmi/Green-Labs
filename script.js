@@ -1311,10 +1311,12 @@ const curatedBrandData = {
     strains: [
       {
         name: "Blast Chiller",
+        thc: "30.7%",
         image: "./assets/img/brands/glacier/blast-chiller-deli.png"
       },
       {
         name: "Green Crack",
+        thc: "27%",
         image: "./assets/img/brands/glacier/green-crack-deli.png"
       }
     ]
@@ -1330,12 +1332,12 @@ const curatedBrandData = {
     logoImage: "./assets/img/brands/redbud-roots/redbud-roots-logo.png",
     intro: "A rotating selection of Redbud Roots deli flower, curated by Green Labs.",
     strains: [
-      { name: "Glitter Bomb" },
-      { name: "Macflurry" },
-      { name: "Red Nerdz" },
-      { name: "Sherb Cream Pie" },
-      { name: "Whompz" },
-      { name: "Zereals" }
+      { name: "Glitter Bomb", thc: "28.09%" },
+      { name: "Macflurry", thc: "26.46%" },
+      { name: "Red Nerdz", thc: "24.8%" },
+      { name: "Sherb Cream Pie", thc: "21.31%" },
+      { name: "Whompz", thc: "28.97%" },
+      { name: "Zereals", thc: "20.41%" }
     ]
   },
 
@@ -1349,9 +1351,9 @@ const curatedBrandData = {
     logoImage: "./assets/img/brands/sapura/sapura-logo.png",
     intro: "A rotating selection of Sapura deli flower, curated by Green Labs.",
     strains: [
-      { name: "Apple Gas" },
-      { name: "Super Boof" },
-      { name: "Tongue Splasher" }
+      { name: "Apple Gas", thc: "32.71%" },
+      { name: "Super Boof", thc: "34.82%" },
+      { name: "Tongue Splasher", thc: "23.96%" }
     ]
   }
 };
@@ -1668,7 +1670,10 @@ function openCuratedBrandModal(brandId) {
   const dots = document.getElementById("curatedBrandDots");
   const list = document.getElementById("curatedBrandStrainList");
 
-  if (nameEl) nameEl.textContent = brand.name;
+  if (nameEl) {
+    nameEl.textContent = brand.name;
+    nameEl.style.display = brandId === "sapura" ? "none" : "block";
+  }
   if (eyebrowEl) eyebrowEl.textContent = brand.eyebrow || "Curated Partner";
   if (introEl) introEl.textContent = brand.intro || "";
 
@@ -1677,6 +1682,9 @@ function openCuratedBrandModal(brandId) {
       logoEl.src = brand.logoImage;
       logoEl.alt = `${brand.name} logo`;
       logoEl.style.display = "block";
+      logoEl.style.width = brandId === "sapura" ? "min(360px, 86%)" : "min(180px, 55%)";
+      logoEl.style.maxHeight = brandId === "sapura" ? "180px" : "120px";
+      logoEl.style.marginBottom = brandId === "sapura" ? "8px" : "12px";
       logoEl.style.background = brandId === "glacier"
         ? "linear-gradient(180deg, rgba(255,255,255,.98), rgba(222,240,252,.96))"
         : "transparent";
@@ -1701,14 +1709,18 @@ function openCuratedBrandModal(brandId) {
         <article
           style="
             flex:0 0 100%;
+            width:100%;
+            max-width:800px;
+            aspect-ratio:1/1;
             scroll-snap-align:start;
             border-radius:14px;
             overflow:hidden;
             background:#050606;
             border:1px solid rgba(255,255,255,.10);
+            box-sizing:border-box;
           "
         >
-          <div style="aspect-ratio:1/1; background:#050606; display:flex; align-items:center; justify-content:center;">
+          <div style="width:100%; height:100%; aspect-ratio:1/1; background:#050606; display:flex; align-items:center; justify-content:center;">
             <img
               src="${strain.image}"
               alt="${strain.name} by ${brand.name}"
@@ -1727,9 +1739,6 @@ function openCuratedBrandModal(brandId) {
                 font-weight:800;
               "
             >Artwork coming soon</div>
-          </div>
-          <div style="padding:12px 14px; font-size:18px; font-weight:900; text-align:center;">
-            ${strain.name}
           </div>
         </article>
       `).join("");
@@ -1775,34 +1784,29 @@ function openCuratedBrandModal(brandId) {
   }
 
   if (list) {
+    list.style.display = "grid";
+    list.style.gap = "0";
     list.innerHTML = brand.strains.map((strain) => {
-      const artIndex = artStrains.findIndex(artStrain => artStrain.name === strain.name);
       return `
-        <button
-          type="button"
-          ${artIndex >= 0 ? `data-curated-strain-index="${artIndex}"` : "disabled"}
+        <div
           style="
-            padding:9px 12px;
-            border-radius:999px;
-            background:rgba(255,255,255,.07);
-            border:1px solid rgba(255,255,255,.10);
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:16px;
+            width:100%;
+            padding:12px 0;
+            border-radius:0;
+            background:transparent;
+            border:0;
+            border-bottom:1px solid rgba(255,255,255,.08);
             color:rgba(255,255,255,.88);
-            font-size:12px;
+            font-size:13px;
             font-weight:800;
-            cursor:${artIndex >= 0 ? "pointer" : "default"};
           "
-        >${strain.name}</button>
+        ><span>${strain.name}</span><span style="color:rgba(255,255,255,.62); white-space:nowrap;">${strain.thc ? `${strain.thc} THC` : ""}</span></div>
       `;
     }).join("");
-
-    list.querySelectorAll("[data-curated-strain-index]").forEach(button => {
-      button.addEventListener("click", () => {
-        currentCuratedSlide = Number(button.dataset.curatedStrainIndex) || 0;
-        const target = gallery?.children[currentCuratedSlide];
-        target?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" });
-        updateCuratedBrandDots();
-      });
-    });
   }
 
   modal.style.display = "flex";
