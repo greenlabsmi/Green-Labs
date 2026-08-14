@@ -1726,7 +1726,7 @@ function openCuratedBrandModal(brandId) {
               src="${strain.image}"
               alt="${strain.name} by ${brand.name}"
               loading="eager"
-              style="width:100%; height:100%; object-fit:contain; display:block;"
+              style="width:100%; height:100%; object-fit:cover; display:block;"
               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
             >
             <div
@@ -2737,11 +2737,11 @@ document.addEventListener('DOMContentLoaded', () => {
         #curatedBrandModalLogo{width:min(150px,34%)!important;max-height:100px!important;margin-bottom:8px!important;filter:drop-shadow(0 10px 24px rgba(0,0,0,.48));} #curatedBrandModal[data-brand="sapura"] #curatedBrandModalLogo{width:min(440px,88%)!important;max-height:210px!important;margin:6px auto 18px!important;}
         #curatedBrandModalName{font-family:'Cinzel',serif!important;font-size:clamp(26px,5vw,38px)!important;letter-spacing:-.025em;}
         #curatedBrandModalIntro{max-width:700px!important;margin:8px auto 4px!important;color:rgba(255,255,255,.74)!important;font-size:16px!important;line-height:1.55!important;} #curatedBrandModal[data-brand="sapura"] #curatedBrandModalIntro{max-width:680px!important;font-size:clamp(18px,2.1vw,22px)!important;line-height:1.5!important;font-weight:800!important;letter-spacing:.01em!important;color:#fff!important;text-align:center!important;}
-        #curatedBrandGalleryWrap{width:min(824px,calc(100vw - 48px));box-sizing:border-box;margin:10px auto 0!important;padding:10px!important;border:1px solid rgba(255,255,255,.10);border-radius:16px;background:rgba(255,255,255,.025);}
+        #curatedBrandGalleryWrap{width:min(824px,calc(100vw - 48px));box-sizing:border-box;margin:10px auto 0!important;padding:6px!important;border:1px solid rgba(255,255,255,.10);border-radius:16px;background:rgba(255,255,255,.025);overflow:hidden!important;}
         #curatedBrandGallery{width:100%!important;max-width:800px!important;margin:0 auto!important;} #curatedBrandGallery article{position:relative;flex:0 0 100%!important;width:100%!important;max-width:800px!important;aspect-ratio:1/1!important;border-color:rgba(255,255,255,.12)!important;border-radius:16px!important;background:#050606!important;box-shadow:0 18px 48px rgba(0,0,0,.38);}
-        #curatedBrandGallery article>div:first-child{width:100%!important;height:auto!important;aspect-ratio:1/1!important;max-width:800px!important;max-height:800px!important;background:#080a09!important;}
-        #curatedBrandGallery img{width:100%!important;height:100%!important;object-fit:contain!important;display:block!important;}
-        #curatedBrandGallery article>div:last-child{position:absolute;left:14px;bottom:14px;width:auto!important;padding:8px 13px!important;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(0,0,0,.72);backdrop-filter:blur(8px);font-family:'Inter',sans-serif;font-size:14px!important;letter-spacing:.02em;}
+        #curatedBrandGallery article>div:first-child{position:static!important;width:100%!important;height:100%!important;aspect-ratio:1/1!important;max-width:800px!important;max-height:800px!important;margin:0!important;padding:0!important;border:0!important;border-radius:0!important;background:#080a09!important;display:block!important;overflow:hidden!important;}
+        #curatedBrandGallery img{width:100%!important;height:100%!important;object-fit:cover!important;display:block!important;margin:0!important;padding:0!important;}
+        
         #curatedBrandPrev{left:-18px!important;}#curatedBrandNext{right:-18px!important;}#curatedBrandPrev,#curatedBrandNext{border-color:rgba(255,255,255,.28)!important;background:rgba(0,0,0,.82)!important;box-shadow:0 8px 24px rgba(0,0,0,.35);}
         #curatedBrandDots button{background:var(--brand-accent,#D6A34A)!important;}
         #curatedBrandListWrap{width:min(760px,100%);box-sizing:border-box;margin:18px auto 0!important;padding:18px 20px!important;border-color:rgba(255,255,255,.12)!important;background:rgba(255,255,255,.035)!important;}
@@ -2751,7 +2751,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .curated-brand-card .deli-card{border-color:rgba(255,255,255,.12)!important;box-shadow:none!important;}
         .curated-brand-card .deli-card__front{position:relative!important;box-shadow:inset 0 0 0 1px rgba(255,255,255,.10)!important;}
         .curated-brand-card__pill{display:none!important;}
-        @media(max-width:700px){#curatedBrandModal{padding:10px!important;}#curatedBrandModal [role="dialog"]{padding:14px!important;border-radius:16px!important;}#curatedBrandGalleryWrap{width:100%!important;padding:7px!important;}#curatedBrandPrev{left:4px!important;}#curatedBrandNext{right:4px!important;}#curatedBrandModalLogo{width:min(120px,36%)!important;}#curatedBrandModal[data-brand="sapura"] #curatedBrandModalLogo{width:min(360px,90%)!important;max-height:170px!important;}#curatedBrandModal[data-brand="sapura"] #curatedBrandModalIntro{font-size:18px!important;}#curatedBrandStrainList>div{font-size:15px!important;padding:13px 0!important;}#curatedBrandStrainList>div span:first-child{font-size:16px!important;}}
+        @media(max-width:700px){#curatedBrandModal{padding:10px!important;}#curatedBrandModal [role="dialog"]{padding:14px!important;border-radius:16px!important;}#curatedBrandGalleryWrap{width:100%!important;padding:4px!important;}#curatedBrandPrev{left:4px!important;}#curatedBrandNext{right:4px!important;}#curatedBrandModalLogo{width:min(120px,36%)!important;}#curatedBrandModal[data-brand="sapura"] #curatedBrandModalLogo{width:min(360px,90%)!important;max-height:170px!important;}#curatedBrandModal[data-brand="sapura"] #curatedBrandModalIntro{font-size:18px!important;}#curatedBrandStrainList>div{font-size:15px!important;padding:13px 0!important;}#curatedBrandStrainList>div span:first-child{font-size:16px!important;}}
       </style>
     `);
   }
