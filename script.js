@@ -1305,7 +1305,7 @@ const curatedBrandData = {
     eyebrow: "Curated Partner",
     accent: "#69AEE7",
     accentSoft: "rgba(105,174,231,.18)",
-    tileBackground: "radial-gradient(circle at 50% 28%, rgba(105,174,231,.30), transparent 34%), linear-gradient(155deg, #071018 0%, #0b1720 46%, #030506 100%)",
+    tileBackground: "radial-gradient(circle at 50% 22%, rgba(255,255,255,.98), rgba(226,241,252,.96) 42%, rgba(160,205,238,.90) 100%), linear-gradient(155deg, #f8fcff 0%, #dceefa 55%, #a4cdeb 100%)",
     logoImage: "./assets/img/brands/glacier/glacier-logo.png",
     intro: "Hand-trimmed premium flower from one of our curated Michigan partners.",
     strains: [
@@ -1395,7 +1395,7 @@ function ensureCuratedBrandModal() {
         aria-labelledby="curatedBrandModalName"
         style="
           position:relative;
-          width:min(760px, 100%);
+          width:min(880px, 100%);
           max-height:92vh;
           overflow-y:auto;
           background:#0b0e0d;
@@ -1504,6 +1504,8 @@ function ensureCuratedBrandModal() {
                 scroll-behavior:smooth;
                 scrollbar-width:none;
                 padding:2px 1px 8px;
+                width:min(800px, 100%);
+                margin:0 auto;
               "
             ></div>
 
@@ -1675,6 +1677,12 @@ function openCuratedBrandModal(brandId) {
       logoEl.src = brand.logoImage;
       logoEl.alt = `${brand.name} logo`;
       logoEl.style.display = "block";
+      logoEl.style.background = brandId === "glacier"
+        ? "linear-gradient(180deg, rgba(255,255,255,.98), rgba(222,240,252,.96))"
+        : "transparent";
+      logoEl.style.padding = brandId === "glacier" ? "8px 12px" : "0";
+      logoEl.style.borderRadius = brandId === "glacier" ? "12px" : "0";
+      logoEl.style.boxSizing = "border-box";
       logoEl.onerror = () => {
         logoEl.style.display = "none";
       };
@@ -1822,6 +1830,32 @@ function initCuratedBrandDeli() {
   // Curated partners belong inside the SAME horizontal Dutch Deli carousel.
   const deliCarousel = document.getElementById("deliCarousel");
   const curatedCards = [...document.querySelectorAll(".curated-brand-card")];
+
+  const syncCuratedCardSize = () => {
+    if (!deliCarousel) return;
+
+    const referenceCard = deliCarousel.querySelector(
+      ".deli-card-wrapper:not(.curated-brand-card) .deli-card"
+    );
+    const referenceHeight = referenceCard?.getBoundingClientRect().height || 0;
+    if (!referenceHeight) return;
+
+    curatedCards.forEach((card) => {
+      const cardShell = card.querySelector(".deli-card");
+      const front = card.querySelector(".deli-card__front");
+
+      if (cardShell) {
+        cardShell.style.height = `${referenceHeight}px`;
+        cardShell.style.minHeight = `${referenceHeight}px`;
+      }
+
+      if (front) {
+        front.style.height = "100%";
+        front.style.minHeight = "100%";
+      }
+    });
+  };
+
   if (deliCarousel) {
     curatedCards.forEach(card => deliCarousel.appendChild(card));
 
@@ -1845,6 +1879,9 @@ function initCuratedBrandDeli() {
     });
 
     deliCarousel.scrollLeft = 0;
+    requestAnimationFrame(syncCuratedCardSize);
+    setTimeout(syncCuratedCardSize, 120);
+    window.addEventListener("resize", syncCuratedCardSize, { passive: true });
   }
 
   curatedCards.forEach(card => {
