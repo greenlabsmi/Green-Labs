@@ -998,7 +998,7 @@ const deliStrainData = {
     seedSource: "Soma Seeds",
     type: "Indica Dominant",
     thc: "25.14% THC",
-    budImage: "",
+    budImage: "https://dutchtouchgenetics.com/assets/img/strains/afghani-bud.jpg",
     artImage: "https://dutchtouchgenetics.com/assets/img/strains/afghani-art.jpg",
     genetics: "Pure Afghan Landrace",
     terpenes: [
