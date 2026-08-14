@@ -43,17 +43,15 @@
 
   "highlights": {
     "layout": {
-      "hero": "haha-blast",
+      "hero": "lemon-wookie-award",
       "mid": [
         "mix-carts",
         "dtg-disposables"
       ],
       "scroll": [
-        "redbud-carts",
-        "mix-gummies",
-        "lightsky-carts",
-        "covert-cones",
+        "party-favors-carts",
         "play-gummies",
+        "lightsky-carts",
         "fire-styxx",
         "hash-house-rosin-cart",
         "premium-gummies"
@@ -61,19 +59,19 @@
     },
 
     "items": {
-      "haha-blast": {
-        "title": "NEW Haha Blast",
-        "price": "$10",
-        "tag": "THC DRINK",
-        "details": "Tropical Soda · 50mg THC · 60mg Caffeine",
-        "image": "assets/img/haha-blast-hl.jpg"
+      "lemon-wookie-award": {
+        "title": "Lemon Wookie — 2nd Place Best in Grass",
+        "price": "AWARD WINNER",
+        "tag": "DUTCH TOUCH GENETICS",
+        "details": "2nd Place Award · Lemon Wookie Glass Tip Pre-Roll",
+        "image": "assets/img/highlights/hl-lemon-wookie.jpg"
       },
 
       "mix-carts": {
         "title": "Mix & Match 1G Carts",
         "price": "5 for $35",
         "tag": "VAPES",
-        "details": "Party Favors · PLAY · Crude Boys · Drip",
+        "details": "Party Favors · Crude Boys · Daily Dose · PLAY Hash Rosin",
         "image": "assets/img/highlights/mixmatch-carts.jpg"
       },
 
@@ -81,47 +79,37 @@
         "title": "DTG 1G Disposables",
         "price": "3 for $45",
         "tag": "VAPES",
-        "details": "Includes All Strains",
+        "details": "$20ea · 3/$45 · 7/$100",
         "image": "assets/img/deals/dt-disposables.jpg"
       },
 
-      "redbud-carts": {
-        "title": "Redbud Roots 1G Carts 3 for $25",
-        "image": "assets/img/highlights/hl-redbud.jpg"
-      },
-
-      "mix-gummies": {
-        "title": "Value Gummies 5 for $18",
-        "image": "assets/img/highlights/hl-gummies.jpg"
-      },
-
-      "lightsky-carts": {
-        "title": "LightSky Farms Live Resin Carts $15",
-        "image": "assets/img/highlights/hl-lightsky.jpg"
-      },
-
-      "covert-cones": {
-        "title": "Covert Banana Foster Cone $8",
-        "image": "assets/img/highlights/covert-cones-hl.jpg"
+      "party-favors-carts": {
+        "title": "Party Favors 1G Carts — 15/$80",
+        "image": "assets/img/highlights/hl-party-favors.jpg"
       },
 
       "play-gummies": {
-        "title": "PLAY 200mg Gummies 10 for $20",
+        "title": "PLAY 200mg Gummies — $3ea or 10/$20",
         "image": "assets/img/highlights/play-gummy-hl.jpg"
       },
 
+      "lightsky-carts": {
+        "title": "LightSky Farms Live Resin Carts — $15",
+        "image": "assets/img/highlights/hl-lightsky.jpg"
+      },
+
       "fire-styxx": {
-        "title": "Fire Styxx 10 for $55",
+        "title": "Fire Styxx — $6ea or 10/$55",
         "image": "assets/img/highlights/hl-fire-styxx.jpg"
       },
 
       "hash-house-rosin-cart": {
-        "title": "Hash House Rosin Cart $15",
+        "title": "Redbud Roots Hash Rosin Cartridges — $15",
         "image": "assets/img/highlights/hash-house-hl.jpg"
       },
 
       "premium-gummies": {
-        "title": "Premium Gummies 5 for $35",
+        "title": "Squishy & Boujee Hash Rosin Gummies — $8 or 5/$35",
         "image": "assets/img/highlights/hl-premium-gummies.jpg"
       }
     }
@@ -135,28 +123,22 @@
         {
           "title": "🔥 Deli Deals & Pre-Packed Flower",
           "items": [
-            "Grip Pre-Packaged Ounces — $25",
-            "Dutch Daylight Flower Ounce — $40 or 2/$60",
+            "Pina Rita Outdoor Shake Ounce — $15",
+            "Chocolate Marshmallow Shake Ounce — $25",
+            "Grip Ounces — $25 — Low Stock",
+            "Secret Chief Flower — Dutch Daylight — $35/Ounce",
+            "Dutch Daylight Flower — $40/Ounce or 2/$60",
             "Hash D Ounce — $70",
             "Garlic Breath Ounce — $70",
-            "Sapura High-THC Flower Ounce — $90",
-            "Space Hippy Flower Ounce — $90",
-            "Simpler Daze Flower Ounce — $90 or 2/$150",
+            "Simpler Daze Ounces — $90/Ounce or 2/$150",
             "Lilac Diesel and Blast Chiller Ounces — $110"
           ]
         },
         {
-          "title": "🏆 Dutch Touch Genetics Jarred Flower",
+          "title": "🏆 Best in Grass Awards",
           "items": [
-            "Clusterfunk Jarred Eighths — $15"
-          ]
-        },
-        {
-          "title": "🏅 Award-Winning Flower",
-          "items": [
-            "Available Now — Mr. Clean, Space Hippy and Lilac Diesel",
-            "Coming Soon — Lemon Wookie",
-            "More Flower Strains Coming Soon"
+            "2nd Place Award — Lemon Wookie Glass Tip Pre-Roll",
+            "3rd Place Award — Solventless Infused Pre-Rolls"
           ]
         }
       ]
@@ -169,33 +151,28 @@
         {
           "title": "Vape Cartridges",
           "items": [
-            "Party Favors 1G Carts — 15/$80",
-            "Daily Dose 1G Carts — $9ea",
-            "Grip Live Resin Carts — $8ea",
+            "Party Favors 1G Carts — 15/$80 — Bulk",
+            "PLAY 1G Hash Rosin Infused Carts — 10/$55",
             "Mix & Match 1G Carts — $9ea, 3/$25 or 5/$35",
-            "Mix & Match Brands Include Party Favors, PLAY Hash Infused, Crude Boys and Drip",
+            "Mix & Match Brands Include Party Favors, Crude Boys, Daily Dose and PLAY Hash Rosin Cartridges",
             "Redbud Roots 1G Full Spectrum Carts — $10ea or 3/$25",
             "LightSky Farms Live Resin Carts — $15",
-            "Redbud Roots Hash Rosin Cartridges — $15",
-            "Rove 1G Live Resin Pods — Back in Stock"
+            "Redbud Roots Hash Rosin Cartridges (Hash House) — $15",
+            "Cresco 1G Live Resin Cartridges — $30ea, 2/$55 or 4/$100"
           ]
         },
-
         {
           "title": "Disposable Vapes",
           "items": [
-            "Dutch Touch Genetics Live Terps 1G Disposables — $20ea or 3/$45",
-            "Dutch Touch Genetics Disposable Deal Includes All Strains",
-            "Grip 2G Live Resin Disposables — $20",
-            "Superfire 1G Disposables — $15ea or 3/$40",
-            "Glacier 1G Disposables — $20",
-            "Rove 1G Live Resin Diamond Pods — $25",
-            "Batch 2G Disposables — $25",
-            "Franklin Fields 2G Disposables — $25",
-            "Party Favors 3G Disposables — 4/$100",
-            "Rove Mini Bar 0.5G Rosin Disposable — $25",
-            "Boujee 1G Rosin Disposables — $30",
-            "710 Labs 1G Rosin Disposable — $65"
+            "Superfire 1G Disposable — $10ea",
+            "Glacier 1G Disposable — $20",
+            "Dutch Touch 1G Disposable — $20ea, 3/$45 or 7/$100",
+            "Grip 2G Live Resin Disposables — $20ea",
+            "Rove Mini Bar 0.5G Rosin Disposable — $25ea",
+            "Boujee 1G Rosin Disposables — $30ea",
+            "Rove 1G Full Spectrum Disposables — $35ea",
+            "Batch 4G Disposables — $45ea or 3/$100",
+            "Party Favor 3G Disposables — BOGO"
           ]
         }
       ]
@@ -209,36 +186,33 @@
           "title": "Infused Pre-Rolls",
           "items": [
             "Boomstick and Sin City 1.2G Infused Pre-Rolls — $4ea or 10/$35",
-            "Glacier 1G Ice Pick Infused Pre-Roll — $5ea",
+            "Glacier 1G Ice Pick Infused Pre-Roll — $5ea — New",
             "Fire Styxx and Bonfire Pre-Rolls — $6ea or 10/$55",
-            "Party Favors 50% Infused Pre-Rolls — $8ea or 5/$35",
+            "Party Favor 50% Infused Pre-Rolls — $8ea or 5/$35",
             "Hazy Daze 1G Bubble Hash Joint — $10ea or 3/$20",
             "KAOS 1.1G Resin Infused Joint — $10ea or 3/$20",
-            "Dutch Touch 1.25G Rosin Donuts — $12ea — Staff Favorite",
             "Kaos 2-Pack Infused Pre-Rolls — $15",
-            "Homiez 14-Pack Infused Joints — $25",
-            "Dope Smokes 14-Pack Live Resin Joints — $45",
+            "Swisher 5-Pack Blunts — $20ea — Sale",
             "Hazy Daze 5-Pack Bubble Hash Joints — $30",
-            "Dutch Touch Infused Pre-Roll 5-Packs — $30",
-            "Baby Jeeter — $30",
+            "Dutch Touch Genetics 5-Pack Infused Pre-Rolls — $30",
             "LightSky Farms 5-Pack Bubble Hash Joints — $45",
-            "Jeeter 1G Infused Pre-Roll — $15"
+            "Dope Smokes 14-Pack Live Resin Joints — $45",
+            "Baby Jeeter — $30",
+            "Jeeter 1G — $15"
           ]
         },
-
         {
           "title": "Non-Infused Pre-Rolls",
           "items": [
             "Dutch Daylight 1G Pre-Roll — $2.50ea or 10/$20 or Buy 70 Joints for $100",
-            "KAOS and Hazy Daze 1G Pre-Rolls — $4ea or 10/$30",
+            "KAOS 1G Pre-Roll — $4ea or 10/$30",
             "Glacier 1G Pre-Rolls — $4ea or 8/$20",
-            "LightSky Farms 1G Pre-Rolls — $6ea or 5/$25",
-            "Dutch Touch Genetics Full-Bud Pre-Roll — $10ea",
-            "Mix & Match Dutch Touch and LightSky Farms Pre-Rolls — 3/$20",
-            "Thunder Canna 14-Pack Pre-Rolls — $15",
+            "Dopehouse 1G Full Bud Pre-Rolls — $6ea",
+            "Dutch Touch Genetics Full Bud Pre-Roll — $10ea",
+            "Lemon Wookie Pre-Roll — 2nd Place Best in Grass Award",
+            "Thunder Canna 14-Pack Pre-Rolls — $15 — Lower Quality",
             "Franklin Fields 10-Pack Pre-Rolls — $35 or 2/$60",
-            "Hazy Daze 28-Pack Pre-Rolls — $50",
-            "Dutch Touch Genetics 25-Pack Pre-Rolls — $110 — Select Strains"
+            "Hazy Daze 28-Pack Pre-Rolls — $50"
           ]
         }
       ]
@@ -249,79 +223,64 @@
       "promo": false,
       "groups": [
         {
-          "title": "Gummies, Chocolates & Pouches",
+          "title": "Gummies & Chocolates",
           "items": [
+            "PLAY 200mg Gummies (4x50mg) — $3ea or 10/$20",
+            "True North & PLAY One Hitters — $4ea or 10/$30",
+            "Dope Ropes — $4ea or 5/$18 — New Product",
+            "Choice, PLAY, True North / PLAY One Hitters and Midwest Gummies — $4ea or 5/$18",
+            "True North 4x50mg Gummies — $5ea or 10/$40",
             "Dutch Touch 200mg Distillate Gummies — $5",
-            "Dutch Touch 200mg Watermelon RSO — $5",
-            "El Cheepo 200mg Gummies — $2ea — Clearance",
-            "Value Gummies Mix & Match — $4ea or 5/$18",
-            "Value Gummies Include Choice, PLAY One Hitters, Dope Ropes and Midwest Gummies",
-            "PLAY 200mg Gummies — 10/$20",
-            "Premium Infused Gummies — $8ea or 5/$35",
-            "Premium Gummies Include Boujee High Dose Rosin Gummies and Squishies Hash Rosin Gummies",
+            "Smokies 200mg Fruit Gummies — $7ea or 5/$30",
+            "True North High Dose Sleep Gummies — $7ea",
+            "Squishy & Boujee Hash Rosin Gummies — $8ea or 5/$35",
             "Redbud Roots Hash Rosin Gummies — $8",
             "Mojo Chocolates — $12",
             "Covert Cups Rosin Chocolates — $13",
-            "Covert Cone Rosin One Hitter — $8",
-            "PIXILS Candy — $15 or 2/$25",
-            "Wonder Low-Dose 40-Count Gummies — $15",
-            "TreeTown High-Dose Mood Gummies — $15",
+            "Wonder Low Dose 40-Count Gummies — $15",
             "Hippie Bliss 20-Count THC Cookies — $15"
           ]
         },
-
         {
           "title": "🥤 THC Drinks",
           "items": [
             "Full Restock",
             "Infused Sodas, Lemonades, Seltzers and Syrups",
-            "Every Thursday — 20% OFF Drinks",
-            "NEW Highly Casual Haha Blast Tropical Soda — 50mg THC — $10"
+            "Every Thursday — 20% OFF Drinks"
           ]
         }
       ]
     },
 
     {
-      "category": "🍯 Concentrates & RSO",
+      "category": "🍯 Concentrates",
       "promo": false,
       "groups": [
         {
           "title": "Live Resin Concentrates",
           "items": [
-            "Bubblegum 3.5G Batter — $25",
+            "Guicy G 3.5G Nug Run Batter — $25",
             "Death Star 3.5G Sugar — $30 or 2/$55",
             "Sin City 3.5G Batter — $35",
             "Dutch Touch 3.5G Batter — $40 — Excludes Award-Winning Strains",
-            "Hash D 14G Full-Spectrum Live Resin — $85",
-            "Clusterfunk and 10K 14G Big Baller Jars — $100",
-            "Old Widow 14G Big Baller Jar — $100",
-            "Mr. Clean and Hash D #2 14G Batter — $105",
-            "Dutch Touch Genetics 14G Batter — $140",
+            "Hash D 14G Full Spectrum Batter — $85",
+            "Clusterfunk and 10K Big Baller Jars — $100",
+            "Old Widow 14G Big Baller Jars — $100",
             "Dutch Touch 14G Diamonds — $200"
           ]
         },
-
         {
           "title": "Rosin Concentrates",
           "items": [
-            "Death by Funk Indoor Rosin — $25 per Gram",
-            "Death by Funk Outdoor Rosin — $40ea or 3/$100",
-            "Hash D 14G Big Baller Jar of Rosin — $140",
+            "Death by Funk Rosin Indoor — $25 per Gram",
+            "Death By Funk Outdoor Rosin — $40ea or 3/$100",
+            "Hash D 14G Jars of Rosin — $140",
             "Shiskaberry 14G Rosin — $170",
+            "Redbud Roots 1G Rosin — $25ea or 3/$70",
             "LightSky Farms 1G Rosin — $30ea or 3/$80",
             "Local Grove 1G Rosin — $45ea or 3/$90",
-            "Apex Solventless and 710 Labs Rosin — 3/$110",
-            "Apex and 710 Deal Excludes Thumbprints and Persy"
-          ]
-        },
-
-        {
-          "title": "RSO 1G Darts",
-          "items": [
-            "Orange Kush Cake 1G RSO Dart — $30",
-            "Mr. Clean 1G RSO Dart — $30",
-            "Big Smooth 1G RSO Dart — $30"
+            "Apex and 710 Rosin — 3/$110",
+            "Apex and 710 Deal Excludes Thumbprint and Persy"
           ]
         }
       ]
@@ -339,13 +298,12 @@
             "Dutch Touch Bubble Hash 7G Jar — $150"
           ]
         },
-
         {
           "title": "Third-Party Hash",
           "items": [
             "Old School Hash 1G Brick Hash and Temple Balls — $25",
             "Old School Hash 5G Brick Hash — $85",
-            "LightSky Farms 1G Brick Hash — $30"
+            "LightSky Farms 1G Brick Hash — 30% OFF"
           ]
         }
       ]
@@ -364,7 +322,6 @@
             "Green Labs Beanie — $18"
           ]
         },
-
         {
           "title": "Accessories",
           "items": [
