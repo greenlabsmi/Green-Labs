@@ -175,20 +175,20 @@
         },
 
         {
-          "title": "Disposable Vapes",
-          "items": [
-            "Superfire 1G Disposable — $10ea",
-            "Glacier 1G Disposable — $20",
-            "Dutch Touch 1G Disposable — $20ea, 3/$45 or 7/$100",
-            "Grip 2G Live Resin Disposables — $20ea",
-            "Rove Mini Bar 0.5G Rosin Disposable — $25ea",
-            "Boujee 1G Rosin Disposables — $30ea",
-            "Rove 1G Full Spectrum Disposables — $35ea",
-            "Batch 4G Disposables — $45ea or 3/$100",
-            "Party Favor 3G Disposables — 4/$100,"
-            "Party Favor 3G Lemon Cream — $20"
-          ]
-        }
+  "title": "Disposable Vapes",
+  "items": [
+    "Superfire 1G Disposable — $10ea",
+    "Glacier 1G Disposable — $20",
+    "Dutch Touch 1G Disposable — $20ea, 3/$45 or 7/$100",
+    "Grip 2G Live Resin Disposables — $20ea",
+    "Rove Mini Bar 0.5G Rosin Disposable — $25ea",
+    "Boujee 1G Rosin Disposables — $30ea",
+    "Rove 1G Full Spectrum Disposables — $35ea",
+    "Batch 4G Disposables — $45ea or 3/$100",
+    "Party Favor 3G Disposables — 4/$100",
+    "Party Favor 3G Lemon Cream — $20"
+  ]
+}
       ]
     },
 
