@@ -129,21 +129,41 @@
 
   "deals": [
     {
+      "category": "🔥 Top Deals",
+      "promo": true,
+      "groups": [
+        {
+          "title": "💥 Best Deals Right Now",
+          "items": [
+            "Party Favor 3G Disposables — $15",
+            "Dutch Daylight 1G Pre-Rolls — Buy 70 Joints for $100",
+            "PLAY 200mg Gummies (4x50mg) — 10/$20",
+            "Party Favors 1G Carts — 15/$80 — Bulk",
+            "Dutch Touch 1G Disposables — 7/$100",
+            "Batch 4G Disposables — 3/$100",
+            "Hash D 14G Full Spectrum Batter — $85",
+            "Hash D 14G Jars of Rosin — $140"
+          ]
+        }
+      ]
+    },
+
+    {
       "category": "🌿 Flower",
       "promo": false,
       "groups": [
         {
           "title": "🔥 Deli Deals & Pre-Packed Flower",
           "items": [
-            "Pina Rita Outdoor Shake Ounce — $15",
-            "Chocolate Marshmallow Shake Ounce — $25",
-            "Grip Ounces — $25 — Low Stock",
-            "Secret Chief Flower — Dutch Daylight — $35/Ounce",
+            "Space Hippy Bubble Hash Infused Flower — $30 an Eighth or $100 a Half",
+            "Chocolate Marshmallow Shake Ounce — $25 or 2/$40",
+            "Grip Ounces — $25 or 2/$40",
+            "Mr. Clean Shake Ounce — $30 or 2/$50",
             "Dutch Daylight Flower — $40/Ounce or 2/$60",
-            "Hash D Ounce — $70",
-            "Garlic Breath Ounce — $70",
+            "Illidium, Supersilver and Hash D Ounces — $70 or 2/$130",
             "Simpler Daze Ounces — $90/Ounce or 2/$150",
-            "Lilac Diesel and Blast Chiller Ounces — $110"
+            "Lemon Wookie, Lilac Diesel and Blast Chiller Ounces — $110",
+            "Blueberry Cookies Frosted Bud — $10 Per Gram"
           ]
         },
         {
@@ -164,9 +184,9 @@
           "title": "Vape Cartridges",
           "items": [
             "Party Favors 1G Carts — 15/$80 — Bulk",
-            "PLAY 1G Hash Rosin Infused Cart — 10/$55",
+            "PLAY 1G Hash Rosin Infused Carts — 10/$55",
             "Mix & Match 1G Carts — $9ea, 3/$25 or 5/$35",
-            "Mix & Match Brands Include Party Favors, Crude Boys and Drip",
+            "Mix & Match Brands Include Party Favors, Crude Boys, Drip, Daily Dose and PLAY Hash Rosin Cartridges",
             "Redbud Roots 1G Full Spectrum Carts — $10ea or 3/$25",
             "LightSky Farms Live Resin Carts — $15",
             "Redbud Roots Hash Rosin Cartridges (Hash House) — $15",
@@ -175,20 +195,19 @@
         },
 
         {
-  "title": "Disposable Vapes",
-  "items": [
-    "Superfire 1G Disposable — $10ea",
-    "Glacier 1G Disposable — $20",
-    "Dutch Touch 1G Disposable — $20ea, 3/$45 or 7/$100",
-    "Grip 2G Live Resin Disposables — $20ea",
-    "Rove Mini Bar 0.5G Rosin Disposable — $25ea",
-    "Boujee 1G Rosin Disposables — $30ea",
-    "Rove 1G Full Spectrum Disposables — $35ea",
-    "Batch 4G Disposables — $45ea or 3/$100",
-    "Party Favor 3G Disposables — 4/$100",
-    "Party Favor 3G Lemon Cream — $20"
-  ]
-}
+          "title": "Disposable Vapes",
+          "items": [
+            "Superfire 1G Disposable — $10ea",
+            "Glacier 1G Disposable — $20",
+            "Dutch Touch 1G Disposable — $20ea, 3/$45 or 7/$100",
+            "Grip 2G Live Resin Disposables — $20ea",
+            "Rove Mini Bar 0.5G Rosin Disposable — $25ea",
+            "Boujee 1G Rosin Disposables — $30ea",
+            "Rove 1G Full Spectrum Disposables — $35ea",
+            "Batch 4G Disposables — $45ea or 3/$100",
+            "Party Favor 3G Disposables — $15ea — Brand Sponsored"
+          ]
+        }
       ]
     },
 
@@ -199,15 +218,13 @@
         {
           "title": "Infused Pre-Rolls",
           "items": [
-            "Boomstick and Sin City 1.2G Infused Pre-Rolls — $4ea or 10/$35",
-            "Glacier 1G Ice Pick Infused Pre-Roll — $5ea — New",
+            "Boomstick and Dope Smoke 1.2G Infused Pre-Rolls — $4ea or 10/$35",
             "Fire Styxx and Bonfire Pre-Rolls — $6ea or 10/$55",
             "Party Favor 50% Infused Pre-Rolls — $8ea or 5/$35",
             "Hazy Daze 1G Bubble Hash Joint — $10ea or 3/$20",
             "KAOS 1.1G Resin Infused Joint — $10ea or 3/$20",
             "Kaos 2-Pack Infused Pre-Rolls — $15",
             "Swisher 5-Pack Blunts — $20ea — Sale",
-            "Hazy Daze 5-Pack Bubble Hash Joints — $30",
             "Dutch Touch Genetics 5-Pack Infused Pre-Rolls — $30",
             "LightSky Farms 5-Pack Bubble Hash Joints — $45",
             "Dope Smokes 14-Pack Live Resin Joints — $45",
@@ -224,10 +241,10 @@
             "Glacier 1G Pre-Rolls — $4ea or 8/$20",
             "Dopehouse 1G Full Bud Pre-Rolls — $6ea",
             "Dutch Touch Genetics Full Bud Pre-Roll — $10ea",
-            "Lemon Wookie Pre-Roll — 2nd Place Best in Grass Award",
             "Thunder Canna 14-Pack Pre-Rolls — $15 — Lower Quality",
+            "Dope Smokes 28-Pack Pre-Rolls — $50",
             "Franklin Fields 10-Pack Pre-Rolls — $35 or 2/$60",
-            "Hazy Daze 28-Pack Pre-Rolls — $50"
+            "Franklin Fields 100-Pack Pre-Rolls — $120"
           ]
         }
       ]
@@ -240,9 +257,9 @@
         {
           "title": "Gummies, Chocolates & Pouches",
           "items": [
-            "PLAY 200mg Gummies (4x50mg) — $3ea or 10/$20",
+            "PLAY 200mg Gummies (4x50mg) — $5ea or 10/$20",
             "True North & PLAY One Hitters — $4ea or 10/$30",
-            "Dope Ropes — $4ea or 5/$18 — New Product",
+            "Dope Ropes — $4ea or 5/$18",
             "Choice, PLAY, True North / PLAY One Hitters and Midwest Gummies — $4ea or 5/$18",
             "True North 4x50mg Gummies — $5ea or 10/$40",
             "Dutch Touch 200mg Distillate Gummies — $5",
@@ -252,8 +269,11 @@
             "Redbud Roots Hash Rosin Gummies — $8",
             "Mojo Chocolates — $12",
             "Covert Cups Rosin Chocolates — $13",
+            "KSHN THC Chew Pouches (20ct) — $15 or 2/$25",
             "Wonder Low Dose 40-Count Gummies — $15",
-            "Hippie Bliss 20-Count THC Cookies — $15"
+            "Hippie Bliss 20-Count THC Cookies — $15",
+            "PC Pure 200mg Micro Dosed Mints — $15",
+            "Potpots 100mg THC M&M's — $20"
           ]
         },
 
@@ -320,8 +340,7 @@
           "title": "Third-Party Hash",
           "items": [
             "Old School Hash 1G Brick Hash and Temple Balls — $25",
-            "Old School Hash 5G Brick Hash — $85",
-            "LightSky Farms 1G Brick Hash — 30% OFF"
+            "Old School Hash 5G Brick Hash — $85"
           ]
         }
       ]
