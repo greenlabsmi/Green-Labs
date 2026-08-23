@@ -1,4 +1,5 @@
 <!doctype html>
+<!-- GREEN LABS FIRST FRIDAY BUILD: FF-2026.09.04-V1 -->
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -3220,7 +3221,9 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
     }
 
     .ff-faq details[open] .ff-faq__answer {
-      grid-temp
+      grid-template-rows: 1fr;
+    }
+
 
     /* Batch 4G Hunt — theatrical animation override */
     .ff-batch-logo-alive {
@@ -3380,8 +3383,6 @@ body.ff-system-rebooting > *:not(.ff-festival-flash) {
       75% { transform: rotate(1deg) scale(1.01); filter: hue-rotate(-18deg) saturate(1.4); }
     }
 
-late-rows: 1fr;
-    }
 
     .ff-faq__answer > div {
       overflow: hidden;
@@ -3921,6 +3922,512 @@ late-rows: 1fr;
         transform: none;
       }
     }
+
+
+    /* First Friday Scrapbook — mobile-first chapter gallery */
+    .ff-scrapbook {
+      --scrap-ink: #173d32;
+      --scrap-paper: #fff9ec;
+      --scrap-cream: #f5ecd9;
+      --scrap-mint: #9edcc8;
+      --scrap-sky: #91c9e9;
+      --scrap-gold: #efb33c;
+      --scrap-coral: #ef8f70;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(239,179,60,.18), transparent 22rem),
+        radial-gradient(circle at 92% 88%, rgba(82,183,153,.17), transparent 25rem),
+        linear-gradient(180deg, #fffdf7 0%, #f7f0df 100%);
+      border-block: 1px solid rgba(23,61,50,.1);
+    }
+
+    .ff-scrapbook::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: .23;
+      background-image:
+        repeating-linear-gradient(0deg, rgba(23,61,50,.035) 0 1px, transparent 1px 5px),
+        radial-gradient(circle, rgba(23,61,50,.12) 0 1px, transparent 1.5px);
+      background-size: auto, 19px 19px;
+      mask-image: linear-gradient(to bottom, transparent, #000 16%, #000 84%, transparent);
+    }
+
+    .ff-scrapbook__inner { position: relative; z-index: 1; }
+
+    .ff-scrapbook__head {
+      display: grid;
+      gap: .8rem;
+      max-width: 790px;
+      margin-bottom: clamp(1.5rem, 4vw, 2.8rem);
+    }
+
+    .ff-scrapbook__title {
+      margin: 0;
+      color: var(--scrap-ink);
+      font-family: "Fraunces", Georgia, serif;
+      font-size: clamp(2.55rem, 7vw, 5.7rem);
+      font-weight: 850;
+      letter-spacing: -.055em;
+      line-height: .92;
+    }
+
+    .ff-scrapbook__intro {
+      max-width: 680px;
+      margin: 0;
+      color: rgba(23,61,50,.76);
+      font-size: clamp(1rem, 1.7vw, 1.16rem);
+      line-height: 1.7;
+    }
+
+    .ff-scrapbook__chapters {
+      display: flex;
+      gap: .55rem;
+      margin: .25rem 0 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .ff-scrapbook__chapters::-webkit-scrollbar { display: none; }
+
+    .ff-scrapbook__chapter {
+      min-height: 38px;
+      padding: .58rem .85rem;
+      border: 1px solid rgba(23,61,50,.18);
+      border-radius: 999px;
+      background: rgba(255,255,255,.7);
+      color: var(--scrap-ink);
+      font: 850 .7rem/1 "Outfit", sans-serif;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .ff-scrapbook__chapter[aria-current="true"] {
+      background: var(--scrap-ink);
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(23,61,50,.14);
+    }
+
+    .ff-scrapbook__book {
+      position: relative;
+      display: grid;
+      gap: 1.15rem;
+      padding: clamp(1rem, 3vw, 2rem);
+      border: 1px solid rgba(83,66,35,.14);
+      border-radius: clamp(22px, 4vw, 36px);
+      background:
+        linear-gradient(90deg, transparent 49.6%, rgba(86,66,30,.07) 50%, transparent 50.4%),
+        var(--scrap-paper);
+      box-shadow:
+        0 28px 70px rgba(35,49,41,.16),
+        inset 0 0 0 1px rgba(255,255,255,.75);
+      isolation: isolate;
+    }
+
+    .ff-scrapbook__book::after {
+      content: "";
+      position: absolute;
+      inset: 9px;
+      z-index: -1;
+      border: 1px dashed rgba(23,61,50,.12);
+      border-radius: inherit;
+      pointer-events: none;
+    }
+
+    .ff-scrapbook__stage {
+      position: relative;
+      width: min(100%, 430px);
+      margin: .75rem auto .35rem;
+      padding: .3rem .45rem .55rem;
+      perspective: 1200px;
+      touch-action: pan-y;
+    }
+
+    .ff-scrapbook__photo {
+      position: relative;
+      z-index: 3;
+      margin: 0;
+      padding: clamp(.62rem, 2.2vw, .9rem) clamp(.62rem, 2.2vw, .9rem) 1rem;
+      background: #fffef9;
+      border: 1px solid rgba(23,61,50,.13);
+      border-radius: 5px;
+      box-shadow:
+        0 24px 45px rgba(26,42,35,.22),
+        0 3px 7px rgba(26,42,35,.1);
+      transform: rotate(-.7deg) translateZ(0);
+      transform-origin: 50% 92%;
+      transition:
+        transform 450ms cubic-bezier(.2,.8,.2,1),
+        opacity 280ms ease,
+        box-shadow 450ms ease;
+      will-change: transform, opacity;
+    }
+
+    .ff-scrapbook__photo::before {
+      content: "";
+      position: absolute;
+      z-index: 2;
+      top: -13px;
+      left: 50%;
+      width: 82px;
+      height: 27px;
+      border: 1px solid rgba(92,67,24,.1);
+      background: rgba(239,179,60,.7);
+      box-shadow: 0 2px 5px rgba(26,42,35,.08);
+      transform: translateX(-50%) rotate(-2deg);
+    }
+
+    .ff-scrapbook[data-memory="crochet"] .ff-scrapbook__photo::before,
+    .ff-scrapbook[data-memory="maker"] .ff-scrapbook__photo::before {
+      background: rgba(158,220,200,.78);
+    }
+
+    .ff-scrapbook[data-memory="turtle"] .ff-scrapbook__photo::before {
+      background: rgba(145,201,233,.8);
+    }
+
+    .ff-scrapbook__photo img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-radius: 2px;
+      background: #e9e2d2;
+      filter: saturate(.98) contrast(.99);
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .ff-scrapbook__caption {
+      min-height: 3.25em;
+      display: grid;
+      place-items: center;
+      padding: .85rem .35rem 0;
+      color: var(--scrap-ink);
+      font-family: "Fraunces", Georgia, serif;
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      font-style: italic;
+      font-weight: 720;
+      line-height: 1.28;
+      text-align: center;
+      transition: opacity 180ms ease, transform 260ms ease;
+    }
+
+    .ff-scrapbook__peek {
+      position: absolute;
+      inset: .3rem .45rem .55rem;
+      z-index: 1;
+      overflow: hidden;
+      padding: .65rem;
+      border: 1px solid rgba(23,61,50,.11);
+      border-radius: 5px;
+      background: #fff;
+      box-shadow: 0 13px 28px rgba(26,42,35,.14);
+      pointer-events: none;
+      transition: transform 450ms cubic-bezier(.2,.8,.2,1);
+    }
+
+    .ff-scrapbook__peek img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: .42;
+      filter: saturate(.75);
+    }
+
+    .ff-scrapbook__peek--one {
+      transform: translate(10px, 8px) rotate(2.2deg);
+    }
+
+    .ff-scrapbook__peek--two {
+      z-index: 0;
+      transform: translate(-9px, 12px) rotate(-2.4deg);
+    }
+
+    .ff-scrapbook.is-changing .ff-scrapbook__photo {
+      opacity: 0;
+      transform: translateX(-24px) translateY(-7px) rotate(-3.5deg) scale(.985);
+      box-shadow: 0 13px 26px rgba(26,42,35,.13);
+    }
+
+    .ff-scrapbook.is-changing .ff-scrapbook__caption {
+      opacity: 0;
+      transform: translateY(5px);
+    }
+
+    .ff-scrapbook.is-changing .ff-scrapbook__peek--one {
+      transform: translate(2px, 2px) rotate(.7deg);
+    }
+
+    .ff-scrapbook__notes {
+      position: relative;
+      display: grid;
+      align-content: center;
+      gap: 1rem;
+      min-width: 0;
+      padding: .3rem .2rem .1rem;
+    }
+
+    .ff-scrapbook__stamp {
+      justify-self: start;
+      padding: .5rem .65rem;
+      border: 2px solid rgba(23,61,50,.58);
+      color: rgba(23,61,50,.78);
+      font: 900 .7rem/1 "Outfit", sans-serif;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      transform: rotate(-2deg);
+    }
+
+    .ff-scrapbook__volume {
+      margin: 0;
+      color: var(--scrap-gold);
+      font: 900 .75rem/1 "Outfit", sans-serif;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .ff-scrapbook__chapter-title {
+      margin: -.25rem 0 0;
+      color: var(--scrap-ink);
+      font-family: "Fraunces", Georgia, serif;
+      font-size: clamp(1.75rem, 4vw, 3.35rem);
+      font-weight: 820;
+      letter-spacing: -.035em;
+      line-height: 1;
+    }
+
+    .ff-scrapbook__story {
+      margin: 0;
+      color: rgba(23,61,50,.73);
+      line-height: 1.65;
+    }
+
+    .ff-scrapbook__cornhole {
+      position: relative;
+      display: grid;
+      grid-template-columns: 45px minmax(0, 1fr);
+      align-items: center;
+      gap: .75rem;
+      padding: .8rem .9rem;
+      border: 1px dashed rgba(23,61,50,.22);
+      border-radius: 15px;
+      background: rgba(158,220,200,.18);
+      color: var(--scrap-ink);
+      transform: rotate(.6deg);
+    }
+
+    .ff-scrapbook__cornhole svg {
+      width: 45px;
+      height: 45px;
+      color: var(--scrap-coral);
+    }
+
+    .ff-scrapbook__cornhole p {
+      margin: 0;
+      font-family: "Fraunces", Georgia, serif;
+      font-size: .92rem;
+      font-style: italic;
+      font-weight: 680;
+      line-height: 1.35;
+    }
+
+    .ff-scrapbook__nav {
+      display: grid;
+      grid-template-columns: 48px minmax(0, 1fr) 48px;
+      align-items: center;
+      gap: .75rem;
+      margin-top: .1rem;
+    }
+
+    .ff-scrapbook__arrow {
+      display: grid;
+      width: 48px;
+      height: 48px;
+      place-items: center;
+      border: 1px solid rgba(23,61,50,.2);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--scrap-ink);
+      font: 900 1.15rem/1 "Outfit", sans-serif;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(23,61,50,.11);
+      transition: transform 160ms ease, background 160ms ease, color 160ms ease;
+    }
+
+    .ff-scrapbook__arrow:hover,
+    .ff-scrapbook__arrow:focus-visible {
+      background: var(--scrap-ink);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .ff-scrapbook__progress {
+      display: grid;
+      gap: .5rem;
+      min-width: 0;
+    }
+
+    .ff-scrapbook__count {
+      color: rgba(23,61,50,.7);
+      font: 900 .72rem/1 "Outfit", sans-serif;
+      letter-spacing: .14em;
+      text-align: center;
+    }
+
+    .ff-scrapbook__dots {
+      display: flex;
+      justify-content: center;
+      gap: .34rem;
+    }
+
+    .ff-scrapbook__dot {
+      width: 6px;
+      height: 6px;
+      padding: 0;
+      border: 0;
+      border-radius: 999px;
+      background: rgba(23,61,50,.2);
+      cursor: pointer;
+      transition: width 220ms ease, background 220ms ease;
+    }
+
+    .ff-scrapbook__dot[aria-current="true"] {
+      width: 22px;
+      background: var(--scrap-gold);
+    }
+
+    .ff-scrapbook__swipe {
+      margin: -.15rem 0 0;
+      color: rgba(23,61,50,.54);
+      font: 800 .65rem/1 "Outfit", sans-serif;
+      letter-spacing: .12em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .ff-scrapbook__doodle {
+      position: absolute;
+      z-index: 4;
+      display: none;
+      color: var(--scrap-gold);
+      pointer-events: none;
+      filter: drop-shadow(0 3px 3px rgba(23,61,50,.08));
+    }
+
+    .ff-scrapbook__doodle svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .ff-scrapbook__doodle--market { width: 76px; height: 76px; top: -24px; right: -15px; color: var(--scrap-coral); }
+    .ff-scrapbook__doodle--jenga { width: 70px; height: 70px; right: -18px; bottom: 55px; color: var(--scrap-gold); }
+    .ff-scrapbook__doodle--art { width: 78px; height: 60px; left: -22px; bottom: 65px; color: var(--scrap-coral); }
+    .ff-scrapbook__doodle--crochet { width: 82px; height: 82px; right: -20px; top: 45px; color: #7b66a7; }
+    .ff-scrapbook__doodle--maker { width: 76px; height: 76px; left: -19px; top: 38px; color: #459b78; }
+    .ff-scrapbook__doodle--turtle { width: 82px; height: 66px; right: -22px; bottom: 68px; color: #438db5; }
+
+    .ff-scrapbook[data-memory="market"] .ff-scrapbook__doodle--market,
+    .ff-scrapbook[data-memory="jenga"] .ff-scrapbook__doodle--jenga,
+    .ff-scrapbook[data-memory="art"] .ff-scrapbook__doodle--art,
+    .ff-scrapbook[data-memory="crochet"] .ff-scrapbook__doodle--crochet,
+    .ff-scrapbook[data-memory="maker"] .ff-scrapbook__doodle--maker,
+    .ff-scrapbook[data-memory="turtle"] .ff-scrapbook__doodle--turtle {
+      display: block;
+      animation: ffDoodleIn 420ms cubic-bezier(.2,.8,.2,1) both;
+    }
+
+    .ff-scrapbook__thanks {
+      display: grid;
+      gap: .5rem;
+      margin-top: clamp(1.5rem, 4vw, 2.5rem);
+      padding: clamp(1rem, 3vw, 1.5rem);
+      border: 1px dashed rgba(23,61,50,.22);
+      border-radius: 20px;
+      background: rgba(255,255,255,.64);
+      color: var(--scrap-ink);
+      text-align: center;
+    }
+
+    .ff-scrapbook__thanks strong {
+      font-family: "Fraunces", Georgia, serif;
+      font-size: clamp(1.1rem, 2.4vw, 1.45rem);
+    }
+
+    .ff-scrapbook__thanks span {
+      color: rgba(23,61,50,.68);
+      line-height: 1.5;
+    }
+
+    @keyframes ffDoodleIn {
+      from { opacity: 0; transform: scale(.82) rotate(-8deg); }
+      to { opacity: 1; transform: scale(1) rotate(0); }
+    }
+
+    @media (min-width: 840px) {
+      .ff-scrapbook__book {
+        grid-template-columns: minmax(0, 1.15fr) minmax(290px, .85fr);
+        gap: clamp(2rem, 5vw, 5rem);
+        padding: clamp(2rem, 5vw, 4rem);
+      }
+
+      .ff-scrapbook__stage {
+        width: min(100%, 500px);
+        margin: 0 auto;
+      }
+
+      .ff-scrapbook__notes { padding: 1rem 0; }
+      .ff-scrapbook__swipe { display: none; }
+    }
+
+    @media (max-width: 520px) {
+      .ff-scrapbook__book {
+        margin-inline: -4px;
+        padding: 1rem .7rem 1.1rem;
+        border-radius: 22px;
+        background: var(--scrap-paper);
+      }
+
+      .ff-scrapbook__stage {
+        width: calc(100% - 12px);
+        padding-inline: .25rem;
+      }
+
+      .ff-scrapbook__peek { inset-inline: .25rem; }
+      .ff-scrapbook__doodle--market,
+      .ff-scrapbook__doodle--crochet,
+      .ff-scrapbook__doodle--turtle { right: -8px; }
+
+      .ff-scrapbook__doodle--art,
+      .ff-scrapbook__doodle--maker { left: -8px; }
+
+      .ff-scrapbook__notes { padding-inline: .35rem; }
+      .ff-scrapbook__story { font-size: .95rem; }
+      .ff-scrapbook__cornhole { grid-template-columns: 38px minmax(0, 1fr); }
+      .ff-scrapbook__cornhole svg { width: 38px; height: 38px; }
+      .ff-scrapbook__arrow { width: 46px; height: 46px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ff-scrapbook__photo,
+      .ff-scrapbook__peek,
+      .ff-scrapbook__caption,
+      .ff-scrapbook__dot {
+        transition: none !important;
+      }
+
+      .ff-scrapbook__doodle { animation: none !important; }
+    }
   </style>
 
   <script type="text/javascript">
@@ -4239,7 +4746,7 @@ late-rows: 1fr;
         </div>
 
         <div class="ff-countdown-poster__date" id="eventStatusMessage">
-          August 7 • 4:00 PM–8:00 PM
+          September 4 • 4:00 PM–8:00 PM
         </div>
 
         <div class="ff-countdown-road">
@@ -4339,7 +4846,7 @@ late-rows: 1fr;
             <div>
               <div class="ff-event-detail__label">Date</div>
               <div class="ff-event-detail__value">
-                Friday, August 7
+                Friday, September 4
               </div>
               <span class="ff-event-detail__hint">Tap to add to calendar</span>
             </div>
@@ -4503,7 +5010,7 @@ late-rows: 1fr;
         <div class="ff-batch-showcase ff-reveal" data-delay="1">
           <div class="ff-batch-showcase__gallery" aria-label="Batch Extracts featured product">
             <div class="ff-batch-showcase__media-copy">
-              <span>August featured brand</span>
+              <span>First Friday favorite</span>
               <strong>Go big.<br>Stay original.</strong>
             </div>
 
@@ -4530,27 +5037,27 @@ late-rows: 1fr;
               class="ff-batch-showcase__logo"
             >
 
-            <div class="ff-batch-showcase__label">August spotlight</div>
+            <div class="ff-batch-showcase__label">Interactive spotlight</div>
             <h2>Featured Brand:<br>Batch Extracts</h2>
 
             <p>
-              Meet the people behind Batch during First Friday, explore their
-              lineup, and connect directly with one of August’s featured brands
-              at Green Labs.
+              Revisit the Batch Extracts spotlight, explore the brand’s
+              lineup, and play the interactive mission created for a past
+              First Friday at Green Labs.
             </p>
 
             <div class="ff-batch-showcase__offer">
-              <span>30%</span>
+              <span>PLAY</span>
               <div>
-                <strong>Featured discount</strong>
-                <small>Batch products at Green Labs</small>
+                <strong>Interactive mission</strong>
+                <small>Tap, explore, and find the surprise</small>
               </div>
             </div>
 
             <div class="ff-batch-showcase__actions">
               <a
                 class="ff-button ff-button--batch"
-                href="https://www.instagram.com/batchextracts/"
+                href="https://www.instagram.com/greenlabsmi/"
                 target="_blank"
                 rel="noopener"
               >
@@ -4561,7 +5068,7 @@ late-rows: 1fr;
                 class="ff-text-link ff-text-link--light"
                 href="#event-details"
               >
-                Meet Batch at First Friday →
+                See what else is happening →
               </a>
             </div>
 
@@ -4636,21 +5143,21 @@ late-rows: 1fr;
 
           <article class="ff-lineup-card ff-lineup-card--gold ff-reveal" data-delay="2">
             <div class="ff-lineup-card__logo-wrap">
-              <div class="ff-batch__badge" aria-hidden="true">30%<br>OFF</div>
+              <div class="ff-batch__badge" aria-hidden="true">SEPT<br>4</div>
             </div>
-            <div class="ff-lineup-card__eyebrow">August featured vendor</div>
-            <h3>Batch Extracts</h3>
+            <div class="ff-lineup-card__eyebrow">September event lineup</div>
+            <h3>More details coming soon</h3>
             <p>
-              Meet the Batch team and enjoy a featured 30% discount on Batch
-              products at Green Labs.
+              Live music, visiting brands, local vendors, games, giveaways, and
+              more. Confirmed participant details will be added as they are finalized.
             </p>
             <a
               class="ff-text-link"
-              href="https://www.instagram.com/batchextracts/"
+              href="https://www.instagram.com/greenlabsmi/"
               target="_blank"
               rel="noopener"
             >
-              Follow @batchextracts →
+              Follow First Friday updates →
             </a>
           </article>
 
@@ -4670,6 +5177,244 @@ late-rows: 1fr;
 
       </div>
     </section>
+
+
+
+    <!-- First Friday Scrapbook -->
+    <section class="ff-section ff-scrapbook" id="first-friday-scrapbook" data-memory="market" aria-labelledby="ff-scrapbook-title">
+      <div class="ff-container ff-scrapbook__inner">
+        <header class="ff-scrapbook__head ff-reveal">
+          <div class="ff-section__eyebrow">The First Friday Scrapbook</div>
+          <h2 class="ff-scrapbook__title" id="ff-scrapbook-title">You had to be there.</h2>
+          <p class="ff-scrapbook__intro">
+            First Friday is built by the neighbors, makers, artists, regulars, and crew who show up and make the night their own.
+            Every gathering gets a chapter. Here is where the story starts.
+          </p>
+          <nav class="ff-scrapbook__chapters" aria-label="First Friday scrapbook chapters">
+            <button class="ff-scrapbook__chapter" type="button" aria-current="true">August 2026 · Volume 01</button>
+          </nav>
+        </header>
+
+        <div class="ff-scrapbook__book ff-reveal" data-delay="1">
+          <div class="ff-scrapbook__stage" id="ff-scrapbook-stage">
+            <div class="ff-scrapbook__peek ff-scrapbook__peek--two" aria-hidden="true">
+              <img id="ff-scrapbook-peek-two" src="../assets/img/first-friday/gallery/first-friday-jenga-collapse.jpg" alt="">
+            </div>
+            <div class="ff-scrapbook__peek ff-scrapbook__peek--one" aria-hidden="true">
+              <img id="ff-scrapbook-peek-one" src="../assets/img/first-friday/gallery/first-friday-giant-jenga.jpg" alt="">
+            </div>
+
+            <figure class="ff-scrapbook__photo">
+              <img
+                id="ff-scrapbook-image"
+                src="../assets/img/first-friday/gallery/first-friday-market-makers.jpg"
+                alt="Local makers and vendor tents gathered outside Green Labs for First Friday"
+                loading="lazy"
+                decoding="async"
+              >
+              <figcaption class="ff-scrapbook__caption" id="ff-scrapbook-caption">
+                A parking lot, but make it a neighborhood.
+              </figcaption>
+            </figure>
+
+            <span class="ff-scrapbook__doodle ff-scrapbook__doodle--market" data-for="market" aria-hidden="true">
+              <svg viewBox="0 0 80 80"><path d="M12 55h56M18 55V34l22-16 22 16v21M27 55V38h26v17M15 29l8-6 8 6 9-6 9 6 9-6 8 6"/></svg>
+            </span>
+            <span class="ff-scrapbook__doodle ff-scrapbook__doodle--jenga" data-for="jenga" aria-hidden="true">
+              <svg viewBox="0 0 80 80"><rect x="18" y="51" width="44" height="10" rx="2"/><rect x="23" y="38" width="44" height="10" rx="2"/><rect x="14" y="25" width="44" height="10" rx="2"/><path d="M61 17l5 5M66 12l3 3"/></svg>
+            </span>
+            <span class="ff-scrapbook__doodle ff-scrapbook__doodle--art" data-for="art" aria-hidden="true">
+              <svg viewBox="0 0 90 65"><path d="M8 33s14-20 37-20 37 20 37 20-14 20-37 20S8 33 8 33Z"/><circle cx="45" cy="33" r="11"/><path d="M45 5v-4M16 12l-4-5M74 12l4-5"/></svg>
+            </span>
+            <span class="ff-scrapbook__doodle ff-scrapbook__doodle--crochet" data-for="crochet" aria-hidden="true">
+              <svg viewBox="0 0 90 90"><circle cx="45" cy="35" r="18"/><circle cx="38" cy="31" r="1.5"/><circle cx="52" cy="31" r="1.5"/><path d="M29 48c-12 8-7 22 3 16 7-4-1-12-5-5M39 52c-8 14 7 20 10 9 2-8-8-7-7-1M54 50c12 7 14 19 4 20-8 1-9-9-3-10M61 46c15 2 20 14 11 18-7 3-12-5-7-9"/></svg>
+            </span>
+            <span class="ff-scrapbook__doodle ff-scrapbook__doodle--maker" data-for="maker" aria-hidden="true">
+              <svg viewBox="0 0 80 80"><path d="M38 68C22 53 21 29 35 12c7 17 5 37 3 56ZM39 50c10-15 21-24 31-25-1 19-13 34-31 39"/><path d="M38 68c-1-22-2-36-3-46M40 59c9-13 17-21 26-29"/></svg>
+            </span>
+            <span class="ff-scrapbook__doodle ff-scrapbook__doodle--turtle" data-for="turtle" aria-hidden="true">
+              <svg viewBox="0 0 90 72"><ellipse cx="43" cy="36" rx="27" ry="20"/><path d="M18 29 8 22M19 44 8 51M66 29l10-7M66 44l10 7M70 36h14M35 18l8 18 9-17M28 48l15-12 15 12M24 28l19 8 18-8"/></svg>
+            </span>
+          </div>
+
+          <aside class="ff-scrapbook__notes">
+            <div class="ff-scrapbook__stamp">August 2026</div>
+            <p class="ff-scrapbook__volume">Volume 01 · Luna Pier, Michigan</p>
+            <h3 class="ff-scrapbook__chapter-title">The night the Jenga tower never stood a chance.</h3>
+            <p class="ff-scrapbook__story">
+              Our first chapter brought together handmade art, local treasures, giant games, familiar faces, and exactly the kind of joyful chaos we hoped for.
+            </p>
+
+            <div class="ff-scrapbook__cornhole">
+              <svg viewBox="0 0 60 60" aria-hidden="true">
+                <path d="M18 8h24l8 43H10L18 8Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+                <circle cx="30" cy="20" r="5" fill="none" stroke="currentColor" stroke-width="3"/>
+                <path d="M45 11 51 5M49 15l7-1" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+              </svg>
+              <p>Cornhole also happened. We were apparently too busy playing to document it.</p>
+            </div>
+
+            <div class="ff-scrapbook__nav">
+              <button class="ff-scrapbook__arrow" id="ff-scrapbook-prev" type="button" aria-label="Previous scrapbook memory">←</button>
+              <div class="ff-scrapbook__progress">
+                <span class="ff-scrapbook__count" id="ff-scrapbook-count">01 / 07</span>
+                <div class="ff-scrapbook__dots" id="ff-scrapbook-dots" aria-label="Choose a scrapbook memory"></div>
+                <p class="ff-scrapbook__swipe">Swipe through the night</p>
+              </div>
+              <button class="ff-scrapbook__arrow" id="ff-scrapbook-next" type="button" aria-label="Next scrapbook memory">→</button>
+            </div>
+            <span class="sr-only" id="ff-scrapbook-live" aria-live="polite"></span>
+          </aside>
+        </div>
+
+        <div class="ff-scrapbook__thanks ff-reveal" data-delay="2">
+          <strong>With love to everyone who showed up 💚</strong>
+          <span>Makers, artists, neighbors, customers, regulars, and crew—you turned an ordinary evening into the beginning of something worth keeping.</span>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      (() => {
+        const root = document.getElementById("first-friday-scrapbook");
+        if (!root || root.dataset.ready === "true") return;
+        root.dataset.ready = "true";
+
+        const memories = [
+          {
+            theme: "market",
+            src: "../assets/img/first-friday/gallery/first-friday-market-makers.jpg",
+            alt: "Local makers and vendor tents gathered outside Green Labs for First Friday",
+            caption: "A parking lot, but make it a neighborhood."
+          },
+          {
+            theme: "jenga",
+            src: "../assets/img/first-friday/gallery/first-friday-giant-jenga.jpg",
+            alt: "A Green Labs regular concentrating on a very tall giant Jenga tower",
+            caption: "The tower stood strong. She took that personally."
+          },
+          {
+            theme: "jenga",
+            src: "../assets/img/first-friday/gallery/first-friday-jenga-collapse.jpg",
+            alt: "Regulars laughing and applauding after the giant Jenga tower falls",
+            caption: "The tower never stood a chance."
+          },
+          {
+            theme: "art",
+            src: "../assets/img/first-friday/gallery/first-friday-local-art.jpg",
+            alt: "Original artwork displayed by a local artist at First Friday",
+            caption: "Creativity showed up—and brought its own tent."
+          },
+          {
+            theme: "crochet",
+            src: "../assets/img/first-friday/gallery/first-friday-crochet-creations.jpg",
+            alt: "Colorful handmade crochet animals displayed by a First Friday maker",
+            caption: "Made by hand. Adopted emotionally."
+          },
+          {
+            theme: "maker",
+            src: "../assets/img/first-friday/gallery/first-friday-maker-table.jpg",
+            alt: "A colorful table filled with handmade plants, glass art, and small treasures",
+            caption: "Tiny treasures. Extremely serious browsing decisions."
+          },
+          {
+            theme: "turtle",
+            src: "../assets/img/first-friday/gallery/first-friday-glass-turtle.jpg",
+            alt: "A blue turtle sculpture displayed by a local First Friday maker",
+            caption: "Slow and steady wins cutest thing on the table."
+          }
+        ];
+
+        const image = root.querySelector("#ff-scrapbook-image");
+        const caption = root.querySelector("#ff-scrapbook-caption");
+        const count = root.querySelector("#ff-scrapbook-count");
+        const dots = root.querySelector("#ff-scrapbook-dots");
+        const peekOne = root.querySelector("#ff-scrapbook-peek-one");
+        const peekTwo = root.querySelector("#ff-scrapbook-peek-two");
+        const stage = root.querySelector("#ff-scrapbook-stage");
+        const live = root.querySelector("#ff-scrapbook-live");
+        let index = 0;
+        let locked = false;
+        let touchStartX = 0;
+
+        memories.forEach((memory, dotIndex) => {
+          const dot = document.createElement("button");
+          dot.type = "button";
+          dot.className = "ff-scrapbook__dot";
+          dot.setAttribute("aria-label", "Show memory " + (dotIndex + 1));
+          dot.addEventListener("click", () => show(dotIndex));
+          dots.appendChild(dot);
+        });
+
+        function preload(nextIndex) {
+          const preloadImage = new Image();
+          preloadImage.src = memories[nextIndex].src;
+        }
+
+        function paint() {
+          const memory = memories[index];
+          const next = memories[(index + 1) % memories.length];
+          const afterNext = memories[(index + 2) % memories.length];
+
+          root.dataset.memory = memory.theme;
+          image.src = memory.src;
+          image.alt = memory.alt;
+          caption.textContent = memory.caption;
+          count.textContent = String(index + 1).padStart(2, "0") + " / " + String(memories.length).padStart(2, "0");
+          peekOne.src = next.src;
+          peekTwo.src = afterNext.src;
+          live.textContent = memory.caption;
+
+          [...dots.children].forEach((dot, dotIndex) => {
+            dot.setAttribute("aria-current", dotIndex === index ? "true" : "false");
+          });
+
+          preload((index + 1) % memories.length);
+        }
+
+        function show(nextIndex) {
+          if (locked || nextIndex === index) return;
+          locked = true;
+          root.classList.add("is-changing");
+
+          window.setTimeout(() => {
+            index = (nextIndex + memories.length) % memories.length;
+            paint();
+            window.requestAnimationFrame(() => {
+              root.classList.remove("is-changing");
+              window.setTimeout(() => { locked = false; }, 460);
+            });
+
+            if (typeof window.glTrack === "function") {
+              window.glTrack("first_friday_scrapbook_view", {
+                chapter: "august_2026",
+                memory: index + 1
+              });
+            }
+          }, 210);
+        }
+
+        root.querySelector("#ff-scrapbook-prev").addEventListener("click", () => show(index - 1));
+        root.querySelector("#ff-scrapbook-next").addEventListener("click", () => show(index + 1));
+
+        stage.addEventListener("touchstart", event => {
+          touchStartX = event.changedTouches[0].clientX;
+        }, { passive: true });
+
+        stage.addEventListener("touchend", event => {
+          const distance = event.changedTouches[0].clientX - touchStartX;
+          if (Math.abs(distance) < 42) return;
+          show(distance < 0 ? index + 1 : index - 1);
+        }, { passive: true });
+
+        root.addEventListener("keydown", event => {
+          if (event.key === "ArrowLeft") show(index - 1);
+          if (event.key === "ArrowRight") show(index + 1);
+        });
+
+        paint();
+      })();
+    </script>
 
     <!-- Event Flow -->
     <section class="ff-section">
@@ -4908,8 +5653,8 @@ late-rows: 1fr;
     document.addEventListener("DOMContentLoaded", () => {
       const firstFridayEvent = {
         title: "First Friday at Green Labs",
-        start: "2026-08-07T16:00:00-04:00",
-        end: "2026-08-07T20:00:00-04:00",
+        start: "2026-09-04T16:00:00-04:00",
+        end: "2026-09-04T20:00:00-04:00",
         location: "10701 Madison St, Luna Pier, MI 48157",
         description:
           "Join Green Labs, Dutch Touch Genetics, Batch, and local vendors for First Friday in Luna Pier. Enjoy games, vendor experiences, Green Labs giveaways, water, and community activities.",
@@ -5102,7 +5847,7 @@ const minutes = Math.floor((totalSeconds % 3600) / 60);
 const seconds = totalSeconds % 60;
 
           statusLabel.textContent = "Next First Friday";
-          statusMessage.textContent = "August 7 from 4:00 PM to 8:00 PM";
+          statusMessage.textContent = "September 4 from 4:00 PM to 8:00 PM";
           statusDot.style.background = "#7ce0b4";
           statusDot.style.boxShadow = "0 0 0 6px rgba(124,224,180,.12)";
 
@@ -5579,7 +6324,7 @@ if (remixCount === 5 && !festivalAlreadyUnlocked) {
             "CALSCALE:GREGORIAN",
             "METHOD:PUBLISH",
             "BEGIN:VEVENT",
-            `UID:first-friday-2026-08-07@greenlabsmi.com`,
+            `UID:first-friday-2026-09-04@greenlabsmi.com`,
             `DTSTAMP:${toICSDate(new Date().toISOString())}`,
             `DTSTART:${toICSDate(firstFridayEvent.start)}`,
             `DTEND:${toICSDate(firstFridayEvent.end)}`,
