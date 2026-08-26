@@ -21,12 +21,12 @@ jobs:
         run: python3 tools/ff_refresh.py
       - name: Commit page update
         run: |
-          if git diff --quiet; then
+          if git diff --quiet && [ -z "$(git status --porcelain)" ]; then
             echo "No page changes needed."
             exit 0
           fi
           git config user.name "Green Labs Site Bot"
           git config user.email "shop@greenlabsmi.com"
-          git add firstfriday/index.html
-          git commit -m "Refresh First Friday page for September"
+          git add firstfriday/index.html firstfriday/first-friday.css firstfriday/first-friday.js
+          git commit -m "Refactor First Friday page into HTML CSS and JS"
           git push
