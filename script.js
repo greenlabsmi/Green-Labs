@@ -1136,18 +1136,6 @@ const deliStrainData = {
     about: "Pungent, skunky, and savory with notes of garlic, ammonia, and earth. Initial euphoria is followed by heavy, sedative, relaxing body effects."
   },
 
-  "face-off-og": {
-    name: "Face Off OG",
-    tier: "core",
-    seedSource: "Bodhi Seeds",
-    type: "Indica",
-    thc: "27% THC",
-    budImage: "https://dutchtouchgenetics.com/assets/img/strains/face-off-og-bud.jpg",
-    artImage: "https://dutchtouchgenetics.com/assets/img/strains/face-off-og-art.jpg",
-    genetics: "Face Off OG × 88G13HP",
-    about: "A heavy-hitting indica-dominant hybrid crossing Archive Seed Bank Face Off OG with Bodhi’s 88 G13 Hashplant. Known for pungent OG aromas with sweet, mossy, earthy hashish flavors."
-  },
-
   "space-hippy": {
     name: "Space Hippy",
     tier: "core",
@@ -1232,18 +1220,6 @@ const deliStrainData = {
     about: "A heavy-hitting in-house cross from Dutch Touch Genetics. Dead Prez commands the room with a sour, aggressive diesel aroma backed by hints of citrus and spice."
   },
 
-  "garlic-breath": {
-    name: "Garlic Breath",
-    tier: "value",
-    seedSource: "ThugPug Genetics",
-    type: "Hybrid",
-    thc: "21.55% THC",
-    budImage: "https://dutchtouchgenetics.com/assets/img/strains/garlic-breath-bud.jpg",
-    artImage: "https://dutchtouchgenetics.com/assets/img/strains/garlic-breath-art.jpg",
-    genetics: "GMO × Mendo Breath",
-    about: "A slightly indica-dominant hybrid known for its extremely funky garlic aroma and savory flavor. Delivers deep body relaxation with an uplifted, euphoric daze."
-  },
-
   "hash-d": {
     name: "Hash D",
     tier: "value",
@@ -1266,18 +1242,6 @@ const deliStrainData = {
     artImage: "https://dutchtouchgenetics.com/assets/img/strains/guicy-g-art.jpg",
     genetics: "The Juice × Triple OG",
     about: "A bouquet of fresh fruity berries, sugary citrus, and touches of light spice dancing across your tongue."
-  },
-
-  "field-trip": {
-    name: "Field Trip",
-    tier: "core",
-    seedSource: "Dutch Touch Genetics",
-    type: "Hybrid",
-    thc: "25.07% THC",
-    budImage: "https://dutchtouchgenetics.com/assets/img/strains/field-trip-bud.jpg",
-    artImage: "https://dutchtouchgenetics.com/assets/img/strains/field-trip-art.jpg",
-    genetics: "GSC × Sunshine Daydream",
-    about: "Uplifting and nostalgic. This balanced hybrid features classic earthy dough notes with a bright, spacey citrus kick."
   },
 
   "super-silver-hashplant": {
@@ -2817,5 +2781,4 @@ document.querySelectorAll('[data-guide-card]').forEach(card => {
               }
   });
 });
-
 
