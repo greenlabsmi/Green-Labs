@@ -1,0 +1,83 @@
+{
+  "event": {
+    "name": "First Friday at Green Labs",
+    "date": "2026-09-04",
+    "time": "4–8 PM",
+    "location": "Green Labs, Luna Pier, Michigan",
+    "status": "advertising active"
+  },
+  "entertainment": [
+    {
+      "name": "Decent Folk",
+      "role": "Live music",
+      "location": "Outside",
+      "status": "confirmed"
+    }
+  ],
+  "vendors": [
+    {
+      "name": "Batch",
+      "role": "Participating cannabis brand",
+      "status": "confirmed",
+      "deal": "Deal announced soon",
+      "deal_status": "pending final selection"
+    },
+    {
+      "name": "True North",
+      "role": "Participating cannabis brand",
+      "status": "confirmed / activation in progress",
+      "deal": "B2G1 proposed",
+      "deal_status": "pending final marketing-events confirmation"
+    },
+    {
+      "name": "Pearls",
+      "role": "Participating cannabis brand",
+      "status": "confirmed",
+      "hours": "4–6 PM",
+      "deal": "B2G1",
+      "deal_status": "deal confirmed; funding split pending finalization"
+    },
+    {
+      "name": "KSHN / Doghouse",
+      "role": "Sponsored First Friday deal",
+      "status": "approved",
+      "deal": "50% off all day",
+      "deal_status": "25% Green Labs / 25% vendor split approved"
+    },
+    {
+      "name": "Rove",
+      "role": "Sponsored deal",
+      "status": "participation referenced",
+      "deal": "Deal announced soon",
+      "deal_status": "exact First Friday offer pending"
+    },
+    {
+      "name": "Glacier",
+      "role": "Sponsored deal",
+      "status": "participation referenced",
+      "deal": "Deal announced soon",
+      "deal_status": "exact First Friday offer pending"
+    }
+  ],
+  "green_labs_features": [
+    "Dutch Touch Genetics Lemon Wookie deli flower and pre-rolls",
+    "Giant Jenga",
+    "Cornhole",
+    "Local vendors / makers",
+    "First Friday community night"
+  ],
+  "dutch_touch_spotlight": {
+    "product": "Lemon Wookie",
+    "availability": ["Deli Flower", "Pre-Rolls"],
+    "copy": "Lemon Wookie came home with some extra weight around its neck.",
+    "awards": [
+      "2nd Place — Best in Grass Pre-Roll",
+      "3rd Place — Best in Grass Solventless Infused Pre-Roll"
+    ]
+  },
+  "asset_status": {
+    "vendor_logos": "pending",
+    "vendor_social_links": "being collected",
+    "final_image_pass": "pending vendor assets"
+  }
+}
