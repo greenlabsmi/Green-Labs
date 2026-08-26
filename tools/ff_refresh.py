@@ -1,126 +1,105 @@
 from pathlib import Path
 import re
 
-path = Path('firstfriday/index.html')
-text = path.read_text()
-marker = '<!-- FF-REFRESH-2026-08-25 -->'
-if marker in text:
-    print('First Friday refresh already applied.')
+HTML_PATH = Path("firstfriday/index.html")
+CSS_PATH = Path("firstfriday/first-friday.css")
+JS_PATH = Path("firstfriday/first-friday.js")
+MARKER = "FF-MODULAR-2026-08-26"
+
+html = HTML_PATH.read_text(encoding="utf-8")
+
+if MARKER in html:
+    print("First Friday modular refactor already applied.")
     raise SystemExit(0)
 
-def replace_once(old, new, label):
-    global text
-    count = text.count(old)
-    if count != 1:
-        raise SystemExit(f'{label}: expected 1 exact match, found {count}')
-    text = text.replace(old, new, 1)
+# --- 1. Extract the page-level inline stylesheet exactly as-is. ---
+style_matches = list(re.finditer(r"<style(?P<attrs>[^>]*)>(?P<css>.*?)</style>", html, flags=re.S | re.I))
+if len(style_matches) != 1:
+    raise SystemExit(f"Expected exactly one inline <style> block, found {len(style_matches)}")
 
-replace_once(
-'''        <p class="ff-section__intro ff-reveal" data-delay="2">
-          Live music from Decent Folk, True North, award-winning Dutch Touch,
-          Rove deals, local makers, cornhole, giant Jenga, and more. Vendors
-          typically begin packing around 7:30 PM.
-        </p>''',
-'''        <p class="ff-section__intro ff-reveal" data-delay="2">
-          Toledo’s own Decent Folk takes the stage, with our friends from Batch and True North joining the party. Plus, deals sponsored by Rove and Glacier, local makers, giant Jenga, cornhole, and plenty more.
-        </p>''', 'event intro')
+style_match = style_matches[0]
+css = style_match.group("css").strip("\n") + "\n"
+CSS_PATH.write_text(
+    "/* Green Labs First Friday — extracted from index.html on 2026-08-26. */\n"
+    "/* Keep page-specific styling here so index.html stays easy to maintain. */\n\n"
+    + css,
+    encoding="utf-8",
+)
 
-patterns = [
-(r'<article class="ff-card ff-reveal">\s*<h3>Decent Folk</h3>.*?</article>', '''<article class="ff-card ff-feature-card ff-reveal ff-feature-card--music">
-            <div class="ff-feature-card__eyebrow">LIVE MUSIC</div>
-            <h3>Decent Folk</h3>
-            <p class="ff-feature-card__lead">Toledo is coming to Luna Pier. Catch Decent Folk live outside Green Labs throughout First Friday.</p>
-            <div class="ff-feature-card__links">
-              <a href="https://decentfolk419.bandcamp.com/album/live-on-the-snow-moon" target="_blank" rel="noopener">Listen</a>
-              <a href="https://www.instagram.com/decent_folk419" target="_blank" rel="noopener">Instagram</a>
-              <a href="https://www.facebook.com/share/19YxTdrfa6/" target="_blank" rel="noopener">Facebook</a>
-            </div>
-          </article>''', 'Decent Folk card'),
-(r'<article class="ff-card ff-reveal" data-delay="1">\s*<h3>True North</h3>.*?</article>', '''<article class="ff-card ff-feature-card ff-reveal ff-feature-card--vendor" data-delay="1">
-            <div class="ff-feature-card__eyebrow">JOINING US</div>
-            <h3>True North</h3>
-            <p class="ff-feature-card__lead">Our friends at True North are back for First Friday with an in-store vendor takeover.</p>
-            <div class="ff-feature-card__deal"><span>FIRST FRIDAY DEAL</span><strong>Deal announced soon</strong></div>
-            <div class="ff-feature-card__links">
-              <a href="https://www.instagram.com/truenorthmi" target="_blank" rel="noopener">Instagram</a>
-              <a href="https://www.tncmi.com/" target="_blank" rel="noopener">Visit True North</a>
-            </div>
-          </article>''', 'True North card'),
-(r'<article class="ff-card ff-reveal" data-delay="2">\s*<h3>Dutch Touch: Lemon Wookie</h3>.*?</article>', '''<article class="ff-card ff-lemon-wookie ff-reveal" data-delay="2">
-            <div class="ff-lemon-wookie__copy">
-              <div class="ff-feature-card__eyebrow">FRESH OFF THE PODIUM</div>
-              <h3>Lemon Wookie</h3>
-              <p class="ff-lemon-wookie__line">Lemon Wookie came home with some extra weight around its neck.</p>
-              <div class="ff-lemon-wookie__awards" aria-label="2026 Best in Grass awards">
-                <div class="ff-medal ff-medal--silver"><span>2ND PLACE</span><strong>Pre-Roll</strong><small>Best in Grass</small></div>
-                <div class="ff-medal ff-medal--bronze"><span>3RD PLACE</span><strong>Solventless Infused Pre-Roll</strong><small>Best in Grass</small></div>
-              </div>
-              <div class="ff-lemon-wookie__available"><span>NOW AT GREEN LABS</span><strong>Deli Flower • Pre-Rolls</strong></div>
-            </div>
-            <div class="ff-lemon-wookie__visual"><img src="../assets/img/strains/lemon-wookie-bud.jpg" alt="Lemon Wookie flower from Dutch Touch Genetics" loading="lazy" decoding="async"></div>
-          </article>''', 'Lemon Wookie card')]
-for pattern, replacement, label in patterns:
-    text, count = re.subn(pattern, replacement, text, count=1, flags=re.S)
-    if count != 1:
-        raise SystemExit(f'{label}: expected 1 regex match, found {count}')
+css_link = '<link rel="stylesheet" href="./first-friday.css?v=20260826">'
+html = html[: style_match.start()] + css_link + html[style_match.end() :]
 
-replace_once('''            <p>
-              Revisit the Batch Extracts spotlight, explore the brand’s
-              lineup, and play the interactive mission created for a past
-              First Friday at Green Labs.
-            </p>
-            <div class="ff-batch-showcase__offer">
-              <span>PLAY</span>
-              <div>
-                <strong>Interactive mission</strong>
-                <small>Tap, explore, and find the surprise</small>
-              </div>
-            </div>''', '''            <p>
-              Explore Batch, see what they’re bringing to First Friday, and whatever you do...
-            </p>''', 'Batch intro/play box')
-replace_once('''            <div class="ff-batch-showcase__note">
-              Each First Friday gives one featured brand a premium space to meet
-              the Green Labs community through events, storytelling, and in-store visibility.
-            </div>''', '''            <div class="ff-batch-showcase__note">
-              Batch has been part of First Friday before. We figured they deserved their own corner of the internet.
-            </div>''', 'Batch footer')
-replace_once('''          <p class="ff-scrapbook__intro">
-            First Friday is built by the neighbors, makers, artists, regulars, and crew who show up and make the night their own.
-            Every gathering gets a chapter. Here is where the story starts.
-          </p>''', '''          <p class="ff-scrapbook__intro">
-            Thanks to everyone who came out, hung around, played some games, made some stuff, and made our first First Friday one to remember.
-          </p>''', 'scrapbook intro')
-text, count = re.subn(r'\s*<h3 class="ff-scrapbook__chapter-title">Scenes from First Friday\.</h3>\s*<p class="ff-scrapbook__story">\s*Local makers, familiar faces, and a few oversized games\. Here’s what the first chapter looked like\.\s*</p>', '', text, count=1, flags=re.S)
-if count != 1:
-    raise SystemExit(f'scrapbook redundant copy: expected 1 match, found {count}')
-replace_once('''        <div class="ff-scrapbook__thanks ff-reveal" data-delay="2">
-          <strong>Thanks to everyone who came out.</strong>
-          <span>See you at the next First Friday.</span>
-        </div>''', '''        <div class="ff-scrapbook__thanks ff-reveal" data-delay="2">
-          <strong>Thanks for coming out.</strong>
-          <span>See you September 4.</span>
-        </div>''', 'scrapbook thanks')
+# --- 2. Extract every inline script, preserving its original order. ---
+# External scripts (e.g. featured-brand-game.js) remain exactly where they are.
+inline_script_pattern = re.compile(
+    r"<script(?P<attrs>(?![^>]*\\bsrc\\s*=)[^>]*)>(?P<js>.*?)</script>",
+    flags=re.S | re.I,
+)
 
-css = r'''
-    /* FF-REFRESH-2026-08-25 */
-    .ff-feature-card{position:relative;overflow:hidden}.ff-feature-card::before{content:"";position:absolute;inset:0 0 auto;height:5px;background:linear-gradient(90deg,var(--ff-green),#77d4ac,var(--ff-gold))}.ff-feature-card__eyebrow{display:inline-flex;margin-bottom:11px;padding:7px 10px;border-radius:999px;background:var(--ff-green-soft);color:var(--ff-green-dark);font-size:.67rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase}.ff-feature-card h3{margin-bottom:8px}.ff-feature-card__lead{margin:0}.ff-feature-card__links{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}.ff-feature-card__links a{display:inline-flex;align-items:center;min-height:38px;padding:0 13px;border:1px solid rgba(11,125,90,.22);border-radius:999px;background:#fff;color:var(--ff-green-dark);font-size:.74rem;font-weight:900;text-decoration:none;box-shadow:0 6px 18px rgba(11,125,90,.07);transition:.16s}.ff-feature-card__links a:hover{transform:translateY(-2px);background:var(--ff-green);color:#fff}.ff-feature-card__deal{margin-top:18px;padding:13px 15px;border:1px dashed rgba(220,149,30,.55);border-radius:16px;background:#fff9ef}.ff-feature-card__deal span,.ff-feature-card__deal strong{display:block}.ff-feature-card__deal span{color:#9d6812;font-size:.62rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase}.ff-feature-card__deal strong{margin-top:3px;font-size:.95rem}
-    .ff-lemon-wookie{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(260px,.9fr);align-items:stretch;overflow:hidden;padding:0!important;border-color:rgba(220,149,30,.3);background:linear-gradient(135deg,#fffdf6,#f4f7ed)}.ff-lemon-wookie__copy{padding:clamp(26px,4vw,46px);align-self:center}.ff-lemon-wookie h3{margin:0;font-family:"Playfair Display",serif;font-size:clamp(2.4rem,5vw,4.6rem);line-height:.96}.ff-lemon-wookie__line{max-width:560px;margin:16px 0 0;font-size:clamp(1rem,2vw,1.2rem);line-height:1.6}.ff-lemon-wookie__visual{min-height:330px;position:relative;overflow:hidden;background:#18241c}.ff-lemon-wookie__visual img{width:100%;height:100%;object-fit:cover;object-position:center;transform:scale(1.02)}.ff-lemon-wookie__awards{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}.ff-medal{min-width:160px;padding:12px 14px;border-radius:16px;border:1px solid rgba(0,0,0,.08);box-shadow:0 8px 20px rgba(0,0,0,.07)}.ff-medal span,.ff-medal strong,.ff-medal small{display:block}.ff-medal span{font-size:.64rem;font-weight:900;letter-spacing:.13em}.ff-medal strong{margin-top:3px;font-size:.85rem}.ff-medal small{margin-top:3px;opacity:.7;font-weight:700}.ff-medal--silver{background:linear-gradient(135deg,#f8f9fa,#dce1e5);color:#3f474d}.ff-medal--bronze{background:linear-gradient(135deg,#f6dfc4,#bc7a3d);color:#4e2d13}.ff-lemon-wookie__available{margin-top:20px}.ff-lemon-wookie__available span,.ff-lemon-wookie__available strong{display:block}.ff-lemon-wookie__available span{color:var(--ff-green);font-size:.64rem;font-weight:900;letter-spacing:.13em}.ff-lemon-wookie__available strong{margin-top:4px;font-size:1rem}
-    .fb-operation-button{width:116px!important;height:116px!important;min-width:116px!important;padding:0 15px!important;border:10px solid #8c1717!important;border-radius:50%!important;background:radial-gradient(circle at 34% 28%,#ff7a70 0,#e52b25 26%,#b60e0b 70%,#7e0807 100%)!important;color:#fff!important;box-shadow:0 9px 0 #5b0807,0 14px 24px rgba(0,0,0,.38),inset 0 3px 5px rgba(255,255,255,.35)!important;font-family:"Outfit",sans-serif!important;font-size:1rem!important;font-weight:900!important;line-height:1.05!important;letter-spacing:.05em!important;text-align:center!important;text-transform:uppercase!important;transition:.1s!important}.fb-operation-button:hover{transform:translateY(-2px) scale(1.02)!important}.fb-operation-button:active{transform:translateY(7px)!important;box-shadow:0 2px 0 #5b0807,0 5px 10px rgba(0,0,0,.3),inset 0 3px 7px rgba(0,0,0,.2)!important}.fb-operation-button.is-activated{border-radius:50%!important}
-    @media(max-width:720px){.ff-lemon-wookie{grid-template-columns:1fr}.ff-lemon-wookie__visual{min-height:260px;order:-1}.ff-medal{flex:1 1 145px;min-width:0}}
-'''
-idx = text.rfind('</style>')
-if idx == -1: raise SystemExit('Could not find closing style tag')
-text = text[:idx] + css + '\n  ' + text[idx:]
+scripts = []
 
-smart_maps = r'''<script>
-(() => {
-  const address='10701 Madison St, Luna Pier, MI 48157',ua=navigator.userAgent||'',apple=/iPhone|iPad|iPod/i.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1),android=/Android/i.test(ua);
-  document.querySelectorAll('a[href*="google.com/maps/search/?api=1&query=10701+Madison+St+Luna+Pier+MI+48157"]').forEach(link=>{link.removeAttribute('target');link.addEventListener('click',event=>{event.preventDefault();const encoded=encodeURIComponent(address);if(apple)window.location.href=`https://maps.apple.com/?daddr=${encoded}`;else if(android)window.location.href=`https://www.google.com/maps/dir/?api=1&destination=${encoded}`;else window.open(`https://www.google.com/maps/dir/?api=1&destination=${encoded}`,'_blank','noopener')})});
-})();
-</script>'''
-body_idx=text.rfind('</body>')
-if body_idx==-1: raise SystemExit('Could not find closing body tag')
-text=text[:body_idx]+smart_maps+'\n'+text[body_idx:]
-text=text.replace('<html lang="en">','<html lang="en">\n'+marker,1)
-path.write_text(text)
-print('First Friday page refreshed successfully.')
+def collect_script(match):
+    attrs = match.group("attrs").strip()
+    # Do not move JSON/data script blocks; there currently are none, but this
+    # guard makes the refactor safe if one is added later.
+    if attrs and re.search(r'type\\s*=\\s*["\\\'](?:application|importmap)', attrs, flags=re.I):
+        return match.group(0)
+    scripts.append(match.group("js").strip("\n"))
+    return ""
+
+html = inline_script_pattern.sub(collect_script, html)
+
+if not scripts:
+    raise SystemExit("No inline JavaScript blocks found; refusing to rewrite HTML.")
+
+js_header = (
+    "// Green Labs First Friday — extracted from index.html on 2026-08-26.\n"
+    "// Page behavior only. The featured Batch game remains modular in assets/js/featured-brand-game.js.\n\n"
+)
+JS_PATH.write_text(js_header + "\n\n".join(scripts) + "\n", encoding="utf-8")
+
+# Load consolidated page behavior at the end of body so the DOM is available.
+js_tag = '<script src="./first-friday.js?v=20260826"></script>'
+body_close = html.rfind("</body>")
+if body_close == -1:
+    raise SystemExit("Could not find </body>; refusing to rewrite HTML.")
+html = html[:body_close] + f"  {js_tag}\n" + html[body_close:]
+
+# Add a small marker near the document header for idempotence and easy auditing.
+html = html.replace(
+    "<html lang=\"en\">",
+    f'<html lang="en">\n<!-- {MARKER} -->',
+    1,
+)
+
+HTML_PATH.write_text(html, encoding="utf-8")
+
+# --- 3. Sanity checks before the workflow is allowed to commit anything. ---
+updated_html = HTML_PATH.read_text(encoding="utf-8")
+updated_css = CSS_PATH.read_text(encoding="utf-8")
+updated_js = JS_PATH.read_text(encoding="utf-8")
+
+checks = {
+    "HTML references extracted CSS": "./first-friday.css?v=20260826" in updated_html,
+    "HTML references extracted JS": "./first-friday.js?v=20260826" in updated_html,
+    "Main inline style removed": "<style" not in updated_html.lower(),
+    "First Friday title preserved": "FIRST FRIDAY" in updated_html,
+    "Event details preserved": 'id="event-details"' in updated_html,
+    "Lemon Wookie preserved": "Lemon Wookie" in updated_html,
+    "Batch showcase preserved": "ff-batch-showcase" in updated_html,
+    "Featured Batch game external script preserved": "featured-brand-game.js" in updated_html,
+    "Countdown CSS preserved": ".ff-countdown" in updated_css,
+    "Batch button CSS preserved": ".fb-operation-button" in updated_css,
+    "Countdown JS preserved": "updateEventStatus" in updated_js,
+    "Calendar JS preserved": "first-friday-green-labs.ics" in updated_js,
+    "Native maps JS preserved": "maps.apple.com" in updated_js,
+}
+
+failed = [name for name, ok in checks.items() if not ok]
+if failed:
+    raise SystemExit("Refactor sanity check failed: " + "; ".join(failed))
+
+print("First Friday modular refactor completed successfully.")
+print(f"HTML: {HTML_PATH.stat().st_size:,} bytes")
+print(f"CSS:  {CSS_PATH.stat().st_size:,} bytes")
+print(f"JS:   {JS_PATH.stat().st_size:,} bytes")
