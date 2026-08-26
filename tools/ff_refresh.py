@@ -1,6 +1,7 @@
 from pathlib import Path
 import re
 
+# This script is intentionally idempotent and is run by .github/workflows/ff-refresh.yml.
 HTML_PATH = Path("firstfriday/index.html")
 CSS_PATH = Path("firstfriday/first-friday.css")
 JS_PATH = Path("firstfriday/first-friday.js")
