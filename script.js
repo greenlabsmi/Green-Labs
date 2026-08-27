@@ -471,7 +471,112 @@ document.getElementById('proceed-to-shop')?.addEventListener('click', () => {
     });
   })();
 
-  // ===== Deals + Highlights render (from ) =====
+  // ===== Deals + Highlights render (scheduled from deals.json) =====
+  function getDetroitDealClock(timeZone = 'America/Detroit') {
+    const parts = new Intl.DateTimeFormat('en-US', {
+      timeZone,
+      weekday: 'long',
+      hour: '2-digit',
+      minute: '2-digit',
+      hourCycle: 'h23'
+    }).formatToParts(new Date());
+
+    const values = {};
+    parts.forEach((part) => {
+      if (part.type !== 'literal') values[part.type] = part.value;
+    });
+
+    const weekdays = {
+      Sunday: 0,
+      Monday: 1,
+      Tuesday: 2,
+      Wednesday: 3,
+      Thursday: 4,
+      Friday: 5,
+      Saturday: 6
+    };
+
+    return {
+      day: weekdays[values.weekday],
+      minute: Number(values.hour) * 60 + Number(values.minute)
+    };
+  }
+
+  function parseWeeklyDealRule(rule = '') {
+    const match = String(rule).trim().match(
+      /^(Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday)\s+(\d{1,2}):(\d{2})$/i
+    );
+
+    if (!match) return null;
+
+    const weekdays = {
+      sunday: 0,
+      monday: 1,
+      tuesday: 2,
+      wednesday: 3,
+      thursday: 4,
+      friday: 5,
+      saturday: 6
+    };
+
+    return {
+      day: weekdays[match[1].toLowerCase()],
+      minute: Number(match[2]) * 60 + Number(match[3])
+    };
+  }
+
+  function isWeekendDealWindow(data) {
+    const schedule = data?.deal_schedule;
+    const start = parseWeeklyDealRule(schedule?.weekendStart);
+    const end = parseWeeklyDealRule(schedule?.weekendEnd);
+
+    if (!start || !end || !data?.weekend) return false;
+
+    const now = getDetroitDealClock(
+      schedule.timeZone || 'America/Detroit'
+    );
+    const currentValue = now.day * 1440 + now.minute;
+    const startValue = start.day * 1440 + start.minute;
+    const endValue = end.day * 1440 + end.minute;
+
+    return startValue > endValue
+      ? currentValue >= startValue || currentValue < endValue
+      : currentValue >= startValue && currentValue < endValue;
+  }
+
+  function getScheduledDealsData(data) {
+    if (!isWeekendDealWindow(data)) {
+      return { mode: 'weekday', data };
+    }
+
+    const weekend = data.weekend || {};
+    const overrides = new Map(
+      (weekend.deal_overrides || []).map((category) => [
+        category.category,
+        category
+      ])
+    );
+    const baseDeals = Array.isArray(data.deals) ? data.deals : [];
+    const mergedDeals = baseDeals.map((category) =>
+      overrides.get(category.category) || category
+    );
+
+    overrides.forEach((category, name) => {
+      if (!baseDeals.some((base) => base.category === name)) {
+        mergedDeals.push(category);
+      }
+    });
+
+    return {
+      mode: 'weekend',
+      data: {
+        ...data,
+        deals: mergedDeals,
+        highlights: weekend.highlights || data.highlights
+      }
+    };
+  }
+
   (function loadDeals() {
     const dealList = $('#dealList');
     const tilesWrap = $('#dealTiles');
@@ -495,21 +600,42 @@ document.getElementById('proceed-to-shop')?.addEventListener('click', () => {
         return r.json();
       })
       .then((data) => {
-      // We keep dealsData just in case other parts of your script need it
-      const dealsData = Array.isArray(data) ? data : (data.deals || []);
-      
-      // ✅ FIX: Pass the ENTIRE data object so the Deli Board can see it
-      renderDealsDropdown(data); 
+        let activeMode = '';
 
-      // renderDealTiles(dealsData); // disabled — using Today's Highlights cards only
-      
-      if (highlightsMount && data && data.highlights) {
-        renderHighlightsFromConfig(data.highlights, highlightsMount);
-      } else if (highlightsMount) {
-        highlightsMount.innerHTML = '';
-      }
-      initTodaysHighlightsFX();
-    })
+        const renderCurrentSchedule = () => {
+          const scheduled = getScheduledDealsData(data);
+
+          if (scheduled.mode === activeMode) return;
+          activeMode = scheduled.mode;
+
+          renderDealsDropdown(scheduled.data);
+
+          if (highlightsMount && scheduled.data.highlights) {
+            renderHighlightsFromConfig(
+              scheduled.data.highlights,
+              highlightsMount
+            );
+          } else if (highlightsMount) {
+            highlightsMount.innerHTML = '';
+          }
+
+          document.documentElement.dataset.dealSchedule = activeMode;
+          initTodaysHighlightsFX();
+
+          console.info(
+            `[GreenLabs] Deal schedule active: ${activeMode}`
+          );
+        };
+
+        renderCurrentSchedule();
+
+        // Re-check twice per minute so an already-open page changes
+        // at the Friday/Sunday 9:01 AM Detroit-time boundary.
+        window.setInterval(renderCurrentSchedule, 30000);
+        document.addEventListener('visibilitychange', () => {
+          if (!document.hidden) renderCurrentSchedule();
+        });
+      })
 
 function emojiForDealCategory(label = '') {
   const k = String(label).toLowerCase();
