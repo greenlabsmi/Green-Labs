@@ -6,8 +6,8 @@
   ],
   "deal_schedule": {
     "timeZone": "America/Detroit",
-    "weekendStart": "Friday 09:01",
-    "weekendEnd": "Sunday 09:01"
+    "weekendStart": "Thursday 21:01",
+    "weekendEnd": "Sunday 21:00"
   },
   "highlights": {
     "layout": {"hero":"dope-rope","mid":["mix-carts","dtg-disposables"],"scroll":["redbud-carts","mix-gummies","lightsky-carts","play-gummies","fire-styxx","premium-gummies"]},
