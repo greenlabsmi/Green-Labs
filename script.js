@@ -1033,8 +1033,8 @@ const deliStrainData = {
     seedSource: "Dutch Touch Genetics",
     type: "Hybrid • 2nd Place Best in Grass",
     thc: "N/A",
-    budImage: "",
-    artImage: "https://dutchtouchgenetics.com/assets/img/strains/lemon-wookie-art.jpg",
+    budImage: "assets/img/strains/lemon-wookie-bud.jpg",
+    artImage: "assets/img/strains/lemon-wookie-art.jpg",
     genetics: "Lemon G × Wookie",
     terpenes: [
       { name: "α-Terpinene", percent: "0.399%", mg: "3.99 mg/g" },
@@ -2781,4 +2781,3 @@ document.querySelectorAll('[data-guide-card]').forEach(card => {
               }
   });
 });
-
