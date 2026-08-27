@@ -60,16 +60,19 @@
     }
   ],
   "green_labs_features": [
-    "Dutch Touch Genetics Lemon Wookie deli flower and pre-rolls",
+    "Dutch Touch Genetics First Friday exclusive Lemon Wookie #4 deli flower drop",
     "Giant Jenga",
     "Cornhole",
     "Local vendors / makers",
     "First Friday community night"
   ],
   "dutch_touch_spotlight": {
-    "product": "Lemon Wookie",
-    "availability": ["Deli Flower", "Pre-Rolls"],
-    "copy": "Lemon Wookie came home with some extra weight around its neck.",
+    "brand": "Dutch Touch Genetics",
+    "product": "Lemon Wookie #4",
+    "drop_type": "First Friday Exclusive Drop",
+    "availability": ["Deli Flower"],
+    "supply": "Small supply — while it lasts",
+    "copy": "Fresh Lemon Wookie #4 hits the deli for First Friday. Small batch. When it’s gone, it’s gone.",
     "awards": [
       "2nd Place — Best in Grass Pre-Roll",
       "3rd Place — Best in Grass Solventless Infused Pre-Roll"
@@ -78,6 +81,7 @@
   "asset_status": {
     "vendor_logos": "pending",
     "vendor_social_links": "being collected",
-    "final_image_pass": "pending vendor assets"
+    "final_image_pass": "pending vendor assets",
+    "first_friday_reel": "approved — Hannah song final"
   }
 }
