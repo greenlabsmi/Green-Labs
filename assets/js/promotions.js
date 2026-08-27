@@ -50,6 +50,10 @@
   Shows once per calendar day in Detroit time.
   Best for recurring Tuesday, Wednesday, and Thursday promotions.
 
+  "interval"
+  Auto-expands again after repeatDelay milliseconds.
+  The small promotion tab remains available between expansions.
+
   Popup type options:
 
   type: "image"
@@ -98,28 +102,30 @@
     firstFriday: {
       enabled: true,
       banner: {
-        headline: "🎪 FIRST FRIDAY IS TODAY",
-        products: "4–8 PM · DEALS ALL DAY",
-        offer: "CORNHOLE · GIVEAWAYS · VENDORS · GIVEAWAYS"
+        headline: "🎪 FIRST FRIDAY · SEPTEMBER 4",
+        products: "4–8 PM · ART · MUSIC · GAMES",
+        offer: "DEALS · DRINKS · VENDORS"
       },
       hero: {
-        image: "assets/img/first-friday/first-friday-event-hero.jpg",
+        image: "assets/img/first-friday/first-friday-september-homepage-hero.jpg",
         position: "center",
         href: "/firstfriday/",
-        ariaLabel: "View Green Labs First Friday"
+        ariaLabel: "First Friday at Green Labs, September 4 from 4 to 8 PM"
       },
       popup: {
-        id: "first-friday-2026-08-07",
+        id: "first-friday-2026-09-04",
         enabled: true,
-        frequency: "daily",
-        delay: 4000,
+        frequency: "interval",
+        repeatDelay: 3 * 24 * 60 * 60 * 1000,
+        delay: 7000,
         type: "image",
-        image: "assets/img/first-friday/first-friday-event-popup.jpg",
+        image: "assets/img/first-friday/first-friday-september-sidecard.jpg",
         video: "",
-        poster: "assets/img/first-friday/first-friday-event-popup.jpg",
-        alt: "Green Labs First Friday — today from 4 to 8 PM",
+        poster: "assets/img/first-friday/first-friday-september-sidecard.jpg",
+        alt: "Green Labs First Friday, September 4 from 4 to 8 PM, featuring art, music, games, deals, drinks, vendors, Decent Folk and City Soda",
         href: "/firstfriday/",
-        ariaLabel: "View Green Labs First Friday event details"
+        ariaLabel: "View Green Labs First Friday event details",
+        tabText: "FIRST FRIDAY · SEP 4"
       }
     },
 
@@ -244,8 +250,11 @@
   ============================================================
   */
 
-  const SPECIAL_DATES = {
-    "2026-08-07": "firstFriday"
+  const CAMPAIGN_WINDOWS = {
+    firstFriday: {
+      start: "2026-08-28",
+      end: "2026-09-04"
+    }
   };
 
   const WEEKLY_SCHEDULE = {
@@ -308,11 +317,21 @@
     }
 
     const today = getDetroitDateKey();
-    const specialCampaignName = SPECIAL_DATES[today];
-    const specialCampaign = PROMOTIONS[specialCampaignName];
+    const campaignWindowName = Object.keys(CAMPAIGN_WINDOWS)
+      .find((campaignName) => {
+        const window = CAMPAIGN_WINDOWS[campaignName];
+        const campaign = PROMOTIONS[campaignName];
 
-    if (specialCampaign && specialCampaign.enabled) {
-      return specialCampaignName;
+        return (
+          campaign &&
+          campaign.enabled &&
+          today >= window.start &&
+          today <= window.end
+        );
+      });
+
+    if (campaignWindowName) {
+      return campaignWindowName;
     }
 
     const weekday = getDetroitWeekday();
@@ -442,8 +461,13 @@
     const link = document.getElementById("weeklyPromoLink");
     const image = document.getElementById("weeklyPromoImage");
     const video = document.getElementById("weeklyPromoVideo");
+    const tabLabel = document.getElementById("weeklyPromoTabLabel");
 
     if (!link || !image || !video) return;
+
+    if (tabLabel) {
+      tabLabel.textContent = popup.tabText || "SEE TODAY'S SPECIAL";
+    }
 
     const destination = popup.href || "#deals";
 
@@ -512,6 +536,22 @@
     return `greenLabsWeeklyPromo_${popupId}_${frequencyKey}`;
   }
 
+  function shouldAutoExpandPopup(popup, storageKey) {
+    const storedValue = Number(getStoredValue(storageKey) || 0);
+
+    if (!storedValue) return true;
+
+    if (popup.frequency === "interval") {
+      const repeatDelay = Number.isFinite(popup.repeatDelay)
+        ? popup.repeatDelay
+        : 3 * 24 * 60 * 60 * 1000;
+
+      return Date.now() - storedValue >= repeatDelay;
+    }
+
+    return false;
+  }
+
   /*
   ============================================================
   POPUP OPENING AND CLOSING
@@ -524,24 +564,45 @@
 
     if (!wrapper) return;
 
-    wrapper.hidden = true;
+    wrapper.classList.remove("is-open");
+    wrapper.classList.add("is-collapsed");
+    wrapper.querySelector(".weekly-promo__tab")
+      ?.setAttribute("aria-expanded", "false");
 
     if (video && !video.hidden) {
       video.pause();
     }
 
-    if (document.body.dataset.popupOpen === "weekly") {
-      delete document.body.dataset.popupOpen;
-    }
+  }
 
-    document.body.style.overflow = "";
+  function expandPromotionPopup() {
+    const wrapper = document.getElementById("weeklyPromoPopup");
+
+    if (!wrapper) return;
+
+    wrapper.hidden = false;
+    wrapper.classList.add("is-open");
+    wrapper.classList.remove("is-collapsed");
+    wrapper.querySelector(".weekly-promo__tab")
+      ?.setAttribute("aria-expanded", "true");
   }
 
   function initializePopupControls() {
     const wrapper = document.getElementById("weeklyPromoPopup");
     const link = document.getElementById("weeklyPromoLink");
+    const tab = wrapper?.querySelector(".weekly-promo__tab");
 
     if (!wrapper) return;
+
+    if (tab) {
+      tab.addEventListener("click", () => {
+        if (wrapper.classList.contains("is-open")) {
+          closePromotionPopup();
+        } else {
+          expandPromotionPopup();
+        }
+      });
+    }
 
     wrapper
       .querySelectorAll("[data-close-weekly-promo]")
@@ -585,24 +646,13 @@
     during its configured frequency period.
     */
 
-    if (getStoredValue(storageKey)) {
-      return;
-    }
+    wrapper.hidden = false;
+    wrapper.classList.add("is-collapsed");
+
+    if (!shouldAutoExpandPopup(popup, storageKey)) return;
 
     function actuallyOpenPopup() {
-      /*
-      Wait while the First Friday popup, gift popup, or
-      another coordinated popup is open.
-      */
-
-      if (document.body.dataset.popupOpen) {
-        window.setTimeout(actuallyOpenPopup, 3000);
-        return;
-      }
-
-      wrapper.hidden = false;
-      document.body.dataset.popupOpen = "weekly";
-      document.body.style.overflow = "hidden";
+      expandPromotionPopup();
 
       /*
       Save when the popup actually appears—not when its timer
@@ -671,4 +721,3 @@
     initializePromotionEngine();
   }
 })();
-
