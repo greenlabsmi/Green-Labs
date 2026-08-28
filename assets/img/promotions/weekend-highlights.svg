@@ -2,25 +2,25 @@
 <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#071611"/><stop offset="1" stop-color="#10251b"/></linearGradient></defs>
 <rect width="760" height="1040" rx="38" fill="url(#bg)"/>
 <rect x="22" y="22" width="716" height="996" rx="30" fill="none" stroke="#d7a443" stroke-width="2" opacity=".7"/>
-<text x="380" y="78" text-anchor="middle" fill="#d7a443" font-family="Arial,sans-serif" font-size="20" font-weight="700" letter-spacing="5">GREEN LABS</text>
-<text x="380" y="132" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="45" font-weight="800">WEEKEND HIGHLIGHTS</text>
-<text x="380" y="167" text-anchor="middle" fill="#a9c8ba" font-family="Arial,sans-serif" font-size="20">The deals worth knowing about right now.</text>
-<line x1="90" y1="198" x2="670" y2="198" stroke="#d7a443" opacity=".45"/>
+<text x="380" y="92" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="48" font-weight="800">WEEKEND HIGHLIGHTS</text>
+<text x="380" y="132" text-anchor="middle" fill="#a9c8ba" font-family="Arial,sans-serif" font-size="20">Weekend-only pricing. Shop while supplies last.</text>
+<line x1="90" y1="166" x2="670" y2="166" stroke="#d7a443" opacity=".45"/>
 <g font-family="Arial,sans-serif">
-<text x="90" y="252" fill="#fff" font-size="26" font-weight="700">DTG Small Bud Drop</text><text x="670" y="252" text-anchor="end" fill="#69d6a5" font-size="28" font-weight="800">$10 ⅛ · $55 OZ</text>
-<text x="90" y="287" fill="#a9c8ba" font-size="17">Afghani #3 · Astro Taffy · Banana Split · Chocolate Marshmallow</text>
-<text x="90" y="313" fill="#a9c8ba" font-size="17">Lazy Lightning · Palpatine</text>
-<text x="90" y="350" fill="#fff" font-size="24" font-weight="700">Lemon Wookie Small Bud</text><text x="670" y="350" text-anchor="end" fill="#69d6a5" font-size="27" font-weight="800">$15 ⅛ · $60 OZ</text>
-<text x="90" y="378" fill="#d7a443" font-size="17" font-weight="700">AWARD WINNING</text>
-<text x="90" y="432" fill="#fff" font-size="25" font-weight="700">Chocolate Marshmallow Shake</text><text x="670" y="432" text-anchor="end" fill="#69d6a5" font-size="28" font-weight="800">$15 OZ</text>
-<text x="90" y="497" fill="#fff" font-size="25" font-weight="700">Grip Outdoor Flower</text><text x="670" y="497" text-anchor="end" fill="#69d6a5" font-size="28" font-weight="800">$20 OZ</text>
-<text x="90" y="562" fill="#fff" font-size="25" font-weight="700">Space Hippy Infused Flower</text><text x="670" y="562" text-anchor="end" fill="#69d6a5" font-size="26" font-weight="800">$30 ⅛ · $100 ½</text>
-<text x="90" y="627" fill="#fff" font-size="25" font-weight="700">Dope Ropes + Midwest</text><text x="670" y="627" text-anchor="end" fill="#69d6a5" font-size="27" font-weight="800">9 / $20</text>
-<text x="90" y="692" fill="#fff" font-size="25" font-weight="700">Boomstick Infused Pre-Rolls</text><text x="670" y="692" text-anchor="end" fill="#69d6a5" font-size="27" font-weight="800">10 / $20</text>
-<text x="90" y="757" fill="#fff" font-size="24" font-weight="700">Dope Smokes Live Resin 14-Pack</text><text x="670" y="757" text-anchor="end" fill="#69d6a5" font-size="27" font-weight="800">$35</text>
+<text x="90" y="215" fill="#d7a443" font-size="18" font-weight="800" letter-spacing="1">SMALL BUD WEEKEND DROP</text>
+<text x="90" y="257" fill="#fff" font-size="26" font-weight="700">DTG Small Bud</text><text x="670" y="257" text-anchor="end" fill="#69d6a5" font-size="28" font-weight="800">$10 ⅛ · $55 OZ</text>
+<text x="90" y="292" fill="#a9c8ba" font-size="17">Afghani #3 · Astro Taffy · Banana Split · Chocolate Marshmallow</text>
+<text x="90" y="318" fill="#a9c8ba" font-size="17">Lazy Lightning · Palpatine</text>
+<text x="90" y="360" fill="#fff" font-size="24" font-weight="700">Lemon Wookie Small Bud</text><text x="670" y="360" text-anchor="end" fill="#69d6a5" font-size="27" font-weight="800">$15 ⅛ · $60 OZ</text>
+<text x="90" y="388" fill="#d7a443" font-size="17" font-weight="700">AWARD WINNING</text>
+<line x1="90" y1="416" x2="670" y2="416" stroke="#d7a443" opacity=".24"/>
+<text x="90" y="468" fill="#fff" font-size="25" font-weight="700">Chocolate Marshmallow Shake</text><text x="670" y="468" text-anchor="end" fill="#69d6a5" font-size="28" font-weight="800">$15 OZ</text>
+<text x="90" y="533" fill="#fff" font-size="25" font-weight="700">Grip Outdoor Flower</text><text x="670" y="533" text-anchor="end" fill="#69d6a5" font-size="28" font-weight="800">$20 OZ</text>
+<text x="90" y="598" fill="#fff" font-size="25" font-weight="700">Space Hippy Infused Flower</text><text x="670" y="598" text-anchor="end" fill="#69d6a5" font-size="26" font-weight="800">$30 ⅛ · $100 ½</text>
+<text x="90" y="663" fill="#fff" font-size="25" font-weight="700">Dope Ropes + Midwest</text><text x="670" y="663" text-anchor="end" fill="#69d6a5" font-size="27" font-weight="800">9 / $20</text>
+<text x="90" y="728" fill="#fff" font-size="25" font-weight="700">Boomstick Infused Pre-Rolls</text><text x="670" y="728" text-anchor="end" fill="#69d6a5" font-size="27" font-weight="800">10 / $20</text>
+<text x="90" y="793" fill="#fff" font-size="24" font-weight="700">Dope Smokes Live Resin 14-Pack</text><text x="670" y="793" text-anchor="end" fill="#69d6a5" font-size="27" font-weight="800">$35</text>
 </g>
-<line x1="90" y1="803" x2="670" y2="803" stroke="#d7a443" opacity=".45"/>
-<rect x="150" y="842" width="460" height="82" rx="41" fill="#d7a443"/>
-<text x="380" y="894" text-anchor="middle" fill="#071611" font-family="Arial,sans-serif" font-size="24" font-weight="800" letter-spacing="2">SEE ALL WEEKEND DEALS →</text>
-<text x="380" y="970" text-anchor="middle" fill="#91aa9e" font-family="Arial,sans-serif" font-size="18">LUNA PIER · 21+</text>
+<line x1="90" y1="835" x2="670" y2="835" stroke="#d7a443" opacity=".45"/>
+<rect x="150" y="874" width="460" height="86" rx="43" fill="#d7a443"/>
+<text x="380" y="928" text-anchor="middle" fill="#071611" font-family="Arial,sans-serif" font-size="25" font-weight="800" letter-spacing="2">SEE ALL WEEKEND DEALS →</text>
 </svg>
