@@ -1,0 +1,20 @@
+name: Fix weekend homepage
+on:
+  push:
+    paths:
+      - '.github/workflows/fix-weekend-site.yml'
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 tools/fix-weekend-site.py
+      - run: |
+          git config user.name "Green Labs Site Bot"
+          git config user.email "shop@greenlabsmi.com"
+          git add script.js assets/js/promotions.js
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Restore homepage highlights and weekend popup"
+          git push
