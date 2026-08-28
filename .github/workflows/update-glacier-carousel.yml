@@ -17,8 +17,8 @@ jobs:
           fetch-depth: 0
 
       - name: Update Glacier curated strains
-        shell: python
         run: |
+          python - <<'PY'
           from pathlib import Path
 
           path = Path('script.js')
@@ -61,6 +61,7 @@ jobs:
               raise SystemExit('Expected Glacier strain block was not found; refusing to modify script.js')
 
           path.write_text(text.replace(old, new, 1))
+          PY
 
       - name: Commit update and remove temporary workflow
         run: |
