@@ -1,0 +1,20 @@
+name: Pull Small Bud temporarily
+on:
+  push:
+    paths:
+      - '.github/workflows/pull-small-bud.yml'
+permissions:
+  contents: write
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 tools/pull-small-bud.py
+      - run: |
+          git config user.name "Green Labs Site Bot"
+          git config user.email "shop@greenlabsmi.com"
+          git add deals.json assets/img/promotions/weekend-highlights.svg
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Temporarily remove Small Bud deli deal"
+          git push
