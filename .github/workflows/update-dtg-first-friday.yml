@@ -1,0 +1,60 @@
+name: Update First Friday Dutch Touch spotlight
+
+on:
+  push:
+    paths:
+      - '.github/workflows/update-dtg-first-friday.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update Dutch Touch Genetics spotlight copy
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('firstfriday/index.html')
+          s = p.read_text()
+          old = '''          <article class="ff-card ff-lemon-wookie ff-reveal" data-delay="2">
+            <div class="ff-lemon-wookie__copy">
+              <div class="ff-feature-card__eyebrow">FRESH OFF THE PODIUM</div>
+              <h3>Lemon Wookie</h3>
+              <p class="ff-lemon-wookie__line">Lemon Wookie came home with some extra weight around its neck.</p>
+              <div class="ff-lemon-wookie__awards" aria-label="2026 Best in Grass awards">
+                <div class="ff-medal ff-medal--silver"><span>2ND PLACE</span><strong>Pre-Roll</strong><small>Best in Grass</small></div>
+                <div class="ff-medal ff-medal--bronze"><span>3RD PLACE</span><strong>Solventless Infused Pre-Roll</strong><small>Best in Grass</small></div>
+              </div>
+              <div class="ff-lemon-wookie__available"><span>NOW AT GREEN LABS</span><strong>Deli Flower • Pre-Rolls</strong></div>
+            </div>
+            <div class="ff-lemon-wookie__visual"><img src="../assets/img/strains/lemon-wookie-bud.jpg" alt="Lemon Wookie flower from Dutch Touch Genetics" loading="lazy" decoding="async"></div>
+          </article>'''
+          new = '''          <article class="ff-card ff-lemon-wookie ff-reveal" data-delay="2">
+            <div class="ff-lemon-wookie__copy">
+              <div class="ff-feature-card__eyebrow">FEATURED BRAND · JOINING US</div>
+              <h3>Dutch Touch Genetics</h3>
+              <p class="ff-lemon-wookie__line">Born and bred in-house at Green Labs. Meet the team behind Dutch Touch Genetics at First Friday — and the award-winning flower they grow right here.</p>
+              <div class="ff-lemon-wookie__available"><span>SPOTLIGHT STRAIN</span><strong>Lemon Wookie</strong></div>
+              <div class="ff-lemon-wookie__awards" aria-label="2026 Best in Grass awards for Lemon Wookie">
+                <div class="ff-medal ff-medal--silver"><span>2ND PLACE</span><strong>Pre-Roll</strong><small>Best in Grass</small></div>
+                <div class="ff-medal ff-medal--bronze"><span>3RD PLACE</span><strong>Solventless Infused Pre-Roll</strong><small>Best in Grass</small></div>
+              </div>
+              <div class="ff-lemon-wookie__available"><span>NOW AT GREEN LABS</span><strong>Deli Flower • Pre-Rolls</strong></div>
+            </div>
+            <div class="ff-lemon-wookie__visual"><img src="../assets/img/strains/lemon-wookie-bud.jpg" alt="Award-winning Lemon Wookie flower grown by Dutch Touch Genetics" loading="lazy" decoding="async"></div>
+          </article>'''
+          if old not in s:
+              raise SystemExit('Target Lemon Wookie block not found; refusing blind edit')
+          p.write_text(s.replace(old, new, 1))
+          PY
+      - name: Commit page update
+        run: |
+          git config user.name "greenlabsmi-site-bot"
+          git config user.email "shop@greenlabsmi.com"
+          git add firstfriday/index.html
+          git diff --cached --quiet && exit 0
+          git commit -m "Turn Lemon Wookie card into Dutch Touch Genetics spotlight"
+          git push
