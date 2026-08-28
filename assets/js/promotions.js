@@ -99,6 +99,35 @@
       }
     },
 
+    weekendHighlights: {
+      enabled: true,
+      banner: {
+        headline: "✨ WEEKEND HIGHLIGHTS",
+        products: "$15 SHAKE OZ · $20 GRIP OZ · 9/$20 DOPE ROPES + MIDWEST",
+        offer: "SEE ALL WEEKEND DEALS"
+      },
+      hero: {
+        image: "assets/img/deli-drop-aug-hero.jpg",
+        position: "center",
+        href: "#deli",
+        ariaLabel: "Shop Green Labs deli flower"
+      },
+      popup: {
+        id: "weekend-highlights-2026-08",
+        enabled: true,
+        frequency: "daily",
+        delay: 5000,
+        type: "image",
+        image: "assets/img/promotions/weekend-highlights.svg",
+        video: "",
+        poster: "",
+        alt: "Green Labs weekend highlight deals",
+        href: "#deals",
+        ariaLabel: "View all Green Labs weekend deals",
+        tabText: "WEEKEND DEALS"
+      }
+    },
+
     firstFriday: {
       enabled: true,
       banner: {
@@ -252,7 +281,7 @@
 
   const CAMPAIGN_WINDOWS = {
     firstFriday: {
-      start: "2026-08-28",
+      start: "2026-09-04",
       end: "2026-09-04"
     }
   };
@@ -260,7 +289,10 @@
   const WEEKLY_SCHEDULE = {
     2: "keepItDutchTuesday",
     3: "batchWednesday",
-    4: "thirstyThursday"
+    4: "thirstyThursday",
+    5: "weekendHighlights",
+    6: "weekendHighlights",
+    0: "weekendHighlights"
   };
 
   /*

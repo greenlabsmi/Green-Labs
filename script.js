@@ -572,7 +572,7 @@ document.getElementById('proceed-to-shop')?.addEventListener('click', () => {
       data: {
         ...data,
         deals: mergedDeals,
-        highlights: weekend.highlights || data.highlights
+        highlights: data.highlights
       }
     };
   }
