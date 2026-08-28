@@ -19,7 +19,7 @@ jobs:
           s=p.read_text()
           tag='<script src="../assets/js/first-friday-deals.js?v=20260828"></script>'
           if tag not in s:
-              marker='<script src="../assets/js/first-friday-media.js?v=20260828"></script>'
+              marker='<script src="../assets/js/first-friday-media.js?v=1" defer></script>'
               if marker not in s:
                   raise SystemExit('media script marker not found')
               s=s.replace(marker, marker+'\n  '+tag, 1)
