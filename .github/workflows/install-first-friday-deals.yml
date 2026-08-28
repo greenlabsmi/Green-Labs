@@ -1,0 +1,34 @@
+name: Install First Friday Deals Panel
+on:
+  push:
+    paths:
+      - '.github/workflows/install-first-friday-deals.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add deals script to First Friday page
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('firstfriday/index.html')
+          s=p.read_text()
+          tag='<script src="../assets/js/first-friday-deals.js?v=20260828"></script>'
+          if tag not in s:
+              marker='<script src="../assets/js/first-friday-media.js?v=20260828"></script>'
+              if marker not in s:
+                  raise SystemExit('media script marker not found')
+              s=s.replace(marker, marker+'\n  '+tag, 1)
+              p.write_text(s)
+          PY
+      - name: Commit update
+        run: |
+          git config user.name "greenlabsmi"
+          git config user.email "shop@greenlabsmi.com"
+          git add firstfriday/index.html
+          git diff --cached --quiet || git commit -m "Install First Friday deals panel"
+          git push
