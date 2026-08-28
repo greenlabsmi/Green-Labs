@@ -32,3 +32,4 @@ jobs:
           git add firstfriday/index.html
           git commit -m "Add First Friday recap video to scrapbook"
           git push
+# installer trigger
