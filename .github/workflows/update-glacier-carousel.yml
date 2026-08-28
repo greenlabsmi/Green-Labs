@@ -3,7 +3,8 @@ name: Update Glacier carousel
 on:
   push:
     paths:
-      - '.github/workflows/update-glacier-carousel.yml'
+      - ".github/workflows/update-glacier-carousel.yml"
+      - "tools/update_glacier.py"
 
 permissions:
   contents: write
@@ -12,62 +13,17 @@ jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
-      - name: Update Glacier curated strains
+      - name: Apply Glacier update
+        run: python3 tools/update_glacier.py
+      - name: Commit Glacier update
         run: |
-          python - <<'PY'
-          from pathlib import Path
-
-          path = Path('script.js')
-          text = path.read_text()
-
-          old = '''    strains: [
-      {
-        name: "Blast Chiller",
-        thc: "30.7%",
-        image: "./assets/img/brands/glacier/blast-chiller-deli.png"
-      },
-      {
-        name: "Green Crack",
-        thc: "27%",
-        image: "./assets/img/brands/glacier/green-crack-deli.png"
-      }
-    ]'''
-
-          new = '''    strains: [
-      {
-        name: "Green Crack",
-        thc: "27%",
-        image: "./assets/img/brands/glacier/green-crack-deli.png"
-      },
-      {
-        name: "Super Boof",
-        image: "./assets/img/brands/glacier/super-boof-deli.png"
-      },
-      {
-        name: "Blueberry Muffin",
-        image: "./assets/img/brands/glacier/blueberry-muffin-deli.png"
-      },
-      {
-        name: "Freezer Jam",
-        image: "./assets/img/brands/glacier/freezer-jam-deli.png"
-      }
-    ]'''
-
-          if old not in text:
-              raise SystemExit('Expected Glacier strain block was not found; refusing to modify script.js')
-
-          path.write_text(text.replace(old, new, 1))
-          PY
-
-      - name: Commit update and remove temporary workflow
-        run: |
-          rm .github/workflows/update-glacier-carousel.yml
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add script.js .github/workflows/update-glacier-carousel.yml
+          rm .github/workflows/update-glacier-carousel.yml tools/update_glacier.py
+          git config user.name "Green Labs Site Bot"
+          git config user.email "shop@greenlabsmi.com"
+          git add -A script.js .github/workflows/update-glacier-carousel.yml tools/update_glacier.py
           git commit -m "Update Glacier deli carousel"
           git push
