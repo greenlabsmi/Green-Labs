@@ -1400,14 +1400,21 @@ const curatedBrandData = {
     intro: "Hand-trimmed premium flower from one of our curated Michigan partners.",
     strains: [
       {
-        name: "Blast Chiller",
-        thc: "30.7%",
-        image: "./assets/img/brands/glacier/blast-chiller-deli.png"
-      },
-      {
         name: "Green Crack",
         thc: "27%",
         image: "./assets/img/brands/glacier/green-crack-deli.png"
+      },
+      {
+        name: "Super Boof",
+        image: "./assets/img/brands/glacier/super-boof-deli.png"
+      },
+      {
+        name: "Blueberry Muffin",
+        image: "./assets/img/brands/glacier/blueberry-muffin-deli.png"
+      },
+      {
+        name: "Freezer Jam",
+        image: "./assets/img/brands/glacier/freezer-jam-deli.png"
       }
     ]
   },
