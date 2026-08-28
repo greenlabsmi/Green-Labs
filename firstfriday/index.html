@@ -5220,5 +5220,6 @@ if (remixCount === 5 && !festivalAlreadyUnlocked) {
   document.querySelectorAll('a[href*="google.com/maps/search/?api=1&query=10701+Madison+St+Luna+Pier+MI+48157"]').forEach(link=>{link.removeAttribute('target');link.addEventListener('click',event=>{event.preventDefault();const encoded=encodeURIComponent(address);if(apple)window.location.href=`https://maps.apple.com/?daddr=${encoded}`;else if(android)window.location.href=`https://www.google.com/maps/dir/?api=1&destination=${encoded}`;else window.open(`https://www.google.com/maps/dir/?api=1&destination=${encoded}`,'_blank','noopener')})});
 })();
 </script>
+  <script src="../assets/js/first-friday-media.js?v=1" defer></script>
 </body>
 </html>
