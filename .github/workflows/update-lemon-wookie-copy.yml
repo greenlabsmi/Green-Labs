@@ -1,0 +1,41 @@
+name: Update Lemon Wookie First Friday Copy
+
+on:
+  push:
+    paths:
+      - '.github/workflows/update-lemon-wookie-copy.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-copy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update Lemon Wookie copy
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('assets/js/first-friday-media.js')
+          s = p.read_text()
+          replacements = {
+            'THE DELI COMEBACK': 'LEMON WOOKIE IS BACK',
+            'A limited amount of Lemon Wookie is coming back to the deli for First Friday. Small drop. While supplies last.': 'Lemon Wookie is back on the deli for First Friday. Our multi-award-winning hybrid returns at a special $110 ounce.',
+            'FIRST FRIDAY EXCLUSIVE DELI DROP': 'FIRST FRIDAY DELI SPECIAL',
+          }
+          for old, new in replacements.items():
+              if old not in s:
+                  raise SystemExit(f'Expected copy not found: {old}')
+              s = s.replace(old, new, 1)
+          p.write_text(s)
+          PY
+      - name: Commit changes
+        run: |
+          git config user.name 'Green Labs Site Bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add assets/js/first-friday-media.js
+          git diff --cached --quiet && exit 0
+          git commit -m 'Refresh Lemon Wookie First Friday messaging'
+          git push
