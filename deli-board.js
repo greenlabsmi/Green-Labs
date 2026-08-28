@@ -44,3 +44,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// Keep Glacier's curated deli THC values synced to the current batches.
+// script.js defines curatedBrandData before DOMContentLoaded fires, so this
+// updates the same data source the Glacier modal uses without changing layout.
+document.addEventListener('DOMContentLoaded', () => {
+    if (typeof curatedBrandData === 'undefined' || !curatedBrandData.glacier) return;
+
+    const glacierThc = {
+        'Green Crack': '22% new batch / 27% current batch',
+        'Super Boof': '24.3%',
+        'Blueberry Muffin': '20%',
+        'Freezer Jam': '29.7%'
+    };
+
+    curatedBrandData.glacier.strains.forEach((strain) => {
+        if (glacierThc[strain.name]) {
+            strain.thc = glacierThc[strain.name];
+        }
+    });
+});
