@@ -4,6 +4,31 @@
   const scrapbook = document.getElementById("first-friday-scrapbook");
   if (!scrapbook || document.getElementById("ff-recap-video")) return;
 
+  const dtgCard = document.querySelector(".ff-lemon-wookie");
+  if (dtgCard) {
+    const eyebrow = dtgCard.querySelector(".ff-feature-card__eyebrow");
+    const heading = dtgCard.querySelector("h3");
+    const line = dtgCard.querySelector(".ff-lemon-wookie__line");
+    const awards = dtgCard.querySelector(".ff-lemon-wookie__awards");
+    const available = dtgCard.querySelector(".ff-lemon-wookie__available");
+    const image = dtgCard.querySelector(".ff-lemon-wookie__visual img");
+
+    if (eyebrow) eyebrow.textContent = "FEATURED BRAND · JOINING US";
+    if (heading) heading.textContent = "Dutch Touch Genetics";
+    if (line) line.textContent = "Born and bred in-house at Green Labs. Meet the team behind Dutch Touch Genetics at First Friday — and the award-winning flower they grow right here.";
+    if (awards && !dtgCard.querySelector(".ff-dtg-spotlight-strain")) {
+      const spotlight = document.createElement("div");
+      spotlight.className = "ff-lemon-wookie__available ff-dtg-spotlight-strain";
+      spotlight.innerHTML = "<span>SPOTLIGHT STRAIN</span><strong>Lemon Wookie</strong>";
+      awards.parentNode.insertBefore(spotlight, awards);
+      awards.setAttribute("aria-label", "2026 Best in Grass awards for Lemon Wookie");
+    }
+    if (available) {
+      available.innerHTML = "<span>NOW AT GREEN LABS</span><strong>Deli Flower • Pre-Rolls</strong>";
+    }
+    if (image) image.alt = "Award-winning Lemon Wookie flower grown by Dutch Touch Genetics";
+  }
+
   const style = document.createElement("style");
   style.textContent = `
     .ff-recap-video {
@@ -93,6 +118,9 @@
       letter-spacing: .08em;
       text-align: center;
       text-transform: uppercase;
+    }
+    .ff-dtg-spotlight-strain {
+      margin-bottom: 1rem;
     }
     @media (min-width: 760px) {
       .ff-recap-video {
