@@ -12,9 +12,9 @@
         <div class="ff-dtg-comeback__copy">
           <span class="ff-dtg-kicker">DUTCH TOUCH GENETICS · MULTI-AWARD-WINNING STRAIN</span>
           <h3>Lemon<br>Wookie</h3>
-          <strong class="ff-dtg-return">THE DELI COMEBACK</strong>
-          <p>A limited amount of Lemon Wookie is coming back to the deli for First Friday. Small drop. While supplies last.</p>
-          <div class="ff-dtg-price"><span>FIRST FRIDAY EXCLUSIVE DELI DROP</span><strong>$110 <small>/ OZ</small></strong></div>
+          <strong class="ff-dtg-return">LEMON WOOKIE IS BACK</strong>
+          <p>Lemon Wookie is back on the deli for First Friday. Our multi-award-winning hybrid returns at a special $110 ounce.</p>
+          <div class="ff-dtg-price"><span>FIRST FRIDAY DELI SPECIAL</span><strong>$110 <small>/ OZ</small></strong></div>
         </div>
         <div class="ff-dtg-comeback__bud"><img src="../assets/img/strains/lemon-wookie-bud.jpg" alt="Lemon Wookie flower" loading="lazy" decoding="async"></div>
       </div>
