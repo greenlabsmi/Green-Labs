@@ -44,12 +44,14 @@
       line-height: 1.55;
     }
     .ff-recap-video__frame {
+      position: relative;
       width: min(100%, 390px);
       margin: 0 auto;
       padding: 6px;
       border-radius: 22px;
       background: rgba(255,255,255,.11);
       box-shadow: 0 16px 36px rgba(0,0,0,.24);
+      overflow: hidden;
     }
     .ff-recap-video video {
       display: block;
@@ -59,6 +61,29 @@
       object-fit: cover;
       border-radius: 17px;
       background: #050806;
+    }
+    .ff-recap-video__sound {
+      position: absolute;
+      right: 16px;
+      bottom: 18px;
+      z-index: 3;
+      min-height: 42px;
+      padding: 0 14px;
+      border: 1px solid rgba(255,255,255,.38);
+      border-radius: 999px;
+      background: rgba(3,19,15,.76);
+      color: #fff;
+      font: 900 .72rem/1 "Inter", sans-serif;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 8px 22px rgba(0,0,0,.22);
+      cursor: pointer;
+    }
+    .ff-recap-video__sound:focus-visible {
+      outline: 3px solid #b8efd5;
+      outline-offset: 3px;
     }
     .ff-recap-video__more {
       margin: 1rem 0 0;
@@ -95,7 +120,10 @@
     </div>
     <div class="ff-recap-video__frame">
       <video
-        controls
+        id="ff-recap-player"
+        autoplay
+        muted
+        loop
         playsinline
         preload="metadata"
         aria-label="August 2026 First Friday recap video"
@@ -103,6 +131,7 @@
         <source src="../assets/video/first-friday/first-friday-august-2026.mp4" type="video/mp4">
         Your browser does not support embedded video.
       </video>
+      <button class="ff-recap-video__sound" id="ff-recap-sound" type="button" aria-pressed="false">🔊 Tap for sound</button>
     </div>
   `;
 
@@ -111,6 +140,37 @@
   if (!inner || !book) return;
 
   inner.insertBefore(block, book);
+
+  const video = block.querySelector("#ff-recap-player");
+  const soundButton = block.querySelector("#ff-recap-sound");
+
+  if (video && soundButton) {
+    video.muted = true;
+    video.defaultMuted = true;
+
+    soundButton.addEventListener("click", () => {
+      const turningSoundOn = video.muted;
+      video.muted = !turningSoundOn;
+      soundButton.setAttribute("aria-pressed", turningSoundOn ? "true" : "false");
+      soundButton.textContent = turningSoundOn ? "🔇 Mute" : "🔊 Tap for sound";
+      if (turningSoundOn) video.play().catch(() => {});
+    });
+
+    if ("IntersectionObserver" in window) {
+      const playbackObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
+      }, { threshold: .35 });
+      playbackObserver.observe(video);
+    } else {
+      video.play().catch(() => {});
+    }
+  }
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
