@@ -1,0 +1,34 @@
+name: Install First Friday recap
+
+on:
+  push:
+    paths:
+      - '.github/workflows/install-first-friday-recap.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add recap script to First Friday page
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('firstfriday/index.html')
+          s = p.read_text()
+          tag = '  <script src="../assets/js/first-friday-media.js?v=1" defer></script>\n'
+          if 'assets/js/first-friday-media.js' not in s:
+              s = s.replace('</body>', tag + '</body>')
+              p.write_text(s)
+          PY
+      - name: Commit page update
+        run: |
+          if git diff --quiet; then exit 0; fi
+          git config user.name "greenlabsmi-site-bot"
+          git config user.email "shop@greenlabsmi.com"
+          git add firstfriday/index.html
+          git commit -m "Add First Friday recap video to scrapbook"
+          git push
