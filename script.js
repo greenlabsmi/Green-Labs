@@ -1429,6 +1429,7 @@ const curatedBrandData = {
     logoImage: "./assets/img/brands/redbud-roots/redbud-roots-logo.png",
     intro: "A rotating selection of Redbud Roots deli flower, curated by Green Labs.",
     strains: [
+      { name: "Blue Nerdz", thc: "25.63%" },
       { name: "Glitter Bomb", thc: "28.09%" },
       { name: "Macflurry", thc: "26.46%" },
       { name: "Red Nerdz", thc: "24.8%" },
