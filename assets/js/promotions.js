@@ -20,7 +20,7 @@
     firstFriday: {
       enabled: true,
       banner: { headline: "🎪 FIRST FRIDAY · SEPTEMBER 4", products: "4–8 PM · ART · MUSIC · GAMES", offer: "DEALS · DRINKS · VENDORS" },
-      hero: { image: "assets/img/first-friday/first-friday-september-homepage-hero.jpg", position: "center", href: "/firstfriday/", ariaLabel: "First Friday at Green Labs, September 4 from 4 to 8 PM" },
+      hero: { image: "assets/img/promotions/first-friday-hero-sept.jpg", position: "center", href: "/firstfriday/", ariaLabel: "First Friday at Green Labs, September 4 from 4 to 8 PM" },
       popup: { id: "first-friday-2026-09-04", enabled: true, frequency: "interval", repeatDelay: 3 * 24 * 60 * 60 * 1000, delay: 7000, type: "image", image: "assets/img/first-friday/first-friday-september-sidecard.jpg", video: "", poster: "assets/img/first-friday/first-friday-september-sidecard.jpg", alt: "Green Labs First Friday, September 4 from 4 to 8 PM, featuring art, music, games, deals, drinks, vendors, Decent Folk and City Soda", href: "/firstfriday/", ariaLabel: "View Green Labs First Friday event details", tabText: "FIRST FRIDAY · SEP 4" }
     },
     keepItDutchTuesday: {
@@ -43,7 +43,7 @@
     }
   };
 
-  const CAMPAIGN_WINDOWS = { firstFriday: { start: "2026-09-04", end: "2026-09-04" } };
+  const CAMPAIGN_WINDOWS = { firstFriday: { start: "2026-08-31", end: "2026-09-04" } };
   const WEEKLY_SCHEDULE = { 2: "keepItDutchTuesday", 3: "batchWednesday", 4: "thirstyThursday", 5: "weekendHighlights", 6: "weekendHighlights", 0: "weekendHighlights" };
 
   const dateParts = () => {
