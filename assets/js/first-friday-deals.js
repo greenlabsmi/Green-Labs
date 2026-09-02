@@ -50,25 +50,41 @@
       placeholder.remove();
     }
 
-    const hub = document.createElement("div");
+    const hub = document.createElement("section");
     hub.id = "ff-first-friday-deal-hub";
     hub.className = "ff-first-friday-deal-hub";
+    hub.setAttribute("aria-labelledby", "ff-deals-title");
     hub.innerHTML = `
       <div class="ff-deal-hub__head">
-        <span>FIRST FRIDAY DEALS · SEPTEMBER 4</span>
-        <strong>Big deals. One night.</strong>
+        <span>FRIDAY · SEPTEMBER 4</span>
+        <h3 id="ff-deals-title">FIRST FRIDAY DEALS</h3>
+        <p>Big offers, live music, local vendors and a reason to make the trip to Luna Pier.</p>
       </div>
-      <div class="ff-deal-hub__grid">
-        <div class="ff-deal-chip ff-deal-chip--feature"><span>TRUE NORTH</span><strong>BUY 2, GET 1 FREE</strong></div>
-        <div class="ff-deal-chip"><span>GELATO</span><strong>50% OFF</strong></div>
-        <div class="ff-deal-chip"><span>KSHN / DOGHOUSE</span><strong>50% OFF</strong></div>
-        <div class="ff-deal-chip"><span>BATCH</span><strong>30% OFF</strong></div>
-        <div class="ff-deal-chip"><span>ROVE</span><strong>30% OFF</strong><small>Sept. 4–7</small></div>
-        <div class="ff-deal-chip"><span>FRANKLIN FIELDS</span><strong>BOGO</strong></div>
-        <div class="ff-deal-chip"><span>PEARLS</span><strong>BUY 2, GET 1 FREE</strong><small>Vendor 4–6 PM</small></div>
-        <div class="ff-deal-chip ff-deal-chip--dtg"><span>DUTCH TOUCH GENETICS</span><strong>LEMON WOOKIE · $110/OZ</strong></div>
+
+      <div class="ff-deal-hub__layout">
+        <div class="ff-deal-hub__art">
+          <img
+            src="assets/img/promotions/first-friday-deals-sept-2026.png"
+            alt="First Friday deal calendar featuring Franklin Fields BOGO, True North and Pearls buy 2 get 1 free, Gelato and KSHN Doghouse 50% off, and ROVE and Batch 30% off."
+            loading="lazy"
+            decoding="async"
+          >
+        </div>
+
+        <div class="ff-deal-hub__copy">
+          <span class="ff-deal-hub__eyebrow">THIS FRIDAY · 4–8 PM</span>
+          <h4>Come for the deals. Stay for First Friday.</h4>
+          <p>Deals run Friday unless otherwise noted. ROVE continues through Sept. 7 and Pearls joins us from 4–6 PM.</p>
+          <div class="ff-deal-hub__highlights" aria-label="Featured First Friday offers">
+            <div><strong>50% OFF</strong><span>Gelato + KSHN / Doghouse</span></div>
+            <div><strong>BOGO</strong><span>Franklin Fields</span></div>
+            <div><strong>30% OFF</strong><span>ROVE + Batch</span></div>
+          </div>
+          <a class="ff-deal-hub__cta" href="/shop/">SHOP GREEN LABS</a>
+          <a class="ff-deal-hub__details" href="/firstfriday/">See full First Friday details →</a>
+        </div>
       </div>
-      <p class="ff-deal-hub__note">More First Friday offers may be added as vendor promos are finalized.</p>`;
+    `;
 
     const buttonRow = [...trueNorthCard.querySelectorAll("a")].find((a) => a.textContent.trim() === "Instagram")?.parentElement;
     if (buttonRow && buttonRow.parentElement === trueNorthCard) trueNorthCard.insertBefore(hub, buttonRow);
@@ -76,10 +92,14 @@
 
     const style = document.createElement("style");
     style.textContent = `
-      .ff-first-friday-deal-hub{margin:1.1rem 0 1rem;padding:1rem;border:1px solid rgba(220,149,30,.42);border-radius:18px;background:linear-gradient(145deg,#fffaf0,#f4fbf7);box-shadow:0 12px 30px rgba(15,39,30,.07)}
-      .ff-deal-hub__head{margin-bottom:.8rem}.ff-deal-hub__head span{display:block;color:#9b650d;font:900 .68rem/1.25 Inter,sans-serif;letter-spacing:.11em;text-transform:uppercase}.ff-deal-hub__head strong{display:block;margin-top:.28rem;color:#202522;font:900 clamp(1.25rem,5vw,1.65rem)/1.05 Inter,sans-serif}
-      .ff-deal-hub__grid{display:grid;grid-template-columns:1fr 1fr;gap:.55rem}.ff-deal-chip{min-height:78px;padding:.72rem;border:1px solid rgba(11,125,90,.14);border-radius:13px;background:#fff}.ff-deal-chip span,.ff-deal-chip strong,.ff-deal-chip small{display:block}.ff-deal-chip span{color:#64716b;font:900 .58rem/1.2 Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase}.ff-deal-chip strong{margin-top:.25rem;color:#075b43;font:900 .94rem/1.1 Inter,sans-serif}.ff-deal-chip small{margin-top:.25rem;color:#78817c;font:700 .62rem/1.2 Inter,sans-serif}.ff-deal-chip--feature{border-color:#dc951e;background:#fff7e8}.ff-deal-chip--feature strong{color:#9a5f00}.ff-deal-chip--dtg{grid-column:1/-1;border-color:#d78a21;background:#0a0907}.ff-deal-chip--dtg span{color:#dca143}.ff-deal-chip--dtg strong{color:#fff0d0}.ff-deal-hub__note{margin:.8rem 0 0!important;color:#78817c!important;font-size:.68rem!important;line-height:1.4!important}
-      @media(max-width:520px){.ff-deal-hub__grid{grid-template-columns:1fr 1fr}.ff-deal-chip{min-height:72px;padding:.65rem}.ff-deal-chip strong{font-size:.86rem}}
+      .ff-first-friday-deal-hub{margin:1.35rem 0 1.1rem;padding:clamp(1rem,2.2vw,1.45rem);border:1px solid rgba(15,77,58,.16);border-radius:22px;background:#f7f3e9;box-shadow:0 18px 42px rgba(15,39,30,.08);overflow:hidden}
+      .ff-deal-hub__head{margin:0 0 1rem}.ff-deal-hub__head>span{display:block;color:#b47817;font:900 .68rem/1.25 Inter,sans-serif;letter-spacing:.13em;text-transform:uppercase}.ff-deal-hub__head h3{margin:.3rem 0 .35rem!important;color:#0d513e!important;font:900 clamp(1.55rem,5vw,2.25rem)/.98 Inter,sans-serif;letter-spacing:-.035em}.ff-deal-hub__head p{max-width:720px;margin:0!important;color:#5f6964!important;font-size:.82rem!important;line-height:1.5!important}
+      .ff-deal-hub__layout{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(250px,.85fr);gap:clamp(1rem,2.4vw,1.6rem);align-items:center}.ff-deal-hub__art{min-width:0}.ff-deal-hub__art img{display:block;width:100%;height:auto;border-radius:16px;box-shadow:0 12px 28px rgba(16,42,32,.12)}
+      .ff-deal-hub__copy{padding:.25rem .1rem}.ff-deal-hub__eyebrow{display:block;color:#b47817;font:900 .68rem/1.2 Inter,sans-serif;letter-spacing:.11em}.ff-deal-hub__copy h4{margin:.45rem 0 .55rem!important;color:#123f32!important;font:900 clamp(1.3rem,3vw,1.85rem)/1.05 Inter,sans-serif;letter-spacing:-.025em}.ff-deal-hub__copy>p{margin:0 0 .95rem!important;color:#59645f!important;font-size:.78rem!important;line-height:1.55!important}
+      .ff-deal-hub__highlights{display:grid;gap:.52rem;margin:.85rem 0 1rem}.ff-deal-hub__highlights div{padding:.7rem .78rem;border-left:4px solid #d29a2e;background:rgba(255,255,255,.62);border-radius:0 10px 10px 0}.ff-deal-hub__highlights strong,.ff-deal-hub__highlights span{display:block}.ff-deal-hub__highlights strong{color:#0b5b43;font:900 1rem/1.05 Inter,sans-serif}.ff-deal-hub__highlights span{margin-top:.16rem;color:#606b66;font:700 .66rem/1.25 Inter,sans-serif}
+      .ff-deal-hub__cta{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:.68rem 1rem;border-radius:999px;background:#0b5b43;color:#fff!important;font:900 .7rem/1 Inter,sans-serif;letter-spacing:.08em;text-decoration:none!important}.ff-deal-hub__cta:hover{background:#084b38}.ff-deal-hub__details{display:block;width:max-content;margin-top:.72rem;color:#8f620e!important;font:800 .68rem/1.3 Inter,sans-serif;text-decoration:none!important}.ff-deal-hub__details:hover{text-decoration:underline!important}
+      @media(max-width:760px){.ff-deal-hub__layout{grid-template-columns:1fr}.ff-deal-hub__copy{padding:.1rem 0 0}.ff-deal-hub__highlights{grid-template-columns:repeat(3,1fr);gap:.4rem}.ff-deal-hub__highlights div{padding:.58rem .55rem;border-left:0;border-top:3px solid #d29a2e;border-radius:8px}.ff-deal-hub__highlights strong{font-size:.86rem}.ff-deal-hub__highlights span{font-size:.58rem}}
+      @media(max-width:460px){.ff-first-friday-deal-hub{padding:.8rem;border-radius:16px}.ff-deal-hub__art img{border-radius:12px}.ff-deal-hub__highlights{grid-template-columns:1fr}.ff-deal-hub__highlights div{display:flex;align-items:baseline;gap:.45rem}.ff-deal-hub__highlights span{margin-top:0}.ff-deal-hub__cta{width:100%}.ff-deal-hub__details{margin-left:auto;margin-right:auto}}
     `;
     document.head.appendChild(style);
   });
