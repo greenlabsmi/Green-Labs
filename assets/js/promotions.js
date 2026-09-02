@@ -21,7 +21,7 @@
       enabled: true,
       banner: { headline: "🎪 FIRST FRIDAY · SEPTEMBER 4", products: "4–8 PM · ART · MUSIC · GAMES", offer: "DEALS · DRINKS · VENDORS" },
       hero: { image: "assets/img/promotions/first-friday-hero-sept.jpg", position: "center", href: "/firstfriday/", ariaLabel: "First Friday at Green Labs, September 4 from 4 to 8 PM" },
-      popup: { id: "first-friday-2026-09-04", enabled: true, frequency: "interval", repeatDelay: 3 * 24 * 60 * 60 * 1000, delay: 7000, type: "image", image: "assets/img/first-friday/first-friday-september-sidecard.jpg", video: "", poster: "assets/img/first-friday/first-friday-september-sidecard.jpg", alt: "Green Labs First Friday, September 4 from 4 to 8 PM, featuring art, music, games, deals, drinks, vendors, Decent Folk and City Soda", href: "/firstfriday/", ariaLabel: "View Green Labs First Friday event details", tabText: "FIRST FRIDAY · SEP 4" }
+      popup: { id: "first-friday-deals-2026-09-04", enabled: true, frequency: "interval", repeatDelay: 3 * 24 * 60 * 60 * 1000, delay: 7000, type: "image", image: "assets/img/promotions/first-friday-deals-popup-sept-2026.png", video: "", poster: "assets/img/promotions/first-friday-deals-popup-sept-2026.png", alt: "First Friday deals at Green Labs for September 4", href: "/firstfriday/", ariaLabel: "View Green Labs First Friday deals and event details", tabText: "FIRST FRIDAY DEALS · SEP 4" }
     },
     keepItDutchTuesday: {
       enabled: true,
@@ -99,32 +99,58 @@
 
   function updatePopup(popup) {
     if (!popup) return;
-    const link = document.getElementById("weeklyPromoLink"), image = document.getElementById("weeklyPromoImage"), video = document.getElementById("weeklyPromoVideo"), label = document.getElementById("weeklyPromoTabLabel");
-    if (!link || !image || !video) return;
-    if (label) label.textContent = popup.tabText || "SEE TODAY'S SPECIAL";
-    const destination = popup.href || "#deals";
-    link.href = destination;
-    link.setAttribute("aria-label", popup.ariaLabel || "View Green Labs promotion");
-    destination === "#deals" ? link.setAttribute("data-open-deals", "") : link.removeAttribute("data-open-deals");
+    const modal = document.getElementById("promoModal");
+    const media = document.getElementById("promoModalMedia");
+    const image = document.getElementById("promoModalImage");
+    const video = document.getElementById("promoModalVideo");
+    const link = document.getElementById("promoModalLink");
+    const tab = document.getElementById("promoModalTab");
+    if (!modal || !media || !image || !video || !link) return;
+    modal.dataset.campaignId = popup.id || "promo";
+    modal.dataset.frequency = popup.frequency || "campaign";
+    modal.dataset.repeatDelay = String(popup.repeatDelay || 0);
+    modal.dataset.delay = String(popup.delay || 0);
+    link.href = popup.href || "#deals";
+    link.setAttribute("aria-label", popup.ariaLabel || popup.alt || "View promotion details");
+    if (tab) tab.textContent = popup.tabText || "VIEW DEALS";
     if (popup.type === "video" && popup.video) {
-      image.hidden = true; video.hidden = false; video.src = popup.video; video.poster = popup.poster || ""; video.load(); video.play().catch(() => {});
+      image.hidden = true; video.hidden = false; video.src = popup.video; video.poster = popup.poster || "";
     } else {
-      video.pause(); video.hidden = true; video.removeAttribute("src"); video.load(); image.hidden = false; image.src = popup.image || ""; image.alt = popup.alt || "";
+      video.pause(); video.removeAttribute("src"); video.load(); video.hidden = true;
+      image.hidden = false; image.src = popup.image || popup.poster || ""; image.alt = popup.alt || "Green Labs promotion";
     }
   }
 
-  const storageKey = (popup,name) => `greenLabsWeeklyPromo_${popup.id || name}_${popup.frequency === "daily" ? dateKey() : "campaign"}`;
-  const shouldExpand = (popup,key) => { const stored = Number(getStored(key) || 0); if (!stored) return true; return popup.frequency === "interval" && Date.now() - stored >= (Number.isFinite(popup.repeatDelay) ? popup.repeatDelay : 259200000); };
-  function closePopup() { const w=document.getElementById("weeklyPromoPopup"), v=document.getElementById("weeklyPromoVideo"); if(!w)return; w.classList.remove("is-open"); w.classList.add("is-collapsed"); w.querySelector(".weekly-promo__tab")?.setAttribute("aria-expanded","false"); if(v&&!v.hidden)v.pause(); }
-  function expandPopup() { const w=document.getElementById("weeklyPromoPopup"); if(!w)return; w.hidden=false; w.classList.add("is-open"); w.classList.remove("is-collapsed"); w.querySelector(".weekly-promo__tab")?.setAttribute("aria-expanded","true"); }
-  function initPopupControls() { const w=document.getElementById("weeklyPromoPopup"), link=document.getElementById("weeklyPromoLink"); if(!w)return; w.querySelector(".weekly-promo__tab")?.addEventListener("click",()=>w.classList.contains("is-open")?closePopup():expandPopup()); w.querySelectorAll("[data-close-weekly-promo]").forEach(el=>el.addEventListener("click",closePopup)); link?.addEventListener("click",closePopup); document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!w.hidden)closePopup();}); }
-  function showPopup(popup,name) { if(!popup||popup.enabled===false)return; const w=document.getElementById("weeklyPromoPopup"); if(!w)return; const key=storageKey(popup,name); w.hidden=false; w.classList.add("is-collapsed"); if(!shouldExpand(popup,key))return; setTimeout(()=>{expandPopup(); setStored(key,String(Date.now())); const v=document.getElementById("weeklyPromoVideo"); if(v&&!v.hidden)v.play().catch(()=>{});}, Number.isFinite(popup.delay)&&popup.delay>=0?popup.delay:10000); }
+  function shouldShowPopup(popup) {
+    if (!popup?.enabled) return false;
+    const key = `gl-promo-${popup.id || "promo"}`;
+    const stored = getStored(key);
+    if (popup.frequency === "daily") return stored !== dateKey();
+    if (popup.frequency === "interval") return !stored || (Date.now() - Number(stored)) >= (popup.repeatDelay || 0);
+    return !stored;
+  }
+
+  function markPopupSeen(popup) {
+    const key = `gl-promo-${popup.id || "promo"}`;
+    setStored(key, popup.frequency === "daily" ? dateKey() : String(Date.now()));
+  }
 
   function init() {
-    const name=activeName(), campaign=PROMOTIONS[name]||PROMOTIONS.default;
-    window.GreenLabsPromotion={name,campaign,promotions:PROMOTIONS};
-    updateBanner(campaign.banner); updateHero(campaign.hero); updatePopup(campaign.popup); initPopupControls(); showPopup(campaign.popup,name);
-    console.info(`[Green Labs Promotions] Active campaign: ${name}`);
+    const active = PROMOTIONS[activeName()] || PROMOTIONS.default;
+    if (!active?.enabled) return;
+    updateBanner(active.banner);
+    updateHero(active.hero);
+    updatePopup(active.popup);
+    if (!active.popup?.enabled || !shouldShowPopup(active.popup)) return;
+    const delay = Number(active.popup.delay || 0);
+    window.setTimeout(() => {
+      const modal = document.getElementById("promoModal");
+      if (!modal || typeof window.openPromoModal !== "function") return;
+      window.openPromoModal();
+      markPopupSeen(active.popup);
+    }, delay);
   }
-  document.readyState === "loading" ? document.addEventListener("DOMContentLoaded",init,{once:true}) : init();
+
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
 })();
