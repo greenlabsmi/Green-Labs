@@ -64,7 +64,7 @@
       <div class="ff-deal-hub__layout">
         <div class="ff-deal-hub__art">
           <img
-            src="assets/img/promotions/first-friday-deals-sept-2026.png"
+            src="/assets/img/promotions/first-friday-deals-sept-2026.png"
             alt="First Friday deal calendar featuring Franklin Fields BOGO, True North and Pearls buy 2 get 1 free, Gelato and KSHN Doghouse 50% off, and ROVE and Batch 30% off."
             loading="lazy"
             decoding="async"
