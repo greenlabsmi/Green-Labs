@@ -1,26 +1,46 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="760" height="1040" viewBox="0 0 760 1040">
-<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#071611"/><stop offset="1" stop-color="#10251b"/></linearGradient></defs>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#071611"/><stop offset="1" stop-color="#123323"/></linearGradient>
+  <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#f0c567"/><stop offset="1" stop-color="#bd8124"/></linearGradient>
+</defs>
 <rect width="760" height="1040" rx="38" fill="url(#bg)"/>
-<rect x="22" y="22" width="716" height="996" rx="30" fill="none" stroke="#d7a443" stroke-width="2" opacity=".7"/>
-<text x="380" y="92" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="48" font-weight="800">WEEKEND HIGHLIGHTS</text>
-<text x="380" y="132" text-anchor="middle" fill="#a9c8ba" font-family="Arial,sans-serif" font-size="20">Weekend-only pricing. Shop while supplies last.</text>
-<line x1="90" y1="166" x2="670" y2="166" stroke="#d7a443" opacity=".45"/>
+<rect x="22" y="22" width="716" height="996" rx="30" fill="none" stroke="#d7a443" stroke-width="2"/>
+<text x="380" y="74" text-anchor="middle" fill="#8edab8" font-family="Arial,sans-serif" font-size="18" font-weight="800" letter-spacing="4">GREEN LABS</text>
+<text x="380" y="126" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="48" font-weight="900">LABOR DAY DEALS</text>
+<text x="380" y="160" text-anchor="middle" fill="#d9b45d" font-family="Arial,sans-serif" font-size="20" font-weight="700">THROUGH MONDAY, SEPT. 7 AT 9 PM</text>
+<line x1="72" y1="188" x2="688" y2="188" stroke="#d7a443" opacity=".55"/>
 <g font-family="Arial,sans-serif">
-<text x="90" y="215" fill="#d7a443" font-size="18" font-weight="800" letter-spacing="1">SMALL BUD WEEKEND DROP</text>
-<text x="90" y="257" fill="#fff" font-size="26" font-weight="700">DTG Small Bud</text><text x="670" y="257" text-anchor="end" fill="#69d6a5" font-size="28" font-weight="800">$10 ⅛ · $55 OZ</text>
-<text x="90" y="292" fill="#a9c8ba" font-size="17">Afghani #3 · Astro Taffy · Banana Split · Chocolate Marshmallow</text>
-<text x="90" y="318" fill="#a9c8ba" font-size="17">Lazy Lightning · Palpatine</text>
-<text x="90" y="360" fill="#fff" font-size="24" font-weight="700">Lemon Wookie Small Bud</text><text x="670" y="360" text-anchor="end" fill="#69d6a5" font-size="27" font-weight="800">$15 ⅛ · $60 OZ</text>
-<text x="90" y="388" fill="#d7a443" font-size="17" font-weight="700">AWARD WINNING</text>
-<line x1="90" y1="416" x2="670" y2="416" stroke="#d7a443" opacity=".24"/>
-<text x="90" y="468" fill="#fff" font-size="25" font-weight="700">Chocolate Marshmallow Shake</text><text x="670" y="468" text-anchor="end" fill="#69d6a5" font-size="28" font-weight="800">$15 OZ</text>
-<text x="90" y="533" fill="#fff" font-size="25" font-weight="700">Grip Outdoor Flower</text><text x="670" y="533" text-anchor="end" fill="#69d6a5" font-size="28" font-weight="800">$20 OZ</text>
-<text x="90" y="598" fill="#fff" font-size="25" font-weight="700">Space Hippy Infused Flower</text><text x="670" y="598" text-anchor="end" fill="#69d6a5" font-size="26" font-weight="800">$30 ⅛ · $100 ½</text>
-<text x="90" y="663" fill="#fff" font-size="25" font-weight="700">Dope Ropes + Midwest</text><text x="670" y="663" text-anchor="end" fill="#69d6a5" font-size="27" font-weight="800">9 / $20</text>
-<text x="90" y="728" fill="#fff" font-size="25" font-weight="700">Boomstick Infused Pre-Rolls</text><text x="670" y="728" text-anchor="end" fill="#69d6a5" font-size="27" font-weight="800">10 / $20</text>
-<text x="90" y="793" fill="#fff" font-size="24" font-weight="700">Dope Smokes Live Resin 14-Pack</text><text x="670" y="793" text-anchor="end" fill="#69d6a5" font-size="27" font-weight="800">$35</text>
+  <rect x="58" y="215" width="644" height="112" rx="22" fill="#174c34" stroke="#69d6a5" stroke-width="2"/>
+  <text x="84" y="253" fill="#f0c567" font-size="17" font-weight="900" letter-spacing="2">FRESH DELI</text>
+  <text x="84" y="292" fill="#fff" font-size="29" font-weight="900">SMALL BUD DELI DROP</text>
+  <text x="676" y="292" text-anchor="end" fill="#8ff0bd" font-size="25" font-weight="900">$10 ⅛ · $55 OZ</text>
+
+  <text x="72" y="375" fill="#fff" font-size="25" font-weight="800">FRANKLIN FIELDS</text>
+  <text x="688" y="375" text-anchor="end" fill="#8ff0bd" font-size="26" font-weight="900">BUY 1 GET 1 FREE</text>
+  <text x="72" y="402" fill="#a9c8ba" font-size="16">1G + 2G DISPOSABLES · 10-PACK PRE-ROLLS</text>
+  <line x1="72" y1="424" x2="688" y2="424" stroke="#d7a443" opacity=".22"/>
+
+  <text x="72" y="473" fill="#fff" font-size="24" font-weight="800">DTG SPACE HIPPY INFUSED</text>
+  <text x="688" y="473" text-anchor="end" fill="#8ff0bd" font-size="25" font-weight="900">$50 HALF · 50% OFF</text>
+  <text x="72" y="500" fill="#a9c8ba" font-size="16">BUBBLE HASH INFUSED FLOWER</text>
+  <line x1="72" y1="522" x2="688" y2="522" stroke="#d7a443" opacity=".22"/>
+
+  <text x="72" y="571" fill="#fff" font-size="25" font-weight="800">TRUE NORTH GUMMIES</text>
+  <text x="688" y="571" text-anchor="end" fill="#8ff0bd" font-size="25" font-weight="900">BUY 2 GET 1 FREE</text>
+  <line x1="72" y1="606" x2="688" y2="606" stroke="#d7a443" opacity=".22"/>
+
+  <text x="72" y="655" fill="#fff" font-size="23" font-weight="800">MOTHER PUCKER ROSIN GUMMIES</text>
+  <text x="688" y="655" text-anchor="end" fill="#8ff0bd" font-size="24" font-weight="900">BUY 1 GET 1 FREE</text>
+  <line x1="72" y1="690" x2="688" y2="690" stroke="#d7a443" opacity=".22"/>
+
+  <text x="72" y="739" fill="#fff" font-size="25" font-weight="800">BATCH 2G + 4G DISPOSABLES</text>
+  <text x="688" y="739" text-anchor="end" fill="#8ff0bd" font-size="27" font-weight="900">30% OFF</text>
+  <line x1="72" y1="774" x2="688" y2="774" stroke="#d7a443" opacity=".22"/>
+
+  <text x="72" y="823" fill="#fff" font-size="25" font-weight="800">ROVE 1G DISPOSABLES + PODS</text>
+  <text x="688" y="823" text-anchor="end" fill="#8ff0bd" font-size="27" font-weight="900">30% OFF</text>
 </g>
-<line x1="90" y1="835" x2="670" y2="835" stroke="#d7a443" opacity=".45"/>
-<rect x="150" y="874" width="460" height="86" rx="43" fill="#d7a443"/>
-<text x="380" y="928" text-anchor="middle" fill="#071611" font-family="Arial,sans-serif" font-size="25" font-weight="800" letter-spacing="2">SEE ALL WEEKEND DEALS →</text>
+<rect x="128" y="872" width="504" height="76" rx="38" fill="url(#gold)"/>
+<text x="380" y="921" text-anchor="middle" fill="#071611" font-family="Arial,sans-serif" font-size="23" font-weight="900" letter-spacing="1.5">SEE ALL LABOR DAY DEALS →</text>
+<text x="380" y="986" text-anchor="middle" fill="#91aa9e" font-family="Arial,sans-serif" font-size="15">WHILE SUPPLIES LAST · ALL PRICES PRE-TAX</text>
 </svg>
