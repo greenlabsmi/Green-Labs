@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
    // ===== AGE GATE & SMART PROMO LOGIC =====
     const ageGate = document.getElementById('ageGate');
-    const promoModal = document.getElementById('promoModal');
     const btnPass = document.getElementById('btnAgePass');
     const btnFail = document.getElementById('btnAgeFail');
 
@@ -19,12 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
             ageGate.setAttribute('hidden', 'true');
             document.body.style.overflow = ''; 
 
-            // Only show the gift popup if they haven't dismissed it before
-            if (!localStorage.getItem('gl_gift_claimed')) {
-                setTimeout(() => {
-                    showGiftPopup();
-                }, 10000); // 10 Second Delay
-            }
         });
     }
 
@@ -35,38 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 4. Promo Popup Function
-   function showGiftPopup() {
-    if (!promoModal) return;
-
-    promoModal.removeAttribute('hidden');
-    document.body.dataset.popupOpen = 'gift';
-
-    const closeBtn = document.getElementById('btnClosePromo');
-    const okBtn = document.getElementById('btnPromoOk');
-
-    [closeBtn, okBtn].forEach((button) => {
-        button?.addEventListener(
-            'click',
-            () => {
-                promoModal.setAttribute('hidden', 'true');
-                delete document.body.dataset.popupOpen;
-                localStorage.setItem('gl_gift_claimed', 'true');
-            },
-            { once: true }
-        );
-    });
-}
-
-    // 5. Drawer "Safety Net" Button Logic
-    document.querySelector('[data-open-promo]')?.addEventListener('click', (e) => {
-        e.preventDefault();
-        showGiftPopup();
-        // Close the drawer so they can see the popup
-        document.getElementById('navDrawer')?.classList.remove('is-active');
-        document.getElementById('menuOverlay')?.classList.remove('is-active');
-    });
-   
   const y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();
 
