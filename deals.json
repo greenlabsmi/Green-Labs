@@ -88,7 +88,7 @@
   "deal_schedule": {
     "timeZone": "America/Detroit",
     "weekendStart": "Thursday 21:01",
-    "weekendEnd": "Sunday 21:00"
+    "weekendEnd": "Monday 21:00"
   },
   "highlights": {
     "layout": {
@@ -157,23 +157,26 @@
   "weekend": {
     "highlights": {
       "layout": {
-        "hero": "franklin-bogo",
+        "hero": "small-bud",
         "mid": [
-          "space-hippy-50",
-          "dtg-bomb-pop"
+          "franklin-bogo",
+          "space-hippy-50"
         ],
         "scroll": [
-          "sweet-justice-bogo",
           "true-north-b2g1",
-          "doghouse-50",
-          "kshn-50",
-          "smokies-bogo",
           "mother-pucker-bogo",
           "batch-30",
           "rove-30"
         ]
       },
       "items": {
+        "small-bud": {
+          "title": "Small Bud Deli Drop",
+          "price": "$10 EIGHTHS · $55 OUNCES",
+          "tag": "FRESH DELI",
+          "details": "Big Quality · Smaller Price",
+          "image": "assets/img/promotions/small-bud-deli-drop-hero.jpg"
+        },
         "franklin-bogo": {
           "title": "Franklin Fields",
           "price": "BUY 1 GET 1 FREE",
@@ -188,67 +191,32 @@
           "details": "Bubble Hash Infused Flower",
           "image": "https://dutchtouchgenetics.com/assets/img/strains/space-hippy-bubblehash-art.jpg"
         },
-        "dtg-bomb-pop": {
-          "title": "DTG RSO Bomb Pop Gummies",
-          "price": "$5",
-          "tag": "50% OFF",
-          "details": "Labor Day Weekend",
-          "image": "assets/img/highlights/hl-gummies.jpg"
-        },
-        "sweet-justice-bogo": {
-          "title": "Sweet Justice 10mg THC Drinks",
-          "price": "BUY 1 GET 1 FREE",
-          "tag": "LABOR DAY",
-          "details": "Franklin Fields",
-          "image": "assets/img/highlights/hl-gummies.jpg"
-        },
         "true-north-b2g1": {
           "title": "True North Gummies",
           "price": "BUY 2 GET 1 FREE",
           "tag": "LABOR DAY",
-          "details": "All Weekend",
-          "image": "assets/img/highlights/hl-gummies.jpg"
-        },
-        "doghouse-50": {
-          "title": "Doghouse 1G Pre-Rolls",
-          "price": "$3.50",
-          "tag": "50% OFF",
-          "details": "Labor Day Weekend",
-          "image": "assets/img/highlights/hl-fire-styxx.jpg"
-        },
-        "kshn-50": {
-          "title": "KSHN THC Pouches",
-          "price": "50% OFF",
-          "tag": "LABOR DAY",
-          "details": "Labor Day Weekend",
-          "image": "assets/img/highlights/hl-gummies.jpg"
-        },
-        "smokies-bogo": {
-          "title": "Smokies 200mg Fruit Gummies",
-          "price": "BUY 1 GET 1 FREE",
-          "tag": "LABOR DAY",
-          "details": "Labor Day Weekend",
+          "details": "Through Monday at 9 PM",
           "image": "assets/img/highlights/hl-gummies.jpg"
         },
         "mother-pucker-bogo": {
           "title": "Mother Pucker 200mg Rosin Gummies",
           "price": "BUY 1 GET 1 FREE",
           "tag": "LABOR DAY",
-          "details": "Labor Day Weekend",
+          "details": "Through Monday at 9 PM",
           "image": "assets/img/highlights/hl-gummies.jpg"
         },
         "batch-30": {
           "title": "Batch 2G & 4G Disposables",
           "price": "30% OFF",
           "tag": "LABOR DAY",
-          "details": "Labor Day Weekend",
+          "details": "Through Monday at 9 PM",
           "image": "assets/img/highlights/mixmatch-carts.jpg"
         },
         "rove-30": {
           "title": "ROVE 1G Disposables & Pods",
           "price": "30% OFF",
           "tag": "LABOR DAY",
-          "details": "Labor Day Weekend",
+          "details": "Through Monday at 9 PM",
           "image": "assets/img/highlights/mixmatch-carts.jpg"
         }
       }
@@ -261,16 +229,11 @@
           {
             "title": "🇺🇸 LABOR DAY WEEKEND DEALS",
             "items": [
-              "Franklin Fields 1G & 2G Disposables — Buy 1 Get 1 Free",
-              "Franklin Fields 10-Pack Pre-Rolls — Buy 1 Get 1 Free",
-              "Sweet Justice 10mg THC Drinks — Buy 1 Get 1 Free",
+              "Small Bud Deli Drop — $10 Eighths · $55 Ounces",
+              "Franklin Fields 1G & 2G Disposables + 10-Pack Pre-Rolls — Buy 1 Get 1 Free",
               "DTG Space Hippy Bubble Hash Infused Flower — $50 Half · 50% OFF",
-              "DTG RSO Bomb Pop Gummies — $5 · 50% OFF",
-              "Smokies 200mg Fruit Gummies — Buy 1 Get 1 Free",
-              "Mother Pucker 200mg Rosin Gummies — Buy 1 Get 1 Free",
               "True North Gummies — Buy 2 Get 1 Free",
-              "Doghouse 1G Pre-Rolls — $3.50 · 50% OFF",
-              "KSHN THC Pouches — 50% OFF",
+              "Mother Pucker 200mg Rosin Gummies — Buy 1 Get 1 Free",
               "Batch 2G & 4G Disposables — 30% OFF",
               "ROVE 1G Disposables & Pods — 30% OFF"
             ]
