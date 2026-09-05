@@ -15,7 +15,7 @@
       enabled: true,
       banner: { headline: "🌿 SMALL BUD WEEKEND DROP", products: "$10 EIGHTHS · $55 OUNCES", offer: "BIG QUALITY · SMALLER PRICE" },
       hero: { image: "assets/img/promotions/small-bud-deli-drop-hero.jpg", position: "center", size: "contain", href: "#shop", shop: "rec", cta: "SHOP SMALL BUD DROP →", ariaLabel: "Shop the Green Labs Small Bud Deli Drop" },
-      popup: { id: "weekend-highlights-2026-08", enabled: true, frequency: "daily", delay: 5000, type: "image", image: "assets/img/promotions/weekend-highlights.svg", video: "", poster: "", alt: "Green Labs weekend highlight deals", href: "#deals", ariaLabel: "View all Green Labs weekend deals", tabText: "WEEKEND DEALS" }
+      popup: { id: "labor-day-deals-2026-09-05", enabled: true, frequency: "daily", delay: 5000, type: "image", image: "assets/img/promotions/weekend-highlights.svg", video: "", poster: "", alt: "Green Labs Labor Day deals through Monday at 9 PM", href: "#deals", ariaLabel: "View all Green Labs Labor Day deals", tabText: "LABOR DAY DEALS" }
     },
     firstFriday: {
       enabled: true,
@@ -47,7 +47,7 @@
   const WEEKLY_SCHEDULE = { 2: "keepItDutchTuesday", 3: "batchWednesday", 4: "thirstyThursday", 5: "weekendHighlights", 6: "weekendHighlights", 0: "weekendHighlights" };
 
   const dateParts = () => {
-    const parts = new Intl.DateTimeFormat("en-US", { timeZone: TIME_ZONE, year: "numeric", month: "2-digit", day: "2-digit", weekday: "long" }).formatToParts(new Date());
+    const parts = new Intl.DateTimeFormat("en-US", { timeZone: TIME_ZONE, year: "numeric", month: "2-digit", day: "2-digit", weekday: "long", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(new Date());
     return Object.fromEntries(parts.filter(p => p.type !== "literal").map(p => [p.type, p.value]));
   };
   const dateKey = () => { const p = dateParts(); return `${p.year}-${p.month}-${p.day}`; };
@@ -55,6 +55,9 @@
   const activeName = () => {
     if (MANUAL_CAMPAIGN && PROMOTIONS[MANUAL_CAMPAIGN]?.enabled) return MANUAL_CAMPAIGN;
     const today = dateKey();
+    const parts = dateParts();
+    const localTime = `${parts.hour || "00"}:${parts.minute || "00"}`;
+    if (today >= "2026-09-05" && (today < "2026-09-07" || (today === "2026-09-07" && localTime < "21:00"))) return "weekendHighlights";
     const windowName = Object.keys(CAMPAIGN_WINDOWS).find(name => PROMOTIONS[name]?.enabled && today >= CAMPAIGN_WINDOWS[name].start && today <= CAMPAIGN_WINDOWS[name].end);
     if (windowName) return windowName;
     const scheduled = WEEKLY_SCHEDULE[weekday()];
