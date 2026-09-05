@@ -13,7 +13,7 @@
     },
     weekendHighlights: {
       enabled: true,
-      banner: { headline: "🌿 SMALL BUD WEEKEND DROP", products: "$10 EIGHTHS · $55 OUNCES · LEMON WOOKIE $60 OZ", offer: "BIG QUALITY · SMALLER PRICE" },
+      banner: { headline: "🌿 SMALL BUD WEEKEND DROP", products: "$10 EIGHTHS · $55 OUNCES", offer: "BIG QUALITY · SMALLER PRICE" },
       hero: { image: "assets/img/promotions/small-bud-deli-drop-hero.jpg", position: "center", size: "contain", href: "#shop", shop: "rec", cta: "SHOP SMALL BUD DROP →", ariaLabel: "Shop the Green Labs Small Bud Deli Drop" },
       popup: { id: "weekend-highlights-2026-08", enabled: true, frequency: "daily", delay: 5000, type: "image", image: "assets/img/promotions/weekend-highlights.svg", video: "", poster: "", alt: "Green Labs weekend highlight deals", href: "#deals", ariaLabel: "View all Green Labs weekend deals", tabText: "WEEKEND DEALS" }
     },
