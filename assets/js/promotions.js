@@ -13,8 +13,8 @@
     },
     weekendHighlights: {
       enabled: true,
-      banner: { headline: "🌿 SMALL BUD WEEKEND DROP", products: "$10 EIGHTHS · $55 OUNCES", offer: "BIG QUALITY · SMALLER PRICE" },
-      hero: { image: "assets/img/promotions/small-bud-deli-drop-hero.jpg", position: "center", size: "contain", href: "#shop", shop: "rec", cta: "SHOP SMALL BUD DROP →", ariaLabel: "Shop the Green Labs Small Bud Deli Drop" },
+      banner: { headline: "CLOCK OUT. LIGHT UP.", products: "LABOR DAY DEALS ARE ON.", offer: "THROUGH MONDAY" },
+      hero: { image: "assets/img/promotions/labor-day-hero.jpg", position: "center", size: "cover", href: "#deals", ariaLabel: "View Green Labs Labor Day deals through Monday" },
       popup: { id: "labor-day-deals-2026-09-05", enabled: true, frequency: "daily", delay: 5000, type: "image", image: "assets/img/promotions/weekend-highlights.svg", video: "", poster: "", alt: "Green Labs Labor Day deals through Monday at 9 PM", href: "#deals", ariaLabel: "View all Green Labs Labor Day deals", tabText: "LABOR DAY DEALS" }
     },
     firstFriday: {
