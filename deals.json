@@ -47,73 +47,55 @@
   },
   "highlights": {
     "layout": {
-      "hero": "grip-outdoor",
-      "mid": ["glacier-disposables", "grip-disposables"],
-      "scroll": ["redbud-carts", "party-favors-disposables", "dtg-disposables", "play-gummies", "new-glacier-flower", "platinum-live-resin"]
+      "hero": "dope-rope",
+      "mid": ["mix-carts", "dtg-disposables"],
+      "scroll": ["redbud-carts", "mix-gummies", "lightsky-carts", "play-gummies", "fire-styxx", "premium-gummies"]
     },
     "items": {
-      "grip-outdoor": {
-        "title": "GRIP Outdoor Flower",
-        "price": "$20 OUNCE",
-        "tag": "FLOWER",
-        "details": "Everyday weekday deal",
-        "image": "assets/img/highlights/hl-grip.jpg"
+      "dope-rope": {
+        "title": "Dope Ropes & Midwest Gummies",
+        "price": "6 for $18",
+        "tag": "EDIBLES",
+        "details": "$4 Each · Mix & Match",
+        "image": "assets/img/highlights/dope-rope-hl.jpg"
       },
-      "glacier-disposables": {
-        "title": "Glacier 1G Live Resin Disposables",
-        "price": "25% OFF",
+      "mix-carts": {
+        "title": "Mix & Match 1G Carts",
+        "price": "5 for $35",
         "tag": "VAPES",
-        "details": "Live Resin Disposables",
-        "image": "assets/img/highlights/mixmatch-carts.jpg"
-      },
-      "grip-disposables": {
-        "title": "GRIP 2G Live Resin Disposables",
-        "price": "BUY 2 GET 1",
-        "tag": "VAPES",
-        "details": "Live Resin Disposables",
-        "image": "assets/img/highlights/mixmatch-carts.jpg"
-      },
-      "redbud-carts": {
-        "title": "Redbud Roots 1G Full Spectrum Carts",
-        "price": "3 FOR $25",
-        "tag": "VAPES",
-        "details": "Full Restock",
-        "image": "assets/img/highlights/hl-redbud.jpg"
-      },
-      "party-favors-disposables": {
-        "title": "Party Favors 3G Disposables",
-        "price": "BUY 2 GET 1",
-        "tag": "VAPES",
-        "details": "Weekday Deal",
+        "details": "Party Favors · PLAY · Crude Boys · Drip",
         "image": "assets/img/highlights/mixmatch-carts.jpg"
       },
       "dtg-disposables": {
-        "title": "Dutch Touch 1G Disposables",
-        "price": "7 FOR $100",
+        "title": "DTG 1G Disposables",
+        "price": "3 for $45",
         "tag": "VAPES",
-        "details": "3 for $45",
+        "details": "7 for $100",
         "image": "assets/img/deals/dt-disposables.jpg"
       },
+      "redbud-carts": {
+        "title": "Redbud Roots 1G Carts 3 for $25",
+        "image": "assets/img/highlights/hl-redbud.jpg"
+      },
+      "mix-gummies": {
+        "title": "Choice Gummies 5 for $18",
+        "image": "assets/img/highlights/hl-gummies.jpg"
+      },
+      "lightsky-carts": {
+        "title": "LightSky Farms Rug Burn OG Live Resin Cart $15",
+        "image": "assets/img/highlights/hl-lightsky.jpg"
+      },
       "play-gummies": {
-        "title": "PLAY 200mg Gummies",
-        "price": "10 FOR $20",
-        "tag": "EDIBLES",
-        "details": "$3 each",
+        "title": "PLAY 200mg Gummies 10 for $20",
         "image": "assets/img/highlights/play-gummy-hl.jpg"
       },
-      "new-glacier-flower": {
-        "title": "New Glacier Deli Flower",
-        "price": "BLUEBERRY MUFFIN + FREEZER JAM",
-        "tag": "FRESH DROP",
-        "details": "Now in the Green Labs Deli",
-        "image": "assets/img/promotions/chalkboard-hero.jpg"
+      "fire-styxx": {
+        "title": "Fire Styxx & Bonfire 10 for $55",
+        "image": "assets/img/highlights/hl-fire-styxx.jpg"
       },
-      "platinum-live-resin": {
-        "title": "Platinum Vape 1G Live Resin Carts",
-        "price": "3 FOR $30",
-        "tag": "VAPES",
-        "details": "$15 each",
-        "image": "assets/img/highlights/mixmatch-carts.jpg"
+      "premium-gummies": {
+        "title": "Premium Gummies 5 for $35",
+        "image": "assets/img/highlights/hl-premium-gummies.jpg"
       }
     }
   },
