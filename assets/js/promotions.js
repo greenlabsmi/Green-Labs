@@ -5,7 +5,7 @@
   const MANUAL_CAMPAIGN = null;
 
   const BRAND_HERO = {
-    image: "assets/img/deli-drop-aug-hero.jpg",
+    image: "assets/img/promotions/chalkboard-hero.jpg",
     position: "center",
     size: "cover",
     href: "#deli",
@@ -29,19 +29,7 @@
         products: "10% OFF CORE & PREMIUM TIER FLOWER",
         offer: "TODAY ONLY"
       },
-      popup: {
-        id: "keep-it-dutch-tuesday",
-        enabled: true,
-        frequency: "daily",
-        delay: 10000,
-        type: "image",
-        image: "assets/img/promotions/keep-it-dutch-tuesday-popup.jpg",
-        video: "",
-        poster: "assets/img/promotions/keep-it-dutch-tuesday.jpg",
-        alt: "Keep It Dutch Tuesday promotion",
-        href: "#deli",
-        ariaLabel: "Shop Green Labs deli flower"
-      }
+      popup: { enabled: false }
     },
     batchWednesday: {
       enabled: true,
@@ -152,18 +140,21 @@
 
     const sub = document.querySelector(".hero__sub");
     if (sub) {
-      sub.textContent = "Home of Dutch Touch Genetics and the Green Labs Deli — a curated lineup of Michigan’s finest flower, exclusive drops, and top-tier quality.";
+      sub.textContent = "Independent. Award-winning. Different by design. Green Labs brings together exceptional cannabis, Michigan’s most sought-after brands, and a team that actually knows the products we sell.";
     }
 
     const buttons = document.querySelectorAll(".hero__cta .hero__btn");
     if (buttons[0]) {
-      buttons[0].textContent = "Shop Deli";
-      buttons[0].removeAttribute("data-open-shop");
-      buttons[0].onclick = () => document.querySelector("#deli")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      buttons[0].textContent = "Shop Online";
+      buttons[0].setAttribute("data-open-shop", "rec");
+      buttons[0].removeAttribute("data-scroll");
+      buttons[0].onclick = null;
     }
     if (buttons[1]) {
-      buttons[1].textContent = "Shop Online";
-      buttons[1].setAttribute("data-open-shop", "rec");
+      buttons[1].textContent = "Explore Deli";
+      buttons[1].removeAttribute("data-open-shop");
+      buttons[1].setAttribute("data-scroll", "#deli");
+      buttons[1].onclick = () => document.querySelector("#deli")?.scrollIntoView({ behavior: "smooth", block: "start" });
     }
     if (buttons[2]) buttons[2].textContent = "Today's Deals";
 
