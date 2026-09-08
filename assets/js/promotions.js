@@ -5,7 +5,7 @@
   const MANUAL_CAMPAIGN = null;
 
   const BRAND_HERO = {
-    image: "assets/img/promotions/chalkboard-hero.jpg",
+    image: "assets/img/deli-drop-aug-hero.jpg",
     position: "center",
     size: "cover",
     href: "#deli",
@@ -191,7 +191,7 @@
       image.style.backgroundPosition = hero.position || "center";
       image.style.backgroundSize = hero.size || "cover";
       image.style.backgroundRepeat = "no-repeat";
-      image.setAttribute("aria-label", hero.ariaLabel || "Green Labs Deli chalkboard");
+      image.setAttribute("aria-label", hero.ariaLabel || "Green Labs Deli hero");
     }
   }
 
