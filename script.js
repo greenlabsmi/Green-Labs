@@ -1331,6 +1331,40 @@ const deliStrainData = {
     about: "A bouquet of fresh fruity berries, sugary citrus, and touches of light spice dancing across your tongue."
   },
 
+  "death-by-funk": {
+    name: "Death By Funk",
+    tier: "premium",
+    seedSource: "Dutch Touch Genetics",
+    type: "Indica • 3rd Place Best in Grass",
+    thc: "26.25% THC",
+    budImage: "https://dutchtouchgenetics.com/assets/img/strains/death-by-funk-bud.jpg",
+    artImage: "https://dutchtouchgenetics.com/assets/img/strains/death-by-funk-art.jpg",
+    genetics: "Death Star × Clusterfunk",
+    terpenes: [
+      { name: "β-Caryophyllene", percent: "0.342%", mg: "3.42 mg/g" },
+      { name: "Nerolidol", percent: "0.213%", mg: "2.13 mg/g" },
+      { name: "α-Humulene", percent: "0.150%", mg: "1.50 mg/g" }
+    ],
+    about: "🏆 3rd Place Indica Flower — Best in Grass. Deep oil-and-fuel funk with skunky, sour notes and sweet jet-fuel character from Death Star × Clusterfunk."
+  },
+
+  "face-off-1": {
+    name: "Face Off #1",
+    tier: "core",
+    seedSource: "Dutch Touch Genetics Library",
+    type: "Indica Dominant",
+    thc: "28.76% THC",
+    budImage: "https://dutchtouchgenetics.com/assets/img/strains/face-off-og-bud.jpg",
+    artImage: "https://dutchtouchgenetics.com/assets/img/strains/face-off-og-art.jpg",
+    genetics: "Face Off OG #1",
+    terpenes: [
+      { name: "β-Myrcene", percent: "0.253%", mg: "2.53 mg/g" },
+      { name: "Limonene", percent: "0.201%", mg: "2.01 mg/g" },
+      { name: "Terpinolene", percent: "0.155%", mg: "1.55 mg/g" }
+    ],
+    about: "An OG-forward selection with a terpene profile led by myrcene, limonene and terpinolene. This batch tests at 28.76% THC."
+  },
+
   "super-silver-hashplant": {
     name: "Super Silver Hashplant",
     tier: "core",
