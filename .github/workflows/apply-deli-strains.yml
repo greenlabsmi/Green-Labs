@@ -16,87 +16,32 @@ jobs:
         with:
           ref: main
       - name: Add Death By Funk and Face Off #1
-        shell: python
         run: |
+          python - <<'PY'
           from pathlib import Path
+          import base64
 
-          # ---- index.html carousel cards ----
+          cards = base64.b64decode('PGRpdiBjbGFzcz0iZGVsaS1jYXJkLXdyYXBwZXIgaXMtYXdhcmQgaXMtbmV3IiBkYXRhLWNhdGVnb3J5PSJpbmRpY2EiIG9uY2xpY2s9Im9wZW5EZWxpTW9kYWwoJ2RlYXRoLWJ5LWZ1bmsnKSI+CiAgPGRpdiBjbGFzcz0iZGVsaS1jYXJkIj4KICAgIDxkaXYgY2xhc3M9ImRlbGktY2FyZF9fZnJvbnQiIHN0eWxlPSJiYWNrZ3JvdW5kLWltYWdlOiB1cmwoJ2h0dHBzOi8vZHV0Y2h0b3VjaGdlbmV0aWNzLmNvbS9hc3NldHMvaW1nL3N0cmFpbnMvZGVhdGgtYnktZnVuay1idWQuanBnJyk7Ij48L2Rpdj4KICAgIDxkaXYgY2xhc3M9ImRlbGktY2FyZF9fYmFjayIgc3R5bGU9ImJhY2tncm91bmQtaW1hZ2U6IHVybCgnaHR0cHM6Ly9kdXRjaHRvdWNoZ2VuZXRpY3MuY29tL2Fzc2V0cy9pbWcvc3RyYWlucy9kZWF0aC1ieS1mdW5rLWFydC5qcGcnKTsiPjwvZGl2PgogIDwvZGl2PgogIDxkaXYgY2xhc3M9ImRlbGktY2FyZF9fbGFiZWwiPgogICAgPGgzPkRlYXRoIEJ5IEZ1bms8L2gzPgogICAgPHAgY2xhc3M9ImRlbGktY2FyZF9fZ2VuZXRpY3MiPkluZGljYSDigKIgMjYuMjUlIFRIQyDigKIgQXdhcmQgV2lubmVyPC9wPgogIDwvZGl2Pgo8L2Rpdj4KCjxkaXYgY2xhc3M9ImRlbGktY2FyZC13cmFwcGVyIGlzLW5ldyIgZGF0YS1jYXRlZ29yeT0iaW5kaWNhIiBvbmNsaWNrPSJvcGVuRGVsaU1vZGFsKCdmYWNlLW9mZi0xJykiPgogIDxkaXYgY2xhc3M9ImRlbGktY2FyZCI+CiAgICA8ZGl2IGNsYXNzPSJkZWxpLWNhcmRfX2Zyb250IiBzdHlsZT0iYmFja2dyb3VuZC1pbWFnZTogdXJsKCdodHRwczovL2R1dGNodG91Y2hnZW5ldGljcy5jb20vYXNzZXRzL2ltZy9zdHJhaW5zL2ZhY2Utb2ZmLW9nLWJ1ZC5qcGcnKTsiPjwvZGl2PgogICAgPGRpdiBjbGFzcz0iZGVsaS1jYXJkX19iYWNrIiBzdHlsZT0iYmFja2dyb3VuZC1pbWFnZTogdXJsKCdodHRwczovL2R1dGNodG91Y2hnZW5ldGljcy5jb20vYXNzZXRzL2ltZy9zdHJhaW5zL2ZhY2Utb2ZmLW9nLWFydC5qcGcnKTsiPjwvZGl2PgogIDwvZGl2PgogIDxkaXYgY2xhc3M9ImRlbGktY2FyZF9fbGFiZWwiPgogICAgPGgzPkZhY2UgT2ZmICMxPC9oMz4KICAgIDxwIGNsYXNzPSJkZWxpLWNhcmRfX2dlbmV0aWNzIj5JbmRpY2EgRG9taW5hbnQg4oCiIDI4Ljc2JSBUSEM8L3A+CiAgPC9kaXY+CjwvZGl2PgoK').decode()
+          data = base64.b64decode('ICAiZGVhdGgtYnktZnVuayI6IHsKICAgIG5hbWU6ICJEZWF0aCBCeSBGdW5rIiwKICAgIHRpZXI6ICJwcmVtaXVtIiwKICAgIHNlZWRTb3VyY2U6ICJEdXRjaCBUb3VjaCBHZW5ldGljcyIsCiAgICB0eXBlOiAiSW5kaWNhIOKAoiAzcmQgUGxhY2UgQmVzdCBpbiBHcmFzcyIsCiAgICB0aGM6ICIyNi4yNSUgVEhDIiwKICAgIGJ1ZEltYWdlOiAiaHR0cHM6Ly9kdXRjaHRvdWNoZ2VuZXRpY3MuY29tL2Fzc2V0cy9pbWcvc3RyYWlucy9kZWF0aC1ieS1mdW5rLWJ1ZC5qcGciLAogICAgYXJ0SW1hZ2U6ICJodHRwczovL2R1dGNodG91Y2hnZW5ldGljcy5jb20vYXNzZXRzL2ltZy9zdHJhaW5zL2RlYXRoLWJ5LWZ1bmstYXJ0LmpwZyIsCiAgICBnZW5ldGljczogIkRlYXRoIFN0YXIgw5cgQ2x1c3RlcmZ1bmsiLAogICAgdGVycGVuZXM6IFsKICAgICAgeyBuYW1lOiAizrItQ2FyeW9waHlsbGVuZSIsIHBlcmNlbnQ6ICIwLjM0MiUiLCBtZzogIjMuNDIgbWcvZyIgfSwKICAgICAgeyBuYW1lOiAiTmVyb2xpZG9sIiwgcGVyY2VudDogIjAuMjEzJSIsIG1nOiAiMi4xMyBtZy9nIiB9LAogICAgICB7IG5hbWU6ICLOsS1IdW11bGVuZSIsIHBlcmNlbnQ6ICIwLjE1MCUiLCBtZzogIjEuNTAgbWcvZyIgfQogICAgXSwKICAgIGFib3V0OiAi8J+PhiAzcmQgUGxhY2UgSW5kaWNhIEZsb3dlciDigJQgQmVzdCBpbiBHcmFzcy4gRGVlcCBvaWwtYW5kLWZ1ZWwgZnVuayB3aXRoIHNrdW5reSwgc291ciBub3RlcyBhbmQgc3dlZXQgamV0LWZ1ZWwgY2hhcmFjdGVyIGZyb20gRGVhdGggU3RhciDDlyBDbHVzdGVyZnVuay4iCiAgfSwKCiAgImZhY2Utb2ZmLTEiOiB7CiAgICBuYW1lOiAiRmFjZSBPZmYgIzEiLAogICAgdGllcjogImNvcmUiLAogICAgc2VlZFNvdXJjZTogIkR1dGNoIFRvdWNoIEdlbmV0aWNzIExpYnJhcnkiLAogICAgdHlwZTogIkluZGljYSBEb21pbmFudCIsCiAgICB0aGM6ICIyOC43NiUgVEhDIiwKICAgIGJ1ZEltYWdlOiAiaHR0cHM6Ly9kdXRjaHRvdWNoZ2VuZXRpY3MuY29tL2Fzc2V0cy9pbWcvc3RyYWlucy9mYWNlLW9mZi1vZy1idWQuanBnIiwKICAgIGFydEltYWdlOiAiaHR0cHM6Ly9kdXRjaHRvdWNoZ2VuZXRpY3MuY29tL2Fzc2V0cy9pbWcvc3RyYWlucy9mYWNlLW9mZi1vZy1hcnQuanBnIiwKICAgIGdlbmV0aWNzOiAiRmFjZSBPZmYgT0cgIzEiLAogICAgdGVycGVuZXM6IFsKICAgICAgeyBuYW1lOiAizrItTXlyY2VuZSIsIHBlcmNlbnQ6ICIwLjI1MyUiLCBtZzogIjIuNTMgbWcvZyIgfSwKICAgICAgeyBuYW1lOiAiTGltb25lbmUiLCBwZXJjZW50OiAiMC4yMDElIiwgbWc6ICIyLjAxIG1nL2ciIH0sCiAgICAgIHsgbmFtZTogIlRlcnBpbm9sZW5lIiwgcGVyY2VudDogIjAuMTU1JSIsIG1nOiAiMS41NSBtZy9nIiB9CiAgICBdLAogICAgYWJvdXQ6ICJBbiBPRy1mb3J3YXJkIHNlbGVjdGlvbiB3aXRoIGEgdGVycGVuZSBwcm9maWxlIGxlZCBieSBteXJjZW5lLCBsaW1vbmVuZSBhbmQgdGVycGlub2xlbmUuIFRoaXMgYmF0Y2ggdGVzdHMgYXQgMjguNzYlIFRIQy4iCiAgfSwKCg==').decode()
+
           p = Path('index.html')
           s = p.read_text()
           marker = '<div class="deli-card-wrapper" data-category="hybrid" onclick="openDeliModal(\'super-silver-hashplant\')">'
           if "openDeliModal('death-by-funk')" not in s:
-              cards = '''<div class="deli-card-wrapper is-award is-new" data-category="indica" onclick="openDeliModal('death-by-funk')">
-  <div class="deli-card">
-    <div class="deli-card__front" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/death-by-funk-bud.jpg');"></div>
-    <div class="deli-card__back" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/death-by-funk-art.jpg');"></div>
-  </div>
-  <div class="deli-card__label">
-    <h3>Death By Funk</h3>
-    <p class="deli-card__genetics">Indica • 26.25% THC • Award Winner</p>
-  </div>
-</div>
-
-<div class="deli-card-wrapper is-new" data-category="indica" onclick="openDeliModal('face-off-1')">
-  <div class="deli-card">
-    <div class="deli-card__front" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/face-off-og-bud.jpg');"></div>
-    <div class="deli-card__back" style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/face-off-og-art.jpg');"></div>
-  </div>
-  <div class="deli-card__label">
-    <h3>Face Off #1</h3>
-    <p class="deli-card__genetics">Indica Dominant • 28.76% THC</p>
-  </div>
-</div>
-
-'''
               if marker not in s:
                   raise SystemExit('Carousel insertion marker not found')
               s = s.replace(marker, cards + marker, 1)
               p.write_text(s)
 
-          # ---- script.js modal data ----
           p = Path('script.js')
           s = p.read_text()
           marker = '  "super-silver-hashplant": {'
           if '"death-by-funk": {' not in s:
-              data = '''  "death-by-funk": {
-    name: "Death By Funk",
-    tier: "premium",
-    seedSource: "Dutch Touch Genetics",
-    type: "Indica • 3rd Place Best in Grass",
-    thc: "26.25% THC",
-    budImage: "https://dutchtouchgenetics.com/assets/img/strains/death-by-funk-bud.jpg",
-    artImage: "https://dutchtouchgenetics.com/assets/img/strains/death-by-funk-art.jpg",
-    genetics: "Death Star × Clusterfunk",
-    terpenes: [
-      { name: "β-Caryophyllene", percent: "0.342%", mg: "3.42 mg/g" },
-      { name: "Nerolidol", percent: "0.213%", mg: "2.13 mg/g" },
-      { name: "α-Humulene", percent: "0.150%", mg: "1.50 mg/g" }
-    ],
-    about: "🏆 3rd Place Indica Flower — Best in Grass. Deep oil-and-fuel funk with skunky, sour notes and sweet jet-fuel character from Death Star × Clusterfunk."
-  },
-
-  "face-off-1": {
-    name: "Face Off #1",
-    tier: "core",
-    seedSource: "Dutch Touch Genetics Library",
-    type: "Indica Dominant",
-    thc: "28.76% THC",
-    budImage: "https://dutchtouchgenetics.com/assets/img/strains/face-off-og-bud.jpg",
-    artImage: "https://dutchtouchgenetics.com/assets/img/strains/face-off-og-art.jpg",
-    genetics: "Face Off OG #1",
-    terpenes: [
-      { name: "β-Myrcene", percent: "0.253%", mg: "2.53 mg/g" },
-      { name: "Limonene", percent: "0.201%", mg: "2.01 mg/g" },
-      { name: "Terpinolene", percent: "0.155%", mg: "1.55 mg/g" }
-    ],
-    about: "An OG-forward selection with a terpene profile led by myrcene, limonene and terpinolene. This batch tests at 28.76% THC."
-  },
-
-'''
               if marker not in s:
                   raise SystemExit('Strain data insertion marker not found')
               s = s.replace(marker, data + marker, 1)
               p.write_text(s)
+          PY
 
       - name: Commit changes
         run: |
