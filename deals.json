@@ -5,39 +5,21 @@
       "label": "DTG Trophy Room",
       "color": "#D6A34A",
       "tagline": "Award-Winning Genetics",
-      "prices": [
-        ["Gram", "$10"],
-        ["3.5g", "$25"],
-        ["7g", "$40"],
-        ["14g", "$70"],
-        ["28g", "$110"]
-      ]
+      "prices": [["Gram", "$10"], ["3.5g", "$25"], ["7g", "$40"], ["14g", "$70"], ["28g", "$110"]]
     },
     {
       "tier": "CORE",
       "label": "Dutch Deli Standard",
       "color": "#1A1A1A",
       "tagline": "Weighed Fresh to Order",
-      "prices": [
-        ["Gram", "$8"],
-        ["Eighth (3.5g)", "$15"],
-        ["Quarter (7g)", "$30"],
-        ["Half (14g)", "$50"],
-        ["Ounce (28g)", "$90"]
-      ]
+      "prices": [["Gram", "$8"], ["Eighth (3.5g)", "$15"], ["Quarter (7g)", "$30"], ["Half (14g)", "$50"], ["Ounce (28g)", "$90"]]
     },
     {
       "tier": "VALUE",
       "label": "Monthly Specials",
       "color": "#708090",
       "tagline": "Everyday Value",
-      "prices": [
-        ["Gram", "$6"],
-        ["3.5g", "$12"],
-        ["7g", "$22"],
-        ["14g", "$45"],
-        ["28g", "$70"]
-      ]
+      "prices": [["Gram", "$6"], ["3.5g", "$12"], ["7g", "$22"], ["14g", "$45"], ["28g", "$70"]]
     }
   ],
   "deal_schedule": {
@@ -52,51 +34,15 @@
       "scroll": ["redbud-carts", "mix-gummies", "lightsky-carts", "play-gummies", "fire-styxx", "premium-gummies"]
     },
     "items": {
-      "dope-rope": {
-        "title": "Dope Ropes & Midwest Gummies",
-        "price": "6 for $18",
-        "tag": "EDIBLES",
-        "details": "$4 Each · Mix & Match",
-        "image": "assets/img/highlights/dope-rope-hl.jpg"
-      },
-      "mix-carts": {
-        "title": "Mix & Match 1G Carts",
-        "price": "5 for $35",
-        "tag": "VAPES",
-        "details": "Party Favors · PLAY · Crude Boys · Drip",
-        "image": "assets/img/highlights/mixmatch-carts.jpg"
-      },
-      "dtg-disposables": {
-        "title": "DTG 1G Disposables",
-        "price": "3 for $45",
-        "tag": "VAPES",
-        "details": "7 for $100",
-        "image": "assets/img/deals/dt-disposables.jpg"
-      },
-      "redbud-carts": {
-        "title": "Redbud Roots 1G Carts 3 for $25",
-        "image": "assets/img/highlights/hl-redbud.jpg"
-      },
-      "mix-gummies": {
-        "title": "Choice Gummies 5 for $18",
-        "image": "assets/img/highlights/hl-gummies.jpg"
-      },
-      "lightsky-carts": {
-        "title": "LightSky Farms Rug Burn OG Live Resin Cart $15",
-        "image": "assets/img/highlights/hl-lightsky.jpg"
-      },
-      "play-gummies": {
-        "title": "PLAY 200mg Gummies 10 for $20",
-        "image": "assets/img/highlights/play-gummy-hl.jpg"
-      },
-      "fire-styxx": {
-        "title": "Fire Styxx & Bonfire 10 for $55",
-        "image": "assets/img/highlights/hl-fire-styxx.jpg"
-      },
-      "premium-gummies": {
-        "title": "Premium Gummies 5 for $35",
-        "image": "assets/img/highlights/hl-premium-gummies.jpg"
-      }
+      "dope-rope": {"title": "Dope Ropes & Midwest Gummies", "price": "6 for $18", "tag": "EDIBLES", "details": "$4 Each · Mix & Match", "image": "assets/img/highlights/dope-rope-hl.jpg"},
+      "mix-carts": {"title": "Mix & Match 1G Carts", "price": "5 for $35", "tag": "VAPES", "details": "Party Favors · PLAY · Crude Boys · Drip", "image": "assets/img/highlights/mixmatch-carts.jpg"},
+      "dtg-disposables": {"title": "DTG 1G Disposables", "price": "3 for $45", "tag": "VAPES", "details": "7 for $100", "image": "assets/img/deals/dt-disposables.jpg"},
+      "redbud-carts": {"title": "Redbud Roots 1G Carts 3 for $25", "image": "assets/img/highlights/hl-redbud.jpg"},
+      "mix-gummies": {"title": "Choice Gummies 5 for $18", "image": "assets/img/highlights/hl-gummies.jpg"},
+      "lightsky-carts": {"title": "LightSky Farms Rug Burn OG Live Resin Cart $15", "image": "assets/img/highlights/hl-lightsky.jpg"},
+      "play-gummies": {"title": "PLAY 200mg Gummies 10 for $20", "image": "assets/img/highlights/play-gummy-hl.jpg"},
+      "fire-styxx": {"title": "Fire Styxx & Bonfire 10 for $55", "image": "assets/img/highlights/hl-fire-styxx.jpg"},
+      "premium-gummies": {"title": "Premium Gummies 5 for $35", "image": "assets/img/highlights/hl-premium-gummies.jpg"}
     }
   },
   "deals": [
@@ -106,14 +52,13 @@
       "groups": [{
         "title": "💥 Best Deals Right Now",
         "items": [
+          "🔥 Fire Styxx Infused Pre-Rolls — BUY 1 GET 1 FREE",
+          "🍬 Choice 200mg Gummies — BUY 1 GET 1 FREE",
+          "💨 Party Favors 3G Disposables — BUY 1 GET 1 FREE",
           "GRIP Outdoor Flower — $20 Ounce",
           "GRIP 2G Live Resin Disposables — Buy 2 Get 1",
-          "Party Favors 3G Disposables — Buy 2 Get 1",
-          "Glacier 1G Live Resin Disposables — 25% OFF",
-          "Redbud Roots 1G Full Spectrum Carts — $10ea or 3/$25",
-          "Dutch Touch 1G Disposables — 3/$45 or 7/$100",
-          "PLAY 200mg Gummies — $3ea or 10/$20",
-          "Dutch Delight Diamonds — 30% OFF"
+          "Daily Dose 1G Carts — $6ea or 10/$50",
+          "Dutch Daylight Secret Chief & Hash D — $30 Ounce"
         ]
       }]
     },
@@ -125,12 +70,13 @@
           "title": "🔥 Deli Deals & Pre-Packed Flower",
           "items": [
             "GRIP Outdoor Flower — $20 Ounce",
-            "Mr. Clean 1oz Shake — $30 Ounce or 2/$50",
-            "Dutch Daylight Flower — $40 Ounce or 2/$60",
+            "Odyssey Astrosurf Shake — $25 Ounce or 2oz for $40",
+            "Dutch Daylight Secret Chief & Hash D — $30 Ounce",
             "Super Silver and Illudium — $70 Ounce or 2/$130",
             "Redbud Roots Flower — $100 Ounce",
             "Lemon Wookie Award-Winning Flower — $110 Ounce",
-            "NEW Glacier Strains — Blueberry Muffin & Freezer Jam"
+            "NEW Glacier Strains — Blueberry Muffin & Freezer Jam",
+            "Clusterfunk Deli Outdoor — 2oz for $70"
           ]
         },
         {
@@ -161,9 +107,8 @@
         {
           "title": "Disposable Vapes",
           "items": [
+            "Party Favors 3G Disposables — BUY 1 GET 1 FREE",
             "GRIP 2G Live Resin Disposables — Buy 2 Get 1",
-            "Party Favors 3G Disposables — Buy 2 Get 1",
-            "Glacier 1G Live Resin Disposables — 25% OFF",
             "Motorbreath 1G Disposables — $10ea or 5/$40",
             "Platinum Vapes 2G Live Resin Disposable — $20ea",
             "Dutch Touch 1G Disposable — 3/$45 or 7/$100",
@@ -180,17 +125,16 @@
         {
           "title": "Infused Pre-Rolls",
           "items": [
+            "Fire Styxx Infused Pre-Rolls — BUY 1 GET 1 FREE",
             "Dope Smokies 1.2G Infused — $4ea or 5/$20",
             "GRIP 1.2G Infused Pre-Rolls — $4ea",
             "Glacier Ice Pick Infused Pre-Rolls — $5ea",
             "Blazer 1G Live Resin Infused — $5ea",
             "Divvy 2-Pack Infused — $5ea or 7/$30",
-            "Fire Styxx and Bonfire Pre-Rolls — $6ea or 10/$55",
+            "Bonfire Pre-Rolls — $6ea or 10/$55",
             "Party Favor 50% Infused — $8ea or 5/$35",
             "KAOS 1.1G Resin Infused Joint — $10ea or 3/$20",
             "Swisher 5-Pack Blunts — $20ea",
-            "Dope Smokes 14-Pack Live Resin Joint — $35",
-            "Baby Jeeter — $30",
             "Jeeter 1G — $15ea"
           ]
         },
@@ -215,11 +159,11 @@
         {
           "title": "Gummies, Chocolates & Mints",
           "items": [
+            "Choice 200mg Gummies — BUY 1 GET 1 FREE",
             "Platinum Vapes Gummies — Buy 2 Get 1",
             "PLAY 200mg Gummies (4x50mg) — $3ea or 10/$20",
             "PLAY One Hitters (1x200mg) — $4ea or 10/$30",
             "Midwest Gummies and Dope Ropes — $4ea or 6/$18",
-            "Choice and Gelato Gummies — $4ea or 5/$18 · Mix & Match",
             "Dutch Touch 200mg Distillate Gummies — $5",
             "Dutch Touch 200mg RSO Bomb Pop — $5",
             "Mojo Chocolates — $12",
@@ -227,7 +171,8 @@
             "Barracuda Chocolate Bar and Cups — $15",
             "Wonder Low Dose 40-Count Gummies — $15",
             "Hippie Bliss 20-Count THC Cookies — $15",
-            "PC Pure 200mg Micro-Dosed Mints — $15"
+            "PC Pure 200mg Micro-Dosed Mints — $15",
+            "PotPot 100mg THC M&M's — $20"
           ]
         },
         {
@@ -277,18 +222,11 @@
       "groups": [
         {
           "title": "Dutch Touch Genetics Hash",
-          "items": [
-            "Dutch Touch 1G Brick Hash — $20",
-            "Dutch Touch Brick Hash 5G Jar — $90",
-            "Dutch Touch Bubble Hash 7G Jar — $150"
-          ]
+          "items": ["Dutch Touch 1G Brick Hash — $20", "Dutch Touch Brick Hash 5G Jar — $90", "Dutch Touch Bubble Hash 7G Jar — $150"]
         },
         {
           "title": "Third-Party Hash",
-          "items": [
-            "Old School Hash 1G — Brick and Temple Balls — $25",
-            "Old School Hash 5G Brick Hash — $85"
-          ]
+          "items": ["Old School Hash 1G — Brick and Temple Balls — $25", "Old School Hash 5G Brick Hash — $85"]
         }
       ]
     },
@@ -296,14 +234,8 @@
       "category": "🧢 Merch & Accessories",
       "promo": false,
       "groups": [
-        {
-          "title": "Apparel",
-          "items": ["Hoodies — $40", "T-Shirts — $20", "#KeepItDutch Beanie — $25", "Green Labs Beanie — $18"]
-        },
-        {
-          "title": "Accessories",
-          "items": ["Dutch Touch Bowl — $10", "Dutch Touch 4pc Metal Grinder — $10", "Dutch Touch Rolling Tray — $4", "Dutch Touch Ashtray — $2", "Dutch Touch Rolling Papers & Tips — $3"]
-        }
+        {"title": "Apparel", "items": ["Hoodies — $40", "T-Shirts — $20", "#KeepItDutch Beanie — $25", "Green Labs Beanie — $18"]},
+        {"title": "Accessories", "items": ["Dutch Touch Bowl — $10", "Dutch Touch 4pc Metal Grinder — $10", "Dutch Touch Rolling Tray — $4", "Dutch Touch Ashtray — $2", "Dutch Touch Rolling Papers & Tips — $3"]}
       ]
     }
   ]
