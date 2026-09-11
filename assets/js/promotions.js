@@ -20,7 +20,27 @@
         products: "FRESH FLOWER · CURATED MICHIGAN BRANDS",
         offer: "MICHIGAN STARTS HERE"
       },
-      popup: { enabled: false }
+      popup: {
+        id: "weekend-best-deals",
+        enabled: true,
+        frequency: "daily",
+        delay: 10000,
+        type: "deals",
+        tabText: "WEEKEND DEALS",
+        headline: "THE BIG 3 BOGO DEALS",
+        subhead: "THIS WEEKEND AT GREEN LABS",
+        items: [
+          "🔥 Fire Styxx Infused Pre-Rolls — BUY 1 GET 1 FREE",
+          "🍬 Choice 200mg Gummies — BUY 1 GET 1 FREE",
+          "💨 Party Favors 3G Disposables — BUY 1 GET 1 FREE",
+          "GRIP Outdoor Flower — $20 Ounce",
+          "GRIP 2G Live Resin Disposables — Buy 2 Get 1",
+          "Daily Dose 1G Carts — $6ea or 10/$50",
+          "Dutch Daylight Secret Chief & Hash D — $30 Ounce"
+        ],
+        href: "#deals",
+        ariaLabel: "View this weekend's best Green Labs deals"
+      }
     },
     keepItDutchTuesday: {
       enabled: true,
@@ -186,6 +206,16 @@
     }
   }
 
+  function escapeHtml(value) {
+    return String(value ?? "").replace(/[&<>"']/g, char => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    })[char]);
+  }
+
   function updatePopup(popup) {
     const wrap = document.getElementById("weeklyPromoPopup");
     if (!popup || popup.enabled === false) {
@@ -204,6 +234,30 @@
     link.href = destination;
     link.setAttribute("aria-label", popup.ariaLabel || "View Green Labs promotion");
     destination === "#deals" ? link.setAttribute("data-open-deals", "") : link.removeAttribute("data-open-deals");
+
+    if (popup.type === "deals") {
+      video.pause();
+      video.hidden = true;
+      video.removeAttribute("src");
+      image.hidden = true;
+      const items = Array.isArray(popup.items) ? popup.items : [];
+      const primary = items.slice(0, 3);
+      const secondary = items.slice(3);
+      link.innerHTML = `
+        <div style="background:linear-gradient(145deg,#07110d,#0b1d16);color:#fff;padding:20px 18px 18px;border-radius:22px;border:1px solid rgba(46,248,187,.28);box-shadow:0 20px 55px rgba(0,0,0,.45);font-family:Inter,system-ui,sans-serif;min-width:min(84vw,360px);max-width:380px;box-sizing:border-box;">
+          <div style="font-size:10px;font-weight:900;letter-spacing:.16em;color:#2ef8bb;margin-bottom:7px;">${escapeHtml(popup.subhead || "GREEN LABS")}</div>
+          <div style="font-family:Cinzel,serif;font-size:22px;font-weight:900;line-height:1.05;margin-bottom:14px;">${escapeHtml(popup.headline || "BEST DEALS")}</div>
+          <div style="display:grid;gap:8px;margin-bottom:12px;">
+            ${primary.map(item => `<div style="padding:10px 11px;border-radius:12px;background:rgba(214,163,74,.12);border:1px solid rgba(214,163,74,.34);font-size:13px;font-weight:900;line-height:1.25;">${escapeHtml(item)}</div>`).join("")}
+          </div>
+          <div style="display:grid;gap:6px;">
+            ${secondary.map(item => `<div style="font-size:11px;font-weight:750;line-height:1.25;color:rgba(255,255,255,.82);padding:0 2px;">• ${escapeHtml(item)}</div>`).join("")}
+          </div>
+          <div style="margin-top:14px;font-size:11px;font-weight:900;letter-spacing:.08em;color:#2ef8bb;">SEE ALL DEALS →</div>
+          <div style="margin-top:6px;font-size:9px;color:rgba(255,255,255,.48);">All prices pre-tax. While supplies last.</div>
+        </div>`;
+      return;
+    }
 
     if (popup.type === "video" && popup.video) {
       image.hidden = true;
