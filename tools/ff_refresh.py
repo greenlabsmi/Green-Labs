@@ -9,8 +9,18 @@ MARKER = "FF-MODULAR-2026-08-26"
 
 html = HTML_PATH.read_text(encoding="utf-8")
 
+# Roll the First Friday event/countdown forward to the confirmed October 2, 2026 event.
+# These replacements are intentionally narrow so event-specific content is otherwise preserved.
+html = html.replace("2026-09-04T16:00:00-04:00", "2026-10-02T16:00:00-04:00")
+html = html.replace("2026-09-04T20:00:00-04:00", "2026-10-02T20:00:00-04:00")
+html = html.replace("September 4", "October 2")
+html = html.replace("SEPTEMBER 4", "OCTOBER 2")
+html = html.replace("Sept. 4", "Oct. 2")
+html = html.replace("Sept 4", "Oct 2")
+
 if MARKER in html:
-    print("First Friday modular refactor already applied.")
+    HTML_PATH.write_text(html, encoding="utf-8")
+    print("First Friday modular refactor already applied; October 2 event date refreshed.")
     raise SystemExit(0)
 
 # --- 1. Extract the page-level inline stylesheet exactly as-is. ---
