@@ -33,7 +33,6 @@
           "🍬 Dope Ropes & Midwest Gummies — $4ea or 6/$18",
           "🍬 Gelato Knockout 200mg One Hitters — $4ea or 10/$30",
           "🚬 Dutch Daylight 1G Pre-Rolls — $2.50ea · 10/$20 · 70/$100",
-          "💨 Gelato 2G Disposables — $30ea or 2/$55",
           "🔥 Fire Styxx Infused Pre-Rolls — BUY 1 GET 1 FREE",
           "💨 Party Favors 3G Disposables — BUY 1 GET 1 FREE"
         ],
@@ -176,6 +175,13 @@
       buttons[1].onclick = () => document.querySelector("#deli")?.scrollIntoView({ behavior: "smooth", block: "start" });
     }
     if (buttons[2]) buttons[2].textContent = "Today's Deals";
+
+    document.querySelectorAll(".deli-card").forEach(card => {
+      const name = card.querySelector(".deli-card__label h3");
+      if (name?.textContent.trim().toLowerCase() === "super silver hashplant") {
+        card.remove();
+      }
+    });
 
     document.querySelectorAll(".deli-card__label").forEach(label => {
       const name = label.querySelector("h3");
