@@ -16,30 +16,29 @@
     default: {
       enabled: true,
       banner: {
-        headline: "GREEN LABS DELI",
-        products: "FRESH FLOWER · CURATED MICHIGAN BRANDS",
-        offer: "MICHIGAN STARTS HERE"
+        headline: "🌿 NEW DUTCH DELI DROP FRIDAY",
+        products: "BANANA SPLIT · SOUR CHEM BANGER #4 🤘",
+        offer: "FRESH DUTCH TOUCH GENETICS"
       },
       popup: {
-        id: "weekend-best-deals",
+        id: "stock-up-deals-sept14",
         enabled: true,
         frequency: "daily",
         delay: 10000,
         type: "deals",
-        tabText: "WEEKEND DEALS",
-        headline: "THE BIG 3 BOGO DEALS",
-        subhead: "THIS WEEKEND AT GREEN LABS",
+        tabText: "STOCK-UP DEALS",
+        headline: "DEALS WORTH STOCKING UP ON",
+        subhead: "GREEN LABS MEGA DEALS",
         items: [
+          "🍬 Dope Ropes & Midwest Gummies — $4ea or 6/$18",
+          "🍬 Gelato Knockout 200mg One Hitters — $4ea or 10/$30",
+          "🚬 Dutch Daylight 1G Pre-Rolls — $2.50ea · 10/$20 · 70/$100",
+          "💨 Gelato 2G Disposables — $30ea or 2/$55",
           "🔥 Fire Styxx Infused Pre-Rolls — BUY 1 GET 1 FREE",
-          "🍬 Choice 200mg Gummies — BUY 1 GET 1 FREE",
-          "💨 Party Favors 3G Disposables — BUY 1 GET 1 FREE",
-          "GRIP Outdoor Flower — $20 Ounce",
-          "GRIP 2G Live Resin Disposables — Buy 2 Get 1",
-          "Daily Dose 1G Carts — $6ea or 10/$50",
-          "Dutch Daylight Secret Chief & Hash D — $30 Ounce"
+          "💨 Party Favors 3G Disposables — BUY 1 GET 1 FREE"
         ],
         href: "#deals",
-        ariaLabel: "View this weekend's best Green Labs deals"
+        ariaLabel: "View Green Labs stock-up deals"
       }
     },
     keepItDutchTuesday: {
@@ -47,7 +46,7 @@
       banner: {
         headline: "🌿 KEEP IT DUTCH TUESDAY",
         products: "10% OFF CORE & PREMIUM TIER FLOWER",
-        offer: "TODAY ONLY"
+        offer: "FRIDAY DROP: BANANA SPLIT · SOUR CHEM BANGER #4 🤘"
       },
       popup: { enabled: false }
     },
@@ -56,7 +55,7 @@
       banner: {
         headline: "🟣 BATCH WEDNESDAY",
         products: "25% OFF BATCH PRODUCTS",
-        offer: "TODAY ONLY"
+        offer: "FRIDAY DROP: BANANA SPLIT · SOUR CHEM BANGER #4 🤘"
       },
       popup: {
         id: "batch-wednesday",
@@ -77,7 +76,7 @@
       banner: {
         headline: "🥤 THIRSTY THURSDAY",
         products: "20% OFF INFUSED BEVERAGES & SYRUPS",
-        offer: "TODAY ONLY"
+        offer: "FRIDAY DROP: BANANA SPLIT · SOUR CHEM BANGER #4 🤘"
       },
       popup: {
         id: "thirsty-thursday",
