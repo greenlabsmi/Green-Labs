@@ -161,8 +161,7 @@
           "items": [
             "Choice 200mg Gummies — BUY 1 GET 1 FREE",
             "Platinum Vapes Gummies — Buy 2 Get 1",
-            "PLAY 200mg Gummies (4x50mg) — $3ea or 10/$20",
-            "PLAY One Hitters (1x200mg) — $4ea or 10/$30",
+            "Gelato Knockout & PLAY One Hitters (1x200mg) — $4ea or 10/$30",
             "Midwest Gummies and Dope Ropes — $4ea or 6/$18",
             "Dutch Touch 200mg Distillate Gummies — $5",
             "Dutch Touch 200mg RSO Bomb Pop — $5",
@@ -222,11 +221,11 @@
       "groups": [
         {
           "title": "Dutch Touch Genetics Hash",
-          "items": ["Dutch Touch 1G Brick Hash — $20", "Dutch Touch Brick Hash 5G Jar — $90", "Dutch Touch Bubble Hash 7G Jar — $150"]
+          "items": ["Dutch Touch 1G Brick Hash — $20", "Dutch Touch Brick Hash 5G Jar — $90"]
         },
         {
           "title": "Third-Party Hash",
-          "items": ["Old School Hash 1G — Brick and Temple Balls — $25", "Old School Hash 5G Brick Hash — $85"]
+          "items": ["Old School Hash 1G — Brick and Temple Balls — $25", "Old School Hash 5G Brick Hash — $85", "Bubble Hash 7G Jar — $150"]
         }
       ]
     },
