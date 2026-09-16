@@ -1410,6 +1410,27 @@ const curatedBrandData = {
       {
         name: "Freezer Jam",
         image: "./assets/img/brands/glacier/freezer-jam-deli.png"
+      },
+      {
+        name: "High Speed",
+        genetics: "Devil Driver × High MAC",
+        terpenes: ["Ocimene", "trans-Nerolidol", "α-Humulene"],
+        aromas: ["Vanilla", "Fuel", "Apples", "Chamomile"],
+        image: "./assets/img/brands/glacier/high-speed-deli.webp"
+      },
+      {
+        name: "Black Ice",
+        genetics: "MAC #1 × Oooze",
+        terpenes: ["Limonene", "β-Caryophyllene", "β-Pinene"],
+        aromas: ["Oranges", "Sage", "Black Pepper", "Bergamot"],
+        image: "./assets/img/brands/glacier/black-ice-deli.webp"
+      },
+      {
+        name: "8 Mile Runtz",
+        genetics: "Detroit Runtz × White Runtz",
+        terpenes: ["α-Humulene", "Limonene", "Linalool"],
+        aromas: ["Gas", "Candy", "Sweet", "Fruity"],
+        image: "./assets/img/brands/glacier/8-mile-runtz-deli.webp"
       }
     ]
   },
@@ -1881,6 +1902,12 @@ function openCuratedBrandModal(brandId) {
     list.style.display = "grid";
     list.style.gap = "0";
     list.innerHTML = brand.strains.map((strain) => {
+      const details = [
+        strain.genetics,
+        strain.terpenes?.length ? `Top terpenes: ${strain.terpenes.join(" · ")}` : "",
+        strain.aromas?.length ? `Aromas: ${strain.aromas.join(" · ")}` : ""
+      ].filter(Boolean);
+
       return `
         <div
           style="
@@ -1898,7 +1925,13 @@ function openCuratedBrandModal(brandId) {
             font-size:13px;
             font-weight:800;
           "
-        ><span>${strain.name}</span><span style="color:rgba(255,255,255,.62); white-space:nowrap;">${strain.thc ? `${strain.thc} THC` : ""}</span></div>
+        >
+          <span style="min-width:0;">
+            <strong style="display:block; color:#fff;">${strain.name}</strong>
+            ${details.length ? `<small style="display:block; margin-top:5px; color:rgba(255,255,255,.56); font-weight:600; line-height:1.45;">${details.join("<br>")}</small>` : ""}
+          </span>
+          <span style="color:rgba(255,255,255,.62); white-space:nowrap; align-self:flex-start;">${strain.thc ? `${strain.thc} THC` : ""}</span>
+        </div>
       `;
     }).join("");
   }
