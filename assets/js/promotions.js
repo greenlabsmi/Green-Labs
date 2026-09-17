@@ -43,7 +43,7 @@
     weekendDrop: {
       enabled: true,
       hero: {
-        image: "assets/img/weekend-drop-9-18-hero.jpg",
+        image: "assets/img/lp-weekend-hero.jpg",
         fallback: "assets/img/deli-drop-9-18.jpg",
         position: "center",
         size: "cover",
@@ -52,11 +52,11 @@
       },
       banner: {
         headline: "🔥 WEEKEND DROP — 8 BIG DEALS",
-        products: "30% OFF ROVE DISPOSABLES · BARRACUDA CHOCOLATE BARS & CUPS $15",
+        products: "30% OFF ROVE DISPOSABLES · 35% OFF BARRACUDA EDIBLES",
         offer: "NEW DELI: GLACIER + DUTCH TOUCH"
       },
       popup: {
-        id: "weekend-drop-sept18-v1",
+        id: "weekend-drop-sept18-v2",
         enabled: true,
         frequency: "daily",
         delay: 8000,
@@ -68,7 +68,7 @@
           "🌿 Space Hippy Bubble Hash Infused Eighths — BOGO",
           "🥤 Emerald Canning Drinks — BOGO",
           "💨 Platinum Vapes Disposables — BOGO",
-          "🍬 Detroit Edibles — 35% OFF",
+          "🍫 Barracuda Edibles — 35% OFF",
           "💨 ROVE Disposables — 30% OFF",
           "🍬 PLAY Single Gummies — 10/$20",
           "❄️ Glacier Deli Flower — $15 Eighth · $90 Ounce",
