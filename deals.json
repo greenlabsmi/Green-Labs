@@ -7,7 +7,7 @@
   "deal_schedule":{"timeZone":"America/Detroit","weekendStart":"Thursday 21:01","weekendEnd":"Monday 21:00"},
   "weekend": {
     "deal_overrides": [
-      {"category":"🔥 WEEKEND DROP — NEW DELI + BIG DEALS","promo":true,"groups":[{"title":"🌿 NEW DELI DROP — CORE TIER","items":["CORE TIER — $8/g · $15 Eighth · $30 Quarter · $50 Half · $90 Ounce","Glacier Cannabis — High Speed","Glacier Cannabis — Black Ice","Glacier Cannabis — 8 Mile Runtz","Dutch Touch Genetics — Banana Split","Dutch Touch Genetics — Sour Chem Banger"]},{"title":"🔥 8 BIG WEEKEND DEALS","items":["Space Hippy Bubble Hash Infused Eighths — BOGO","Emerald Canning Drinks — BOGO","Platinum Vapes Disposables — BOGO","Detroit Edibles — 35% OFF","ROVE Disposables — 30% OFF","PLAY Single Gummies — 10/$20","Glacier Deli Flower — $15 Eighth or $90 Ounce","Dutch Daylight 1G Pre-Rolls — $1.50ea or 28/$30"]}]}
+      {"category":"🔥 WEEKEND DROP — NEW DELI + BIG DEALS","promo":true,"groups":[{"title":"🌿 NEW DELI DROP — CORE TIER","items":["CORE TIER — $8/g · $15 Eighth · $30 Quarter · $50 Half · $90 Ounce","Glacier Cannabis — High Speed","Glacier Cannabis — Black Ice","Glacier Cannabis — 8 Mile Runtz","Dutch Touch Genetics — Banana Split","Dutch Touch Genetics — Sour Chem Banger"]},{"title":"🔥 8 BIG WEEKEND DEALS","items":["Space Hippy Bubble Hash Infused Eighths — BOGO","Emerald Canning Drinks — BOGO","Platinum Vapes Disposables — BOGO","Barracuda Edibles — 35% OFF","ROVE Disposables — 30% OFF","PLAY Single Gummies — 10/$20","Glacier Deli Flower — $15 Eighth or $90 Ounce","Dutch Daylight 1G Pre-Rolls — $1.50ea or 28/$30"]}]}
     ]
   },
   "highlights": {
