@@ -43,7 +43,7 @@
     weekendDrop: {
       enabled: true,
       hero: {
-        image: "assets/img/lp-weekend-hero.jpg",
+        image: "assets/img/weekend-drop-9-18-hero.jpg",
         fallback: "assets/img/deli-drop-9-18.jpg",
         position: "center",
         size: "cover",
