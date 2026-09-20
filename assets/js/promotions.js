@@ -66,7 +66,7 @@
         subhead: "WEEKEND DROP",
         items: [
           "🌿 Space Hippy Bubble Hash Infused Eighths — BOGO",
-          "🥤 Emerald Canning Drinks — BOGO",
+          "🥤 THC Drinks — BOGO · Excludes Sweet Justice",
           "💨 Platinum Vapes Disposables — BOGO",
           "🍫 Barracuda Edibles — 35% OFF",
           "💨 ROVE Disposables — 30% OFF",
