@@ -79,9 +79,9 @@
         ariaLabel: "View all eight Green Labs weekend deals"
       }
     },
-    keepItDutchTuesday: { enabled: true, banner: { headline: "🌿 KEEP IT DUTCH TUESDAY", products: "10% OFF CORE & PREMIUM TIER FLOWER", offer: "FRIDAY DROP: BANANA SPLIT · SOUR CHEM BANGER #4 🤘" }, popup: { enabled: false } },
-    batchWednesday: { enabled: true, banner: { headline: "🟣 BATCH WEDNESDAY", products: "25% OFF BATCH PRODUCTS", offer: "FRIDAY DROP: BANANA SPLIT · SOUR CHEM BANGER #4 🤘" }, popup: { id: "batch-wednesday", enabled: true, frequency: "daily", delay: 10000, type: "image", image: "assets/img/promotions/batch-wednesday-popup.jpg", video: "", poster: "assets/img/promotions/batch-wednesday-popup.jpg", alt: "Batch Wednesday promotion", href: "#deals", ariaLabel: "View Batch Wednesday deals" } },
-    thirstyThursday: { enabled: true, banner: { headline: "🥤 THIRSTY THURSDAY", products: "20% OFF INFUSED BEVERAGES & SYRUPS", offer: "FRIDAY DROP: BANANA SPLIT · SOUR CHEM BANGER #4 🤘" }, popup: { id: "thirsty-thursday", enabled: true, frequency: "daily", delay: 10000, type: "image", image: "assets/img/promotions/thirsty-thursday-popup.jpg", video: "", poster: "", alt: "Thirsty Thursday: 20% off infused beverages and syrups", href: "#deals", ariaLabel: "View Thirsty Thursday beverage and syrup deals" } }
+    keepItDutchTuesday: { enabled: true, banner: { headline: "🌿 KEEP IT DUTCH TUESDAY", products: "10% OFF CORE & PREMIUM TIER FLOWER", offer: "SHOP THE FULL DEAL MENU" }, popup: { enabled: false } },
+    batchWednesday: { enabled: true, banner: { headline: "🟣 BATCH WEDNESDAY", products: "25% OFF BATCH PRODUCTS", offer: "SHOP THE FULL DEAL MENU" }, popup: { id: "batch-wednesday", enabled: true, frequency: "daily", delay: 10000, type: "image", image: "assets/img/promotions/batch-wednesday-popup.jpg", video: "", poster: "assets/img/promotions/batch-wednesday-popup.jpg", alt: "Batch Wednesday promotion", href: "#deals", ariaLabel: "View Batch Wednesday deals" } },
+    thirstyThursday: { enabled: true, banner: { headline: "🥤 THIRSTY THURSDAY", products: "20% OFF INFUSED BEVERAGES & SYRUPS", offer: "SHOP THE FULL DEAL MENU" }, popup: { id: "thirsty-thursday", enabled: true, frequency: "daily", delay: 10000, type: "image", image: "assets/img/promotions/thirsty-thursday-popup.jpg", video: "", poster: "", alt: "Thirsty Thursday: 20% off infused beverages and syrups", href: "#deals", ariaLabel: "View Thirsty Thursday beverage and syrup deals" } }
   };
 
   const WEEKLY_SCHEDULE = { 2: "keepItDutchTuesday", 3: "batchWednesday", 4: "thirstyThursday" };
