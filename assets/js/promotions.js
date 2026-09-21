@@ -16,32 +16,32 @@
     default: {
       enabled: true,
       banner: {
-        headline: "🌿 GREEN LABS MEGA DEALS",
-        products: "GRIP B2G1 · PLAY 10/$20 · DUTCH DAYLIGHT 28/$30",
-        offer: "SHOP TODAY’S FULL DEAL MENU"
+        headline: "🌿 NEW WEEK · FRESH DEALS",
+        products: "GRIP B2G1 · PLATINUM BOGO · GELATO ONE HITTERS 10/$30",
+        offer: "SHOP MONDAY’S FULL DEAL MENU"
       },
       popup: {
-        id: "stock-up-deals-sept21-v1",
+        id: "monday-deals-sept21-v2",
         enabled: true,
         frequency: "daily",
-        delay: 10000,
+        delay: 8000,
         type: "deals",
         tabText: "TODAY’S DEALS",
-        headline: "TODAY’S BEST STOCK-UP DEALS",
-        subhead: "GREEN LABS MEGA DEALS",
+        headline: "MONDAY’S BEST DEALS",
+        subhead: "NEW WEEK · GREEN LABS",
         items: [
           "💨 GRIP 2G Live Resin Disposables — Buy 2 Get 1",
-          "🚬 Dutch Daylight 1G Pre-Rolls — $1.50ea · 28/$30",
-          "🌿 Lemon Wookie & Death By Funk — $110 Ounce",
-          "🍬 PLAY Single Gummies — $3ea or 10/$20",
-          "🍫 Barracuda Edibles — 35% OFF",
-          "🌿 Space Hippy & Illudium — $70 Ounce or 2/$130",
-          "🚬 Odyssey 1G Pre-Rolls — $4ea or 10/$25"
+          "💨 Platinum Vape 2G Disposables — BOGO",
+          "🌿 GRIP Pre-Packaged Ounces — $20 · Limited Stock",
+          "❄️ Glacier Flower — $15 Eighth · $90 Ounce",
+          "🍬 Gelato One Hitter Gummies — $4ea or 10/$30",
+          "🍬 PLAY 200mg Gummies — $3ea or 10/$20",
+          "🌿 Illudium & Sherbanger — $70 Ounce · 2/$130"
         ],
         href: "#deals",
-        ariaLabel: "View Green Labs stock-up deals"
+        ariaLabel: "View Green Labs Monday deals"
       }
-    },
+  },
     weekendDrop: {
       enabled: true,
       hero: {
@@ -89,7 +89,7 @@
   const dateParts = () => Object.fromEntries(new Intl.DateTimeFormat("en-US", { timeZone: TIME_ZONE, year: "numeric", month: "2-digit", day: "2-digit", weekday: "long", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(new Date()).filter(p => p.type !== "literal").map(p => [p.type, p.value]));
   const weekday = () => ({Sunday:0, Monday:1, Tuesday:2, Wednesday:3, Thursday:4, Friday:5, Saturday:6})[dateParts().weekday];
   const localStamp = () => { const p = dateParts(); return Number(`${p.year}${p.month}${p.day}${p.hour}${p.minute}`); };
-  const isWeekendDropWindow = () => { const stamp = localStamp(); return stamp >= 202609172101 && stamp <= 202609212100; };
+  const isWeekendDropWindow = () => { const stamp = localStamp(); return stamp >= 202609172101 && stamp <= 202609202359; };
   const activeName = () => { if (MANUAL_CAMPAIGN && PROMOTIONS[MANUAL_CAMPAIGN]?.enabled) return MANUAL_CAMPAIGN; if (isWeekendDropWindow()) return "weekendDrop"; const scheduled = WEEKLY_SCHEDULE[weekday()]; return PROMOTIONS[scheduled]?.enabled ? scheduled : "default"; };
   const getStored = key => { try { return localStorage.getItem(key); } catch { return null; } };
   const setStored = (key, value) => { try { localStorage.setItem(key, value); } catch {} };
