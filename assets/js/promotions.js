@@ -5,11 +5,11 @@
   const MANUAL_CAMPAIGN = null;
 
   const BRAND_HERO = {
-    image: "assets/img/promotions/chalkboard-hero.jpg",
+    image: "assets/img/deli-drop-9-18.jpg",
     position: "center",
     size: "cover",
     href: "#deli",
-    ariaLabel: "Explore the Green Labs Deli"
+    ariaLabel: "New Deli Drop: Glacier Cannabis and Dutch Touch Genetics"
   };
 
   const PROMOTIONS = {
@@ -17,11 +17,11 @@
       enabled: true,
       banner: {
         headline: "🌿 NEW WEEK · FRESH DEALS",
-        products: "GRIP B2G1 · PLATINUM BOGO · GELATO ONE HITTERS 10/$30",
+        products: "BARRACUDA EDIBLES — 35% OFF THROUGH SEPTEMBER",
         offer: "SHOP MONDAY’S FULL DEAL MENU"
       },
       popup: {
-        id: "monday-deals-sept21-v2",
+        id: "monday-deals-sept21-v3",
         enabled: true,
         frequency: "daily",
         delay: 8000,
@@ -36,7 +36,9 @@
           "❄️ Glacier Flower — $15 Eighth · $90 Ounce",
           "🍬 Gelato One Hitter Gummies — $4ea or 10/$30",
           "🍬 PLAY 200mg Gummies — $3ea or 10/$20",
-          "🌿 Illudium & Sherbanger — $70 Ounce · 2/$130"
+          "🌿 Illudium & Sherbanger — $70 Ounce · 2/$130",
+          "🍬 Dope Ropes — $4ea or 6/$18",
+          "💨 Party Favors 1G Carts — 15/$80"
         ],
         href: "#deals",
         ariaLabel: "View Green Labs Monday deals"
@@ -80,9 +82,9 @@
         ariaLabel: "View all eight Green Labs weekend deals"
       }
     },
-    keepItDutchTuesday: { enabled: true, banner: { headline: "🌿 KEEP IT DUTCH TUESDAY", products: "10% OFF CORE & PREMIUM TIER FLOWER", offer: "SHOP THE FULL DEAL MENU" }, popup: { enabled: false } },
-    batchWednesday: { enabled: true, banner: { headline: "🟣 BATCH WEDNESDAY", products: "25% OFF BATCH PRODUCTS", offer: "SHOP THE FULL DEAL MENU" }, popup: { id: "batch-wednesday", enabled: true, frequency: "daily", delay: 10000, type: "image", image: "assets/img/promotions/batch-wednesday-popup.jpg", video: "", poster: "assets/img/promotions/batch-wednesday-popup.jpg", alt: "Batch Wednesday promotion", href: "#deals", ariaLabel: "View Batch Wednesday deals" } },
-    thirstyThursday: { enabled: true, banner: { headline: "🥤 THIRSTY THURSDAY", products: "20% OFF INFUSED BEVERAGES & SYRUPS", offer: "SHOP THE FULL DEAL MENU" }, popup: { id: "thirsty-thursday", enabled: true, frequency: "daily", delay: 10000, type: "image", image: "assets/img/promotions/thirsty-thursday-popup.jpg", video: "", poster: "", alt: "Thirsty Thursday: 20% off infused beverages and syrups", href: "#deals", ariaLabel: "View Thirsty Thursday beverage and syrup deals" } }
+    keepItDutchTuesday: { enabled: true, banner: { headline: "🌿 KEEP IT DUTCH TUESDAY", products: "BARRACUDA EDIBLES — 35% OFF THROUGH SEPTEMBER", offer: "SHOP THE FULL DEAL MENU" }, popup: { enabled: false } },
+    batchWednesday: { enabled: true, banner: { headline: "🟣 BATCH WEDNESDAY", products: "BARRACUDA EDIBLES — 35% OFF THROUGH SEPTEMBER", offer: "SHOP THE FULL DEAL MENU" }, popup: { id: "batch-wednesday", enabled: true, frequency: "daily", delay: 10000, type: "image", image: "assets/img/promotions/batch-wednesday-popup.jpg", video: "", poster: "assets/img/promotions/batch-wednesday-popup.jpg", alt: "Batch Wednesday promotion", href: "#deals", ariaLabel: "View Batch Wednesday deals" } },
+    thirstyThursday: { enabled: true, banner: { headline: "🥤 THIRSTY THURSDAY", products: "BARRACUDA EDIBLES — 35% OFF THROUGH SEPTEMBER", offer: "SHOP THE FULL DEAL MENU" }, popup: { id: "thirsty-thursday", enabled: true, frequency: "daily", delay: 10000, type: "image", image: "assets/img/promotions/thirsty-thursday-popup.jpg", video: "", poster: "", alt: "Thirsty Thursday: 20% off infused beverages and syrups", href: "#deals", ariaLabel: "View Thirsty Thursday beverage and syrup deals" } }
   };
 
   const WEEKLY_SCHEDULE = { 2: "keepItDutchTuesday", 3: "batchWednesday", 4: "thirstyThursday" };
