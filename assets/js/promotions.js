@@ -16,25 +16,26 @@
     default: {
       enabled: true,
       banner: {
-        headline: "🌿 NEW DUTCH DELI DROP FRIDAY",
-        products: "BANANA SPLIT · SOUR CHEM BANGER #4 🤘",
-        offer: "FRESH DUTCH TOUCH GENETICS"
+        headline: "🌿 GREEN LABS MEGA DEALS",
+        products: "GRIP B2G1 · PLAY 10/$20 · DUTCH DAYLIGHT 28/$30",
+        offer: "SHOP TODAY’S FULL DEAL MENU"
       },
       popup: {
-        id: "stock-up-deals-sept14-v2",
+        id: "stock-up-deals-sept21-v1",
         enabled: true,
         frequency: "daily",
         delay: 10000,
         type: "deals",
-        tabText: "STOCK-UP DEALS",
-        headline: "DEALS WORTH STOCKING UP ON",
+        tabText: "TODAY’S DEALS",
+        headline: "TODAY’S BEST STOCK-UP DEALS",
         subhead: "GREEN LABS MEGA DEALS",
         items: [
-          "🍬 Dope Ropes — $4ea or 6/$18",
-          "🍬 Gelato Knockout & PLAY One Hitters — $4ea or 10/$30",
-          "🚬 Dutch Daylight 1G Pre-Rolls — $2.50ea · 10/$20 · 70/$100",
-          "🌿 Space Hippy & Illudium — $70/oz or 2/$130",
-          "🍯 LightSky Farms 1G Rosin — $22 Clearance"
+          "💨 GRIP 2G Live Resin Disposables — Buy 2 Get 1",
+          "🚬 Dutch Daylight 1G Pre-Rolls — $1.50ea · 28/$30",
+          "🌿 Lemon Wookie & Death By Funk — $110 Ounce",
+          "🍬 PLAY Single Gummies — $3ea or 10/$20",
+          "🌿 Space Hippy & Illudium — $70 Ounce or 2/$130",
+          "🚬 Odyssey 1G Pre-Rolls — $4ea or 10/$25"
         ],
         href: "#deals",
         ariaLabel: "View Green Labs stock-up deals"
