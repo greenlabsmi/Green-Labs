@@ -34,6 +34,7 @@
           "🚬 Dutch Daylight 1G Pre-Rolls — $1.50ea · 28/$30",
           "🌿 Lemon Wookie & Death By Funk — $110 Ounce",
           "🍬 PLAY Single Gummies — $3ea or 10/$20",
+          "🍫 Barracuda Edibles — 35% OFF",
           "🌿 Space Hippy & Illudium — $70 Ounce or 2/$130",
           "🚬 Odyssey 1G Pre-Rolls — $4ea or 10/$25"
         ],
