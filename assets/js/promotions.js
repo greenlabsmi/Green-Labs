@@ -85,7 +85,7 @@
     keepItDutchTuesday: {
       enabled: true,
       banner: {
-        headline: "🌿 KEEP IT DUTCH TUESDAY",
+        headline: "🌿 GREEN LABS MEGA DEALS",
         products: "10% OFF CORE & PREMIUM DELI FLOWER",
         offer: "BARRACUDA EDIBLES — 35% OFF THROUGH SEPTEMBER"
       },
