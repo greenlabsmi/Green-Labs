@@ -16,19 +16,19 @@
     default: {
       enabled: true,
       banner: {
-        headline: "🌿 NEW WEEK · FRESH DEALS",
+        headline: "🌿 GREEN LABS MEGA DEALS",
         products: "BARRACUDA EDIBLES — 35% OFF THROUGH SEPTEMBER",
-        offer: "SHOP MONDAY’S FULL DEAL MENU"
+        offer: "SHOP TODAY’S FULL DEAL MENU"
       },
       popup: {
-        id: "monday-deals-sept21-v3",
+        id: "current-deals-sept22-v1",
         enabled: true,
         frequency: "daily",
         delay: 8000,
         type: "deals",
         tabText: "TODAY’S DEALS",
-        headline: "MONDAY’S BEST DEALS",
-        subhead: "NEW WEEK · GREEN LABS",
+        headline: "TODAY’S BEST DEALS",
+        subhead: "GREEN LABS MEGA DEALS",
         items: [
           "💨 GRIP 2G Live Resin Disposables — Buy 2 Get 1",
           "💨 Platinum Vape 2G Disposables — BOGO",
@@ -41,7 +41,7 @@
           "💨 Party Favors 1G Carts — 15/$80"
         ],
         href: "#deals",
-        ariaLabel: "View Green Labs Monday deals"
+        ariaLabel: "View Green Labs current deals"
       }
   },
     weekendDrop: {
@@ -82,7 +82,35 @@
         ariaLabel: "View all eight Green Labs weekend deals"
       }
     },
-    keepItDutchTuesday: { enabled: true, banner: { headline: "🌿 KEEP IT DUTCH TUESDAY", products: "BARRACUDA EDIBLES — 35% OFF THROUGH SEPTEMBER", offer: "SHOP THE FULL DEAL MENU" }, popup: { enabled: false } },
+    keepItDutchTuesday: {
+      enabled: true,
+      banner: {
+        headline: "🌿 KEEP IT DUTCH TUESDAY",
+        products: "10% OFF CORE & PREMIUM DELI FLOWER",
+        offer: "BARRACUDA EDIBLES — 35% OFF THROUGH SEPTEMBER"
+      },
+      popup: {
+        id: "dutch-tuesday-sept22-v1",
+        enabled: true,
+        frequency: "daily",
+        delay: 8000,
+        type: "deals",
+        tabText: "DUTCH TUESDAY",
+        headline: "KEEP IT DUTCH TUESDAY",
+        subhead: "10% OFF CORE & PREMIUM DELI",
+        items: [
+          "🌿 Core & Premium Deli Flower — 10% OFF",
+          "🏆 Lemon Wookie & Death By Funk — Award-Winning DTG",
+          "🍫 Barracuda Edibles — 35% OFF",
+          "💨 GRIP 2G Live Resin Disposables — Buy 2 Get 1",
+          "🍬 PLAY 200mg Gummies — $3ea or 10/$20",
+          "🚬 Odyssey 1G Pre-Rolls — $4ea or 10/$25",
+          "❄️ Glacier Deli Flower — $15 Eighth · $90 Ounce"
+        ],
+        href: "#deals",
+        ariaLabel: "View Green Labs Dutch Tuesday deals"
+      }
+    },
     batchWednesday: { enabled: true, banner: { headline: "🟣 BATCH WEDNESDAY", products: "BARRACUDA EDIBLES — 35% OFF THROUGH SEPTEMBER", offer: "SHOP THE FULL DEAL MENU" }, popup: { id: "batch-wednesday", enabled: true, frequency: "daily", delay: 10000, type: "image", image: "assets/img/promotions/batch-wednesday-popup.jpg", video: "", poster: "assets/img/promotions/batch-wednesday-popup.jpg", alt: "Batch Wednesday promotion", href: "#deals", ariaLabel: "View Batch Wednesday deals" } },
     thirstyThursday: { enabled: true, banner: { headline: "🥤 THIRSTY THURSDAY", products: "BARRACUDA EDIBLES — 35% OFF THROUGH SEPTEMBER", offer: "SHOP THE FULL DEAL MENU" }, popup: { id: "thirsty-thursday", enabled: true, frequency: "daily", delay: 10000, type: "image", image: "assets/img/promotions/thirsty-thursday-popup.jpg", video: "", poster: "", alt: "Thirsty Thursday: 20% off infused beverages and syrups", href: "#deals", ariaLabel: "View Thirsty Thursday beverage and syrup deals" } }
   };
