@@ -111,8 +111,8 @@
         ariaLabel: "View Green Labs Dutch Tuesday deals"
       }
     },
-    batchWednesday: { enabled: true, banner: { headline: "🟣 BATCH WEDNESDAY", products: "BARRACUDA EDIBLES — 35% OFF THROUGH SEPTEMBER", offer: "SHOP THE FULL DEAL MENU" }, popup: { id: "batch-wednesday", enabled: true, frequency: "daily", delay: 10000, type: "image", image: "assets/img/promotions/batch-wednesday-popup.jpg", video: "", poster: "assets/img/promotions/batch-wednesday-popup.jpg", alt: "Batch Wednesday promotion", href: "#deals", ariaLabel: "View Batch Wednesday deals" } },
-    thirstyThursday: { enabled: true, banner: { headline: "🥤 THIRSTY THURSDAY", products: "BARRACUDA EDIBLES — 35% OFF THROUGH SEPTEMBER", offer: "SHOP THE FULL DEAL MENU" }, popup: { id: "thirsty-thursday", enabled: true, frequency: "daily", delay: 10000, type: "image", image: "assets/img/promotions/thirsty-thursday-popup.jpg", video: "", poster: "", alt: "Thirsty Thursday: 20% off infused beverages and syrups", href: "#deals", ariaLabel: "View Thirsty Thursday beverage and syrup deals" } }
+    batchWednesday: { enabled: true, banner: { headline: "🌿 GREEN LABS MEGA DEALS", products: "25% OFF BATCH PRODUCTS", offer: "BARRACUDA EDIBLES — 35% OFF THROUGH SEPTEMBER" }, popup: { id: "batch-wednesday", enabled: true, frequency: "daily", delay: 10000, type: "image", image: "assets/img/promotions/batch-wednesday-popup.jpg", video: "", poster: "assets/img/promotions/batch-wednesday-popup.jpg", alt: "Batch Wednesday promotion", href: "#deals", ariaLabel: "View Batch Wednesday deals" } },
+    thirstyThursday: { enabled: true, banner: { headline: "🌿 GREEN LABS MEGA DEALS", products: "20% OFF THC DRINKS", offer: "BARRACUDA EDIBLES — 35% OFF THROUGH SEPTEMBER" }, popup: { id: "thirsty-thursday", enabled: true, frequency: "daily", delay: 10000, type: "image", image: "assets/img/promotions/thirsty-thursday-popup.jpg", video: "", poster: "", alt: "Thirsty Thursday: 20% off infused beverages and syrups", href: "#deals", ariaLabel: "View Thirsty Thursday beverage and syrup deals" } }
   };
 
   const WEEKLY_SCHEDULE = { 2: "keepItDutchTuesday", 3: "batchWednesday", 4: "thirstyThursday" };
