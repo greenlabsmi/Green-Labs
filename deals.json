@@ -101,6 +101,7 @@
         "dtg-disposables"
       ],
       "scroll": [
+        "seasonal-candles",
         "redbud-carts",
         "mix-gummies",
         "lightsky-carts",
@@ -154,6 +155,10 @@
       "premium-gummies": {
         "title": "Premium Gummies 5 for $35",
         "image": "assets/img/highlights/hl-premium-gummies.jpg"
+      },
+      "seasonal-candles": {
+        "title": "Seasonal Candles — $35 Each · 2 for $60",
+        "image": "assets/img/highlights/candle-hl.jpg"
       }
     }
   },
@@ -165,6 +170,7 @@
         {
           "title": "💥 Best Deals Right Now",
           "items": [
+            "Green Labs Seasonal Candles — $35 each or 2 for $60",
             "GRIP 2G Live Resin Disposables — Buy 2 Get 1",
             "Platinum Vape 2G Disposables — BOGO",
             "GRIP Pre-Packaged Ounces — $20 Ounce · Limited Stock",
