@@ -1408,10 +1408,6 @@ const curatedBrandData = {
         image: "./assets/img/brands/glacier/blueberry-muffin-deli.png"
       },
       {
-        name: "Freezer Jam",
-        image: "./assets/img/brands/glacier/freezer-jam-deli.png"
-      },
-      {
         name: "High Speed",
         genetics: "Devil Driver × High MAC",
         terpenes: ["Ocimene", "trans-Nerolidol", "α-Humulene"],
@@ -1424,13 +1420,6 @@ const curatedBrandData = {
         terpenes: ["Limonene", "β-Caryophyllene", "β-Pinene"],
         aromas: ["Oranges", "Sage", "Black Pepper", "Bergamot"],
         image: "./assets/img/brands/glacier/black-ice-deli.webp"
-      },
-      {
-        name: "8 Mile Runtz",
-        genetics: "Detroit Runtz × White Runtz",
-        terpenes: ["α-Humulene", "Limonene", "Linalool"],
-        aromas: ["Gas", "Candy", "Sweet", "Fruity"],
-        image: "./assets/img/brands/glacier/8-mile-runtz-deli.webp"
       }
     ]
   },
@@ -1447,9 +1436,7 @@ const curatedBrandData = {
     strains: [
       { name: "Blue Nerdz", thc: "25.63%" },
       { name: "Macflurry", thc: "26.46%" },
-      { name: "Red Nerdz", thc: "24.8%" },
       { name: "Sherbanger", thc: "22.97%" },
-      { name: "Sherb Cream Pie", thc: "21.31%" },
       { name: "Whompz", thc: "28.97%" },
       { name: "Zereals", thc: "20.41%" }
     ]
