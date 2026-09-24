@@ -136,7 +136,7 @@
     if (buttons[1]) { buttons[1].textContent = "Explore Deli"; buttons[1].removeAttribute("data-open-shop"); buttons[1].setAttribute("data-scroll", "#deli"); buttons[1].onclick = () => document.querySelector("#deli")?.scrollIntoView({behavior:"smooth", block:"start"}); }
     if (buttons[2]) buttons[2].textContent = "Today's Deals";
 
-    const hiddenDeliStrains = new Set(["super silver hashplant", "lilac diesel", "sour chem banger", "hash d"]);
+    const hiddenDeliStrains = new Set(["super silver hashplant", "lilac diesel", "hash d"]);
     document.querySelectorAll(".deli-card").forEach(card => {
       const name = card.querySelector(".deli-card__label h3")?.textContent.trim().toLowerCase();
       if (hiddenDeliStrains.has(name)) card.closest(".deli-card-wrapper")?.remove() || card.remove();
