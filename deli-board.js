@@ -54,8 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const glacierThc = {
         'Green Crack': '22% new batch / 27% current batch',
         'Super Boof': '24.3%',
-        'Blueberry Muffin': '20%',
-        'Freezer Jam': '29.7%'
+        'Blueberry Muffin': '20%'
     };
 
     curatedBrandData.glacier.strains.forEach((strain) => {
