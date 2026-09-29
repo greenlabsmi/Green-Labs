@@ -17,7 +17,7 @@
       enabled: true,
       banner: {
         headline: "🌿 GREEN LABS MEGA DEALS",
-        products: "BARRACUDA EDIBLES — 35% OFF THROUGH SEPTEMBER",
+        products: "HIGHLY CASUAL 10MG COLD BREW — 50% OFF · $5",
         offer: "SHOP TODAY’S FULL DEAL MENU"
       },
       popup: {
@@ -30,12 +30,14 @@
         headline: "TODAY’S BEST DEALS",
         subhead: "GREEN LABS MEGA DEALS",
         items: [
-          "💨 GRIP 2G Live Resin Disposables — Buy 2 Get 1",
+          "☕ Highly Casual 10mg Cold Brew — 50% OFF · $5",
+          "🏆 Lemon Wookie 2G Glass Tip Pre-Roll — $20",
           "💨 Platinum Vape 2G Disposables — BOGO",
           "🌿 GRIP Pre-Packaged Ounces — $20 · Limited Stock",
           "❄️ Glacier Flower — $15 Eighth · $90 Ounce",
           "🍬 Gelato One Hitter Gummies — $4ea or 10/$30",
           "🍬 PLAY 200mg Gummies — $3ea or 10/$20",
+          "🍫 Barracuda Edibles — 35% OFF through September",
           "🌿 Illudium & Sherbanger — $70 Ounce · 2/$130",
           "🍬 Dope Ropes — $4ea or 6/$18",
           "💨 Party Favors 1G Carts — 15/$80"
@@ -87,7 +89,7 @@
       banner: {
         headline: "🌿 GREEN LABS MEGA DEALS",
         products: "10% OFF CORE & PREMIUM DELI FLOWER",
-        offer: "BARRACUDA EDIBLES — 35% OFF THROUGH SEPTEMBER"
+        offer: "HIGHLY CASUAL 10MG COLD BREW — 50% OFF · $5"
       },
       popup: {
         id: "dutch-tuesday-sept22-v1",
@@ -99,10 +101,11 @@
         headline: "KEEP IT DUTCH TUESDAY",
         subhead: "10% OFF CORE & PREMIUM DELI",
         items: [
+          "☕ Highly Casual 10mg Cold Brew — 50% OFF · $5",
+          "🏆 Lemon Wookie 2G Glass Tip Pre-Roll — $20",
           "🌿 Core & Premium Deli Flower — 10% OFF",
           "🏆 Lemon Wookie & Death By Funk — Award-Winning DTG",
           "🍫 Barracuda Edibles — 35% OFF",
-          "💨 GRIP 2G Live Resin Disposables — Buy 2 Get 1",
           "🍬 PLAY 200mg Gummies — $3ea or 10/$20",
           "🚬 Odyssey 1G Pre-Rolls — $4ea or 10/$25",
           "❄️ Glacier Deli Flower — $15 Eighth · $90 Ounce"
@@ -111,8 +114,8 @@
         ariaLabel: "View Green Labs Dutch Tuesday deals"
       }
     },
-    batchWednesday: { enabled: true, banner: { headline: "🌿 GREEN LABS MEGA DEALS", products: "25% OFF BATCH PRODUCTS", offer: "BARRACUDA EDIBLES — 35% OFF THROUGH SEPTEMBER" }, popup: { id: "batch-wednesday", enabled: true, frequency: "daily", delay: 10000, type: "image", image: "assets/img/promotions/batch-wednesday-popup.jpg", video: "", poster: "assets/img/promotions/batch-wednesday-popup.jpg", alt: "Batch Wednesday promotion", href: "#deals", ariaLabel: "View Batch Wednesday deals" } },
-    thirstyThursday: { enabled: true, banner: { headline: "🌿 GREEN LABS MEGA DEALS", products: "20% OFF THC DRINKS", offer: "BARRACUDA EDIBLES — 35% OFF THROUGH SEPTEMBER" }, popup: { id: "thirsty-thursday", enabled: true, frequency: "daily", delay: 10000, type: "image", image: "assets/img/promotions/thirsty-thursday-popup.jpg", video: "", poster: "", alt: "Thirsty Thursday: 20% off infused beverages and syrups", href: "#deals", ariaLabel: "View Thirsty Thursday beverage and syrup deals" } }
+    batchWednesday: { enabled: true, banner: { headline: "🌿 GREEN LABS MEGA DEALS", products: "25% OFF BATCH PRODUCTS", offer: "HIGHLY CASUAL 10MG COLD BREW — 50% OFF · $5" }, popup: { id: "batch-wednesday", enabled: true, frequency: "daily", delay: 10000, type: "image", image: "assets/img/promotions/batch-wednesday-popup.jpg", video: "", poster: "assets/img/promotions/batch-wednesday-popup.jpg", alt: "Batch Wednesday promotion", href: "#deals", ariaLabel: "View Batch Wednesday deals" } },
+    thirstyThursday: { enabled: true, banner: { headline: "🌿 GREEN LABS MEGA DEALS", products: "20% OFF THC DRINKS", offer: "HIGHLY CASUAL 10MG COLD BREW — 50% OFF · $5" }, popup: { id: "thirsty-thursday", enabled: true, frequency: "daily", delay: 10000, type: "image", image: "assets/img/promotions/thirsty-thursday-popup.jpg", video: "", poster: "", alt: "Thirsty Thursday: 20% off infused beverages and syrups", href: "#deals", ariaLabel: "View Thirsty Thursday beverage and syrup deals" } }
   };
 
   const WEEKLY_SCHEDULE = { 2: "keepItDutchTuesday", 3: "batchWednesday", 4: "thirstyThursday" };
