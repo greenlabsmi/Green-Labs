@@ -334,7 +334,12 @@
       ],
       "scroll": [
         "lightsky-carts",
-        "fire-styxx"
+        "fire-styxx",
+        "redbud-carts",
+        "hash-house",
+        "dutch-daylight-prerolls",
+        "seasonal-candles",
+        "kshn"
       ]
     },
     "items": {
@@ -360,7 +365,7 @@
         "image": "assets/img/deals/dt-disposables.jpg"
       },
       "redbud-carts": {
-        "title": "Redbud Roots 1G Carts 3 for $25",
+        "title": "Redbud Roots 1G Carts - $10 or 3 for $25",
         "image": "assets/img/highlights/hl-redbud.jpg"
       },
       "mix-gummies": {
@@ -384,8 +389,20 @@
         "image": "assets/img/highlights/hl-premium-gummies.jpg"
       },
       "seasonal-candles": {
-        "title": "Seasonal Candles — $35 Each · 2 for $60",
+        "title": "Seasonal Candles - $35 or 2 for $60",
         "image": "assets/img/highlights/candle-hl.jpg"
+      },
+      "hash-house": {
+        "title": "Hash House Rosin Carts - $15",
+        "image": "assets/img/highlights/hash-house-hl.jpg"
+      },
+      "dutch-daylight-prerolls": {
+        "title": "Dutch Daylight Pre-Rolls - 28 for $30",
+        "image": "assets/img/highlights/hl-prerolls.jpg"
+      },
+      "kshn": {
+        "title": "KSHN Pouches - $15 or BOGO",
+        "image": "assets/img/highlights/hl-kshn.jpg"
       }
     }
   },
