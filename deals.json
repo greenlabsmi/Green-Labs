@@ -88,26 +88,253 @@
   "deal_schedule": {
     "timeZone": "America/Detroit",
     "weekendStart": "Thursday 21:01",
-    "weekendEnd": "Monday 21:00"
+    "weekendEnd": "Sunday 23:59"
   },
   "weekend": {
-    "deal_overrides": []
+    "startsAt": "2026-10-02T00:00:00-04:00",
+    "endsAt": "2026-10-05T00:00:00-04:00",
+    "deal_overrides": [
+      {
+        "category": "🔥 Top Deals",
+        "promo": true,
+        "groups": [
+          {
+            "title": "October 2-4 Weekend Specials",
+            "items": [
+              "Space Hippy Bubble Hash Infused Deli Flower Half Ounces - 50% OFF - $50",
+              "DTG RSO Bomb Pop 200mg - 50% OFF - $5",
+              "Party Favors 3G Disposables - BOGO",
+              "KUSHN - BOGO",
+              "Gelato THC Cones - 50% OFF",
+              "Highly Casual 10mg Cold Brew Coffee - 50% OFF",
+              "Dutch Daylight Hash D - $30 Ounce"
+            ]
+          },
+          {
+            "title": "Friday Only - October 2",
+            "days": [
+              5
+            ],
+            "items": [
+              "Wyld Gummies - Buy 2 Get 1",
+              "Pearls Gummies - 30% OFF"
+            ]
+          }
+        ]
+      },
+      {
+        "category": "🌿 Flower",
+        "promo": false,
+        "groups": [
+          {
+            "title": "Deli Deals & Pre-Packed Flower",
+            "items": [
+              "Odyssey Astro Shake - $15 Ounce or 2oz/$25",
+              "Dutch Daylight Hash D - $30 Ounce",
+              "Illudium - $70 Ounce or 2/$130",
+              "Glacier Flower - $15 Eighth or $90 Ounce",
+              "Sapura Flower - $15 Eighth or $90 Ounce (arrives Friday afternoon)",
+              "Lemon Wookie - $110 Ounce",
+              "Clusterfunk Deli Outdoor - 2oz/$70",
+              "Lazy Lightning - $70 Ounce",
+              "Space Hippy Bubble Hash Infused Deli Flower Half Ounces - 50% OFF - $50"
+            ]
+          }
+        ]
+      },
+      {
+        "category": "💨 Vapes & Disposables",
+        "promo": true,
+        "groups": [
+          {
+            "title": "Vape Cartridges",
+            "items": [
+              "Mix & Match 1G Carts - $9ea, 3/$25 or 5/$35",
+              "Mix & Match Brands - Party Favors, Crude Boys, Drip, PLAY Hash Rosin and Platinum Vape",
+              "Daily Dose 1G Carts - $6ea or 10/$50",
+              "Party Favors 1G Carts - 15/$80",
+              "PLAY Hash Rosin Infused Carts - 10/$55",
+              "Platinum Vape 1G Live Resin - Buy 2 Get 1 Free",
+              "LightSky Farms Live Resin Cartridges - $15"
+            ]
+          },
+          {
+            "title": "Disposable Vapes",
+            "items": [
+              "Party Favors 3G Disposables - BOGO",
+              "Drip 3G Disposables - Buy 2 Get 1",
+              "Glacier Rosin Disposables - $30ea or 2/$50",
+              "ROVE 1G Premium Disposables - $30",
+              "Batch 2G Disposable - $25",
+              "Batch 4G Disposable - $45",
+              "DTG 1G Disposables - 3/$45 or 7/$100",
+              "DTG Lilac 2G Disposables - $35ea or 2/$65",
+              "DTG Gelato 2G Disposables - $30ea or 2/$55"
+            ]
+          }
+        ]
+      },
+      {
+        "category": "🔥 Pre-Rolls",
+        "promo": false,
+        "groups": [
+          {
+            "title": "Infused Pre-Rolls",
+            "items": [
+              "GRIP 1.2G Infused - $4",
+              "Glacier Ice Pick Infused - $5",
+              "Fire Styxx - $6 or 10/$55",
+              "Bonfire - $6 or 10/$55",
+              "Jeeter 1G - $15"
+            ]
+          },
+          {
+            "title": "Infused Packs",
+            "items": [
+              "Divvy 2-Pack - $5 or 7/$30",
+              "Bonfire 5-Pack - $20 or 3/$45",
+              "Swisher 5-Pack Blunts - $20",
+              "LightSky Farms 5-Pack Bubble Hash - $35"
+            ]
+          },
+          {
+            "title": "Non-Infused Pre-Rolls",
+            "items": [
+              "Dutch Daylight 1G - $1.50 or 28/$30",
+              "KAOS 1G - $3 or 10/$25",
+              "Odyssey 1G - $4 or 10/$25",
+              "LightSky Farms 1G Full Bud - $5",
+              "Dead Prez 1G - $5 or 5/$20",
+              "Doghouse Candy Cartel 1G - $6",
+              "DTG 1G Full Bud - $10 or 3/$20"
+            ]
+          }
+        ]
+      },
+      {
+        "category": "🍬 Edibles & Drinks",
+        "promo": false,
+        "groups": [
+          {
+            "title": "Gummies & Chocolates",
+            "items": [
+              "Gelato THC Cones - 50% OFF",
+              "Platinum Vapes Gummies - Buy 2 Get 1",
+              "Gelato One Hitter - $4 or 10/$30",
+              "Choice 200mg - $4 or 5/$18",
+              "DTG Distillate 200mg - $5",
+              "DTG RSO Bomb Pop 200mg - 50% OFF - $5",
+              "Squishies Rosin Gummies - $8 or 5/$35",
+              "Mojo Chocolates - $12",
+              "Covert Cups Rosin Chocolates - $13",
+              "Wonder Low Dose 40-Count - $15"
+            ]
+          },
+          {
+            "title": "THC Drinks",
+            "items": [
+              "Every Thursday - 20% OFF Drinks"
+            ]
+          },
+          {
+            "title": "Friday Only - October 2",
+            "days": [
+              5
+            ],
+            "items": [
+              "Pearls Gummies - 30% OFF",
+              "Wyld Gummies - Buy 2 Get 1"
+            ]
+          },
+          {
+            "title": "Weekend Drink Special",
+            "items": [
+              "Highly Casual 10mg Cold Brew Coffee - 50% OFF"
+            ]
+          }
+        ]
+      },
+      {
+        "category": "🍯 Concentrates",
+        "promo": false,
+        "groups": [
+          {
+            "title": "Dutch Touch Resin Concentrates",
+            "items": [
+              "Dutch Daylight Diamonds - 30% OFF",
+              "Death Star Sugar 1G - $10",
+              "Death Star Sugar 3.5G - $30 or 2/$55",
+              "Sin City Batter 3.5G - $35",
+              "Clusterfunk Batter 3.5G - $50",
+              "Hash D Full Spectrum Batter 14G - $85",
+              "Clusterfunk / 10K Big Baller Jars - $100",
+              "Death Star Sugar Big Baller Jar - $100"
+            ]
+          },
+          {
+            "title": "Rosin Concentrates",
+            "items": [
+              "Hash D 14G Rosin - $140",
+              "Shiskaberry 14G Rosin - $170",
+              "DTG 3.5G Rosin - $55 to $60 each",
+              "LSF 2G Thumbprint - $70",
+              "710 Non-Persy 1G - $35",
+              "710 Persy 1G - $50"
+            ]
+          }
+        ]
+      },
+      {
+        "category": "🧱 Hash",
+        "promo": false,
+        "groups": [
+          {
+            "title": "Dutch Touch Genetics Brick Hash",
+            "items": [
+              "DTG Brick Hash 1G - $20",
+              "DTG Bubble Hash 7G - $150",
+              "Old School Hash 1G Temple Balls - $25"
+            ]
+          }
+        ]
+      },
+      {
+        "category": "🧢 Merch & Accessories",
+        "promo": false,
+        "groups": [
+          {
+            "title": "Apparel",
+            "items": [
+              "Hoodies - $40",
+              "T-Shirts - $20",
+              "#KeepItDutch Beanie - $25",
+              "Green Labs Beanie - $18"
+            ]
+          },
+          {
+            "title": "Accessories",
+            "items": [
+              "DTG Bowl - $10",
+              "DTG 4pc Metal Grinder - $10",
+              "DTG Rolling Tray - $4",
+              "DTG Ashtray - $2",
+              "DTG Rolling Papers & Tips - $3"
+            ]
+          }
+        ]
+      }
+    ]
   },
   "highlights": {
     "layout": {
-      "hero": "dope-rope",
+      "hero": "mix-carts",
       "mid": [
-        "mix-carts",
-        "dtg-disposables"
+        "dtg-disposables",
+        "mix-gummies"
       ],
       "scroll": [
-        "seasonal-candles",
-        "redbud-carts",
-        "mix-gummies",
         "lightsky-carts",
-        "play-gummies",
-        "fire-styxx",
-        "premium-gummies"
+        "fire-styxx"
       ]
     },
     "items": {
@@ -141,7 +368,7 @@
         "image": "assets/img/highlights/hl-gummies.jpg"
       },
       "lightsky-carts": {
-        "title": "LightSky Farms Rug Burn OG Live Resin Cart — COMING SOON",
+        "title": "LightSky Farms Live Resin Carts - $15",
         "image": "assets/img/highlights/hl-lightsky.jpg"
       },
       "play-gummies": {
@@ -168,21 +395,13 @@
       "promo": true,
       "groups": [
         {
-          "title": "💥 Best Deals Right Now",
+          "title": "Best Deals Right Now",
           "items": [
-            "Award-Winning Lemon Wookie 2G Glass Tip Pre-Roll - $20",
-            "Highly Casual 10mg Cold Brew Coffee - 50% OFF - $5",
-            "GRIP Pre-Packaged Ounces - $20 Ounce - Limited Stock",
-            "Odyssey Astro Shake - $25 Ounce",
+            "Dutch Daylight Hash D - $30 Ounce",
             "Lazy Lightning - $70 Ounce",
-            "Illudium & Sherbanger - $70 Ounce or 2/$130",
-            "Glacier Flower - $15 Eighth or $90 Ounce",
-            "PLAY 200mg Gummies - $3ea or 10/$20",
-            "Choice 200mg Gummies - $4ea or 5/$18",
-            "Daily Dose 1G Carts - $6ea or 10/$50",
-            "Party Favors 1G Carts - 15/$80",
-            "Dutch Daylight 1G Pre-Rolls - $1.50ea or 28/$30",
-            "Green Labs Seasonal Candles - $35 each or 2 for $60"
+            "Glacier & Sapura Flower - $15 Eighth or $90 Ounce",
+            "Daily Dose 1G Carts - $6 or 10/$50",
+            "Party Favors 1G Carts - 15/$80"
           ]
         }
       ]
@@ -192,19 +411,16 @@
       "promo": false,
       "groups": [
         {
-          "title": "🔥 Deli Deals & Pre-Packed Flower",
+          "title": "Deli Deals & Pre-Packed Flower",
           "items": [
-            "GRIP Pre-Packaged Ounces - $20 Ounce - Limited Stock",
-            "Odyssey Astro Shake - $25 Ounce",
-            "Dutch Daylight Secret Chief & Hash D - $30 Ounce",
-            "Illudium & Sherbanger - $70 Ounce or 2/$130",
-            "Lazy Lightning - $70 Ounce",
+            "Odyssey Astro Shake - $15 Ounce or 2oz/$25",
+            "Dutch Daylight Hash D - $30 Ounce",
+            "Illudium - $70 Ounce or 2/$130",
             "Glacier Flower - $15 Eighth or $90 Ounce",
-            "Redbud Roots Flower - $20 Eighth or $100 Ounce",
+            "Sapura Flower - $15 Eighth or $90 Ounce (arrives Friday afternoon)",
             "Lemon Wookie - $110 Ounce",
             "Clusterfunk Deli Outdoor - 2oz/$70",
-            "NEW - Candy Runtz Frosted Bud - 66% THC",
-            "Death By Funk - $110 Ounce"
+            "Lazy Lightning - $70 Ounce"
           ]
         }
       ]
@@ -219,9 +435,8 @@
             "Mix & Match 1G Carts - $9ea, 3/$25 or 5/$35",
             "Mix & Match Brands - Party Favors, Crude Boys, Drip, PLAY Hash Rosin and Platinum Vape",
             "Daily Dose 1G Carts - $6ea or 10/$50",
-            "Redbud Roots 1G Full Spectrum Carts - $10ea or 3/$25",
             "Party Favors 1G Carts - 15/$80",
-            "PLAY 1G Hash Rosin Infused Cart - 10/$55",
+            "PLAY Hash Rosin Infused Carts - 10/$55",
             "Platinum Vape 1G Live Resin - Buy 2 Get 1 Free",
             "LightSky Farms Live Resin Cartridges - $15"
           ]
@@ -231,14 +446,12 @@
           "items": [
             "Drip 3G Disposables - Buy 2 Get 1",
             "Glacier Rosin Disposables - $30ea or 2/$50",
-            "Motorbreath 1G Disposables - $10ea or 5/$40",
-            "Platinum Vape 2G Disposables - BOGO",
-            "ROVE 1G Premium Disposables - $30ea",
+            "ROVE 1G Premium Disposables - $30",
             "Batch 2G Disposable - $25",
             "Batch 4G Disposable - $45",
-            "Dutch Touch 1G Disposable - 3/$45 or 7/$100",
-            "Lilac 2G Live Disposable - $35ea or 2/$65",
-            "Gelato 2G Disposable - $30ea or 2/$55"
+            "DTG 1G Disposables - 3/$45 or 7/$100",
+            "DTG Lilac 2G Disposables - $35ea or 2/$65",
+            "DTG Gelato 2G Disposables - $30ea or 2/$55"
           ]
         }
       ]
@@ -250,29 +463,32 @@
         {
           "title": "Infused Pre-Rolls",
           "items": [
-            "GRIP 1.2G Infused Pre-Rolls - $4ea",
-            "Glacier Ice Pick Infused Pre-Rolls - $5ea",
-            "Fire Styxx - $6ea or 10/$55",
-            "Bonfire Pre-Rolls - $6ea or 10/$55",
-            "Party Favor 50% Infused - $8ea or 5/$35",
-            "Jeeter 1G - $15ea",
-            "Divvy 2-Pack Infused - $5ea or 7/$30",
-            "Bonfire 5-Pack Infused - $20ea or 3/$45",
-            "Swisher 5-Pack Blunts - $20ea"
+            "GRIP 1.2G Infused - $4",
+            "Glacier Ice Pick Infused - $5",
+            "Fire Styxx - $6 or 10/$55",
+            "Bonfire - $6 or 10/$55",
+            "Jeeter 1G - $15"
+          ]
+        },
+        {
+          "title": "Infused Packs",
+          "items": [
+            "Divvy 2-Pack - $5 or 7/$30",
+            "Bonfire 5-Pack - $20 or 3/$45",
+            "Swisher 5-Pack Blunts - $20",
+            "LightSky Farms 5-Pack Bubble Hash - $35"
           ]
         },
         {
           "title": "Non-Infused Pre-Rolls",
           "items": [
-            "Award-Winning Lemon Wookie 2G Glass Tip Pre-Roll - $20",
-            "Dutch Daylight 1G Pre-Roll - $1.50ea or 28/$30",
-            "KAOS 1G Pre-Rolls - $3ea or 10/$25",
-            "Odyssey 1G Pre-Roll - $4ea or 10/$25",
-            "LightSky Farms 1G All Bud Pre-Roll - $5ea",
-            "Dead Prez 1G Full Bud Pre-Roll - $5ea or 5/$20",
-            "Doghouse Candy Cartel 1G Pre-Roll - $6ea",
-            "Dutch Touch Genetics 1G Full Bud Pre-Roll - $10ea or 3/$20",
-            "Baby Jeeter - $30"
+            "Dutch Daylight 1G - $1.50 or 28/$30",
+            "KAOS 1G - $3 or 10/$25",
+            "Odyssey 1G - $4 or 10/$25",
+            "LightSky Farms 1G Full Bud - $5",
+            "Dead Prez 1G - $5 or 5/$20",
+            "Doghouse Candy Cartel 1G - $6",
+            "DTG 1G Full Bud - $10 or 3/$20"
           ]
         }
       ]
@@ -285,27 +501,19 @@
           "title": "Gummies & Chocolates",
           "items": [
             "Platinum Vapes Gummies - Buy 2 Get 1",
-            "PLAY 200mg Gummies - $3ea or 10/$20",
-            "Gelato One Hitter Gummies - $4ea or 10/$30",
-            "Midwest Gummies - $4ea or 6/$18",
-            "Dope Ropes - $4ea or 6/$18",
-            "Choice 200mg Gummies - $4ea or 5/$18",
-            "Dutch Touch 200mg Distillate Gummies - $5",
-            "Dutch Touch 200mg RSO Bomb Pop - $5",
-            "Squishies Mother & Puckers Rosin Gummies - $8 or 5/$35",
+            "Gelato One Hitter - $4 or 10/$30",
+            "Choice 200mg - $4 or 5/$18",
+            "DTG Distillate 200mg - $5",
+            "DTG RSO Bomb Pop 200mg - $5",
+            "Squishies Rosin Gummies - $8 or 5/$35",
             "Mojo Chocolates - $12",
             "Covert Cups Rosin Chocolates - $13",
-            "Wonder Low Dose 40-Count Gummies - $15",
-            "Barracuda Edibles - 35% OFF through September",
-            "Gelato Ice Cream Cones 200mg - $15",
-            "Hippie Bliss 20-Count THC Cookies - $15",
-            "PC Pure 200mg Micro-Dosed Mints - $15"
+            "Wonder Low Dose 40-Count - $15"
           ]
         },
         {
-          "title": "🥤 THC Drinks",
+          "title": "THC Drinks",
           "items": [
-            "Highly Casual 10mg Cold Brew Coffee - 50% OFF - $5",
             "Every Thursday - 20% OFF Drinks"
           ]
         }
@@ -318,24 +526,25 @@
         {
           "title": "Dutch Touch Resin Concentrates",
           "items": [
-            "Dutch Delight Diamonds - 30% OFF",
-            "Death Star 1G Sugar - $10ea",
-            "Death Star 3.5G Sugar - $30 or 2/$55",
-            "Sin City 3.5G Batter - $35",
-            "Clusterfunk 3.5G Batter - $50",
-            "Hash D 14G Full Spectrum Batter - $85",
-            "Clusterfunk / 10K Big Baller Jars - $100"
+            "Dutch Daylight Diamonds - 30% OFF",
+            "Death Star Sugar 1G - $10",
+            "Death Star Sugar 3.5G - $30 or 2/$55",
+            "Sin City Batter 3.5G - $35",
+            "Clusterfunk Batter 3.5G - $50",
+            "Hash D Full Spectrum Batter 14G - $85",
+            "Clusterfunk / 10K Big Baller Jars - $100",
+            "Death Star Sugar Big Baller Jar - $100"
           ]
         },
         {
           "title": "Rosin Concentrates",
           "items": [
-            "Hash D 14G Jars of Rosin - $140",
+            "Hash D 14G Rosin - $140",
             "Shiskaberry 14G Rosin - $170",
-            "Redbud Roots 1G Rosin - $25 or 3/$70",
-            "Apex 2G Thumbprint Rosin - $70",
-            "710 1G Non-Persy Rosin - $35",
-            "710 1G Persy Rosin - $50"
+            "DTG 3.5G Rosin - $55 to $60 each",
+            "LSF 2G Thumbprint - $70",
+            "710 Non-Persy 1G - $35",
+            "710 Persy 1G - $50"
           ]
         }
       ]
@@ -345,18 +554,11 @@
       "promo": false,
       "groups": [
         {
-          "title": "Dutch Touch Genetics Hash",
+          "title": "Dutch Touch Genetics Brick Hash",
           "items": [
-            "Dutch Touch 1G Brick Hash - $20",
-            "Dutch Touch Brick Hash 5G Jar - $90",
-            "Dutch Touch Bubble Hash 7G Jar - $150"
-          ]
-        },
-        {
-          "title": "Third-Party Hash",
-          "items": [
-            "Old School Hash 1G Temple Balls - $25",
-            "Old School Hash 5G Brick - $85"
+            "DTG Brick Hash 1G - $20",
+            "DTG Bubble Hash 7G - $150",
+            "Old School Hash 1G Temple Balls - $25"
           ]
         }
       ]
@@ -377,11 +579,11 @@
         {
           "title": "Accessories",
           "items": [
-            "Dutch Touch Bowl - $10",
-            "Dutch Touch 4pc Metal Grinder - $10",
-            "Dutch Touch Rolling Tray - $4",
-            "Dutch Touch Ashtray - $2",
-            "Dutch Touch Rolling Papers & Tips - $3"
+            "DTG Bowl - $10",
+            "DTG 4pc Metal Grinder - $10",
+            "DTG Rolling Tray - $4",
+            "DTG Ashtray - $2",
+            "DTG Rolling Papers & Tips - $3"
           ]
         }
       ]

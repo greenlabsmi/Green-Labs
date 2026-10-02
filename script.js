@@ -487,6 +487,11 @@ document.getElementById('proceed-to-shop')?.addEventListener('click', () => {
   }
 
   function isWeekendDealWindow(data) {
+    const campaign = data?.weekend;
+    if (campaign?.startsAt && campaign?.endsAt) {
+      const now = Date.now();
+      return now >= Date.parse(campaign.startsAt) && now < Date.parse(campaign.endsAt);
+    }
     const schedule = data?.deal_schedule;
     const start = parseWeeklyDealRule(schedule?.weekendStart);
     const end = parseWeeklyDealRule(schedule?.weekendEnd);
@@ -529,10 +534,13 @@ document.getElementById('proceed-to-shop')?.addEventListener('click', () => {
     });
 
     return {
-      mode: 'weekend',
+      mode: `weekend-${getDetroitDealClock('America/Detroit').day}`,
       data: {
         ...data,
-        deals: mergedDeals,
+        deals: mergedDeals.map(category => ({
+          ...category,
+          groups: category.groups.filter(group => !group.days || group.days.includes(getDetroitDealClock('America/Detroit').day))
+        })),
         highlights: data.highlights
       }
     };
@@ -2930,3 +2938,4 @@ document.querySelectorAll('[data-guide-card]').forEach(card => {
               }
   });
 });
+
