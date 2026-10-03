@@ -1392,6 +1392,94 @@ const deliStrainData = {
 // strain artwork when supplied, or a clean strain list when not.
 // =========================================================
 const curatedBrandData = {
+  dtgSmalls: {
+    "name": "DTG Small Buds",
+    "shortName": "DTG Small Buds",
+    "eyebrow": "Dutch Touch Genetics • Fresh-Weighed Deli",
+    "accent": "#D6A34A",
+    "accentSoft": "rgba(214,163,74,.16)",
+    "cardImage": "assets/img/highlights/dtg-smalls-deli.jpg",
+    "intro": "Choose from 9 small-bud strains. Standard small buds start at $10 an eighth or $55 an ounce. Lemon Wookie uses the award-winning pricing tier.",
+    "strains": [
+        {
+            "name": "Death By Funk",
+            "thc": "26.25%",
+            "genetics": "Standard Small Buds"
+        },
+        {
+            "name": "Face Off #1",
+            "thc": "28.76%",
+            "genetics": "Standard Small Buds"
+        },
+        {
+            "name": "Astro Taffy",
+            "thc": "25.53%",
+            "genetics": "Standard Small Buds"
+        },
+        {
+            "name": "Palpatine",
+            "thc": "25.63%",
+            "genetics": "Standard Small Buds"
+        },
+        {
+            "name": "Sour Chem Banger #4",
+            "thc": "25.69%",
+            "genetics": "Standard Small Buds"
+        },
+        {
+            "name": "Afghani #3",
+            "thc": "25.14%",
+            "genetics": "Standard Small Buds"
+        },
+        {
+            "name": "White Lightning #3",
+            "thc": "25.88%",
+            "genetics": "Standard Small Buds"
+        },
+        {
+            "name": "Banana Split",
+            "thc": "21.67%",
+            "genetics": "Standard Small Buds"
+        },
+        {
+            "name": "Lemon Wookie",
+            "thc": "25.41–25.58%",
+            "genetics": "Award-Winning Small Buds • Lemon Wookie pricing"
+        }
+    ],
+    "smallBudPrices": [
+        [
+            "1g",
+            "$5",
+            "$5"
+        ],
+        [
+            "3.5g",
+            "$10",
+            "$15"
+        ],
+        [
+            "7g",
+            "$20",
+            "$25"
+        ],
+        [
+            "14g",
+            "$30",
+            "$35"
+        ],
+        [
+            "28g",
+            "$55",
+            "$60"
+        ],
+        [
+            "56g",
+            "$100",
+            "$110"
+        ]
+    ]
+},
   glacier: {
     name: "Glacier",
     shortName: "Glacier",
@@ -1904,6 +1992,22 @@ function openCuratedBrandModal(brandId) {
     }).join("");
   }
 
+  let prices = document.getElementById("dtgSmallBudPrices");
+  if (!prices) {
+    prices = document.createElement("section");
+    prices.id = "dtgSmallBudPrices";
+    list?.insertAdjacentElement("afterend", prices);
+  }
+  prices.hidden = !brand.smallBudPrices;
+  if (brand.smallBudPrices) {
+    prices.style.cssText = "margin-top:20px;padding:16px;border:1px solid rgba(214,163,74,.4);border-radius:14px;background:rgba(214,163,74,.06);";
+    prices.innerHTML = `<h3 style="color:#D6A34A;margin:0 0 12px;">Small Buds Pricing</h3>
+      <table style="width:100%;border-collapse:collapse;color:#fff;font-size:13px;text-align:left;">
+        <thead><tr><th scope="col" style="padding:8px 4px;">Weight</th><th scope="col" style="padding:8px 4px;">Standard</th><th scope="col" style="padding:8px 4px;color:#D6A34A;">Lemon Wookie</th></tr></thead>
+        <tbody>${brand.smallBudPrices.map(row => `<tr>${row.map(value => `<td style="padding:9px 4px;border-top:1px solid rgba(255,255,255,.12);">${value}</td>`).join("")}</tr>`).join("")}</tbody>
+      </table><p style="font-size:11px;color:rgba(255,255,255,.65);margin:12px 0 0;">Prices pre-tax. Availability varies by strain and weight. Lemon Wookie is the only strain in the award-winning small-bud pricing tier.</p>`;
+  }
+
   modal.style.display = "flex";
   modal.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
@@ -2008,6 +2112,17 @@ function initCuratedBrandDeli() {
         openBrand(event);
       }
     });
+
+    if (brand.cardImage) {
+      const front = card.querySelector(".deli-card__front");
+      if (front) {
+        front.style.background = `#050505 url("${brand.cardImage}") center / contain no-repeat`;
+        front.style.padding = "0";
+        front.setAttribute("role", "img");
+        front.setAttribute("aria-label", "Dutch Touch Small Buds - $10 eighth and $55 ounce; Lemon Wookie priced separately");
+      }
+      return;
+    }
 
     // Build every curated partner tile from the official logo + a coded brand background.
     // This keeps the main carousel clean and avoids needing a separate tall poster asset.
