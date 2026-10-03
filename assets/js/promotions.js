@@ -149,7 +149,7 @@
       });
     }
 
-    document.querySelectorAll(".deli-card__label").forEach(label => { const name = label.querySelector("h3"); if (name?.textContent.trim().toLowerCase() === "lemon wookie") { const genetics = label.querySelector(".deli-card__genetics"); if (genetics) genetics.textContent = "Hybrid • 25.19% THC • Award Winner"; } });
+    document.querySelectorAll(".deli-card__label").forEach(label => { const name = label.querySelector("h3"); if (name?.textContent.trim().toLowerCase() === "lemon wookie") { const genetics = label.querySelector(".deli-card__genetics"); if (genetics) genetics.textContent = "Hybrid • 25.58% THC • Award Winner"; } });
   }
 
   function updateHero(hero) {

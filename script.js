@@ -1127,7 +1127,7 @@ const deliStrainData = {
     tier: "premium",
     seedSource: "Dutch Touch Genetics",
     type: "Hybrid • 2nd Place Best in Grass",
-    thc: "N/A",
+    thc: "25.58% THC",
     budImage: "assets/img/strains/lemon-wookie-bud.jpg",
     artImage: "assets/img/strains/lemon-wookie-art.jpg",
     genetics: "Lemon G × Wookie",
@@ -1224,7 +1224,7 @@ const deliStrainData = {
     tier: "core",
     seedSource: "Bodhi Seeds",
     type: "Indica",
-    thc: "25% THC",
+    thc: "25.30% THC",
     budImage: "https://dutchtouchgenetics.com/assets/img/strains/mule-fuel-art.jpg",
     artImage: "https://dutchtouchgenetics.com/assets/img/strains/mule-fuel-art.jpg",
     genetics: "Mule Fuel × 88G13HP",
@@ -1236,7 +1236,7 @@ const deliStrainData = {
     tier: "core",
     seedSource: "Dutch Touch Genetics",
     type: "Hybrid",
-    thc: "24.77% THC",
+    thc: "25.87% THC",
     budImage: "https://dutchtouchgenetics.com/assets/img/strains/space-hippy-bud.jpg",
     artImage: "https://dutchtouchgenetics.com/assets/img/strains/space-hippy-art.jpg",
     genetics: "Apollo 13 × Dread Bread",
@@ -1260,7 +1260,7 @@ const deliStrainData = {
     tier: "core",
     seedSource: "DNA Genetics",
     type: "Sativa",
-    thc: "21.67% THC",
+    thc: "25.33% THC",
     budImage: "https://dutchtouchgenetics.com/assets/img/strains/banana-split-bud.jpg",
     artImage: "https://dutchtouchgenetics.com/assets/img/strains/banana-split-art.jpg",
     genetics: "Tangie × Banana Sherbet",
@@ -1272,7 +1272,7 @@ const deliStrainData = {
     tier: "core",
     seedSource: "Legendary Ohio Clone-Only",
     type: "Indica",
-    thc: "23.70% THC",
+    thc: "23.34% THC",
     budImage: "https://dutchtouchgenetics.com/assets/img/strains/illudium-bud.jpg",
     artImage: "https://dutchtouchgenetics.com/assets/img/strains/illudium-art.jpg",
     genetics: "Hawaiian Indica × Pre-98 Bubba Kush",
@@ -1340,7 +1340,7 @@ const deliStrainData = {
   },
 
   "death-by-funk": {
-    name: "Death By Funk",
+    name: "Death By Funk (Small Buds)",
     tier: "premium",
     seedSource: "Dutch Touch Genetics",
     type: "Indica • 3rd Place Best in Grass",
@@ -1361,7 +1361,7 @@ const deliStrainData = {
     tier: "core",
     seedSource: "Dutch Touch Genetics Library",
     type: "Indica Dominant",
-    thc: "28.76% THC",
+    thc: "27.10% THC",
     budImage: "https://dutchtouchgenetics.com/assets/img/strains/face-off-og-bud.jpg",
     artImage: "https://dutchtouchgenetics.com/assets/img/strains/face-off-og-art.jpg",
     genetics: "Face Off OG #1",
@@ -1403,52 +1403,25 @@ const curatedBrandData = {
     intro: "Hand-trimmed premium flower from one of our curated Michigan partners.",
     strains: [
       {
-        name: "Green Crack",
-        thc: "27%",
-        image: "./assets/img/brands/glacier/green-crack-deli.png"
+            "name": "Black Ice",
+            "thc": "24.40%",
+            "genetics": "MAC #1 × Oooze",
+            "image": "./assets/img/brands/glacier/black-ice-deli.webp"
       },
       {
-        name: "Super Boof",
-        image: "./assets/img/brands/glacier/super-boof-deli.png"
+            "name": "High Speed",
+            "thc": "26.52%",
+            "genetics": "Devil Driver × High MAC",
+            "image": "./assets/img/brands/glacier/high-speed-deli.webp"
       },
       {
-        name: "Blueberry Muffin",
-        image: "./assets/img/brands/glacier/blueberry-muffin-deli.png"
-      },
-      {
-        name: "High Speed",
-        genetics: "Devil Driver × High MAC",
-        terpenes: ["Ocimene", "trans-Nerolidol", "α-Humulene"],
-        aromas: ["Vanilla", "Fuel", "Apples", "Chamomile"],
-        image: "./assets/img/brands/glacier/high-speed-deli.webp"
-      },
-      {
-        name: "Black Ice",
-        genetics: "MAC #1 × Oooze",
-        terpenes: ["Limonene", "β-Caryophyllene", "β-Pinene"],
-        aromas: ["Oranges", "Sage", "Black Pepper", "Bergamot"],
-        image: "./assets/img/brands/glacier/black-ice-deli.webp"
+            "name": "Super Boof",
+            "thc": "23.70%",
+            "image": "./assets/img/brands/glacier/super-boof-deli.png"
       }
-    ]
+]
   },
 
-  redbud: {
-    name: "Redbud Roots",
-    shortName: "Redbud Roots",
-    eyebrow: "Curated Partner",
-    accent: "#E56B5D",
-    accentSoft: "rgba(229,107,93,.17)",
-    tileBackground: "radial-gradient(circle at 50% 28%, rgba(36,76,114,.30), transparent 36%), linear-gradient(155deg, #07101a 0%, #0b1520 50%, #030506 100%)",
-    logoImage: "./assets/img/brands/redbud-roots/redbud-roots-logo.png",
-    intro: "A rotating selection of Redbud Roots deli flower, curated by Green Labs.",
-    strains: [
-      { name: "Blue Nerdz", thc: "25.63%" },
-      { name: "Macflurry", thc: "26.46%" },
-      { name: "Sherbanger", thc: "22.97%" },
-      { name: "Whompz", thc: "28.97%" },
-      { name: "Zereals", thc: "20.41%" }
-    ]
-  },
 
   sapura: {
     name: "Sapura",
@@ -1460,9 +1433,9 @@ const curatedBrandData = {
     logoImage: "./assets/img/brands/sapura/sapura-logo.png",
     intro: "Colorful genetics. Big THC. Fresh Sapura flower, hand-picked for the Dutch Deli.",
     strains: [
-      { name: "Apple Gas", thc: "32.71%" },
-      { name: "Super Boof", thc: "34.82%" },
-      { name: "Tongue Splasher", thc: "23.96%" }
+      { name: "Apple Gas", thc: "27.15%" },
+      { name: "Canal Street Runtz", thc: "27%" },
+      { name: "Pineapple Express", thc: "28.7%" }
     ]
   }
 };
