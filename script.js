@@ -1398,7 +1398,7 @@ const curatedBrandData = {
     "eyebrow": "Dutch Touch Genetics • Fresh-Weighed Deli",
     "accent": "#D6A34A",
     "accentSoft": "rgba(214,163,74,.16)",
-    "cardImage": "assets/img/highlights/dtg-smalls-deli.jpg",
+    "cardImage": "assets/img/highlights/small-buds-deli.jpg",
     "intro": "Choose from 9 small-bud strains. Standard small buds start at $10 an eighth or $55 an ounce. Lemon Wookie uses the award-winning pricing tier.",
     "strains": [
         {
