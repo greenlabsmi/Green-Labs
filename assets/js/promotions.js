@@ -5,11 +5,11 @@
   const MANUAL_CAMPAIGN = null;
 
   const BRAND_HERO = {
-    image: "assets/img/deli-drop-9-18.jpg",
+    image: "assets/img/dutch-deli-oct.jpg",
     position: "center",
     size: "cover",
     href: "#deli",
-    ariaLabel: "New Deli Drop: Glacier Cannabis and Dutch Touch Genetics"
+    ariaLabel: "Explore the Green Labs Dutch Deli"
   };
 
   const PROMOTIONS = {
@@ -32,54 +32,16 @@
         items: [
           "Dutch Daylight Hash D - $30 Ounce",
           "Lazy Lightning - $70 Ounce",
-          "Glacier & Sapura Flower - $15 Eighth or $90 Ounce",
-          "Daily Dose 1G Carts - $6 or 10/$50",
-          "Party Favors 1G Carts - 15/$80"
+          "Odyssey Astro Shake - $15 Ounce or 2oz/$25",
+          "Party Favors 3G Disposables - Buy 2 Get 1",
+          "Mix & Match 1G Carts - $9ea, 3/$25 or 5/$35",
+          "14G Live Resin Baller Jars - $100",
+          "Dutch Daylight 1G Pre-Rolls - $1.50 or 28/$30"
 ],
         href: "#deals",
         ariaLabel: "View Green Labs current deals"
       }
   },
-    octoberWeekend: {
-      "enabled": true,
-      "hero": {
-            "image": "assets/img/ff-october.jpg",
-            "position": "center",
-            "size": "contain",
-            "href": "#deals",
-            "ariaLabel": "First Friday and weekend deals, October 2-4"
-      },
-      "banner": {
-            "headline": "🍂 FIRST FRIDAY + BIG WEEKEND DEALS",
-            "products": "SPACE HIPPY $50 HALF OZ · BOMB POP RSO GUMMIES $5",
-            "offer": "OCTOBER 2-4 · PARTY FAVOR 3G BOGO · GELATO CONES 50% OFF"
-      },
-      "popup": {
-            "id": "first-friday-october2-v1",
-            "enabled": true,
-            "frequency": "daily",
-            "delay": 8000,
-            "type": "deals",
-            "tabText": "OCTOBER WEEKEND DEALS",
-            "headline": "BIG WEEKEND DEALS",
-            "subhead": "OCTOBER 2-4 • FRIDAY-SUNDAY",
-            "items": [
-                  "Space Hippy Bubble Hash Infused Deli Flower Half Ounces - 50% OFF - $50",
-                  "DTG RSO Bomb Pop 200mg - 50% OFF - $5",
-                  "Party Favors 3G Disposables - BOGO",
-                  "KUSHN - BOGO",
-                  "Gelato THC Cones - 50% OFF",
-                  "Highly Casual 10mg Cold Brew Coffee - 50% OFF",
-                  "Dutch Daylight Hash D - $30 Ounce"
-            ],
-            "fridayItems": [
-                  "Wyld Gummies - Buy 2 Get 1",
-                  "Pearls Gummies - 30% OFF"
-            ],
-            "href": "#deals",
-            "ariaLabel": "View all October 2-4 weekend specials"
-      }
-},
     keepItDutchTuesday: {
       enabled: true,
       banner: {
@@ -118,8 +80,7 @@
   const dateParts = () => Object.fromEntries(new Intl.DateTimeFormat("en-US", { timeZone: TIME_ZONE, year: "numeric", month: "2-digit", day: "2-digit", weekday: "long", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(new Date()).filter(p => p.type !== "literal").map(p => [p.type, p.value]));
   const weekday = () => ({Sunday:0, Monday:1, Tuesday:2, Wednesday:3, Thursday:4, Friday:5, Saturday:6})[dateParts().weekday];
   const localStamp = () => { const p = dateParts(); return Number(`${p.year}${p.month}${p.day}${p.hour}${p.minute}`); };
-  const isOctoberWeekendWindow = () => { const stamp = localStamp(); return stamp >= 202610020000 && stamp < 202610050000; };
-  const activeName = () => { if (MANUAL_CAMPAIGN && PROMOTIONS[MANUAL_CAMPAIGN]?.enabled) return MANUAL_CAMPAIGN; if (isOctoberWeekendWindow()) return "octoberWeekend"; const scheduled = WEEKLY_SCHEDULE[weekday()]; return PROMOTIONS[scheduled]?.enabled ? scheduled : "default"; };
+  const activeName = () => { if (MANUAL_CAMPAIGN && PROMOTIONS[MANUAL_CAMPAIGN]?.enabled) return MANUAL_CAMPAIGN; const scheduled = WEEKLY_SCHEDULE[weekday()]; return PROMOTIONS[scheduled]?.enabled ? scheduled : "default"; };
   const getStored = key => { try { return localStorage.getItem(key); } catch { return null; } };
   const setStored = (key, value) => { try { localStorage.setItem(key, value); } catch {} };
 
