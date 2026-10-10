@@ -16,32 +16,33 @@
     default: {
       enabled: true,
       banner: {
-        headline: "🌿 GREEN LABS MEGA DEALS",
-        products: "HIGHLY CASUAL 10MG COLD BREW — 50% OFF · $5",
-        offer: "SHOP TODAY’S FULL DEAL MENU"
+        headline: "🔥 $10 HASH D OUNCES — DUTCH DAYLIGHT",
+        products: "ASTRO SHAKE $15/OZ · SHISKA $40/OZ · LAZY LIGHTNING $70/OZ",
+        offer: "WEEKEND DEALS · SHOP THE FULL MENU · WHILE SUPPLIES LAST"
       },
       popup: {
-        id: "current-deals-october2-v1",
+        id: "weekend-oct9-2026-v1",
         enabled: true,
         frequency: "daily",
         delay: 8000,
         type: "deals",
-        tabText: "TODAY’S DEALS",
-        headline: "TODAY’S BEST DEALS",
-        subhead: "GREEN LABS MEGA DEALS",
+        tabText: "WEEKEND DEALS",
+        headline: "WEEKEND DEALS",
+        subhead: "GREEN LABS · OCTOBER 9–11",
         items: [
-          "Dutch Daylight Hash D - $30 Ounce",
-          "Lazy Lightning - $70 Ounce",
-          "Odyssey Astro Shake - $15 Ounce or 2oz/$25",
-          "Party Favors 3G Disposables - Buy 2 Get 1",
-          "Mix & Match 1G Carts - $9ea, 3/$25 or 5/$35",
-          "14G Live Resin Baller Jars - $100",
-          "Dutch Daylight 1G Pre-Rolls - $1.50 or 28/$30"
-],
+          "🔥 DUTCH DAYLIGHT HASH D — $10 OUNCE",
+          "🌿 ASTRO SHAKE — $15 OUNCE or 2/$25",
+          "🌿 SHISKA — $40 OUNCE or 2/$60",
+          "⚡ LAZY LIGHTNING — $70 OUNCE",
+          "💨 MIX & MATCH 1G CARTS — $9 or 3/$25 or 5/$35",
+          "🎉 PARTY FAVORS 3G — BUY 2 GET 1",
+          "🍯 DTG 14G LIVE RESIN BALLER JARS — $100",
+          "🚬 DUTCH DAYLIGHT 1G PRE-ROLLS — 28/$30"
+        ],
         href: "#deals",
-        ariaLabel: "View Green Labs current deals"
+        ariaLabel: "View Green Labs weekend deals"
       }
-  },
+    },
     keepItDutchTuesday: {
       enabled: true,
       banner: {
