@@ -17,11 +17,11 @@
       enabled: true,
       banner: {
         headline: "🔥 $10 HASH D OUNCES — DUTCH DAYLIGHT",
-        products: "ASTRO SHAKE $15/OZ · SHISKA $40/OZ · LAZY LIGHTNING $70/OZ",
+        products: "ASTRO SHAKE $15/OZ · LAZY LIGHTNING & ASTRO TAFFY $70/OZ",
         offer: "WEEKEND DEALS · SHOP THE FULL MENU · WHILE SUPPLIES LAST"
       },
       popup: {
-        id: "weekend-oct9-2026-v1",
+        id: "weekend-oct9-2026-v2",
         enabled: true,
         frequency: "daily",
         delay: 8000,
@@ -33,7 +33,7 @@
           "🔥 DUTCH DAYLIGHT HASH D — $10 OUNCE",
           "🌿 ASTRO SHAKE — $15 OUNCE or 2/$25",
           "🌿 SHISKA — $40 OUNCE or 2/$60",
-          "⚡ LAZY LIGHTNING — $70 OUNCE",
+          "⚡ LAZY LIGHTNING & ASTRO TAFFY — $70 OUNCE",
           "💨 MIX & MATCH 1G CARTS — $9 or 3/$25 or 5/$35",
           "🎉 PARTY FAVORS 3G — BUY 2 GET 1",
           "🍯 DTG 14G LIVE RESIN BALLER JARS — $100",
