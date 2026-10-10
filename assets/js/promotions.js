@@ -5,11 +5,11 @@
   const MANUAL_CAMPAIGN = null;
 
   const BRAND_HERO = {
-    image: "assets/img/dutch-deli-oct.jpg",
+    image: "assets/img/redemption-hero.jpg",
     position: "center",
     size: "cover",
     href: "#deli",
-    ariaLabel: "Explore the Green Labs Dutch Deli"
+    ariaLabel: "Redemption now at Green Labs"
   };
 
   const PROMOTIONS = {
