@@ -98,6 +98,7 @@
         "mix-gummies"
       ],
       "scroll": [
+        "redemption-carts",
         "lightsky-carts",
         "fire-styxx",
         "redbud-carts",
@@ -168,6 +169,13 @@
       "kshn": {
         "title": "KSHN Pouches - $15 or BOGO",
         "image": "assets/img/highlights/hl-kshn.jpg"
+      },
+      "redemption-carts": {
+        "title": "Redemption 1g Live Resin Carts — $15 or 4 for $50",
+        "tag": "LIVE RESIN CARTS",
+        "price": "$15 or 4/$50",
+        "details": "Redemption · 1g Live Resin",
+        "image": "assets/img/redemption-hero.jpg"
       }
     }
   },
@@ -177,16 +185,16 @@
       "promo": true,
       "groups": [
         {
-          "title": "Weekend Headliners",
+          "title": "Weekday Highlights",
           "items": [
-            "Dutch Daylight Hash D — $10 OUNCE",
-            "Astro Shake — $15 OUNCE or 2oz/$25",
-            "Shiska — $40 OUNCE or 2oz/$60",
-            "Lazy Lightning & Astro Taffy — $70 OUNCE",
-            "Mix & Match 1G Carts — $9 each, 3/$25 or 5/$35",
-            "Party Favors 3G Disposables — Buy 2 Get 1",
-            "14G DTG Live Resin Baller Jars — $100",
-            "Dutch Daylight 1G Pre-Rolls — $1.50 each or 28/$30"
+            "Redemption 1g Live Resin Carts — $15 each or 4/$50",
+            "Redemption 10-Pack 0.7g Pre-Rolls — $22",
+            "Dutch Daylight Hash D — $25 OUNCE",
+            "DTG Shake — $25 OUNCE or 2/$40",
+            "Shiska — $40 OUNCE or 2/$60",
+            "Illudium, Astro Taffy & Lazy Lightning — $70 OUNCE or 2/$130",
+            "Redemption Deli Flower — $15 EIGHTH or $90 OUNCE",
+            "DTG 14g Live Resin Baller Jars — $100"
           ]
         }
       ]
@@ -198,16 +206,14 @@
         {
           "title": "Deli Deals & Pre-Packed Flower",
           "items": [
-            "Dutch Daylight Hash D — $10 OUNCE",
-            "Astro Shake — $15 OUNCE or 2oz/$25",
+            "Dutch Daylight Hash D — $25 OUNCE",
             "DTG Shake — $25 OUNCE or 2/$40",
             "Shiska — $40 OUNCE or 2/$60",
             "Illudium, Astro Taffy & Lazy Lightning — $70 OUNCE or 2/$130",
-            "Glacier Flower — $15 EIGHTH or $90 OUNCE",
+            "Redemption Flower — $15 EIGHTH or $90 OUNCE",
             "Sapura Flower — $15 EIGHTH or $90 OUNCE",
-            "Lemon Wookie — $110 OUNCE",
-            "Clusterfunk Deli Outdoor — 2oz/$70",
-            "Space Hippy Infused Flower Halves — 50% OFF"
+            "Space Hippy (Potent) — $110 OUNCE",
+            "Clusterfunk Deli Outdoor — 2oz/$70"
           ]
         }
       ]
@@ -277,7 +283,8 @@
             "Odyssey 1g (High THC) — $4 or 10/$25",
             "Dead Prez 1g — $5 or 5/$20",
             "DTG 1g Full Bud — $10 or 3/$20",
-            "Lemon Wookie 2g Handrolled — $20"
+            "Lemon Wookie 2g Handrolled — $20",
+            "Redemption 10-Pack 0.7g Pre-Rolls — $22"
           ]
         }
       ]
@@ -289,6 +296,7 @@
         {
           "title": "Vape Cartridges",
           "items": [
+            "Redemption 1g Live Resin Carts — $15 each or 4/$50",
             "Mix & Match 1g Carts — $9 each, 3/$25 or 5/$35 (Party Favors, PLAY Hash Rosin, Platinum Vape)",
             "Daily Dose 1g — $6 or 10/$50",
             "Party Favors 1g — 15/$80",
