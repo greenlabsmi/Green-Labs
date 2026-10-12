@@ -18,7 +18,7 @@
       banner: {
         headline: "💨 REDEMPTION 1G LIVE RESIN CARTS — $15 OR 4/$50",
         products: "REDEMPTION 10-PACK 0.7G PRE-ROLLS — $22 · REDEMPTION DELI $90/OZ",
-        offer: "WEEKDAY DEALS · SHOP THE FULL MENU · WHILE SUPPLIES LAST"
+        offer: ""
       },
       popup: {
         id: "weekday-oct12-2026-redemption-v1",
