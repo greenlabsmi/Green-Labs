@@ -16,28 +16,29 @@
     default: {
       enabled: true,
       banner: {
-        headline: "🔥 $10 HASH D OUNCES — DUTCH DAYLIGHT",
-        products: "ASTRO SHAKE $15/OZ · LAZY LIGHTNING & ASTRO TAFFY $70/OZ",
-        offer: "WEEKEND DEALS · SHOP THE FULL MENU · WHILE SUPPLIES LAST"
+        headline: "💨 REDEMPTION 1G LIVE RESIN CARTS — $15 OR 4/$50",
+        products: "REDEMPTION 10-PACK 0.7G PRE-ROLLS — $22 · REDEMPTION DELI $90/OZ",
+        offer: "WEEKDAY DEALS · SHOP THE FULL MENU · WHILE SUPPLIES LAST"
       },
       popup: {
-        id: "weekend-oct9-2026-v2",
+        id: "weekday-oct12-2026-redemption-v1",
         enabled: true,
         frequency: "daily",
         delay: 8000,
         type: "deals",
-        tabText: "WEEKEND DEALS",
-        headline: "WEEKEND DEALS",
-        subhead: "GREEN LABS · OCTOBER 9–11",
+        tabText: "DAILY DEALS",
+        headline: "WEEKDAY DEALS",
+        subhead: "GREEN LABS · EVERYDAY SAVINGS",
         items: [
-          "🔥 DUTCH DAYLIGHT HASH D — $10 OUNCE",
-          "🌿 ASTRO SHAKE — $15 OUNCE or 2/$25",
+          "💨 REDEMPTION 1G LIVE RESIN CARTS — $15 or 4/$50",
+          "🚬 REDEMPTION 10-PACK 0.7G PRE-ROLLS — $22",
+          "🌿 REDEMPTION DELI — $15 EIGHTH or $90 OUNCE",
+          "🌿 DUTCH DAYLIGHT HASH D — $25 OUNCE",
+          "🌿 DTG SHAKE — $25 OUNCE or 2/$40",
           "🌿 SHISKA — $40 OUNCE or 2/$60",
-          "⚡ LAZY LIGHTNING & ASTRO TAFFY — $70 OUNCE",
+          "⚡ LAZY LIGHTNING & ASTRO TAFFY — $70 OUNCE or 2/$130",
           "💨 MIX & MATCH 1G CARTS — $9 or 3/$25 or 5/$35",
-          "🎉 PARTY FAVORS 3G — BUY 2 GET 1",
-          "🍯 DTG 14G LIVE RESIN BALLER JARS — $100",
-          "🚬 DUTCH DAYLIGHT 1G PRE-ROLLS — 28/$30"
+          "🍯 DTG 14G LIVE RESIN BALLER JARS — $100"
         ],
         href: "#deals",
         ariaLabel: "View Green Labs weekend deals"
@@ -51,7 +52,7 @@
         offer: "HIGHLY CASUAL 10MG COLD BREW — 50% OFF · $5"
       },
       popup: {
-        id: "dutch-tuesday-sept22-v1",
+        id: "dutch-tuesday-oct13-redemption-v1",
         enabled: true,
         frequency: "daily",
         delay: 8000,
@@ -60,7 +61,8 @@
         headline: "KEEP IT DUTCH TUESDAY",
         subhead: "10% OFF CORE & PREMIUM DELI",
         items: [
-          "☕ Highly Casual 10mg Cold Brew — 50% OFF · $5",
+          "💨 Redemption 1g Live Resin Carts — $15 or 4/$50",
+          "🚬 Redemption 10-Pack 0.7g Pre-Rolls — $22",
           "🏆 Lemon Wookie 2G Glass Tip Pre-Roll — $20",
           "🌿 Core & Premium Deli Flower — 10% OFF",
           "🏆 Lemon Wookie & Death By Funk — Award-Winning DTG",
@@ -73,8 +75,8 @@
         ariaLabel: "View Green Labs Dutch Tuesday deals"
       }
     },
-    batchWednesday: { enabled: true, banner: { headline: "🌿 GREEN LABS MEGA DEALS", products: "25% OFF BATCH PRODUCTS", offer: "HIGHLY CASUAL 10MG COLD BREW — 50% OFF · $5" }, popup: { id: "batch-wednesday", enabled: true, frequency: "daily", delay: 10000, type: "image", image: "assets/img/promotions/batch-wednesday-popup.jpg", video: "", poster: "assets/img/promotions/batch-wednesday-popup.jpg", alt: "Batch Wednesday promotion", href: "#deals", ariaLabel: "View Batch Wednesday deals" } },
-    thirstyThursday: { enabled: true, banner: { headline: "🌿 GREEN LABS MEGA DEALS", products: "20% OFF THC DRINKS", offer: "HIGHLY CASUAL 10MG COLD BREW — 50% OFF · $5" }, popup: { id: "thirsty-thursday", enabled: true, frequency: "daily", delay: 10000, type: "image", image: "assets/img/promotions/thirsty-thursday-popup.jpg", video: "", poster: "", alt: "Thirsty Thursday: 20% off infused beverages and syrups", href: "#deals", ariaLabel: "View Thirsty Thursday beverage and syrup deals" } }
+    batchWednesday: { enabled: true, banner: { headline: "💨 REDEMPTION 1G LIVE RESIN CARTS — $15 OR 4/$50", products: "BATCH WEDNESDAY · 25% OFF BATCH PRODUCTS", offer: "HIGHLY CASUAL 10MG COLD BREW — 50% OFF · $5" }, popup: { id: "batch-wednesday", enabled: true, frequency: "daily", delay: 10000, type: "image", image: "assets/img/promotions/batch-wednesday-popup.jpg", video: "", poster: "assets/img/promotions/batch-wednesday-popup.jpg", alt: "Batch Wednesday promotion", href: "#deals", ariaLabel: "View Batch Wednesday deals" } },
+    thirstyThursday: { enabled: true, banner: { headline: "💨 REDEMPTION 1G LIVE RESIN CARTS — $15 OR 4/$50", products: "THIRSTY THURSDAY · 20% OFF THC DRINKS", offer: "HIGHLY CASUAL 10MG COLD BREW — 50% OFF · $5" }, popup: { id: "thirsty-thursday", enabled: true, frequency: "daily", delay: 10000, type: "image", image: "assets/img/promotions/thirsty-thursday-popup.jpg", video: "", poster: "", alt: "Thirsty Thursday: 20% off infused beverages and syrups", href: "#deals", ariaLabel: "View Thirsty Thursday beverage and syrup deals" } }
   };
 
   const WEEKLY_SCHEDULE = { 2: "keepItDutchTuesday", 3: "batchWednesday", 4: "thirstyThursday" };
