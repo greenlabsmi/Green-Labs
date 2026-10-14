@@ -31,7 +31,7 @@
         subhead: "GREEN LABS · EVERYDAY SAVINGS",
         items: [
           "💨 REDEMPTION 1G LIVE RESIN CARTS — $15 or 4/$50",
-          "🚬 REDEMPTION 10-PACK 0.7G PRE-ROLLS — $22",
+          "REDEMPTION 10-PACK 0.7G PRE-ROLLS — $22",
           "🌿 REDEMPTION DELI — $15 EIGHTH or $90 OUNCE",
           "🌿 DUTCH DAYLIGHT HASH D — $25 OUNCE",
           "🌿 DTG SHAKE — $25 OUNCE or 2/$40",
@@ -62,7 +62,7 @@
         subhead: "10% OFF CORE & PREMIUM DELI",
         items: [
           "💨 Redemption 1g Live Resin Carts — $15 or 4/$50",
-          "🚬 Redemption 10-Pack 0.7g Pre-Rolls — $22",
+          "Redemption 10-Pack 0.7g Pre-Rolls — $22",
           "🏆 Lemon Wookie 2G Glass Tip Pre-Roll — $20",
           "🌿 Core & Premium Deli Flower — 10% OFF",
           "🏆 Lemon Wookie & Death By Funk — Award-Winning DTG",
@@ -90,7 +90,7 @@
         items: [
           "💨 BATCH PRODUCTS — 25% OFF",
           "💨 REDEMPTION 1G LIVE RESIN CARTS — $15 or 4/$50",
-          "🚬 REDEMPTION 10-PACK 0.7G PRE-ROLLS — $22",
+          "REDEMPTION 10-PACK 0.7G PRE-ROLLS — $22",
           "🌿 DTG SHAKE — $25 OUNCE or 2/$40",
           "⚡ LAZY LIGHTNING & ASTRO TAFFY — $70 OUNCE or 2/$130",
           "🍯 DTG 14G LIVE RESIN BALLER JARS — $100"
