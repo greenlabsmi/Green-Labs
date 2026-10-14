@@ -5,11 +5,11 @@
   const MANUAL_CAMPAIGN = null;
 
   const BRAND_HERO = {
-    image: "assets/img/redemption-hero.jpg",
+    image: "assets/img/deli-drop-oct-hero.jpg",
     position: "center",
     size: "cover",
     href: "#deli",
-    ariaLabel: "Redemption now at Green Labs"
+    ariaLabel: "Saturday deli drop: Lilac Diesel, Sky Lotus, and new Glacier flower"
   };
 
   const PROMOTIONS = {
