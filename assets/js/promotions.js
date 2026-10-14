@@ -16,9 +16,9 @@
     default: {
       enabled: true,
       banner: {
-        headline: "💨 REDEMPTION 1G LIVE RESIN CARTS — $15 OR 4/$50",
-        products: "REDEMPTION 10-PACK 0.7G PRE-ROLLS — $22 · REDEMPTION DELI $90/OZ",
-        offer: ""
+        headline: "SATURDAY DELI DROP — OCT 17",
+        products: "DTG LILAC DIESEL RETURNS · SKY LOTUS — 30% THC",
+        offer: "FRESH GLACIER DELI ARRIVALS"
       },
       popup: {
         id: "weekday-oct12-2026-redemption-v1",
@@ -75,7 +75,30 @@
         ariaLabel: "View Green Labs Dutch Tuesday deals"
       }
     },
-    batchWednesday: { enabled: true, banner: { headline: "💨 REDEMPTION 1G LIVE RESIN CARTS — $15 OR 4/$50", products: "BATCH WEDNESDAY · 25% OFF BATCH PRODUCTS", offer: "HIGHLY CASUAL 10MG COLD BREW — 50% OFF · $5" }, popup: { id: "batch-wednesday", enabled: true, frequency: "daily", delay: 10000, type: "image", image: "assets/img/promotions/batch-wednesday-popup.jpg", video: "", poster: "assets/img/promotions/batch-wednesday-popup.jpg", alt: "Batch Wednesday promotion", href: "#deals", ariaLabel: "View Batch Wednesday deals" } },
+    batchWednesday: {
+      enabled: true,
+      banner: { headline: "SATURDAY DELI DROP — OCT 17", products: "DTG LILAC DIESEL RETURNS · SKY LOTUS — 30% THC", offer: "FRESH GLACIER DELI ARRIVALS" },
+      popup: {
+        id: "batch-wednesday-best-deals-oct14-v1",
+        enabled: true,
+        frequency: "daily",
+        delay: 10000,
+        type: "deals",
+        tabText: "TODAY'S BEST DEALS",
+        headline: "WEDNESDAY'S BEST DEALS",
+        subhead: "GREEN LABS · BATCH WEDNESDAY",
+        items: [
+          "💨 BATCH PRODUCTS — 25% OFF",
+          "💨 REDEMPTION 1G LIVE RESIN CARTS — $15 or 4/$50",
+          "🚬 REDEMPTION 10-PACK 0.7G PRE-ROLLS — $22",
+          "🌿 DTG SHAKE — $25 OUNCE or 2/$40",
+          "⚡ LAZY LIGHTNING & ASTRO TAFFY — $70 OUNCE or 2/$130",
+          "🍯 DTG 14G LIVE RESIN BALLER JARS — $100"
+        ],
+        href: "#deals",
+        ariaLabel: "View Wednesday's best deals"
+      }
+    },
     thirstyThursday: { enabled: true, banner: { headline: "💨 REDEMPTION 1G LIVE RESIN CARTS — $15 OR 4/$50", products: "THIRSTY THURSDAY · 20% OFF THC DRINKS", offer: "HIGHLY CASUAL 10MG COLD BREW — 50% OFF · $5" }, popup: { id: "thirsty-thursday", enabled: true, frequency: "daily", delay: 10000, type: "image", image: "assets/img/promotions/thirsty-thursday-popup.jpg", video: "", poster: "", alt: "Thirsty Thursday: 20% off infused beverages and syrups", href: "#deals", ariaLabel: "View Thirsty Thursday beverage and syrup deals" } }
   };
 
