@@ -331,6 +331,9 @@ window.addEventListener('DOMContentLoaded', () => {
 // INTERCEPT CLICKS ON ANY SHOP BUTTON (New Popup Logic)
 document.querySelectorAll('[data-open-shop]').forEach(el => 
     el.addEventListener('click', (e) => {
+        // promotions.js can repurpose this hero button after the handler is bound.
+        // Skip the old Leafly action when its shop marker has been removed.
+        if (!el.hasAttribute('data-open-shop')) return;
         e.preventDefault();
         
         const btnText = el.textContent.toLowerCase();
@@ -3026,4 +3029,3 @@ document.querySelectorAll('[data-guide-card]').forEach(card => {
               }
   });
 });
-
