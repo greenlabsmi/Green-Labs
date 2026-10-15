@@ -130,7 +130,7 @@
 
     const carousel = document.querySelector(".deli-carousel__track, .deli-track, [data-deli-track]") || document.querySelector(".deli-card-wrapper")?.parentElement;
     if (carousel) {
-      ["death by funk"].reverse().forEach(target => {
+      ["death by funk", "lilac diesel", "sky lotus"].forEach(target => {
         const wrapper = [...carousel.querySelectorAll(".deli-card-wrapper")].find(el => el.querySelector(".deli-card__label h3")?.textContent.trim().toLowerCase() === target);
         if (wrapper) carousel.prepend(wrapper);
       });
