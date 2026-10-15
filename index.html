@@ -384,7 +384,17 @@
   </div>
 </section>
     
-    <!-- ===== DELI ===== -->
+    
+<style>
+/* Upcoming deli flower previews */
+.deli-card-wrapper.deli-coming-soon{position:relative;cursor:default}
+.deli-card-wrapper.deli-coming-soon .deli-card{position:relative;overflow:hidden}
+.deli-card-wrapper.deli-coming-soon .deli-card::after{content:"COMING SOON";position:absolute;top:13px;left:50%;transform:translateX(-50%);z-index:5;white-space:nowrap;padding:9px 16px;border:1px solid rgba(255,215,130,.8);border-radius:30px;background:rgba(19,12,34,.94);color:#ffe1a0;font-size:12px;font-weight:900;letter-spacing:.12em;box-shadow:0 4px 18px rgba(0,0,0,.6)}
+.deli-card-wrapper.deli-coming-soon.sky-lotus-preview .deli-card::after{background:rgba(7,28,65,.94);color:#c9eaff;border-color:#79b8ed}
+.deli-card-wrapper.deli-coming-soon .deli-card__front,.deli-card-wrapper.deli-coming-soon .deli-card__back{background-size:cover;background-position:center}
+.deli-card-wrapper.deli-coming-soon .deli-card__genetics{color:#e6c77f}
+</style>
+\n    <!-- ===== DELI ===== -->
 <div class="gl-strains-section" style="padding-top: 20px;">
   <div class="container">
     <div id="deli" class="fancy-header reveal">
@@ -436,6 +446,22 @@
 </button>
       
       <div id="deliCarousel" class="strain-grid deli-carousel">
+        <!-- Friday flower arrivals: preview only until inventory is received -->
+        <div class="deli-card-wrapper is-new deli-coming-soon lilac-diesel-preview" data-category="sativa" aria-label="Lilac Diesel, coming soon">
+          <div class="deli-card">
+            <div class="deli-card__front" style="background-image:url('https://dutchtouchgenetics.com/assets/img/strains/lilac-diesel-art-2.jpg');"></div>
+            <div class="deli-card__back" style="background-image:url('https://dutchtouchgenetics.com/assets/img/strains/lilac-diesel-art-2.jpg');"></div>
+          </div>
+          <div class="deli-card__label"><h3>Lilac Diesel</h3><p class="deli-card__genetics">Fresh DTG Flower • Coming Soon</p></div>
+        </div>
+        <div class="deli-card-wrapper is-new deli-coming-soon sky-lotus-preview" data-category="hybrid" aria-label="Sky Lotus, coming soon">
+          <div class="deli-card">
+            <div class="deli-card__front" style="background-image:url('https://dutchtouchgenetics.com/assets/img/strains/sky-lotus-art.jpg');"></div>
+            <div class="deli-card__back" style="background-image:url('https://dutchtouchgenetics.com/assets/img/strains/sky-lotus-art.jpg');"></div>
+          </div>
+          <div class="deli-card__label"><h3>Sky Lotus</h3><p class="deli-card__genetics">Fresh DTG Flower • Coming Soon</p></div>
+        </div>
+
 
         
 
