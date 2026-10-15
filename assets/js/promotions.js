@@ -9,7 +9,7 @@
     position: "center",
     size: "cover",
     href: "#deli",
-    ariaLabel: "Saturday deli drop: Lilac Diesel, Sky Lotus, and new Glacier flower"
+    ariaLabel: "Saturday deli drop: Lilac Diesel and Sky Lotus"
   };
 
   const PROMOTIONS = {
@@ -18,7 +18,7 @@
       banner: {
         headline: "SATURDAY DELI DROP — OCT 17",
         products: "DTG LILAC DIESEL RETURNS · SKY LOTUS — 30% THC",
-        offer: "FRESH GLACIER DELI ARRIVALS"
+        offer: "DTG FLOWER ARRIVING FRIDAY"
       },
       popup: {
         id: "weekday-oct12-2026-redemption-v1",
@@ -69,7 +69,7 @@
           
           "🍬 PLAY 200mg Gummies — $3ea or 10/$20",
           "🚬 Odyssey 1G Pre-Rolls — $4ea or 10/$25",
-          "❄️ Glacier Deli Flower — $15 Eighth · $90 Ounce"
+          "🌿 Explore our current deli selection"
         ],
         href: "#deals",
         ariaLabel: "View Green Labs Dutch Tuesday deals"
@@ -77,7 +77,7 @@
     },
     batchWednesday: {
       enabled: true,
-      banner: { headline: "SATURDAY DELI DROP — OCT 17", products: "DTG LILAC DIESEL RETURNS · SKY LOTUS — 30% THC", offer: "FRESH GLACIER DELI ARRIVALS" },
+      banner: { headline: "SATURDAY DELI DROP — OCT 17", products: "DTG LILAC DIESEL RETURNS · SKY LOTUS — 30% THC", offer: "DTG FLOWER ARRIVING FRIDAY" },
       popup: {
         id: "batch-wednesday-best-deals-oct14-v1",
         enabled: true,
@@ -130,13 +130,12 @@
 
     const carousel = document.querySelector(".deli-carousel__track, .deli-track, [data-deli-track]") || document.querySelector(".deli-card-wrapper")?.parentElement;
     if (carousel) {
-      ["death by funk", "face off #1"].reverse().forEach(target => {
+      ["death by funk"].reverse().forEach(target => {
         const wrapper = [...carousel.querySelectorAll(".deli-card-wrapper")].find(el => el.querySelector(".deli-card__label h3")?.textContent.trim().toLowerCase() === target);
         if (wrapper) carousel.prepend(wrapper);
       });
     }
 
-    document.querySelectorAll(".deli-card__label").forEach(label => { const name = label.querySelector("h3"); if (name?.textContent.trim().toLowerCase() === "lemon wookie") { const genetics = label.querySelector(".deli-card__genetics"); if (genetics) genetics.textContent = "Hybrid • 25.58% THC • Award Winner"; } });
   }
 
   function updateHero(hero) {
