@@ -120,7 +120,7 @@
         "title": "Mix & Match 1G Carts",
         "price": "5 for $35",
         "tag": "VAPES",
-        "details": "Party Favors · PLAY · Crude Boys · Drip",
+        "details": "Party Favors · Platinum Vape · Crude Boys",
         "image": "assets/img/highlights/mixmatch-carts.jpg"
       },
       "dtg-disposables": {
@@ -131,7 +131,7 @@
         "image": "assets/img/deals/dt-disposables.jpg"
       },
       "redbud-carts": {
-        "title": "Redbud Roots 1G Carts - $10 or 3 for $25",
+        "title": "Redbud Roots 1G Full Spectrum Carts — 3 for $25",
         "image": "assets/img/highlights/hl-redbud.jpg"
       },
       "mix-gummies": {
@@ -163,7 +163,7 @@
         "image": "assets/img/highlights/hash-house-hl.jpg"
       },
       "dutch-daylight-prerolls": {
-        "title": "Dutch Daylight Pre-Rolls - 28 for $30",
+        "title": "Dutch Daylight 1G Pre-Rolls — $1.50 or 28 for $30",
         "image": "assets/img/highlights/hl-prerolls.jpg"
       },
       "kshn": {
@@ -185,16 +185,17 @@
       "promo": true,
       "groups": [
         {
-          "title": "Weekday Highlights",
+          "title": "Weekend Highlights",
           "items": [
-            "Redemption 1g Live Resin Carts — $15 each or 4/$50",
-            "Redemption 10-Pack 0.7g Pre-Rolls — $22",
-            "Dutch Daylight Hash D — $25 OUNCE",
-            "DTG Shake — $25 OUNCE or 2/$40",
-            "Shiska — $40 OUNCE or 2/$60",
-            "Illudium, Astro Taffy & Lazy Lightning — $70 OUNCE or 2/$130",
-            "Redemption Deli Flower — $15 EIGHTH or $90 OUNCE",
-            "DTG 14g Live Resin Baller Jars — $100"
+            "🌿 Lilac Diesel & Sky Lotus — BACK IN STOCK",
+            "🌿 Death By Funk Shake — $15 OUNCE",
+            "🌿 Grip Full Bud — $20 OUNCE",
+            "🌿 Blue Nerdz — $20 EIGHTH or $100 OUNCE",
+            "💨 Redemption 1g Live Resin Carts — $15 or 4/$50",
+            "🔥 Redemption 10-Pack Pre-Rolls — $22",
+            "🌿 DTG Shake — $25 OUNCE or 2/$40",
+            "🌿 Illudium, Astro Taffy & Lazy Lightning — $70 OUNCE or 2/$130",
+            "🍯 DTG Big Baller Jars — $100"
           ]
         }
       ]
@@ -204,16 +205,18 @@
       "promo": false,
       "groups": [
         {
-          "title": "Deli Deals & Pre-Packed Flower",
+          "title": "Flower & Deli Specials",
           "items": [
+            "Death By Funk Shake — $15 OUNCE",
+            "Grip Full Bud — $20 OUNCE",
             "Dutch Daylight Hash D — $25 OUNCE",
             "DTG Shake — $25 OUNCE or 2/$40",
             "Shiska — $40 OUNCE or 2/$60",
             "Illudium, Astro Taffy & Lazy Lightning — $70 OUNCE or 2/$130",
-            "Redemption Flower — $15 EIGHTH or $90 OUNCE",
-            "Sapura Flower — $15 EIGHTH or $90 OUNCE",
-            "Space Hippy (Potent) — $110 OUNCE",
-            "Clusterfunk Deli Outdoor — 2oz/$70"
+            "Blue Nerdz — $20 EIGHTH or $100 OUNCE",
+            "Space Hippy — $110 OUNCE",
+            "Clusterfunk Deli Outdoor — 2oz/$70",
+            "Lilac Diesel & Sky Lotus — BACK IN STOCK"
           ]
         }
       ]
@@ -225,8 +228,7 @@
         {
           "title": "Drink Deals",
           "items": [
-            "Every Thursday — 20% OFF Drinks",
-            "Cold Brew THC Drink — $3 each (70% OFF)"
+            "Every Thursday — 20% OFF Drinks"
           ]
         }
       ]
@@ -238,16 +240,14 @@
         {
           "title": "Gummies, Cones & Chocolates",
           "items": [
-            "Platinum Vapes Gummies — Buy 2 Get 1",
+            "Platinum Gummies — Buy 2 Get 1",
             "Gelato THC Cones — Buy 2 Get 1",
-            "Gelato One Hitter — $4 or 10/$30",
             "Choice 200mg — $4 or 5/$18",
             "DTG Berry Burst 200mg — $5",
             "DTG RSO Bomb Pop 200mg — $5",
             "Smokies Fruit Gummies — $7 each or 3/$20",
             "Squishies 200mg Rosin — $8 or 5/$35",
-            "Mojo Chocolates — $12",
-            "Covert Cups Rosin Chocolates — $13",
+            "Barracuda Chocolate Bars — $15",
             "Wonder Low Dose 40ct — $15"
           ]
         }
@@ -260,6 +260,7 @@
         {
           "title": "Infused Pre-Rolls",
           "items": [
+            "Grip 1g — $4 or 10/$30",
             "Glacier Ice Pick Infused — $5",
             "Fire Styxx — $6 or 10/$55",
             "Bonfire — $6 or 10/$55",
@@ -271,20 +272,19 @@
           "items": [
             "Divvy 2-Pack — $5 or 7/$30",
             "Bonfire 5-Pack — $20 or 3/$45",
-            "Swisher 5-Pack Blunts — $20",
-            "LightSky Farms 5-Pack Bubble Hash — $35"
+            "Swisher 5-Pack Blunts — $20"
           ]
         },
         {
           "title": "Non-Infused Pre-Rolls",
           "items": [
             "Dutch Daylight 1g — $1.50 or 28/$30",
+            "Redemption 10-Pack — $22",
             "Kaos 1g — $3 or 10/$25",
-            "Odyssey 1g (High THC) — $4 or 10/$25",
+            "Odyssey 1g — $4 or 10/$25",
             "Dead Prez 1g — $5 or 5/$20",
             "DTG 1g Full Bud — $10 or 3/$20",
-            "Lemon Wookie 2g Handrolled — $20",
-            "Redemption 10-Pack 0.7g Pre-Rolls — $22"
+            "Lemon Wookie 2g Handrolled — $20"
           ]
         }
       ]
@@ -296,24 +296,22 @@
         {
           "title": "Vape Cartridges",
           "items": [
-            "Redemption 1g Live Resin Carts — $15 each or 4/$50",
-            "Mix & Match 1g Carts — $9 each, 3/$25 or 5/$35 (Party Favors, PLAY Hash Rosin, Platinum Vape)",
-            "Daily Dose 1g — $6 or 10/$50",
+            "Redemption 1g Live Resin — $15 or 4/$50",
+            "Mix & Match 1g Carts (Party Favors, Platinum Vape & Crude Boys) — $9 or 3/$25 or 5/$35",
             "Party Favors 1g — 15/$80",
-            "PLAY Hash Rosin Infused — 10/$55",
-            "Platinum Vape 1g Live Resin — Buy 2 Get 1 Free",
-            "LightSky Farms Live Resin — $15"
+            "Redbud Roots Full Spectrum — 3/$25",
+            "Platinum Vape 1g Live Resin — Buy 2 Get 1 Free"
           ]
         },
         {
           "title": "Disposable Vapes",
           "items": [
             "Party Favors 3g — Buy 2 Get 1",
-            "Glacier Rosin — $30 or 2/$50",
-            "ROVE 1g Premium — $30",
+            "Grip 2g Diamond — $20",
             "Batch 2g — $25",
             "Batch 4g — $45",
             "DTG 1g — 3/$45 or 7/$100",
+            "Known Rosin — $30 or 2/$50",
             "DTG Lilac 2g — $35 or 2/$65",
             "DTG Gelato 2g — $30 or 2/$55"
           ]
@@ -327,7 +325,7 @@
         {
           "title": "Dutch Touch Resin Concentrates",
           "items": [
-            "Dutch Delight Diamonds — 30% OFF",
+            "Dutch Daylight Diamonds — 30% OFF",
             "Death Star Sugar 1g — $10",
             "Death Star Sugar 3.5g — $30 or 2/$55",
             "Sin City Batter 3.5g — $35",
@@ -343,7 +341,7 @@
             "Hash D 14g Rosin — $140",
             "Shiskaberry 14g Rosin — $170",
             "DTG 3.5g Rosin — $55–$60 each",
-            "LightSky Farms 2g Thumbprint — $70",
+            "LSF 2g Thumbprint — $70",
             "710 Persy 1g — $50",
             "710 Persy Pods — $50 each"
           ]
