@@ -16,43 +16,77 @@
     default: {
       enabled: true,
       banner: {
-        headline: "SATURDAY DELI DROP — OCT 17",
-        products: "DTG LILAC DIESEL RETURNS · SKY LOTUS — 30% THC",
-        offer: "DTG FLOWER ARRIVING FRIDAY"
+        headline: "FRESH DELI FLOWER AT GREEN LABS",
+        products: "DTG LILAC DIESEL · SKY LOTUS · BLUE NERDZ",
+        offer: "REDEMPTION LIVE RESIN CARTS — $15 OR 4/$50"
       },
       popup: {
-        id: "weekday-oct12-2026-redemption-v1",
+        id: "oct17-2026-updated-deals-v1",
         enabled: true,
         frequency: "daily",
         delay: 8000,
         type: "deals",
-        tabText: "DAILY DEALS",
-        headline: "WEEKDAY DEALS",
-        subhead: "GREEN LABS · EVERYDAY SAVINGS",
+        tabText: "TODAY'S DEALS",
+        headline: "TODAY'S BEST DEALS",
+        subhead: "GREEN LABS · LUNA PIER",
         items: [
+          "🌿 DTG LILAC DIESEL & SKY LOTUS — BACK IN STOCK",
+          "🌿 DEATH BY FUNK SHAKE — $15 OUNCE",
+          "🌿 GRIP FULL BUD — $20 OUNCE",
+          "🌿 BLUE NERDZ — $20 EIGHTH or $100 OUNCE",
           "💨 REDEMPTION 1G LIVE RESIN CARTS — $15 or 4/$50",
-          "REDEMPTION 10-PACK 0.7G PRE-ROLLS — $22",
-          "🌿 REDEMPTION DELI — $15 EIGHTH or $90 OUNCE",
-          "🌿 DUTCH DAYLIGHT HASH D — $25 OUNCE",
+          "🔥 REDEMPTION 10-PACK PRE-ROLLS — $22",
           "🌿 DTG SHAKE — $25 OUNCE or 2/$40",
-          "🌿 SHISKA — $40 OUNCE or 2/$60",
-          "⚡ LAZY LIGHTNING & ASTRO TAFFY — $70 OUNCE or 2/$130",
-          "💨 MIX & MATCH 1G CARTS — $9 or 3/$25 or 5/$35",
-          "🍯 DTG 14G LIVE RESIN BALLER JARS — $100"
+          "🍯 DTG BIG BALLER JARS — $100",
+          "🌿 MORE FLOWER, VAPE, EDIBLE & HASH DEALS INSIDE"
         ],
         href: "#deals",
-        ariaLabel: "View Green Labs weekend deals"
+        ariaLabel: "View all Green Labs deals"
+      }
+    },
+    deliDropWeekend: {
+      enabled: true,
+      banner: {
+        headline: "NEW DELI DROPS — ON THE SHELF",
+        products: "DTG LILAC DIESEL · SKY LOTUS · BLUE NERDZ",
+        offer: "FREE DUTCH DAYLIGHT 1G PRE-ROLL WITH $70 PURCHASE · THROUGH SUNDAY"
+      },
+      popup: {
+        id: "oct17-18-deli-weekend-v1",
+        enabled: true,
+        frequency: "daily",
+        delay: 8000,
+        type: "deals",
+        tabText: "WEEKEND DEALS",
+        headline: "NEW DELI DROPS!",
+        subhead: "GREEN LABS · OCTOBER 17–18",
+        items: [
+          "🌿 DTG LILAC DIESEL & SKY LOTUS — BACK IN STOCK",
+          "🎁 FREE DUTCH DAYLIGHT 1G PRE-ROLL WITH $70 PURCHASE — THROUGH SUNDAY",
+          "🌿 DEATH BY FUNK SHAKE — $15 OUNCE",
+          "🌿 GRIP FULL BUD — $20 OUNCE",
+          "🌿 BLUE NERDZ — $20 EIGHTH or $100 OUNCE",
+          "💨 REDEMPTION 1G LIVE RESIN CARTS — $15 or 4/$50",
+          "🔥 REDEMPTION 10-PACK PRE-ROLLS — $22",
+          "🌿 HASH D & DTG SHAKE — $25 OUNCE",
+          "🌿 SHISKA — $40 OUNCE or 2/$60",
+          "🌿 ILLUDIUM, ASTRO TAFFY & LAZY LIGHTNING — $70 OUNCE or 2/$130",
+          "🍯 DTG BIG BALLER JARS — $100",
+          "🌿 SEE ALL WEEKEND DEALS"
+        ],
+        href: "#deals",
+        ariaLabel: "View all Green Labs weekend deals"
       }
     },
     keepItDutchTuesday: {
       enabled: true,
       banner: {
-        headline: "🌿 GREEN LABS MEGA DEALS",
+        headline: "KEEP IT DUTCH TUESDAY",
         products: "10% OFF CORE & PREMIUM DELI FLOWER",
-        offer: "HIGHLY CASUAL 10MG COLD BREW — 50% OFF · $5"
+        offer: "REDEMPTION LIVE RESIN CARTS — $15 OR 4/$50"
       },
       popup: {
-        id: "dutch-tuesday-oct13-redemption-v1",
+        id: "dutch-tuesday-oct20-2026-v1",
         enabled: true,
         frequency: "daily",
         delay: 8000,
@@ -61,52 +95,73 @@
         headline: "KEEP IT DUTCH TUESDAY",
         subhead: "10% OFF CORE & PREMIUM DELI",
         items: [
-          "💨 Redemption 1g Live Resin Carts — $15 or 4/$50",
-          "Redemption 10-Pack 0.7g Pre-Rolls — $22",
-          "🏆 Lemon Wookie 2G Glass Tip Pre-Roll — $20",
-          "🌿 Core & Premium Deli Flower — 10% OFF",
-          "🏆 Lemon Wookie & Death By Funk — Award-Winning DTG",
-          
-          "🍬 PLAY 200mg Gummies — $3ea or 10/$20",
-          "🚬 Odyssey 1G Pre-Rolls — $4ea or 10/$25",
-          "🌿 Explore our current deli selection"
+          "🌿 CORE & PREMIUM DELI FLOWER — 10% OFF",
+          "🌿 LILAC DIESEL & SKY LOTUS — BACK IN STOCK",
+          "💨 REDEMPTION 1G LIVE RESIN CARTS — $15 or 4/$50",
+          "🔥 REDEMPTION 10-PACK PRE-ROLLS — $22",
+          "🌿 BLUE NERDZ — $20 EIGHTH or $100 OUNCE",
+          "🍯 DTG BIG BALLER JARS — $100"
         ],
         href: "#deals",
-        ariaLabel: "View Green Labs Dutch Tuesday deals"
+        ariaLabel: "View Dutch Tuesday deals"
       }
     },
     batchWednesday: {
       enabled: true,
-      banner: { headline: "SATURDAY DELI DROP — OCT 17", products: "DTG LILAC DIESEL RETURNS · SKY LOTUS — 30% THC", offer: "DTG FLOWER ARRIVING FRIDAY" },
+      banner: {
+        headline: "BATCH WEDNESDAY",
+        products: "BATCH PRODUCTS — 25% OFF",
+        offer: "REDEMPTION LIVE RESIN CARTS — $15 OR 4/$50"
+      },
       popup: {
-        id: "batch-wednesday-best-deals-oct14-v1",
+        id: "batch-wednesday-oct21-2026-v1",
         enabled: true,
         frequency: "daily",
         delay: 10000,
         type: "deals",
-        tabText: "TODAY'S BEST DEALS",
-        headline: "WEDNESDAY'S BEST DEALS",
-        subhead: "GREEN LABS · BATCH WEDNESDAY",
+        tabText: "TODAY'S DEALS",
+        headline: "BATCH WEDNESDAY",
+        subhead: "GREEN LABS · MIDWEEK DEALS",
         items: [
           "💨 BATCH PRODUCTS — 25% OFF",
           "💨 REDEMPTION 1G LIVE RESIN CARTS — $15 or 4/$50",
-          "REDEMPTION 10-PACK 0.7G PRE-ROLLS — $22",
-          "🌿 DTG SHAKE — $25 OUNCE or 2/$40",
-          "⚡ LAZY LIGHTNING & ASTRO TAFFY — $70 OUNCE or 2/$130",
-          "🍯 DTG 14G LIVE RESIN BALLER JARS — $100"
+          "🔥 REDEMPTION 10-PACK PRE-ROLLS — $22",
+          "🌿 LILAC DIESEL & SKY LOTUS — BACK IN STOCK",
+          "🌿 DEATH BY FUNK SHAKE — $15 OUNCE",
+          "🍯 DTG BIG BALLER JARS — $100"
         ],
         href: "#deals",
-        ariaLabel: "View Wednesday's best deals"
+        ariaLabel: "View Batch Wednesday deals"
       }
     },
-    thirstyThursday: { enabled: true, banner: { headline: "💨 REDEMPTION 1G LIVE RESIN CARTS — $15 OR 4/$50", products: "THIRSTY THURSDAY · 20% OFF THC DRINKS", offer: "HIGHLY CASUAL 10MG COLD BREW — 50% OFF · $5" }, popup: { id: "thirsty-thursday", enabled: true, frequency: "daily", delay: 10000, type: "image", image: "assets/img/promotions/thirsty-thursday-popup.jpg", video: "", poster: "", alt: "Thirsty Thursday: 20% off infused beverages and syrups", href: "#deals", ariaLabel: "View Thirsty Thursday beverage and syrup deals" } }
+    thirstyThursday: {
+      enabled: true,
+      banner: {
+        headline: "THIRSTY THURSDAY — 20% OFF DRINKS",
+        products: "DTG LILAC DIESEL · SKY LOTUS · BLUE NERDZ",
+        offer: "REDEMPTION LIVE RESIN CARTS — $15 OR 4/$50"
+      },
+      popup: {
+        id: "thirsty-thursday",
+        enabled: true,
+        frequency: "daily",
+        delay: 10000,
+        type: "image",
+        image: "assets/img/promotions/thirsty-thursday-popup.jpg",
+        video: "",
+        poster: "",
+        alt: "Thirsty Thursday: 20% off infused beverages",
+        href: "#deals",
+        ariaLabel: "View Thirsty Thursday drink deals"
+      }
+    }
   };
 
   const WEEKLY_SCHEDULE = { 2: "keepItDutchTuesday", 3: "batchWednesday", 4: "thirstyThursday" };
   const dateParts = () => Object.fromEntries(new Intl.DateTimeFormat("en-US", { timeZone: TIME_ZONE, year: "numeric", month: "2-digit", day: "2-digit", weekday: "long", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(new Date()).filter(p => p.type !== "literal").map(p => [p.type, p.value]));
   const weekday = () => ({Sunday:0, Monday:1, Tuesday:2, Wednesday:3, Thursday:4, Friday:5, Saturday:6})[dateParts().weekday];
   const localStamp = () => { const p = dateParts(); return Number(`${p.year}${p.month}${p.day}${p.hour}${p.minute}`); };
-  const activeName = () => { if (MANUAL_CAMPAIGN && PROMOTIONS[MANUAL_CAMPAIGN]?.enabled) return MANUAL_CAMPAIGN; const scheduled = WEEKLY_SCHEDULE[weekday()]; return PROMOTIONS[scheduled]?.enabled ? scheduled : "default"; };
+  const activeName = () => { if (MANUAL_CAMPAIGN && PROMOTIONS[MANUAL_CAMPAIGN]?.enabled) return MANUAL_CAMPAIGN; const p = dateParts(); const today = `${p.year}-${p.month}-${p.day}`; if (today >= "2026-10-17" && today <= "2026-10-18") return "deliDropWeekend"; const scheduled = WEEKLY_SCHEDULE[weekday()]; return PROMOTIONS[scheduled]?.enabled ? scheduled : "default"; };
   const getStored = key => { try { return localStorage.getItem(key); } catch { return null; } };
   const setStored = (key, value) => { try { localStorage.setItem(key, value); } catch {} };
 
