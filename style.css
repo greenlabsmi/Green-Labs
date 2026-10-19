@@ -5633,3 +5633,73 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
         0 0 30px rgba(0, 0, 0, 0.8) !important;
 }
 
+
+
+/* Featured 5/$35 cart highlight — keep the product photo visible while showing the offer. */
+#todays-highlights .thHeroShade {
+  position:absolute;
+  inset:0;
+  z-index:1;
+  background:linear-gradient(90deg, rgba(0,0,0,.88) 0%, rgba(0,0,0,.62) 35%, rgba(0,0,0,.08) 75%);
+}
+#todays-highlights .thHeroDeal {
+  position:absolute;
+  z-index:2;
+  top:50%;
+  left:clamp(18px,4.5%,62px);
+  transform:translateY(-50%);
+  width:min(53%,610px);
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  color:#fff;
+  text-shadow:0 2px 14px rgba(0,0,0,.85);
+}
+#todays-highlights .thHeroEyebrow {
+  font-weight:850;
+  font-size:clamp(13px,1.65vw,22px);
+  letter-spacing:.09em;
+  text-transform:uppercase;
+  color:#fff;
+}
+#todays-highlights .thHeroDealPrice {
+  font-weight:950;
+  font-size:clamp(48px,7.6vw,104px);
+  line-height:1.04;
+  letter-spacing:-.045em;
+  color:#ffd45c;
+  white-space:nowrap;
+  text-shadow:0 4px 20px rgba(0,0,0,.8);
+}
+#todays-highlights .thHeroDealBrands {
+  font-weight:750;
+  font-size:clamp(14px,1.7vw,22px);
+  line-height:1.45;
+  color:#fff;
+  max-width:540px;
+}
+#todays-highlights .thHeroDealCta {
+  display:inline-flex;
+  gap:12px;
+  align-items:center;
+  margin-top:22px;
+  padding:12px 18px;
+  border-radius:999px;
+  background:#087d5b;
+  color:#fff;
+  font-size:clamp(13px,1.3vw,17px);
+  font-weight:850;
+  text-shadow:none;
+  box-shadow:0 6px 18px rgba(0,0,0,.3);
+}
+#todays-highlights .thHeroDealCta small {
+  font-size:11px;
+  opacity:.8;
+}
+@media (max-width:700px) {
+  #todays-highlights .thHero {height:360px;}
+  #todays-highlights .thHeroShade {background:linear-gradient(0deg, rgba(0,0,0,.9) 0%, rgba(0,0,0,.45) 55%, rgba(0,0,0,.04) 100%);}
+  #todays-highlights .thHeroDeal {top:auto;bottom:20px;left:20px;transform:none;width:calc(100% - 40px);}
+  #todays-highlights .thHeroDealPrice {font-size:clamp(48px,12vw,72px);}
+  #todays-highlights .thHeroDealCta {margin-top:12px;padding:10px 14px;}
+}
