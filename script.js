@@ -1094,6 +1094,23 @@ const deliStrainData = {
     about: "🏆 1st Place Sativa (High Times Cannabis Cup). Strong citrus (limonene), sour, earthy, and skunky, described as tasting like lemon-pine cleaners. Known for high, energetic, and creative effects. Has the ability to 'clean out' bad moods."
   },
    
+  "sky-lotus": {
+    name: "Sky Lotus",
+    tier: "premium",
+    seedSource: "Bodhi Seeds",
+    type: "Hybrid",
+    thc: "",
+    budImage: "",
+    artImage: "https://dutchtouchgenetics.com/assets/img/strains/sky-lotus-art.jpg",
+    genetics: "Skywalker OG × Snow Lotus",
+    terpenes: [
+      { name: "β-Caryophyllene", percent: "0.771%", mg: "7.71 mg/g" },
+      { name: "Nerolidol", percent: "0.374%", mg: "3.74 mg/g" },
+      { name: "α-Humulene", percent: "0.273%", mg: "2.73 mg/g" }
+    ],
+    about: "A Bodhi Seeds hybrid with pine, lemon and sweet berry aromas, and a potent, balanced character."
+  },
+
   "lilac-diesel": {
     name: "Lilac Diesel",
     tier: "premium",
@@ -1103,6 +1120,11 @@ const deliStrainData = {
     budImage: "https://dutchtouchgenetics.com/assets/img/strains/lilac-diesel-bud.jpg",
     artImage: "https://dutchtouchgenetics.com/assets/img/strains/lilac-diesel-art.jpg",
     genetics: "Silver Lemon Haze × Forbidden Fruit × NYC Cherry Pie × Citral Glue",
+    terpenes: [
+      { name: "Terpinolene", percent: "0.836%", mg: "8.36 mg/g" },
+      { name: "β-Caryophyllene", percent: "0.622%", mg: "6.22 mg/g" },
+      { name: "Nerolidol", percent: "0.389%", mg: "3.89 mg/g" }
+    ],
     about: "🏆 High Times Cannabis Cup 3rd Place Sativa. Big buds have a complex terpene profile, including notes of citrus, sweet berries, earthy pine, and chem. Lilac Diesel is a great afternoon strain for a lackadaisical adventure."
   },
 
@@ -2413,7 +2435,7 @@ function openDeliModal(strainId) {
 
   if (typeEl) {
     typeEl.textContent =
-      `${strain.type} • ${strain.thc}`;
+      strain.thc && strain.thc !== "N/A" ? `${strain.type} • ${strain.thc}` : strain.type;
   }
 
   if (seedEl) {
