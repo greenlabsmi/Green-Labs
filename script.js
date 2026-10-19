@@ -907,6 +907,22 @@ function renderHighlightsFromConfig(data, mount) {
           </a>
         `;
       }
+      // Featured highlight: show the configured deal over the hero photo.
+      // The previous hero branch hid ALL copy, leaving an image-only card.
+      if (type === 'hero') {
+        return `
+          <a href="#shop" class="thCard thHero thReveal" onclick="${shopClick}" aria-label="${esc(it.title)} — ${esc(it.price)} — ${esc(it.details)}">
+            <div class="thMedia" style="background-image:url('${esc(img)}')"></div>
+            <div class="thHeroShade" aria-hidden="true"></div>
+            <div class="thHeroDeal">
+              <span class="thHeroEyebrow">MIX &amp; MATCH · 1G VAPE CARTS</span>
+              <span class="thHeroDealPrice">${esc(it.price)}</span>
+              <span class="thHeroDealBrands">${esc(it.details)}</span>
+              <span class="thHeroDealCta">SHOP THE DEAL → <small>+ TAX</small></span>
+            </div>
+          </a>
+        `;
+      }
       // ORIGINAL PREMIUM LAYOUT: Hero and Mid cards keep their tags, prices, and buttons
       return `
         <a href="#shop" class="thCard ${sizeClass}" onclick="${shopClick}">
