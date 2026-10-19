@@ -99,7 +99,6 @@
       ],
       "scroll": [
         "redemption-carts",
-        "lightsky-carts",
         "fire-styxx",
         "redbud-carts",
         "hash-house",
@@ -137,10 +136,6 @@
       "mix-gummies": {
         "title": "Choice Gummies 5 for $18",
         "image": "assets/img/highlights/hl-gummies.jpg"
-      },
-      "lightsky-carts": {
-        "title": "LightSky Farms Live Resin Carts - $15",
-        "image": "assets/img/highlights/hl-lightsky.jpg"
       },
       "play-gummies": {
         "title": "PLAY 200mg Gummies 10 for $20",
