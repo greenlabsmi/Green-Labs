@@ -1082,15 +1082,39 @@ const deliTierData = {
 };
 
 const deliStrainData = {
+  "sin-city-grapes": {
+    name: "Sin City Grapes",
+    tier: "core",
+    comingSoon: true,
+    seedSource: "Team Death Star",
+    type: "Indica",
+    thc: "25.61% THC",
+    budImage: "https://dutchtouchgenetics.com/assets/img/strains/sin-city-grapes-bud.jpg",
+    artImage: "https://dutchtouchgenetics.com/assets/img/strains/sin-city-grapes-art.jpg",
+    genetics: "Grape Ape × Sin City Kush",
+    terpenes: [
+      { name: "p-Cymene", percent: "0.347%", mg: "3.47 mg/g" },
+      { name: "Nerolidol", percent: "0.173%", mg: "1.73 mg/g" },
+      { name: "β-Caryophyllene", percent: "0.131%", mg: "1.31 mg/g" }
+    ],
+    about: "Sin City Grapes #10 brings deep purple hues, sweet fermented grape aromas and musky, earthy undertones. A rich, nighttime-leaning indica from Team Death Star."
+  },
+
   "mr-clean": {
     name: "Mr. Clean",
     tier: "premium",
-    seedSource: "Exotic Genetics",
+    seedSource: "Exotic Genetix",
     type: "Sativa • 1st Place Winner",
-    thc: "N/A",
+    thc: "25.35% THC",
+    comingSoon: true,
     budImage: "https://dutchtouchgenetics.com/assets/img/strains/mr-clean-bud.jpg",
     artImage: "https://dutchtouchgenetics.com/assets/img/strains/mr-clean-art.jpg",
     genetics: "Lime Skunk × The Cube",
+    terpenes: [
+      { name: "Terpinolene", percent: "0.410%", mg: "4.10 mg/g" },
+      { name: "Eucalyptol", percent: "0.176%", mg: "1.76 mg/g" },
+      { name: "β-Caryophyllene", percent: "0.170%", mg: "1.70 mg/g" }
+    ],
     about: "🏆 1st Place Sativa (High Times Cannabis Cup). Strong citrus (limonene), sour, earthy, and skunky, described as tasting like lemon-pine cleaners. Known for high, energetic, and creative effects. Has the ability to 'clean out' bad moods."
   },
    
@@ -2456,6 +2480,20 @@ function openDeliModal(strainId) {
   renderDeliModalPricing(
     strain.tier || "core"
   );
+
+  // Pre-release profiles are informational only; don't imply inventory or pricing is live.
+  const upcoming = Boolean(strain.comingSoon);
+  const availability = document.getElementById("deliModalAvailability");
+  const pricingSection = modal.querySelector(".deli-modal__pricing-section");
+  const shopLink = modal.querySelector(".deli-modal__shop");
+  const tierBadge = document.getElementById("deliModalTier");
+  if (availability) {
+    availability.hidden = !upcoming;
+    availability.textContent = upcoming ? "Coming Saturday, October 24 — Not yet available to shop" : "";
+  }
+  if (pricingSection) pricingSection.style.display = upcoming ? "none" : "";
+  if (shopLink) shopLink.style.display = upcoming ? "none" : "";
+  if (tierBadge) tierBadge.style.display = upcoming ? "none" : "";
 
   modal.classList.add("is-open");
   modal.setAttribute(
