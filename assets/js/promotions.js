@@ -17,7 +17,7 @@
       enabled: true,
       banner: {
         headline: "GREEN LABS WEEKDAY DEALS",
-        products: "DTG LILAC DIESEL · SKY LOTUS · BLUE NERDZ",
+        products: "SAT OCT 24 · DTG DELI DROP · MR. CLEAN + SIN CITY GRAPES · COMING SOON",
         offer: "REDEMPTION LIVE RESIN CARTS — $15 OR 4/$50"
       },
       popup: {
@@ -49,7 +49,7 @@
       enabled: true,
       banner: {
         headline: "KEEP IT DUTCH TUESDAY",
-        products: "10% OFF CORE & PREMIUM DELI FLOWER",
+        products: "SAT OCT 24 · DTG DELI DROP · MR. CLEAN + SIN CITY GRAPES · COMING SOON",
         offer: "REDEMPTION LIVE RESIN CARTS — $15 OR 4/$50"
       },
       popup: {
@@ -77,7 +77,7 @@
       enabled: true,
       banner: {
         headline: "BATCH WEDNESDAY",
-        products: "BATCH PRODUCTS — 25% OFF",
+        products: "SAT OCT 24 · DTG DELI DROP · MR. CLEAN + SIN CITY GRAPES · COMING SOON",
         offer: "REDEMPTION LIVE RESIN CARTS — $15 OR 4/$50"
       },
       popup: {
@@ -105,7 +105,7 @@
       enabled: true,
       banner: {
         headline: "THIRSTY THURSDAY — 20% OFF DRINKS",
-        products: "DTG LILAC DIESEL · SKY LOTUS · BLUE NERDZ",
+        products: "SAT OCT 24 · DTG DELI DROP · MR. CLEAN + SIN CITY GRAPES · COMING SOON",
         offer: "REDEMPTION LIVE RESIN CARTS — $15 OR 4/$50"
       },
       popup: {
