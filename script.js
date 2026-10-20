@@ -1142,7 +1142,7 @@ const deliStrainData = {
     type: "Sativa • 3rd Place Winner",
     thc: "25.35% THC",
     budImage: "https://dutchtouchgenetics.com/assets/img/strains/lilac-diesel-bud.jpg",
-    artImage: "https://dutchtouchgenetics.com/assets/img/strains/lilac-diesel-art.jpg",
+    artImage: "https://dutchtouchgenetics.com/assets/img/strains/lilac-diesel-art-2.jpg",
     genetics: "Silver Lemon Haze × Forbidden Fruit × NYC Cherry Pie × Citral Glue",
     terpenes: [
       { name: "Terpinolene", percent: "0.836%", mg: "8.36 mg/g" },
@@ -1575,6 +1575,19 @@ const curatedBrandData = {
 ]
   },
 
+
+  redbud: {
+    name: "Redbud Roots",
+    shortName: "Redbud Roots",
+    eyebrow: "Curated Partner • Deli Flower",
+    accent: "#8F78F7",
+    accentSoft: "rgba(143,120,247,.17)",
+    tileBackground: "radial-gradient(circle at 40% 18%, rgba(92,62,203,.4), transparent 44%), linear-gradient(145deg, #101329 0%, #090814 72%, #050509 100%)",
+    intro: "Blue Nerdz from Redbud Roots. Check the current menu for available weights and pricing.",
+    strains: [
+      { name: "Blue Nerdz", thc: "25.63%" }
+    ]
+  },
 
   sapura: {
     name: "Sapura",
@@ -2129,6 +2142,10 @@ function initCuratedBrandDeli() {
 
     // Keep the newest DTG drops at the very front of the deli on every page load.
     const newDropOrder = [
+      "mr-clean",
+      "sin-city-grapes",
+      "lilac-diesel",
+      "sky-lotus",
       "lemon-wookie",
       "astro-taffy",
       "white-lightning",
