@@ -5,11 +5,11 @@
   const MANUAL_CAMPAIGN = null;
 
   const BRAND_HERO = {
-    image: "assets/img/deli-weekday-oct-hero.jpg",
+    image: "assets/img/dutch-deli-clean-hero.jpg",
     position: "center",
     size: "cover",
-    href: "#deals",
-    ariaLabel: "Explore Green Labs weekday deals, Lilac Diesel and Sky Lotus"
+    href: "#deli",
+    ariaLabel: "Dutch Deli exclusive: Mr. Clean and Sin City Grapes dropping Saturday, October 24"
   };
 
   const PROMOTIONS = {
