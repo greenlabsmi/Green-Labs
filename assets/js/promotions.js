@@ -9,7 +9,7 @@
     position: "center",
     size: "cover",
     href: "#deli",
-    ariaLabel: "Dutch Deli exclusive: Mr. Clean and Sin City Grapes dropping Saturday, October 24"
+    ariaLabel: "Dutch Deli exclusive: Mr. Clean and Sin City Grapes now available"
   };
 
   const PROMOTIONS = {
@@ -17,7 +17,7 @@
       enabled: true,
       banner: {
         headline: "GREEN LABS WEEKDAY DEALS",
-        products: "SAT OCT 24 · DTG DELI DROP · MR. CLEAN + SIN CITY GRAPES · COMING SOON",
+        products: "MR. CLEAN NOW AVAILABLE · SIN CITY GRAPES NOW AVAILABLE",
         offer: "REDEMPTION LIVE RESIN CARTS — $15 OR 4/$50"
       },
       popup: {
@@ -49,7 +49,7 @@
       enabled: true,
       banner: {
         headline: "KEEP IT DUTCH TUESDAY",
-        products: "SAT OCT 24 · DTG DELI DROP · MR. CLEAN + SIN CITY GRAPES · COMING SOON",
+        products: "MR. CLEAN NOW AVAILABLE · SIN CITY GRAPES NOW AVAILABLE",
         offer: "REDEMPTION LIVE RESIN CARTS — $15 OR 4/$50"
       },
       popup: {
@@ -77,7 +77,7 @@
       enabled: true,
       banner: {
         headline: "BATCH WEDNESDAY",
-        products: "SAT OCT 24 · DTG DELI DROP · MR. CLEAN + SIN CITY GRAPES · COMING SOON",
+        products: "MR. CLEAN NOW AVAILABLE · SIN CITY GRAPES NOW AVAILABLE",
         offer: "REDEMPTION LIVE RESIN CARTS — $15 OR 4/$50"
       },
       popup: {
@@ -105,7 +105,7 @@
       enabled: true,
       banner: {
         headline: "THIRSTY THURSDAY — 20% OFF DRINKS",
-        products: "SAT OCT 24 · DTG DELI DROP · MR. CLEAN + SIN CITY GRAPES · COMING SOON",
+        products: "MR. CLEAN NOW AVAILABLE · SIN CITY GRAPES NOW AVAILABLE",
         offer: "REDEMPTION LIVE RESIN CARTS — $15 OR 4/$50"
       },
       popup: {
@@ -149,14 +149,6 @@
       const name = card.querySelector(".deli-card__label h3")?.textContent.trim().toLowerCase();
       if (hiddenDeliStrains.has(name)) card.closest(".deli-card-wrapper")?.remove() || card.remove();
     });
-
-    const carousel = document.querySelector(".deli-carousel__track, .deli-track, [data-deli-track]") || document.querySelector(".deli-card-wrapper")?.parentElement;
-    if (carousel) {
-      ["death by funk", "lilac diesel", "sky lotus"].forEach(target => {
-        const wrapper = [...carousel.querySelectorAll(".deli-card-wrapper")].find(el => el.querySelector(".deli-card__label h3")?.textContent.trim().toLowerCase() === target);
-        if (wrapper) carousel.prepend(wrapper);
-      });
-    }
 
   }
 
