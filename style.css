@@ -5703,3 +5703,34 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
   #todays-highlights .thHeroDealPrice {font-size:clamp(48px,12vw,72px);}
   #todays-highlights .thHeroDealCta {margin-top:12px;padding:10px 14px;}
 }
+
+
+/* Desktop Dutch Deli carousel: keep the scroll track visible and arrows on-screen. */
+@media (min-width: 769px) {
+  #deliCarousel.deli-carousel {
+    scrollbar-width: thin !important;
+    scrollbar-color: rgba(214, 163, 74, .9) rgba(255, 255, 255, .12) !important;
+    padding-bottom: 34px !important;
+  }
+
+  #deliCarousel.deli-carousel::-webkit-scrollbar {
+    display: block !important;
+    height: 10px !important;
+    -webkit-appearance: auto !important;
+  }
+
+  #deliCarousel.deli-carousel::-webkit-scrollbar-track {
+    display: block !important;
+    background: rgba(255, 255, 255, .12) !important;
+    border-radius: 999px;
+    margin: 0 5vw;
+  }
+
+  #deliCarousel.deli-carousel::-webkit-scrollbar-thumb {
+    background: rgba(214, 163, 74, .9) !important;
+    border-radius: 999px;
+  }
+
+  .deli-arrow--left { left: 12px !important; }
+  .deli-arrow--right { right: 12px !important; }
+}
