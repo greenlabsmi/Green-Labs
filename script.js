@@ -1584,6 +1584,7 @@ const curatedBrandData = {
     eyebrow: "Curated Partner • Deli Flower",
     accent: "#48B343",
     accentSoft: "rgba(72,179,67,.18)",
+    logoImage: "./assets/img/brands/Lightsky-farms/lightsky-farms-logo.svg",
     tileBackground: "radial-gradient(circle at 48% 24%, rgba(92,196,72,.24), transparent 42%), linear-gradient(145deg, #10140d 0%, #070907 74%, #020302 100%)",
     intro: "Four LightSky Farms strains, hand-picked for the Dutch Deli.",
     strains: [
@@ -1613,6 +1614,7 @@ const curatedBrandData = {
     eyebrow: "Curated Partner • Deli Flower",
     accent: "#8F78F7",
     accentSoft: "rgba(143,120,247,.17)",
+    logoImage: "./assets/img/brands/redbud-roots/redbud-roots-logo-white.svg",
     tileBackground: "radial-gradient(circle at 40% 18%, rgba(92,62,203,.4), transparent 44%), linear-gradient(145deg, #101329 0%, #090814 72%, #050509 100%)",
     intro: "Blue Nerdz from Redbud Roots. Check the current menu for available weights and pricing.",
     strains: [
@@ -1620,21 +1622,6 @@ const curatedBrandData = {
     ]
   },
 
-  sapura: {
-    name: "Sapura",
-    shortName: "Sapura",
-    eyebrow: "Curated Partner",
-    accent: "#E94A9D",
-    accentSoft: "rgba(233,74,157,.17)",
-    tileBackground: "radial-gradient(circle at 48% 30%, rgba(233,74,157,.28), transparent 34%), radial-gradient(circle at 72% 68%, rgba(54,186,166,.16), transparent 30%), linear-gradient(155deg, #160817 0%, #0b0a12 54%, #030405 100%)",
-    logoImage: "./assets/img/brands/sapura/sapura-logo.png",
-    intro: "Colorful genetics. Big THC. Fresh Sapura flower, hand-picked for the Dutch Deli.",
-    strains: [
-      { name: "Apple Gas", thc: "27.15%" },
-      { name: "Canal Street Runtz", thc: "27%" },
-      { name: "Pineapple Express", thc: "28.7%" }
-    ]
-  }
 };
 
 let currentCuratedBrandId = null;
@@ -1952,7 +1939,7 @@ function openCuratedBrandModal(brandId) {
 
   if (nameEl) {
     nameEl.textContent = brand.name;
-    nameEl.style.display = brandId === "sapura" ? "none" : "block";
+    nameEl.style.display = "block";
   }
   if (eyebrowEl) eyebrowEl.textContent = brand.eyebrow || "Curated Partner";
   if (introEl) introEl.textContent = brand.intro || "";
@@ -1962,9 +1949,9 @@ function openCuratedBrandModal(brandId) {
       logoEl.src = brand.logoImage;
       logoEl.alt = `${brand.name} logo`;
       logoEl.style.display = "block";
-      logoEl.style.width = brandId === "sapura" ? "min(440px, 88%)" : "min(180px, 55%)";
-      logoEl.style.maxHeight = brandId === "sapura" ? "210px" : "120px";
-      logoEl.style.marginBottom = brandId === "sapura" ? "8px" : "12px";
+      logoEl.style.width = "min(180px, 55%)";
+      logoEl.style.maxHeight = "120px";
+      logoEl.style.marginBottom = "12px";
       logoEl.style.background = brandId === "glacier"
         ? "linear-gradient(180deg, rgba(255,255,255,.98), rgba(222,240,252,.96))"
         : "transparent";
@@ -3070,9 +3057,9 @@ document.addEventListener('DOMContentLoaded', () => {
       <style id="curatedBrandModalStyles">
         #curatedBrandModal [role="dialog"]{width:min(920px,100%)!important;padding:20px!important;background:radial-gradient(circle at 50% -10%,var(--brand-accent-soft,rgba(214,163,74,.12)),transparent 34%),linear-gradient(180deg,#101412 0%,#080a09 100%)!important;border:1px solid rgba(255,255,255,.16)!important;box-shadow:0 28px 90px rgba(0,0,0,.82),inset 0 1px 0 rgba(255,255,255,.05)!important;}
         #curatedBrandModalEyebrow{display:none!important;}
-        #curatedBrandModalLogo{width:min(150px,34%)!important;max-height:100px!important;margin-bottom:8px!important;filter:drop-shadow(0 10px 24px rgba(0,0,0,.48));} #curatedBrandModal[data-brand="sapura"] #curatedBrandModalLogo{width:min(440px,88%)!important;max-height:210px!important;margin:6px auto 18px!important;}
+        #curatedBrandModalLogo{width:min(150px,34%)!important;max-height:100px!important;margin-bottom:8px!important;filter:drop-shadow(0 10px 24px rgba(0,0,0,.48));} 
         #curatedBrandModalName{font-family:'Cinzel',serif!important;font-size:clamp(26px,5vw,38px)!important;letter-spacing:-.025em;}
-        #curatedBrandModalIntro{max-width:700px!important;margin:8px auto 4px!important;color:rgba(255,255,255,.74)!important;font-size:16px!important;line-height:1.55!important;} #curatedBrandModal[data-brand="sapura"] #curatedBrandModalIntro{max-width:680px!important;font-size:clamp(18px,2.1vw,22px)!important;line-height:1.5!important;font-weight:800!important;letter-spacing:.01em!important;color:#fff!important;text-align:center!important;}
+        #curatedBrandModalIntro{max-width:700px!important;margin:8px auto 4px!important;color:rgba(255,255,255,.74)!important;font-size:16px!important;line-height:1.55!important;} 
         #curatedBrandGalleryWrap{width:min(824px,calc(100vw - 48px));box-sizing:border-box;margin:10px auto 0!important;padding:6px!important;border:1px solid rgba(255,255,255,.10);border-radius:16px;background:rgba(255,255,255,.025);overflow:hidden!important;}
         #curatedBrandGallery{width:100%!important;max-width:800px!important;margin:0 auto!important;} #curatedBrandGallery article{position:relative;flex:0 0 100%!important;width:100%!important;max-width:800px!important;aspect-ratio:1/1!important;border-color:rgba(255,255,255,.12)!important;border-radius:16px!important;background:#050606!important;box-shadow:0 18px 48px rgba(0,0,0,.38);}
         #curatedBrandGallery article>div:first-child{position:static!important;width:100%!important;height:100%!important;aspect-ratio:1/1!important;max-width:800px!important;max-height:800px!important;margin:0!important;padding:0!important;border:0!important;border-radius:0!important;background:#080a09!important;display:block!important;overflow:hidden!important;}
@@ -3081,13 +3068,13 @@ document.addEventListener('DOMContentLoaded', () => {
         #curatedBrandPrev{left:-18px!important;}#curatedBrandNext{right:-18px!important;}#curatedBrandPrev,#curatedBrandNext{border-color:rgba(255,255,255,.28)!important;background:rgba(0,0,0,.82)!important;box-shadow:0 8px 24px rgba(0,0,0,.35);}
         #curatedBrandDots button{background:var(--brand-accent,#D6A34A)!important;}
         #curatedBrandListWrap{width:min(760px,100%);box-sizing:border-box;margin:18px auto 0!important;padding:18px 20px!important;border-color:rgba(255,255,255,.12)!important;background:rgba(255,255,255,.035)!important;}
-        #curatedBrandListWrap>div:first-child{color:var(--brand-accent,#D6A34A)!important;margin-bottom:12px!important;font-size:13px!important;letter-spacing:.14em!important;font-weight:900!important;} #curatedBrandStrainList>div{font-size:16px!important;padding:15px 0!important;} #curatedBrandStrainList>div span:first-child{font-size:17px!important;color:#fff!important;} #curatedBrandStrainList>div span:last-child{font-size:15px!important;font-weight:900!important;color:rgba(255,255,255,.78)!important;} #curatedBrandModal[data-brand="sapura"] #curatedBrandListWrap{background:linear-gradient(180deg,rgba(255,55,150,.08),rgba(255,255,255,.035))!important;border-color:rgba(255,95,175,.22)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.04);} #curatedBrandModal[data-brand="sapura"] #curatedBrandListWrap>div:first-child{font-size:14px!important;color:#ff69b7!important;}
+        #curatedBrandListWrap>div:first-child{color:var(--brand-accent,#D6A34A)!important;margin-bottom:12px!important;font-size:13px!important;letter-spacing:.14em!important;font-weight:900!important;} #curatedBrandStrainList>div{font-size:16px!important;padding:15px 0!important;} #curatedBrandStrainList>div span:first-child{font-size:17px!important;color:#fff!important;} #curatedBrandStrainList>div span:last-child{font-size:15px!important;font-weight:900!important;color:rgba(255,255,255,.78)!important;}  
         #curatedBrandStrainList button{appearance:none;-webkit-appearance:none;padding:9px 12px!important;border-color:rgba(255,255,255,.14)!important;background:rgba(255,255,255,.07)!important;color:#fff!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.04);transition:transform .16s ease,border-color .16s ease,background .16s ease;}#curatedBrandStrainList button:not(:disabled):hover{transform:translateY(-1px);border-color:var(--brand-accent,#D6A34A)!important;background:rgba(255,255,255,.11)!important;}#curatedBrandStrainList button:disabled{opacity:.72;}
         #curatedBrandModal a[href*="order-online"]{width:min(760px,100%);box-sizing:border-box;margin:14px auto 0!important;background:linear-gradient(135deg,#D6A34A,#efbd55)!important;box-shadow:0 10px 28px rgba(214,163,74,.18);}
         .curated-brand-card .deli-card{border-color:rgba(255,255,255,.12)!important;box-shadow:none!important;}
         .curated-brand-card .deli-card__front{position:relative!important;box-shadow:inset 0 0 0 1px rgba(255,255,255,.10)!important;}
         .curated-brand-card__pill{display:none!important;}
-        @media(max-width:700px){#curatedBrandModal{padding:10px!important;}#curatedBrandModal [role="dialog"]{padding:14px!important;border-radius:16px!important;}#curatedBrandGalleryWrap{width:100%!important;padding:4px!important;}#curatedBrandPrev{left:4px!important;}#curatedBrandNext{right:4px!important;}#curatedBrandModalLogo{width:min(120px,36%)!important;}#curatedBrandModal[data-brand="sapura"] #curatedBrandModalLogo{width:min(360px,90%)!important;max-height:170px!important;}#curatedBrandModal[data-brand="sapura"] #curatedBrandModalIntro{font-size:18px!important;}#curatedBrandStrainList>div{font-size:15px!important;padding:13px 0!important;}#curatedBrandStrainList>div span:first-child{font-size:16px!important;}}
+        @media(max-width:700px){#curatedBrandModal{padding:10px!important;}#curatedBrandModal [role="dialog"]{padding:14px!important;border-radius:16px!important;}#curatedBrandGalleryWrap{width:100%!important;padding:4px!important;}#curatedBrandPrev{left:4px!important;}#curatedBrandNext{right:4px!important;}#curatedBrandModalLogo{width:min(120px,36%)!important;}#curatedBrandStrainList>div{font-size:15px!important;padding:13px 0!important;}#curatedBrandStrainList>div span:first-child{font-size:16px!important;}}
       </style>
     `);
   }
