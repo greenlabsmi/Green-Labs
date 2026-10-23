@@ -33,7 +33,7 @@
           "🌿 Mr. Clean — Just Arrived",
           "🌿 Dutch Daylight Hash D — $10 OUNCE",
           "🌿 Clusterfunk Deli Outdoor — 50% OFF",
-          "💨 Redemption 1g Live Resin Carts — $15 or 4/$50",
+          "💨 Redemption 1g Live Resin — $15 or 4/$50",
           "🔥 Grip 1g — $4 or 10/$30",
           "💨 Party Favors 3g — Buy 2 Get 1",
           "🌿 Death By Funk Shake — $10 OUNCE",
