@@ -1590,18 +1590,22 @@ const curatedBrandData = {
     strains: [
       {
         name: "MAC (Miracle Alien Cookies)",
+        thc: "23.71%",
         image: "./assets/img/brands/Lightsky-farms/mac-deli.png"
       },
       {
         name: "Rainbow Beltz",
+        thc: "24.78%",
         image: "./assets/img/brands/Lightsky-farms/rainbow-beltz-deli.png"
       },
       {
         name: "Point Break",
+        thc: "23.86%",
         image: "./assets/img/brands/Lightsky-farms/point-break-deli.png"
       },
       {
         name: "Frosted Truffle Pie",
+        thc: "28.05%",
         image: "./assets/img/brands/Lightsky-farms/frosted-truffle-pie-deli.png"
       }
     ]
