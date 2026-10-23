@@ -1548,31 +1548,62 @@ const curatedBrandData = {
   glacier: {
     name: "Glacier",
     shortName: "Glacier",
-    eyebrow: "Curated Partner",
+    eyebrow: "Curated Partner • Deli Flower",
     accent: "#69AEE7",
     accentSoft: "rgba(105,174,231,.18)",
     tileBackground: "radial-gradient(circle at 50% 22%, rgba(255,255,255,.98), rgba(226,241,252,.96) 42%, rgba(160,205,238,.90) 100%), linear-gradient(155deg, #f8fcff 0%, #dceefa 55%, #a4cdeb 100%)",
     logoImage: "./assets/img/brands/glacier/glacier-logo.png",
-    intro: "Hand-trimmed premium flower from one of our curated Michigan partners.",
+    intro: "Fresh Glacier flower, hand-picked for the Dutch Deli.",
     strains: [
       {
-            "name": "Black Ice",
-            "thc": "24.40%",
-            "genetics": "MAC #1 × Oooze",
-            "image": "./assets/img/brands/glacier/black-ice-deli.webp"
+        name: "Blueberry Muffin",
+        thc: "22.23%",
+        image: "./assets/img/brands/glacier/blueberry-muffin-deli.png"
       },
       {
-            "name": "High Speed",
-            "thc": "26.52%",
-            "genetics": "Devil Driver × High MAC",
-            "image": "./assets/img/brands/glacier/high-speed-deli.webp"
+        name: "Funk From Mars!",
+        thc: "25.25%",
+        image: "./assets/img/brands/glacier/funk-from-mars-deli.png"
       },
       {
-            "name": "Super Boof",
-            "thc": "23.70%",
-            "image": "./assets/img/brands/glacier/super-boof-deli.png"
+        name: "Lemon Alien Dawg",
+        thc: "22.71%",
+        image: "./assets/img/brands/glacier/lemon-alien-dawg-deli.png"
+      },
+      {
+        name: "Blue Dream",
+        thc: "22.95%",
+        image: "./assets/img/brands/glacier/blue-dream-deli.png"
       }
-]
+    ]
+  },
+
+  lightskyFarms: {
+    name: "LightSky Farms",
+    shortName: "LightSky Farms",
+    eyebrow: "Curated Partner • Deli Flower",
+    accent: "#48B343",
+    accentSoft: "rgba(72,179,67,.18)",
+    tileBackground: "radial-gradient(circle at 48% 24%, rgba(92,196,72,.24), transparent 42%), linear-gradient(145deg, #10140d 0%, #070907 74%, #020302 100%)",
+    intro: "Four LightSky Farms strains, hand-picked for the Dutch Deli.",
+    strains: [
+      {
+        name: "MAC (Miracle Alien Cookies)",
+        image: "./assets/img/brands/Lightsky-farms/mac-deli.png"
+      },
+      {
+        name: "Rainbow Beltz",
+        image: "./assets/img/brands/Lightsky-farms/rainbow-beltz-deli.png"
+      },
+      {
+        name: "Point Break",
+        image: "./assets/img/brands/Lightsky-farms/point-break-deli.png"
+      },
+      {
+        name: "Frosted Truffle Pie",
+        image: "./assets/img/brands/Lightsky-farms/frosted-truffle-pie-deli.png"
+      }
+    ]
   },
 
 
