@@ -1085,7 +1085,6 @@ const deliStrainData = {
   "sin-city-grapes": {
     name: "Sin City Grapes",
     tier: "core",
-    comingSoon: true,
     seedSource: "Team Death Star",
     type: "Indica",
     thc: "25.61% THC",
@@ -1106,7 +1105,6 @@ const deliStrainData = {
     seedSource: "Exotic Genetix",
     type: "Sativa • 1st Place Winner",
     thc: "25.35% THC",
-    comingSoon: true,
     budImage: "https://dutchtouchgenetics.com/assets/img/strains/mr-clean-bud.jpg",
     artImage: "https://dutchtouchgenetics.com/assets/img/strains/mr-clean-art.jpg",
     genetics: "Lime Skunk × The Cube",
