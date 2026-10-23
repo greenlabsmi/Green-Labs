@@ -21,25 +21,24 @@
         offer: "REDEMPTION LIVE RESIN CARTS — $15 OR 4/$50"
       },
       popup: {
-        id: "oct19-weekday-deals-v1",
+        id: "oct23-mr-clean-arrival-v1",
         enabled: true,
         frequency: "daily",
         delay: 8000,
         type: "deals",
         tabText: "TODAY'S DEALS",
-        headline: "WEEKDAY DEALS",
+        headline: "MR. CLEAN HAS ARRIVED",
         subhead: "GREEN LABS · LUNA PIER · TAX NOT INCLUDED",
         items: [
-          "🌿 DTG LILAC DIESEL & SKY LOTUS — BACK IN STOCK",
-          "🌿 DEATH BY FUNK SHAKE — $15 OUNCE",
-          "🌿 GRIP FULL BUD — $20 OUNCE",
-          "🌿 BLUE NERDZ — $20 EIGHTH or $100 OUNCE",
-          "💨 REDEMPTION 1G LIVE RESIN CARTS — $15 or 4/$50",
-          "🔥 REDEMPTION 10-PACK PRE-ROLLS — $22",
-          "🌿 DTG SHAKE — $25 OUNCE or 2/$40",
-          "🍯 DTG BIG BALLER JARS — $100",
-          "🥤 THURSDAY — 20% OFF DRINKS",
-          "🌿 MORE FLOWER, VAPE, EDIBLE & HASH DEALS INSIDE"
+          "🌿 Mr. Clean — Just Arrived",
+          "🌿 Dutch Daylight Hash D — $10 OUNCE",
+          "🌿 Clusterfunk Deli Outdoor — 50% OFF",
+          "💨 Redemption 1g Live Resin Carts — $15 or 4/$50",
+          "🔥 Grip 1g — $4 or 10/$30",
+          "💨 Party Favors 3g — Buy 2 Get 1",
+          "🌿 Death By Funk Shake — $10 OUNCE",
+          "🌿 Sour Chem Banger Small Buds — $55 OUNCE or 2 OUNCES/$100",
+          "💨 Redbud Roots Full Spectrum — 3/$25"
         ],
         href: "#deals",
         ariaLabel: "View all Green Labs deals"
