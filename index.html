@@ -386,13 +386,6 @@
     
     
 <style>
-/* Upcoming deli flower previews */
-.deli-card-wrapper.deli-coming-soon{position:relative;cursor:pointer}
-.deli-card-wrapper.deli-coming-soon .deli-card{position:relative;overflow:hidden}
-.deli-card-wrapper.deli-coming-soon .deli-card::after{content:"COMING SOON";position:absolute;top:13px;left:50%;transform:translateX(-50%);z-index:5;white-space:nowrap;padding:9px 16px;border:1px solid rgba(255,215,130,.8);border-radius:30px;background:rgba(19,12,34,.94);color:#ffe1a0;font-size:12px;font-weight:900;letter-spacing:.12em;box-shadow:0 4px 18px rgba(0,0,0,.6)}
-.deli-card-wrapper.deli-coming-soon.sky-lotus-preview .deli-card::after{background:rgba(7,28,65,.94);color:#c9eaff;border-color:#79b8ed}
-.deli-card-wrapper.deli-coming-soon .deli-card__front,.deli-card-wrapper.deli-coming-soon .deli-card__back{background-size:cover;background-position:center}
-.deli-card-wrapper.deli-coming-soon .deli-card__genetics{color:#e6c77f}
 .deli-modal__availability{display:block;margin:14px 0 18px;padding:12px 16px;border:1px solid rgba(214,163,74,.65);border-radius:12px;background:rgba(214,163,74,.1);color:#f3c969;font-size:13px;font-weight:900;letter-spacing:.09em;text-transform:uppercase;text-align:center}
 .deli-modal__availability[hidden]{display:none}
 </style>
@@ -456,7 +449,7 @@
           </div>
           <div class="deli-card__label"><h3>Mr. Clean</h3><p class="deli-card__genetics">Just Arrived • 25.35% THC</p></div>
         </div>
-        <div class="deli-card-wrapper is-new deli-coming-soon" data-category="indica" aria-label="Sin City Grapes, just arrived and available now" onclick="openDeliModal('sin-city-grapes')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openDeliModal('sin-city-grapes')}">
+        <div class="deli-card-wrapper is-new" data-category="indica" aria-label="Sin City Grapes, just arrived and available now" onclick="openDeliModal('sin-city-grapes')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openDeliModal('sin-city-grapes')}">
           <div class="deli-card">
             <div class="deli-card__front" style="background-image:url('https://dutchtouchgenetics.com/assets/img/strains/sin-city-grapes-bud.jpg');"></div>
             <div class="deli-card__back" style="background-image:url('https://dutchtouchgenetics.com/assets/img/strains/sin-city-grapes-art.jpg');"></div>
