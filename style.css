@@ -5877,16 +5877,62 @@ body.halloween-theme .dealFeature__icon {
 body.halloween-theme .dealPill {
   border-color: rgba(133, 83, 151, .32);
 }
-body.halloween-theme #todays-highlights .thHero,
-body.halloween-theme #todays-highlights .thMid > * {
-  outline: 1px solid rgba(201, 161, 255, .14);
-  outline-offset: -1px;
-  box-shadow: 0 18px 54px rgba(18, 9, 23, .30), 0 0 26px rgba(143, 83, 161, .09);
+/* Deal cards get a soft haunted edge and corner glow, never a cross-card stripe. */
+body.halloween-theme #todays-highlights .thCard {
+  border: 1px solid rgba(201, 161, 255, .42) !important;
+  box-shadow:
+    0 18px 48px rgba(12, 7, 16, .30),
+    0 0 24px rgba(143, 83, 161, .16),
+    inset 0 0 0 1px rgba(240, 160, 75, .10) !important;
+}
+body.halloween-theme #todays-highlights .thOverlay {
+  background: linear-gradient(
+    180deg,
+    rgba(8, 8, 10, .28) 0%,
+    rgba(8, 8, 10, .04) 46%,
+    rgba(13, 8, 16, .58) 100%
+  ) !important;
+}
+body.halloween-theme #todays-highlights .thCard::before {
+  content: "";
+  display: block !important;
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: .68;
+  background:
+    radial-gradient(ellipse at 0% 0%, rgba(169, 111, 192, .24), transparent 38%),
+    radial-gradient(ellipse at 100% 100%, rgba(240, 160, 75, .15), transparent 34%);
+  box-shadow: inset 0 0 34px rgba(112, 68, 129, .16);
+}
+
+/* A small CSS bat glides across the hero; no image asset required. */
+body.halloween-theme .section--hero::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  top: 22px;
+  right: clamp(22px, 7vw, 90px);
+  width: 42px;
+  height: 22px;
+  opacity: .48;
+  pointer-events: none;
+  background: #c9a1ff;
+  clip-path: polygon(0 22%, 20% 22%, 30% 0, 42% 25%, 50% 38%, 58% 25%, 70% 0, 80% 22%, 100% 22%, 87% 76%, 64% 55%, 50% 100%, 36% 55%, 13% 76%);
+  filter: drop-shadow(0 0 8px rgba(201, 161, 255, .65));
+  animation: halloweenBatDrift 7s ease-in-out infinite alternate;
+}
+@keyframes halloweenBatDrift {
+  from { transform: translate3d(-8px, 2px, 0) rotate(-4deg); }
+  to   { transform: translate3d(8px, -4px, 0) rotate(4deg); }
 }
 
 @media (prefers-reduced-motion: reduce) {
   body.halloween-theme::before,
-  body.halloween-theme .hero-atmosphere::after {
+  body.halloween-theme .hero-atmosphere::after,
+  body.halloween-theme .section--hero::after {
     animation: none !important;
   }
 }
