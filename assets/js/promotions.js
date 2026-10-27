@@ -52,7 +52,7 @@
       enabled: true,
       banner: {
         headline: "KEEP IT DUTCH TUESDAY",
-        products: "LILAC DIESEL & SKY LOTUS BACK IN STOCK · MR. CLEAN AVAILABLE",
+        products: "AWARD-WINNING MR. CLEAN & LILAC DIESEL",
         offer: "10% OFF CORE & PREMIUM DELI"
       },
       popup: {
