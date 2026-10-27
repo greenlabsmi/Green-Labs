@@ -5908,31 +5908,37 @@ body.halloween-theme #todays-highlights .thCard::before {
   box-shadow: inset 0 0 34px rgba(112, 68, 129, .16);
 }
 
-/* A small CSS bat glides across the hero; no image asset required. */
-body.halloween-theme .section--hero::after {
-  content: "";
-  position: absolute;
-  z-index: 2;
-  top: 22px;
-  right: clamp(22px, 7vw, 90px);
-  width: 42px;
-  height: 22px;
-  opacity: .48;
-  pointer-events: none;
-  background: #c9a1ff;
-  clip-path: polygon(0 22%, 20% 22%, 30% 0, 42% 25%, 50% 38%, 58% 25%, 70% 0, 80% 22%, 100% 22%, 87% 76%, 64% 55%, 50% 100%, 36% 55%, 13% 76%);
-  filter: drop-shadow(0 0 8px rgba(201, 161, 255, .65));
-  animation: halloweenBatDrift 7s ease-in-out infinite alternate;
+/* Warm light flickers softly, like candlelight in the greenhouse. */
+body.halloween-theme .sun-glow {
+  animation: hauntedCandleFlicker 3.8s ease-in-out infinite;
 }
-@keyframes halloweenBatDrift {
-  from { transform: translate3d(-8px, 2px, 0) rotate(-4deg); }
-  to   { transform: translate3d(8px, -4px, 0) rotate(4deg); }
+@keyframes hauntedCandleFlicker {
+  0%, 100% { opacity: .66; filter: blur(10px); }
+  19% { opacity: .82; filter: blur(12px); }
+  37% { opacity: .72; filter: blur(9px); }
+  58% { opacity: .88; filter: blur(13px); }
+  76% { opacity: .69; filter: blur(10px); }
+}
+body.halloween-theme .hero__title::before {
+  content: "HAPPY HALLOWEEN";
+  display: block;
+  margin: 0 0 13px;
+  color: #f0a04b;
+  font: 850 clamp(11px, 1.5vw, 15px)/1.2 Inter, system-ui, sans-serif;
+  letter-spacing: .25em;
+  text-shadow: 0 0 9px rgba(240, 160, 75, .72), 0 0 24px rgba(169, 111, 192, .38);
+  animation: halloweenTextGlow 3.8s ease-in-out infinite;
+}
+@keyframes halloweenTextGlow {
+  0%, 100% { opacity: .78; text-shadow: 0 0 8px rgba(240,160,75,.55), 0 0 18px rgba(169,111,192,.30); }
+  52% { opacity: 1; text-shadow: 0 0 12px rgba(240,160,75,.9), 0 0 28px rgba(169,111,192,.55); }
 }
 
 @media (prefers-reduced-motion: reduce) {
   body.halloween-theme::before,
   body.halloween-theme .hero-atmosphere::after,
-  body.halloween-theme .section--hero::after {
+  body.halloween-theme .sun-glow,
+  body.halloween-theme .hero__title::before {
     animation: none !important;
   }
 }
