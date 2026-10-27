@@ -139,6 +139,11 @@
   const dateParts = () => Object.fromEntries(new Intl.DateTimeFormat("en-US", { timeZone: TIME_ZONE, year: "numeric", month: "2-digit", day: "2-digit", weekday: "long", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(new Date()).filter(p => p.type !== "literal").map(p => [p.type, p.value]));
   const weekday = () => ({Sunday:0, Monday:1, Tuesday:2, Wednesday:3, Thursday:4, Friday:5, Saturday:6})[dateParts().weekday];
   const localStamp = () => { const p = dateParts(); return Number(`${p.year}${p.month}${p.day}${p.hour}${p.minute}`); };
+  function applySeasonalTheme() {
+    const {month, day} = dateParts();
+    const halloweenActive = month === "10" && Number(day) >= 27 && Number(day) <= 31;
+    document.body?.classList.toggle("halloween-theme", halloweenActive);
+  }
   const activeName = () => { if (MANUAL_CAMPAIGN && PROMOTIONS[MANUAL_CAMPAIGN]?.enabled) return MANUAL_CAMPAIGN; const scheduled = WEEKLY_SCHEDULE[weekday()]; return PROMOTIONS[scheduled]?.enabled ? scheduled : "default"; };
   const getStored = key => { try { return localStorage.getItem(key); } catch { return null; } };
   const setStored = (key, value) => { try { localStorage.setItem(key, value); } catch {} };
@@ -181,6 +186,6 @@
   function expandPopup() { const wrap = document.getElementById("weeklyPromoPopup"); if (!wrap) return; wrap.hidden = false; wrap.classList.add("is-open"); wrap.classList.remove("is-collapsed"); wrap.querySelector(".weekly-promo__tab")?.setAttribute("aria-expanded", "true"); }
   function initPopupControls() { const wrap = document.getElementById("weeklyPromoPopup"), link = document.getElementById("weeklyPromoLink"); if (!wrap) return; wrap.querySelector(".weekly-promo__tab")?.addEventListener("click", () => wrap.classList.contains("is-open") ? closePopup() : expandPopup()); wrap.querySelectorAll("[data-close-weekly-promo]").forEach(el => el.addEventListener("click", closePopup)); link?.addEventListener("click", closePopup); document.addEventListener("keydown", e => { if (e.key === "Escape" && !wrap.hidden) closePopup(); }); }
   function showPopup(popup, name) { if (!popup || popup.enabled === false) return; const wrap = document.getElementById("weeklyPromoPopup"); if (!wrap) return; const key = storageKey(popup, name); if (getStored(key)) { wrap.hidden = false; wrap.classList.add("is-collapsed"); return; } setTimeout(() => { expandPopup(); setStored(key, String(Date.now())); }, Number.isFinite(popup.delay) && popup.delay >= 0 ? popup.delay : 10000); }
-  function init() { const name = activeName(), campaign = PROMOTIONS[name] || PROMOTIONS.default; const popup = campaign.popup?.enabled === false ? PROMOTIONS.default.popup : campaign.popup; window.GreenLabsPromotion = {name, campaign, popup, promotions:PROMOTIONS}; updateBrandHeroCopy(); updateBanner(campaign.banner); updateHero(campaign.hero || BRAND_HERO); updatePopup(popup); initPopupControls(); showPopup(popup, name); console.info(`[Green Labs Promotions] Active campaign: ${name}`); }
+  function init() { applySeasonalTheme(); const name = activeName(), campaign = PROMOTIONS[name] || PROMOTIONS.default; const popup = campaign.popup?.enabled === false ? PROMOTIONS.default.popup : campaign.popup; window.GreenLabsPromotion = {name, campaign, popup, promotions:PROMOTIONS}; updateBrandHeroCopy(); updateBanner(campaign.banner); updateHero(campaign.hero || BRAND_HERO); updatePopup(popup); initPopupControls(); showPopup(popup, name); console.info(`[Green Labs Promotions] Active campaign: ${name}`); }
   document.readyState === "loading" ? document.addEventListener("DOMContentLoaded", init, {once:true}) : init();
 })();
