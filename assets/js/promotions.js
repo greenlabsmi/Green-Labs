@@ -16,109 +16,121 @@
     default: {
       enabled: true,
       banner: {
-        headline: "GREEN LABS WEEKDAY DEALS",
-        products: "MR. CLEAN NOW AVAILABLE · SIN CITY GRAPES NOW AVAILABLE",
-        offer: "REDEMPTION LIVE RESIN CARTS — $15 OR 4/$50"
+        headline: "GREEN LABS CURRENT DEALS",
+        products: "LILAC DIESEL & SKY LOTUS BACK IN STOCK · MR. CLEAN AVAILABLE",
+        offer: "HASH D — $10 OUNCE · REDEMPTION LIVE RESIN — $15 OR 4/$50"
       },
       popup: {
-        id: "oct23-mr-clean-arrival-v1",
+        id: "current-deal-sheet-v2",
         enabled: true,
         frequency: "daily",
         delay: 8000,
         type: "deals",
         tabText: "TODAY'S DEALS",
-        headline: "MR. CLEAN HAS ARRIVED",
+        headline: "FRESH DROPS. BIG SAVINGS.",
         subhead: "GREEN LABS · LUNA PIER · TAX NOT INCLUDED",
         items: [
-          "🌿 Mr. Clean — Just Arrived",
+          "🌿 Death By Funk Shake — $10 OUNCE",
           "🌿 Dutch Daylight Hash D — $10 OUNCE",
           "🌿 Clusterfunk Deli Outdoor — 50% OFF",
+          "🌿 Lilac Diesel & Sky Lotus — BACK IN STOCK",
+          "🌿 Shiska — $40 OUNCE or 2/$60",
+          "🌿 Small Buds Sour Chem Banger — $55/oz or 2 oz for $100",
+          "🌿 Blue Zoap, Envious & Street Guru — $70 OUNCE or 2/$130",
+          "🌿 Bud & Mary's & Thunder Canna Brand of Flower — $90 OUNCE",
+          "🌿 Space Hippy, Lilac Diesel & Award-Winning Mr. Clean — $110 OUNCE",
+          "🥤 Mary Jones 100mg Drinks — 50% OFF",
           "💨 Redemption 1g Live Resin — $15 or 4/$50",
-          "🔥 Grip 1g — $4 or 10/$30",
-          "💨 Party Favors 3g — Buy 2 Get 1",
-          "🌿 Death By Funk Shake — $10 OUNCE",
-          "🌿 Sour Chem Banger Small Buds — $55 OUNCE or 2 OUNCES/$100",
+          "💨 LightSky Farms Live Resin Cartridges — $15 each or 3/$40",
           "💨 Redbud Roots Full Spectrum — 3/$25"
         ],
         href: "#deals",
-        ariaLabel: "View all Green Labs deals"
+        ariaLabel: "View all current Green Labs deals"
       }
     },
     keepItDutchTuesday: {
       enabled: true,
       banner: {
         headline: "KEEP IT DUTCH TUESDAY",
-        products: "MR. CLEAN NOW AVAILABLE · SIN CITY GRAPES NOW AVAILABLE",
-        offer: "REDEMPTION LIVE RESIN CARTS — $15 OR 4/$50"
+        products: "LILAC DIESEL & SKY LOTUS BACK IN STOCK · MR. CLEAN AVAILABLE",
+        offer: "10% OFF CORE & PREMIUM DELI"
       },
       popup: {
-        id: "dutch-tuesday-weekly-v1",
+        id: "dutch-tuesday-weekly-v2",
         enabled: true,
         frequency: "daily",
         delay: 8000,
         type: "deals",
         tabText: "DUTCH TUESDAY",
         headline: "KEEP IT DUTCH TUESDAY",
-        subhead: "10% OFF CORE & PREMIUM DELI",
+        subhead: "10% OFF CORE & PREMIUM DELI · TAX NOT INCLUDED",
         items: [
           "🌿 CORE & PREMIUM DELI FLOWER — 10% OFF",
-          "🌿 LILAC DIESEL & SKY LOTUS — BACK IN STOCK",
-          "💨 REDEMPTION 1G LIVE RESIN CARTS — $15 or 4/$50",
-          "🔥 REDEMPTION 10-PACK PRE-ROLLS — $22",
-          "🌿 BLUE NERDZ — $20 EIGHTH or $100 OUNCE",
-          "🍯 DTG BIG BALLER JARS — $100"
+          "🌿 Dutch Daylight Hash D — $10 OUNCE",
+          "🌿 Clusterfunk Deli Outdoor — 50% OFF",
+          "🌿 Death By Funk Shake — $10 OUNCE",
+          "🌿 Small Buds Sour Chem Banger — $55/oz or 2 oz for $100",
+          "🌿 Lilac Diesel & Sky Lotus — BACK IN STOCK",
+          "💨 Redemption 1g Live Resin — $15 or 4/$50",
+          "🥤 Mary Jones 100mg Drinks — 50% OFF"
         ],
         href: "#deals",
-        ariaLabel: "View Dutch Tuesday deals"
+        ariaLabel: "View Keep It Dutch Tuesday and current deals"
       }
     },
     batchWednesday: {
       enabled: true,
       banner: {
         headline: "BATCH WEDNESDAY",
-        products: "MR. CLEAN NOW AVAILABLE · SIN CITY GRAPES NOW AVAILABLE",
-        offer: "REDEMPTION LIVE RESIN CARTS — $15 OR 4/$50"
+        products: "BATCH 2G — $25 · BATCH 4G — $45",
+        offer: "25% OFF BATCH PRODUCTS"
       },
       popup: {
-        id: "batch-wednesday-weekly-v1",
+        id: "batch-wednesday-weekly-v2",
         enabled: true,
         frequency: "daily",
         delay: 10000,
         type: "deals",
-        tabText: "TODAY'S DEALS",
+        tabText: "BATCH WEDNESDAY",
         headline: "BATCH WEDNESDAY",
-        subhead: "GREEN LABS · MIDWEEK DEALS",
+        subhead: "BATCH PRODUCTS — 25% OFF · TAX NOT INCLUDED",
         items: [
-          "💨 BATCH PRODUCTS — 25% OFF",
-          "💨 REDEMPTION 1G LIVE RESIN CARTS — $15 or 4/$50",
-          "🔥 REDEMPTION 10-PACK PRE-ROLLS — $22",
-          "🌿 LILAC DIESEL & SKY LOTUS — BACK IN STOCK",
-          "🌿 DEATH BY FUNK SHAKE — $15 OUNCE",
-          "🍯 DTG BIG BALLER JARS — $100"
+          "💨 Batch products — 25% OFF",
+          "💨 Batch 2g Disposable — $25",
+          "💨 Batch 4g Disposable — $45",
+          "💨 Redemption 1g Live Resin — $15 or 4/$50",
+          "🌿 Dutch Daylight Hash D — $10 OUNCE",
+          "🌿 Clusterfunk Deli Outdoor — 50% OFF",
+          "🥤 Mary Jones 100mg Drinks — 50% OFF"
         ],
         href: "#deals",
-        ariaLabel: "View Batch Wednesday deals"
+        ariaLabel: "View Batch Wednesday and current deals"
       }
     },
     thirstyThursday: {
       enabled: true,
       banner: {
-        headline: "THIRSTY THURSDAY — 20% OFF DRINKS",
-        products: "MR. CLEAN NOW AVAILABLE · SIN CITY GRAPES NOW AVAILABLE",
-        offer: "REDEMPTION LIVE RESIN CARTS — $15 OR 4/$50"
+        headline: "THIRSTY THURSDAY",
+        products: "MARY JONES 100MG DRINKS",
+        offer: "50% OFF"
       },
       popup: {
-        id: "thirsty-thursday",
+        id: "thirsty-thursday-v2",
         enabled: true,
         frequency: "daily",
         delay: 10000,
-        type: "image",
-        image: "assets/img/promotions/thirsty-thursday-popup.jpg",
-        video: "",
-        poster: "",
-        alt: "Thirsty Thursday: 20% off infused beverages",
+        type: "deals",
+        tabText: "THIRSTY THURSDAY",
+        headline: "THIRSTY THURSDAY",
+        subhead: "DRINK DEALS · TAX NOT INCLUDED",
+        items: [
+          "🥤 Mary Jones 100mg Drinks — 50% OFF",
+          "🌿 Dutch Daylight Hash D — $10 OUNCE",
+          "🌿 Death By Funk Shake — $10 OUNCE",
+          "💨 Redemption 1g Live Resin — $15 or 4/$50"
+        ],
         href: "#deals",
-        ariaLabel: "View Thirsty Thursday drink deals"
+        ariaLabel: "View Thirsty Thursday drink and current deals"
       }
     }
   };
