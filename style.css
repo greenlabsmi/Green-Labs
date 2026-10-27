@@ -5734,3 +5734,159 @@ footer.footer { margin-top: 0 !important; border-top: 1px solid rgba(255,255,255
   .deli-arrow--left { left: 12px !important; }
   .deli-arrow--right { right: 12px !important; }
 }
+
+
+/* =========================================================
+   Halloween season: code-only Haunted Greenhouse theme.
+   Enabled by promotions.js from Oct 27 through Oct 31 (Detroit time).
+========================================================= */
+body.halloween-theme {
+  --brand: #704481;
+  --brand2: #c9a1ff;
+  --gold: #f0a04b;
+  background:
+    radial-gradient(ellipse at 14% 8%, rgba(94, 47, 117, .20), transparent 34%),
+    radial-gradient(ellipse at 85% 44%, rgba(9, 114, 77, .12), transparent 42%),
+    linear-gradient(180deg, #100c14 0%, #090d0b 48%, #080a09 100%) !important;
+  position: relative;
+  isolation: isolate;
+}
+body.halloween-theme::before {
+  content: "";
+  position: fixed;
+  inset: -18%;
+  z-index: -1;
+  pointer-events: none;
+  opacity: .42;
+  background:
+    radial-gradient(ellipse at 20% 72%, rgba(141, 82, 160, .13), transparent 32%),
+    radial-gradient(ellipse at 78% 54%, rgba(20, 143, 99, .12), transparent 35%),
+    radial-gradient(ellipse at 55% 105%, rgba(217, 111, 57, .08), transparent 34%);
+  filter: blur(30px);
+  animation: hauntedGreenhouseFog 30s ease-in-out infinite alternate;
+}
+@keyframes hauntedGreenhouseFog {
+  from { transform: translate3d(-1.5%, 0, 0) scale(1); }
+  to   { transform: translate3d(1.5%, -1%, 0) scale(1.04); }
+}
+
+body.halloween-theme .topbar {
+  background:
+    radial-gradient(900px 300px at 28% 0%, rgba(106, 57, 125, .28), transparent 62%),
+    linear-gradient(110deg, #090b0a, #100b13 58%, #080b09) !important;
+  border-bottom-color: rgba(201, 161, 255, .18);
+}
+body.halloween-theme .brandmark__name {
+  background-image: linear-gradient(90deg, #e98743 0%, #c9a1ff 48%, #e98743 100%) !important;
+}
+body.halloween-theme .sprig { color: #f0a04b; }
+body.halloween-theme .sticky {
+  background: rgba(13, 10, 16, .91);
+  border-bottom-color: rgba(201, 161, 255, .18);
+}
+body.halloween-theme .section--hero::before {
+  background: linear-gradient(90deg, #9f5bba, #f0a04b 48%, #0b7d5a) !important;
+}
+body.halloween-theme .hero-atmosphere::after {
+  content: "";
+  position: absolute;
+  inset: 28% -15% -12%;
+  background:
+    radial-gradient(ellipse at 26% 70%, rgba(153, 91, 171, .15), transparent 42%),
+    radial-gradient(ellipse at 76% 74%, rgba(17, 139, 93, .14), transparent 40%);
+  filter: blur(18px);
+  animation: greenhouseMist 22s ease-in-out infinite alternate;
+}
+@keyframes greenhouseMist {
+  from { transform: translateX(-2%) scale(.98); opacity: .65; }
+  to   { transform: translateX(2%) scale(1.03); opacity: 1; }
+}
+body.halloween-theme .sun-glow {
+  background: radial-gradient(circle, rgba(228, 133, 69, .34), rgba(139, 79, 160, .16) 36%, transparent 70%);
+}
+body.halloween-theme .lake-glow {
+  background:
+    radial-gradient(ellipse at center, rgba(24, 127, 91, .30), transparent 66%),
+    linear-gradient(180deg, transparent, rgba(35, 18, 43, .36) 58%, rgba(12, 38, 30, .72));
+}
+body.halloween-theme .hero__title {
+  text-shadow: 0 0 28px rgba(240, 160, 75, .16), 0 0 62px rgba(156, 94, 181, .12);
+}
+body.halloween-theme .hero__badge {
+  border-color: rgba(201, 161, 255, .42);
+  box-shadow: 0 0 24px rgba(156, 94, 181, .12);
+}
+body.halloween-theme .btn--primary {
+  background: linear-gradient(135deg, rgba(201, 161, 255, .20), rgba(11, 125, 90, .82)) !important;
+  border-color: rgba(201, 161, 255, .42) !important;
+  box-shadow: 0 10px 28px rgba(0,0,0,.30), 0 0 22px rgba(156,94,181,.14) !important;
+}
+body.halloween-theme .btn--primary:hover {
+  box-shadow: 0 0 26px rgba(201,161,255,.22), 0 12px 30px rgba(0,0,0,.28) !important;
+}
+
+body.halloween-theme .deli-banner {
+  position: relative !important;
+  background:
+    linear-gradient(90deg, rgba(70, 38, 82, .52), transparent 22% 78%, rgba(70, 38, 82, .52)),
+    #090a09 !important;
+  border-top-color: rgba(201, 161, 255, .30) !important;
+  border-bottom-color: rgba(240, 160, 75, .42) !important;
+  box-shadow: 0 5px 24px rgba(107, 56, 126, .13);
+}
+body.halloween-theme .deli-banner::before,
+body.halloween-theme .deli-banner::after {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  width: 54px;
+  height: 100%;
+  pointer-events: none;
+  opacity: .62;
+  background: repeating-conic-gradient(from 0deg at 0 0,
+    transparent 0deg 15deg,
+    rgba(201,161,255,.58) 15.4deg 16deg,
+    transparent 16.4deg 30deg);
+  -webkit-mask-image: radial-gradient(circle at 0 0, #000 0 54%, transparent 82%);
+  mask-image: radial-gradient(circle at 0 0, #000 0 54%, transparent 82%);
+}
+body.halloween-theme .deli-banner::before { left: 0; }
+body.halloween-theme .deli-banner::after {
+  right: 0;
+  transform: scaleX(-1);
+}
+body.halloween-theme .deli-banner__track {
+  position: relative;
+  z-index: 2;
+}
+body.halloween-theme .deli-banner__content {
+  text-shadow: 0 0 16px rgba(240, 160, 75, .16);
+}
+body.halloween-theme .deli-banner__price { color: #f0a04b !important; }
+body.halloween-theme .deli-banner__divider { color: rgba(201,161,255,.42) !important; }
+
+body.halloween-theme .dealFeature,
+body.halloween-theme .dealQuick {
+  border-color: rgba(133, 83, 151, .28) !important;
+  box-shadow: 0 20px 56px rgba(28, 13, 34, .18), 0 0 22px rgba(143, 83, 161, .08);
+}
+body.halloween-theme .dealFeature__icon {
+  border-color: rgba(133, 83, 151, .25);
+}
+body.halloween-theme .dealPill {
+  border-color: rgba(133, 83, 151, .32);
+}
+body.halloween-theme #todays-highlights .thHero,
+body.halloween-theme #todays-highlights .thMid > * {
+  outline: 1px solid rgba(201, 161, 255, .14);
+  outline-offset: -1px;
+  box-shadow: 0 18px 54px rgba(18, 9, 23, .30), 0 0 26px rgba(143, 83, 161, .09);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.halloween-theme::before,
+  body.halloween-theme .hero-atmosphere::after {
+    animation: none !important;
+  }
+}
