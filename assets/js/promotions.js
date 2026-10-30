@@ -36,7 +36,7 @@
           "🌿 Sour Chem Banger Smalls — $55/oz",
           "🌿 Sour Chem Banger Bigs — $70/oz or 2/$130",
           "🌿 Mr. Clean — BACK IN STOCK · $110/oz",
-          "💨 Mix & Match 1g Vape Carts — 5/$35 (see eligible brands)",
+          "💨 PLAY · Crude Boys · Drip · Platinum Vape · Daily Dose — Mix & Match 5/$35",
           "🥤 Mary Jones Drinks — 50% OFF",
           "🍬 Choice 200mg Gummies — $4 or 5/$18"
         ],
