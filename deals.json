@@ -115,7 +115,7 @@
         "title": "Mix & Match 1G Carts",
         "price": "5 for $35",
         "tag": "VAPES",
-        "details": "Party Favors · Platinum Vape · Crude Boys",
+        "details": "Crude Boys · Drip · Daily Dose · Platinum Vape · PLAY Hash Rosin Infused",
         "image": "assets/img/highlights/mixmatch-carts.jpg"
       },
       "dtg-disposables": {
@@ -154,8 +154,9 @@
         "image": "assets/img/highlights/hash-house-hl.jpg"
       },
       "dutch-daylight-prerolls": {
-        "title": "Dutch Daylight 1G Pre-Rolls — $1.50 or 28 for $30",
-        "image": "assets/img/highlights/hl-prerolls.jpg"
+        "title": "Dutch Daylight 1G Pre-Rolls — $2.50 or 10/$15 or 28/$30",
+        "image": "assets/img/highlights/hl-prerolls.jpg",
+        "price": "$2.50 or 10/$15 or 28/$30"
       },
       "kshn": {
         "title": "KSHN Pouches - $15 or BOGO",
@@ -178,15 +179,19 @@
         {
           "title": "Featured Deals",
           "items": [
-            "🌿 Death By Funk Shake — $10 OUNCE",
-            "🌿 Dutch Daylight Hash D — $10 OUNCE",
-            "🌿 Clusterfunk Deli Outdoor — 50% OFF",
-            "🌿 Small Buds Sour Chem Banger — $55/oz or 2 oz for $100",
-            "🌿 Bud & Mary's & Thunder Canna Brand of Flower — $90 OUNCE",
-            "🌿 Space Hippy, Lilac Diesel & Award-Winning Mr. Clean — $110 OUNCE",
-            "🥤 Mary Jones 100mg Drinks — 50% OFF",
-            "💨 Redemption 1g Live Resin Carts — $15 or 4/$50",
-            "💨 Redbud Roots Full-Spectrum Carts — 3/$25"
+            "Death By Funk Shake — $10 OUNCE",
+            "Dutch Daylight Hash D — $10 OUNCE",
+            "Grip Full Flower — $20 OUNCE",
+            "DTG Indoor Shake — $25 OUNCE or 2/$40",
+            "Clusterfunk Deli Outdoor — 50% OFF",
+            "Mr. Clean Award-Winning Sativa — BACK IN STOCK",
+            "Shiska — $40 OUNCE or 2/$60",
+            "Small Buds Sour Chem Banger — $55/oz",
+            "Sour Chem Banger Bigs — $70/oz or 2/$130",
+            "Envious & Street Guru — $70 OUNCE",
+            "Bud & Mary's & Thunder Canna Brand of Flower — $90 OUNCE",
+            "Space Hippy, Lilac Diesel & Award-Winning Mr. Clean — $110 OUNCE",
+            "Mary Jones MF Grape & Orange Cream — 50% OFF"
           ]
         }
       ]
@@ -203,10 +208,11 @@
             "Grip Full Flower — $20 OUNCE",
             "DTG Indoor Shake — $25 OUNCE or 2/$40",
             "Clusterfunk Deli Outdoor — 50% OFF",
-            "Lilac Diesel & Sky Lotus — BACK IN STOCK",
+            "Mr. Clean Award-Winning Sativa — BACK IN STOCK",
             "Shiska — $40 OUNCE or 2/$60",
-            "Small Buds Sour Chem Banger — $55/oz or 2 oz for $100",
-            "Blue Zoap, Envious & Street Guru — $70 OUNCE or 2/$130",
+            "Small Buds Sour Chem Banger — $55/oz",
+            "Sour Chem Banger Bigs — $70/oz or 2/$130",
+            "Envious & Street Guru — $70 OUNCE",
             "Bud & Mary's & Thunder Canna Brand of Flower — $90 OUNCE",
             "Space Hippy, Lilac Diesel & Award-Winning Mr. Clean — $110 OUNCE"
           ]
@@ -220,7 +226,7 @@
         {
           "title": "Drink Deals",
           "items": [
-            "Mary Jones 100mg Drinks — 50% OFF"
+            "Mary Jones MF Grape & Orange Cream — 50% OFF"
           ]
         }
       ]
@@ -232,17 +238,17 @@
         {
           "title": "Gummies, Cones & Edibles",
           "items": [
-            "Flow Rosin Microdosed Chocolate — $12 each or 3/$30",
             "Gelato THC Cones — Buy 2 Get 1",
+            "Choice 200mg Gummies — $4 or 5/$18",
             "Thunder Canna High Dose — $4 or 10/$35",
-            "Squishy Peach Rosin Gummy — $6 each",
             "True North One Hitter — $4 or 10/$35",
             "True North 50mg — $5 each or 10/$45",
-            "True North Live Resin — $7 each or 5/$30",
-            "Choice 200mg — $4 or 5/$18",
             "Yeti Chomp One Gummy — $5 each",
-            "Smokies Fruit Gummies — $7 each or 3/$20",
-            "Barracuda Chocolate Bars — $15"
+            "Gelato 200mg Cereal Bites — $12 or 3/$30",
+            "Flow Rosin Microdosed Chocolate — $12 each or 3/$30 (NEW)",
+            "Barracuda Chocolate Bars — $15",
+            "Pixil 200mg THC Nerds — $15 or 2/$25",
+            "Wyld & Good Tide Gummies — RESTOCK"
           ]
         }
       ]
@@ -255,31 +261,33 @@
           "title": "Infused Pre-Rolls",
           "items": [
             "Grip 1g — $4 each (Low Stock)",
-            "Glacier Ice Pick Infused — $5 each",
+            "Glacier Ice Pick Infused — $5 each or 10/$45",
+            "Blazr 1g Live Resin — $5 each",
             "Franklin Fields 1g Live Resin — $6",
             "Fire Styxx — $6 or 10/$55",
-            "Bonfire — $6 or 10/$55",
             "Jeeter 1g — $15"
           ]
         },
         {
           "title": "Infused Packs",
           "items": [
-            "Bonfire 5-Pack — $20 or 3/$45",
-            "Swisher 5-Pack Blunts — $20"
+            "Swisher 5-Pack Blunts — $20",
+            "Baby Jeeters — $30 each (BACK IN STOCK)"
           ]
         },
         {
           "title": "Non-Infused Pre-Rolls",
           "items": [
-            "Lemon Wookie 2g Hand-Rolled — $20 (Best in Grass Pre-Roll Winner)",
-            "Dutch Daylight 1g — $1.50 or 28/$30",
-            "Odyssey 1g — 50% OFF ($2 each)",
+            "Lemon Wookie 2g Hand-Rolled — $20 (1st Place Best in Grass Pre-Roll Winner)",
+            "Odyssey 1g — $2 each (50% OFF)",
+            "Dutch Daylight 1g — $2.50 or 10/$15 or 28/$30",
             "Dead Prez & Glorious 1g — $5 or 5/$20",
-            "DTG 1g Full Bud — $10 or 3/$20",
+            "Dutch Touch 1g Full Bud — $10 or 3/$25 or 7/$50 or 14/$85",
             "Redemption 10-Pack Pre-Rolls — $22 each",
             "Franklin Fields 28-Pack Pre-Rolls — $50 each",
-            "Franklin Fields 100-Pack Pre-Rolls — $100 each"
+            "Franklin Fields 100-Pack Pre-Rolls — $100 each",
+            "Dutch Touch 25-Pack Full Bud Pre-Rolls — $110 each",
+            "Dutch Touch 25-Pack (0.5g) Pre-Rolls — $60"
           ]
         }
       ]
@@ -291,12 +299,11 @@
         {
           "title": "Vape Cartridges",
           "items": [
-            "Platinum Vape 1g Live Resin — $10 each",
-            "Redemption 1g Live Resin — $15 or 4/$50",
+            "PLAY Carts Bulk Sale — 15/$80",
+            "Mix & Match 1g Carts — 5/$35 (Crude Boys, Drip, Daily Dose, Platinum Vape, PLAY Hash Rosin Infused)",
             "LightSky Farms Live Resin Cartridges — $15 each or 3/$40",
             "Five Star Nug Run Live Resin — $20",
-            "Redbud Roots Full Spectrum — 3/$25",
-            "Redbud Roots Hash Rosin Cartridges — $10 each (33% OFF)"
+            "Redbud Roots Full Spectrum — 3/$25 (BACK IN STOCK)"
           ]
         },
         {
@@ -305,12 +312,13 @@
             "DTG Lilac 2g — $35 or 2/$65",
             "DTG Gelato 2g — $30 or 2/$55",
             "DTG 1g — 3/$45 or 7/$100",
-            "Party Favors 3g — Buy 2 Get 1",
             "Grip 2g Diamond — $20 each",
             "Batch 2g — $25",
             "Batch 4g — $45",
-            "Known Rosin — $30 or 2/$50",
-            "Franklin Fields Disposables — Back in Stock"
+            "Known Rosin — $20 each (SALE)",
+            "ROVE Pods — $25 each (BACK IN STOCK)",
+            "Franklin Fields Disposables — BACK IN STOCK",
+            "710 Persy Pods — $50 each"
           ]
         }
       ]
@@ -324,12 +332,23 @@
           "items": [
             "Dutch Delight Diamonds — 30% OFF",
             "Clusterfunk 1g Batter — $20 each",
-            "Old Widow 3.5g — $35 each or 2/$50",
+            "Old Widow 3.5g — $35 each",
             "Sin City Batter 3.5g — $35",
             "10K Sativa Batter 3.5g — $40",
             "Clusterfunk Batter 3.5g — $50",
             "Clusterfunk Big Baller Jars — $100",
-            "Death Star Sugar Big Baller Jar — $100"
+            "Death Star Sugar Big Baller Jar — $100",
+            "True North 7g Live Resin — $50 each"
+          ]
+        },
+        {
+          "title": "Rosin Concentrates",
+          "items": [
+            "DTG 1g Rosin — $20 each",
+            "Hash D 14g Rosin — $140",
+            "Shiskaberry 14g Rosin — $170",
+            "DTG 3.5g Rosin — $55–$60 each",
+            "DTG 3.5g Rosin — Buy 3 Jars for $100"
           ]
         }
       ]
@@ -342,8 +361,7 @@
           "title": "Dutch Touch Genetics Brick Hash",
           "items": [
             "DTG Brick Hash 1g — $20",
-            "DTG Bubble Hash 7g — $150",
-            "Old School Hash 1g Temple Balls — $25"
+            "DTG Bubble Hash 7g — $150"
           ]
         }
       ]
