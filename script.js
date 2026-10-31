@@ -973,6 +973,28 @@ document.addEventListener('DOMContentLoaded', () => {
   const deliCards = document.querySelectorAll('.deli-card-wrapper');
   const deliCarousel = document.getElementById('deliCarousel');
 
+  // Add understated tier styling to each strain card from its modal data.
+  // The tier remains data-driven, so card borders/labels stay aligned with modal pricing.
+  deliCards.forEach(card => {
+    const match = (card.getAttribute('onclick') || '').match(/openDeliModal\(['"]([^'"]+)['"]\)/);
+    if (!match || typeof deliStrainData === 'undefined') return;
+
+    const strain = deliStrainData[match[1]];
+    const tier = strain?.tier;
+    if (!['premium', 'core', 'value'].includes(tier)) return;
+
+    card.classList.add(`deli-tier--${tier}`);
+
+    const label = card.querySelector('.deli-card__label');
+    const title = label?.querySelector('h3');
+    if (label && title && !label.querySelector('.deli-tier-tag')) {
+      const tierTag = document.createElement('span');
+      tierTag.className = 'deli-tier-tag';
+      tierTag.textContent = tier;
+      label.insertBefore(tierTag, title);
+    }
+  });
+
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       // Trigger haptic on filter tap
