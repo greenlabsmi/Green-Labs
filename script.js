@@ -1084,7 +1084,7 @@ const deliTierData = {
 const deliStrainData = {
   "clusterfunk": {
     name: "Clusterfunk",
-    tier: "core",
+    tier: "premium",
     seedSource: "Dutch Touch Genetics",
     type: "Indica",
     thc: "28.20% THC",
