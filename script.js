@@ -1082,6 +1082,22 @@ const deliTierData = {
 };
 
 const deliStrainData = {
+  "clusterfunk": {
+    name: "Clusterfunk",
+    tier: "core",
+    seedSource: "Dutch Touch Genetics",
+    type: "Indica",
+    thc: "28.20% THC",
+    budImage: "https://dutchtouchgenetics.com/assets/img/strains/clusterfunk-bud.jpg",
+    artImage: "https://dutchtouchgenetics.com/assets/img/strains/clusterfunk-art.jpg",
+    genetics: "",
+    terpenes: [
+      { name: "Nerolidol", percent: "0.250%", mg: "2.50 mg/g" },
+      { name: "Cymene", percent: "0.248%", mg: "2.48 mg/g" },
+      { name: "Caryophyllene", percent: "0.250%", mg: "2.50 mg/g" }
+    ],
+    about: "Deep notes of oil and fuelly funk paired with skunky, sour hues."
+  },
   "sin-city-grapes": {
     name: "Sin City Grapes",
     tier: "core",
@@ -1190,14 +1206,14 @@ const deliStrainData = {
     tier: "premium",
     seedSource: "Dutch Touch Genetics",
     type: "Hybrid • 2nd Place Best in Grass",
-    thc: "25.58% THC",
+    thc: "25.38% THC",
     budImage: "assets/img/strains/lemon-wookie-bud.jpg",
-    artImage: "assets/img/strains/lemon-wookie-art.jpg",
+    artImage: "https://dutchtouchgenetics.com/assets/img/strains/lemon-wookie-art.jpg",
     genetics: "Lemon G × Wookie",
     terpenes: [
-      { name: "α-Terpinene", percent: "0.399%", mg: "3.99 mg/g" },
-      { name: "Nerolidol", percent: "0.253%", mg: "2.53 mg/g" },
-      { name: "α-Bisabolol", percent: "0.214%", mg: "2.14 mg/g" }
+      { name: "Myrcene", percent: "0.587%", mg: "5.87 mg/g" },
+      { name: "Cymene", percent: "0.260%", mg: "2.60 mg/g" },
+      { name: "Linalool", percent: "0.176%", mg: "1.76 mg/g" }
     ],
     about: "🏆 2nd Place — Best in Grass 2025. Sharp lemon and diesel funk with energetic daytime vibes."
   },
@@ -2162,11 +2178,12 @@ function initCuratedBrandDeli() {
 
     // Keep the newest DTG drops at the very front of the deli on every page load.
     const newDropOrder = [
+      "lemon-wookie",
+      "clusterfunk",
       "mr-clean",
       "sin-city-grapes",
       "lilac-diesel",
       "sky-lotus",
-      "lemon-wookie",
       "astro-taffy",
       "white-lightning",
       "palpatine",
