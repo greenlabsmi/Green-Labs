@@ -443,6 +443,22 @@
       
       <div id="deliCarousel" class="strain-grid deli-carousel">
         <!-- Fresh DTG flower arrivals: featured first in the deli carousel -->
+        <div class="deli-card-wrapper is-new" data-category="hybrid" aria-label="Lemon Wookie, new arrival" onclick="openDeliModal('lemon-wookie')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openDeliModal('lemon-wookie')}">
+          <div class="deli-card" style="position:relative;">
+            <div class="deli-card__front" style="background-image:url('https://dutchtouchgenetics.com/assets/img/strains/lemon-wookie-art.jpg');"></div>
+            <div class="deli-card__back" style="background-image:url('https://dutchtouchgenetics.com/assets/img/strains/lemon-wookie-art.jpg');"></div>
+            <span style="position:absolute;top:12px;left:12px;z-index:3;padding:7px 11px;border-radius:999px;background:#D6A34A;color:#111;font-size:11px;font-weight:900;letter-spacing:.06em;pointer-events:none;">NEW ARRIVAL</span>
+          </div>
+          <div class="deli-card__label"><h3>Lemon Wookie</h3><p class="deli-card__genetics">New Arrival • 25.38% THC</p></div>
+        </div>
+        <div class="deli-card-wrapper is-new" data-category="indica" aria-label="Clusterfunk, new arrival" onclick="openDeliModal('clusterfunk')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openDeliModal('clusterfunk')}">
+          <div class="deli-card" style="position:relative;">
+            <div class="deli-card__front" style="background-image:url('https://dutchtouchgenetics.com/assets/img/strains/clusterfunk-art.jpg');"></div>
+            <div class="deli-card__back" style="background-image:url('https://dutchtouchgenetics.com/assets/img/strains/clusterfunk-art.jpg');"></div>
+            <span style="position:absolute;top:12px;left:12px;z-index:3;padding:7px 11px;border-radius:999px;background:#D6A34A;color:#111;font-size:11px;font-weight:900;letter-spacing:.06em;pointer-events:none;">NEW ARRIVAL</span>
+          </div>
+          <div class="deli-card__label"><h3>Clusterfunk</h3><p class="deli-card__genetics">New Arrival • 28.20% THC</p></div>
+        </div>
         <div class="deli-card-wrapper is-new" data-category="sativa" aria-label="Mr. Clean, just arrived and available now" onclick="openDeliModal('mr-clean')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openDeliModal('mr-clean')}">
           <div class="deli-card">
             <div class="deli-card__front" style="background-image:url('https://dutchtouchgenetics.com/assets/img/strains/mr-clean-bud.jpg');"></div>
@@ -1334,7 +1350,7 @@
     </div>
 
 <script src="deli-board.js"></script>
-<script src="script.js?v=361"></script>
+<script src="script.js?v=362"></script>
 
 <div id="terpModalWrapper" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px); z-index:999999;">
   <div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); background:#ffffff; border-radius:24px; padding:28px; box-shadow:0 20px 60px rgba(0,0,0,0.3); width:calc(100vw - 40px); max-width:380px;">
