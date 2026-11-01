@@ -1494,92 +1494,51 @@ const deliStrainData = {
 // =========================================================
 const curatedBrandData = {
   dtgSmalls: {
-    "name": "DTG Small Buds",
-    "shortName": "DTG Small Buds",
-    "eyebrow": "Dutch Touch Genetics • Fresh-Weighed Deli",
-    "accent": "#D6A34A",
-    "accentSoft": "rgba(214,163,74,.16)",
-    "cardImage": "assets/img/highlights/small-buds-deli.jpg",
-    "intro": "Choose from 9 small-bud strains. Standard small buds start at $10 an eighth or $55 an ounce. Lemon Wookie uses the award-winning pricing tier.",
-    "strains": [
-        {
-            "name": "Death By Funk",
-            "thc": "26.25%",
-            "genetics": "Standard Small Buds"
-        },
-        {
-            "name": "Face Off #1",
-            "thc": "28.76%",
-            "genetics": "Standard Small Buds"
-        },
-        {
-            "name": "Astro Taffy",
-            "thc": "25.53%",
-            "genetics": "Standard Small Buds"
-        },
-        {
-            "name": "Palpatine",
-            "thc": "25.63%",
-            "genetics": "Standard Small Buds"
-        },
-        {
-            "name": "Sour Chem Banger #4",
-            "thc": "25.69%",
-            "genetics": "Standard Small Buds"
-        },
-        {
-            "name": "Afghani #3",
-            "thc": "25.14%",
-            "genetics": "Standard Small Buds"
-        },
-        {
-            "name": "White Lightning #3",
-            "thc": "25.88%",
-            "genetics": "Standard Small Buds"
-        },
-        {
-            "name": "Banana Split",
-            "thc": "21.67%",
-            "genetics": "Standard Small Buds"
-        },
-        {
-            "name": "Lemon Wookie",
-            "thc": "25.41–25.58%",
-            "genetics": "Award-Winning Small Buds • Lemon Wookie pricing"
-        }
+  "name": "DTG Small Buds",
+  "shortName": "DTG Small Buds",
+  "eyebrow": "Dutch Touch Genetics • Fresh-Weighed Deli",
+  "accent": "#D6A34A",
+  "accentSoft": "rgba(214,163,74,.16)",
+  "cardImage": "assets/img/highlights/small-buds-deli.jpg",
+  "intro": "Sour Chem Banger and Astro Taffy small buds. Starting at $10 an eighth or $55 an ounce.",
+  "strains": [
+    {
+      "name": "Astro Taffy",
+      "thc": "25.53%",
+      "genetics": "Standard Small Buds"
+    },
+    {
+      "name": "Sour Chem Banger #4",
+      "thc": "25.69%",
+      "genetics": "Standard Small Buds"
+    }
+  ],
+  "smallBudPrices": [
+    [
+      "1g",
+      "$5"
     ],
-    "smallBudPrices": [
-        [
-            "1g",
-            "$5",
-            "$5"
-        ],
-        [
-            "3.5g",
-            "$10",
-            "$15"
-        ],
-        [
-            "7g",
-            "$20",
-            "$25"
-        ],
-        [
-            "14g",
-            "$30",
-            "$35"
-        ],
-        [
-            "28g",
-            "$55",
-            "$60"
-        ],
-        [
-            "56g",
-            "$100",
-            "$110"
-        ]
+    [
+      "3.5g",
+      "$10"
+    ],
+    [
+      "7g",
+      "$20"
+    ],
+    [
+      "14g",
+      "$30"
+    ],
+    [
+      "28g",
+      "$55"
+    ],
+    [
+      "56g",
+      "$100"
     ]
+  ]
 },
   glacier: {
     name: "Glacier",
@@ -1605,11 +1564,6 @@ const curatedBrandData = {
         name: "Lemon Alien Dawg",
         thc: "22.71%",
         image: "./assets/img/brands/glacier/lemon-alien-dawg-deli.png"
-      },
-      {
-        name: "Blue Dream",
-        thc: "22.95%",
-        image: "./assets/img/brands/glacier/blue-dream-deli.png"
       }
     ]
   },
@@ -1644,21 +1598,6 @@ const curatedBrandData = {
         thc: "28.05%",
         image: "./assets/img/brands/Lightsky-farms/frosted-truffle-pie-deli.png"
       }
-    ]
-  },
-
-
-  redbud: {
-    name: "Redbud Roots",
-    shortName: "Redbud Roots",
-    eyebrow: "Curated Partner • Deli Flower",
-    accent: "#8F78F7",
-    accentSoft: "rgba(143,120,247,.17)",
-    logoImage: "./assets/img/brands/redbud-roots/redbud-roots-logo-white.svg",
-    tileBackground: "radial-gradient(circle at 40% 18%, rgba(92,62,203,.4), transparent 44%), linear-gradient(145deg, #101329 0%, #090814 72%, #050509 100%)",
-    intro: "Blue Nerdz from Redbud Roots. Check the current menu for available weights and pricing.",
-    strains: [
-      { name: "Blue Nerdz", thc: "25.63%" }
     ]
   },
 
@@ -2139,9 +2078,9 @@ function openCuratedBrandModal(brandId) {
     prices.style.cssText = "margin-top:20px;padding:16px;border:1px solid rgba(214,163,74,.4);border-radius:14px;background:rgba(214,163,74,.06);";
     prices.innerHTML = `<h3 style="color:#D6A34A;margin:0 0 12px;">Small Buds Pricing</h3>
       <table style="width:100%;border-collapse:collapse;color:#fff;font-size:13px;text-align:left;">
-        <thead><tr><th scope="col" style="padding:8px 4px;">Weight</th><th scope="col" style="padding:8px 4px;">Standard</th><th scope="col" style="padding:8px 4px;color:#D6A34A;">Lemon Wookie</th></tr></thead>
+        <thead><tr><th scope="col" style="padding:8px 4px;">Weight</th><th scope="col" style="padding:8px 4px;">Price</th></tr></thead>
         <tbody>${brand.smallBudPrices.map(row => `<tr>${row.map(value => `<td style="padding:9px 4px;border-top:1px solid rgba(255,255,255,.12);">${value}</td>`).join("")}</tr>`).join("")}</tbody>
-      </table><p style="font-size:11px;color:rgba(255,255,255,.65);margin:12px 0 0;">Prices pre-tax. Availability varies by strain and weight. Lemon Wookie is the only strain in the award-winning small-bud pricing tier.</p>`;
+      </table><p style="font-size:11px;color:rgba(255,255,255,.65);margin:12px 0 0;">Prices pre-tax. Available in Sour Chem Banger and Astro Taffy. Availability varies by weight.</p>`;
   }
 
   modal.style.display = "flex";
@@ -2260,7 +2199,7 @@ function initCuratedBrandDeli() {
         front.style.background = `#050505 url("${brand.cardImage}") center / contain no-repeat`;
         front.style.padding = "0";
         front.setAttribute("role", "img");
-        front.setAttribute("aria-label", "Dutch Touch Small Buds - $10 eighth and $55 ounce; Lemon Wookie priced separately");
+        front.setAttribute("aria-label", "Dutch Touch Small Buds - Sour Chem Banger and Astro Taffy; $10 eighth and $55 ounce");
       }
       return;
     }
