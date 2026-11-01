@@ -1106,7 +1106,7 @@ const deliTierData = {
 const deliStrainData = {
   "clusterfunk": {
     name: "Clusterfunk",
-    tier: "premium",
+    tier: "core",
     seedSource: "Dutch Touch Genetics",
     type: "Indica",
     thc: "28.20% THC",
@@ -1242,7 +1242,7 @@ const deliStrainData = {
 
   "astro-taffy": {
     name: "Astro Taffy",
-    tier: "premium",
+    tier: "value",
     seedSource: "Dutch Touch Genetics",
     type: "Sativa Dominant",
     thc: "25.53% THC",
@@ -1259,7 +1259,7 @@ const deliStrainData = {
 
   "white-lightning": {
     name: "White Lightning",
-    tier: "premium",
+    tier: "core",
     seedSource: "Dutch Touch Genetics",
     type: "Indica Dominant",
     thc: "25.88% THC",
@@ -1276,7 +1276,7 @@ const deliStrainData = {
 
   "palpatine": {
     name: "Palpatine",
-    tier: "premium",
+    tier: "core",
     seedSource: "Dutch Touch Genetics",
     type: "Indica Dominant",
     thc: "25.63% THC",
@@ -1293,7 +1293,7 @@ const deliStrainData = {
 
   "lazy-lightning": {
     name: "Lazy Lightning",
-    tier: "premium",
+    tier: "value",
     seedSource: "Dutch Touch Genetics",
     type: "Indica-Dominant Hybrid • 60% Indica / 40% Sativa",
     thc: "25.95% THC",
@@ -1346,7 +1346,7 @@ const deliStrainData = {
 
   "chocolate-marsh-bubblehash": {
     name: "Chocolate Marshmallow Bubblehash",
-    tier: "bubblehash",
+    tier: "core",
     seedSource: "Exotic Genetix",
     type: "Hash Infused",
     thc: "51.30% THC",
@@ -1394,7 +1394,7 @@ const deliStrainData = {
 
   "spirit-hashplant": {
     name: "Spirit Hashplant",
-    tier: "value",
+    tier: "core",
     seedSource: "Bodhi Seeds",
     type: "Indica",
     thc: "23.17% THC",
@@ -1418,7 +1418,7 @@ const deliStrainData = {
 
   "hash-d": {
     name: "Hash D",
-    tier: "value",
+    tier: "core",
     seedSource: "Bodhi Seeds",
     type: "Indica",
     thc: "28.71% THC",
@@ -1430,7 +1430,7 @@ const deliStrainData = {
 
   "guicy-g": {
     name: "Guicy G",
-    tier: "value",
+    tier: "core",
     seedSource: "Exotic Genetix",
     type: "Hybrid",
     thc: "24.12% THC",
@@ -1442,7 +1442,7 @@ const deliStrainData = {
 
   "death-by-funk": {
     name: "Death By Funk (Small Buds)",
-    tier: "premium",
+    tier: "core",
     seedSource: "Dutch Touch Genetics",
     type: "Indica • 3rd Place Best in Grass",
     thc: "26.25% THC",
