@@ -188,10 +188,10 @@
             "Shiska — $40 OUNCE or 2/$60",
             "Small Buds Sour Chem Banger — $55/oz",
             "Sour Chem Banger Bigs — $70/oz or 2/$130",
-            "Envious & Street Guru — $70 OUNCE",
-            "Bud & Mary's & Thunder Canna Brand of Flower — $90 OUNCE",
+            "Pure Michigan & Satellite OG — $70 OUNCE",
+            "Thunder Canna Flower — $90 OUNCE",
             "Space Hippy, Lilac Diesel & Award-Winning Mr. Clean — $110 OUNCE",
-            "Mary Jones MF Grape & Orange Cream — 50% OFF"
+            "Space Hippy Bubble Hash Infused Deli — $10/g · $35/3.5g · $70/7g · $100/14g"
           ]
         }
       ]
@@ -212,9 +212,10 @@
             "Shiska — $40 OUNCE or 2/$60",
             "Small Buds Sour Chem Banger — $55/oz",
             "Sour Chem Banger Bigs — $70/oz or 2/$130",
-            "Envious & Street Guru — $70 OUNCE",
-            "Bud & Mary's & Thunder Canna Brand of Flower — $90 OUNCE",
-            "Space Hippy, Lilac Diesel & Award-Winning Mr. Clean — $110 OUNCE"
+            "Pure Michigan & Satellite OG — $70 OUNCE",
+            "Thunder Canna Flower — $90 OUNCE",
+            "Space Hippy, Lilac Diesel & Award-Winning Mr. Clean — $110 OUNCE",
+            "Space Hippy Bubble Hash Infused Deli — $10/g · $35/3.5g · $70/7g · $100/14g"
           ]
         }
       ]
@@ -226,7 +227,7 @@
         {
           "title": "Drink Deals",
           "items": [
-            "Mary Jones MF Grape & Orange Cream — 50% OFF"
+            "Thirsty Thursday — 20% OFF THC Drinks"
           ]
         }
       ]
@@ -239,14 +240,13 @@
           "title": "Gummies, Cones & Edibles",
           "items": [
             "Gelato THC Cones — Buy 2 Get 1",
-            "Choice 200mg Gummies — $4 or 5/$18",
             "Thunder Canna High Dose — $4 or 10/$35",
             "True North One Hitter — $4 or 10/$35",
-            "True North 50mg — $5 each or 10/$45",
             "Yeti Chomp One Gummy — $5 each",
+            "Berry Burst 10-Pack Gummies — $5 each",
+            "Squishies Rosin Gummies — $8 each or 5/$35",
             "Gelato 200mg Cereal Bites — $12 or 3/$30",
             "Flow Rosin Microdosed Chocolate — $12 each or 3/$30 (NEW)",
-            "Barracuda Chocolate Bars — $15",
             "Pixil 200mg THC Nerds — $15 or 2/$25",
             "Wyld & Good Tide Gummies — RESTOCK"
           ]
@@ -264,13 +264,13 @@
             "Glacier Ice Pick Infused — $5 each or 10/$45",
             "Blazr 1g Live Resin — $5 each",
             "Franklin Fields 1g Live Resin — $6",
-            "Fire Styxx — $6 or 10/$55",
-            "Jeeter 1g — $15"
+            "Fire Styxx — $6 or 10/$55"
           ]
         },
         {
           "title": "Infused Packs",
           "items": [
+            "Kaos 1.1g 2-Pack Infused — $15 each",
             "Swisher 5-Pack Blunts — $20",
             "Baby Jeeters — $30 each (BACK IN STOCK)"
           ]
@@ -281,7 +281,7 @@
             "Lemon Wookie 2g Hand-Rolled — $20 (1st Place Best in Grass Pre-Roll Winner)",
             "Odyssey 1g — $2 each (50% OFF)",
             "Dutch Daylight 1g — $2.50 or 10/$15 or 28/$30",
-            "Dead Prez & Glorious 1g — $5 or 5/$20",
+            "Glorious & Party Favor 1g — $5 or 5/$20",
             "Dutch Touch 1g Full Bud — $10 or 3/$25 or 7/$50 or 14/$85",
             "Redemption 10-Pack Pre-Rolls — $22 each",
             "Franklin Fields 28-Pack Pre-Rolls — $50 each",
@@ -300,9 +300,9 @@
           "title": "Vape Cartridges",
           "items": [
             "PLAY Carts Bulk Sale — 15/$80",
+            "Party Favors 1g Carts — 10/$50",
             "Mix & Match 1g Carts — 5/$35 (Crude Boys, Drip, Daily Dose, Platinum Vape, PLAY Hash Rosin Infused)",
             "LightSky Farms Live Resin Cartridges — $15 each or 3/$40",
-            "Five Star Nug Run Live Resin — $20",
             "Redbud Roots Full Spectrum — 3/$25 (BACK IN STOCK)"
           ]
         },
@@ -315,10 +315,9 @@
             "Grip 2g Diamond — $20 each",
             "Batch 2g — $25",
             "Batch 4g — $45",
-            "Known Rosin — $20 each (SALE)",
             "ROVE Pods — $25 each (BACK IN STOCK)",
-            "Franklin Fields Disposables — BACK IN STOCK",
-            "710 Persy Pods — $50 each"
+            "ROVE 2-Pack Pods — $40 each",
+            "Franklin Fields Disposables — BACK IN STOCK"
           ]
         }
       ]
@@ -344,6 +343,7 @@
         {
           "title": "Rosin Concentrates",
           "items": [
+            "710 Persy Pods — $50 each",
             "DTG 1g Rosin — $20 each",
             "Hash D 14g Rosin — $140",
             "Shiskaberry 14g Rosin — $170",

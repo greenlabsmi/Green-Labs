@@ -9,7 +9,7 @@
     position: "center",
     size: "cover",
     href: "#deli",
-    ariaLabel: "Dutch Deli exclusive: Mr. Clean and Sin City Grapes now available"
+    ariaLabel: "Explore Dutch Deli at Green Labs"
   };
 
   const PROMOTIONS = {
@@ -18,16 +18,16 @@
       banner: {
         headline: "GREEN LABS CURRENT DEALS",
         products: "LILAC DIESEL & SKY LOTUS BACK IN STOCK · MR. CLEAN AVAILABLE",
-        offer: "HASH D — $10 OUNCE · REDEMPTION LIVE RESIN — $15 OR 4/$50"
+        offer: "HASH D — $10 OUNCE · CLUSTERFUNK OUTDOOR DELI — 50% OFF"
       },
       popup: {
-        id: "halloween-weekend-2026-v1",
+        id: "november-deli-deals-v1",
         enabled: true,
         frequency: "daily",
         delay: 8000,
         type: "deals",
         tabText: "WEEKEND DEALS",
-        headline: "HALLOWEEN WEEKEND DEALS",
+        headline: "DUTCH DELI & CURRENT DEALS",
         subhead: "GREEN LABS · LUNA PIER · TAX NOT INCLUDED",
         items: [
           "🌿 Death By Funk Shake & Hash D — $10/oz",
@@ -37,8 +37,8 @@
           "🌿 Sour Chem Banger Bigs — $70/oz or 2/$130",
           "🌿 Mr. Clean — BACK IN STOCK · $110/oz",
           "💨 PLAY · Crude Boys · Drip · Platinum Vape · Daily Dose — Mix & Match 5/$35",
-          "🥤 Mary Jones Drinks — 50% OFF",
-          "🍬 Choice 200mg Gummies — $4 or 5/$18"
+          "🌿 Space Hippy Bubble Hash Infused Deli — from $10/g",
+          "🍬 Squishies Rosin Gummies — $8 each or 5/$35"
         ],
         href: "#deals",
         ariaLabel: "View all current Green Labs deals"
@@ -65,10 +65,8 @@
           "🌿 Dutch Daylight Hash D — $10 OUNCE",
           "🌿 Clusterfunk Deli Outdoor — 50% OFF",
           "🌿 Death By Funk Shake — $10 OUNCE",
-          "🌿 Small Buds Sour Chem Banger — $55/oz or 2 oz for $100",
-          "🌿 Lilac Diesel & Sky Lotus — BACK IN STOCK",
-          "💨 Redemption 1g Live Resin — $15 or 4/$50",
-          "🥤 Mary Jones 100mg Drinks — 50% OFF"
+          "🌿 Small Buds Sour Chem Banger — $55/oz",
+          "🌿 Lilac Diesel & Sky Lotus — BACK IN STOCK"
         ],
         href: "#deals",
         ariaLabel: "View Keep It Dutch Tuesday and current deals"
@@ -94,10 +92,8 @@
           "💨 Batch products — 25% OFF",
           "💨 Batch 2g Disposable — $25",
           "💨 Batch 4g Disposable — $45",
-          "💨 Redemption 1g Live Resin — $15 or 4/$50",
           "🌿 Dutch Daylight Hash D — $10 OUNCE",
-          "🌿 Clusterfunk Deli Outdoor — 50% OFF",
-          "🥤 Mary Jones 100mg Drinks — 50% OFF"
+          "🌿 Clusterfunk Deli Outdoor — 50% OFF"
         ],
         href: "#deals",
         ariaLabel: "View Batch Wednesday and current deals"
@@ -107,8 +103,8 @@
       enabled: true,
       banner: {
         headline: "THIRSTY THURSDAY",
-        products: "MARY JONES 100MG DRINKS",
-        offer: "50% OFF"
+        products: "THC DRINKS",
+        offer: "20% OFF"
       },
       popup: {
         id: "thirsty-thursday-v2",
@@ -120,10 +116,9 @@
         headline: "THIRSTY THURSDAY",
         subhead: "DRINK DEALS · TAX NOT INCLUDED",
         items: [
-          "🥤 Mary Jones 100mg Drinks — 50% OFF",
+          "🥤 THC Drinks — 20% OFF",
           "🌿 Dutch Daylight Hash D — $10 OUNCE",
-          "🌿 Death By Funk Shake — $10 OUNCE",
-          "💨 Redemption 1g Live Resin — $15 or 4/$50"
+          "🌿 Death By Funk Shake — $10 OUNCE"
         ],
         href: "#deals",
         ariaLabel: "View Thirsty Thursday drink and current deals"
@@ -135,6 +130,12 @@
   const dateParts = () => Object.fromEntries(new Intl.DateTimeFormat("en-US", { timeZone: TIME_ZONE, year: "numeric", month: "2-digit", day: "2-digit", weekday: "long", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(new Date()).filter(p => p.type !== "literal").map(p => [p.type, p.value]));
   const weekday = () => ({Sunday:0, Monday:1, Tuesday:2, Wednesday:3, Thursday:4, Friday:5, Saturday:6})[dateParts().weekday];
   const localStamp = () => { const p = dateParts(); return Number(`${p.year}${p.month}${p.day}${p.hour}${p.minute}`); };
+  function updateAnniversaryTeaser() {
+    const teaser = document.getElementById("anniversaryTeaser");
+    const now = localStamp();
+    if (teaser) teaser.hidden = now < 202611060000 || now >= 202611160000;
+  }
+
   function applySeasonalTheme() {
     const {month, day} = dateParts();
     const halloweenActive = month === "10" && Number(day) >= 27 && Number(day) <= 31;
@@ -182,6 +183,6 @@
   function expandPopup() { const wrap = document.getElementById("weeklyPromoPopup"); if (!wrap) return; wrap.hidden = false; wrap.classList.add("is-open"); wrap.classList.remove("is-collapsed"); wrap.querySelector(".weekly-promo__tab")?.setAttribute("aria-expanded", "true"); }
   function initPopupControls() { const wrap = document.getElementById("weeklyPromoPopup"), link = document.getElementById("weeklyPromoLink"); if (!wrap) return; wrap.querySelector(".weekly-promo__tab")?.addEventListener("click", () => wrap.classList.contains("is-open") ? closePopup() : expandPopup()); wrap.querySelectorAll("[data-close-weekly-promo]").forEach(el => el.addEventListener("click", closePopup)); link?.addEventListener("click", closePopup); document.addEventListener("keydown", e => { if (e.key === "Escape" && !wrap.hidden) closePopup(); }); }
   function showPopup(popup, name) { if (!popup || popup.enabled === false) return; const wrap = document.getElementById("weeklyPromoPopup"); if (!wrap) return; const key = storageKey(popup, name); if (getStored(key)) { wrap.hidden = false; wrap.classList.add("is-collapsed"); return; } setTimeout(() => { expandPopup(); setStored(key, String(Date.now())); }, Number.isFinite(popup.delay) && popup.delay >= 0 ? popup.delay : 10000); }
-  function init() { applySeasonalTheme(); const name = activeName(), campaign = PROMOTIONS[name] || PROMOTIONS.default; const popup = campaign.popup?.enabled === false ? PROMOTIONS.default.popup : campaign.popup; window.GreenLabsPromotion = {name, campaign, popup, promotions:PROMOTIONS}; updateBrandHeroCopy(); updateBanner(campaign.banner); updateHero(campaign.hero || BRAND_HERO); updatePopup(popup); initPopupControls(); showPopup(popup, name); console.info(`[Green Labs Promotions] Active campaign: ${name}`); }
+  function init() { applySeasonalTheme(); updateAnniversaryTeaser(); const name = activeName(), campaign = PROMOTIONS[name] || PROMOTIONS.default; const popup = campaign.popup?.enabled === false ? PROMOTIONS.default.popup : campaign.popup; window.GreenLabsPromotion = {name, campaign, popup, promotions:PROMOTIONS}; updateBrandHeroCopy(); updateBanner(campaign.banner); updateHero(campaign.hero || BRAND_HERO); updatePopup(popup); initPopupControls(); showPopup(popup, name); console.info(`[Green Labs Promotions] Active campaign: ${name}`); }
   document.readyState === "loading" ? document.addEventListener("DOMContentLoaded", init, {once:true}) : init();
 })();

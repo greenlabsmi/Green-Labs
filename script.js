@@ -1100,6 +1100,17 @@ const deliTierData = {
       ["3.5g", "$30"],
       ["14g", "$100"]
     ]
+  },
+
+  infused: {
+    badge: "Infused Deli",
+    pricingTitle: "Infused Deli Pricing",
+    prices: [
+      ["Gram", "$10"],
+      ["3.5g", "$35"],
+      ["7g", "$70"],
+      ["14g", "$100"]
+    ]
   }
 };
 
@@ -1207,7 +1218,7 @@ const deliStrainData = {
 
  "space-hippy-bubblehash": {
   name: "Space Hippy Bubble Hash Infused",
-  tier: "core",
+  tier: "infused",
   seedSource: "Dutch Touch Genetics",
   type: "Bubble Hash Infused Flower • Hybrid",
   thc: "28.72% THC",
