@@ -16,32 +16,31 @@
     default: {
       enabled: true,
       banner: {
-        headline: "GREEN LABS CURRENT DEALS",
-        products: "LILAC DIESEL & SKY LOTUS BACK IN STOCK · MR. CLEAN AVAILABLE",
-        offer: "HASH D — $10 OUNCE · CLUSTERFUNK OUTDOOR DELI — 50% OFF"
+        headline: "5 FOR $35 MIX & MATCH 1G CARTS",
+        products: "$10 OUNCES · HASH D & DEATH BY FUNK SHAKE",
+        offer: "CLUSTERFUNK OUTDOOR DELI 50% OFF · GRIP OUNCES $20"
       },
       popup: {
-        id: "november-deli-deals-v1",
+        id: "november-weekend-best-deals-v2",
         enabled: true,
         frequency: "daily",
         delay: 8000,
         type: "deals",
-        tabText: "WEEKEND DEALS",
-        headline: "DUTCH DELI & CURRENT DEALS",
+        tabText: "TOP DEALS",
+        headline: "THIS WEEKEND'S BEST DEALS",
         subhead: "GREEN LABS · LUNA PIER · TAX NOT INCLUDED",
         items: [
-          "🌿 Death By Funk Shake & Hash D — $10/oz",
-          "🌿 Clusterfunk Outdoor Deli — 50% OFF",
-          "🌿 Grip Full Flower — $20/oz",
-          "🌿 Sour Chem Banger Smalls — $55/oz",
-          "🌿 Sour Chem Banger Bigs — $70/oz or 2/$130",
-          "🌿 Mr. Clean — BACK IN STOCK · $110/oz",
-          "💨 PLAY · Crude Boys · Drip · Platinum Vape · Daily Dose — Mix & Match 5/$35",
-          "🌿 Space Hippy Bubble Hash Infused Deli — from $10/g",
-          "🍬 Squishies Rosin Gummies — $8 each or 5/$35"
+          "💨 MIX & MATCH 1G CARTS — 5/$35 · PLAY, Crude Boys, Drip, Platinum Vape & Daily Dose",
+          "🌿 HASH D & DEATH BY FUNK SHAKE — $10/oz",
+          "🌿 CLUSTERFUNK OUTDOOR DELI — 50% OFF",
+          "🌿 GRIP FULL FLOWER — $20/oz",
+          "🌿 SPACE HIPPY INFUSED DELI — $10/g · $35/3.5g · $70/7g · $100/14g",
+          "🌿 SOUR CHEM BANGER SMALLS — $55/oz",
+          "🌿 SOUR CHEM BANGER BIGS — $70/oz or 2/$130",
+          "🌿 MR. CLEAN — BACK IN STOCK · $110/oz"
         ],
         href: "#deals",
-        ariaLabel: "View all current Green Labs deals"
+        ariaLabel: "Explore the complete Green Labs deal sheet"
       }
     },
     keepItDutchTuesday: {
