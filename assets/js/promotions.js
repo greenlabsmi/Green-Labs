@@ -21,13 +21,13 @@
         offer: "CLUSTERFUNK OUTDOOR DELI 50% OFF · GRIP OUNCES $20"
       },
       popup: {
-        id: "november-weekend-best-deals-v2",
+        id: "november-weekday-deals-v3",
         enabled: true,
         frequency: "daily",
         delay: 8000,
         type: "deals",
         tabText: "TOP DEALS",
-        headline: "THIS WEEKEND'S BEST DEALS",
+        headline: "THIS WEEK'S BEST DEALS",
         subhead: "GREEN LABS · LUNA PIER · TAX NOT INCLUDED",
         items: [
           "💨 MIX & MATCH 1G CARTS — 5/$35 · PLAY, Crude Boys, Drip, Platinum Vape & Daily Dose",
@@ -37,7 +37,7 @@
           "🌿 SPACE HIPPY INFUSED DELI — $10/g · $35/3.5g · $70/7g · $100/14g",
           "🌿 SOUR CHEM BANGER SMALLS — $55/oz",
           "🌿 SOUR CHEM BANGER BIGS — $70/oz or 2/$130",
-          "🌿 MR. CLEAN — BACK IN STOCK · $110/oz"
+          "💨 DTG 1G DISPOSABLES — 3/$45 or 7/$100"
         ],
         href: "#deals",
         ariaLabel: "Explore the complete Green Labs deal sheet"
@@ -75,7 +75,7 @@
       enabled: true,
       banner: {
         headline: "BATCH WEDNESDAY",
-        products: "BATCH 2G — $25 · BATCH 4G — $45",
+        products: "BATCH SIGNATURE 4G — $45 or 2/$80",
         offer: "25% OFF BATCH PRODUCTS"
       },
       popup: {
@@ -89,8 +89,7 @@
         subhead: "BATCH PRODUCTS — 25% OFF · TAX NOT INCLUDED",
         items: [
           "💨 Batch products — 25% OFF",
-          "💨 Batch 2g Disposable — $25",
-          "💨 Batch 4g Disposable — $45",
+          "💨 Batch Signature 4g Disposable — $45 or 2/$80",
           "🌿 Dutch Daylight Hash D — $10 OUNCE",
           "🌿 Clusterfunk Deli Outdoor — 50% OFF"
         ],
@@ -125,6 +124,13 @@
     }
   };
 
+  const VETERANS_DAY = {
+    enabled: true,
+    banner: { headline: "VETERANS DAY · NOVEMBER 11", products: "THANK YOU FOR YOUR SERVICE", offer: "50% OFF ALL DTG PRODUCTS FOR VETERANS" },
+    popup: { id: "veterans-day-2026", enabled: true, frequency: "daily", delay: 8000, type: "deals", tabText: "VETERANS DAY", headline: "HAPPY VETERANS DAY", subhead: "WEDNESDAY, NOVEMBER 11 · TAX NOT INCLUDED", items: ["🇺🇸 ALL DTG PRODUCTS — 50% OFF FOR VETERANS", "💨 MIX & MATCH 1G CARTS — 5/$35", "🌿 HASH D & DEATH BY FUNK SHAKE — $10/oz", "🌿 CLUSTERFUNK OUTDOOR DELI — 50% OFF"], href: "#deals", ariaLabel: "Explore Veterans Day and Green Labs deals" }
+  };
+  PROMOTIONS.veteransDay = VETERANS_DAY;
+
   const WEEKLY_SCHEDULE = { 2: "keepItDutchTuesday", 3: "batchWednesday", 4: "thirstyThursday" };
   const dateParts = () => Object.fromEntries(new Intl.DateTimeFormat("en-US", { timeZone: TIME_ZONE, year: "numeric", month: "2-digit", day: "2-digit", weekday: "long", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(new Date()).filter(p => p.type !== "literal").map(p => [p.type, p.value]));
   const weekday = () => ({Sunday:0, Monday:1, Tuesday:2, Wednesday:3, Thursday:4, Friday:5, Saturday:6})[dateParts().weekday];
@@ -140,7 +146,7 @@
     const halloweenActive = month === "10" && Number(day) >= 27 && Number(day) <= 31;
     document.body?.classList.toggle("halloween-theme", halloweenActive);
   }
-  const activeName = () => { if (MANUAL_CAMPAIGN && PROMOTIONS[MANUAL_CAMPAIGN]?.enabled) return MANUAL_CAMPAIGN; const scheduled = WEEKLY_SCHEDULE[weekday()]; return PROMOTIONS[scheduled]?.enabled ? scheduled : "default"; };
+  const activeName = () => { const p = dateParts(); if (p.year === "2026" && p.month === "11" && p.day === "11") return "veteransDay"; if (MANUAL_CAMPAIGN && PROMOTIONS[MANUAL_CAMPAIGN]?.enabled) return MANUAL_CAMPAIGN; const scheduled = WEEKLY_SCHEDULE[weekday()]; return PROMOTIONS[scheduled]?.enabled ? scheduled : "default"; };
   const getStored = key => { try { return localStorage.getItem(key); } catch { return null; } };
   const setStored = (key, value) => { try { localStorage.setItem(key, value); } catch {} };
 
