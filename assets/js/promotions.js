@@ -16,9 +16,9 @@
     default: {
       enabled: true,
       banner: {
-        headline: "5 FOR $35 MIX & MATCH 1G CARTS",
-        products: "$10 OUNCES · HASH D & DEATH BY FUNK SHAKE",
-        offer: "CLUSTERFUNK OUTDOOR DELI 50% OFF · GRIP OUNCES $20"
+        headline: "CHEERS TO 5 YEARS · NOV 13–15",
+        products: "FRIDAY: 50% OFF SELECT BRANDS + FOOD TRUCK",
+        offer: "SATURDAY & SUNDAY: 50% OFF THE ENTIRE STORE"
       },
       popup: {
         id: "november-weekday-deals-v3",
@@ -27,9 +27,11 @@
         delay: 8000,
         type: "deals",
         tabText: "TOP DEALS",
-        headline: "THIS WEEK'S BEST DEALS",
+        headline: "CHEERS TO 5 YEARS! · NOV 13–15",
         subhead: "GREEN LABS · LUNA PIER · TAX NOT INCLUDED",
         items: [
+          "🎉 FRI NOV 13 — 50% OFF SELECT BRANDS + FOOD TRUCK",
+          "🎂 SAT–SUN NOV 14–15 — 50% OFF THE ENTIRE STORE",
           "💨 MIX & MATCH 1G CARTS — 5/$35 · PLAY, Crude Boys, Drip, Platinum Vape & Daily Dose",
           "🌿 HASH D & DEATH BY FUNK SHAKE — $10/oz",
           "🌿 CLUSTERFUNK OUTDOOR DELI — 50% OFF",
@@ -131,14 +133,20 @@
   };
   PROMOTIONS.veteransDay = VETERANS_DAY;
 
-  const WEEKLY_SCHEDULE = { 2: "keepItDutchTuesday", 3: "batchWednesday", 4: "thirstyThursday" };
+  const ANNIVERSARY_WEEKEND = {
+ enabled:true,
+ banner:{headline:"CHEERS TO 5 YEARS · NOV 13–15",products:"FRIDAY: 50% OFF SELECT BRANDS + FOOD TRUCK",offer:"SATURDAY & SUNDAY: 50% OFF THE ENTIRE STORE"},
+ popup:{id:"anniversary-weekend-2026",enabled:true,frequency:"daily",delay:8000,type:"deals",tabText:"5-YEAR SALE",headline:"CHEERS TO 5 YEARS!",subhead:"NOVEMBER 13–15 · TAX NOT INCLUDED",items:["🎉 FRIDAY NOV 13 — 50% OFF SELECT BRANDS + FOOD TRUCK","🎂 SATURDAY NOV 14 — 50% OFF THE ENTIRE STORE","🎂 SUNDAY NOV 15 — 50% OFF THE ENTIRE STORE","💨 MIX & MATCH 1G CARTS — 5/$35"],href:"#deals",ariaLabel:"Explore the Green Labs fifth anniversary sale"}
+};
+PROMOTIONS.anniversaryWeekend = ANNIVERSARY_WEEKEND;
+const WEEKLY_SCHEDULE = { 2: "keepItDutchTuesday", 3: "batchWednesday", 4: "thirstyThursday" };
   const dateParts = () => Object.fromEntries(new Intl.DateTimeFormat("en-US", { timeZone: TIME_ZONE, year: "numeric", month: "2-digit", day: "2-digit", weekday: "long", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(new Date()).filter(p => p.type !== "literal").map(p => [p.type, p.value]));
   const weekday = () => ({Sunday:0, Monday:1, Tuesday:2, Wednesday:3, Thursday:4, Friday:5, Saturday:6})[dateParts().weekday];
   const localStamp = () => { const p = dateParts(); return Number(`${p.year}${p.month}${p.day}${p.hour}${p.minute}`); };
   function updateAnniversaryTeaser() {
     const teaser = document.getElementById("anniversaryTeaser");
     const now = localStamp();
-    if (teaser) teaser.hidden = now < 202611060000 || now >= 202611160000;
+    if (teaser) { teaser.hidden = now >= 202611160000; teaser.innerHTML = "<strong>Cheers to 5 Years! · Nov 13–15</strong> · Friday: 50% off select brands + food truck · Saturday & Sunday: 50% off the entire store."; }
   }
 
   function applySeasonalTheme() {
@@ -146,11 +154,11 @@
     const halloweenActive = month === "10" && Number(day) >= 27 && Number(day) <= 31;
     document.body?.classList.toggle("halloween-theme", halloweenActive);
   }
-  const activeName = () => { const p = dateParts(); if (p.year === "2026" && p.month === "11" && p.day === "11") return "veteransDay"; if (MANUAL_CAMPAIGN && PROMOTIONS[MANUAL_CAMPAIGN]?.enabled) return MANUAL_CAMPAIGN; const scheduled = WEEKLY_SCHEDULE[weekday()]; return PROMOTIONS[scheduled]?.enabled ? scheduled : "default"; };
+  const activeName = () => { const p = dateParts(); if (p.year === "2026" && p.month === "11" && Number(p.day) >= 13 && Number(p.day) <= 15) return "anniversaryWeekend"; if (p.year === "2026" && p.month === "11" && p.day === "11") return "veteransDay"; if (MANUAL_CAMPAIGN && PROMOTIONS[MANUAL_CAMPAIGN]?.enabled) return MANUAL_CAMPAIGN; const scheduled = WEEKLY_SCHEDULE[weekday()]; return PROMOTIONS[scheduled]?.enabled ? scheduled : "default"; };
   const getStored = key => { try { return localStorage.getItem(key); } catch { return null; } };
   const setStored = (key, value) => { try { localStorage.setItem(key, value); } catch {} };
 
-  function updateBanner(banner) { if (!banner) return; ["headline", "products", "offer"].forEach(part => document.querySelectorAll(`[data-promo-banner-part="${part}"]`).forEach(el => el.textContent = banner[part] || "")); }
+  function updateBanner(banner) { if (!banner) return; const p = dateParts(); if (p.year === "2026" && p.month === "11" && Number(p.day) < 13 && p.day !== "11") banner = PROMOTIONS.anniversaryWeekend.banner; ["headline", "products", "offer"].forEach(part => document.querySelectorAll(`[data-promo-banner-part="${part}"]`).forEach(el => el.textContent = banner[part] || "")); }
 
   function updateBrandHeroCopy() {
     const badge = document.querySelector(".hero__badge-text"); if (badge) badge.textContent = "CRAFT CANNABIS & CURATED BRANDS";
