@@ -152,7 +152,7 @@ const WEEKLY_SCHEDULE = { 2: "keepItDutchTuesday", 3: "batchWednesday", 4: "thir
   function applySeasonalTheme() {
     const {month, day} = dateParts();
     const halloweenActive = month === "10" && Number(day) >= 27 && Number(day) <= 31;
-    const anniversaryActive = month === "11" && Number(day) >= 13 && Number(day) <= 15;
+    const anniversaryActive = month === "11" && Number(day) >= 10 && Number(day) <= 15;
     document.body?.classList.toggle("halloween-theme", halloweenActive);
     document.body?.classList.toggle("anniversary-theme", anniversaryActive);
   }
