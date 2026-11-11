@@ -136,7 +136,7 @@
   const ANNIVERSARY_WEEKEND = {
  enabled:true,
  banner:{headline:"CHEERS TO 5 YEARS · NOV 13–15",products:"FRIDAY: 50% OFF SELECT BRANDS + FOOD TRUCK",offer:"SATURDAY & SUNDAY: 50% OFF THE ENTIRE STORE"},
- popup:{id:"anniversary-weekend-2026",enabled:true,frequency:"daily",delay:8000,type:"deals",tabText:"5-YEAR SALE",headline:"CHEERS TO 5 YEARS!",subhead:"NOVEMBER 13–15 · TAX NOT INCLUDED",items:["🎉 FRIDAY NOV 13 — 50% OFF SELECT BRANDS + FOOD TRUCK","🎂 SATURDAY NOV 14 — 50% OFF THE ENTIRE STORE","🎂 SUNDAY NOV 15 — 50% OFF THE ENTIRE STORE","💨 MIX & MATCH 1G CARTS — 5/$35"],href:"#deals",ariaLabel:"Explore the Green Labs fifth anniversary sale"}
+ popup:{id:"anniversary-weekend-2026",enabled:true,frequency:"daily",delay:8000,type:"image",tabText:"CHEERS TO 5 YEARS",image:"assets/img/anniversary-popup.jpg",alt:"Green Labs Cheers to 5 Years anniversary weekend, November 13 through 15, for adults 21 and older",href:"#deals",ariaLabel:"Explore Green Labs fifth anniversary weekend deals"}
 };
 PROMOTIONS.anniversaryWeekend = ANNIVERSARY_WEEKEND;
 const WEEKLY_SCHEDULE = { 2: "keepItDutchTuesday", 3: "batchWednesday", 4: "thirstyThursday" };
@@ -195,7 +195,22 @@ const WEEKLY_SCHEDULE = { 2: "keepItDutchTuesday", 3: "batchWednesday", 4: "thir
   const dateKey = () => { const p = dateParts(); return `${p.year}-${p.month}-${p.day}`; };
   const storageKey = (popup, name) => `greenLabsWeeklyPromo_${popup.id || name}_${popup.frequency === "daily" ? dateKey() : "campaign"}`;
   function closePopup() { const wrap = document.getElementById("weeklyPromoPopup"), video = document.getElementById("weeklyPromoVideo"); if (!wrap) return; wrap.classList.remove("is-open"); wrap.classList.add("is-collapsed"); wrap.querySelector(".weekly-promo__tab")?.setAttribute("aria-expanded", "false"); if (video && !video.hidden) video.pause(); }
-  function expandPopup() { const wrap = document.getElementById("weeklyPromoPopup"); if (!wrap) return; wrap.hidden = false; wrap.classList.add("is-open"); wrap.classList.remove("is-collapsed"); wrap.querySelector(".weekly-promo__tab")?.setAttribute("aria-expanded", "true"); }
+  function burstAnniversaryConfetti(wrap) {
+    if (window.GreenLabsPromotion?.name !== "anniversaryWeekend" || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const colors = ["#d6a34a", "#fff6dc", "#1e7041", "#f1bc55"];
+    for (let i = 0; i < 30; i += 1) {
+      const piece = document.createElement("span");
+      piece.className = "anniversary-confetti";
+      piece.style.setProperty("--x", `${(Math.random() - .5) * 300}px`);
+      piece.style.setProperty("--y", `${-35 - Math.random() * 210}px`);
+      piece.style.setProperty("--r", `${Math.round(Math.random() * 720 - 360)}deg`);
+      piece.style.setProperty("--delay", `${Math.random() * 90}ms`);
+      piece.style.backgroundColor = colors[i % colors.length];
+      wrap.append(piece);
+      piece.addEventListener("animationend", () => piece.remove(), {once:true});
+    }
+  }
+  function expandPopup() { const wrap = document.getElementById("weeklyPromoPopup"); if (!wrap) return; const wasOpen = wrap.classList.contains("is-open"); wrap.hidden = false; wrap.classList.add("is-open"); wrap.classList.remove("is-collapsed"); wrap.querySelector(".weekly-promo__tab")?.setAttribute("aria-expanded", "true"); if (!wasOpen) burstAnniversaryConfetti(wrap); }
   function initPopupControls() { const wrap = document.getElementById("weeklyPromoPopup"), link = document.getElementById("weeklyPromoLink"); if (!wrap) return; wrap.querySelector(".weekly-promo__tab")?.addEventListener("click", () => wrap.classList.contains("is-open") ? closePopup() : expandPopup()); wrap.querySelectorAll("[data-close-weekly-promo]").forEach(el => el.addEventListener("click", closePopup)); link?.addEventListener("click", closePopup); document.addEventListener("keydown", e => { if (e.key === "Escape" && !wrap.hidden) closePopup(); }); }
   function showPopup(popup, name) { if (!popup || popup.enabled === false) return; const wrap = document.getElementById("weeklyPromoPopup"); if (!wrap) return; const key = storageKey(popup, name); if (getStored(key)) { wrap.hidden = false; wrap.classList.add("is-collapsed"); return; } setTimeout(() => { expandPopup(); setStored(key, String(Date.now())); }, Number.isFinite(popup.delay) && popup.delay >= 0 ? popup.delay : 10000); }
   function init() { applySeasonalTheme(); updateAnniversaryTeaser(); const name = activeName(), campaign = PROMOTIONS[name] || PROMOTIONS.default; const popup = campaign.popup?.enabled === false ? PROMOTIONS.default.popup : campaign.popup; window.GreenLabsPromotion = {name, campaign, popup, promotions:PROMOTIONS}; updateBrandHeroCopy(); updateBanner(campaign.banner); updateHero(dateKey() === "2026-11-11" ? {

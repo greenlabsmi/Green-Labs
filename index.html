@@ -1521,6 +1521,24 @@ REUSABLE WEEKLY PROMOTION POPUP CSS
     display: none;
   }
 
+  .anniversary-confetti {
+    position: absolute;
+    right: 42px;
+    bottom: 52px;
+    z-index: 8;
+    width: 8px;
+    height: 14px;
+    border-radius: 2px;
+    pointer-events: none;
+    animation: anniversary-confetti-burst 920ms cubic-bezier(.18,.8,.28,1) var(--delay, 0ms) forwards;
+  }
+
+  @keyframes anniversary-confetti-burst {
+    0% { opacity: 0; transform: translate(0, 0) rotate(0); }
+    12% { opacity: 1; }
+    100% { opacity: 0; transform: translate(var(--x), var(--y)) rotate(var(--r)); }
+  }
+
   .weekly-promo__close {
     position: absolute;
     top: 10px;
