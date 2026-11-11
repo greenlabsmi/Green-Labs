@@ -124,7 +124,7 @@
   const VETERANS_DAY = {
     enabled: true,
     banner: { headline: "VETERANS DAY · NOVEMBER 11", products: "THANK YOU FOR YOUR SERVICE", offer: "50% OFF ALL DTG PRODUCTS FOR VETERANS" },
-    popup: { id: "veterans-day-2026", enabled: true, frequency: "daily", delay: 8000, type: "image", tabText: "CHEERS TO 5 YEARS", image: "assets/img/anniversary-popup.jpg", alt: "Green Labs Cheers to 5 Years anniversary weekend, November 13 through 15, for adults 21 and older", href: "#deals", ariaLabel: "Explore Green Labs fifth anniversary weekend deals" }
+    popup: { id: "cheers-to-5-2026", enabled: true, frequency: "daily", delay: 8000, type: "image", tabText: "CHEERS TO 5 YEARS", image: "assets/img/promotions/cheers-5.png", alt: "Green Labs Cheers to 5 Years sale details", href: "#deals", ariaLabel: "Explore the Green Labs fifth anniversary sale" }
   };
   PROMOTIONS.veteransDay = VETERANS_DAY;
 
