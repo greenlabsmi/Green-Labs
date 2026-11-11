@@ -190,41 +190,6 @@ const WEEKLY_SCHEDULE = { 2: "keepItDutchTuesday", 3: "batchWednesday", 4: "thir
       image.style.backgroundPosition = hero.position || "center"; image.style.backgroundSize = hero.size || "cover"; image.style.backgroundRepeat = "no-repeat"; image.setAttribute("aria-label", hero.ariaLabel || "Green Labs Deli hero");
     }
   }
-  function initBirthdayInvite() {
-    const invite = document.querySelector("[data-birthday-invite]");
-    const open = document.querySelector("[data-birthday-invite-open]");
-    const close = document.querySelector("[data-birthday-invite-close]");
-    const card = document.querySelector("[data-birthday-invite-card]");
-    if (!invite || !open || !close || !card || !document.body.classList.contains("anniversary-theme")) return;
-    invite.hidden = false;
-    const closeInvite = () => {
-      invite.classList.remove("is-open");
-      card.hidden = true;
-      open.hidden = false;
-      open.setAttribute("aria-expanded", "false");
-      open.focus({preventScroll:true});
-    };
-    open.addEventListener("click", () => {
-      invite.classList.add("is-open");
-      open.hidden = true;
-      open.setAttribute("aria-expanded", "true");
-      card.hidden = false;
-      close.focus({preventScroll:true});
-      const colors = ["#d1a13b", "#0d5a35", "#fff8e8", "#e48f56"];
-      for (let i = 0; i < 26; i += 1) {
-        const piece = document.createElement("span");
-        piece.className = "birthday-invite__confetti";
-        piece.style.setProperty("--x", `${(Math.random() - .5) * 260}px`);
-        piece.style.setProperty("--y", `${-25 - Math.random() * 145}px`);
-        piece.style.setProperty("--r", `${Math.round(Math.random() * 560 - 280)}deg`);
-        piece.style.backgroundColor = colors[i % colors.length];
-        invite.append(piece);
-        piece.addEventListener("animationend", () => piece.remove(), {once:true});
-      }
-    });
-    close.addEventListener("click", closeInvite);
-    document.addEventListener("keydown", event => { if (event.key === "Escape" && invite.classList.contains("is-open")) closeInvite(); });
-  }
   const escapeHtml = value => String(value ?? "").replace(/[&<>"']/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[char]);
   function updatePopup(popup) { const wrap = document.getElementById("weeklyPromoPopup"); if (!popup || popup.enabled === false) { if (wrap) wrap.hidden = true; return; } const link = document.getElementById("weeklyPromoLink"), image = document.getElementById("weeklyPromoImage"), video = document.getElementById("weeklyPromoVideo"), label = document.getElementById("weeklyPromoTabLabel"); if (!link || !image || !video) return; if (label) label.textContent = popup.tabText || "SEE TODAY'S SPECIAL"; const destination = popup.href || "#deals"; link.href = destination; link.setAttribute("aria-label", popup.ariaLabel || "View Green Labs promotion"); destination === "#deals" ? link.setAttribute("data-open-deals", "") : link.removeAttribute("data-open-deals"); if (popup.type === "deals") { video.pause(); video.hidden = true; video.removeAttribute("src"); image.hidden = true; const items = [...(Array.isArray(popup.items) ? popup.items : []), ...(weekday() === 5 ? (popup.fridayItems || []).map(item => `FRIDAY ONLY: ${item}`) : [])], primary = items.slice(0,3), secondary = items.slice(3); link.innerHTML = `<div style="background:linear-gradient(145deg,#07110d,#0b1d16);color:#fff;padding:20px 18px 18px;border-radius:22px;border:1px solid rgba(46,248,187,.28);box-shadow:0 20px 55px rgba(0,0,0,.45);font-family:Inter,system-ui,sans-serif;min-width:min(84vw,360px);max-width:380px;max-height:calc(100dvh - 100px);overflow-y:auto;box-sizing:border-box;"><div style="font-size:10px;font-weight:900;letter-spacing:.16em;color:#2ef8bb;margin-bottom:7px;">${escapeHtml(popup.subhead || "GREEN LABS")}</div><div style="font-family:Cinzel,serif;font-size:22px;font-weight:900;line-height:1.05;margin-bottom:14px;">${escapeHtml(popup.headline || "BEST DEALS")}</div><div style="display:grid;gap:8px;margin-bottom:12px;">${primary.map(item => `<div style="padding:10px 11px;border-radius:12px;background:rgba(214,163,74,.12);border:1px solid rgba(214,163,74,.34);font-size:13px;font-weight:900;line-height:1.25;">${escapeHtml(item)}</div>`).join("")}</div><div style="display:grid;gap:6px;">${secondary.map(item => `<div style="font-size:11px;font-weight:750;line-height:1.25;color:rgba(255,255,255,.82);padding:0 2px;">• ${escapeHtml(item)}</div>`).join("")}</div><div style="margin-top:14px;font-size:11px;font-weight:900;letter-spacing:.08em;color:#2ef8bb;">SEE ALL DEALS →</div><div style="margin-top:6px;font-size:9px;color:rgba(255,255,255,.48);">All prices pre-tax. While supplies last.</div></div>`; return; } if (popup.type === "video" && popup.video) { image.hidden = true; video.hidden = false; video.src = popup.video; video.poster = popup.poster || ""; video.load(); video.play().catch(() => {}); } else { video.pause(); video.hidden = true; video.removeAttribute("src"); video.load(); image.hidden = false; image.src = popup.image || ""; image.alt = popup.alt || ""; } }
   const dateKey = () => { const p = dateParts(); return `${p.year}-${p.month}-${p.day}`; };
@@ -239,6 +204,6 @@ const WEEKLY_SCHEDULE = { 2: "keepItDutchTuesday", 3: "batchWednesday", 4: "thir
       size: "cover",
       href: "#deals",
       ariaLabel: "Veterans Day at Green Labs — explore today's deals"
-    } : (campaign.hero || BRAND_HERO)); initBirthdayInvite(); updatePopup(popup); initPopupControls(); showPopup(popup, name); console.info(`[Green Labs Promotions] Active campaign: ${name}`); }
+    } : (campaign.hero || BRAND_HERO)); updatePopup(popup); initPopupControls(); showPopup(popup, name); console.info(`[Green Labs Promotions] Active campaign: ${name}`); }
   document.readyState === "loading" ? document.addEventListener("DOMContentLoaded", init, {once:true}) : init();
 })();
