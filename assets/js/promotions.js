@@ -191,7 +191,7 @@ const WEEKLY_SCHEDULE = { 2: "keepItDutchTuesday", 3: "batchWednesday", 4: "thir
   const storageKey = (popup, name) => `greenLabsWeeklyPromo_${popup.id || name}_${popup.frequency === "daily" ? dateKey() : "campaign"}`;
   function closePopup() { const wrap = document.getElementById("weeklyPromoPopup"), video = document.getElementById("weeklyPromoVideo"); if (!wrap) return; wrap.classList.remove("is-open"); wrap.classList.add("is-collapsed"); wrap.querySelector(".weekly-promo__tab")?.setAttribute("aria-expanded", "false"); if (video && !video.hidden) video.pause(); }
   function burstAnniversaryConfetti(wrap) {
-    if (window.GreenLabsPromotion?.name !== "anniversaryWeekend" || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!["anniversaryWeekend", "veteransDay"].includes(window.GreenLabsPromotion?.name) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const colors = ["#d6a34a", "#fff6dc", "#1e7041", "#f1bc55"];
     for (let i = 0; i < 30; i += 1) {
       const piece = document.createElement("span");
