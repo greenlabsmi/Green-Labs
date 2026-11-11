@@ -1115,6 +1115,30 @@ const deliTierData = {
 };
 
 const deliStrainData = {
+  "grape-pie": {
+    name: "Grape Pie",
+    tier: "core",
+    seedSource: "Dutch Touch Genetics",
+    type: "New Dutch Deli Drop",
+    thc: "26.89% THC",
+    budImage: "https://dutchtouchgenetics.com/assets/img/strains/grape-pie-art.jpg",
+    artImage: "https://dutchtouchgenetics.com/assets/img/strains/grape-pie-art.jpg",
+    genetics: "Coming soon",
+    terpenes: [],
+    about: "Drops tomorrow. Full strain information and genetics coming soon."
+  },
+  "electric-hashplant-2": {
+    name: "Electric Hashplant #2",
+    tier: "core",
+    seedSource: "Dutch Touch Genetics",
+    type: "New Dutch Deli Drop",
+    thc: "28.04% THC",
+    budImage: "https://dutchtouchgenetics.com/assets/img/strains/electric-hashplant-2-art.jpg",
+    artImage: "https://dutchtouchgenetics.com/assets/img/strains/electric-hashplant-2-art.jpg",
+    genetics: "Coming soon",
+    terpenes: [],
+    about: "Drops tomorrow. Full strain information and genetics coming soon."
+  },
   "clusterfunk": {
     name: "Clusterfunk",
     tier: "core",
@@ -2150,6 +2174,8 @@ function initCuratedBrandDeli() {
 
     // Keep the newest DTG drops at the very front of the deli on every page load.
     const newDropOrder = [
+      "grape-pie",
+      "electric-hashplant-2",
       "lemon-wookie",
       "clusterfunk",
       "mr-clean",
