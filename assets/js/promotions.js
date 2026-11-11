@@ -33,8 +33,6 @@
           "🎉 FRI NOV 13 — 50% OFF SELECT BRANDS + FOOD TRUCK",
           "🎂 SAT–SUN NOV 14–15 — 50% OFF THE ENTIRE STORE",
           "💨 MIX & MATCH 1G CARTS — 5/$35 · PLAY, Crude Boys, Drip, Platinum Vape & Daily Dose",
-          "🌿 HASH D & DEATH BY FUNK SHAKE — $10/oz",
-          "🌿 CLUSTERFUNK OUTDOOR DELI — 50% OFF",
           "🌿 GRIP FULL FLOWER — $20/oz",
           "🌿 SPACE HIPPY INFUSED DELI — $10/g · $35/3.5g · $70/7g · $100/14g",
           "🌿 SOUR CHEM BANGER SMALLS — $55/oz",
@@ -63,8 +61,6 @@
         subhead: "10% OFF CORE & PREMIUM DELI · TAX NOT INCLUDED",
         items: [
           "🌿 CORE & PREMIUM DELI FLOWER — 10% OFF",
-          "🌿 Dutch Daylight Hash D — $10 OUNCE",
-          "🌿 Clusterfunk Deli Outdoor — 50% OFF",
           "🌿 Death By Funk Shake — $10 OUNCE",
           "🌿 Small Buds Sour Chem Banger — $55/oz",
           "🌿 Lilac Diesel & Sky Lotus — BACK IN STOCK"
@@ -92,8 +88,7 @@
         items: [
           "💨 Batch products — 25% OFF",
           "💨 Batch Signature 4g Disposable — $45 or 2/$80",
-          "🌿 Dutch Daylight Hash D — $10 OUNCE",
-          "🌿 Clusterfunk Deli Outdoor — 50% OFF"
+          "🌿 Death By Funk Shake — $10 OUNCE"
         ],
         href: "#deals",
         ariaLabel: "View Batch Wednesday and current deals"
@@ -129,7 +124,7 @@
   const VETERANS_DAY = {
     enabled: true,
     banner: { headline: "VETERANS DAY · NOVEMBER 11", products: "THANK YOU FOR YOUR SERVICE", offer: "50% OFF ALL DTG PRODUCTS FOR VETERANS" },
-    popup: { id: "veterans-day-2026", enabled: true, frequency: "daily", delay: 8000, type: "deals", tabText: "VETERANS DAY", headline: "HAPPY VETERANS DAY", subhead: "WEDNESDAY, NOVEMBER 11 · TAX NOT INCLUDED", items: ["🇺🇸 ALL DTG PRODUCTS — 50% OFF FOR VETERANS", "💨 MIX & MATCH 1G CARTS — 5/$35", "🌿 HASH D & DEATH BY FUNK SHAKE — $10/oz", "🌿 CLUSTERFUNK OUTDOOR DELI — 50% OFF"], href: "#deals", ariaLabel: "Explore Veterans Day and Green Labs deals" }
+    popup: { id: "veterans-day-2026", enabled: true, frequency: "daily", delay: 8000, type: "image", tabText: "CHEERS TO 5 YEARS", image: "assets/img/anniversary-popup.jpg", alt: "Green Labs Cheers to 5 Years anniversary weekend, November 13 through 15, for adults 21 and older", href: "#deals", ariaLabel: "Explore Green Labs fifth anniversary weekend deals" }
   };
   PROMOTIONS.veteransDay = VETERANS_DAY;
 
