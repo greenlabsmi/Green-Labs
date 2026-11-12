@@ -22,7 +22,7 @@
       },
       popup: {
         id: "november-weekday-deals-v3",
-        enabled: true,
+        enabled: false,
         frequency: "daily",
         delay: 8000,
         type: "deals",
@@ -52,7 +52,7 @@
       },
       popup: {
         id: "dutch-tuesday-weekly-v2",
-        enabled: true,
+        enabled: false,
         frequency: "daily",
         delay: 8000,
         type: "deals",
@@ -78,7 +78,7 @@
       },
       popup: {
         id: "batch-wednesday-weekly-v2",
-        enabled: true,
+        enabled: false,
         frequency: "daily",
         delay: 10000,
         type: "deals",
@@ -103,7 +103,7 @@
       },
       popup: {
         id: "thirsty-thursday-v2",
-        enabled: true,
+        enabled: false,
         frequency: "daily",
         delay: 10000,
         type: "deals",
@@ -124,7 +124,7 @@
   const ANNIVERSARY_WEEKEND = {
  enabled:true,
  banner:{headline:"CHEERS TO 5 YEARS · NOV 13–15",products:"FRIDAY: 50% OFF SELECT BRANDS + FOOD TRUCK",offer:"SATURDAY & SUNDAY: 50% OFF THE ENTIRE STORE"},
- popup:{id:"anniversary-weekend-2026",enabled:true,frequency:"daily",delay:8000,type:"image",tabText:"CHEERS TO 5 YEARS",image:"assets/img/anniversary-popup.jpg",alt:"Green Labs Cheers to 5 Years anniversary weekend, November 13 through 15, for adults 21 and older",href:"#deals",ariaLabel:"Explore Green Labs fifth anniversary weekend deals"}
+ popup:{id:"anniversary-weekend-2026",enabled:false,frequency:"daily",delay:8000,type:"image",tabText:"CHEERS TO 5 YEARS",image:"assets/img/anniversary-popup.jpg",alt:"Green Labs Cheers to 5 Years anniversary weekend, November 13 through 15, for adults 21 and older",href:"#deals",ariaLabel:"Explore Green Labs fifth anniversary weekend deals"}
 };
 PROMOTIONS.anniversaryWeekend = ANNIVERSARY_WEEKEND;
 const WEEKLY_SCHEDULE = { 2: "keepItDutchTuesday", 3: "batchWednesday", 4: "thirstyThursday" };
