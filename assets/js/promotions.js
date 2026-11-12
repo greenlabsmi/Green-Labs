@@ -121,13 +121,6 @@
     }
   };
 
-  const VETERANS_DAY = {
-    enabled: true,
-    banner: { headline: "VETERANS DAY · NOVEMBER 11", products: "THANK YOU FOR YOUR SERVICE", offer: "50% OFF ALL DTG PRODUCTS FOR VETERANS" },
-    popup: { id: "cheers-to-5-2026", enabled: true, frequency: "daily", delay: 8000, type: "image", tabText: "CHEERS TO 5 YEARS", image: "assets/img/promotions/cheers-5.png", alt: "Green Labs Cheers to 5 Years sale details", href: "#deals", ariaLabel: "Explore the Green Labs fifth anniversary sale" }
-  };
-  PROMOTIONS.veteransDay = VETERANS_DAY;
-
   const ANNIVERSARY_WEEKEND = {
  enabled:true,
  banner:{headline:"CHEERS TO 5 YEARS · NOV 13–15",products:"FRIDAY: 50% OFF SELECT BRANDS + FOOD TRUCK",offer:"SATURDAY & SUNDAY: 50% OFF THE ENTIRE STORE"},
@@ -151,7 +144,7 @@ const WEEKLY_SCHEDULE = { 2: "keepItDutchTuesday", 3: "batchWednesday", 4: "thir
     document.body?.classList.toggle("halloween-theme", halloweenActive);
     document.body?.classList.toggle("anniversary-theme", anniversaryActive);
   }
-  const activeName = () => { const p = dateParts(); if (p.year === "2026" && p.month === "11" && Number(p.day) >= 13 && Number(p.day) <= 15) return "anniversaryWeekend"; if (p.year === "2026" && p.month === "11" && p.day === "11") return "veteransDay"; if (MANUAL_CAMPAIGN && PROMOTIONS[MANUAL_CAMPAIGN]?.enabled) return MANUAL_CAMPAIGN; const scheduled = WEEKLY_SCHEDULE[weekday()]; return PROMOTIONS[scheduled]?.enabled ? scheduled : "default"; };
+  const activeName = () => { const p = dateParts(); if (p.year === "2026" && p.month === "11" && Number(p.day) >= 11 && Number(p.day) <= 15) return "anniversaryWeekend"; if (MANUAL_CAMPAIGN && PROMOTIONS[MANUAL_CAMPAIGN]?.enabled) return MANUAL_CAMPAIGN; const scheduled = WEEKLY_SCHEDULE[weekday()]; return PROMOTIONS[scheduled]?.enabled ? scheduled : "default"; };
   const getStored = key => { try { return localStorage.getItem(key); } catch { return null; } };
   const setStored = (key, value) => { try { localStorage.setItem(key, value); } catch {} };
 
@@ -191,7 +184,7 @@ const WEEKLY_SCHEDULE = { 2: "keepItDutchTuesday", 3: "batchWednesday", 4: "thir
   const storageKey = (popup, name) => `greenLabsWeeklyPromo_${popup.id || name}_${popup.frequency === "daily" ? dateKey() : "campaign"}`;
   function closePopup() { const wrap = document.getElementById("weeklyPromoPopup"), video = document.getElementById("weeklyPromoVideo"); if (!wrap) return; wrap.classList.remove("is-open"); wrap.classList.add("is-collapsed"); wrap.querySelector(".weekly-promo__tab")?.setAttribute("aria-expanded", "false"); if (video && !video.hidden) video.pause(); }
   function burstAnniversaryConfetti(wrap) {
-    if (!["anniversaryWeekend", "veteransDay"].includes(window.GreenLabsPromotion?.name) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!["anniversaryWeekend"].includes(window.GreenLabsPromotion?.name) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const colors = ["#d6a34a", "#fff6dc", "#1e7041", "#f1bc55"];
     for (let i = 0; i < 30; i += 1) {
       const piece = document.createElement("span");
@@ -208,12 +201,6 @@ const WEEKLY_SCHEDULE = { 2: "keepItDutchTuesday", 3: "batchWednesday", 4: "thir
   function expandPopup() { const wrap = document.getElementById("weeklyPromoPopup"); if (!wrap) return; const wasOpen = wrap.classList.contains("is-open"); wrap.hidden = false; wrap.classList.add("is-open"); wrap.classList.remove("is-collapsed"); wrap.querySelector(".weekly-promo__tab")?.setAttribute("aria-expanded", "true"); if (!wasOpen) burstAnniversaryConfetti(wrap); }
   function initPopupControls() { const wrap = document.getElementById("weeklyPromoPopup"), link = document.getElementById("weeklyPromoLink"); if (!wrap) return; wrap.querySelector(".weekly-promo__tab")?.addEventListener("click", () => wrap.classList.contains("is-open") ? closePopup() : expandPopup()); wrap.querySelectorAll("[data-close-weekly-promo]").forEach(el => el.addEventListener("click", closePopup)); link?.addEventListener("click", closePopup); document.addEventListener("keydown", e => { if (e.key === "Escape" && !wrap.hidden) closePopup(); }); }
   function showPopup(popup, name) { if (!popup || popup.enabled === false) return; const wrap = document.getElementById("weeklyPromoPopup"); if (!wrap) return; const key = storageKey(popup, name); if (getStored(key)) { wrap.hidden = false; wrap.classList.add("is-collapsed"); return; } setTimeout(() => { expandPopup(); setStored(key, String(Date.now())); }, Number.isFinite(popup.delay) && popup.delay >= 0 ? popup.delay : 10000); }
-  function init() { applySeasonalTheme(); updateAnniversaryTeaser(); const name = activeName(), campaign = PROMOTIONS[name] || PROMOTIONS.default; const popup = campaign.popup?.enabled === false ? PROMOTIONS.default.popup : campaign.popup; window.GreenLabsPromotion = {name, campaign, popup, promotions:PROMOTIONS}; updateBrandHeroCopy(); updateBanner(campaign.banner); updateHero(dateKey() === "2026-11-11" ? {
-      image: "assets/img/vet-hero.jpg",
-      position: "center",
-      size: "cover",
-      href: "#deals",
-      ariaLabel: "Veterans Day at Green Labs — explore today's deals"
-    } : (campaign.hero || BRAND_HERO)); updatePopup(popup); initPopupControls(); showPopup(popup, name); console.info(`[Green Labs Promotions] Active campaign: ${name}`); }
+  function init() { applySeasonalTheme(); updateAnniversaryTeaser(); const name = activeName(), campaign = PROMOTIONS[name] || PROMOTIONS.default; const popup = campaign.popup?.enabled === false ? PROMOTIONS.default.popup : campaign.popup; window.GreenLabsPromotion = {name, campaign, popup, promotions:PROMOTIONS}; updateBrandHeroCopy(); updateBanner(campaign.banner); updateHero(campaign.hero || BRAND_HERO); updatePopup(popup); initPopupControls(); showPopup(popup, name); console.info(`[Green Labs Promotions] Active campaign: ${name}`); }
   document.readyState === "loading" ? document.addEventListener("DOMContentLoaded", init, {once:true}) : init();
 })();
