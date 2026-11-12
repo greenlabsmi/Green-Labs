@@ -1125,7 +1125,7 @@ const deliStrainData = {
     artImage: "https://dutchtouchgenetics.com/assets/img/strains/grape-pie-art.jpg",
     genetics: "Coming soon",
     terpenes: [],
-    about: "Drops tomorrow. Full strain information and genetics coming soon."
+    about: "Now available in the Dutch Deli. Full strain information and genetics coming soon."
   },
   "electric-hashplant-2": {
     name: "Electric Hashplant #2",
@@ -1137,7 +1137,7 @@ const deliStrainData = {
     artImage: "https://dutchtouchgenetics.com/assets/img/strains/electric-hashplant-2-art.jpg",
     genetics: "Coming soon",
     terpenes: [],
-    about: "Drops tomorrow. Full strain information and genetics coming soon."
+    about: "Now available in the Dutch Deli. Full strain information and genetics coming soon."
   },
   "clusterfunk": {
     name: "Clusterfunk",
