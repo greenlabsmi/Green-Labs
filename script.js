@@ -1586,11 +1586,6 @@ const curatedBrandData = {
     intro: "Fresh Glacier flower, hand-picked for the Dutch Deli.",
     strains: [
       {
-        name: "Blueberry Muffin",
-        thc: "22.23%",
-        image: "./assets/img/brands/glacier/blueberry-muffin-deli.png"
-      },
-      {
         name: "Funk From Mars!",
         thc: "25.25%",
         image: "./assets/img/brands/glacier/funk-from-mars-deli.png"
@@ -1628,11 +1623,6 @@ const curatedBrandData = {
         thc: "23.86%",
         image: "./assets/img/brands/Lightsky-farms/point-break-deli.png"
       },
-      {
-        name: "Frosted Truffle Pie",
-        thc: "28.05%",
-        image: "./assets/img/brands/Lightsky-farms/frosted-truffle-pie-deli.png"
-      }
     ]
   },
 
