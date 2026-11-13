@@ -1,0 +1,26 @@
+/* Limited-edition 5th birthday takeover; activated only by birthday-takeover.js. */
+body.birthday-takeover{--birthday-green:#087e58;--birthday-gold:#f2c46f;--birthday-cream:#fff6e8;--birthday-pink:#f4a9c4}
+body.birthday-takeover .topbar{background:linear-gradient(105deg,#087e58,#145f50,#9c547b)!important}
+body.birthday-takeover .sticky{box-shadow:0 3px 0 #f2c46f,0 8px 30px rgba(8,126,88,.18)}
+body.birthday-takeover .deli-banner{background:linear-gradient(90deg,#087e58,#965c87,#087e58)!important;border-block:2px solid #f2c46f}
+body.birthday-takeover .hero{position:relative}
+body.birthday-takeover .hero__img{outline:3px solid #f2c46f;outline-offset:-5px}
+body.birthday-takeover .btn--primary{background:linear-gradient(120deg,#087e58,#126b52)!important;border-color:#f2c46f!important}
+body.birthday-takeover #deals{border-top:5px solid #f2c46f}
+.birthday-ribbon{position:relative;z-index:4;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;padding:12px 18px;background:linear-gradient(105deg,#fff6e8,#ffe9bc,#fff1e5);color:#124735;border-block:3px solid #e8b45c;font:800 clamp(13px,2vw,20px)/1.35 Inter,system-ui,sans-serif;letter-spacing:.04em;text-align:center}
+.birthday-ribbon strong{color:#9a3567}
+.birthday-ribbon a{color:#095d43;text-decoration:underline;text-underline-offset:3px}
+.birthday-floating-gift{position:fixed;bottom:20px;left:18px;z-index:900;display:flex;align-items:center;gap:7px;border:2px solid #f2c46f;border-radius:999px;background:#0c684c;color:#fff;padding:10px 15px;box-shadow:0 8px 25px #0003;font:800 13px Inter,system-ui,sans-serif;cursor:pointer}
+.birthday-floating-gift:focus-visible,.birthday-gift-close:focus-visible{outline:3px solid #e6b35c;outline-offset:3px}
+.birthday-gift-dialog{position:fixed;inset:0;z-index:2000;display:grid;place-items:center;padding:20px;background:rgba(0,25,19,.7)}
+.birthday-gift-dialog[hidden]{display:none}
+.birthday-gift-card{position:relative;width:min(100%,440px);max-height:85vh;overflow:auto;border:4px solid #e7bb67;border-radius:24px;background:#fff9ef;color:#173f32;text-align:center;padding:32px 22px;box-shadow:0 24px 70px #0005;font-family:Inter,system-ui,sans-serif}
+.birthday-gift-card h2{font-size:clamp(26px,5vw,38px);margin:8px 0 12px;color:#087e58}
+.birthday-gift-card p{line-height:1.5;margin:10px 0}
+.birthday-gift-card a{display:inline-block;margin-top:10px;padding:11px 18px;border-radius:30px;background:#087e58;color:white;font-weight:800;text-decoration:none}
+.birthday-gift-close{position:absolute;top:9px;right:12px;border:0;background:transparent;font-size:30px;color:#164b39;cursor:pointer}
+.birthday-confetti-layer{position:fixed;inset:0;pointer-events:none;z-index:1600;overflow:hidden}
+.birthday-confetti-piece{position:absolute;top:-20px;width:8px;height:14px;opacity:0;animation:birthday-fall var(--duration,3s) linear var(--delay,0s) forwards;background:var(--color,#f2c46f);transform:rotate(var(--rotation,0deg))}
+@keyframes birthday-fall{0%{opacity:0;transform:translate3d(0,-20px,0) rotate(0)}8%{opacity:1}90%{opacity:1}100%{opacity:0;transform:translate3d(var(--drift,30px),105vh,0) rotate(680deg)}}
+@media(max-width:600px){.birthday-floating-gift{left:10px;bottom:10px;padding:9px 12px;font-size:12px}.birthday-ribbon{font-size:12px;padding:10px}.birthday-gift-card{padding:26px 17px}}
+@media(prefers-reduced-motion:reduce){.birthday-confetti-piece{animation:none!important;display:none!important}}
