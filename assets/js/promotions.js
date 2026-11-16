@@ -5,11 +5,11 @@
   const MANUAL_CAMPAIGN = null;
 
   const BRAND_HERO = {
-    image: "assets/img/dutch-deli-oct.jpg",
+    image: "assets/img/flower-of-life-hero.jpg",
     position: "center",
-    size: "cover",
-    href: "#deli",
-    ariaLabel: "Explore the Dutch Deli at Green Labs"
+    size: "contain",
+    href: "#deals",
+    ariaLabel: "Flower of Life exclusive drop at Green Labs: Purple Haze and Detroit Runtz"
   };
 
   const PROMOTIONS = {
@@ -21,24 +21,16 @@
         offer: "EXPLORE TODAY'S TOP DEALS"
       },
       popup: {
-        id: "top-deals-nov-16-2026",
+        id: "flower-of-life-exclusive-drop",
         enabled: true,
         frequency: "daily",
         delay: 8000,
-        type: "deals",
-        tabText: "TOP DEALS",
-        headline: "TODAY'S TOP DEALS",
-        subhead: "GREEN LABS · LUNA PIER · TAX NOT INCLUDED",
-        items: [
-          "🌿 DEATH BY FUNK SHAKE — $10/oz",
-          "🌿 HASH D — $10/oz",
-          "🌿 GRIP FULL FLOWER — $20/oz",
-          "🌿 DTG INDOOR SHAKE — $25/oz",
-          "🌿 GRAPE PIE & ELECTRIC HASHPLANT #2 — $90/oz",
-          "🏆 MR. CLEAN — BACK IN STOCK"
-        ],
+        type: "image",
+        tabText: "FLOWER OF LIFE DROP",
+        image: "assets/img/flower-of-life-popup.jpg",
+        alt: "Flower of Life: Purple Haze and Detroit Runtz. 3.5g flower $30, half ounce flower $85, 1g pre-roll $10, five-pack $20.",
         href: "#deals",
-        ariaLabel: "Explore today's top deals at Green Labs"
+        ariaLabel: "View the Flower of Life exclusive drop and Green Labs deals"
       }
     },
     keepItDutchTuesday: {
