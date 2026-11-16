@@ -5,42 +5,40 @@
   const MANUAL_CAMPAIGN = null;
 
   const BRAND_HERO = {
-    image: "assets/img/cheers-5-hero.jpg",
+    image: "assets/img/dutch-deli-clean-hero.jpg",
     position: "center",
     size: "cover",
-    href: "#deals",
-    ariaLabel: "Explore Green Labs' fifth anniversary sale"
+    href: "#deli",
+    ariaLabel: "Explore the Dutch Deli at Green Labs"
   };
 
   const PROMOTIONS = {
     default: {
       enabled: true,
       banner: {
-        headline: "CHEERS TO 5 YEARS · NOV 13–15",
-        products: "FRIDAY: 50% OFF SELECT BRANDS + FOOD TRUCK",
-        offer: "SATURDAY & SUNDAY: 50% OFF THE ENTIRE STORE"
+        headline: "THE DUTCH DELI · WEIGHED FRESH",
+        products: "AWARD-WINNING DUTCH TOUCH GENETICS",
+        offer: "EXPLORE TODAY'S TOP DEALS"
       },
       popup: {
-        id: "november-weekday-deals-v3",
-        enabled: false,
+        id: "top-deals-nov-16-2026",
+        enabled: true,
         frequency: "daily",
         delay: 8000,
         type: "deals",
         tabText: "TOP DEALS",
-        headline: "CHEERS TO 5 YEARS! · NOV 13–15",
+        headline: "TODAY'S TOP DEALS",
         subhead: "GREEN LABS · LUNA PIER · TAX NOT INCLUDED",
         items: [
-          "🎉 FRI NOV 13 — 50% OFF SELECT BRANDS + FOOD TRUCK",
-          "🎂 SAT–SUN NOV 14–15 — 50% OFF THE ENTIRE STORE",
-          "💨 MIX & MATCH 1G CARTS — 5/$35 · PLAY, Crude Boys, Drip, Platinum Vape & Daily Dose",
+          "🌿 DEATH BY FUNK SHAKE — $10/oz",
+          "🌿 HASH D — $10/oz",
           "🌿 GRIP FULL FLOWER — $20/oz",
-          "🌿 SPACE HIPPY INFUSED DELI — $10/g · $35/3.5g · $70/7g · $100/14g",
-          "🌿 SOUR CHEM BANGER SMALLS — $55/oz",
-          "🌿 SOUR CHEM BANGER BIGS — $70/oz or 2/$130",
-          "💨 DTG 1G DISPOSABLES — 3/$45 or 7/$100"
+          "🌿 DTG INDOOR SHAKE — $25/oz",
+          "🌿 GRAPE PIE & ELECTRIC HASHPLANT #2 — $90/oz",
+          "🏆 MR. CLEAN — BACK IN STOCK"
         ],
         href: "#deals",
-        ariaLabel: "Explore the complete Green Labs deal sheet"
+        ariaLabel: "Explore today's top deals at Green Labs"
       }
     },
     keepItDutchTuesday: {
@@ -121,12 +119,7 @@
     }
   };
 
-  const ANNIVERSARY_WEEKEND = {
- enabled:true,
- banner:{headline:"CHEERS TO 5 YEARS · NOV 13–15",products:"FRIDAY: 50% OFF SELECT BRANDS + FOOD TRUCK",offer:"SATURDAY & SUNDAY: 50% OFF THE ENTIRE STORE"},
- popup:{id:"anniversary-weekend-2026",enabled:false,frequency:"daily",delay:8000,type:"image",tabText:"CHEERS TO 5 YEARS",image:"assets/img/anniversary-popup.jpg",alt:"Green Labs Cheers to 5 Years anniversary weekend, November 13 through 15, for adults 21 and older",href:"#deals",ariaLabel:"Explore Green Labs fifth anniversary weekend deals"}
-};
-PROMOTIONS.anniversaryWeekend = ANNIVERSARY_WEEKEND;
+  
 const WEEKLY_SCHEDULE = { 2: "keepItDutchTuesday", 3: "batchWednesday", 4: "thirstyThursday" };
   const dateParts = () => Object.fromEntries(new Intl.DateTimeFormat("en-US", { timeZone: TIME_ZONE, year: "numeric", month: "2-digit", day: "2-digit", weekday: "long", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(new Date()).filter(p => p.type !== "literal").map(p => [p.type, p.value]));
   const weekday = () => ({Sunday:0, Monday:1, Tuesday:2, Wednesday:3, Thursday:4, Friday:5, Saturday:6})[dateParts().weekday];
@@ -134,7 +127,7 @@ const WEEKLY_SCHEDULE = { 2: "keepItDutchTuesday", 3: "batchWednesday", 4: "thir
   function updateAnniversaryTeaser() {
     const teaser = document.getElementById("anniversaryTeaser");
     const now = localStamp();
-    if (teaser) { teaser.hidden = now >= 202611160000; teaser.innerHTML = "<strong>Cheers to 5 Years! · Nov 13–15</strong> · Friday: 50% off select brands + food truck · Saturday & Sunday: 50% off the entire store."; }
+    if (teaser) { teaser.hidden = now >= 202611160000; teaser.textContent = ""; }
   }
 
   function applySeasonalTheme() {
@@ -144,11 +137,11 @@ const WEEKLY_SCHEDULE = { 2: "keepItDutchTuesday", 3: "batchWednesday", 4: "thir
     document.body?.classList.toggle("halloween-theme", halloweenActive);
     document.body?.classList.toggle("anniversary-theme", anniversaryActive);
   }
-  const activeName = () => { const p = dateParts(); if (p.year === "2026" && p.month === "11" && Number(p.day) >= 11 && Number(p.day) <= 15) return "anniversaryWeekend"; if (MANUAL_CAMPAIGN && PROMOTIONS[MANUAL_CAMPAIGN]?.enabled) return MANUAL_CAMPAIGN; const scheduled = WEEKLY_SCHEDULE[weekday()]; return PROMOTIONS[scheduled]?.enabled ? scheduled : "default"; };
+  const activeName = () => { const p = dateParts(); if (MANUAL_CAMPAIGN && PROMOTIONS[MANUAL_CAMPAIGN]?.enabled) return MANUAL_CAMPAIGN; const scheduled = WEEKLY_SCHEDULE[weekday()]; return PROMOTIONS[scheduled]?.enabled ? scheduled : "default"; };
   const getStored = key => { try { return localStorage.getItem(key); } catch { return null; } };
   const setStored = (key, value) => { try { localStorage.setItem(key, value); } catch {} };
 
-  function updateBanner(banner) { if (!banner) return; const p = dateParts(); if (p.year === "2026" && p.month === "11" && Number(p.day) < 13 && p.day !== "11") banner = PROMOTIONS.anniversaryWeekend.banner; ["headline", "products", "offer"].forEach(part => document.querySelectorAll(`[data-promo-banner-part="${part}"]`).forEach(el => el.textContent = banner[part] || "")); }
+  function updateBanner(banner) { if (!banner) return; const p = dateParts(); ["headline", "products", "offer"].forEach(part => document.querySelectorAll(`[data-promo-banner-part="${part}"]`).forEach(el => el.textContent = banner[part] || "")); }
 
   function updateBrandHeroCopy() {
     const badge = document.querySelector(".hero__badge-text"); if (badge) badge.textContent = "CRAFT CANNABIS & CURATED BRANDS";
@@ -201,6 +194,6 @@ const WEEKLY_SCHEDULE = { 2: "keepItDutchTuesday", 3: "batchWednesday", 4: "thir
   function expandPopup() { const wrap = document.getElementById("weeklyPromoPopup"); if (!wrap) return; const wasOpen = wrap.classList.contains("is-open"); wrap.hidden = false; wrap.classList.add("is-open"); wrap.classList.remove("is-collapsed"); wrap.querySelector(".weekly-promo__tab")?.setAttribute("aria-expanded", "true"); if (!wasOpen) burstAnniversaryConfetti(wrap); }
   function initPopupControls() { const wrap = document.getElementById("weeklyPromoPopup"), link = document.getElementById("weeklyPromoLink"); if (!wrap) return; wrap.querySelector(".weekly-promo__tab")?.addEventListener("click", () => wrap.classList.contains("is-open") ? closePopup() : expandPopup()); wrap.querySelectorAll("[data-close-weekly-promo]").forEach(el => el.addEventListener("click", closePopup)); link?.addEventListener("click", closePopup); document.addEventListener("keydown", e => { if (e.key === "Escape" && !wrap.hidden) closePopup(); }); }
   function showPopup(popup, name) { if (!popup || popup.enabled === false) return; const wrap = document.getElementById("weeklyPromoPopup"); if (!wrap) return; const key = storageKey(popup, name); if (getStored(key)) { wrap.hidden = false; wrap.classList.add("is-collapsed"); return; } setTimeout(() => { expandPopup(); setStored(key, String(Date.now())); }, Number.isFinite(popup.delay) && popup.delay >= 0 ? popup.delay : 10000); }
-  function init() { applySeasonalTheme(); updateAnniversaryTeaser(); const name = activeName(), campaign = PROMOTIONS[name] || PROMOTIONS.default; const popup = campaign.popup?.enabled === false ? PROMOTIONS.default.popup : campaign.popup; window.GreenLabsPromotion = {name, campaign, popup, promotions:PROMOTIONS}; updateBrandHeroCopy(); updateBanner(campaign.banner); updateHero(campaign.hero || BRAND_HERO); updatePopup(popup); initPopupControls(); showPopup(popup, name); console.info(`[Green Labs Promotions] Active campaign: ${name}`); }
+  function init() { applySeasonalTheme(); updateAnniversaryTeaser(); const name = activeName(), campaign = PROMOTIONS[name] || PROMOTIONS.default; const popup = PROMOTIONS.default.popup; window.GreenLabsPromotion = {name, campaign, popup, promotions:PROMOTIONS}; updateBrandHeroCopy(); updateBanner(campaign.banner); updateHero(campaign.hero || BRAND_HERO); updatePopup(popup); initPopupControls(); showPopup(popup, name); console.info(`[Green Labs Promotions] Active campaign: ${name}`); }
   document.readyState === "loading" ? document.addEventListener("DOMContentLoaded", init, {once:true}) : init();
 })();
