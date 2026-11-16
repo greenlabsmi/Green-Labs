@@ -5,7 +5,7 @@
   const MANUAL_CAMPAIGN = null;
 
   const BRAND_HERO = {
-    image: "assets/img/dutch-deli-clean-hero.jpg",
+    image: "assets/img/dutch-deli-oct.jpg",
     position: "center",
     size: "cover",
     href: "#deli",
