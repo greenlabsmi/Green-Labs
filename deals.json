@@ -92,49 +92,11 @@
   },
   "highlights": {
     "layout": {
-      "hero": "redemption-carts",
-      "mid": [
-        "batch-disposables",
-        "hash-house"
-      ],
-      "scroll": [
-        "fire-styxx",
-        "seasonal-candles",
-        "kshn"
-      ]
+      "hero": null,
+      "mid": [],
+      "scroll": []
     },
-    "items": {
-      "fire-styxx": {
-        "title": "Fire Styxx & Bonfire — $6 each",
-        "image": "assets/img/highlights/hl-fire-styxx.jpg"
-      },
-      "seasonal-candles": {
-        "title": "Seasonal Candles — $35 each",
-        "image": "assets/img/highlights/candle-hl.jpg"
-      },
-      "hash-house": {
-        "title": "Hash House Rosin Carts - $15",
-        "image": "assets/img/highlights/hash-house-hl.jpg"
-      },
-      "kshn": {
-        "title": "KSHN Pouches — $15 each",
-        "image": "assets/img/highlights/hl-kshn.jpg"
-      },
-      "redemption-carts": {
-        "title": "Redemption 1g Live Resin Carts — $15 each",
-        "tag": "LIVE RESIN CARTS",
-        "price": "$15",
-        "details": "Redemption · 1g Live Resin",
-        "image": "assets/img/redemption-hero.jpg"
-      },
-      "batch-disposables": {
-        "title": "Batch Signature 4g Disposables",
-        "price": "$45",
-        "tag": "VAPES",
-        "details": "Batch Signature 4g",
-        "image": "assets/img/deals/dt-disposables.jpg"
-      }
-    }
+    "items": {}
   },
   "deals": [
     {
@@ -148,9 +110,13 @@
             "Hash D — $10/oz",
             "Grip Full Flower — $20/oz",
             "DTG Indoor Shake — $25/oz",
-            "Bud & Mary’s — $10/eighth or $50/oz",
-            "Funk From Mars — $90/oz or $18/eighth",
-            "Space Hippy, Lilac Diesel & Award-Winning Mr. Clean — $110/oz",
+            "Palpatine — $70/oz",
+            "Lazy Lightning — $70/oz",
+            "Funk From Mars — $90/oz",
+            "Electric Hashplant #2 — $90/oz",
+            "Grape Pie — $90/oz",
+            "Space Hippy — $110/oz",
+            "Lemon Wookie — $110/oz",
             "Mr. Clean Award-Winning Sativa — BACK IN STOCK"
           ]
         }
@@ -161,9 +127,9 @@
       "promo": false,
       "groups": [
         {
-          "title": "Drink Deals",
+          "title": "Drinks",
           "items": [
-            "Tonic THC Drinks — NOW IN STOCK"
+            "THC Drinks — BACK IN STOCK"
           ]
         }
       ]
@@ -175,10 +141,15 @@
         {
           "title": "Gummies, Cones & Edibles",
           "items": [
-            "Jungle Juice Gummies — $2 each",
-            "Squishies Rosin Gummies — $4 each",
-            "Gelato THC Cones — $7.50 each",
-            "Gelato Cereal Bites — $6 each"
+            "Jungle Juice Gummies — $4 each",
+            "Choice 200mg Gummies — $4 each",
+            "True North One Hitters — $4 each",
+            "True North 4x50mg Gummies — $5 each",
+            "Smokies & Squishies Rosin Gummies — $8 each",
+            "Five Star Live Resin One Hitters — $6 each",
+            "Five Star 4x50mg Live Resin Gummies — $8 each",
+            "Gelato Cereal Bites — $12 each",
+            "Mojo Chocolates — $13 each"
           ]
         }
       ]
@@ -190,36 +161,37 @@
         {
           "title": "Infused Pre-Rolls",
           "items": [
-            "Blazr 1g Live Resin Pre-Rolls — $2.50 each",
-            "Franklin Fields 1g Live Resin Pre-Rolls — $3 each",
-            "Divvy 2-Pack Pre-Rolls — $5 each",
-            "Glacier Ice Pick Infused — $5 each",
+            "Grip 1g Infused Pre-Rolls — $4 each",
+            "Glacier 1g Ice Pick — $5 each",
+            "Blazr 1g Live Resin Pre-Rolls — $5 each",
+            "Franklin Fields 1g Live Resin Pre-Rolls — $6 each",
             "Fire Styxx — $6 each",
-            "269 Cannabis 1g Infused — $6.50 each"
+            "269 Cannabis 1g Infused — $13 each"
           ]
         },
         {
           "title": "Infused Packs",
           "items": [
+            "Divvy 2-Pack Infused Pre-Rolls — $5 each",
             "Swisher — BACK IN STOCK",
-            "Jungle Juice 5-Pack Kief Coated — $10 each",
+            "Jungle Juice 5-Pack Kief Coated — $20 each",
             "Baby Jeeters — $30 each (BACK IN STOCK)"
           ]
         },
         {
           "title": "Non-Infused Pre-Rolls",
           "items": [
-            "Lemon Wookie 2g Hand-Rolled — $20 (1st Place Best in Grass Pre-Roll Winner)",
-            "Odyssey 1g Pre-Rolls — $2 each",
+            "Lemon Wookie 2g Hand-Rolled — $20 (Best in Grass Pre-Roll Winner)",
+            "269 1g Full Flower Pre-Rolls — $2 each",
+            "Kaos 1g Pre-Rolls — $2 each",
             "Dutch Daylight 1g — $2.50 each",
-            "Kaos 1g Pre-Rolls — $4 each",
             "Glorious & Party Favor 1g — $5 each",
             "Dutch Touch 1g Full Bud — $10 each",
-            "269 10-Pack Full Flower Pre-Rolls — $10 each",
-            "OnlyZip 28-Pack Pre-Rolls — $20 each",
-            "Franklin Fields 28-Pack Pre-Rolls — $25 each",
+            "269 10-Pack Full Flower Pre-Rolls — $20 each",
+            "OnlyZip 28-Pack Pre-Rolls — $40 each",
+            "Franklin Fields 28-Pack Pre-Rolls — $50 each",
             "Dutch Touch 25-Pack Full Bud Pre-Rolls — $110 each",
-            "Dutch Touch 25-Pack (0.5g) Pre-Rolls — $60"
+            "Dutch Touch 25-Pack (0.5g) Pre-Rolls — $60 each"
           ]
         }
       ]
@@ -229,10 +201,21 @@
       "promo": false,
       "groups": [
         {
+          "title": "Vape Cartridges",
+          "items": [
+            "Redbud Roots Full Spectrum Carts — $10 each",
+            "Platinum Vape 1g Live Resin — $15 each"
+          ]
+        },
+        {
           "title": "Disposable Vapes",
           "items": [
             "DTG Lilac 2g — $35",
-            "DTG Gelato 2g — $30"
+            "DTG Gelato 2g — $30",
+            "Franklin Fields 1g Live Resin Disposable — $25",
+            "Franklin Fields 3g Live Resin Disposable — $45",
+            "Batch 4g Disposable — $45",
+            "Party Favor 3g Disposable — $30"
           ]
         }
       ]
@@ -244,19 +227,19 @@
         {
           "title": "Dutch Touch Resin Concentrates",
           "items": [
-            "Old Widow 3.5g — $35 each",
-            "Sin City Batter 3.5g — $35 each",
-            "10K Sativa Batter 3.5g — $40 each",
-            "Clusterfunk Batter 3.5g — $50 each",
-            "Clusterfunk Big Baller Jars — $100",
-            "Death Star Sugar Big Baller Jar — $100",
-            "True North 7g Live Resin — $25 each"
+            "Old Widow 3.5g — $35",
+            "Sin City Batter 3.5g — $35",
+            "10K Sativa Batter 3.5g — $40",
+            "Clusterfunk Batter 3.5g — $50"
           ]
         },
         {
           "title": "Rosin Concentrates",
           "items": [
-            "710 Persy Pods — $50 each"
+            "710 Persy Pods — $50 each",
+            "Dutch Touch 14g Rosin — $140",
+            "Dutch Touch 3.5g Rosin — $50",
+            "Dutch Touch 1g Rosin — $20"
           ]
         }
       ]
