@@ -1115,6 +1115,24 @@ const deliTierData = {
 };
 
 const deliStrainData = {
+  "angelica": {
+    name: "Angelica",
+    tier: "core",
+    seedSource: "Dutch Touch Genetics",
+    type: "Flower",
+    thc: "25.74% THC",
+    budImage: "https://dutchtouchgenetics.com/assets/img/strains/Angelica.png",
+    artImage: "https://dutchtouchgenetics.com/assets/img/strains/angelica-art.jpg",
+    genetics: "Not provided",
+    terpenes: [
+      { name: "p-Cymene", percent: "0.360%", mg: "3.60 mg/g" },
+      { name: "Linalool", percent: "0.210%", mg: "2.10 mg/g" },
+      { name: "β-Myrcene", percent: "0.200%", mg: "2.00 mg/g" },
+      { name: "β-Caryophyllene", percent: "0.146%", mg: "1.46 mg/g" },
+      { name: "Nerolidol", percent: "0.089%", mg: "0.89 mg/g" }
+    ],
+    about: "Angelica flower. Lab-reported total THC 25.74%; leading terpenes include p-Cymene, Linalool and β-Myrcene."
+  },
   "grape-pie": {
     name: "Grape Pie",
     tier: "core",
@@ -1228,16 +1246,18 @@ const deliStrainData = {
     tier: "core",
     seedSource: "Soma Seeds",
     type: "Indica Dominant",
-    thc: "25.14% THC",
-    budImage: "https://dutchtouchgenetics.com/assets/img/strains/afghani-bud.jpg",
+    thc: "26.43% THC",
+    budImage: "https://dutchtouchgenetics.com/assets/img/strains/afghani-2-bud.jpg",
     artImage: "https://dutchtouchgenetics.com/assets/img/strains/afghani-art.jpg",
     genetics: "Pure Afghan Landrace",
     terpenes: [
-      { name: "α-Terpinene", percent: "1.507%", mg: "15.07 mg/g" },
-      { name: "Nerolidol", percent: "0.278%", mg: "2.78 mg/g" },
-      { name: "β-Pinene", percent: "0.203%", mg: "2.03 mg/g" }
+      { name: "p-Cymene", percent: "0.405%", mg: "4.05 mg/g" },
+      { name: "Linalool", percent: "0.181%", mg: "1.81 mg/g" },
+      { name: "β-Caryophyllene", percent: "0.106%", mg: "1.06 mg/g" },
+      { name: "Nerolidol", percent: "0.082%", mg: "0.82 mg/g" },
+      { name: "β-Pinene", percent: "0.072%", mg: "0.72 mg/g" }
     ],
-    about: "One of the most important traditional indica landraces in modern cannabis breeding. Earthy, hash-like, spicy, woody, resinous, herbal, pine-forward, and smoky with a dry herbal finish."
+    about: "Traditional indica with earthy, hash-like, spicy, woody, resinous and pine-forward characteristics."
   },
 
  "space-hippy-bubblehash": {
