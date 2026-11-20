@@ -1121,7 +1121,7 @@ const deliStrainData = {
     seedSource: "Dutch Touch Genetics",
     type: "Flower",
     thc: "25.74% THC",
-    budImage: "https://dutchtouchgenetics.com/assets/img/strains/Angelica.png",
+    budImage: "https://dutchtouchgenetics.com/assets/img/strains/angelica.png",
     artImage: "https://dutchtouchgenetics.com/assets/img/strains/angelica-art.jpg",
     genetics: "Not provided",
     terpenes: [
