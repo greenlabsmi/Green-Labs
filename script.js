@@ -1121,7 +1121,7 @@ const deliStrainData = {
     seedSource: "Dutch Touch Genetics",
     type: "Flower",
     thc: "25.74% THC",
-    budImage: "https://dutchtouchgenetics.com/assets/img/strains/angelica.png",
+    budImage: "https://dutchtouchgenetics.com/assets/img/strains/angelica.jpg",
     artImage: "https://dutchtouchgenetics.com/assets/img/strains/angelica-art.jpg",
     genetics: "Not provided",
     terpenes: [
@@ -2184,6 +2184,8 @@ function initCuratedBrandDeli() {
 
     // Keep the newest DTG drops at the very front of the deli on every page load.
     const newDropOrder = [
+      "angelica",
+      "afghani-2",
       "grape-pie",
       "electric-hashplant-2",
       "lemon-wookie",
@@ -2196,7 +2198,6 @@ function initCuratedBrandDeli() {
       "white-lightning",
       "palpatine",
       "lazy-lightning",
-      "afghani-2",
       "space-hippy-bubblehash"
     ];
 
