@@ -106,12 +106,14 @@
         {
           "title": "Flower & Deli Specials",
           "items": [
+            "Gelato Snowball Flower — 50% off",
+            "Clusterfunk Deli Outdoor — 50% off",
+            "Clusterfunk Indoor — 50% off",
+            "Spyder Leg Moonrock — 40% off",
             "Hash D — $10/oz (75% off)",
             "Grip Full Flower — $20/oz",
             "DTG Indoor Shake — $25/oz or 2/$40",
             "Flower of Life — 3.5g $30 or 14g $85",
-            "Clusterfunk Outdoor Deli — 50% off",
-            "Clusterfunk Indoor — 40% off ($66/oz)",
             "Palpatine & Lazy Lightning — $70/oz",
             "Cresco Flower — $12/3.5g or $70/oz",
             "Electric Hashplant & Grape Pie — $90/oz (Brand New Strains!)",
@@ -140,18 +142,22 @@
         {
           "title": "Gummies, Chocolates & Edibles",
           "items": [
+            "DTG RSO Gummies — 50% off",
+            "DTG RSO 1g Dart — 50% off",
             "Gelato THC Cones & Cereal Bites — 50% off",
             "Gelato One Hitter Gummies — 50% off",
-            "Jungle Juice Gummies — $4 each or 10/$35",
-            "Choice 200mg Gummies — $4 each",
-            "True North One Hitters — $4 each or 10/$35",
-            "True North 4x50mg Gummies — $5 each or 10/$45",
-            "Smokies, Mother Puckers & Squishies Rosin Gummies — $8 each or 5/$35",
-            "Five Star Live Resin One Hitters — $6 each",
-            "Five Star 4x50mg Live Resin — $8 each or 5/$35",
+            "Smokies & Mother Puckers — 50% off",
+            "Jungle Juice Gummies — 40% off",
+            "True North & Five Star Gummies — BOGO",
+            "Edible Gem Live Resin Ratio — Buy 1 Get 1",
+            "Choice Gummies — $4 each or 5/$18",
+            "Monster Blasternaut — $4 each",
+            "Monster Pure THC Gummies — $5 each",
+            "Monster 1:1:1:1 (THC/CBD/CBG/CBN) — $10",
+            "Monster Sleep — $10 each",
             "Pixil 200mg THC Nerdz — 2/$25",
-            "Mojo Chocolates — $13 each or 3/$30",
-            "Edible Gem Live Resin Ratio — Buy 1 Get 1"
+            "Flow Microdosed Rosin Chocolate — $12 each",
+            "Mojo Chocolates — $13 each or 3/$30"
           ]
         }
       ]
@@ -163,11 +169,11 @@
         {
           "title": "Infused Pre-Rolls",
           "items": [
+            "Jungle Juice 1g Infused — 40% off (Gorilla Glue)",
             "Grip 1g Infused Pre-Rolls — $4 each",
-            "Glacier 1g Ice Pick — $5 each or 10/$45",
             "Blazr 1g Live Resin Pre-Rolls — $5 each",
             "Franklin Fields 1g Live Resin — $6 each",
-            "Fire Styxx — $6 each or 10/$55",
+            "Fire Styxx — $6 or 10/$55",
             "Harbor Farms Resin Infused — $10 each"
           ]
         },
@@ -175,8 +181,7 @@
           "title": "Infused Packs",
           "items": [
             "Divvy 2-Pack Infused Pre-Rolls — $5 each",
-            "Swisher — BACK IN STOCK",
-            "Crude Boys 5-Pack Kief Coated — $30 each"
+            "Buy a Swisher, get a free 1.5g Blunt (Tropical Bash)"
           ]
         },
         {
@@ -204,25 +209,26 @@
         {
           "title": "Vape Cartridges",
           "items": [
-            "Play 1g Hash Rosin Infused Carts — 15/$80",
+            "Five Star Live Resin Carts — BOGO",
+            "Batch 2g Cart — 50% off",
+            "Play Hash Rosin Cartridges — $5",
             "Party Favor 1g Cartridges — 10/$50",
-            "Redbud Roots Full Spectrum — $10 each or 3/$25",
-            "Platinum Vape 1g Live Resin — $15 each or 3/$30",
+            "Redbud Roots Full Spectrum — $10 or 3/$25",
             "Redbud Roots Hash Rosin Cart — $15 each",
-            "Mix & Match Carts — 5/$35 (Crude Boys, Drip, Platinum Vapes, Party Favor, Daily Dose, Play Hash Rosin Infused Cartridges)"
+            "Mix & Match Carts — 5/$35 (Crude Boys, Drip, Platinum Vapes, Play Hash Rosin Infused, Party Favor, Daily Dose)"
           ]
         },
         {
           "title": "Disposable Vapes",
           "items": [
+            "Batch Disposables — 50% off",
+            "Rove Pods — 40% off",
             "HYMAN 1g Live Resin Stylus — $15",
             "Crude Boys 2g Disposable — $15 (Indica only)",
-            "Jeeter XL Diamond 2g — $30",
             "DTG Lilac 2g — $35 or 2/$65",
             "DTG 1g — 3/$45 or 7/$100",
             "Redbud Roots 2g Full Spectrum — $25 each",
-            "Party Favor 3g Disposable — $30 each",
-            "Batch 4g Disposable — $45 or 2/$80"
+            "Party Favor 3g Disposable — $30 each"
           ]
         }
       ]
@@ -235,11 +241,14 @@
           "title": "Dutch Touch Resin Concentrates",
           "items": [
             "Dutch Delight Diamonds — 30% off",
-            "Old Widow 3.5g — $35",
+            "Old Widow 3.5g — $35 each",
             "Sin City Batter 3.5g — $35",
             "10K Sativa Batter 3.5g — $40",
             "Clusterfunk Batter 3.5g — $50",
-            "Dutch Touch Big Baller Jar — $100"
+            "Cap Junkie Big Baller Jar — $75",
+            "Old Widow Big Baller Jar — $75",
+            "Clusterfunk Big Baller Jar — $100",
+            "Mr Clean Big Baller Jar — $110"
           ]
         },
         {
@@ -263,7 +272,7 @@
           "items": [
             "DTG Brick Hash 1g — $20",
             "DTG Bubble Hash 7g — $150",
-            "Harbor Farms Brick & Temple Balls — $25/g"
+            "Harbor Farms Brick — $25/g"
           ]
         }
       ]
