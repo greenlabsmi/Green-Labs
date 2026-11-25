@@ -1212,14 +1212,14 @@ const deliStrainData = {
     tier: "premium",
     seedSource: "Bodhi Seeds",
     type: "Hybrid",
-    thc: "30.38% THC",
+    thc: "26.30% THC",
     budImage: "",
     artImage: "https://dutchtouchgenetics.com/assets/img/strains/sky-lotus-art.jpg",
     genetics: "Skywalker OG × Snow Lotus",
     terpenes: [
-      { name: "β-Caryophyllene", percent: "0.771%", mg: "7.71 mg/g" },
-      { name: "Nerolidol", percent: "0.374%", mg: "3.74 mg/g" },
-      { name: "α-Humulene", percent: "0.273%", mg: "2.73 mg/g" }
+      { name: "Myrcene", percent: "1.795%", mg: "17.95 mg/g" },
+      { name: "Nerolidol", percent: "0.123%", mg: "1.23 mg/g" },
+      { name: "Caryophyllene", percent: "0.270%", mg: "2.70 mg/g" }
     ],
     about: "A Bodhi Seeds hybrid with pine, lemon and sweet berry aromas, and a potent, balanced character."
   },
@@ -1472,14 +1472,19 @@ const deliStrainData = {
   },
 
   "hash-d": {
-    name: "Hash D",
+    name: "Hash D #16",
     tier: "core",
     seedSource: "Bodhi Seeds",
     type: "Indica",
-    thc: "28.71% THC",
+    thc: "26.50% THC",
     budImage: "https://dutchtouchgenetics.com/assets/img/strains/hash-d-bud.jpg",
-    artImage: "https://dutchtouchgenetics.com/assets/img/strains/hash-d-2-art.jpg",
+    artImage: "https://dutchtouchgenetics.com/assets/img/strains/hash-d-16-art.jpg",
     genetics: "Chem D × 88G13HP",
+    terpenes: [
+      { name: "Myrcene", percent: "0.282%", mg: "2.82 mg/g" },
+      { name: "Nerolidol", percent: "0.164%", mg: "1.64 mg/g" },
+      { name: "Caryophyllene", percent: "0.112%", mg: "1.12 mg/g" }
+    ],
     about: "Pungent fuel aromas blend with earthy hashish undertones, producing a heavy-hitting body stone and classic Chem character."
   },
 
@@ -2184,6 +2189,8 @@ function initCuratedBrandDeli() {
 
     // Keep the newest DTG drops at the very front of the deli on every page load.
     const newDropOrder = [
+      "sky-lotus",
+      "hash-d",
       "angelica",
       "afghani-2",
       "grape-pie",
@@ -2193,7 +2200,6 @@ function initCuratedBrandDeli() {
       "mr-clean",
       "sin-city-grapes",
       "lilac-diesel",
-      "sky-lotus",
       "astro-taffy",
       "white-lightning",
       "palpatine",
