@@ -191,7 +191,7 @@ const WEEKLY_SCHEDULE = { 2: "keepItDutchTuesday", 3: "batchWednesday", 4: "thir
     const p=dateParts(), day=Number(p.day);
     if(p.year!=="2026" || p.month!=="11" || ![25,27,28,29,30].includes(day)) return null;
     const cyber=day===30, main=day===25||day===27;
-    const rows=cyber?[["50% OFF","Smokiez & Mother Puckers"],["30% OFF","Rove"],["20% OFF","Online orders using Pay by Bank"]]:[["50% OFF","Dutch Touch Genetics","Clusterfunk, jarred rosin, RSO & RSO gummies"],["50% OFF","Smokiez & Mother Puckers"],["40% OFF","Jungle Juice"],...(main?[["40% OFF","Rove"]]:[]),["BOGO","True North & Five Star","Gummies and Five Star live resin carts"]];
+    const rows=cyber?[["50% OFF","Smokiez & Mother Puckers"],["30% OFF","Rove"],["20% OFF","Online orders using Pay by Bank"]]:[["50% OFF","Bud & Mary’s Deli Flower","$50/oz"],["50% OFF","Dutch Touch Genetics","Clusterfunk, jarred rosin, RSO & RSO gummies"],["50% OFF","Smokiez & Mother Puckers"],["40% OFF","Jungle Juice"],...(main?[["40% OFF","Rove"]]:[]),["BOGO","True North & Five Star","Gummies and Five Star live resin carts"]];
     return {id:"harvest-2026-"+day,enabled:true,frequency:"daily",delay:8000,tabText:"HARVEST WEEK DEALS",href:"#deals",headline:cyber?"Cyber Monday":main?"Green Wednesday & Black Friday":"Weekend Specials",dates:cyber?"November 30":main?"November 25 & 27":"November 28–29",rows,prices:[["5/$18","Choice Gummies"],["5/$35","Mix & Match Carts"],["$10/oz","Hash D"],["$20/oz","Grip Full Flower"],["10/$15","Select 1g Pre-Rolls"],["$70/oz","Select Deli Flower"]]};
   }
   function renderHarvest(popup) {
